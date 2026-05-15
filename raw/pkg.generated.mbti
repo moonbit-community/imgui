@@ -1,0 +1,240 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "moonbit-community/imgui/raw"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn backend_create_window(BackendOptions) -> BackendWindow
+
+pub fn backend_destroy_window(BackendWindow) -> Unit
+
+pub fn backend_new_frame(BackendWindow) -> Bool
+
+pub fn backend_null_window() -> BackendWindow
+
+pub fn backend_poll_events(BackendWindow) -> Unit
+
+pub fn backend_render(BackendWindow, DrawData) -> Bool
+
+pub fn backend_should_close(BackendWindow) -> Bool
+
+pub fn backend_window_is_null(BackendWindow) -> Bool
+
+pub fn begin_menu(String, enabled? : Bool) -> Bool
+
+pub fn begin_menu_bar() -> Bool
+
+pub fn begin_tab_bar(String, flags? : TabBarFlags) -> Bool
+
+pub fn begin_tab_item(String) -> Bool
+
+pub fn begin_table(String, Int, flags? : TableFlags) -> Bool
+
+pub fn begin_window(String, flags? : WindowFlags) -> Bool
+
+pub fn bridge_mode() -> BridgeMode
+
+pub fn bridge_version() -> Int
+
+pub fn button(String) -> Bool
+
+pub fn checkbox(String, Bool) -> CheckboxResult
+
+pub fn clear_current_context() -> Unit
+
+pub fn collapsing_header(String, flags? : TreeNodeFlags) -> Bool
+
+pub fn create_context() -> Context
+
+pub fn dear_imgui_version_number() -> Int
+
+pub fn destroy_context(Context) -> Unit
+
+pub fn end_frame() -> Unit
+
+pub fn end_menu() -> Unit
+
+pub fn end_menu_bar() -> Unit
+
+pub fn end_tab_bar() -> Unit
+
+pub fn end_tab_item() -> Unit
+
+pub fn end_table() -> Unit
+
+pub fn end_window() -> Unit
+
+pub fn frame_count() -> Int
+
+pub fn get_draw_data() -> DrawData
+
+pub fn get_font_atlas() -> FontAtlas
+
+pub fn get_io() -> Io
+
+pub fn get_style() -> Style
+
+pub fn has_current_context() -> Bool
+
+pub fn input_text(String, String, flags? : InputTextFlags, capacity? : Int) -> TextEditResult
+
+pub fn menu_item(String, selected? : Bool) -> Bool
+
+pub fn new_frame() -> Unit
+
+pub fn render() -> Unit
+
+pub fn same_line() -> Unit
+
+pub fn selectable(String, selected? : Bool, flags? : SelectableFlags) -> Bool
+
+pub fn separator() -> Unit
+
+pub fn set_current_context(Context) -> Unit
+
+pub fn set_next_window_size(Double, Double, cond? : Cond) -> Unit
+
+pub fn show_demo_window(open? : Bool) -> Unit
+
+pub fn slider_float(String, Double, Double, Double) -> FloatEditResult
+
+pub fn table_next_column() -> Bool
+
+pub fn table_next_row() -> Unit
+
+pub fn text(String) -> Unit
+
+pub fn tree_node(String, flags? : TreeNodeFlags) -> Bool
+
+pub fn tree_pop() -> Unit
+
+// Errors
+
+// Types and methods
+pub(all) struct BackendOptions {
+  title : String
+  width : Int
+  height : Int
+  glsl_version : String
+  vsync : Bool
+} derive(Eq, @debug.Debug)
+
+#external
+pub(all) type BackendWindow
+
+pub(all) enum BridgeMode {
+  HeadlessStub
+  DearBindings
+  NativeCocoa
+} derive(Eq, @debug.Debug)
+
+pub(all) struct CheckboxResult {
+  changed : Bool
+  checked : Bool
+} derive(Eq, @debug.Debug)
+
+pub(all) struct Cond {
+  bits : Int
+} derive(Eq, @debug.Debug)
+pub fn Cond::always() -> Self
+pub fn Cond::appearing() -> Self
+pub fn Cond::first_use_ever() -> Self
+pub fn Cond::none() -> Self
+pub fn Cond::once() -> Self
+pub fn Cond::value(Self) -> Int
+
+#external
+pub(all) type Context
+
+#external
+pub(all) type DrawData
+
+pub(all) struct FloatEditResult {
+  changed : Bool
+  value : Double
+} derive(Eq, @debug.Debug)
+
+#external
+pub(all) type FontAtlas
+
+pub(all) struct InputTextFlags {
+  bits : Int
+} derive(Eq, @debug.Debug)
+pub fn InputTextFlags::chars_decimal() -> Self
+pub fn InputTextFlags::chars_hexadecimal() -> Self
+pub fn InputTextFlags::combine(Self, Self) -> Self
+pub fn InputTextFlags::none() -> Self
+pub fn InputTextFlags::read_only() -> Self
+pub fn InputTextFlags::value(Self) -> Int
+
+#external
+pub(all) type Io
+
+pub(all) struct SelectableFlags {
+  bits : Int
+} derive(Eq, @debug.Debug)
+pub fn SelectableFlags::combine(Self, Self) -> Self
+pub fn SelectableFlags::dont_close_popups() -> Self
+pub fn SelectableFlags::none() -> Self
+pub fn SelectableFlags::span_all_columns() -> Self
+pub fn SelectableFlags::value(Self) -> Int
+
+#external
+pub(all) type Style
+
+pub(all) struct TabBarFlags {
+  bits : Int
+} derive(Eq, @debug.Debug)
+pub fn TabBarFlags::auto_select_new_tabs() -> Self
+pub fn TabBarFlags::combine(Self, Self) -> Self
+pub fn TabBarFlags::none() -> Self
+pub fn TabBarFlags::reorderable() -> Self
+pub fn TabBarFlags::value(Self) -> Int
+
+pub(all) struct TableFlags {
+  bits : Int
+} derive(Eq, @debug.Debug)
+pub fn TableFlags::borders() -> Self
+pub fn TableFlags::combine(Self, Self) -> Self
+pub fn TableFlags::none() -> Self
+pub fn TableFlags::reorderable() -> Self
+pub fn TableFlags::resizable() -> Self
+pub fn TableFlags::row_bg() -> Self
+pub fn TableFlags::value(Self) -> Int
+
+pub(all) struct TextEditResult {
+  changed : Bool
+  truncated : Bool
+  value : String
+} derive(Eq, @debug.Debug)
+
+pub(all) struct TreeNodeFlags {
+  bits : Int
+} derive(Eq, @debug.Debug)
+pub fn TreeNodeFlags::combine(Self, Self) -> Self
+pub fn TreeNodeFlags::default_open() -> Self
+pub fn TreeNodeFlags::framed() -> Self
+pub fn TreeNodeFlags::leaf() -> Self
+pub fn TreeNodeFlags::none() -> Self
+pub fn TreeNodeFlags::selected() -> Self
+pub fn TreeNodeFlags::value(Self) -> Int
+
+pub(all) struct WindowFlags {
+  bits : Int
+} derive(Eq, @debug.Debug)
+pub fn WindowFlags::always_auto_resize() -> Self
+pub fn WindowFlags::combine(Self, Self) -> Self
+pub fn WindowFlags::menu_bar() -> Self
+pub fn WindowFlags::no_move() -> Self
+pub fn WindowFlags::no_resize() -> Self
+pub fn WindowFlags::no_scrollbar() -> Self
+pub fn WindowFlags::no_title_bar() -> Self
+pub fn WindowFlags::none() -> Self
+pub fn WindowFlags::value(Self) -> Int
+
+// Type aliases
+
+// Traits
+

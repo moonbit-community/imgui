@@ -1,0 +1,20 @@
+import {
+  "moonbit-community/imgui/raw" @raw,
+  "moonbitlang/core/encoding/utf8" @encoding/utf8,
+}
+
+import {
+  "moonbitlang/core/debug" @debug,
+} for "test"
+
+supported_targets = "+native"
+
+options(
+  link: {
+    "native": {
+      "cc": "/usr/bin/cc",
+      "cc-flags": "-fblocks -Wno-deprecated-declarations -I../upstream/imgui -I../upstream/imgui/backends -Iimgui/raw/upstream/imgui -Iimgui/raw/upstream/imgui/backends",
+      "cc-link-flags": "-framework AppKit -framework OpenGL -framework GameController -lc++",
+    },
+  },
+)

@@ -1,0 +1,5756 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "moonbit-community/imgui/raw/generated"
+
+import {
+  "moonbit-community/imgui/raw",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn bool_ptr_free(BoolPtr) -> Unit
+
+pub fn bool_ptr_get(BoolPtr) -> Bool
+
+pub fn bool_ptr_new(Bool) -> BoolPtr
+
+pub fn bool_ptr_set(BoolPtr, Bool) -> Unit
+
+pub fn cstring_free(CString) -> Unit
+
+pub fn cstring_is_null(CString) -> Bool
+
+pub fn cstring_length(CString) -> Int
+
+pub fn cstring_ptr_free(CStringPtr) -> Unit
+
+pub fn cstring_ptr_get(CStringPtr) -> CString
+
+pub fn cstring_ptr_new(CString) -> CStringPtr
+
+pub fn cstring_ptr_set(CStringPtr, CString) -> Unit
+
+pub fn cstring_to_string(CString) -> String
+
+pub fn double_ptr_free(DoublePtr) -> Unit
+
+pub fn double_ptr_get(DoublePtr) -> Double
+
+pub fn double_ptr_new(Double) -> DoublePtr
+
+pub fn double_ptr_set(DoublePtr, Double) -> Unit
+
+pub fn float_ptr_free(FloatPtr) -> Unit
+
+pub fn float_ptr_get(FloatPtr) -> Float
+
+pub fn float_ptr_new(Float) -> FloatPtr
+
+pub fn float_ptr_set(FloatPtr, Float) -> Unit
+
+pub fn im_arraysize() -> Bool
+
+pub fn im_col32_a_mask() -> Int64
+
+pub fn im_col32_a_shift() -> Int
+
+pub fn im_col32_b_shift() -> Int
+
+pub fn im_col32_g_shift() -> Int
+
+pub fn im_col32_r_shift() -> Int
+
+pub fn im_color_field_get_value(ImColor) -> ImVec4
+
+pub fn im_color_field_set_value(ImColor, ImVec4) -> Unit
+
+pub fn im_color_hsv(Float, Float, Float, Float) -> ImColor
+
+pub fn im_color_set_hsv(ImColor, Float, Float, Float, Float) -> Unit
+
+pub fn im_draw_channel_field_get_cmd_buffer(ImDrawChannel) -> ImVector_ImDrawCmd
+
+pub fn im_draw_channel_field_get_idx_buffer(ImDrawChannel) -> ImVector_ImDrawIdx
+
+pub fn im_draw_channel_field_set_cmd_buffer(ImDrawChannel, ImVector_ImDrawCmd) -> Unit
+
+pub fn im_draw_channel_field_set_idx_buffer(ImDrawChannel, ImVector_ImDrawIdx) -> Unit
+
+pub fn im_draw_cmd_field_get_clip_rect(ImDrawCmd) -> ImVec4
+
+pub fn im_draw_cmd_field_get_elem_count(ImDrawCmd) -> UInt
+
+pub fn im_draw_cmd_field_get_idx_offset(ImDrawCmd) -> UInt
+
+pub fn im_draw_cmd_field_get_tex_ref(ImDrawCmd) -> ImTextureRef
+
+pub fn im_draw_cmd_field_get_user_callback(ImDrawCmd) -> FunctionPtr
+
+pub fn im_draw_cmd_field_get_user_callback_data(ImDrawCmd) -> VoidPtr
+
+pub fn im_draw_cmd_field_get_user_callback_data_offset(ImDrawCmd) -> Int
+
+pub fn im_draw_cmd_field_get_user_callback_data_size(ImDrawCmd) -> Int
+
+pub fn im_draw_cmd_field_get_vtx_offset(ImDrawCmd) -> UInt
+
+pub fn im_draw_cmd_field_set_clip_rect(ImDrawCmd, ImVec4) -> Unit
+
+pub fn im_draw_cmd_field_set_elem_count(ImDrawCmd, UInt) -> Unit
+
+pub fn im_draw_cmd_field_set_idx_offset(ImDrawCmd, UInt) -> Unit
+
+pub fn im_draw_cmd_field_set_tex_ref(ImDrawCmd, ImTextureRef) -> Unit
+
+pub fn im_draw_cmd_field_set_user_callback_data(ImDrawCmd, VoidPtr) -> Unit
+
+pub fn im_draw_cmd_field_set_user_callback_data_offset(ImDrawCmd, Int) -> Unit
+
+pub fn im_draw_cmd_field_set_user_callback_data_size(ImDrawCmd, Int) -> Unit
+
+pub fn im_draw_cmd_field_set_vtx_offset(ImDrawCmd, UInt) -> Unit
+
+pub fn im_draw_cmd_get_tex_id(ImDrawCmd) -> UInt64
+
+pub fn im_draw_cmd_header_field_get_clip_rect(ImDrawCmdHeader) -> ImVec4
+
+pub fn im_draw_cmd_header_field_get_tex_ref(ImDrawCmdHeader) -> ImTextureRef
+
+pub fn im_draw_cmd_header_field_get_vtx_offset(ImDrawCmdHeader) -> UInt
+
+pub fn im_draw_cmd_header_field_set_clip_rect(ImDrawCmdHeader, ImVec4) -> Unit
+
+pub fn im_draw_cmd_header_field_set_tex_ref(ImDrawCmdHeader, ImTextureRef) -> Unit
+
+pub fn im_draw_cmd_header_field_set_vtx_offset(ImDrawCmdHeader, UInt) -> Unit
+
+pub fn im_draw_data_add_draw_list(ImDrawData, ImDrawList) -> Unit
+
+pub fn im_draw_data_clear(ImDrawData) -> Unit
+
+pub fn im_draw_data_de_index_all_buffers(ImDrawData) -> Unit
+
+pub fn im_draw_data_field_get_cmd_lists(ImDrawData) -> ImVector_ImDrawListPtr
+
+pub fn im_draw_data_field_get_cmd_lists_count(ImDrawData) -> Int
+
+pub fn im_draw_data_field_get_display_pos(ImDrawData) -> ImVec2
+
+pub fn im_draw_data_field_get_display_size(ImDrawData) -> ImVec2
+
+pub fn im_draw_data_field_get_framebuffer_scale(ImDrawData) -> ImVec2
+
+pub fn im_draw_data_field_get_owner_viewport(ImDrawData) -> ImGuiViewport
+
+pub fn im_draw_data_field_get_textures(ImDrawData) -> ImVector_ImTextureDataPtr
+
+pub fn im_draw_data_field_get_total_idx_count(ImDrawData) -> Int
+
+pub fn im_draw_data_field_get_total_vtx_count(ImDrawData) -> Int
+
+pub fn im_draw_data_field_get_valid(ImDrawData) -> Bool
+
+pub fn im_draw_data_field_set_cmd_lists(ImDrawData, ImVector_ImDrawListPtr) -> Unit
+
+pub fn im_draw_data_field_set_cmd_lists_count(ImDrawData, Int) -> Unit
+
+pub fn im_draw_data_field_set_display_pos(ImDrawData, ImVec2) -> Unit
+
+pub fn im_draw_data_field_set_display_size(ImDrawData, ImVec2) -> Unit
+
+pub fn im_draw_data_field_set_framebuffer_scale(ImDrawData, ImVec2) -> Unit
+
+pub fn im_draw_data_field_set_owner_viewport(ImDrawData, ImGuiViewport) -> Unit
+
+pub fn im_draw_data_field_set_textures(ImDrawData, ImVector_ImTextureDataPtr) -> Unit
+
+pub fn im_draw_data_field_set_total_idx_count(ImDrawData, Int) -> Unit
+
+pub fn im_draw_data_field_set_total_vtx_count(ImDrawData, Int) -> Unit
+
+pub fn im_draw_data_field_set_valid(ImDrawData, Bool) -> Unit
+
+pub fn im_draw_data_scale_clip_rects(ImDrawData, ImVec2) -> Unit
+
+pub fn im_draw_flags_closed() -> Int
+
+pub fn im_draw_flags_invalid_mask() -> Int64
+
+pub fn im_draw_flags_none() -> Int
+
+pub fn im_draw_flags_round_corners_all() -> Int
+
+pub fn im_draw_flags_round_corners_bottom() -> Int
+
+pub fn im_draw_flags_round_corners_bottom_left() -> Int
+
+pub fn im_draw_flags_round_corners_bottom_right() -> Int
+
+pub fn im_draw_flags_round_corners_default() -> Int
+
+pub fn im_draw_flags_round_corners_left() -> Int
+
+pub fn im_draw_flags_round_corners_mask() -> Int
+
+pub fn im_draw_flags_round_corners_none() -> Int
+
+pub fn im_draw_flags_round_corners_right() -> Int
+
+pub fn im_draw_flags_round_corners_top() -> Int
+
+pub fn im_draw_flags_round_corners_top_left() -> Int
+
+pub fn im_draw_flags_round_corners_top_right() -> Int
+
+pub fn im_draw_list_add_bezier_cubic(ImDrawList, ImVec2, ImVec2, ImVec2, ImVec2, UInt, Float, Int) -> Unit
+
+pub fn im_draw_list_add_bezier_quadratic(ImDrawList, ImVec2, ImVec2, ImVec2, UInt, Float, Int) -> Unit
+
+pub fn im_draw_list_add_callback(ImDrawList, ImDrawCallback) -> Unit
+
+pub fn im_draw_list_add_callback_ex(ImDrawList, ImDrawCallback, VoidPtr, UInt64) -> Unit
+
+pub fn im_draw_list_add_circle(ImDrawList, ImVec2, Float, UInt) -> Unit
+
+pub fn im_draw_list_add_circle_ex(ImDrawList, ImVec2, Float, UInt, Int, Float) -> Unit
+
+pub fn im_draw_list_add_circle_filled(ImDrawList, ImVec2, Float, UInt, Int) -> Unit
+
+pub fn im_draw_list_add_concave_poly_filled(ImDrawList, ImVec2, Int, UInt) -> Unit
+
+pub fn im_draw_list_add_convex_poly_filled(ImDrawList, ImVec2, Int, UInt) -> Unit
+
+pub fn im_draw_list_add_draw_cmd(ImDrawList) -> Unit
+
+pub fn im_draw_list_add_ellipse(ImDrawList, ImVec2, ImVec2, UInt) -> Unit
+
+pub fn im_draw_list_add_ellipse_ex(ImDrawList, ImVec2, ImVec2, UInt, Float, Int, Float) -> Unit
+
+pub fn im_draw_list_add_ellipse_filled(ImDrawList, ImVec2, ImVec2, UInt) -> Unit
+
+pub fn im_draw_list_add_ellipse_filled_ex(ImDrawList, ImVec2, ImVec2, UInt, Float, Int) -> Unit
+
+pub fn im_draw_list_add_image(ImDrawList, ImTextureRef, ImVec2, ImVec2) -> Unit
+
+pub fn im_draw_list_add_image_ex(ImDrawList, ImTextureRef, ImVec2, ImVec2, ImVec2, ImVec2, UInt) -> Unit
+
+pub fn im_draw_list_add_image_quad(ImDrawList, ImTextureRef, ImVec2, ImVec2, ImVec2, ImVec2) -> Unit
+
+pub fn im_draw_list_add_image_quad_ex(ImDrawList, ImTextureRef, ImVec2, ImVec2, ImVec2, ImVec2, ImVec2, ImVec2, ImVec2, ImVec2, UInt) -> Unit
+
+pub fn im_draw_list_add_image_rounded(ImDrawList, ImTextureRef, ImVec2, ImVec2, ImVec2, ImVec2, UInt, Float, Int) -> Unit
+
+pub fn im_draw_list_add_line(ImDrawList, ImVec2, ImVec2, UInt) -> Unit
+
+pub fn im_draw_list_add_line_ex(ImDrawList, ImVec2, ImVec2, UInt, Float) -> Unit
+
+pub fn im_draw_list_add_line_h(ImDrawList, Float, Float, Float, UInt) -> Unit
+
+pub fn im_draw_list_add_line_h_ex(ImDrawList, Float, Float, Float, UInt, Float) -> Unit
+
+pub fn im_draw_list_add_line_v(ImDrawList, Float, Float, Float, UInt) -> Unit
+
+pub fn im_draw_list_add_line_v_ex(ImDrawList, Float, Float, Float, UInt, Float) -> Unit
+
+pub fn im_draw_list_add_ngon(ImDrawList, ImVec2, Float, UInt, Int) -> Unit
+
+pub fn im_draw_list_add_ngon_ex(ImDrawList, ImVec2, Float, UInt, Int, Float) -> Unit
+
+pub fn im_draw_list_add_ngon_filled(ImDrawList, ImVec2, Float, UInt, Int) -> Unit
+
+pub fn im_draw_list_add_polyline(ImDrawList, ImVec2, Int, UInt, Float, Int) -> Unit
+
+pub fn im_draw_list_add_polyline_im_draw_flags(ImDrawList, ImVec2, Int, UInt, Int, Float) -> Unit
+
+pub fn im_draw_list_add_quad(ImDrawList, ImVec2, ImVec2, ImVec2, ImVec2, UInt) -> Unit
+
+pub fn im_draw_list_add_quad_ex(ImDrawList, ImVec2, ImVec2, ImVec2, ImVec2, UInt, Float) -> Unit
+
+pub fn im_draw_list_add_quad_filled(ImDrawList, ImVec2, ImVec2, ImVec2, ImVec2, UInt) -> Unit
+
+pub fn im_draw_list_add_rect(ImDrawList, ImVec2, ImVec2, UInt) -> Unit
+
+pub fn im_draw_list_add_rect_ex(ImDrawList, ImVec2, ImVec2, UInt, Float, Float, Int) -> Unit
+
+pub fn im_draw_list_add_rect_filled(ImDrawList, ImVec2, ImVec2, UInt) -> Unit
+
+pub fn im_draw_list_add_rect_filled_ex(ImDrawList, ImVec2, ImVec2, UInt, Float, Int) -> Unit
+
+pub fn im_draw_list_add_rect_filled_multi_color(ImDrawList, ImVec2, ImVec2, UInt, UInt, UInt, UInt) -> Unit
+
+pub fn im_draw_list_add_rect_im_draw_flags(ImDrawList, ImVec2, ImVec2, UInt, Float, Int, Float) -> Unit
+
+pub fn im_draw_list_add_text(ImDrawList, ImVec2, UInt, CString) -> Unit
+
+pub fn im_draw_list_add_text_ex(ImDrawList, ImVec2, UInt, CString, CString) -> Unit
+
+pub fn im_draw_list_add_text_im_font_ptr(ImDrawList, ImFont, Float, ImVec2, UInt, CString) -> Unit
+
+pub fn im_draw_list_add_text_im_font_ptr_ex(ImDrawList, ImFont, Float, ImVec2, UInt, CString, CString, Float, ImVec4) -> Unit
+
+pub fn im_draw_list_add_triangle(ImDrawList, ImVec2, ImVec2, ImVec2, UInt) -> Unit
+
+pub fn im_draw_list_add_triangle_ex(ImDrawList, ImVec2, ImVec2, ImVec2, UInt, Float) -> Unit
+
+pub fn im_draw_list_add_triangle_filled(ImDrawList, ImVec2, ImVec2, ImVec2, UInt) -> Unit
+
+pub fn im_draw_list_calc_circle_auto_segment_count(ImDrawList, Float) -> Int
+
+pub fn im_draw_list_channels_merge(ImDrawList) -> Unit
+
+pub fn im_draw_list_channels_set_current(ImDrawList, Int) -> Unit
+
+pub fn im_draw_list_channels_split(ImDrawList, Int) -> Unit
+
+pub fn im_draw_list_clear_free_memory(ImDrawList) -> Unit
+
+pub fn im_draw_list_clone_output(ImDrawList) -> ImDrawList
+
+pub fn im_draw_list_field_get_callbacks_data_buf(ImDrawList) -> ImVector_ImU8
+
+pub fn im_draw_list_field_get_clip_rect_stack(ImDrawList) -> ImVector_ImVec4
+
+pub fn im_draw_list_field_get_cmd_buffer(ImDrawList) -> ImVector_ImDrawCmd
+
+pub fn im_draw_list_field_get_cmd_header(ImDrawList) -> ImDrawCmdHeader
+
+pub fn im_draw_list_field_get_data(ImDrawList) -> ImDrawListSharedData
+
+pub fn im_draw_list_field_get_flags(ImDrawList) -> Int
+
+pub fn im_draw_list_field_get_fringe_scale(ImDrawList) -> Float
+
+pub fn im_draw_list_field_get_idx_buffer(ImDrawList) -> ImVector_ImDrawIdx
+
+pub fn im_draw_list_field_get_idx_write_ptr(ImDrawList) -> ImDrawIdxPtr
+
+pub fn im_draw_list_field_get_owner_name(ImDrawList) -> CString
+
+pub fn im_draw_list_field_get_path(ImDrawList) -> ImVector_ImVec2
+
+pub fn im_draw_list_field_get_splitter(ImDrawList) -> ImDrawListSplitter
+
+pub fn im_draw_list_field_get_texture_stack(ImDrawList) -> ImVector_ImTextureRef
+
+pub fn im_draw_list_field_get_vtx_buffer(ImDrawList) -> ImVector_ImDrawVert
+
+pub fn im_draw_list_field_get_vtx_current_idx(ImDrawList) -> UInt
+
+pub fn im_draw_list_field_get_vtx_write_ptr(ImDrawList) -> ImDrawVert
+
+pub fn im_draw_list_field_set_callbacks_data_buf(ImDrawList, ImVector_ImU8) -> Unit
+
+pub fn im_draw_list_field_set_clip_rect_stack(ImDrawList, ImVector_ImVec4) -> Unit
+
+pub fn im_draw_list_field_set_cmd_buffer(ImDrawList, ImVector_ImDrawCmd) -> Unit
+
+pub fn im_draw_list_field_set_cmd_header(ImDrawList, ImDrawCmdHeader) -> Unit
+
+pub fn im_draw_list_field_set_data(ImDrawList, ImDrawListSharedData) -> Unit
+
+pub fn im_draw_list_field_set_flags(ImDrawList, Int) -> Unit
+
+pub fn im_draw_list_field_set_fringe_scale(ImDrawList, Float) -> Unit
+
+pub fn im_draw_list_field_set_idx_buffer(ImDrawList, ImVector_ImDrawIdx) -> Unit
+
+pub fn im_draw_list_field_set_idx_write_ptr(ImDrawList, ImDrawIdxPtr) -> Unit
+
+pub fn im_draw_list_field_set_owner_name(ImDrawList, CString) -> Unit
+
+pub fn im_draw_list_field_set_path(ImDrawList, ImVector_ImVec2) -> Unit
+
+pub fn im_draw_list_field_set_splitter(ImDrawList, ImDrawListSplitter) -> Unit
+
+pub fn im_draw_list_field_set_texture_stack(ImDrawList, ImVector_ImTextureRef) -> Unit
+
+pub fn im_draw_list_field_set_vtx_buffer(ImDrawList, ImVector_ImDrawVert) -> Unit
+
+pub fn im_draw_list_field_set_vtx_current_idx(ImDrawList, UInt) -> Unit
+
+pub fn im_draw_list_field_set_vtx_write_ptr(ImDrawList, ImDrawVert) -> Unit
+
+pub fn im_draw_list_flags_allow_vtx_offset() -> Int
+
+pub fn im_draw_list_flags_anti_aliased_fill() -> Int
+
+pub fn im_draw_list_flags_anti_aliased_lines() -> Int
+
+pub fn im_draw_list_flags_anti_aliased_lines_use_tex() -> Int
+
+pub fn im_draw_list_flags_none() -> Int
+
+pub fn im_draw_list_get_clip_rect_max(ImDrawList) -> ImVec2
+
+pub fn im_draw_list_get_clip_rect_min(ImDrawList) -> ImVec2
+
+pub fn im_draw_list_on_changed_clip_rect(ImDrawList) -> Unit
+
+pub fn im_draw_list_on_changed_texture(ImDrawList) -> Unit
+
+pub fn im_draw_list_on_changed_vtx_offset(ImDrawList) -> Unit
+
+pub fn im_draw_list_path_arc_to(ImDrawList, ImVec2, Float, Float, Float, Int) -> Unit
+
+pub fn im_draw_list_path_arc_to_fast(ImDrawList, ImVec2, Float, Int, Int) -> Unit
+
+pub fn im_draw_list_path_arc_to_fast_ex(ImDrawList, ImVec2, Float, Int, Int, Int) -> Unit
+
+pub fn im_draw_list_path_arc_to_n(ImDrawList, ImVec2, Float, Float, Float, Int) -> Unit
+
+pub fn im_draw_list_path_bezier_cubic_curve_to(ImDrawList, ImVec2, ImVec2, ImVec2, Int) -> Unit
+
+pub fn im_draw_list_path_bezier_quadratic_curve_to(ImDrawList, ImVec2, ImVec2, Int) -> Unit
+
+pub fn im_draw_list_path_clear(ImDrawList) -> Unit
+
+pub fn im_draw_list_path_elliptical_arc_to(ImDrawList, ImVec2, ImVec2, Float, Float, Float) -> Unit
+
+pub fn im_draw_list_path_elliptical_arc_to_ex(ImDrawList, ImVec2, ImVec2, Float, Float, Float, Int) -> Unit
+
+pub fn im_draw_list_path_fill_concave(ImDrawList, UInt) -> Unit
+
+pub fn im_draw_list_path_fill_convex(ImDrawList, UInt) -> Unit
+
+pub fn im_draw_list_path_line_to(ImDrawList, ImVec2) -> Unit
+
+pub fn im_draw_list_path_line_to_merge_duplicate(ImDrawList, ImVec2) -> Unit
+
+pub fn im_draw_list_path_rect(ImDrawList, ImVec2, ImVec2, Float, Int) -> Unit
+
+pub fn im_draw_list_path_stroke(ImDrawList, UInt, Float, Int) -> Unit
+
+pub fn im_draw_list_path_stroke_im_draw_flags(ImDrawList, UInt, Int, Float) -> Unit
+
+pub fn im_draw_list_pop_clip_rect(ImDrawList) -> Unit
+
+pub fn im_draw_list_pop_texture(ImDrawList) -> Unit
+
+pub fn im_draw_list_pop_texture_id(ImDrawList) -> Unit
+
+pub fn im_draw_list_pop_unused_draw_cmd(ImDrawList) -> Unit
+
+pub fn im_draw_list_prim_quad_uv(ImDrawList, ImVec2, ImVec2, ImVec2, ImVec2, ImVec2, ImVec2, ImVec2, ImVec2, UInt) -> Unit
+
+pub fn im_draw_list_prim_rect(ImDrawList, ImVec2, ImVec2, UInt) -> Unit
+
+pub fn im_draw_list_prim_rect_uv(ImDrawList, ImVec2, ImVec2, ImVec2, ImVec2, UInt) -> Unit
+
+pub fn im_draw_list_prim_reserve(ImDrawList, Int, Int) -> Unit
+
+pub fn im_draw_list_prim_unreserve(ImDrawList, Int, Int) -> Unit
+
+pub fn im_draw_list_prim_vtx(ImDrawList, ImVec2, ImVec2, UInt) -> Unit
+
+pub fn im_draw_list_prim_write_idx(ImDrawList, Int) -> Unit
+
+pub fn im_draw_list_prim_write_vtx(ImDrawList, ImVec2, ImVec2, UInt) -> Unit
+
+pub fn im_draw_list_push_clip_rect(ImDrawList, ImVec2, ImVec2, Bool) -> Unit
+
+pub fn im_draw_list_push_clip_rect_full_screen(ImDrawList) -> Unit
+
+pub fn im_draw_list_push_texture(ImDrawList, ImTextureRef) -> Unit
+
+pub fn im_draw_list_push_texture_id(ImDrawList, ImTextureRef) -> Unit
+
+pub fn im_draw_list_reset_for_new_frame(ImDrawList) -> Unit
+
+pub fn im_draw_list_set_draw_list_shared_data(ImDrawList, ImDrawListSharedData) -> Unit
+
+pub fn im_draw_list_set_texture(ImDrawList, ImTextureRef) -> Unit
+
+pub fn im_draw_list_splitter_clear(ImDrawListSplitter) -> Unit
+
+pub fn im_draw_list_splitter_clear_free_memory(ImDrawListSplitter) -> Unit
+
+pub fn im_draw_list_splitter_field_get_channels(ImDrawListSplitter) -> ImVector_ImDrawChannel
+
+pub fn im_draw_list_splitter_field_get_count(ImDrawListSplitter) -> Int
+
+pub fn im_draw_list_splitter_field_get_current(ImDrawListSplitter) -> Int
+
+pub fn im_draw_list_splitter_field_set_channels(ImDrawListSplitter, ImVector_ImDrawChannel) -> Unit
+
+pub fn im_draw_list_splitter_field_set_count(ImDrawListSplitter, Int) -> Unit
+
+pub fn im_draw_list_splitter_field_set_current(ImDrawListSplitter, Int) -> Unit
+
+pub fn im_draw_list_splitter_merge(ImDrawListSplitter, ImDrawList) -> Unit
+
+pub fn im_draw_list_splitter_set_current_channel(ImDrawListSplitter, ImDrawList, Int) -> Unit
+
+pub fn im_draw_list_splitter_split(ImDrawListSplitter, ImDrawList, Int) -> Unit
+
+pub fn im_draw_list_try_merge_draw_cmds(ImDrawList) -> Unit
+
+pub fn im_draw_vert_field_get_col(ImDrawVert) -> UInt
+
+pub fn im_draw_vert_field_get_pos(ImDrawVert) -> ImVec2
+
+pub fn im_draw_vert_field_get_uv(ImDrawVert) -> ImVec2
+
+pub fn im_draw_vert_field_set_col(ImDrawVert, UInt) -> Unit
+
+pub fn im_draw_vert_field_set_pos(ImDrawVert, ImVec2) -> Unit
+
+pub fn im_draw_vert_field_set_uv(ImDrawVert, ImVec2) -> Unit
+
+pub fn im_drawlist_tex_lines_width_max() -> Int
+
+pub fn im_font_add_remap_char(ImFont, Int, Int) -> Unit
+
+pub fn im_font_atlas_add_custom_rect(ImFontAtlas, Int, Int, ImFontAtlasRect) -> Int
+
+pub fn im_font_atlas_add_custom_rect_font_glyph(ImFontAtlas, ImFont, Int, Int, Int, Float, ImVec2) -> Int
+
+pub fn im_font_atlas_add_custom_rect_font_glyph_for_size(ImFontAtlas, ImFont, Float, Int, Int, Int, Float, ImVec2) -> Int
+
+pub fn im_font_atlas_add_custom_rect_regular(ImFontAtlas, Int, Int) -> Int
+
+pub fn im_font_atlas_add_font(ImFontAtlas, ImFontConfig) -> ImFont
+
+pub fn im_font_atlas_add_font_default(ImFontAtlas, ImFontConfig) -> ImFont
+
+pub fn im_font_atlas_add_font_default_bitmap(ImFontAtlas, ImFontConfig) -> ImFont
+
+pub fn im_font_atlas_add_font_default_vector(ImFontAtlas, ImFontConfig) -> ImFont
+
+pub fn im_font_atlas_add_font_from_file_ttf(ImFontAtlas, CString, Float, ImFontConfig, ImWcharPtr) -> ImFont
+
+pub fn im_font_atlas_add_font_from_memory_compressed_base85_ttf(ImFontAtlas, CString, Float, ImFontConfig, ImWcharPtr) -> ImFont
+
+pub fn im_font_atlas_add_font_from_memory_compressed_ttf(ImFontAtlas, VoidPtr, Int, Float, ImFontConfig, ImWcharPtr) -> ImFont
+
+pub fn im_font_atlas_add_font_from_memory_ttf(ImFontAtlas, VoidPtr, Int, Float, ImFontConfig, ImWcharPtr) -> ImFont
+
+pub fn im_font_atlas_build(ImFontAtlas) -> Bool
+
+pub fn im_font_atlas_calc_custom_rect_uv(ImFontAtlas, ImFontAtlasRect, ImVec2, ImVec2) -> Unit
+
+pub fn im_font_atlas_clear(ImFontAtlas) -> Unit
+
+pub fn im_font_atlas_clear_fonts(ImFontAtlas) -> Unit
+
+pub fn im_font_atlas_clear_input_data(ImFontAtlas) -> Unit
+
+pub fn im_font_atlas_clear_tex_data(ImFontAtlas) -> Unit
+
+pub fn im_font_atlas_compact_cache(ImFontAtlas) -> Unit
+
+pub fn im_font_atlas_field_get_builder(ImFontAtlas) -> ImFontAtlasBuilder
+
+pub fn im_font_atlas_field_get_draw_list_shared_datas(ImFontAtlas) -> ImVector_ImDrawListSharedDataPtr
+
+pub fn im_font_atlas_field_get_flags(ImFontAtlas) -> Int
+
+pub fn im_font_atlas_field_get_font_loader(ImFontAtlas) -> ImFontLoader
+
+pub fn im_font_atlas_field_get_font_loader_data(ImFontAtlas) -> VoidPtr
+
+pub fn im_font_atlas_field_get_font_loader_flags(ImFontAtlas) -> UInt
+
+pub fn im_font_atlas_field_get_font_loader_name(ImFontAtlas) -> CString
+
+pub fn im_font_atlas_field_get_font_next_unique_id(ImFontAtlas) -> Int
+
+pub fn im_font_atlas_field_get_fonts(ImFontAtlas) -> ImVector_ImFontPtr
+
+pub fn im_font_atlas_field_get_locked(ImFontAtlas) -> Bool
+
+pub fn im_font_atlas_field_get_owner_context(ImFontAtlas) -> ImGuiContext
+
+pub fn im_font_atlas_field_get_ref_count(ImFontAtlas) -> Int
+
+pub fn im_font_atlas_field_get_renderer_has_textures(ImFontAtlas) -> Bool
+
+pub fn im_font_atlas_field_get_sources(ImFontAtlas) -> ImVector_ImFontConfig
+
+pub fn im_font_atlas_field_get_temp_rect(ImFontAtlas) -> ImFontAtlasRect
+
+pub fn im_font_atlas_field_get_tex_data(ImFontAtlas) -> ImTextureData
+
+pub fn im_font_atlas_field_get_tex_desired_format(ImFontAtlas) -> ImTextureFormat
+
+pub fn im_font_atlas_field_get_tex_glyph_padding(ImFontAtlas) -> Int
+
+pub fn im_font_atlas_field_get_tex_id(ImFontAtlas) -> ImTextureRef
+
+pub fn im_font_atlas_field_get_tex_is_built(ImFontAtlas) -> Bool
+
+pub fn im_font_atlas_field_get_tex_list(ImFontAtlas) -> ImVector_ImTextureDataPtr
+
+pub fn im_font_atlas_field_get_tex_max_height(ImFontAtlas) -> Int
+
+pub fn im_font_atlas_field_get_tex_max_width(ImFontAtlas) -> Int
+
+pub fn im_font_atlas_field_get_tex_min_height(ImFontAtlas) -> Int
+
+pub fn im_font_atlas_field_get_tex_min_width(ImFontAtlas) -> Int
+
+pub fn im_font_atlas_field_get_tex_next_unique_id(ImFontAtlas) -> Int
+
+pub fn im_font_atlas_field_get_tex_pixels_use_colors(ImFontAtlas) -> Bool
+
+pub fn im_font_atlas_field_get_tex_ref(ImFontAtlas) -> ImTextureRef
+
+pub fn im_font_atlas_field_get_tex_uv_lines(ImFontAtlas) -> ImVec4
+
+pub fn im_font_atlas_field_get_tex_uv_scale(ImFontAtlas) -> ImVec2
+
+pub fn im_font_atlas_field_get_tex_uv_white_pixel(ImFontAtlas) -> ImVec2
+
+pub fn im_font_atlas_field_get_user_data(ImFontAtlas) -> VoidPtr
+
+pub fn im_font_atlas_field_set_builder(ImFontAtlas, ImFontAtlasBuilder) -> Unit
+
+pub fn im_font_atlas_field_set_draw_list_shared_datas(ImFontAtlas, ImVector_ImDrawListSharedDataPtr) -> Unit
+
+pub fn im_font_atlas_field_set_flags(ImFontAtlas, Int) -> Unit
+
+pub fn im_font_atlas_field_set_font_loader(ImFontAtlas, ImFontLoader) -> Unit
+
+pub fn im_font_atlas_field_set_font_loader_data(ImFontAtlas, VoidPtr) -> Unit
+
+pub fn im_font_atlas_field_set_font_loader_flags(ImFontAtlas, UInt) -> Unit
+
+pub fn im_font_atlas_field_set_font_loader_name(ImFontAtlas, CString) -> Unit
+
+pub fn im_font_atlas_field_set_font_next_unique_id(ImFontAtlas, Int) -> Unit
+
+pub fn im_font_atlas_field_set_fonts(ImFontAtlas, ImVector_ImFontPtr) -> Unit
+
+pub fn im_font_atlas_field_set_locked(ImFontAtlas, Bool) -> Unit
+
+pub fn im_font_atlas_field_set_owner_context(ImFontAtlas, ImGuiContext) -> Unit
+
+pub fn im_font_atlas_field_set_ref_count(ImFontAtlas, Int) -> Unit
+
+pub fn im_font_atlas_field_set_renderer_has_textures(ImFontAtlas, Bool) -> Unit
+
+pub fn im_font_atlas_field_set_sources(ImFontAtlas, ImVector_ImFontConfig) -> Unit
+
+pub fn im_font_atlas_field_set_temp_rect(ImFontAtlas, ImFontAtlasRect) -> Unit
+
+pub fn im_font_atlas_field_set_tex_data(ImFontAtlas, ImTextureData) -> Unit
+
+pub fn im_font_atlas_field_set_tex_desired_format(ImFontAtlas, ImTextureFormat) -> Unit
+
+pub fn im_font_atlas_field_set_tex_glyph_padding(ImFontAtlas, Int) -> Unit
+
+pub fn im_font_atlas_field_set_tex_id(ImFontAtlas, ImTextureRef) -> Unit
+
+pub fn im_font_atlas_field_set_tex_is_built(ImFontAtlas, Bool) -> Unit
+
+pub fn im_font_atlas_field_set_tex_list(ImFontAtlas, ImVector_ImTextureDataPtr) -> Unit
+
+pub fn im_font_atlas_field_set_tex_max_height(ImFontAtlas, Int) -> Unit
+
+pub fn im_font_atlas_field_set_tex_max_width(ImFontAtlas, Int) -> Unit
+
+pub fn im_font_atlas_field_set_tex_min_height(ImFontAtlas, Int) -> Unit
+
+pub fn im_font_atlas_field_set_tex_min_width(ImFontAtlas, Int) -> Unit
+
+pub fn im_font_atlas_field_set_tex_next_unique_id(ImFontAtlas, Int) -> Unit
+
+pub fn im_font_atlas_field_set_tex_pixels_use_colors(ImFontAtlas, Bool) -> Unit
+
+pub fn im_font_atlas_field_set_tex_ref(ImFontAtlas, ImTextureRef) -> Unit
+
+pub fn im_font_atlas_field_set_tex_uv_scale(ImFontAtlas, ImVec2) -> Unit
+
+pub fn im_font_atlas_field_set_tex_uv_white_pixel(ImFontAtlas, ImVec2) -> Unit
+
+pub fn im_font_atlas_field_set_user_data(ImFontAtlas, VoidPtr) -> Unit
+
+pub fn im_font_atlas_flags_no_baked_lines() -> Int
+
+pub fn im_font_atlas_flags_no_mouse_cursors() -> Int
+
+pub fn im_font_atlas_flags_no_power_of_two_height() -> Int
+
+pub fn im_font_atlas_flags_none() -> Int
+
+pub fn im_font_atlas_get_custom_rect(ImFontAtlas, Int, ImFontAtlasRect) -> Bool
+
+pub fn im_font_atlas_get_custom_rect_by_index(ImFontAtlas, Int) -> ImFontAtlasRect
+
+pub fn im_font_atlas_get_glyph_ranges_chinese_full(ImFontAtlas) -> ImWcharPtr
+
+pub fn im_font_atlas_get_glyph_ranges_chinese_simplified_common(ImFontAtlas) -> ImWcharPtr
+
+pub fn im_font_atlas_get_glyph_ranges_cyrillic(ImFontAtlas) -> ImWcharPtr
+
+pub fn im_font_atlas_get_glyph_ranges_default(ImFontAtlas) -> ImWcharPtr
+
+pub fn im_font_atlas_get_glyph_ranges_greek(ImFontAtlas) -> ImWcharPtr
+
+pub fn im_font_atlas_get_glyph_ranges_japanese(ImFontAtlas) -> ImWcharPtr
+
+pub fn im_font_atlas_get_glyph_ranges_korean(ImFontAtlas) -> ImWcharPtr
+
+pub fn im_font_atlas_get_glyph_ranges_thai(ImFontAtlas) -> ImWcharPtr
+
+pub fn im_font_atlas_get_glyph_ranges_vietnamese(ImFontAtlas) -> ImWcharPtr
+
+pub fn im_font_atlas_get_tex_data_as_alpha8(ImFontAtlas, IntPtrPtr, IntPtr, IntPtr, IntPtr) -> Unit
+
+pub fn im_font_atlas_get_tex_data_as_rgba32(ImFontAtlas, IntPtrPtr, IntPtr, IntPtr, IntPtr) -> Unit
+
+pub fn im_font_atlas_is_built(ImFontAtlas) -> Bool
+
+pub fn im_font_atlas_rect_field_get_h(ImFontAtlasRect) -> Int
+
+pub fn im_font_atlas_rect_field_get_uv0(ImFontAtlasRect) -> ImVec2
+
+pub fn im_font_atlas_rect_field_get_uv1(ImFontAtlasRect) -> ImVec2
+
+pub fn im_font_atlas_rect_field_get_w(ImFontAtlasRect) -> Int
+
+pub fn im_font_atlas_rect_field_get_x(ImFontAtlasRect) -> Int
+
+pub fn im_font_atlas_rect_field_get_y(ImFontAtlasRect) -> Int
+
+pub fn im_font_atlas_rect_field_set_h(ImFontAtlasRect, Int) -> Unit
+
+pub fn im_font_atlas_rect_field_set_uv0(ImFontAtlasRect, ImVec2) -> Unit
+
+pub fn im_font_atlas_rect_field_set_uv1(ImFontAtlasRect, ImVec2) -> Unit
+
+pub fn im_font_atlas_rect_field_set_w(ImFontAtlasRect, Int) -> Unit
+
+pub fn im_font_atlas_rect_field_set_x(ImFontAtlasRect, Int) -> Unit
+
+pub fn im_font_atlas_rect_field_set_y(ImFontAtlasRect, Int) -> Unit
+
+pub fn im_font_atlas_rect_id_invalid() -> Int
+
+pub fn im_font_atlas_remove_custom_rect(ImFontAtlas, Int) -> Unit
+
+pub fn im_font_atlas_remove_font(ImFontAtlas, ImFont) -> Unit
+
+pub fn im_font_atlas_set_font_loader(ImFontAtlas, ImFontLoader) -> Unit
+
+pub fn im_font_atlas_set_tex_id(ImFontAtlas, UInt64) -> Unit
+
+pub fn im_font_atlas_set_tex_id_im_texture_ref_ptr(ImFontAtlas, ImTextureRef) -> Unit
+
+pub fn im_font_baked_clear_output_data(ImFontBaked) -> Unit
+
+pub fn im_font_baked_field_get_ascent(ImFontBaked) -> Float
+
+pub fn im_font_baked_field_get_baked_id(ImFontBaked) -> UInt
+
+pub fn im_font_baked_field_get_descent(ImFontBaked) -> Float
+
+pub fn im_font_baked_field_get_fallback_advance_x(ImFontBaked) -> Float
+
+pub fn im_font_baked_field_get_fallback_glyph_index(ImFontBaked) -> Int
+
+pub fn im_font_baked_field_get_font_loader_datas(ImFontBaked) -> VoidPtr
+
+pub fn im_font_baked_field_get_glyphs(ImFontBaked) -> ImVector_ImFontGlyph
+
+pub fn im_font_baked_field_get_index_advance_x(ImFontBaked) -> ImVector_float
+
+pub fn im_font_baked_field_get_index_lookup(ImFontBaked) -> ImVector_ImU16
+
+pub fn im_font_baked_field_get_last_used_frame(ImFontBaked) -> Int
+
+pub fn im_font_baked_field_get_load_no_fallback(ImFontBaked) -> UInt
+
+pub fn im_font_baked_field_get_load_no_render_on_layout(ImFontBaked) -> UInt
+
+pub fn im_font_baked_field_get_metrics_total_surface(ImFontBaked) -> UInt
+
+pub fn im_font_baked_field_get_owner_font(ImFontBaked) -> ImFont
+
+pub fn im_font_baked_field_get_rasterizer_density(ImFontBaked) -> Float
+
+pub fn im_font_baked_field_get_size(ImFontBaked) -> Float
+
+pub fn im_font_baked_field_get_want_destroy(ImFontBaked) -> UInt
+
+pub fn im_font_baked_field_set_ascent(ImFontBaked, Float) -> Unit
+
+pub fn im_font_baked_field_set_baked_id(ImFontBaked, UInt) -> Unit
+
+pub fn im_font_baked_field_set_descent(ImFontBaked, Float) -> Unit
+
+pub fn im_font_baked_field_set_fallback_advance_x(ImFontBaked, Float) -> Unit
+
+pub fn im_font_baked_field_set_fallback_glyph_index(ImFontBaked, Int) -> Unit
+
+pub fn im_font_baked_field_set_font_loader_datas(ImFontBaked, VoidPtr) -> Unit
+
+pub fn im_font_baked_field_set_glyphs(ImFontBaked, ImVector_ImFontGlyph) -> Unit
+
+pub fn im_font_baked_field_set_index_advance_x(ImFontBaked, ImVector_float) -> Unit
+
+pub fn im_font_baked_field_set_index_lookup(ImFontBaked, ImVector_ImU16) -> Unit
+
+pub fn im_font_baked_field_set_last_used_frame(ImFontBaked, Int) -> Unit
+
+pub fn im_font_baked_field_set_load_no_fallback(ImFontBaked, UInt) -> Unit
+
+pub fn im_font_baked_field_set_load_no_render_on_layout(ImFontBaked, UInt) -> Unit
+
+pub fn im_font_baked_field_set_metrics_total_surface(ImFontBaked, UInt) -> Unit
+
+pub fn im_font_baked_field_set_owner_font(ImFontBaked, ImFont) -> Unit
+
+pub fn im_font_baked_field_set_rasterizer_density(ImFontBaked, Float) -> Unit
+
+pub fn im_font_baked_field_set_size(ImFontBaked, Float) -> Unit
+
+pub fn im_font_baked_field_set_want_destroy(ImFontBaked, UInt) -> Unit
+
+pub fn im_font_baked_find_glyph(ImFontBaked, Int) -> ImFontGlyph
+
+pub fn im_font_baked_find_glyph_no_fallback(ImFontBaked, Int) -> ImFontGlyph
+
+pub fn im_font_baked_get_char_advance(ImFontBaked, Int) -> Float
+
+pub fn im_font_baked_is_glyph_loaded(ImFontBaked, Int) -> Bool
+
+pub fn im_font_calc_text_size_a(ImFont, Float, Float, Float, CString) -> ImVec2
+
+pub fn im_font_calc_text_size_a_ex(ImFont, Float, Float, Float, CString, CString, CStringPtr) -> ImVec2
+
+pub fn im_font_calc_word_wrap_position(ImFont, Float, CString, CString, Float) -> CString
+
+pub fn im_font_calc_word_wrap_position_a(ImFont, Float, CString, CString, Float) -> CString
+
+pub fn im_font_clear_output_data(ImFont) -> Unit
+
+pub fn im_font_config_field_get_dst_font(ImFontConfig) -> ImFont
+
+pub fn im_font_config_field_get_ellipsis_char(ImFontConfig) -> Int
+
+pub fn im_font_config_field_get_extra_size_scale(ImFontConfig) -> Float
+
+pub fn im_font_config_field_get_flags(ImFontConfig) -> Int
+
+pub fn im_font_config_field_get_font_data(ImFontConfig) -> VoidPtr
+
+pub fn im_font_config_field_get_font_data_owned_by_atlas(ImFontConfig) -> Bool
+
+pub fn im_font_config_field_get_font_data_size(ImFontConfig) -> Int
+
+pub fn im_font_config_field_get_font_loader(ImFontConfig) -> ImFontLoader
+
+pub fn im_font_config_field_get_font_loader_data(ImFontConfig) -> VoidPtr
+
+pub fn im_font_config_field_get_font_loader_flags(ImFontConfig) -> UInt
+
+pub fn im_font_config_field_get_font_no(ImFontConfig) -> UInt
+
+pub fn im_font_config_field_get_glyph_exclude_ranges(ImFontConfig) -> ImWcharPtr
+
+pub fn im_font_config_field_get_glyph_extra_advance_x(ImFontConfig) -> Float
+
+pub fn im_font_config_field_get_glyph_max_advance_x(ImFontConfig) -> Float
+
+pub fn im_font_config_field_get_glyph_min_advance_x(ImFontConfig) -> Float
+
+pub fn im_font_config_field_get_glyph_offset(ImFontConfig) -> ImVec2
+
+pub fn im_font_config_field_get_glyph_ranges(ImFontConfig) -> ImWcharPtr
+
+pub fn im_font_config_field_get_merge_mode(ImFontConfig) -> Bool
+
+pub fn im_font_config_field_get_name(ImFontConfig) -> CString
+
+pub fn im_font_config_field_get_oversample_h(ImFontConfig) -> Int
+
+pub fn im_font_config_field_get_oversample_v(ImFontConfig) -> Int
+
+pub fn im_font_config_field_get_pixel_snap_h(ImFontConfig) -> Bool
+
+pub fn im_font_config_field_get_pixel_snap_v(ImFontConfig) -> Bool
+
+pub fn im_font_config_field_get_rasterizer_density(ImFontConfig) -> Float
+
+pub fn im_font_config_field_get_rasterizer_multiply(ImFontConfig) -> Float
+
+pub fn im_font_config_field_get_size_pixels(ImFontConfig) -> Float
+
+pub fn im_font_config_field_set_dst_font(ImFontConfig, ImFont) -> Unit
+
+pub fn im_font_config_field_set_ellipsis_char(ImFontConfig, Int) -> Unit
+
+pub fn im_font_config_field_set_extra_size_scale(ImFontConfig, Float) -> Unit
+
+pub fn im_font_config_field_set_flags(ImFontConfig, Int) -> Unit
+
+pub fn im_font_config_field_set_font_data(ImFontConfig, VoidPtr) -> Unit
+
+pub fn im_font_config_field_set_font_data_owned_by_atlas(ImFontConfig, Bool) -> Unit
+
+pub fn im_font_config_field_set_font_data_size(ImFontConfig, Int) -> Unit
+
+pub fn im_font_config_field_set_font_loader(ImFontConfig, ImFontLoader) -> Unit
+
+pub fn im_font_config_field_set_font_loader_data(ImFontConfig, VoidPtr) -> Unit
+
+pub fn im_font_config_field_set_font_loader_flags(ImFontConfig, UInt) -> Unit
+
+pub fn im_font_config_field_set_font_no(ImFontConfig, UInt) -> Unit
+
+pub fn im_font_config_field_set_glyph_exclude_ranges(ImFontConfig, ImWcharPtr) -> Unit
+
+pub fn im_font_config_field_set_glyph_extra_advance_x(ImFontConfig, Float) -> Unit
+
+pub fn im_font_config_field_set_glyph_max_advance_x(ImFontConfig, Float) -> Unit
+
+pub fn im_font_config_field_set_glyph_min_advance_x(ImFontConfig, Float) -> Unit
+
+pub fn im_font_config_field_set_glyph_offset(ImFontConfig, ImVec2) -> Unit
+
+pub fn im_font_config_field_set_glyph_ranges(ImFontConfig, ImWcharPtr) -> Unit
+
+pub fn im_font_config_field_set_merge_mode(ImFontConfig, Bool) -> Unit
+
+pub fn im_font_config_field_set_oversample_h(ImFontConfig, Int) -> Unit
+
+pub fn im_font_config_field_set_oversample_v(ImFontConfig, Int) -> Unit
+
+pub fn im_font_config_field_set_pixel_snap_h(ImFontConfig, Bool) -> Unit
+
+pub fn im_font_config_field_set_pixel_snap_v(ImFontConfig, Bool) -> Unit
+
+pub fn im_font_config_field_set_rasterizer_density(ImFontConfig, Float) -> Unit
+
+pub fn im_font_config_field_set_rasterizer_multiply(ImFontConfig, Float) -> Unit
+
+pub fn im_font_config_field_set_size_pixels(ImFontConfig, Float) -> Unit
+
+pub fn im_font_field_get_current_rasterizer_density(ImFont) -> Float
+
+pub fn im_font_field_get_ellipsis_auto_bake(ImFont) -> Bool
+
+pub fn im_font_field_get_ellipsis_char(ImFont) -> Int
+
+pub fn im_font_field_get_fallback_char(ImFont) -> Int
+
+pub fn im_font_field_get_flags(ImFont) -> Int
+
+pub fn im_font_field_get_font_id(ImFont) -> UInt
+
+pub fn im_font_field_get_last_baked(ImFont) -> ImFontBaked
+
+pub fn im_font_field_get_legacy_size(ImFont) -> Float
+
+pub fn im_font_field_get_owner_atlas(ImFont) -> ImFontAtlas
+
+pub fn im_font_field_get_remap_pairs(ImFont) -> ImGuiStorage
+
+pub fn im_font_field_get_scale(ImFont) -> Float
+
+pub fn im_font_field_get_sources(ImFont) -> ImVector_ImFontConfigPtr
+
+pub fn im_font_field_get_used8k_pages_map(ImFont) -> ImU8Ptr
+
+pub fn im_font_field_set_current_rasterizer_density(ImFont, Float) -> Unit
+
+pub fn im_font_field_set_ellipsis_auto_bake(ImFont, Bool) -> Unit
+
+pub fn im_font_field_set_ellipsis_char(ImFont, Int) -> Unit
+
+pub fn im_font_field_set_fallback_char(ImFont, Int) -> Unit
+
+pub fn im_font_field_set_flags(ImFont, Int) -> Unit
+
+pub fn im_font_field_set_font_id(ImFont, UInt) -> Unit
+
+pub fn im_font_field_set_last_baked(ImFont, ImFontBaked) -> Unit
+
+pub fn im_font_field_set_legacy_size(ImFont, Float) -> Unit
+
+pub fn im_font_field_set_owner_atlas(ImFont, ImFontAtlas) -> Unit
+
+pub fn im_font_field_set_remap_pairs(ImFont, ImGuiStorage) -> Unit
+
+pub fn im_font_field_set_scale(ImFont, Float) -> Unit
+
+pub fn im_font_field_set_sources(ImFont, ImVector_ImFontConfigPtr) -> Unit
+
+pub fn im_font_flags_implicit_ref_size() -> Int
+
+pub fn im_font_flags_lock_baked_sizes() -> Int
+
+pub fn im_font_flags_no_load_error() -> Int
+
+pub fn im_font_flags_no_load_glyphs() -> Int
+
+pub fn im_font_flags_none() -> Int
+
+pub fn im_font_get_debug_name(ImFont) -> CString
+
+pub fn im_font_get_font_baked(ImFont, Float) -> ImFontBaked
+
+pub fn im_font_get_font_baked_ex(ImFont, Float, Float) -> ImFontBaked
+
+pub fn im_font_glyph_field_get_advance_x(ImFontGlyph) -> Float
+
+pub fn im_font_glyph_field_get_codepoint(ImFontGlyph) -> UInt
+
+pub fn im_font_glyph_field_get_colored(ImFontGlyph) -> UInt
+
+pub fn im_font_glyph_field_get_pack_id(ImFontGlyph) -> Int
+
+pub fn im_font_glyph_field_get_source_idx(ImFontGlyph) -> UInt
+
+pub fn im_font_glyph_field_get_u0(ImFontGlyph) -> Float
+
+pub fn im_font_glyph_field_get_u1(ImFontGlyph) -> Float
+
+pub fn im_font_glyph_field_get_v0(ImFontGlyph) -> Float
+
+pub fn im_font_glyph_field_get_v1(ImFontGlyph) -> Float
+
+pub fn im_font_glyph_field_get_visible(ImFontGlyph) -> UInt
+
+pub fn im_font_glyph_field_get_x0(ImFontGlyph) -> Float
+
+pub fn im_font_glyph_field_get_x1(ImFontGlyph) -> Float
+
+pub fn im_font_glyph_field_get_y0(ImFontGlyph) -> Float
+
+pub fn im_font_glyph_field_get_y1(ImFontGlyph) -> Float
+
+pub fn im_font_glyph_field_set_advance_x(ImFontGlyph, Float) -> Unit
+
+pub fn im_font_glyph_field_set_codepoint(ImFontGlyph, UInt) -> Unit
+
+pub fn im_font_glyph_field_set_colored(ImFontGlyph, UInt) -> Unit
+
+pub fn im_font_glyph_field_set_pack_id(ImFontGlyph, Int) -> Unit
+
+pub fn im_font_glyph_field_set_source_idx(ImFontGlyph, UInt) -> Unit
+
+pub fn im_font_glyph_field_set_u0(ImFontGlyph, Float) -> Unit
+
+pub fn im_font_glyph_field_set_u1(ImFontGlyph, Float) -> Unit
+
+pub fn im_font_glyph_field_set_v0(ImFontGlyph, Float) -> Unit
+
+pub fn im_font_glyph_field_set_v1(ImFontGlyph, Float) -> Unit
+
+pub fn im_font_glyph_field_set_visible(ImFontGlyph, UInt) -> Unit
+
+pub fn im_font_glyph_field_set_x0(ImFontGlyph, Float) -> Unit
+
+pub fn im_font_glyph_field_set_x1(ImFontGlyph, Float) -> Unit
+
+pub fn im_font_glyph_field_set_y0(ImFontGlyph, Float) -> Unit
+
+pub fn im_font_glyph_field_set_y1(ImFontGlyph, Float) -> Unit
+
+pub fn im_font_glyph_ranges_builder_add_char(ImFontGlyphRangesBuilder, Int) -> Unit
+
+pub fn im_font_glyph_ranges_builder_add_ranges(ImFontGlyphRangesBuilder, ImWcharPtr) -> Unit
+
+pub fn im_font_glyph_ranges_builder_add_text(ImFontGlyphRangesBuilder, CString, CString) -> Unit
+
+pub fn im_font_glyph_ranges_builder_build_ranges(ImFontGlyphRangesBuilder, ImVector_ImWchar) -> Unit
+
+pub fn im_font_glyph_ranges_builder_clear(ImFontGlyphRangesBuilder) -> Unit
+
+pub fn im_font_glyph_ranges_builder_field_get_used_chars(ImFontGlyphRangesBuilder) -> ImVector_ImU32
+
+pub fn im_font_glyph_ranges_builder_field_set_used_chars(ImFontGlyphRangesBuilder, ImVector_ImU32) -> Unit
+
+pub fn im_font_glyph_ranges_builder_get_bit(ImFontGlyphRangesBuilder, UInt64) -> Bool
+
+pub fn im_font_glyph_ranges_builder_set_bit(ImFontGlyphRangesBuilder, UInt64) -> Unit
+
+pub fn im_font_is_glyph_in_font(ImFont, Int) -> Bool
+
+pub fn im_font_is_glyph_range_unused(ImFont, UInt, UInt) -> Bool
+
+pub fn im_font_is_loaded(ImFont) -> Bool
+
+pub fn im_font_render_char(ImFont, ImDrawList, Float, ImVec2, UInt, Int) -> Unit
+
+pub fn im_font_render_char_ex(ImFont, ImDrawList, Float, ImVec2, UInt, Int, ImVec4) -> Unit
+
+pub fn im_font_render_text(ImFont, ImDrawList, Float, ImVec2, UInt, ImVec4, CString, CString, Float, Int) -> Unit
+
+pub fn im_gui_accept_drag_drop_payload(CString, Int) -> ImGuiPayload
+
+pub fn im_gui_align_text_to_frame_padding() -> Unit
+
+pub fn im_gui_arrow_button(CString, Int) -> Bool
+
+pub fn im_gui_backend_flags_has_gamepad() -> Int
+
+pub fn im_gui_backend_flags_has_mouse_cursors() -> Int
+
+pub fn im_gui_backend_flags_has_set_mouse_pos() -> Int
+
+pub fn im_gui_backend_flags_none() -> Int
+
+pub fn im_gui_backend_flags_renderer_has_textures() -> Int
+
+pub fn im_gui_backend_flags_renderer_has_vtx_offset() -> Int
+
+pub fn im_gui_begin(CString, BoolPtr, Int) -> Bool
+
+pub fn im_gui_begin_child(CString, ImVec2, Int, Int) -> Bool
+
+pub fn im_gui_begin_child_id(UInt, ImVec2, Int, Int) -> Bool
+
+pub fn im_gui_begin_combo(CString, CString, Int) -> Bool
+
+pub fn im_gui_begin_disabled(Bool) -> Unit
+
+pub fn im_gui_begin_drag_drop_source(Int) -> Bool
+
+pub fn im_gui_begin_drag_drop_target() -> Bool
+
+pub fn im_gui_begin_group() -> Unit
+
+pub fn im_gui_begin_item_tooltip() -> Bool
+
+pub fn im_gui_begin_list_box(CString, ImVec2) -> Bool
+
+pub fn im_gui_begin_main_menu_bar() -> Bool
+
+pub fn im_gui_begin_menu(CString) -> Bool
+
+pub fn im_gui_begin_menu_bar() -> Bool
+
+pub fn im_gui_begin_menu_ex(CString, Bool) -> Bool
+
+pub fn im_gui_begin_multi_select(Int) -> ImGuiMultiSelectIO
+
+pub fn im_gui_begin_multi_select_ex(Int, Int, Int) -> ImGuiMultiSelectIO
+
+pub fn im_gui_begin_popup(CString, Int) -> Bool
+
+pub fn im_gui_begin_popup_context_item() -> Bool
+
+pub fn im_gui_begin_popup_context_item_ex(CString, Int) -> Bool
+
+pub fn im_gui_begin_popup_context_void() -> Bool
+
+pub fn im_gui_begin_popup_context_void_ex(CString, Int) -> Bool
+
+pub fn im_gui_begin_popup_context_window() -> Bool
+
+pub fn im_gui_begin_popup_context_window_ex(CString, Int) -> Bool
+
+pub fn im_gui_begin_popup_modal(CString, BoolPtr, Int) -> Bool
+
+pub fn im_gui_begin_tab_bar(CString, Int) -> Bool
+
+pub fn im_gui_begin_tab_item(CString, BoolPtr, Int) -> Bool
+
+pub fn im_gui_begin_table(CString, Int, Int) -> Bool
+
+pub fn im_gui_begin_table_ex(CString, Int, Int, ImVec2, Float) -> Bool
+
+pub fn im_gui_begin_tooltip() -> Bool
+
+pub fn im_gui_bullet() -> Unit
+
+pub fn im_gui_bullet_text(CString) -> Unit
+
+pub fn im_gui_bullet_text_unformatted(CString) -> Unit
+
+pub fn im_gui_bullet_text_v(CString, VaList) -> Unit
+
+pub fn im_gui_button(CString) -> Bool
+
+pub fn im_gui_button_ex(CString, ImVec2) -> Bool
+
+pub fn im_gui_button_flags_allow_overlap() -> Int
+
+pub fn im_gui_button_flags_enable_nav() -> Int
+
+pub fn im_gui_button_flags_mouse_button_left() -> Int
+
+pub fn im_gui_button_flags_mouse_button_mask() -> Int
+
+pub fn im_gui_button_flags_mouse_button_middle() -> Int
+
+pub fn im_gui_button_flags_mouse_button_right() -> Int
+
+pub fn im_gui_button_flags_none() -> Int
+
+pub fn im_gui_calc_item_width() -> Float
+
+pub fn im_gui_calc_text_size(CString) -> ImVec2
+
+pub fn im_gui_calc_text_size_ex(CString, CString, Bool, Float) -> ImVec2
+
+pub fn im_gui_checkbox(CString, BoolPtr) -> Bool
+
+pub fn im_gui_checkbox_flags_int_ptr(CString, IntPtr, Int) -> Bool
+
+pub fn im_gui_checkbox_flags_uint_ptr(CString, UIntPtr, UInt) -> Bool
+
+pub fn im_gui_child_flags_always_auto_resize() -> Int
+
+pub fn im_gui_child_flags_always_use_window_padding() -> Int
+
+pub fn im_gui_child_flags_auto_resize_x() -> Int
+
+pub fn im_gui_child_flags_auto_resize_y() -> Int
+
+pub fn im_gui_child_flags_borders() -> Int
+
+pub fn im_gui_child_flags_frame_style() -> Int
+
+pub fn im_gui_child_flags_nav_flattened() -> Int
+
+pub fn im_gui_child_flags_none() -> Int
+
+pub fn im_gui_child_flags_resize_x() -> Int
+
+pub fn im_gui_child_flags_resize_y() -> Int
+
+pub fn im_gui_close_current_popup() -> Unit
+
+pub fn im_gui_col_border() -> Int
+
+pub fn im_gui_col_border_shadow() -> Int
+
+pub fn im_gui_col_button() -> Int
+
+pub fn im_gui_col_button_active() -> Int
+
+pub fn im_gui_col_button_hovered() -> Int
+
+pub fn im_gui_col_check_mark() -> Int
+
+pub fn im_gui_col_checkbox_selected_bg() -> Int
+
+pub fn im_gui_col_child_bg() -> Int
+
+pub fn im_gui_col_count() -> Int
+
+pub fn im_gui_col_drag_drop_target() -> Int
+
+pub fn im_gui_col_drag_drop_target_bg() -> Int
+
+pub fn im_gui_col_frame_bg() -> Int
+
+pub fn im_gui_col_frame_bg_active() -> Int
+
+pub fn im_gui_col_frame_bg_hovered() -> Int
+
+pub fn im_gui_col_header() -> Int
+
+pub fn im_gui_col_header_active() -> Int
+
+pub fn im_gui_col_header_hovered() -> Int
+
+pub fn im_gui_col_input_text_cursor() -> Int
+
+pub fn im_gui_col_menu_bar_bg() -> Int
+
+pub fn im_gui_col_modal_window_dim_bg() -> Int
+
+pub fn im_gui_col_nav_cursor() -> Int
+
+pub fn im_gui_col_nav_highlight() -> Int
+
+pub fn im_gui_col_nav_windowing_dim_bg() -> Int
+
+pub fn im_gui_col_nav_windowing_highlight() -> Int
+
+pub fn im_gui_col_plot_histogram() -> Int
+
+pub fn im_gui_col_plot_histogram_hovered() -> Int
+
+pub fn im_gui_col_plot_lines() -> Int
+
+pub fn im_gui_col_plot_lines_hovered() -> Int
+
+pub fn im_gui_col_popup_bg() -> Int
+
+pub fn im_gui_col_resize_grip() -> Int
+
+pub fn im_gui_col_resize_grip_active() -> Int
+
+pub fn im_gui_col_resize_grip_hovered() -> Int
+
+pub fn im_gui_col_scrollbar_bg() -> Int
+
+pub fn im_gui_col_scrollbar_grab() -> Int
+
+pub fn im_gui_col_scrollbar_grab_active() -> Int
+
+pub fn im_gui_col_scrollbar_grab_hovered() -> Int
+
+pub fn im_gui_col_separator() -> Int
+
+pub fn im_gui_col_separator_active() -> Int
+
+pub fn im_gui_col_separator_hovered() -> Int
+
+pub fn im_gui_col_slider_grab() -> Int
+
+pub fn im_gui_col_slider_grab_active() -> Int
+
+pub fn im_gui_col_tab() -> Int
+
+pub fn im_gui_col_tab_active() -> Int
+
+pub fn im_gui_col_tab_dimmed() -> Int
+
+pub fn im_gui_col_tab_dimmed_selected() -> Int
+
+pub fn im_gui_col_tab_dimmed_selected_overline() -> Int
+
+pub fn im_gui_col_tab_hovered() -> Int
+
+pub fn im_gui_col_tab_selected() -> Int
+
+pub fn im_gui_col_tab_selected_overline() -> Int
+
+pub fn im_gui_col_tab_unfocused() -> Int
+
+pub fn im_gui_col_tab_unfocused_active() -> Int
+
+pub fn im_gui_col_table_border_light() -> Int
+
+pub fn im_gui_col_table_border_strong() -> Int
+
+pub fn im_gui_col_table_header_bg() -> Int
+
+pub fn im_gui_col_table_row_bg() -> Int
+
+pub fn im_gui_col_table_row_bg_alt() -> Int
+
+pub fn im_gui_col_text() -> Int
+
+pub fn im_gui_col_text_disabled() -> Int
+
+pub fn im_gui_col_text_link() -> Int
+
+pub fn im_gui_col_text_selected_bg() -> Int
+
+pub fn im_gui_col_title_bg() -> Int
+
+pub fn im_gui_col_title_bg_active() -> Int
+
+pub fn im_gui_col_title_bg_collapsed() -> Int
+
+pub fn im_gui_col_tree_lines() -> Int
+
+pub fn im_gui_col_unsaved_marker() -> Int
+
+pub fn im_gui_col_window_bg() -> Int
+
+pub fn im_gui_collapsing_header(CString, Int) -> Bool
+
+pub fn im_gui_collapsing_header_bool_ptr(CString, BoolPtr, Int) -> Bool
+
+pub fn im_gui_color_button(CString, ImVec4, Int) -> Bool
+
+pub fn im_gui_color_button_ex(CString, ImVec4, Int, ImVec2) -> Bool
+
+pub fn im_gui_color_convert_float4_to_u32(ImVec4) -> UInt
+
+pub fn im_gui_color_convert_hs_vto_rgb(Float, Float, Float, FloatPtr, FloatPtr, FloatPtr) -> Unit
+
+pub fn im_gui_color_convert_rg_bto_hsv(Float, Float, Float, FloatPtr, FloatPtr, FloatPtr) -> Unit
+
+pub fn im_gui_color_convert_u32_to_float4(UInt) -> ImVec4
+
+pub fn im_gui_color_edit3(CString, FloatPtr, Int) -> Bool
+
+pub fn im_gui_color_edit4(CString, FloatPtr, Int) -> Bool
+
+pub fn im_gui_color_edit_flags_alpha_bar() -> Int
+
+pub fn im_gui_color_edit_flags_alpha_mask() -> Int
+
+pub fn im_gui_color_edit_flags_alpha_no_bg() -> Int
+
+pub fn im_gui_color_edit_flags_alpha_opaque() -> Int
+
+pub fn im_gui_color_edit_flags_alpha_preview() -> Int
+
+pub fn im_gui_color_edit_flags_alpha_preview_half() -> Int
+
+pub fn im_gui_color_edit_flags_data_type_mask() -> Int
+
+pub fn im_gui_color_edit_flags_default_options() -> Int
+
+pub fn im_gui_color_edit_flags_display_hex() -> Int
+
+pub fn im_gui_color_edit_flags_display_hsv() -> Int
+
+pub fn im_gui_color_edit_flags_display_mask() -> Int
+
+pub fn im_gui_color_edit_flags_display_rgb() -> Int
+
+pub fn im_gui_color_edit_flags_float() -> Int
+
+pub fn im_gui_color_edit_flags_hdr() -> Int
+
+pub fn im_gui_color_edit_flags_input_hsv() -> Int
+
+pub fn im_gui_color_edit_flags_input_mask() -> Int
+
+pub fn im_gui_color_edit_flags_input_rgb() -> Int
+
+pub fn im_gui_color_edit_flags_no_alpha() -> Int
+
+pub fn im_gui_color_edit_flags_no_border() -> Int
+
+pub fn im_gui_color_edit_flags_no_color_markers() -> Int
+
+pub fn im_gui_color_edit_flags_no_drag_drop() -> Int
+
+pub fn im_gui_color_edit_flags_no_inputs() -> Int
+
+pub fn im_gui_color_edit_flags_no_label() -> Int
+
+pub fn im_gui_color_edit_flags_no_options() -> Int
+
+pub fn im_gui_color_edit_flags_no_picker() -> Int
+
+pub fn im_gui_color_edit_flags_no_side_preview() -> Int
+
+pub fn im_gui_color_edit_flags_no_small_preview() -> Int
+
+pub fn im_gui_color_edit_flags_no_tooltip() -> Int
+
+pub fn im_gui_color_edit_flags_none() -> Int
+
+pub fn im_gui_color_edit_flags_picker_hue_bar() -> Int
+
+pub fn im_gui_color_edit_flags_picker_hue_wheel() -> Int
+
+pub fn im_gui_color_edit_flags_picker_mask() -> Int
+
+pub fn im_gui_color_edit_flags_uint8() -> Int
+
+pub fn im_gui_color_picker3(CString, FloatPtr, Int) -> Bool
+
+pub fn im_gui_color_picker4(CString, FloatPtr, Int, FloatPtr) -> Bool
+
+pub fn im_gui_columns() -> Unit
+
+pub fn im_gui_columns_ex(Int, CString, Bool) -> Unit
+
+pub fn im_gui_combo(CString, IntPtr, CString) -> Bool
+
+pub fn im_gui_combo_callback(CString, IntPtr, FunctionPtr, VoidPtr, Int) -> Bool
+
+pub fn im_gui_combo_callback_ex(CString, IntPtr, FunctionPtr, VoidPtr, Int, Int) -> Bool
+
+pub fn im_gui_combo_char(CString, IntPtr, CStringPtr, Int) -> Bool
+
+pub fn im_gui_combo_char_ex(CString, IntPtr, CStringPtr, Int, Int) -> Bool
+
+pub fn im_gui_combo_ex(CString, IntPtr, CString, Int) -> Bool
+
+pub fn im_gui_combo_flags_height_large() -> Int
+
+pub fn im_gui_combo_flags_height_largest() -> Int
+
+pub fn im_gui_combo_flags_height_mask() -> Int
+
+pub fn im_gui_combo_flags_height_regular() -> Int
+
+pub fn im_gui_combo_flags_height_small() -> Int
+
+pub fn im_gui_combo_flags_no_arrow_button() -> Int
+
+pub fn im_gui_combo_flags_no_preview() -> Int
+
+pub fn im_gui_combo_flags_none() -> Int
+
+pub fn im_gui_combo_flags_popup_align_left() -> Int
+
+pub fn im_gui_combo_flags_width_fit_preview() -> Int
+
+pub fn im_gui_cond_always() -> Int
+
+pub fn im_gui_cond_appearing() -> Int
+
+pub fn im_gui_cond_first_use_ever() -> Int
+
+pub fn im_gui_cond_none() -> Int
+
+pub fn im_gui_cond_once() -> Int
+
+pub fn im_gui_config_flags_is_srgb() -> Int
+
+pub fn im_gui_config_flags_is_touch_screen() -> Int
+
+pub fn im_gui_config_flags_nav_enable_gamepad() -> Int
+
+pub fn im_gui_config_flags_nav_enable_keyboard() -> Int
+
+pub fn im_gui_config_flags_nav_enable_set_mouse_pos() -> Int
+
+pub fn im_gui_config_flags_nav_no_capture_keyboard() -> Int
+
+pub fn im_gui_config_flags_no_keyboard() -> Int
+
+pub fn im_gui_config_flags_no_mouse() -> Int
+
+pub fn im_gui_config_flags_no_mouse_cursor_change() -> Int
+
+pub fn im_gui_config_flags_none() -> Int
+
+pub fn im_gui_create_context(ImFontAtlas) -> ImGuiContext
+
+pub fn im_gui_data_type_bool() -> Int
+
+pub fn im_gui_data_type_count() -> Int
+
+pub fn im_gui_data_type_double() -> Int
+
+pub fn im_gui_data_type_float() -> Int
+
+pub fn im_gui_data_type_s16() -> Int
+
+pub fn im_gui_data_type_s32() -> Int
+
+pub fn im_gui_data_type_s64() -> Int
+
+pub fn im_gui_data_type_s8() -> Int
+
+pub fn im_gui_data_type_string() -> Int
+
+pub fn im_gui_data_type_u16() -> Int
+
+pub fn im_gui_data_type_u32() -> Int
+
+pub fn im_gui_data_type_u64() -> Int
+
+pub fn im_gui_data_type_u8() -> Int
+
+pub fn im_gui_debug_check_version_and_data_layout(CString, UInt64, UInt64, UInt64, UInt64, UInt64, UInt64) -> Bool
+
+pub fn im_gui_debug_flash_style_color(Int) -> Unit
+
+pub fn im_gui_debug_log(CString) -> Unit
+
+pub fn im_gui_debug_log_unformatted(CString) -> Unit
+
+pub fn im_gui_debug_log_v(CString, VaList) -> Unit
+
+pub fn im_gui_debug_start_item_picker() -> Unit
+
+pub fn im_gui_debug_text_encoding(CString) -> Unit
+
+pub fn im_gui_destroy_context(ImGuiContext) -> Unit
+
+pub fn im_gui_dir_count() -> Int
+
+pub fn im_gui_dir_down() -> Int
+
+pub fn im_gui_dir_left() -> Int
+
+pub fn im_gui_dir_none() -> Int
+
+pub fn im_gui_dir_right() -> Int
+
+pub fn im_gui_dir_up() -> Int
+
+pub fn im_gui_drag_drop_flags_accept_before_delivery() -> Int
+
+pub fn im_gui_drag_drop_flags_accept_draw_as_hovered() -> Int
+
+pub fn im_gui_drag_drop_flags_accept_no_draw_default_rect() -> Int
+
+pub fn im_gui_drag_drop_flags_accept_no_preview_tooltip() -> Int
+
+pub fn im_gui_drag_drop_flags_accept_peek_only() -> Int
+
+pub fn im_gui_drag_drop_flags_none() -> Int
+
+pub fn im_gui_drag_drop_flags_payload_auto_expire() -> Int
+
+pub fn im_gui_drag_drop_flags_payload_no_cross_context() -> Int
+
+pub fn im_gui_drag_drop_flags_payload_no_cross_process() -> Int
+
+pub fn im_gui_drag_drop_flags_source_allow_null_id() -> Int
+
+pub fn im_gui_drag_drop_flags_source_auto_expire_payload() -> Int
+
+pub fn im_gui_drag_drop_flags_source_extern() -> Int
+
+pub fn im_gui_drag_drop_flags_source_no_disable_hover() -> Int
+
+pub fn im_gui_drag_drop_flags_source_no_hold_to_open_others() -> Int
+
+pub fn im_gui_drag_drop_flags_source_no_preview_tooltip() -> Int
+
+pub fn im_gui_drag_float(CString, FloatPtr) -> Bool
+
+pub fn im_gui_drag_float2(CString, FloatPtr) -> Bool
+
+pub fn im_gui_drag_float2_ex(CString, FloatPtr, Float, Float, Float, CString, Int) -> Bool
+
+pub fn im_gui_drag_float3(CString, FloatPtr) -> Bool
+
+pub fn im_gui_drag_float3_ex(CString, FloatPtr, Float, Float, Float, CString, Int) -> Bool
+
+pub fn im_gui_drag_float4(CString, FloatPtr) -> Bool
+
+pub fn im_gui_drag_float4_ex(CString, FloatPtr, Float, Float, Float, CString, Int) -> Bool
+
+pub fn im_gui_drag_float_ex(CString, FloatPtr, Float, Float, Float, CString, Int) -> Bool
+
+pub fn im_gui_drag_float_range2(CString, FloatPtr, FloatPtr) -> Bool
+
+pub fn im_gui_drag_float_range2_ex(CString, FloatPtr, FloatPtr, Float, Float, Float, CString, CString, Int) -> Bool
+
+pub fn im_gui_drag_int(CString, IntPtr) -> Bool
+
+pub fn im_gui_drag_int2(CString, IntPtr) -> Bool
+
+pub fn im_gui_drag_int2_ex(CString, IntPtr, Float, Int, Int, CString, Int) -> Bool
+
+pub fn im_gui_drag_int3(CString, IntPtr) -> Bool
+
+pub fn im_gui_drag_int3_ex(CString, IntPtr, Float, Int, Int, CString, Int) -> Bool
+
+pub fn im_gui_drag_int4(CString, IntPtr) -> Bool
+
+pub fn im_gui_drag_int4_ex(CString, IntPtr, Float, Int, Int, CString, Int) -> Bool
+
+pub fn im_gui_drag_int_ex(CString, IntPtr, Float, Int, Int, CString, Int) -> Bool
+
+pub fn im_gui_drag_int_range2(CString, IntPtr, IntPtr) -> Bool
+
+pub fn im_gui_drag_int_range2_ex(CString, IntPtr, IntPtr, Float, Int, Int, CString, CString, Int) -> Bool
+
+pub fn im_gui_drag_scalar(CString, Int, VoidPtr) -> Bool
+
+pub fn im_gui_drag_scalar_ex(CString, Int, VoidPtr, Float, VoidPtr, VoidPtr, CString, Int) -> Bool
+
+pub fn im_gui_drag_scalar_n(CString, Int, VoidPtr, Int) -> Bool
+
+pub fn im_gui_drag_scalar_n_ex(CString, Int, VoidPtr, Int, Float, VoidPtr, VoidPtr, CString, Int) -> Bool
+
+pub fn im_gui_dummy(ImVec2) -> Unit
+
+pub fn im_gui_end() -> Unit
+
+pub fn im_gui_end_child() -> Unit
+
+pub fn im_gui_end_combo() -> Unit
+
+pub fn im_gui_end_disabled() -> Unit
+
+pub fn im_gui_end_drag_drop_source() -> Unit
+
+pub fn im_gui_end_drag_drop_target() -> Unit
+
+pub fn im_gui_end_frame() -> Unit
+
+pub fn im_gui_end_group() -> Unit
+
+pub fn im_gui_end_list_box() -> Unit
+
+pub fn im_gui_end_main_menu_bar() -> Unit
+
+pub fn im_gui_end_menu() -> Unit
+
+pub fn im_gui_end_menu_bar() -> Unit
+
+pub fn im_gui_end_multi_select() -> ImGuiMultiSelectIO
+
+pub fn im_gui_end_popup() -> Unit
+
+pub fn im_gui_end_tab_bar() -> Unit
+
+pub fn im_gui_end_tab_item() -> Unit
+
+pub fn im_gui_end_table() -> Unit
+
+pub fn im_gui_end_tooltip() -> Unit
+
+pub fn im_gui_focused_flags_any_window() -> Int
+
+pub fn im_gui_focused_flags_child_windows() -> Int
+
+pub fn im_gui_focused_flags_no_popup_hierarchy() -> Int
+
+pub fn im_gui_focused_flags_none() -> Int
+
+pub fn im_gui_focused_flags_root_and_child_windows() -> Int
+
+pub fn im_gui_focused_flags_root_window() -> Int
+
+pub fn im_gui_get_allocator_functions(ImGuiMemAllocFuncPtr, ImGuiMemFreeFuncPtr, VoidPtrPtr) -> Unit
+
+pub fn im_gui_get_background_draw_list() -> ImDrawList
+
+pub fn im_gui_get_clipboard_text() -> CString
+
+pub fn im_gui_get_color_u32(Int) -> UInt
+
+pub fn im_gui_get_color_u32_ex(Int, Float) -> UInt
+
+pub fn im_gui_get_color_u32_im_u32(UInt) -> UInt
+
+pub fn im_gui_get_color_u32_im_u32_ex(UInt, Float) -> UInt
+
+pub fn im_gui_get_color_u32_im_vec4(ImVec4) -> UInt
+
+pub fn im_gui_get_column_index() -> Int
+
+pub fn im_gui_get_column_offset(Int) -> Float
+
+pub fn im_gui_get_column_width(Int) -> Float
+
+pub fn im_gui_get_columns_count() -> Int
+
+pub fn im_gui_get_content_region_avail() -> ImVec2
+
+pub fn im_gui_get_content_region_max() -> ImVec2
+
+pub fn im_gui_get_current_context() -> ImGuiContext
+
+pub fn im_gui_get_cursor_pos() -> ImVec2
+
+pub fn im_gui_get_cursor_pos_x() -> Float
+
+pub fn im_gui_get_cursor_pos_y() -> Float
+
+pub fn im_gui_get_cursor_screen_pos() -> ImVec2
+
+pub fn im_gui_get_cursor_start_pos() -> ImVec2
+
+pub fn im_gui_get_drag_drop_payload() -> ImGuiPayload
+
+pub fn im_gui_get_draw_data() -> ImDrawData
+
+pub fn im_gui_get_draw_list_shared_data() -> ImDrawListSharedData
+
+pub fn im_gui_get_font() -> ImFont
+
+pub fn im_gui_get_font_baked() -> ImFontBaked
+
+pub fn im_gui_get_font_size() -> Float
+
+pub fn im_gui_get_font_tex_uv_white_pixel() -> ImVec2
+
+pub fn im_gui_get_foreground_draw_list() -> ImDrawList
+
+pub fn im_gui_get_frame_count() -> Int
+
+pub fn im_gui_get_frame_height() -> Float
+
+pub fn im_gui_get_frame_height_with_spacing() -> Float
+
+pub fn im_gui_get_id(CString) -> UInt
+
+pub fn im_gui_get_id_int(Int) -> UInt
+
+pub fn im_gui_get_id_ptr(VoidPtr) -> UInt
+
+pub fn im_gui_get_id_str(CString, CString) -> UInt
+
+pub fn im_gui_get_io() -> ImGuiIO
+
+pub fn im_gui_get_item_flags() -> Int
+
+pub fn im_gui_get_item_id() -> UInt
+
+pub fn im_gui_get_item_rect_max() -> ImVec2
+
+pub fn im_gui_get_item_rect_min() -> ImVec2
+
+pub fn im_gui_get_item_rect_size() -> ImVec2
+
+pub fn im_gui_get_key_name(Int) -> CString
+
+pub fn im_gui_get_key_pressed_amount(Int, Float, Float) -> Int
+
+pub fn im_gui_get_main_viewport() -> ImGuiViewport
+
+pub fn im_gui_get_mouse_clicked_count(Int) -> Int
+
+pub fn im_gui_get_mouse_cursor() -> Int
+
+pub fn im_gui_get_mouse_drag_delta(Int, Float) -> ImVec2
+
+pub fn im_gui_get_mouse_pos() -> ImVec2
+
+pub fn im_gui_get_mouse_pos_on_opening_current_popup() -> ImVec2
+
+pub fn im_gui_get_platform_io() -> ImGuiPlatformIO
+
+pub fn im_gui_get_scroll_max_x() -> Float
+
+pub fn im_gui_get_scroll_max_y() -> Float
+
+pub fn im_gui_get_scroll_x() -> Float
+
+pub fn im_gui_get_scroll_y() -> Float
+
+pub fn im_gui_get_state_storage() -> ImGuiStorage
+
+pub fn im_gui_get_style() -> ImGuiStyle
+
+pub fn im_gui_get_style_color_name(Int) -> CString
+
+pub fn im_gui_get_style_color_vec4(Int) -> ImVec4
+
+pub fn im_gui_get_text_line_height() -> Float
+
+pub fn im_gui_get_text_line_height_with_spacing() -> Float
+
+pub fn im_gui_get_time() -> Double
+
+pub fn im_gui_get_tree_node_to_label_spacing() -> Float
+
+pub fn im_gui_get_version() -> CString
+
+pub fn im_gui_get_window_content_region_max() -> ImVec2
+
+pub fn im_gui_get_window_content_region_min() -> ImVec2
+
+pub fn im_gui_get_window_draw_list() -> ImDrawList
+
+pub fn im_gui_get_window_height() -> Float
+
+pub fn im_gui_get_window_pos() -> ImVec2
+
+pub fn im_gui_get_window_size() -> ImVec2
+
+pub fn im_gui_get_window_width() -> Float
+
+pub fn im_gui_hovered_flags_allow_when_blocked_by_active_item() -> Int
+
+pub fn im_gui_hovered_flags_allow_when_blocked_by_popup() -> Int
+
+pub fn im_gui_hovered_flags_allow_when_disabled() -> Int
+
+pub fn im_gui_hovered_flags_allow_when_overlapped() -> Int
+
+pub fn im_gui_hovered_flags_allow_when_overlapped_by_item() -> Int
+
+pub fn im_gui_hovered_flags_allow_when_overlapped_by_window() -> Int
+
+pub fn im_gui_hovered_flags_any_window() -> Int
+
+pub fn im_gui_hovered_flags_child_windows() -> Int
+
+pub fn im_gui_hovered_flags_delay_none() -> Int
+
+pub fn im_gui_hovered_flags_delay_normal() -> Int
+
+pub fn im_gui_hovered_flags_delay_short() -> Int
+
+pub fn im_gui_hovered_flags_for_tooltip() -> Int
+
+pub fn im_gui_hovered_flags_no_nav_override() -> Int
+
+pub fn im_gui_hovered_flags_no_popup_hierarchy() -> Int
+
+pub fn im_gui_hovered_flags_no_shared_delay() -> Int
+
+pub fn im_gui_hovered_flags_none() -> Int
+
+pub fn im_gui_hovered_flags_rect_only() -> Int
+
+pub fn im_gui_hovered_flags_root_and_child_windows() -> Int
+
+pub fn im_gui_hovered_flags_root_window() -> Int
+
+pub fn im_gui_hovered_flags_stationary() -> Int
+
+pub fn im_gui_image(ImTextureRef, ImVec2) -> Unit
+
+pub fn im_gui_image_button(CString, ImTextureRef, ImVec2) -> Bool
+
+pub fn im_gui_image_button_ex(CString, ImTextureRef, ImVec2, ImVec2, ImVec2, ImVec4, ImVec4) -> Bool
+
+pub fn im_gui_image_ex(ImTextureRef, ImVec2, ImVec2, ImVec2) -> Unit
+
+pub fn im_gui_image_im_vec4_ptr(ImTextureRef, ImVec2, ImVec2, ImVec2, ImVec4, ImVec4) -> Unit
+
+pub fn im_gui_image_with_bg(ImTextureRef, ImVec2) -> Unit
+
+pub fn im_gui_image_with_bg_ex(ImTextureRef, ImVec2, ImVec2, ImVec2, ImVec4, ImVec4) -> Unit
+
+pub fn im_gui_indent() -> Unit
+
+pub fn im_gui_indent_ex(Float) -> Unit
+
+pub fn im_gui_input_double(CString, DoublePtr) -> Bool
+
+pub fn im_gui_input_double_ex(CString, DoublePtr, Double, Double, CString, Int) -> Bool
+
+pub fn im_gui_input_flags_none() -> Int
+
+pub fn im_gui_input_flags_repeat() -> Int
+
+pub fn im_gui_input_flags_route_active() -> Int
+
+pub fn im_gui_input_flags_route_always() -> Int
+
+pub fn im_gui_input_flags_route_focused() -> Int
+
+pub fn im_gui_input_flags_route_from_root_window() -> Int
+
+pub fn im_gui_input_flags_route_global() -> Int
+
+pub fn im_gui_input_flags_route_over_active() -> Int
+
+pub fn im_gui_input_flags_route_over_focused() -> Int
+
+pub fn im_gui_input_flags_route_unless_bg_focused() -> Int
+
+pub fn im_gui_input_flags_tooltip() -> Int
+
+pub fn im_gui_input_float(CString, FloatPtr) -> Bool
+
+pub fn im_gui_input_float2(CString, FloatPtr) -> Bool
+
+pub fn im_gui_input_float2_ex(CString, FloatPtr, CString, Int) -> Bool
+
+pub fn im_gui_input_float3(CString, FloatPtr) -> Bool
+
+pub fn im_gui_input_float3_ex(CString, FloatPtr, CString, Int) -> Bool
+
+pub fn im_gui_input_float4(CString, FloatPtr) -> Bool
+
+pub fn im_gui_input_float4_ex(CString, FloatPtr, CString, Int) -> Bool
+
+pub fn im_gui_input_float_ex(CString, FloatPtr, Float, Float, CString, Int) -> Bool
+
+pub fn im_gui_input_int(CString, IntPtr) -> Bool
+
+pub fn im_gui_input_int2(CString, IntPtr, Int) -> Bool
+
+pub fn im_gui_input_int3(CString, IntPtr, Int) -> Bool
+
+pub fn im_gui_input_int4(CString, IntPtr, Int) -> Bool
+
+pub fn im_gui_input_int_ex(CString, IntPtr, Int, Int, Int) -> Bool
+
+pub fn im_gui_input_scalar(CString, Int, VoidPtr) -> Bool
+
+pub fn im_gui_input_scalar_ex(CString, Int, VoidPtr, VoidPtr, VoidPtr, CString, Int) -> Bool
+
+pub fn im_gui_input_scalar_n(CString, Int, VoidPtr, Int) -> Bool
+
+pub fn im_gui_input_scalar_n_ex(CString, Int, VoidPtr, Int, VoidPtr, VoidPtr, CString, Int) -> Bool
+
+pub fn im_gui_input_text(CString, CString, UInt64, Int) -> Bool
+
+pub fn im_gui_input_text_callback_data_clear_selection(ImGuiInputTextCallbackData) -> Unit
+
+pub fn im_gui_input_text_callback_data_delete_chars(ImGuiInputTextCallbackData, Int, Int) -> Unit
+
+pub fn im_gui_input_text_callback_data_field_get_buf(ImGuiInputTextCallbackData) -> CString
+
+pub fn im_gui_input_text_callback_data_field_get_buf_dirty(ImGuiInputTextCallbackData) -> Bool
+
+pub fn im_gui_input_text_callback_data_field_get_buf_size(ImGuiInputTextCallbackData) -> Int
+
+pub fn im_gui_input_text_callback_data_field_get_buf_text_len(ImGuiInputTextCallbackData) -> Int
+
+pub fn im_gui_input_text_callback_data_field_get_ctx(ImGuiInputTextCallbackData) -> ImGuiContext
+
+pub fn im_gui_input_text_callback_data_field_get_cursor_pos(ImGuiInputTextCallbackData) -> Int
+
+pub fn im_gui_input_text_callback_data_field_get_event_activated(ImGuiInputTextCallbackData) -> Bool
+
+pub fn im_gui_input_text_callback_data_field_get_event_char(ImGuiInputTextCallbackData) -> Int
+
+pub fn im_gui_input_text_callback_data_field_get_event_flag(ImGuiInputTextCallbackData) -> Int
+
+pub fn im_gui_input_text_callback_data_field_get_event_key(ImGuiInputTextCallbackData) -> Int
+
+pub fn im_gui_input_text_callback_data_field_get_flags(ImGuiInputTextCallbackData) -> Int
+
+pub fn im_gui_input_text_callback_data_field_get_id(ImGuiInputTextCallbackData) -> UInt
+
+pub fn im_gui_input_text_callback_data_field_get_selection_end(ImGuiInputTextCallbackData) -> Int
+
+pub fn im_gui_input_text_callback_data_field_get_selection_start(ImGuiInputTextCallbackData) -> Int
+
+pub fn im_gui_input_text_callback_data_field_get_user_data(ImGuiInputTextCallbackData) -> VoidPtr
+
+pub fn im_gui_input_text_callback_data_field_set_buf(ImGuiInputTextCallbackData, CString) -> Unit
+
+pub fn im_gui_input_text_callback_data_field_set_buf_dirty(ImGuiInputTextCallbackData, Bool) -> Unit
+
+pub fn im_gui_input_text_callback_data_field_set_buf_size(ImGuiInputTextCallbackData, Int) -> Unit
+
+pub fn im_gui_input_text_callback_data_field_set_buf_text_len(ImGuiInputTextCallbackData, Int) -> Unit
+
+pub fn im_gui_input_text_callback_data_field_set_ctx(ImGuiInputTextCallbackData, ImGuiContext) -> Unit
+
+pub fn im_gui_input_text_callback_data_field_set_cursor_pos(ImGuiInputTextCallbackData, Int) -> Unit
+
+pub fn im_gui_input_text_callback_data_field_set_event_activated(ImGuiInputTextCallbackData, Bool) -> Unit
+
+pub fn im_gui_input_text_callback_data_field_set_event_char(ImGuiInputTextCallbackData, Int) -> Unit
+
+pub fn im_gui_input_text_callback_data_field_set_event_flag(ImGuiInputTextCallbackData, Int) -> Unit
+
+pub fn im_gui_input_text_callback_data_field_set_event_key(ImGuiInputTextCallbackData, Int) -> Unit
+
+pub fn im_gui_input_text_callback_data_field_set_flags(ImGuiInputTextCallbackData, Int) -> Unit
+
+pub fn im_gui_input_text_callback_data_field_set_id(ImGuiInputTextCallbackData, UInt) -> Unit
+
+pub fn im_gui_input_text_callback_data_field_set_selection_end(ImGuiInputTextCallbackData, Int) -> Unit
+
+pub fn im_gui_input_text_callback_data_field_set_selection_start(ImGuiInputTextCallbackData, Int) -> Unit
+
+pub fn im_gui_input_text_callback_data_field_set_user_data(ImGuiInputTextCallbackData, VoidPtr) -> Unit
+
+pub fn im_gui_input_text_callback_data_has_selection(ImGuiInputTextCallbackData) -> Bool
+
+pub fn im_gui_input_text_callback_data_insert_chars(ImGuiInputTextCallbackData, Int, CString, CString) -> Unit
+
+pub fn im_gui_input_text_callback_data_select_all(ImGuiInputTextCallbackData) -> Unit
+
+pub fn im_gui_input_text_callback_data_set_selection(ImGuiInputTextCallbackData, Int, Int) -> Unit
+
+pub fn im_gui_input_text_ex(CString, CString, UInt64, Int, ImGuiInputTextCallback, VoidPtr) -> Bool
+
+pub fn im_gui_input_text_flags_allow_tab_input() -> Int
+
+pub fn im_gui_input_text_flags_always_overwrite() -> Int
+
+pub fn im_gui_input_text_flags_auto_select_all() -> Int
+
+pub fn im_gui_input_text_flags_callback_always() -> Int
+
+pub fn im_gui_input_text_flags_callback_char_filter() -> Int
+
+pub fn im_gui_input_text_flags_callback_completion() -> Int
+
+pub fn im_gui_input_text_flags_callback_edit() -> Int
+
+pub fn im_gui_input_text_flags_callback_history() -> Int
+
+pub fn im_gui_input_text_flags_callback_resize() -> Int
+
+pub fn im_gui_input_text_flags_chars_decimal() -> Int
+
+pub fn im_gui_input_text_flags_chars_hexadecimal() -> Int
+
+pub fn im_gui_input_text_flags_chars_no_blank() -> Int
+
+pub fn im_gui_input_text_flags_chars_scientific() -> Int
+
+pub fn im_gui_input_text_flags_chars_uppercase() -> Int
+
+pub fn im_gui_input_text_flags_ctrl_enter_for_new_line() -> Int
+
+pub fn im_gui_input_text_flags_display_empty_ref_val() -> Int
+
+pub fn im_gui_input_text_flags_elide_left() -> Int
+
+pub fn im_gui_input_text_flags_enter_returns_true() -> Int
+
+pub fn im_gui_input_text_flags_escape_clears_all() -> Int
+
+pub fn im_gui_input_text_flags_no_horizontal_scroll() -> Int
+
+pub fn im_gui_input_text_flags_no_undo_redo() -> Int
+
+pub fn im_gui_input_text_flags_none() -> Int
+
+pub fn im_gui_input_text_flags_parse_empty_ref_val() -> Int
+
+pub fn im_gui_input_text_flags_password() -> Int
+
+pub fn im_gui_input_text_flags_read_only() -> Int
+
+pub fn im_gui_input_text_flags_word_wrap() -> Int
+
+pub fn im_gui_input_text_multiline(CString, CString, UInt64) -> Bool
+
+pub fn im_gui_input_text_multiline_ex(CString, CString, UInt64, ImVec2, Int, ImGuiInputTextCallback, VoidPtr) -> Bool
+
+pub fn im_gui_input_text_with_hint(CString, CString, CString, UInt64, Int) -> Bool
+
+pub fn im_gui_input_text_with_hint_ex(CString, CString, CString, UInt64, Int, ImGuiInputTextCallback, VoidPtr) -> Bool
+
+pub fn im_gui_invisible_button(CString, ImVec2, Int) -> Bool
+
+pub fn im_gui_io_add_focus_event(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_add_input_character(ImGuiIO, UInt) -> Unit
+
+pub fn im_gui_io_add_input_character_utf16(ImGuiIO, Int) -> Unit
+
+pub fn im_gui_io_add_input_characters_utf8(ImGuiIO, CString) -> Unit
+
+pub fn im_gui_io_add_key_analog_event(ImGuiIO, Int, Bool, Float) -> Unit
+
+pub fn im_gui_io_add_key_event(ImGuiIO, Int, Bool) -> Unit
+
+pub fn im_gui_io_add_mouse_button_event(ImGuiIO, Int, Bool) -> Unit
+
+pub fn im_gui_io_add_mouse_pos_event(ImGuiIO, Float, Float) -> Unit
+
+pub fn im_gui_io_add_mouse_source_event(ImGuiIO, Int) -> Unit
+
+pub fn im_gui_io_add_mouse_wheel_event(ImGuiIO, Float, Float) -> Unit
+
+pub fn im_gui_io_clear_events_queue(ImGuiIO) -> Unit
+
+pub fn im_gui_io_clear_input_keys(ImGuiIO) -> Unit
+
+pub fn im_gui_io_clear_input_mouse(ImGuiIO) -> Unit
+
+pub fn im_gui_io_field_get_app_accepting_events(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_app_focus_lost(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_backend_flags(ImGuiIO) -> Int
+
+pub fn im_gui_io_field_get_backend_language_user_data(ImGuiIO) -> VoidPtr
+
+pub fn im_gui_io_field_get_backend_platform_name(ImGuiIO) -> CString
+
+pub fn im_gui_io_field_get_backend_platform_user_data(ImGuiIO) -> VoidPtr
+
+pub fn im_gui_io_field_get_backend_renderer_name(ImGuiIO) -> CString
+
+pub fn im_gui_io_field_get_backend_renderer_user_data(ImGuiIO) -> VoidPtr
+
+pub fn im_gui_io_field_get_clipboard_user_data(ImGuiIO) -> VoidPtr
+
+pub fn im_gui_io_field_get_config_debug_begin_return_value_loop(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_debug_begin_return_value_once(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_debug_highlight_id_conflicts(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_debug_highlight_id_conflicts_show_item_picker(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_debug_ignore_focus_loss(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_debug_ini_settings(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_debug_is_debugger_present(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_drag_click_to_input_text(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_error_recovery(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_error_recovery_enable_assert(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_error_recovery_enable_debug_log(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_error_recovery_enable_tooltip(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_flags(ImGuiIO) -> Int
+
+pub fn im_gui_io_field_get_config_input_text_cursor_blink(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_input_text_enter_keep_active(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_input_trickle_event_queue(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_mac_osx_behaviors(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_memory_compact_timer(ImGuiIO) -> Float
+
+pub fn im_gui_io_field_get_config_nav_capture_keyboard(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_nav_cursor_visible_always(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_nav_cursor_visible_auto(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_nav_escape_clear_focus_item(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_nav_escape_clear_focus_window(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_nav_move_set_mouse_pos(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_nav_swap_gamepad_buttons(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_scrollbar_scroll_by_page(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_windows_copy_contents_with_ctrl_c(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_windows_move_from_title_bar_only(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_config_windows_resize_from_edges(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_ctx(ImGuiIO) -> ImGuiContext
+
+pub fn im_gui_io_field_get_delta_time(ImGuiIO) -> Float
+
+pub fn im_gui_io_field_get_display_framebuffer_scale(ImGuiIO) -> ImVec2
+
+pub fn im_gui_io_field_get_display_size(ImGuiIO) -> ImVec2
+
+pub fn im_gui_io_field_get_font_allow_user_scaling(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_font_default(ImGuiIO) -> ImFont
+
+pub fn im_gui_io_field_get_font_global_scale(ImGuiIO) -> Float
+
+pub fn im_gui_io_field_get_fonts(ImGuiIO) -> ImFontAtlas
+
+pub fn im_gui_io_field_get_framerate(ImGuiIO) -> Float
+
+pub fn im_gui_io_field_get_get_clipboard_text_fn(ImGuiIO) -> FunctionPtr
+
+pub fn im_gui_io_field_get_ini_filename(ImGuiIO) -> CString
+
+pub fn im_gui_io_field_get_ini_saving_rate(ImGuiIO) -> Float
+
+pub fn im_gui_io_field_get_input_queue_characters(ImGuiIO) -> ImVector_ImWchar
+
+pub fn im_gui_io_field_get_input_queue_surrogate(ImGuiIO) -> Int
+
+pub fn im_gui_io_field_get_key_alt(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_key_ctrl(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_key_mods(ImGuiIO) -> Int
+
+pub fn im_gui_io_field_get_key_repeat_delay(ImGuiIO) -> Float
+
+pub fn im_gui_io_field_get_key_repeat_rate(ImGuiIO) -> Float
+
+pub fn im_gui_io_field_get_key_shift(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_key_super(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_keys_data(ImGuiIO) -> ImGuiKeyData
+
+pub fn im_gui_io_field_get_log_filename(ImGuiIO) -> CString
+
+pub fn im_gui_io_field_get_metrics_active_windows(ImGuiIO) -> Int
+
+pub fn im_gui_io_field_get_metrics_render_indices(ImGuiIO) -> Int
+
+pub fn im_gui_io_field_get_metrics_render_vertices(ImGuiIO) -> Int
+
+pub fn im_gui_io_field_get_metrics_render_windows(ImGuiIO) -> Int
+
+pub fn im_gui_io_field_get_mouse_clicked(ImGuiIO) -> BoolPtr
+
+pub fn im_gui_io_field_get_mouse_clicked_count(ImGuiIO) -> ImU16Ptr
+
+pub fn im_gui_io_field_get_mouse_clicked_last_count(ImGuiIO) -> ImU16Ptr
+
+pub fn im_gui_io_field_get_mouse_clicked_pos(ImGuiIO) -> ImVec2
+
+pub fn im_gui_io_field_get_mouse_clicked_time(ImGuiIO) -> DoublePtr
+
+pub fn im_gui_io_field_get_mouse_ctrl_left_as_right_click(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_mouse_delta(ImGuiIO) -> ImVec2
+
+pub fn im_gui_io_field_get_mouse_double_click_max_dist(ImGuiIO) -> Float
+
+pub fn im_gui_io_field_get_mouse_double_click_time(ImGuiIO) -> Float
+
+pub fn im_gui_io_field_get_mouse_double_clicked(ImGuiIO) -> BoolPtr
+
+pub fn im_gui_io_field_get_mouse_down(ImGuiIO) -> BoolPtr
+
+pub fn im_gui_io_field_get_mouse_down_duration(ImGuiIO) -> FloatPtr
+
+pub fn im_gui_io_field_get_mouse_down_duration_prev(ImGuiIO) -> FloatPtr
+
+pub fn im_gui_io_field_get_mouse_down_owned(ImGuiIO) -> BoolPtr
+
+pub fn im_gui_io_field_get_mouse_down_owned_unless_popup_close(ImGuiIO) -> BoolPtr
+
+pub fn im_gui_io_field_get_mouse_drag_max_distance_sqr(ImGuiIO) -> FloatPtr
+
+pub fn im_gui_io_field_get_mouse_drag_threshold(ImGuiIO) -> Float
+
+pub fn im_gui_io_field_get_mouse_draw_cursor(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_mouse_pos(ImGuiIO) -> ImVec2
+
+pub fn im_gui_io_field_get_mouse_pos_prev(ImGuiIO) -> ImVec2
+
+pub fn im_gui_io_field_get_mouse_released(ImGuiIO) -> BoolPtr
+
+pub fn im_gui_io_field_get_mouse_released_time(ImGuiIO) -> DoublePtr
+
+pub fn im_gui_io_field_get_mouse_source(ImGuiIO) -> Int
+
+pub fn im_gui_io_field_get_mouse_wheel(ImGuiIO) -> Float
+
+pub fn im_gui_io_field_get_mouse_wheel_h(ImGuiIO) -> Float
+
+pub fn im_gui_io_field_get_mouse_wheel_request_axis_swap(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_nav_active(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_nav_visible(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_pen_pressure(ImGuiIO) -> Float
+
+pub fn im_gui_io_field_get_set_clipboard_text_fn(ImGuiIO) -> FunctionPtr
+
+pub fn im_gui_io_field_get_user_data(ImGuiIO) -> VoidPtr
+
+pub fn im_gui_io_field_get_want_capture_keyboard(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_want_capture_mouse(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_want_capture_mouse_unless_popup_close(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_want_save_ini_settings(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_want_set_mouse_pos(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_get_want_text_input(ImGuiIO) -> Bool
+
+pub fn im_gui_io_field_set_app_accepting_events(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_app_focus_lost(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_backend_flags(ImGuiIO, Int) -> Unit
+
+pub fn im_gui_io_field_set_backend_language_user_data(ImGuiIO, VoidPtr) -> Unit
+
+pub fn im_gui_io_field_set_backend_platform_name(ImGuiIO, CString) -> Unit
+
+pub fn im_gui_io_field_set_backend_platform_user_data(ImGuiIO, VoidPtr) -> Unit
+
+pub fn im_gui_io_field_set_backend_renderer_name(ImGuiIO, CString) -> Unit
+
+pub fn im_gui_io_field_set_backend_renderer_user_data(ImGuiIO, VoidPtr) -> Unit
+
+pub fn im_gui_io_field_set_clipboard_user_data(ImGuiIO, VoidPtr) -> Unit
+
+pub fn im_gui_io_field_set_config_debug_begin_return_value_loop(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_debug_begin_return_value_once(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_debug_highlight_id_conflicts(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_debug_highlight_id_conflicts_show_item_picker(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_debug_ignore_focus_loss(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_debug_ini_settings(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_debug_is_debugger_present(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_drag_click_to_input_text(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_error_recovery(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_error_recovery_enable_assert(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_error_recovery_enable_debug_log(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_error_recovery_enable_tooltip(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_flags(ImGuiIO, Int) -> Unit
+
+pub fn im_gui_io_field_set_config_input_text_cursor_blink(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_input_text_enter_keep_active(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_input_trickle_event_queue(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_mac_osx_behaviors(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_memory_compact_timer(ImGuiIO, Float) -> Unit
+
+pub fn im_gui_io_field_set_config_nav_capture_keyboard(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_nav_cursor_visible_always(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_nav_cursor_visible_auto(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_nav_escape_clear_focus_item(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_nav_escape_clear_focus_window(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_nav_move_set_mouse_pos(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_nav_swap_gamepad_buttons(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_scrollbar_scroll_by_page(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_windows_copy_contents_with_ctrl_c(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_windows_move_from_title_bar_only(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_config_windows_resize_from_edges(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_ctx(ImGuiIO, ImGuiContext) -> Unit
+
+pub fn im_gui_io_field_set_delta_time(ImGuiIO, Float) -> Unit
+
+pub fn im_gui_io_field_set_display_framebuffer_scale(ImGuiIO, ImVec2) -> Unit
+
+pub fn im_gui_io_field_set_display_size(ImGuiIO, ImVec2) -> Unit
+
+pub fn im_gui_io_field_set_font_allow_user_scaling(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_font_default(ImGuiIO, ImFont) -> Unit
+
+pub fn im_gui_io_field_set_font_global_scale(ImGuiIO, Float) -> Unit
+
+pub fn im_gui_io_field_set_fonts(ImGuiIO, ImFontAtlas) -> Unit
+
+pub fn im_gui_io_field_set_framerate(ImGuiIO, Float) -> Unit
+
+pub fn im_gui_io_field_set_ini_filename(ImGuiIO, CString) -> Unit
+
+pub fn im_gui_io_field_set_ini_saving_rate(ImGuiIO, Float) -> Unit
+
+pub fn im_gui_io_field_set_input_queue_characters(ImGuiIO, ImVector_ImWchar) -> Unit
+
+pub fn im_gui_io_field_set_input_queue_surrogate(ImGuiIO, Int) -> Unit
+
+pub fn im_gui_io_field_set_key_alt(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_key_ctrl(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_key_mods(ImGuiIO, Int) -> Unit
+
+pub fn im_gui_io_field_set_key_repeat_delay(ImGuiIO, Float) -> Unit
+
+pub fn im_gui_io_field_set_key_repeat_rate(ImGuiIO, Float) -> Unit
+
+pub fn im_gui_io_field_set_key_shift(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_key_super(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_log_filename(ImGuiIO, CString) -> Unit
+
+pub fn im_gui_io_field_set_metrics_active_windows(ImGuiIO, Int) -> Unit
+
+pub fn im_gui_io_field_set_metrics_render_indices(ImGuiIO, Int) -> Unit
+
+pub fn im_gui_io_field_set_metrics_render_vertices(ImGuiIO, Int) -> Unit
+
+pub fn im_gui_io_field_set_metrics_render_windows(ImGuiIO, Int) -> Unit
+
+pub fn im_gui_io_field_set_mouse_ctrl_left_as_right_click(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_mouse_delta(ImGuiIO, ImVec2) -> Unit
+
+pub fn im_gui_io_field_set_mouse_double_click_max_dist(ImGuiIO, Float) -> Unit
+
+pub fn im_gui_io_field_set_mouse_double_click_time(ImGuiIO, Float) -> Unit
+
+pub fn im_gui_io_field_set_mouse_drag_threshold(ImGuiIO, Float) -> Unit
+
+pub fn im_gui_io_field_set_mouse_draw_cursor(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_mouse_pos(ImGuiIO, ImVec2) -> Unit
+
+pub fn im_gui_io_field_set_mouse_pos_prev(ImGuiIO, ImVec2) -> Unit
+
+pub fn im_gui_io_field_set_mouse_source(ImGuiIO, Int) -> Unit
+
+pub fn im_gui_io_field_set_mouse_wheel(ImGuiIO, Float) -> Unit
+
+pub fn im_gui_io_field_set_mouse_wheel_h(ImGuiIO, Float) -> Unit
+
+pub fn im_gui_io_field_set_mouse_wheel_request_axis_swap(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_nav_active(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_nav_visible(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_pen_pressure(ImGuiIO, Float) -> Unit
+
+pub fn im_gui_io_field_set_user_data(ImGuiIO, VoidPtr) -> Unit
+
+pub fn im_gui_io_field_set_want_capture_keyboard(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_want_capture_mouse(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_want_capture_mouse_unless_popup_close(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_want_save_ini_settings(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_want_set_mouse_pos(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_field_set_want_text_input(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_set_app_accepting_events(ImGuiIO, Bool) -> Unit
+
+pub fn im_gui_io_set_key_event_native_data(ImGuiIO, Int, Int, Int) -> Unit
+
+pub fn im_gui_io_set_key_event_native_data_ex(ImGuiIO, Int, Int, Int, Int) -> Unit
+
+pub fn im_gui_is_any_item_active() -> Bool
+
+pub fn im_gui_is_any_item_focused() -> Bool
+
+pub fn im_gui_is_any_item_hovered() -> Bool
+
+pub fn im_gui_is_any_mouse_down() -> Bool
+
+pub fn im_gui_is_item_activated() -> Bool
+
+pub fn im_gui_is_item_active() -> Bool
+
+pub fn im_gui_is_item_clicked() -> Bool
+
+pub fn im_gui_is_item_clicked_ex(Int) -> Bool
+
+pub fn im_gui_is_item_deactivated() -> Bool
+
+pub fn im_gui_is_item_deactivated_after_edit() -> Bool
+
+pub fn im_gui_is_item_edited() -> Bool
+
+pub fn im_gui_is_item_focused() -> Bool
+
+pub fn im_gui_is_item_hovered(Int) -> Bool
+
+pub fn im_gui_is_item_toggled_open() -> Bool
+
+pub fn im_gui_is_item_toggled_selection() -> Bool
+
+pub fn im_gui_is_item_visible() -> Bool
+
+pub fn im_gui_is_key_chord_pressed(Int) -> Bool
+
+pub fn im_gui_is_key_down(Int) -> Bool
+
+pub fn im_gui_is_key_pressed(Int) -> Bool
+
+pub fn im_gui_is_key_pressed_ex(Int, Bool) -> Bool
+
+pub fn im_gui_is_key_released(Int) -> Bool
+
+pub fn im_gui_is_mouse_clicked(Int) -> Bool
+
+pub fn im_gui_is_mouse_clicked_ex(Int, Bool) -> Bool
+
+pub fn im_gui_is_mouse_double_clicked(Int) -> Bool
+
+pub fn im_gui_is_mouse_down(Int) -> Bool
+
+pub fn im_gui_is_mouse_dragging(Int, Float) -> Bool
+
+pub fn im_gui_is_mouse_hovering_rect(ImVec2, ImVec2) -> Bool
+
+pub fn im_gui_is_mouse_hovering_rect_ex(ImVec2, ImVec2, Bool) -> Bool
+
+pub fn im_gui_is_mouse_pos_valid(ImVec2) -> Bool
+
+pub fn im_gui_is_mouse_released(Int) -> Bool
+
+pub fn im_gui_is_mouse_released_with_delay(Int, Float) -> Bool
+
+pub fn im_gui_is_popup_open(CString, Int) -> Bool
+
+pub fn im_gui_is_rect_visible_by_size(ImVec2) -> Bool
+
+pub fn im_gui_is_rect_visible_im_vec2_ptr(ImVec2, ImVec2) -> Bool
+
+pub fn im_gui_is_window_appearing() -> Bool
+
+pub fn im_gui_is_window_collapsed() -> Bool
+
+pub fn im_gui_is_window_focused(Int) -> Bool
+
+pub fn im_gui_is_window_hovered(Int) -> Bool
+
+pub fn im_gui_item_flags_allow_duplicate_id() -> Int
+
+pub fn im_gui_item_flags_auto_close_popups() -> Int
+
+pub fn im_gui_item_flags_button_repeat() -> Int
+
+pub fn im_gui_item_flags_disabled() -> Int
+
+pub fn im_gui_item_flags_no_nav() -> Int
+
+pub fn im_gui_item_flags_no_nav_default_focus() -> Int
+
+pub fn im_gui_item_flags_no_tab_stop() -> Int
+
+pub fn im_gui_item_flags_none() -> Int
+
+pub fn im_gui_key_0() -> Int
+
+pub fn im_gui_key_1() -> Int
+
+pub fn im_gui_key_2() -> Int
+
+pub fn im_gui_key_3() -> Int
+
+pub fn im_gui_key_4() -> Int
+
+pub fn im_gui_key_5() -> Int
+
+pub fn im_gui_key_6() -> Int
+
+pub fn im_gui_key_7() -> Int
+
+pub fn im_gui_key_8() -> Int
+
+pub fn im_gui_key_9() -> Int
+
+pub fn im_gui_key_a() -> Int
+
+pub fn im_gui_key_apostrophe() -> Int
+
+pub fn im_gui_key_app_back() -> Int
+
+pub fn im_gui_key_app_forward() -> Int
+
+pub fn im_gui_key_b() -> Int
+
+pub fn im_gui_key_backslash() -> Int
+
+pub fn im_gui_key_backspace() -> Int
+
+pub fn im_gui_key_c() -> Int
+
+pub fn im_gui_key_caps_lock() -> Int
+
+pub fn im_gui_key_comma() -> Int
+
+pub fn im_gui_key_count() -> Int
+
+pub fn im_gui_key_d() -> Int
+
+pub fn im_gui_key_data_field_get_analog_value(ImGuiKeyData) -> Float
+
+pub fn im_gui_key_data_field_get_down(ImGuiKeyData) -> Bool
+
+pub fn im_gui_key_data_field_get_down_duration(ImGuiKeyData) -> Float
+
+pub fn im_gui_key_data_field_get_down_duration_prev(ImGuiKeyData) -> Float
+
+pub fn im_gui_key_data_field_set_analog_value(ImGuiKeyData, Float) -> Unit
+
+pub fn im_gui_key_data_field_set_down(ImGuiKeyData, Bool) -> Unit
+
+pub fn im_gui_key_data_field_set_down_duration(ImGuiKeyData, Float) -> Unit
+
+pub fn im_gui_key_data_field_set_down_duration_prev(ImGuiKeyData, Float) -> Unit
+
+pub fn im_gui_key_delete() -> Int
+
+pub fn im_gui_key_down_arrow() -> Int
+
+pub fn im_gui_key_e() -> Int
+
+pub fn im_gui_key_end() -> Int
+
+pub fn im_gui_key_enter() -> Int
+
+pub fn im_gui_key_equal() -> Int
+
+pub fn im_gui_key_escape() -> Int
+
+pub fn im_gui_key_f() -> Int
+
+pub fn im_gui_key_f1() -> Int
+
+pub fn im_gui_key_f10() -> Int
+
+pub fn im_gui_key_f11() -> Int
+
+pub fn im_gui_key_f12() -> Int
+
+pub fn im_gui_key_f13() -> Int
+
+pub fn im_gui_key_f14() -> Int
+
+pub fn im_gui_key_f15() -> Int
+
+pub fn im_gui_key_f16() -> Int
+
+pub fn im_gui_key_f17() -> Int
+
+pub fn im_gui_key_f18() -> Int
+
+pub fn im_gui_key_f19() -> Int
+
+pub fn im_gui_key_f2() -> Int
+
+pub fn im_gui_key_f20() -> Int
+
+pub fn im_gui_key_f21() -> Int
+
+pub fn im_gui_key_f22() -> Int
+
+pub fn im_gui_key_f23() -> Int
+
+pub fn im_gui_key_f24() -> Int
+
+pub fn im_gui_key_f3() -> Int
+
+pub fn im_gui_key_f4() -> Int
+
+pub fn im_gui_key_f5() -> Int
+
+pub fn im_gui_key_f6() -> Int
+
+pub fn im_gui_key_f7() -> Int
+
+pub fn im_gui_key_f8() -> Int
+
+pub fn im_gui_key_f9() -> Int
+
+pub fn im_gui_key_g() -> Int
+
+pub fn im_gui_key_gamepad_back() -> Int
+
+pub fn im_gui_key_gamepad_dpad_down() -> Int
+
+pub fn im_gui_key_gamepad_dpad_left() -> Int
+
+pub fn im_gui_key_gamepad_dpad_right() -> Int
+
+pub fn im_gui_key_gamepad_dpad_up() -> Int
+
+pub fn im_gui_key_gamepad_face_down() -> Int
+
+pub fn im_gui_key_gamepad_face_left() -> Int
+
+pub fn im_gui_key_gamepad_face_right() -> Int
+
+pub fn im_gui_key_gamepad_face_up() -> Int
+
+pub fn im_gui_key_gamepad_l1() -> Int
+
+pub fn im_gui_key_gamepad_l2() -> Int
+
+pub fn im_gui_key_gamepad_l3() -> Int
+
+pub fn im_gui_key_gamepad_l_stick_down() -> Int
+
+pub fn im_gui_key_gamepad_l_stick_left() -> Int
+
+pub fn im_gui_key_gamepad_l_stick_right() -> Int
+
+pub fn im_gui_key_gamepad_l_stick_up() -> Int
+
+pub fn im_gui_key_gamepad_r1() -> Int
+
+pub fn im_gui_key_gamepad_r2() -> Int
+
+pub fn im_gui_key_gamepad_r3() -> Int
+
+pub fn im_gui_key_gamepad_r_stick_down() -> Int
+
+pub fn im_gui_key_gamepad_r_stick_left() -> Int
+
+pub fn im_gui_key_gamepad_r_stick_right() -> Int
+
+pub fn im_gui_key_gamepad_r_stick_up() -> Int
+
+pub fn im_gui_key_gamepad_start() -> Int
+
+pub fn im_gui_key_grave_accent() -> Int
+
+pub fn im_gui_key_h() -> Int
+
+pub fn im_gui_key_home() -> Int
+
+pub fn im_gui_key_i() -> Int
+
+pub fn im_gui_key_insert() -> Int
+
+pub fn im_gui_key_j() -> Int
+
+pub fn im_gui_key_k() -> Int
+
+pub fn im_gui_key_keypad0() -> Int
+
+pub fn im_gui_key_keypad1() -> Int
+
+pub fn im_gui_key_keypad2() -> Int
+
+pub fn im_gui_key_keypad3() -> Int
+
+pub fn im_gui_key_keypad4() -> Int
+
+pub fn im_gui_key_keypad5() -> Int
+
+pub fn im_gui_key_keypad6() -> Int
+
+pub fn im_gui_key_keypad7() -> Int
+
+pub fn im_gui_key_keypad8() -> Int
+
+pub fn im_gui_key_keypad9() -> Int
+
+pub fn im_gui_key_keypad_add() -> Int
+
+pub fn im_gui_key_keypad_decimal() -> Int
+
+pub fn im_gui_key_keypad_divide() -> Int
+
+pub fn im_gui_key_keypad_enter() -> Int
+
+pub fn im_gui_key_keypad_equal() -> Int
+
+pub fn im_gui_key_keypad_multiply() -> Int
+
+pub fn im_gui_key_keypad_subtract() -> Int
+
+pub fn im_gui_key_l() -> Int
+
+pub fn im_gui_key_left_alt() -> Int
+
+pub fn im_gui_key_left_arrow() -> Int
+
+pub fn im_gui_key_left_bracket() -> Int
+
+pub fn im_gui_key_left_ctrl() -> Int
+
+pub fn im_gui_key_left_shift() -> Int
+
+pub fn im_gui_key_left_super() -> Int
+
+pub fn im_gui_key_m() -> Int
+
+pub fn im_gui_key_menu() -> Int
+
+pub fn im_gui_key_minus() -> Int
+
+pub fn im_gui_key_mouse_left() -> Int
+
+pub fn im_gui_key_mouse_middle() -> Int
+
+pub fn im_gui_key_mouse_right() -> Int
+
+pub fn im_gui_key_mouse_wheel_x() -> Int
+
+pub fn im_gui_key_mouse_wheel_y() -> Int
+
+pub fn im_gui_key_mouse_x1() -> Int
+
+pub fn im_gui_key_mouse_x2() -> Int
+
+pub fn im_gui_key_n() -> Int
+
+pub fn im_gui_key_named_key_begin() -> Int
+
+pub fn im_gui_key_named_key_count() -> Int
+
+pub fn im_gui_key_named_key_end() -> Int
+
+pub fn im_gui_key_none() -> Int
+
+pub fn im_gui_key_num_lock() -> Int
+
+pub fn im_gui_key_o() -> Int
+
+pub fn im_gui_key_oem102() -> Int
+
+pub fn im_gui_key_p() -> Int
+
+pub fn im_gui_key_page_down() -> Int
+
+pub fn im_gui_key_page_up() -> Int
+
+pub fn im_gui_key_pause() -> Int
+
+pub fn im_gui_key_period() -> Int
+
+pub fn im_gui_key_print_screen() -> Int
+
+pub fn im_gui_key_q() -> Int
+
+pub fn im_gui_key_r() -> Int
+
+pub fn im_gui_key_reserved_for_mod_alt() -> Int
+
+pub fn im_gui_key_reserved_for_mod_ctrl() -> Int
+
+pub fn im_gui_key_reserved_for_mod_shift() -> Int
+
+pub fn im_gui_key_reserved_for_mod_super() -> Int
+
+pub fn im_gui_key_right_alt() -> Int
+
+pub fn im_gui_key_right_arrow() -> Int
+
+pub fn im_gui_key_right_bracket() -> Int
+
+pub fn im_gui_key_right_ctrl() -> Int
+
+pub fn im_gui_key_right_shift() -> Int
+
+pub fn im_gui_key_right_super() -> Int
+
+pub fn im_gui_key_s() -> Int
+
+pub fn im_gui_key_scroll_lock() -> Int
+
+pub fn im_gui_key_semicolon() -> Int
+
+pub fn im_gui_key_slash() -> Int
+
+pub fn im_gui_key_space() -> Int
+
+pub fn im_gui_key_t() -> Int
+
+pub fn im_gui_key_tab() -> Int
+
+pub fn im_gui_key_u() -> Int
+
+pub fn im_gui_key_up_arrow() -> Int
+
+pub fn im_gui_key_v() -> Int
+
+pub fn im_gui_key_w() -> Int
+
+pub fn im_gui_key_x() -> Int
+
+pub fn im_gui_key_y() -> Int
+
+pub fn im_gui_key_z() -> Int
+
+pub fn im_gui_label_text(CString, CString) -> Unit
+
+pub fn im_gui_label_text_unformatted(CString, CString) -> Unit
+
+pub fn im_gui_label_text_v(CString, CString, VaList) -> Unit
+
+pub fn im_gui_list_box(CString, IntPtr, CStringPtr, Int, Int) -> Bool
+
+pub fn im_gui_list_box_callback(CString, IntPtr, FunctionPtr, VoidPtr, Int) -> Bool
+
+pub fn im_gui_list_box_callback_ex(CString, IntPtr, FunctionPtr, VoidPtr, Int, Int) -> Bool
+
+pub fn im_gui_list_clipper_begin(ImGuiListClipper, Int, Float) -> Unit
+
+pub fn im_gui_list_clipper_end(ImGuiListClipper) -> Unit
+
+pub fn im_gui_list_clipper_field_get_ctx(ImGuiListClipper) -> ImGuiContext
+
+pub fn im_gui_list_clipper_field_get_display_end(ImGuiListClipper) -> Int
+
+pub fn im_gui_list_clipper_field_get_display_start(ImGuiListClipper) -> Int
+
+pub fn im_gui_list_clipper_field_get_flags(ImGuiListClipper) -> Int
+
+pub fn im_gui_list_clipper_field_get_items_count(ImGuiListClipper) -> Int
+
+pub fn im_gui_list_clipper_field_get_items_height(ImGuiListClipper) -> Float
+
+pub fn im_gui_list_clipper_field_get_start_pos_y(ImGuiListClipper) -> Double
+
+pub fn im_gui_list_clipper_field_get_start_seek_offset_y(ImGuiListClipper) -> Double
+
+pub fn im_gui_list_clipper_field_get_temp_data(ImGuiListClipper) -> VoidPtr
+
+pub fn im_gui_list_clipper_field_get_user_index(ImGuiListClipper) -> Int
+
+pub fn im_gui_list_clipper_field_set_ctx(ImGuiListClipper, ImGuiContext) -> Unit
+
+pub fn im_gui_list_clipper_field_set_display_end(ImGuiListClipper, Int) -> Unit
+
+pub fn im_gui_list_clipper_field_set_display_start(ImGuiListClipper, Int) -> Unit
+
+pub fn im_gui_list_clipper_field_set_flags(ImGuiListClipper, Int) -> Unit
+
+pub fn im_gui_list_clipper_field_set_items_count(ImGuiListClipper, Int) -> Unit
+
+pub fn im_gui_list_clipper_field_set_items_height(ImGuiListClipper, Float) -> Unit
+
+pub fn im_gui_list_clipper_field_set_start_pos_y(ImGuiListClipper, Double) -> Unit
+
+pub fn im_gui_list_clipper_field_set_start_seek_offset_y(ImGuiListClipper, Double) -> Unit
+
+pub fn im_gui_list_clipper_field_set_temp_data(ImGuiListClipper, VoidPtr) -> Unit
+
+pub fn im_gui_list_clipper_field_set_user_index(ImGuiListClipper, Int) -> Unit
+
+pub fn im_gui_list_clipper_flags_no_set_table_row_counters() -> Int
+
+pub fn im_gui_list_clipper_flags_none() -> Int
+
+pub fn im_gui_list_clipper_include_item_by_index(ImGuiListClipper, Int) -> Unit
+
+pub fn im_gui_list_clipper_include_items_by_index(ImGuiListClipper, Int, Int) -> Unit
+
+pub fn im_gui_list_clipper_seek_cursor_for_item(ImGuiListClipper, Int) -> Unit
+
+pub fn im_gui_list_clipper_step(ImGuiListClipper) -> Bool
+
+pub fn im_gui_load_ini_settings_from_disk(CString) -> Unit
+
+pub fn im_gui_load_ini_settings_from_memory(CString, UInt64) -> Unit
+
+pub fn im_gui_log_buttons() -> Unit
+
+pub fn im_gui_log_finish() -> Unit
+
+pub fn im_gui_log_text(CString) -> Unit
+
+pub fn im_gui_log_text_unformatted(CString) -> Unit
+
+pub fn im_gui_log_text_v(CString, VaList) -> Unit
+
+pub fn im_gui_log_to_clipboard(Int) -> Unit
+
+pub fn im_gui_log_to_file(Int, CString) -> Unit
+
+pub fn im_gui_log_to_tty(Int) -> Unit
+
+pub fn im_gui_mem_alloc(UInt64) -> VoidPtr
+
+pub fn im_gui_mem_free(VoidPtr) -> Unit
+
+pub fn im_gui_menu_item(CString) -> Bool
+
+pub fn im_gui_menu_item_bool_ptr(CString, CString, BoolPtr, Bool) -> Bool
+
+pub fn im_gui_menu_item_ex(CString, CString, Bool, Bool) -> Bool
+
+pub fn im_gui_mod_alt() -> Int
+
+pub fn im_gui_mod_ctrl() -> Int
+
+pub fn im_gui_mod_mask() -> Int
+
+pub fn im_gui_mod_none() -> Int
+
+pub fn im_gui_mod_shift() -> Int
+
+pub fn im_gui_mod_shortcut() -> Int
+
+pub fn im_gui_mod_super() -> Int
+
+pub fn im_gui_mouse_button_count() -> Int
+
+pub fn im_gui_mouse_button_left() -> Int
+
+pub fn im_gui_mouse_button_middle() -> Int
+
+pub fn im_gui_mouse_button_right() -> Int
+
+pub fn im_gui_mouse_cursor_arrow() -> Int
+
+pub fn im_gui_mouse_cursor_count() -> Int
+
+pub fn im_gui_mouse_cursor_hand() -> Int
+
+pub fn im_gui_mouse_cursor_none() -> Int
+
+pub fn im_gui_mouse_cursor_not_allowed() -> Int
+
+pub fn im_gui_mouse_cursor_progress() -> Int
+
+pub fn im_gui_mouse_cursor_resize_all() -> Int
+
+pub fn im_gui_mouse_cursor_resize_ew() -> Int
+
+pub fn im_gui_mouse_cursor_resize_nesw() -> Int
+
+pub fn im_gui_mouse_cursor_resize_ns() -> Int
+
+pub fn im_gui_mouse_cursor_resize_nwse() -> Int
+
+pub fn im_gui_mouse_cursor_text_input() -> Int
+
+pub fn im_gui_mouse_cursor_wait() -> Int
+
+pub fn im_gui_mouse_source_count() -> Int
+
+pub fn im_gui_mouse_source_mouse() -> Int
+
+pub fn im_gui_mouse_source_pen() -> Int
+
+pub fn im_gui_mouse_source_touch_screen() -> Int
+
+pub fn im_gui_multi_select_flags_box_select1d() -> Int
+
+pub fn im_gui_multi_select_flags_box_select2d() -> Int
+
+pub fn im_gui_multi_select_flags_box_select_no_scroll() -> Int
+
+pub fn im_gui_multi_select_flags_clear_on_click_void() -> Int
+
+pub fn im_gui_multi_select_flags_clear_on_escape() -> Int
+
+pub fn im_gui_multi_select_flags_nav_wrap_x() -> Int
+
+pub fn im_gui_multi_select_flags_no_auto_clear() -> Int
+
+pub fn im_gui_multi_select_flags_no_auto_clear_on_reselect() -> Int
+
+pub fn im_gui_multi_select_flags_no_auto_select() -> Int
+
+pub fn im_gui_multi_select_flags_no_range_select() -> Int
+
+pub fn im_gui_multi_select_flags_no_select_all() -> Int
+
+pub fn im_gui_multi_select_flags_no_select_on_right_click() -> Int
+
+pub fn im_gui_multi_select_flags_none() -> Int
+
+pub fn im_gui_multi_select_flags_scope_rect() -> Int
+
+pub fn im_gui_multi_select_flags_scope_window() -> Int
+
+pub fn im_gui_multi_select_flags_select_on_auto() -> Int
+
+pub fn im_gui_multi_select_flags_select_on_click() -> Int
+
+pub fn im_gui_multi_select_flags_select_on_click_always() -> Int
+
+pub fn im_gui_multi_select_flags_select_on_click_release() -> Int
+
+pub fn im_gui_multi_select_flags_select_on_mask() -> Int
+
+pub fn im_gui_multi_select_flags_single_select() -> Int
+
+pub fn im_gui_multi_select_io_field_get_items_count(ImGuiMultiSelectIO) -> Int
+
+pub fn im_gui_multi_select_io_field_get_nav_id_item(ImGuiMultiSelectIO) -> Int64
+
+pub fn im_gui_multi_select_io_field_get_nav_id_selected(ImGuiMultiSelectIO) -> Bool
+
+pub fn im_gui_multi_select_io_field_get_range_src_item(ImGuiMultiSelectIO) -> Int64
+
+pub fn im_gui_multi_select_io_field_get_range_src_reset(ImGuiMultiSelectIO) -> Bool
+
+pub fn im_gui_multi_select_io_field_get_requests(ImGuiMultiSelectIO) -> ImVector_ImGuiSelectionRequest
+
+pub fn im_gui_multi_select_io_field_set_items_count(ImGuiMultiSelectIO, Int) -> Unit
+
+pub fn im_gui_multi_select_io_field_set_nav_id_item(ImGuiMultiSelectIO, Int64) -> Unit
+
+pub fn im_gui_multi_select_io_field_set_nav_id_selected(ImGuiMultiSelectIO, Bool) -> Unit
+
+pub fn im_gui_multi_select_io_field_set_range_src_item(ImGuiMultiSelectIO, Int64) -> Unit
+
+pub fn im_gui_multi_select_io_field_set_range_src_reset(ImGuiMultiSelectIO, Bool) -> Unit
+
+pub fn im_gui_multi_select_io_field_set_requests(ImGuiMultiSelectIO, ImVector_ImGuiSelectionRequest) -> Unit
+
+pub fn im_gui_new_frame() -> Unit
+
+pub fn im_gui_new_line() -> Unit
+
+pub fn im_gui_next_column() -> Unit
+
+pub fn im_gui_open_popup(CString, Int) -> Unit
+
+pub fn im_gui_open_popup_id(UInt, Int) -> Unit
+
+pub fn im_gui_open_popup_on_item_click(CString, Int) -> Unit
+
+pub fn im_gui_payload_clear(ImGuiPayload) -> Unit
+
+pub fn im_gui_payload_field_get_data(ImGuiPayload) -> VoidPtr
+
+pub fn im_gui_payload_field_get_data_frame_count(ImGuiPayload) -> Int
+
+pub fn im_gui_payload_field_get_data_size(ImGuiPayload) -> Int
+
+pub fn im_gui_payload_field_get_data_type(ImGuiPayload) -> CString
+
+pub fn im_gui_payload_field_get_delivery(ImGuiPayload) -> Bool
+
+pub fn im_gui_payload_field_get_preview(ImGuiPayload) -> Bool
+
+pub fn im_gui_payload_field_get_source_id(ImGuiPayload) -> UInt
+
+pub fn im_gui_payload_field_get_source_parent_id(ImGuiPayload) -> UInt
+
+pub fn im_gui_payload_field_set_data(ImGuiPayload, VoidPtr) -> Unit
+
+pub fn im_gui_payload_field_set_data_frame_count(ImGuiPayload, Int) -> Unit
+
+pub fn im_gui_payload_field_set_data_size(ImGuiPayload, Int) -> Unit
+
+pub fn im_gui_payload_field_set_delivery(ImGuiPayload, Bool) -> Unit
+
+pub fn im_gui_payload_field_set_preview(ImGuiPayload, Bool) -> Unit
+
+pub fn im_gui_payload_field_set_source_id(ImGuiPayload, UInt) -> Unit
+
+pub fn im_gui_payload_field_set_source_parent_id(ImGuiPayload, UInt) -> Unit
+
+pub fn im_gui_payload_is_data_type(ImGuiPayload, CString) -> Bool
+
+pub fn im_gui_payload_is_delivery(ImGuiPayload) -> Bool
+
+pub fn im_gui_payload_is_preview(ImGuiPayload) -> Bool
+
+pub fn im_gui_platform_ime_data_field_get_input_line_height(ImGuiPlatformImeData) -> Float
+
+pub fn im_gui_platform_ime_data_field_get_input_pos(ImGuiPlatformImeData) -> ImVec2
+
+pub fn im_gui_platform_ime_data_field_get_viewport_id(ImGuiPlatformImeData) -> UInt
+
+pub fn im_gui_platform_ime_data_field_get_want_text_input(ImGuiPlatformImeData) -> Bool
+
+pub fn im_gui_platform_ime_data_field_get_want_visible(ImGuiPlatformImeData) -> Bool
+
+pub fn im_gui_platform_ime_data_field_set_input_line_height(ImGuiPlatformImeData, Float) -> Unit
+
+pub fn im_gui_platform_ime_data_field_set_input_pos(ImGuiPlatformImeData, ImVec2) -> Unit
+
+pub fn im_gui_platform_ime_data_field_set_viewport_id(ImGuiPlatformImeData, UInt) -> Unit
+
+pub fn im_gui_platform_ime_data_field_set_want_text_input(ImGuiPlatformImeData, Bool) -> Unit
+
+pub fn im_gui_platform_ime_data_field_set_want_visible(ImGuiPlatformImeData, Bool) -> Unit
+
+pub fn im_gui_platform_io_clear_platform_handlers(ImGuiPlatformIO) -> Unit
+
+pub fn im_gui_platform_io_clear_renderer_handlers(ImGuiPlatformIO) -> Unit
+
+pub fn im_gui_platform_io_field_get_draw_callback_reset_render_state(ImGuiPlatformIO) -> FunctionPtr
+
+pub fn im_gui_platform_io_field_get_draw_callback_set_sampler_linear(ImGuiPlatformIO) -> FunctionPtr
+
+pub fn im_gui_platform_io_field_get_draw_callback_set_sampler_nearest(ImGuiPlatformIO) -> FunctionPtr
+
+pub fn im_gui_platform_io_field_get_platform_clipboard_user_data(ImGuiPlatformIO) -> VoidPtr
+
+pub fn im_gui_platform_io_field_get_platform_get_clipboard_text_fn(ImGuiPlatformIO) -> FunctionPtr
+
+pub fn im_gui_platform_io_field_get_platform_ime_user_data(ImGuiPlatformIO) -> VoidPtr
+
+pub fn im_gui_platform_io_field_get_platform_locale_decimal_point(ImGuiPlatformIO) -> Int
+
+pub fn im_gui_platform_io_field_get_platform_open_in_shell_fn(ImGuiPlatformIO) -> FunctionPtr
+
+pub fn im_gui_platform_io_field_get_platform_open_in_shell_user_data(ImGuiPlatformIO) -> VoidPtr
+
+pub fn im_gui_platform_io_field_get_platform_set_clipboard_text_fn(ImGuiPlatformIO) -> FunctionPtr
+
+pub fn im_gui_platform_io_field_get_platform_set_ime_data_fn(ImGuiPlatformIO) -> FunctionPtr
+
+pub fn im_gui_platform_io_field_get_renderer_render_state(ImGuiPlatformIO) -> VoidPtr
+
+pub fn im_gui_platform_io_field_get_renderer_texture_max_height(ImGuiPlatformIO) -> Int
+
+pub fn im_gui_platform_io_field_get_renderer_texture_max_width(ImGuiPlatformIO) -> Int
+
+pub fn im_gui_platform_io_field_get_textures(ImGuiPlatformIO) -> ImVector_ImTextureDataPtr
+
+pub fn im_gui_platform_io_field_set_platform_clipboard_user_data(ImGuiPlatformIO, VoidPtr) -> Unit
+
+pub fn im_gui_platform_io_field_set_platform_ime_user_data(ImGuiPlatformIO, VoidPtr) -> Unit
+
+pub fn im_gui_platform_io_field_set_platform_locale_decimal_point(ImGuiPlatformIO, Int) -> Unit
+
+pub fn im_gui_platform_io_field_set_platform_open_in_shell_user_data(ImGuiPlatformIO, VoidPtr) -> Unit
+
+pub fn im_gui_platform_io_field_set_renderer_render_state(ImGuiPlatformIO, VoidPtr) -> Unit
+
+pub fn im_gui_platform_io_field_set_renderer_texture_max_height(ImGuiPlatformIO, Int) -> Unit
+
+pub fn im_gui_platform_io_field_set_renderer_texture_max_width(ImGuiPlatformIO, Int) -> Unit
+
+pub fn im_gui_platform_io_field_set_textures(ImGuiPlatformIO, ImVector_ImTextureDataPtr) -> Unit
+
+pub fn im_gui_plot_histogram(CString, FloatPtr, Int) -> Unit
+
+pub fn im_gui_plot_histogram_callback(CString, FunctionPtr, VoidPtr, Int) -> Unit
+
+pub fn im_gui_plot_histogram_callback_ex(CString, FunctionPtr, VoidPtr, Int, Int, CString, Float, Float, ImVec2) -> Unit
+
+pub fn im_gui_plot_histogram_ex(CString, FloatPtr, Int, Int, CString, Float, Float, ImVec2, Int) -> Unit
+
+pub fn im_gui_plot_lines(CString, FloatPtr, Int) -> Unit
+
+pub fn im_gui_plot_lines_callback(CString, FunctionPtr, VoidPtr, Int) -> Unit
+
+pub fn im_gui_plot_lines_callback_ex(CString, FunctionPtr, VoidPtr, Int, Int, CString, Float, Float, ImVec2) -> Unit
+
+pub fn im_gui_plot_lines_ex(CString, FloatPtr, Int, Int, CString, Float, Float, ImVec2, Int) -> Unit
+
+pub fn im_gui_pop_button_repeat() -> Unit
+
+pub fn im_gui_pop_clip_rect() -> Unit
+
+pub fn im_gui_pop_font() -> Unit
+
+pub fn im_gui_pop_id() -> Unit
+
+pub fn im_gui_pop_item_flag() -> Unit
+
+pub fn im_gui_pop_item_width() -> Unit
+
+pub fn im_gui_pop_style_color() -> Unit
+
+pub fn im_gui_pop_style_color_ex(Int) -> Unit
+
+pub fn im_gui_pop_style_var() -> Unit
+
+pub fn im_gui_pop_style_var_ex(Int) -> Unit
+
+pub fn im_gui_pop_tab_stop() -> Unit
+
+pub fn im_gui_pop_text_wrap_pos() -> Unit
+
+pub fn im_gui_popup_flags_any_popup() -> Int
+
+pub fn im_gui_popup_flags_any_popup_id() -> Int
+
+pub fn im_gui_popup_flags_any_popup_level() -> Int
+
+pub fn im_gui_popup_flags_invalid_mask() -> Int
+
+pub fn im_gui_popup_flags_mouse_button_left() -> Int
+
+pub fn im_gui_popup_flags_mouse_button_mask() -> Int
+
+pub fn im_gui_popup_flags_mouse_button_middle() -> Int
+
+pub fn im_gui_popup_flags_mouse_button_right() -> Int
+
+pub fn im_gui_popup_flags_mouse_button_shift() -> Int
+
+pub fn im_gui_popup_flags_no_open_over_existing_popup() -> Int
+
+pub fn im_gui_popup_flags_no_open_over_items() -> Int
+
+pub fn im_gui_popup_flags_no_reopen() -> Int
+
+pub fn im_gui_popup_flags_none() -> Int
+
+pub fn im_gui_progress_bar(Float, ImVec2, CString) -> Unit
+
+pub fn im_gui_push_button_repeat(Bool) -> Unit
+
+pub fn im_gui_push_clip_rect(ImVec2, ImVec2, Bool) -> Unit
+
+pub fn im_gui_push_font(ImFont) -> Unit
+
+pub fn im_gui_push_font_float(ImFont, Float) -> Unit
+
+pub fn im_gui_push_id(CString) -> Unit
+
+pub fn im_gui_push_id_int(Int) -> Unit
+
+pub fn im_gui_push_id_ptr(VoidPtr) -> Unit
+
+pub fn im_gui_push_id_str(CString, CString) -> Unit
+
+pub fn im_gui_push_item_flag(Int, Bool) -> Unit
+
+pub fn im_gui_push_item_width(Float) -> Unit
+
+pub fn im_gui_push_style_color(Int, UInt) -> Unit
+
+pub fn im_gui_push_style_color_im_vec4_ptr(Int, ImVec4) -> Unit
+
+pub fn im_gui_push_style_var(Int, Float) -> Unit
+
+pub fn im_gui_push_style_var_im_vec2_ptr(Int, ImVec2) -> Unit
+
+pub fn im_gui_push_style_var_x(Int, Float) -> Unit
+
+pub fn im_gui_push_style_var_y(Int, Float) -> Unit
+
+pub fn im_gui_push_tab_stop(Bool) -> Unit
+
+pub fn im_gui_push_text_wrap_pos(Float) -> Unit
+
+pub fn im_gui_radio_button(CString, Bool) -> Bool
+
+pub fn im_gui_radio_button_int_ptr(CString, IntPtr, Int) -> Bool
+
+pub fn im_gui_render() -> Unit
+
+pub fn im_gui_reset_mouse_drag_delta() -> Unit
+
+pub fn im_gui_reset_mouse_drag_delta_ex(Int) -> Unit
+
+pub fn im_gui_same_line() -> Unit
+
+pub fn im_gui_same_line_ex(Float, Float) -> Unit
+
+pub fn im_gui_save_ini_settings_to_disk(CString) -> Unit
+
+pub fn im_gui_save_ini_settings_to_memory(SizeTPtr) -> CString
+
+pub fn im_gui_selectable(CString) -> Bool
+
+pub fn im_gui_selectable_bool_ptr(CString, BoolPtr, Int) -> Bool
+
+pub fn im_gui_selectable_bool_ptr_ex(CString, BoolPtr, Int, ImVec2) -> Bool
+
+pub fn im_gui_selectable_ex(CString, Bool, Int, ImVec2) -> Bool
+
+pub fn im_gui_selectable_flags_allow_double_click() -> Int
+
+pub fn im_gui_selectable_flags_allow_overlap() -> Int
+
+pub fn im_gui_selectable_flags_disabled() -> Int
+
+pub fn im_gui_selectable_flags_dont_close_popups() -> Int
+
+pub fn im_gui_selectable_flags_highlight() -> Int
+
+pub fn im_gui_selectable_flags_no_auto_close_popups() -> Int
+
+pub fn im_gui_selectable_flags_none() -> Int
+
+pub fn im_gui_selectable_flags_select_on_nav() -> Int
+
+pub fn im_gui_selectable_flags_span_all_columns() -> Int
+
+pub fn im_gui_selection_basic_storage_apply_requests(ImGuiSelectionBasicStorage, ImGuiMultiSelectIO) -> Unit
+
+pub fn im_gui_selection_basic_storage_clear(ImGuiSelectionBasicStorage) -> Unit
+
+pub fn im_gui_selection_basic_storage_contains(ImGuiSelectionBasicStorage, UInt) -> Bool
+
+pub fn im_gui_selection_basic_storage_field_get_adapter_index_to_storage_id(ImGuiSelectionBasicStorage) -> FunctionPtr
+
+pub fn im_gui_selection_basic_storage_field_get_preserve_order(ImGuiSelectionBasicStorage) -> Bool
+
+pub fn im_gui_selection_basic_storage_field_get_selection_order(ImGuiSelectionBasicStorage) -> Int
+
+pub fn im_gui_selection_basic_storage_field_get_size(ImGuiSelectionBasicStorage) -> Int
+
+pub fn im_gui_selection_basic_storage_field_get_storage(ImGuiSelectionBasicStorage) -> ImGuiStorage
+
+pub fn im_gui_selection_basic_storage_field_get_user_data(ImGuiSelectionBasicStorage) -> VoidPtr
+
+pub fn im_gui_selection_basic_storage_field_set_preserve_order(ImGuiSelectionBasicStorage, Bool) -> Unit
+
+pub fn im_gui_selection_basic_storage_field_set_selection_order(ImGuiSelectionBasicStorage, Int) -> Unit
+
+pub fn im_gui_selection_basic_storage_field_set_size(ImGuiSelectionBasicStorage, Int) -> Unit
+
+pub fn im_gui_selection_basic_storage_field_set_storage(ImGuiSelectionBasicStorage, ImGuiStorage) -> Unit
+
+pub fn im_gui_selection_basic_storage_field_set_user_data(ImGuiSelectionBasicStorage, VoidPtr) -> Unit
+
+pub fn im_gui_selection_basic_storage_get_next_selected_item(ImGuiSelectionBasicStorage, VoidPtrPtr, ImGuiIDPtr) -> Bool
+
+pub fn im_gui_selection_basic_storage_get_storage_id_from_index(ImGuiSelectionBasicStorage, Int) -> UInt
+
+pub fn im_gui_selection_basic_storage_set_item_selected(ImGuiSelectionBasicStorage, UInt, Bool) -> Unit
+
+pub fn im_gui_selection_basic_storage_swap(ImGuiSelectionBasicStorage, ImGuiSelectionBasicStorage) -> Unit
+
+pub fn im_gui_selection_external_storage_apply_requests(ImGuiSelectionExternalStorage, ImGuiMultiSelectIO) -> Unit
+
+pub fn im_gui_selection_external_storage_field_get_adapter_set_item_selected(ImGuiSelectionExternalStorage) -> FunctionPtr
+
+pub fn im_gui_selection_external_storage_field_get_user_data(ImGuiSelectionExternalStorage) -> VoidPtr
+
+pub fn im_gui_selection_external_storage_field_set_user_data(ImGuiSelectionExternalStorage, VoidPtr) -> Unit
+
+pub fn im_gui_selection_request_field_get_imgui_type(ImGuiSelectionRequest) -> ImGuiSelectionRequestType
+
+pub fn im_gui_selection_request_field_get_range_direction(ImGuiSelectionRequest) -> Int
+
+pub fn im_gui_selection_request_field_get_range_first_item(ImGuiSelectionRequest) -> Int64
+
+pub fn im_gui_selection_request_field_get_range_last_item(ImGuiSelectionRequest) -> Int64
+
+pub fn im_gui_selection_request_field_get_selected(ImGuiSelectionRequest) -> Bool
+
+pub fn im_gui_selection_request_field_set_imgui_type(ImGuiSelectionRequest, ImGuiSelectionRequestType) -> Unit
+
+pub fn im_gui_selection_request_field_set_range_direction(ImGuiSelectionRequest, Int) -> Unit
+
+pub fn im_gui_selection_request_field_set_range_first_item(ImGuiSelectionRequest, Int64) -> Unit
+
+pub fn im_gui_selection_request_field_set_range_last_item(ImGuiSelectionRequest, Int64) -> Unit
+
+pub fn im_gui_selection_request_field_set_selected(ImGuiSelectionRequest, Bool) -> Unit
+
+pub fn im_gui_selection_request_type_none() -> Int
+
+pub fn im_gui_selection_request_type_set_all() -> Int
+
+pub fn im_gui_selection_request_type_set_range() -> Int
+
+pub fn im_gui_separator() -> Unit
+
+pub fn im_gui_separator_text(CString) -> Unit
+
+pub fn im_gui_set_allocator_functions(ImGuiMemAllocFunc, ImGuiMemFreeFunc, VoidPtr) -> Unit
+
+pub fn im_gui_set_clipboard_text(CString) -> Unit
+
+pub fn im_gui_set_color_edit_options(Int) -> Unit
+
+pub fn im_gui_set_column_offset(Int, Float) -> Unit
+
+pub fn im_gui_set_column_width(Int, Float) -> Unit
+
+pub fn im_gui_set_current_context(ImGuiContext) -> Unit
+
+pub fn im_gui_set_cursor_pos(ImVec2) -> Unit
+
+pub fn im_gui_set_cursor_pos_x(Float) -> Unit
+
+pub fn im_gui_set_cursor_pos_y(Float) -> Unit
+
+pub fn im_gui_set_cursor_screen_pos(ImVec2) -> Unit
+
+pub fn im_gui_set_drag_drop_payload(CString, VoidPtr, UInt64, Int) -> Bool
+
+pub fn im_gui_set_item_default_focus() -> Unit
+
+pub fn im_gui_set_item_key_owner(Int) -> Bool
+
+pub fn im_gui_set_item_tooltip(CString) -> Unit
+
+pub fn im_gui_set_item_tooltip_unformatted(CString) -> Unit
+
+pub fn im_gui_set_item_tooltip_v(CString, VaList) -> Unit
+
+pub fn im_gui_set_keyboard_focus_here() -> Unit
+
+pub fn im_gui_set_keyboard_focus_here_ex(Int) -> Unit
+
+pub fn im_gui_set_mouse_cursor(Int) -> Unit
+
+pub fn im_gui_set_nav_cursor_visible(Bool) -> Unit
+
+pub fn im_gui_set_next_frame_want_capture_keyboard(Bool) -> Unit
+
+pub fn im_gui_set_next_frame_want_capture_mouse(Bool) -> Unit
+
+pub fn im_gui_set_next_item_allow_overlap() -> Unit
+
+pub fn im_gui_set_next_item_open(Bool, Int) -> Unit
+
+pub fn im_gui_set_next_item_selection_user_data(Int64) -> Unit
+
+pub fn im_gui_set_next_item_shortcut(Int, Int) -> Unit
+
+pub fn im_gui_set_next_item_storage_id(UInt) -> Unit
+
+pub fn im_gui_set_next_item_width(Float) -> Unit
+
+pub fn im_gui_set_next_window_bg_alpha(Float) -> Unit
+
+pub fn im_gui_set_next_window_collapsed(Bool, Int) -> Unit
+
+pub fn im_gui_set_next_window_content_size(ImVec2) -> Unit
+
+pub fn im_gui_set_next_window_focus() -> Unit
+
+pub fn im_gui_set_next_window_pos(ImVec2, Int) -> Unit
+
+pub fn im_gui_set_next_window_pos_ex(ImVec2, Int, ImVec2) -> Unit
+
+pub fn im_gui_set_next_window_scroll(ImVec2) -> Unit
+
+pub fn im_gui_set_next_window_size(ImVec2, Int) -> Unit
+
+pub fn im_gui_set_next_window_size_constraints(ImVec2, ImVec2, ImGuiSizeCallback, VoidPtr) -> Unit
+
+pub fn im_gui_set_scroll_from_pos_x(Float, Float) -> Unit
+
+pub fn im_gui_set_scroll_from_pos_y(Float, Float) -> Unit
+
+pub fn im_gui_set_scroll_here_x(Float) -> Unit
+
+pub fn im_gui_set_scroll_here_y(Float) -> Unit
+
+pub fn im_gui_set_scroll_x(Float) -> Unit
+
+pub fn im_gui_set_scroll_y(Float) -> Unit
+
+pub fn im_gui_set_state_storage(ImGuiStorage) -> Unit
+
+pub fn im_gui_set_tab_item_closed(CString) -> Unit
+
+pub fn im_gui_set_tooltip(CString) -> Unit
+
+pub fn im_gui_set_tooltip_unformatted(CString) -> Unit
+
+pub fn im_gui_set_tooltip_v(CString, VaList) -> Unit
+
+pub fn im_gui_set_window_collapsed(Bool, Int) -> Unit
+
+pub fn im_gui_set_window_collapsed_str(CString, Bool, Int) -> Unit
+
+pub fn im_gui_set_window_focus() -> Unit
+
+pub fn im_gui_set_window_focus_str(CString) -> Unit
+
+pub fn im_gui_set_window_font_scale(Float) -> Unit
+
+pub fn im_gui_set_window_pos(ImVec2, Int) -> Unit
+
+pub fn im_gui_set_window_pos_str(CString, ImVec2, Int) -> Unit
+
+pub fn im_gui_set_window_size(ImVec2, Int) -> Unit
+
+pub fn im_gui_set_window_size_str(CString, ImVec2, Int) -> Unit
+
+pub fn im_gui_shortcut(Int, Int) -> Bool
+
+pub fn im_gui_show_about_window(BoolPtr) -> Unit
+
+pub fn im_gui_show_debug_log_window(BoolPtr) -> Unit
+
+pub fn im_gui_show_demo_window(BoolPtr) -> Unit
+
+pub fn im_gui_show_font_selector(CString) -> Unit
+
+pub fn im_gui_show_id_stack_tool_window() -> Unit
+
+pub fn im_gui_show_id_stack_tool_window_ex(BoolPtr) -> Unit
+
+pub fn im_gui_show_metrics_window(BoolPtr) -> Unit
+
+pub fn im_gui_show_style_editor(ImGuiStyle) -> Unit
+
+pub fn im_gui_show_style_selector(CString) -> Bool
+
+pub fn im_gui_show_user_guide() -> Unit
+
+pub fn im_gui_size_callback_data_field_get_current_size(ImGuiSizeCallbackData) -> ImVec2
+
+pub fn im_gui_size_callback_data_field_get_desired_size(ImGuiSizeCallbackData) -> ImVec2
+
+pub fn im_gui_size_callback_data_field_get_pos(ImGuiSizeCallbackData) -> ImVec2
+
+pub fn im_gui_size_callback_data_field_get_user_data(ImGuiSizeCallbackData) -> VoidPtr
+
+pub fn im_gui_size_callback_data_field_set_current_size(ImGuiSizeCallbackData, ImVec2) -> Unit
+
+pub fn im_gui_size_callback_data_field_set_desired_size(ImGuiSizeCallbackData, ImVec2) -> Unit
+
+pub fn im_gui_size_callback_data_field_set_pos(ImGuiSizeCallbackData, ImVec2) -> Unit
+
+pub fn im_gui_size_callback_data_field_set_user_data(ImGuiSizeCallbackData, VoidPtr) -> Unit
+
+pub fn im_gui_slider_angle(CString, FloatPtr) -> Bool
+
+pub fn im_gui_slider_angle_ex(CString, FloatPtr, Float, Float, CString, Int) -> Bool
+
+pub fn im_gui_slider_flags_always_clamp() -> Int
+
+pub fn im_gui_slider_flags_clamp_on_input() -> Int
+
+pub fn im_gui_slider_flags_clamp_zero_range() -> Int
+
+pub fn im_gui_slider_flags_color_markers() -> Int
+
+pub fn im_gui_slider_flags_invalid_mask() -> Int
+
+pub fn im_gui_slider_flags_logarithmic() -> Int
+
+pub fn im_gui_slider_flags_no_input() -> Int
+
+pub fn im_gui_slider_flags_no_round_to_format() -> Int
+
+pub fn im_gui_slider_flags_no_speed_tweaks() -> Int
+
+pub fn im_gui_slider_flags_none() -> Int
+
+pub fn im_gui_slider_flags_wrap_around() -> Int
+
+pub fn im_gui_slider_float(CString, FloatPtr, Float, Float) -> Bool
+
+pub fn im_gui_slider_float2(CString, FloatPtr, Float, Float) -> Bool
+
+pub fn im_gui_slider_float2_ex(CString, FloatPtr, Float, Float, CString, Int) -> Bool
+
+pub fn im_gui_slider_float3(CString, FloatPtr, Float, Float) -> Bool
+
+pub fn im_gui_slider_float3_ex(CString, FloatPtr, Float, Float, CString, Int) -> Bool
+
+pub fn im_gui_slider_float4(CString, FloatPtr, Float, Float) -> Bool
+
+pub fn im_gui_slider_float4_ex(CString, FloatPtr, Float, Float, CString, Int) -> Bool
+
+pub fn im_gui_slider_float_ex(CString, FloatPtr, Float, Float, CString, Int) -> Bool
+
+pub fn im_gui_slider_int(CString, IntPtr, Int, Int) -> Bool
+
+pub fn im_gui_slider_int2(CString, IntPtr, Int, Int) -> Bool
+
+pub fn im_gui_slider_int2_ex(CString, IntPtr, Int, Int, CString, Int) -> Bool
+
+pub fn im_gui_slider_int3(CString, IntPtr, Int, Int) -> Bool
+
+pub fn im_gui_slider_int3_ex(CString, IntPtr, Int, Int, CString, Int) -> Bool
+
+pub fn im_gui_slider_int4(CString, IntPtr, Int, Int) -> Bool
+
+pub fn im_gui_slider_int4_ex(CString, IntPtr, Int, Int, CString, Int) -> Bool
+
+pub fn im_gui_slider_int_ex(CString, IntPtr, Int, Int, CString, Int) -> Bool
+
+pub fn im_gui_slider_scalar(CString, Int, VoidPtr, VoidPtr, VoidPtr) -> Bool
+
+pub fn im_gui_slider_scalar_ex(CString, Int, VoidPtr, VoidPtr, VoidPtr, CString, Int) -> Bool
+
+pub fn im_gui_slider_scalar_n(CString, Int, VoidPtr, Int, VoidPtr, VoidPtr) -> Bool
+
+pub fn im_gui_slider_scalar_n_ex(CString, Int, VoidPtr, Int, VoidPtr, VoidPtr, CString, Int) -> Bool
+
+pub fn im_gui_small_button(CString) -> Bool
+
+pub fn im_gui_sort_direction_ascending() -> Int
+
+pub fn im_gui_sort_direction_descending() -> Int
+
+pub fn im_gui_sort_direction_none() -> Int
+
+pub fn im_gui_spacing() -> Unit
+
+pub fn im_gui_storage_build_sort_by_key(ImGuiStorage) -> Unit
+
+pub fn im_gui_storage_clear(ImGuiStorage) -> Unit
+
+pub fn im_gui_storage_field_get_data(ImGuiStorage) -> ImVector_ImGuiStoragePair
+
+pub fn im_gui_storage_field_set_data(ImGuiStorage, ImVector_ImGuiStoragePair) -> Unit
+
+pub fn im_gui_storage_get_bool(ImGuiStorage, UInt, Bool) -> Bool
+
+pub fn im_gui_storage_get_bool_ref(ImGuiStorage, UInt, Bool) -> BoolPtr
+
+pub fn im_gui_storage_get_float(ImGuiStorage, UInt, Float) -> Float
+
+pub fn im_gui_storage_get_float_ref(ImGuiStorage, UInt, Float) -> FloatPtr
+
+pub fn im_gui_storage_get_int(ImGuiStorage, UInt, Int) -> Int
+
+pub fn im_gui_storage_get_int_ref(ImGuiStorage, UInt, Int) -> IntPtr
+
+pub fn im_gui_storage_get_void_ptr(ImGuiStorage, UInt) -> VoidPtr
+
+pub fn im_gui_storage_get_void_ptr_ref(ImGuiStorage, UInt, VoidPtr) -> VoidPtrPtr
+
+pub fn im_gui_storage_pair_field_get_key(ImGuiStoragePair) -> UInt
+
+pub fn im_gui_storage_pair_field_get_val_f(ImGuiStoragePair) -> Float
+
+pub fn im_gui_storage_pair_field_get_val_i(ImGuiStoragePair) -> Int
+
+pub fn im_gui_storage_pair_field_get_val_p(ImGuiStoragePair) -> VoidPtr
+
+pub fn im_gui_storage_pair_field_set_key(ImGuiStoragePair, UInt) -> Unit
+
+pub fn im_gui_storage_pair_field_set_val_f(ImGuiStoragePair, Float) -> Unit
+
+pub fn im_gui_storage_pair_field_set_val_i(ImGuiStoragePair, Int) -> Unit
+
+pub fn im_gui_storage_pair_field_set_val_p(ImGuiStoragePair, VoidPtr) -> Unit
+
+pub fn im_gui_storage_set_all_int(ImGuiStorage, Int) -> Unit
+
+pub fn im_gui_storage_set_bool(ImGuiStorage, UInt, Bool) -> Unit
+
+pub fn im_gui_storage_set_float(ImGuiStorage, UInt, Float) -> Unit
+
+pub fn im_gui_storage_set_int(ImGuiStorage, UInt, Int) -> Unit
+
+pub fn im_gui_storage_set_void_ptr(ImGuiStorage, UInt, VoidPtr) -> Unit
+
+pub fn im_gui_style_colors_classic(ImGuiStyle) -> Unit
+
+pub fn im_gui_style_colors_dark(ImGuiStyle) -> Unit
+
+pub fn im_gui_style_colors_light(ImGuiStyle) -> Unit
+
+pub fn im_gui_style_field_get_alpha(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_anti_aliased_fill(ImGuiStyle) -> Bool
+
+pub fn im_gui_style_field_get_anti_aliased_lines(ImGuiStyle) -> Bool
+
+pub fn im_gui_style_field_get_anti_aliased_lines_use_tex(ImGuiStyle) -> Bool
+
+pub fn im_gui_style_field_get_button_text_align(ImGuiStyle) -> ImVec2
+
+pub fn im_gui_style_field_get_cell_padding(ImGuiStyle) -> ImVec2
+
+pub fn im_gui_style_field_get_child_border_size(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_child_rounding(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_circle_tessellation_max_error(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_color_button_position(ImGuiStyle) -> Int
+
+pub fn im_gui_style_field_get_color_marker_size(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_colors(ImGuiStyle) -> ImVec4
+
+pub fn im_gui_style_field_get_columns_min_spacing(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_curve_tessellation_tol(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_disabled_alpha(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_display_safe_area_padding(ImGuiStyle) -> ImVec2
+
+pub fn im_gui_style_field_get_display_window_padding(ImGuiStyle) -> ImVec2
+
+pub fn im_gui_style_field_get_drag_drop_target_border_size(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_drag_drop_target_padding(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_drag_drop_target_rounding(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_font_scale_dpi(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_font_scale_main(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_font_size_base(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_frame_border_size(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_frame_padding(ImGuiStyle) -> ImVec2
+
+pub fn im_gui_style_field_get_frame_rounding(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_grab_min_size(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_grab_rounding(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_hover_delay_normal(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_hover_delay_short(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_hover_flags_for_tooltip_mouse(ImGuiStyle) -> Int
+
+pub fn im_gui_style_field_get_hover_flags_for_tooltip_nav(ImGuiStyle) -> Int
+
+pub fn im_gui_style_field_get_hover_stationary_delay(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_image_border_size(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_image_rounding(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_indent_spacing(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_item_inner_spacing(ImGuiStyle) -> ImVec2
+
+pub fn im_gui_style_field_get_item_spacing(ImGuiStyle) -> ImVec2
+
+pub fn im_gui_style_field_get_log_slider_deadzone(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_main_scale(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_mouse_cursor_scale(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_next_frame_font_size_base(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_popup_border_size(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_popup_rounding(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_scrollbar_padding(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_scrollbar_rounding(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_scrollbar_size(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_selectable_text_align(ImGuiStyle) -> ImVec2
+
+pub fn im_gui_style_field_get_separator_size(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_separator_text_align(ImGuiStyle) -> ImVec2
+
+pub fn im_gui_style_field_get_separator_text_border_size(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_separator_text_padding(ImGuiStyle) -> ImVec2
+
+pub fn im_gui_style_field_get_tab_bar_border_size(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_tab_bar_overline_size(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_tab_border_size(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_tab_close_button_min_width_selected(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_tab_close_button_min_width_unselected(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_tab_min_width_base(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_tab_min_width_shrink(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_tab_rounding(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_table_angled_headers_angle(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_table_angled_headers_text_align(ImGuiStyle) -> ImVec2
+
+pub fn im_gui_style_field_get_touch_extra_padding(ImGuiStyle) -> ImVec2
+
+pub fn im_gui_style_field_get_tree_lines_flags(ImGuiStyle) -> Int
+
+pub fn im_gui_style_field_get_tree_lines_rounding(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_tree_lines_size(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_window_border_hover_padding(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_window_border_size(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_window_menu_button_position(ImGuiStyle) -> Int
+
+pub fn im_gui_style_field_get_window_min_size(ImGuiStyle) -> ImVec2
+
+pub fn im_gui_style_field_get_window_padding(ImGuiStyle) -> ImVec2
+
+pub fn im_gui_style_field_get_window_rounding(ImGuiStyle) -> Float
+
+pub fn im_gui_style_field_get_window_title_align(ImGuiStyle) -> ImVec2
+
+pub fn im_gui_style_field_set_alpha(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_anti_aliased_fill(ImGuiStyle, Bool) -> Unit
+
+pub fn im_gui_style_field_set_anti_aliased_lines(ImGuiStyle, Bool) -> Unit
+
+pub fn im_gui_style_field_set_anti_aliased_lines_use_tex(ImGuiStyle, Bool) -> Unit
+
+pub fn im_gui_style_field_set_button_text_align(ImGuiStyle, ImVec2) -> Unit
+
+pub fn im_gui_style_field_set_cell_padding(ImGuiStyle, ImVec2) -> Unit
+
+pub fn im_gui_style_field_set_child_border_size(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_child_rounding(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_circle_tessellation_max_error(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_color_button_position(ImGuiStyle, Int) -> Unit
+
+pub fn im_gui_style_field_set_color_marker_size(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_columns_min_spacing(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_curve_tessellation_tol(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_disabled_alpha(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_display_safe_area_padding(ImGuiStyle, ImVec2) -> Unit
+
+pub fn im_gui_style_field_set_display_window_padding(ImGuiStyle, ImVec2) -> Unit
+
+pub fn im_gui_style_field_set_drag_drop_target_border_size(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_drag_drop_target_padding(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_drag_drop_target_rounding(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_font_scale_dpi(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_font_scale_main(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_font_size_base(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_frame_border_size(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_frame_padding(ImGuiStyle, ImVec2) -> Unit
+
+pub fn im_gui_style_field_set_frame_rounding(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_grab_min_size(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_grab_rounding(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_hover_delay_normal(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_hover_delay_short(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_hover_flags_for_tooltip_mouse(ImGuiStyle, Int) -> Unit
+
+pub fn im_gui_style_field_set_hover_flags_for_tooltip_nav(ImGuiStyle, Int) -> Unit
+
+pub fn im_gui_style_field_set_hover_stationary_delay(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_image_border_size(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_image_rounding(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_indent_spacing(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_item_inner_spacing(ImGuiStyle, ImVec2) -> Unit
+
+pub fn im_gui_style_field_set_item_spacing(ImGuiStyle, ImVec2) -> Unit
+
+pub fn im_gui_style_field_set_log_slider_deadzone(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_main_scale(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_mouse_cursor_scale(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_next_frame_font_size_base(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_popup_border_size(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_popup_rounding(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_scrollbar_padding(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_scrollbar_rounding(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_scrollbar_size(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_selectable_text_align(ImGuiStyle, ImVec2) -> Unit
+
+pub fn im_gui_style_field_set_separator_size(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_separator_text_align(ImGuiStyle, ImVec2) -> Unit
+
+pub fn im_gui_style_field_set_separator_text_border_size(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_separator_text_padding(ImGuiStyle, ImVec2) -> Unit
+
+pub fn im_gui_style_field_set_tab_bar_border_size(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_tab_bar_overline_size(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_tab_border_size(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_tab_close_button_min_width_selected(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_tab_close_button_min_width_unselected(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_tab_min_width_base(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_tab_min_width_shrink(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_tab_rounding(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_table_angled_headers_angle(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_table_angled_headers_text_align(ImGuiStyle, ImVec2) -> Unit
+
+pub fn im_gui_style_field_set_touch_extra_padding(ImGuiStyle, ImVec2) -> Unit
+
+pub fn im_gui_style_field_set_tree_lines_flags(ImGuiStyle, Int) -> Unit
+
+pub fn im_gui_style_field_set_tree_lines_rounding(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_tree_lines_size(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_window_border_hover_padding(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_window_border_size(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_window_menu_button_position(ImGuiStyle, Int) -> Unit
+
+pub fn im_gui_style_field_set_window_min_size(ImGuiStyle, ImVec2) -> Unit
+
+pub fn im_gui_style_field_set_window_padding(ImGuiStyle, ImVec2) -> Unit
+
+pub fn im_gui_style_field_set_window_rounding(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_field_set_window_title_align(ImGuiStyle, ImVec2) -> Unit
+
+pub fn im_gui_style_scale_all_sizes(ImGuiStyle, Float) -> Unit
+
+pub fn im_gui_style_var_alpha() -> Int
+
+pub fn im_gui_style_var_button_text_align() -> Int
+
+pub fn im_gui_style_var_cell_padding() -> Int
+
+pub fn im_gui_style_var_child_border_size() -> Int
+
+pub fn im_gui_style_var_child_rounding() -> Int
+
+pub fn im_gui_style_var_count() -> Int
+
+pub fn im_gui_style_var_disabled_alpha() -> Int
+
+pub fn im_gui_style_var_drag_drop_target_rounding() -> Int
+
+pub fn im_gui_style_var_frame_border_size() -> Int
+
+pub fn im_gui_style_var_frame_padding() -> Int
+
+pub fn im_gui_style_var_frame_rounding() -> Int
+
+pub fn im_gui_style_var_grab_min_size() -> Int
+
+pub fn im_gui_style_var_grab_rounding() -> Int
+
+pub fn im_gui_style_var_image_border_size() -> Int
+
+pub fn im_gui_style_var_image_rounding() -> Int
+
+pub fn im_gui_style_var_indent_spacing() -> Int
+
+pub fn im_gui_style_var_item_inner_spacing() -> Int
+
+pub fn im_gui_style_var_item_spacing() -> Int
+
+pub fn im_gui_style_var_popup_border_size() -> Int
+
+pub fn im_gui_style_var_popup_rounding() -> Int
+
+pub fn im_gui_style_var_scrollbar_padding() -> Int
+
+pub fn im_gui_style_var_scrollbar_rounding() -> Int
+
+pub fn im_gui_style_var_scrollbar_size() -> Int
+
+pub fn im_gui_style_var_selectable_text_align() -> Int
+
+pub fn im_gui_style_var_separator_size() -> Int
+
+pub fn im_gui_style_var_separator_text_align() -> Int
+
+pub fn im_gui_style_var_separator_text_border_size() -> Int
+
+pub fn im_gui_style_var_separator_text_padding() -> Int
+
+pub fn im_gui_style_var_tab_bar_border_size() -> Int
+
+pub fn im_gui_style_var_tab_bar_overline_size() -> Int
+
+pub fn im_gui_style_var_tab_border_size() -> Int
+
+pub fn im_gui_style_var_tab_min_width_base() -> Int
+
+pub fn im_gui_style_var_tab_min_width_shrink() -> Int
+
+pub fn im_gui_style_var_tab_rounding() -> Int
+
+pub fn im_gui_style_var_table_angled_headers_angle() -> Int
+
+pub fn im_gui_style_var_table_angled_headers_text_align() -> Int
+
+pub fn im_gui_style_var_tree_lines_rounding() -> Int
+
+pub fn im_gui_style_var_tree_lines_size() -> Int
+
+pub fn im_gui_style_var_window_border_size() -> Int
+
+pub fn im_gui_style_var_window_min_size() -> Int
+
+pub fn im_gui_style_var_window_padding() -> Int
+
+pub fn im_gui_style_var_window_rounding() -> Int
+
+pub fn im_gui_style_var_window_title_align() -> Int
+
+pub fn im_gui_tab_bar_flags_auto_select_new_tabs() -> Int
+
+pub fn im_gui_tab_bar_flags_draw_selected_overline() -> Int
+
+pub fn im_gui_tab_bar_flags_fitting_policy_default() -> Int
+
+pub fn im_gui_tab_bar_flags_fitting_policy_mask() -> Int
+
+pub fn im_gui_tab_bar_flags_fitting_policy_mixed() -> Int
+
+pub fn im_gui_tab_bar_flags_fitting_policy_resize_down() -> Int
+
+pub fn im_gui_tab_bar_flags_fitting_policy_scroll() -> Int
+
+pub fn im_gui_tab_bar_flags_fitting_policy_shrink() -> Int
+
+pub fn im_gui_tab_bar_flags_no_close_with_middle_mouse_button() -> Int
+
+pub fn im_gui_tab_bar_flags_no_tab_list_scrolling_buttons() -> Int
+
+pub fn im_gui_tab_bar_flags_no_tooltip() -> Int
+
+pub fn im_gui_tab_bar_flags_none() -> Int
+
+pub fn im_gui_tab_bar_flags_reorderable() -> Int
+
+pub fn im_gui_tab_bar_flags_tab_list_popup_button() -> Int
+
+pub fn im_gui_tab_item_button(CString, Int) -> Bool
+
+pub fn im_gui_tab_item_flags_leading() -> Int
+
+pub fn im_gui_tab_item_flags_no_assumed_closure() -> Int
+
+pub fn im_gui_tab_item_flags_no_close_with_middle_mouse_button() -> Int
+
+pub fn im_gui_tab_item_flags_no_push_id() -> Int
+
+pub fn im_gui_tab_item_flags_no_reorder() -> Int
+
+pub fn im_gui_tab_item_flags_no_tooltip() -> Int
+
+pub fn im_gui_tab_item_flags_none() -> Int
+
+pub fn im_gui_tab_item_flags_set_selected() -> Int
+
+pub fn im_gui_tab_item_flags_trailing() -> Int
+
+pub fn im_gui_tab_item_flags_unsaved_document() -> Int
+
+pub fn im_gui_table_angled_headers_row() -> Unit
+
+pub fn im_gui_table_bg_target_cell_bg() -> Int
+
+pub fn im_gui_table_bg_target_none() -> Int
+
+pub fn im_gui_table_bg_target_row_bg0() -> Int
+
+pub fn im_gui_table_bg_target_row_bg1() -> Int
+
+pub fn im_gui_table_column_flags_angled_header() -> Int
+
+pub fn im_gui_table_column_flags_default_hide() -> Int
+
+pub fn im_gui_table_column_flags_default_sort() -> Int
+
+pub fn im_gui_table_column_flags_disabled() -> Int
+
+pub fn im_gui_table_column_flags_indent_disable() -> Int
+
+pub fn im_gui_table_column_flags_indent_enable() -> Int
+
+pub fn im_gui_table_column_flags_indent_mask() -> Int
+
+pub fn im_gui_table_column_flags_is_enabled() -> Int
+
+pub fn im_gui_table_column_flags_is_hovered() -> Int
+
+pub fn im_gui_table_column_flags_is_sorted() -> Int
+
+pub fn im_gui_table_column_flags_is_visible() -> Int
+
+pub fn im_gui_table_column_flags_no_clip() -> Int
+
+pub fn im_gui_table_column_flags_no_direct_resize() -> Int
+
+pub fn im_gui_table_column_flags_no_header_label() -> Int
+
+pub fn im_gui_table_column_flags_no_header_width() -> Int
+
+pub fn im_gui_table_column_flags_no_hide() -> Int
+
+pub fn im_gui_table_column_flags_no_reorder() -> Int
+
+pub fn im_gui_table_column_flags_no_resize() -> Int
+
+pub fn im_gui_table_column_flags_no_sort() -> Int
+
+pub fn im_gui_table_column_flags_no_sort_ascending() -> Int
+
+pub fn im_gui_table_column_flags_no_sort_descending() -> Int
+
+pub fn im_gui_table_column_flags_none() -> Int
+
+pub fn im_gui_table_column_flags_prefer_sort_ascending() -> Int
+
+pub fn im_gui_table_column_flags_prefer_sort_descending() -> Int
+
+pub fn im_gui_table_column_flags_status_mask() -> Int
+
+pub fn im_gui_table_column_flags_width_fixed() -> Int
+
+pub fn im_gui_table_column_flags_width_mask() -> Int
+
+pub fn im_gui_table_column_flags_width_stretch() -> Int
+
+pub fn im_gui_table_column_sort_specs_field_get_column_index(ImGuiTableColumnSortSpecs) -> Int
+
+pub fn im_gui_table_column_sort_specs_field_get_column_user_id(ImGuiTableColumnSortSpecs) -> UInt
+
+pub fn im_gui_table_column_sort_specs_field_get_sort_direction(ImGuiTableColumnSortSpecs) -> Int
+
+pub fn im_gui_table_column_sort_specs_field_get_sort_order(ImGuiTableColumnSortSpecs) -> Int
+
+pub fn im_gui_table_column_sort_specs_field_set_column_index(ImGuiTableColumnSortSpecs, Int) -> Unit
+
+pub fn im_gui_table_column_sort_specs_field_set_column_user_id(ImGuiTableColumnSortSpecs, UInt) -> Unit
+
+pub fn im_gui_table_column_sort_specs_field_set_sort_direction(ImGuiTableColumnSortSpecs, Int) -> Unit
+
+pub fn im_gui_table_column_sort_specs_field_set_sort_order(ImGuiTableColumnSortSpecs, Int) -> Unit
+
+pub fn im_gui_table_flags_borders() -> Int
+
+pub fn im_gui_table_flags_borders_h() -> Int
+
+pub fn im_gui_table_flags_borders_inner() -> Int
+
+pub fn im_gui_table_flags_borders_inner_h() -> Int
+
+pub fn im_gui_table_flags_borders_inner_v() -> Int
+
+pub fn im_gui_table_flags_borders_outer() -> Int
+
+pub fn im_gui_table_flags_borders_outer_h() -> Int
+
+pub fn im_gui_table_flags_borders_outer_v() -> Int
+
+pub fn im_gui_table_flags_borders_v() -> Int
+
+pub fn im_gui_table_flags_context_menu_in_body() -> Int
+
+pub fn im_gui_table_flags_hideable() -> Int
+
+pub fn im_gui_table_flags_highlight_hovered_column() -> Int
+
+pub fn im_gui_table_flags_no_borders_in_body() -> Int
+
+pub fn im_gui_table_flags_no_borders_in_body_until_resize() -> Int
+
+pub fn im_gui_table_flags_no_clip() -> Int
+
+pub fn im_gui_table_flags_no_host_extend_x() -> Int
+
+pub fn im_gui_table_flags_no_host_extend_y() -> Int
+
+pub fn im_gui_table_flags_no_keep_columns_visible() -> Int
+
+pub fn im_gui_table_flags_no_pad_inner_x() -> Int
+
+pub fn im_gui_table_flags_no_pad_outer_x() -> Int
+
+pub fn im_gui_table_flags_no_saved_settings() -> Int
+
+pub fn im_gui_table_flags_none() -> Int
+
+pub fn im_gui_table_flags_pad_outer_x() -> Int
+
+pub fn im_gui_table_flags_precise_widths() -> Int
+
+pub fn im_gui_table_flags_reorderable() -> Int
+
+pub fn im_gui_table_flags_resizable() -> Int
+
+pub fn im_gui_table_flags_row_bg() -> Int
+
+pub fn im_gui_table_flags_scroll_x() -> Int
+
+pub fn im_gui_table_flags_scroll_y() -> Int
+
+pub fn im_gui_table_flags_sizing_fixed_fit() -> Int
+
+pub fn im_gui_table_flags_sizing_fixed_same() -> Int
+
+pub fn im_gui_table_flags_sizing_mask() -> Int
+
+pub fn im_gui_table_flags_sizing_stretch_prop() -> Int
+
+pub fn im_gui_table_flags_sizing_stretch_same() -> Int
+
+pub fn im_gui_table_flags_sort_multi() -> Int
+
+pub fn im_gui_table_flags_sort_tristate() -> Int
+
+pub fn im_gui_table_flags_sortable() -> Int
+
+pub fn im_gui_table_get_column_count() -> Int
+
+pub fn im_gui_table_get_column_flags(Int) -> Int
+
+pub fn im_gui_table_get_column_index() -> Int
+
+pub fn im_gui_table_get_column_name(Int) -> CString
+
+pub fn im_gui_table_get_hovered_column() -> Int
+
+pub fn im_gui_table_get_row_index() -> Int
+
+pub fn im_gui_table_get_sort_specs() -> ImGuiTableSortSpecs
+
+pub fn im_gui_table_header(CString) -> Unit
+
+pub fn im_gui_table_headers_row() -> Unit
+
+pub fn im_gui_table_next_column() -> Bool
+
+pub fn im_gui_table_next_row() -> Unit
+
+pub fn im_gui_table_next_row_ex(Int, Float) -> Unit
+
+pub fn im_gui_table_row_flags_headers() -> Int
+
+pub fn im_gui_table_row_flags_none() -> Int
+
+pub fn im_gui_table_set_bg_color(Int, UInt, Int) -> Unit
+
+pub fn im_gui_table_set_column_enabled(Int, Bool) -> Unit
+
+pub fn im_gui_table_set_column_index(Int) -> Bool
+
+pub fn im_gui_table_setup_column(CString, Int) -> Unit
+
+pub fn im_gui_table_setup_column_ex(CString, Int, Float, UInt) -> Unit
+
+pub fn im_gui_table_setup_scroll_freeze(Int, Int) -> Unit
+
+pub fn im_gui_table_sort_specs_field_get_specs(ImGuiTableSortSpecs) -> ImGuiTableColumnSortSpecs
+
+pub fn im_gui_table_sort_specs_field_get_specs_count(ImGuiTableSortSpecs) -> Int
+
+pub fn im_gui_table_sort_specs_field_get_specs_dirty(ImGuiTableSortSpecs) -> Bool
+
+pub fn im_gui_table_sort_specs_field_set_specs(ImGuiTableSortSpecs, ImGuiTableColumnSortSpecs) -> Unit
+
+pub fn im_gui_table_sort_specs_field_set_specs_count(ImGuiTableSortSpecs, Int) -> Unit
+
+pub fn im_gui_table_sort_specs_field_set_specs_dirty(ImGuiTableSortSpecs, Bool) -> Unit
+
+pub fn im_gui_text(CString) -> Unit
+
+pub fn im_gui_text_buffer_append(ImGuiTextBuffer, CString, CString) -> Unit
+
+pub fn im_gui_text_buffer_appendf(ImGuiTextBuffer, CString) -> Unit
+
+pub fn im_gui_text_buffer_appendfv(ImGuiTextBuffer, CString, VaList) -> Unit
+
+pub fn im_gui_text_buffer_begin(ImGuiTextBuffer) -> CString
+
+pub fn im_gui_text_buffer_c_str(ImGuiTextBuffer) -> CString
+
+pub fn im_gui_text_buffer_clear(ImGuiTextBuffer) -> Unit
+
+pub fn im_gui_text_buffer_empty(ImGuiTextBuffer) -> Bool
+
+pub fn im_gui_text_buffer_end(ImGuiTextBuffer) -> CString
+
+pub fn im_gui_text_buffer_field_get_buf(ImGuiTextBuffer) -> ImVector_char
+
+pub fn im_gui_text_buffer_field_set_buf(ImGuiTextBuffer, ImVector_char) -> Unit
+
+pub fn im_gui_text_buffer_reserve(ImGuiTextBuffer, Int) -> Unit
+
+pub fn im_gui_text_buffer_resize(ImGuiTextBuffer, Int) -> Unit
+
+pub fn im_gui_text_buffer_size(ImGuiTextBuffer) -> Int
+
+pub fn im_gui_text_colored(ImVec4, CString) -> Unit
+
+pub fn im_gui_text_colored_unformatted(ImVec4, CString) -> Unit
+
+pub fn im_gui_text_colored_v(ImVec4, CString, VaList) -> Unit
+
+pub fn im_gui_text_disabled(CString) -> Unit
+
+pub fn im_gui_text_disabled_unformatted(CString) -> Unit
+
+pub fn im_gui_text_disabled_v(CString, VaList) -> Unit
+
+pub fn im_gui_text_filter_build(ImGuiTextFilter) -> Unit
+
+pub fn im_gui_text_filter_clear(ImGuiTextFilter) -> Unit
+
+pub fn im_gui_text_filter_draw(ImGuiTextFilter, CString, Float) -> Bool
+
+pub fn im_gui_text_filter_field_get_count_grep(ImGuiTextFilter) -> Int
+
+pub fn im_gui_text_filter_field_get_filters(ImGuiTextFilter) -> ImVector_ImGuiTextRange
+
+pub fn im_gui_text_filter_field_get_input_buf(ImGuiTextFilter) -> CString
+
+pub fn im_gui_text_filter_field_set_count_grep(ImGuiTextFilter, Int) -> Unit
+
+pub fn im_gui_text_filter_field_set_filters(ImGuiTextFilter, ImVector_ImGuiTextRange) -> Unit
+
+pub fn im_gui_text_filter_im_gui_text_range_empty(ImGuiTextFilter_ImGuiTextRange) -> Bool
+
+pub fn im_gui_text_filter_im_gui_text_range_field_get_b(ImGuiTextFilter_ImGuiTextRange) -> CString
+
+pub fn im_gui_text_filter_im_gui_text_range_field_get_e(ImGuiTextFilter_ImGuiTextRange) -> CString
+
+pub fn im_gui_text_filter_im_gui_text_range_field_set_b(ImGuiTextFilter_ImGuiTextRange, CString) -> Unit
+
+pub fn im_gui_text_filter_im_gui_text_range_field_set_e(ImGuiTextFilter_ImGuiTextRange, CString) -> Unit
+
+pub fn im_gui_text_filter_im_gui_text_range_split(ImGuiTextFilter_ImGuiTextRange, Int, ImVector_ImGuiTextRange) -> Unit
+
+pub fn im_gui_text_filter_is_active(ImGuiTextFilter) -> Bool
+
+pub fn im_gui_text_filter_pass_filter(ImGuiTextFilter, CString, CString) -> Bool
+
+pub fn im_gui_text_link(CString) -> Bool
+
+pub fn im_gui_text_link_open_url(CString) -> Bool
+
+pub fn im_gui_text_link_open_url_ex(CString, CString) -> Bool
+
+pub fn im_gui_text_unformatted(CString) -> Unit
+
+pub fn im_gui_text_unformatted_ex(CString, CString) -> Unit
+
+pub fn im_gui_text_v(CString, VaList) -> Unit
+
+pub fn im_gui_text_wrapped(CString) -> Unit
+
+pub fn im_gui_text_wrapped_unformatted(CString) -> Unit
+
+pub fn im_gui_text_wrapped_v(CString, VaList) -> Unit
+
+pub fn im_gui_tree_node(CString) -> Bool
+
+pub fn im_gui_tree_node_ex(CString, Int) -> Bool
+
+pub fn im_gui_tree_node_ex_ptr(VoidPtr, Int, CString) -> Bool
+
+pub fn im_gui_tree_node_ex_ptr_unformatted(VoidPtr, Int, CString) -> Bool
+
+pub fn im_gui_tree_node_ex_str(CString, Int, CString) -> Bool
+
+pub fn im_gui_tree_node_ex_str_unformatted(CString, Int, CString) -> Bool
+
+pub fn im_gui_tree_node_ex_v(CString, Int, CString, VaList) -> Bool
+
+pub fn im_gui_tree_node_ex_v_ptr(VoidPtr, Int, CString, VaList) -> Bool
+
+pub fn im_gui_tree_node_flags_allow_overlap() -> Int
+
+pub fn im_gui_tree_node_flags_bullet() -> Int
+
+pub fn im_gui_tree_node_flags_collapsing_header() -> Int
+
+pub fn im_gui_tree_node_flags_default_open() -> Int
+
+pub fn im_gui_tree_node_flags_draw_lines_full() -> Int
+
+pub fn im_gui_tree_node_flags_draw_lines_none() -> Int
+
+pub fn im_gui_tree_node_flags_draw_lines_to_nodes() -> Int
+
+pub fn im_gui_tree_node_flags_frame_padding() -> Int
+
+pub fn im_gui_tree_node_flags_framed() -> Int
+
+pub fn im_gui_tree_node_flags_label_span_all_columns() -> Int
+
+pub fn im_gui_tree_node_flags_leaf() -> Int
+
+pub fn im_gui_tree_node_flags_nav_left_jumps_back_here() -> Int
+
+pub fn im_gui_tree_node_flags_nav_left_jumps_to_parent() -> Int
+
+pub fn im_gui_tree_node_flags_no_auto_open_on_log() -> Int
+
+pub fn im_gui_tree_node_flags_no_tree_push_on_open() -> Int
+
+pub fn im_gui_tree_node_flags_none() -> Int
+
+pub fn im_gui_tree_node_flags_open_on_arrow() -> Int
+
+pub fn im_gui_tree_node_flags_open_on_double_click() -> Int
+
+pub fn im_gui_tree_node_flags_selected() -> Int
+
+pub fn im_gui_tree_node_flags_span_all_columns() -> Int
+
+pub fn im_gui_tree_node_flags_span_avail_width() -> Int
+
+pub fn im_gui_tree_node_flags_span_full_width() -> Int
+
+pub fn im_gui_tree_node_flags_span_label_width() -> Int
+
+pub fn im_gui_tree_node_flags_span_text_width() -> Int
+
+pub fn im_gui_tree_node_get_open(UInt) -> Bool
+
+pub fn im_gui_tree_node_ptr(VoidPtr, CString) -> Bool
+
+pub fn im_gui_tree_node_ptr_unformatted(VoidPtr, CString) -> Bool
+
+pub fn im_gui_tree_node_str(CString, CString) -> Bool
+
+pub fn im_gui_tree_node_str_unformatted(CString, CString) -> Bool
+
+pub fn im_gui_tree_node_v(CString, CString, VaList) -> Bool
+
+pub fn im_gui_tree_node_v_ptr(VoidPtr, CString, VaList) -> Bool
+
+pub fn im_gui_tree_pop() -> Unit
+
+pub fn im_gui_tree_push(CString) -> Unit
+
+pub fn im_gui_tree_push_ptr(VoidPtr) -> Unit
+
+pub fn im_gui_unindent() -> Unit
+
+pub fn im_gui_unindent_ex(Float) -> Unit
+
+pub fn im_gui_v_slider_float(CString, ImVec2, FloatPtr, Float, Float) -> Bool
+
+pub fn im_gui_v_slider_float_ex(CString, ImVec2, FloatPtr, Float, Float, CString, Int) -> Bool
+
+pub fn im_gui_v_slider_int(CString, ImVec2, IntPtr, Int, Int) -> Bool
+
+pub fn im_gui_v_slider_int_ex(CString, ImVec2, IntPtr, Int, Int, CString, Int) -> Bool
+
+pub fn im_gui_v_slider_scalar(CString, ImVec2, Int, VoidPtr, VoidPtr, VoidPtr) -> Bool
+
+pub fn im_gui_v_slider_scalar_ex(CString, ImVec2, Int, VoidPtr, VoidPtr, VoidPtr, CString, Int) -> Bool
+
+pub fn im_gui_viewport_field_get_flags(ImGuiViewport) -> Int
+
+pub fn im_gui_viewport_field_get_framebuffer_scale(ImGuiViewport) -> ImVec2
+
+pub fn im_gui_viewport_field_get_id(ImGuiViewport) -> UInt
+
+pub fn im_gui_viewport_field_get_platform_handle(ImGuiViewport) -> VoidPtr
+
+pub fn im_gui_viewport_field_get_platform_handle_raw(ImGuiViewport) -> VoidPtr
+
+pub fn im_gui_viewport_field_get_pos(ImGuiViewport) -> ImVec2
+
+pub fn im_gui_viewport_field_get_size(ImGuiViewport) -> ImVec2
+
+pub fn im_gui_viewport_field_get_work_pos(ImGuiViewport) -> ImVec2
+
+pub fn im_gui_viewport_field_get_work_size(ImGuiViewport) -> ImVec2
+
+pub fn im_gui_viewport_field_set_flags(ImGuiViewport, Int) -> Unit
+
+pub fn im_gui_viewport_field_set_framebuffer_scale(ImGuiViewport, ImVec2) -> Unit
+
+pub fn im_gui_viewport_field_set_id(ImGuiViewport, UInt) -> Unit
+
+pub fn im_gui_viewport_field_set_platform_handle(ImGuiViewport, VoidPtr) -> Unit
+
+pub fn im_gui_viewport_field_set_platform_handle_raw(ImGuiViewport, VoidPtr) -> Unit
+
+pub fn im_gui_viewport_field_set_pos(ImGuiViewport, ImVec2) -> Unit
+
+pub fn im_gui_viewport_field_set_size(ImGuiViewport, ImVec2) -> Unit
+
+pub fn im_gui_viewport_field_set_work_pos(ImGuiViewport, ImVec2) -> Unit
+
+pub fn im_gui_viewport_field_set_work_size(ImGuiViewport, ImVec2) -> Unit
+
+pub fn im_gui_viewport_flags_is_platform_monitor() -> Int
+
+pub fn im_gui_viewport_flags_is_platform_window() -> Int
+
+pub fn im_gui_viewport_flags_none() -> Int
+
+pub fn im_gui_viewport_flags_owned_by_app() -> Int
+
+pub fn im_gui_viewport_get_center(ImGuiViewport) -> ImVec2
+
+pub fn im_gui_viewport_get_work_center(ImGuiViewport) -> ImVec2
+
+pub fn im_gui_window_flags_always_auto_resize() -> Int
+
+pub fn im_gui_window_flags_always_horizontal_scrollbar() -> Int
+
+pub fn im_gui_window_flags_always_vertical_scrollbar() -> Int
+
+pub fn im_gui_window_flags_child_menu() -> Int
+
+pub fn im_gui_window_flags_child_window() -> Int
+
+pub fn im_gui_window_flags_horizontal_scrollbar() -> Int
+
+pub fn im_gui_window_flags_menu_bar() -> Int
+
+pub fn im_gui_window_flags_modal() -> Int
+
+pub fn im_gui_window_flags_no_background() -> Int
+
+pub fn im_gui_window_flags_no_bring_to_front_on_focus() -> Int
+
+pub fn im_gui_window_flags_no_collapse() -> Int
+
+pub fn im_gui_window_flags_no_decoration() -> Int
+
+pub fn im_gui_window_flags_no_focus_on_appearing() -> Int
+
+pub fn im_gui_window_flags_no_inputs() -> Int
+
+pub fn im_gui_window_flags_no_mouse_inputs() -> Int
+
+pub fn im_gui_window_flags_no_move() -> Int
+
+pub fn im_gui_window_flags_no_nav() -> Int
+
+pub fn im_gui_window_flags_no_nav_focus() -> Int
+
+pub fn im_gui_window_flags_no_nav_inputs() -> Int
+
+pub fn im_gui_window_flags_no_resize() -> Int
+
+pub fn im_gui_window_flags_no_saved_settings() -> Int
+
+pub fn im_gui_window_flags_no_scroll_with_mouse() -> Int
+
+pub fn im_gui_window_flags_no_scrollbar() -> Int
+
+pub fn im_gui_window_flags_no_title_bar() -> Int
+
+pub fn im_gui_window_flags_none() -> Int
+
+pub fn im_gui_window_flags_popup() -> Int
+
+pub fn im_gui_window_flags_tooltip() -> Int
+
+pub fn im_gui_window_flags_unsaved_document() -> Int
+
+pub fn im_msvc_runtime_checks_off() -> Bool
+
+pub fn im_msvc_runtime_checks_restore() -> Bool
+
+pub fn im_str_from_char_str(CString) -> ImStr raise RawBindingError
+
+pub fn im_texture_data_create(ImTextureData, ImTextureFormat, Int, Int) -> Unit
+
+pub fn im_texture_data_destroy_pixels(ImTextureData) -> Unit
+
+pub fn im_texture_data_field_get_backend_user_data(ImTextureData) -> VoidPtr
+
+pub fn im_texture_data_field_get_bytes_per_pixel(ImTextureData) -> Int
+
+pub fn im_texture_data_field_get_format(ImTextureData) -> ImTextureFormat
+
+pub fn im_texture_data_field_get_height(ImTextureData) -> Int
+
+pub fn im_texture_data_field_get_pixels(ImTextureData) -> IntPtr
+
+pub fn im_texture_data_field_get_ref_count(ImTextureData) -> Int
+
+pub fn im_texture_data_field_get_status(ImTextureData) -> ImTextureStatus
+
+pub fn im_texture_data_field_get_tex_id(ImTextureData) -> UInt64
+
+pub fn im_texture_data_field_get_unique_id(ImTextureData) -> Int
+
+pub fn im_texture_data_field_get_unused_frames(ImTextureData) -> Int
+
+pub fn im_texture_data_field_get_update_rect(ImTextureData) -> ImTextureRect
+
+pub fn im_texture_data_field_get_updates(ImTextureData) -> ImVector_ImTextureRect
+
+pub fn im_texture_data_field_get_use_colors(ImTextureData) -> Bool
+
+pub fn im_texture_data_field_get_used_rect(ImTextureData) -> ImTextureRect
+
+pub fn im_texture_data_field_get_want_destroy_next_frame(ImTextureData) -> Bool
+
+pub fn im_texture_data_field_get_width(ImTextureData) -> Int
+
+pub fn im_texture_data_field_set_backend_user_data(ImTextureData, VoidPtr) -> Unit
+
+pub fn im_texture_data_field_set_bytes_per_pixel(ImTextureData, Int) -> Unit
+
+pub fn im_texture_data_field_set_format(ImTextureData, ImTextureFormat) -> Unit
+
+pub fn im_texture_data_field_set_height(ImTextureData, Int) -> Unit
+
+pub fn im_texture_data_field_set_pixels(ImTextureData, IntPtr) -> Unit
+
+pub fn im_texture_data_field_set_ref_count(ImTextureData, Int) -> Unit
+
+pub fn im_texture_data_field_set_status(ImTextureData, ImTextureStatus) -> Unit
+
+pub fn im_texture_data_field_set_tex_id(ImTextureData, UInt64) -> Unit
+
+pub fn im_texture_data_field_set_unique_id(ImTextureData, Int) -> Unit
+
+pub fn im_texture_data_field_set_unused_frames(ImTextureData, Int) -> Unit
+
+pub fn im_texture_data_field_set_update_rect(ImTextureData, ImTextureRect) -> Unit
+
+pub fn im_texture_data_field_set_updates(ImTextureData, ImVector_ImTextureRect) -> Unit
+
+pub fn im_texture_data_field_set_use_colors(ImTextureData, Bool) -> Unit
+
+pub fn im_texture_data_field_set_used_rect(ImTextureData, ImTextureRect) -> Unit
+
+pub fn im_texture_data_field_set_want_destroy_next_frame(ImTextureData, Bool) -> Unit
+
+pub fn im_texture_data_field_set_width(ImTextureData, Int) -> Unit
+
+pub fn im_texture_data_get_pitch(ImTextureData) -> Int
+
+pub fn im_texture_data_get_pixels(ImTextureData) -> VoidPtr
+
+pub fn im_texture_data_get_pixels_at(ImTextureData, Int, Int) -> VoidPtr
+
+pub fn im_texture_data_get_size_in_bytes(ImTextureData) -> Int
+
+pub fn im_texture_data_get_tex_id(ImTextureData) -> UInt64
+
+pub fn im_texture_data_get_tex_ref(ImTextureData) -> ImTextureRef
+
+pub fn im_texture_data_set_status(ImTextureData, ImTextureStatus) -> Unit
+
+pub fn im_texture_data_set_tex_id(ImTextureData, UInt64) -> Unit
+
+pub fn im_texture_format_alpha8() -> Int
+
+pub fn im_texture_format_rgba32() -> Int
+
+pub fn im_texture_id_invalid() -> UInt64
+
+pub fn im_texture_rect_field_get_h(ImTextureRect) -> Int
+
+pub fn im_texture_rect_field_get_w(ImTextureRect) -> Int
+
+pub fn im_texture_rect_field_get_x(ImTextureRect) -> Int
+
+pub fn im_texture_rect_field_get_y(ImTextureRect) -> Int
+
+pub fn im_texture_rect_field_set_h(ImTextureRect, Int) -> Unit
+
+pub fn im_texture_rect_field_set_w(ImTextureRect, Int) -> Unit
+
+pub fn im_texture_rect_field_set_x(ImTextureRect, Int) -> Unit
+
+pub fn im_texture_rect_field_set_y(ImTextureRect, Int) -> Unit
+
+pub fn im_texture_ref_field_get_tex_data(ImTextureRef) -> ImTextureData
+
+pub fn im_texture_ref_field_get_tex_id(ImTextureRef) -> UInt64
+
+pub fn im_texture_ref_field_set_tex_data(ImTextureRef, ImTextureData) -> Unit
+
+pub fn im_texture_ref_field_set_tex_id(ImTextureRef, UInt64) -> Unit
+
+pub fn im_texture_ref_get_tex_id(ImTextureRef) -> UInt64
+
+pub fn im_texture_status_destroyed() -> Int
+
+pub fn im_texture_status_ok() -> Int
+
+pub fn im_texture_status_want_create() -> Int
+
+pub fn im_texture_status_want_destroy() -> Int
+
+pub fn im_texture_status_want_updates() -> Int
+
+pub fn im_unicode_codepoint_invalid() -> Int
+
+pub fn im_unicode_codepoint_max() -> Int
+
+pub fn im_vec2_field_get_x(ImVec2) -> Float
+
+pub fn im_vec2_field_get_y(ImVec2) -> Float
+
+pub fn im_vec2_field_set_x(ImVec2, Float) -> Unit
+
+pub fn im_vec2_field_set_y(ImVec2, Float) -> Unit
+
+pub fn im_vec2_free(ImVec2) -> Unit
+
+pub fn im_vec2_new(Float, Float) -> ImVec2
+
+pub fn im_vec4_field_get_w(ImVec4) -> Float
+
+pub fn im_vec4_field_get_x(ImVec4) -> Float
+
+pub fn im_vec4_field_get_y(ImVec4) -> Float
+
+pub fn im_vec4_field_get_z(ImVec4) -> Float
+
+pub fn im_vec4_field_set_w(ImVec4, Float) -> Unit
+
+pub fn im_vec4_field_set_x(ImVec4, Float) -> Unit
+
+pub fn im_vec4_field_set_y(ImVec4, Float) -> Unit
+
+pub fn im_vec4_field_set_z(ImVec4, Float) -> Unit
+
+pub fn im_vec4_free(ImVec4) -> Unit
+
+pub fn im_vec4_new(Float, Float, Float, Float) -> ImVec4
+
+pub fn im_vector_char_field_get_capacity(ImVector_char) -> Int
+
+pub fn im_vector_char_field_get_data(ImVector_char) -> CString
+
+pub fn im_vector_char_field_get_size(ImVector_char) -> Int
+
+pub fn im_vector_char_field_set_capacity(ImVector_char, Int) -> Unit
+
+pub fn im_vector_char_field_set_data(ImVector_char, CString) -> Unit
+
+pub fn im_vector_char_field_set_size(ImVector_char, Int) -> Unit
+
+pub fn im_vector_construct(VoidPtr) -> Unit
+
+pub fn im_vector_destruct(VoidPtr) -> Unit
+
+pub fn im_vector_float_field_get_capacity(ImVector_float) -> Int
+
+pub fn im_vector_float_field_get_data(ImVector_float) -> FloatPtr
+
+pub fn im_vector_float_field_get_size(ImVector_float) -> Int
+
+pub fn im_vector_float_field_set_capacity(ImVector_float, Int) -> Unit
+
+pub fn im_vector_float_field_set_data(ImVector_float, FloatPtr) -> Unit
+
+pub fn im_vector_float_field_set_size(ImVector_float, Int) -> Unit
+
+pub fn im_vector_im_draw_channel_field_get_capacity(ImVector_ImDrawChannel) -> Int
+
+pub fn im_vector_im_draw_channel_field_get_data(ImVector_ImDrawChannel) -> ImDrawChannel
+
+pub fn im_vector_im_draw_channel_field_get_size(ImVector_ImDrawChannel) -> Int
+
+pub fn im_vector_im_draw_channel_field_set_capacity(ImVector_ImDrawChannel, Int) -> Unit
+
+pub fn im_vector_im_draw_channel_field_set_data(ImVector_ImDrawChannel, ImDrawChannel) -> Unit
+
+pub fn im_vector_im_draw_channel_field_set_size(ImVector_ImDrawChannel, Int) -> Unit
+
+pub fn im_vector_im_draw_cmd_field_get_capacity(ImVector_ImDrawCmd) -> Int
+
+pub fn im_vector_im_draw_cmd_field_get_data(ImVector_ImDrawCmd) -> ImDrawCmd
+
+pub fn im_vector_im_draw_cmd_field_get_size(ImVector_ImDrawCmd) -> Int
+
+pub fn im_vector_im_draw_cmd_field_set_capacity(ImVector_ImDrawCmd, Int) -> Unit
+
+pub fn im_vector_im_draw_cmd_field_set_data(ImVector_ImDrawCmd, ImDrawCmd) -> Unit
+
+pub fn im_vector_im_draw_cmd_field_set_size(ImVector_ImDrawCmd, Int) -> Unit
+
+pub fn im_vector_im_draw_idx_field_get_capacity(ImVector_ImDrawIdx) -> Int
+
+pub fn im_vector_im_draw_idx_field_get_data(ImVector_ImDrawIdx) -> ImDrawIdxPtr
+
+pub fn im_vector_im_draw_idx_field_get_size(ImVector_ImDrawIdx) -> Int
+
+pub fn im_vector_im_draw_idx_field_set_capacity(ImVector_ImDrawIdx, Int) -> Unit
+
+pub fn im_vector_im_draw_idx_field_set_data(ImVector_ImDrawIdx, ImDrawIdxPtr) -> Unit
+
+pub fn im_vector_im_draw_idx_field_set_size(ImVector_ImDrawIdx, Int) -> Unit
+
+pub fn im_vector_im_draw_list_ptr_field_get_capacity(ImVector_ImDrawListPtr) -> Int
+
+pub fn im_vector_im_draw_list_ptr_field_get_data(ImVector_ImDrawListPtr) -> ImDrawListPtr
+
+pub fn im_vector_im_draw_list_ptr_field_get_size(ImVector_ImDrawListPtr) -> Int
+
+pub fn im_vector_im_draw_list_ptr_field_set_capacity(ImVector_ImDrawListPtr, Int) -> Unit
+
+pub fn im_vector_im_draw_list_ptr_field_set_data(ImVector_ImDrawListPtr, ImDrawListPtr) -> Unit
+
+pub fn im_vector_im_draw_list_ptr_field_set_size(ImVector_ImDrawListPtr, Int) -> Unit
+
+pub fn im_vector_im_draw_list_shared_data_ptr_field_get_capacity(ImVector_ImDrawListSharedDataPtr) -> Int
+
+pub fn im_vector_im_draw_list_shared_data_ptr_field_get_data(ImVector_ImDrawListSharedDataPtr) -> ImDrawListSharedDataPtr
+
+pub fn im_vector_im_draw_list_shared_data_ptr_field_get_size(ImVector_ImDrawListSharedDataPtr) -> Int
+
+pub fn im_vector_im_draw_list_shared_data_ptr_field_set_capacity(ImVector_ImDrawListSharedDataPtr, Int) -> Unit
+
+pub fn im_vector_im_draw_list_shared_data_ptr_field_set_data(ImVector_ImDrawListSharedDataPtr, ImDrawListSharedDataPtr) -> Unit
+
+pub fn im_vector_im_draw_list_shared_data_ptr_field_set_size(ImVector_ImDrawListSharedDataPtr, Int) -> Unit
+
+pub fn im_vector_im_draw_vert_field_get_capacity(ImVector_ImDrawVert) -> Int
+
+pub fn im_vector_im_draw_vert_field_get_data(ImVector_ImDrawVert) -> ImDrawVert
+
+pub fn im_vector_im_draw_vert_field_get_size(ImVector_ImDrawVert) -> Int
+
+pub fn im_vector_im_draw_vert_field_set_capacity(ImVector_ImDrawVert, Int) -> Unit
+
+pub fn im_vector_im_draw_vert_field_set_data(ImVector_ImDrawVert, ImDrawVert) -> Unit
+
+pub fn im_vector_im_draw_vert_field_set_size(ImVector_ImDrawVert, Int) -> Unit
+
+pub fn im_vector_im_font_config_field_get_capacity(ImVector_ImFontConfig) -> Int
+
+pub fn im_vector_im_font_config_field_get_data(ImVector_ImFontConfig) -> ImFontConfig
+
+pub fn im_vector_im_font_config_field_get_size(ImVector_ImFontConfig) -> Int
+
+pub fn im_vector_im_font_config_field_set_capacity(ImVector_ImFontConfig, Int) -> Unit
+
+pub fn im_vector_im_font_config_field_set_data(ImVector_ImFontConfig, ImFontConfig) -> Unit
+
+pub fn im_vector_im_font_config_field_set_size(ImVector_ImFontConfig, Int) -> Unit
+
+pub fn im_vector_im_font_config_ptr_field_get_capacity(ImVector_ImFontConfigPtr) -> Int
+
+pub fn im_vector_im_font_config_ptr_field_get_data(ImVector_ImFontConfigPtr) -> ImFontConfigPtr
+
+pub fn im_vector_im_font_config_ptr_field_get_size(ImVector_ImFontConfigPtr) -> Int
+
+pub fn im_vector_im_font_config_ptr_field_set_capacity(ImVector_ImFontConfigPtr, Int) -> Unit
+
+pub fn im_vector_im_font_config_ptr_field_set_data(ImVector_ImFontConfigPtr, ImFontConfigPtr) -> Unit
+
+pub fn im_vector_im_font_config_ptr_field_set_size(ImVector_ImFontConfigPtr, Int) -> Unit
+
+pub fn im_vector_im_font_glyph_field_get_capacity(ImVector_ImFontGlyph) -> Int
+
+pub fn im_vector_im_font_glyph_field_get_data(ImVector_ImFontGlyph) -> ImFontGlyph
+
+pub fn im_vector_im_font_glyph_field_get_size(ImVector_ImFontGlyph) -> Int
+
+pub fn im_vector_im_font_glyph_field_set_capacity(ImVector_ImFontGlyph, Int) -> Unit
+
+pub fn im_vector_im_font_glyph_field_set_data(ImVector_ImFontGlyph, ImFontGlyph) -> Unit
+
+pub fn im_vector_im_font_glyph_field_set_size(ImVector_ImFontGlyph, Int) -> Unit
+
+pub fn im_vector_im_font_ptr_field_get_capacity(ImVector_ImFontPtr) -> Int
+
+pub fn im_vector_im_font_ptr_field_get_data(ImVector_ImFontPtr) -> ImFontPtr
+
+pub fn im_vector_im_font_ptr_field_get_size(ImVector_ImFontPtr) -> Int
+
+pub fn im_vector_im_font_ptr_field_set_capacity(ImVector_ImFontPtr, Int) -> Unit
+
+pub fn im_vector_im_font_ptr_field_set_data(ImVector_ImFontPtr, ImFontPtr) -> Unit
+
+pub fn im_vector_im_font_ptr_field_set_size(ImVector_ImFontPtr, Int) -> Unit
+
+pub fn im_vector_im_gui_selection_request_field_get_capacity(ImVector_ImGuiSelectionRequest) -> Int
+
+pub fn im_vector_im_gui_selection_request_field_get_data(ImVector_ImGuiSelectionRequest) -> ImGuiSelectionRequest
+
+pub fn im_vector_im_gui_selection_request_field_get_size(ImVector_ImGuiSelectionRequest) -> Int
+
+pub fn im_vector_im_gui_selection_request_field_set_capacity(ImVector_ImGuiSelectionRequest, Int) -> Unit
+
+pub fn im_vector_im_gui_selection_request_field_set_data(ImVector_ImGuiSelectionRequest, ImGuiSelectionRequest) -> Unit
+
+pub fn im_vector_im_gui_selection_request_field_set_size(ImVector_ImGuiSelectionRequest, Int) -> Unit
+
+pub fn im_vector_im_gui_storage_pair_field_get_capacity(ImVector_ImGuiStoragePair) -> Int
+
+pub fn im_vector_im_gui_storage_pair_field_get_data(ImVector_ImGuiStoragePair) -> ImGuiStoragePair
+
+pub fn im_vector_im_gui_storage_pair_field_get_size(ImVector_ImGuiStoragePair) -> Int
+
+pub fn im_vector_im_gui_storage_pair_field_set_capacity(ImVector_ImGuiStoragePair, Int) -> Unit
+
+pub fn im_vector_im_gui_storage_pair_field_set_data(ImVector_ImGuiStoragePair, ImGuiStoragePair) -> Unit
+
+pub fn im_vector_im_gui_storage_pair_field_set_size(ImVector_ImGuiStoragePair, Int) -> Unit
+
+pub fn im_vector_im_gui_text_range_field_get_capacity(ImVector_ImGuiTextRange) -> Int
+
+pub fn im_vector_im_gui_text_range_field_get_data(ImVector_ImGuiTextRange) -> ImGuiTextFilter_ImGuiTextRange
+
+pub fn im_vector_im_gui_text_range_field_get_size(ImVector_ImGuiTextRange) -> Int
+
+pub fn im_vector_im_gui_text_range_field_set_capacity(ImVector_ImGuiTextRange, Int) -> Unit
+
+pub fn im_vector_im_gui_text_range_field_set_data(ImVector_ImGuiTextRange, ImGuiTextFilter_ImGuiTextRange) -> Unit
+
+pub fn im_vector_im_gui_text_range_field_set_size(ImVector_ImGuiTextRange, Int) -> Unit
+
+pub fn im_vector_im_texture_data_ptr_field_get_capacity(ImVector_ImTextureDataPtr) -> Int
+
+pub fn im_vector_im_texture_data_ptr_field_get_data(ImVector_ImTextureDataPtr) -> ImTextureDataPtr
+
+pub fn im_vector_im_texture_data_ptr_field_get_size(ImVector_ImTextureDataPtr) -> Int
+
+pub fn im_vector_im_texture_data_ptr_field_set_capacity(ImVector_ImTextureDataPtr, Int) -> Unit
+
+pub fn im_vector_im_texture_data_ptr_field_set_data(ImVector_ImTextureDataPtr, ImTextureDataPtr) -> Unit
+
+pub fn im_vector_im_texture_data_ptr_field_set_size(ImVector_ImTextureDataPtr, Int) -> Unit
+
+pub fn im_vector_im_texture_rect_field_get_capacity(ImVector_ImTextureRect) -> Int
+
+pub fn im_vector_im_texture_rect_field_get_data(ImVector_ImTextureRect) -> ImTextureRect
+
+pub fn im_vector_im_texture_rect_field_get_size(ImVector_ImTextureRect) -> Int
+
+pub fn im_vector_im_texture_rect_field_set_capacity(ImVector_ImTextureRect, Int) -> Unit
+
+pub fn im_vector_im_texture_rect_field_set_data(ImVector_ImTextureRect, ImTextureRect) -> Unit
+
+pub fn im_vector_im_texture_rect_field_set_size(ImVector_ImTextureRect, Int) -> Unit
+
+pub fn im_vector_im_texture_ref_field_get_capacity(ImVector_ImTextureRef) -> Int
+
+pub fn im_vector_im_texture_ref_field_get_data(ImVector_ImTextureRef) -> ImTextureRef
+
+pub fn im_vector_im_texture_ref_field_get_size(ImVector_ImTextureRef) -> Int
+
+pub fn im_vector_im_texture_ref_field_set_capacity(ImVector_ImTextureRef, Int) -> Unit
+
+pub fn im_vector_im_texture_ref_field_set_data(ImVector_ImTextureRef, ImTextureRef) -> Unit
+
+pub fn im_vector_im_texture_ref_field_set_size(ImVector_ImTextureRef, Int) -> Unit
+
+pub fn im_vector_im_u16_field_get_capacity(ImVector_ImU16) -> Int
+
+pub fn im_vector_im_u16_field_get_data(ImVector_ImU16) -> ImU16Ptr
+
+pub fn im_vector_im_u16_field_get_size(ImVector_ImU16) -> Int
+
+pub fn im_vector_im_u16_field_set_capacity(ImVector_ImU16, Int) -> Unit
+
+pub fn im_vector_im_u16_field_set_data(ImVector_ImU16, ImU16Ptr) -> Unit
+
+pub fn im_vector_im_u16_field_set_size(ImVector_ImU16, Int) -> Unit
+
+pub fn im_vector_im_u32_field_get_capacity(ImVector_ImU32) -> Int
+
+pub fn im_vector_im_u32_field_get_data(ImVector_ImU32) -> ImU32Ptr
+
+pub fn im_vector_im_u32_field_get_size(ImVector_ImU32) -> Int
+
+pub fn im_vector_im_u32_field_set_capacity(ImVector_ImU32, Int) -> Unit
+
+pub fn im_vector_im_u32_field_set_data(ImVector_ImU32, ImU32Ptr) -> Unit
+
+pub fn im_vector_im_u32_field_set_size(ImVector_ImU32, Int) -> Unit
+
+pub fn im_vector_im_u8_field_get_capacity(ImVector_ImU8) -> Int
+
+pub fn im_vector_im_u8_field_get_data(ImVector_ImU8) -> ImU8Ptr
+
+pub fn im_vector_im_u8_field_get_size(ImVector_ImU8) -> Int
+
+pub fn im_vector_im_u8_field_set_capacity(ImVector_ImU8, Int) -> Unit
+
+pub fn im_vector_im_u8_field_set_data(ImVector_ImU8, ImU8Ptr) -> Unit
+
+pub fn im_vector_im_u8_field_set_size(ImVector_ImU8, Int) -> Unit
+
+pub fn im_vector_im_vec2_field_get_capacity(ImVector_ImVec2) -> Int
+
+pub fn im_vector_im_vec2_field_get_data(ImVector_ImVec2) -> ImVec2
+
+pub fn im_vector_im_vec2_field_get_size(ImVector_ImVec2) -> Int
+
+pub fn im_vector_im_vec2_field_set_capacity(ImVector_ImVec2, Int) -> Unit
+
+pub fn im_vector_im_vec2_field_set_data(ImVector_ImVec2, ImVec2) -> Unit
+
+pub fn im_vector_im_vec2_field_set_size(ImVector_ImVec2, Int) -> Unit
+
+pub fn im_vector_im_vec4_field_get_capacity(ImVector_ImVec4) -> Int
+
+pub fn im_vector_im_vec4_field_get_data(ImVector_ImVec4) -> ImVec4
+
+pub fn im_vector_im_vec4_field_get_size(ImVector_ImVec4) -> Int
+
+pub fn im_vector_im_vec4_field_set_capacity(ImVector_ImVec4, Int) -> Unit
+
+pub fn im_vector_im_vec4_field_set_data(ImVector_ImVec4, ImVec4) -> Unit
+
+pub fn im_vector_im_vec4_field_set_size(ImVector_ImVec4, Int) -> Unit
+
+pub fn im_vector_im_wchar_field_get_capacity(ImVector_ImWchar) -> Int
+
+pub fn im_vector_im_wchar_field_get_data(ImVector_ImWchar) -> ImWcharPtr
+
+pub fn im_vector_im_wchar_field_get_size(ImVector_ImWchar) -> Int
+
+pub fn im_vector_im_wchar_field_set_capacity(ImVector_ImWchar, Int) -> Unit
+
+pub fn im_vector_im_wchar_field_set_data(ImVector_ImWchar, ImWcharPtr) -> Unit
+
+pub fn im_vector_im_wchar_field_set_size(ImVector_ImWchar, Int) -> Unit
+
+pub fn imgui_api() -> Bool
+
+pub fn imgui_define_math_operators_implemented() -> Bool
+
+pub fn imgui_has_table() -> Bool
+
+pub fn imgui_has_textures() -> Bool
+
+pub fn imgui_impl_api() -> Bool
+
+pub fn imgui_payload_type_color_3_f() -> String
+
+pub fn imgui_payload_type_color_4_f() -> String
+
+pub fn imgui_version() -> String
+
+pub fn imgui_version_num() -> Int
+
+pub fn int_ptr_free(IntPtr) -> Unit
+
+pub fn int_ptr_get(IntPtr) -> Int
+
+pub fn int_ptr_new(Int) -> IntPtr
+
+pub fn int_ptr_set(IntPtr, Int) -> Unit
+
+pub fn null_anonymous_type0() -> AnonymousType0
+
+pub fn null_anonymous_type1() -> AnonymousType1
+
+pub fn null_bool_ptr() -> BoolPtr
+
+pub fn null_c_string() -> CString
+
+pub fn null_c_string_ptr() -> CStringPtr
+
+pub fn null_double_ptr() -> DoublePtr
+
+pub fn null_float_ptr() -> FloatPtr
+
+pub fn null_function_ptr() -> FunctionPtr
+
+pub fn null_im_color() -> ImColor
+
+pub fn null_im_draw_callback() -> ImDrawCallback
+
+pub fn null_im_draw_channel() -> ImDrawChannel
+
+pub fn null_im_draw_cmd() -> ImDrawCmd
+
+pub fn null_im_draw_cmd_header() -> ImDrawCmdHeader
+
+pub fn null_im_draw_data() -> ImDrawData
+
+pub fn null_im_draw_idx_ptr() -> ImDrawIdxPtr
+
+pub fn null_im_draw_list() -> ImDrawList
+
+pub fn null_im_draw_list_ptr() -> ImDrawListPtr
+
+pub fn null_im_draw_list_shared_data() -> ImDrawListSharedData
+
+pub fn null_im_draw_list_shared_data_ptr() -> ImDrawListSharedDataPtr
+
+pub fn null_im_draw_list_splitter() -> ImDrawListSplitter
+
+pub fn null_im_draw_vert() -> ImDrawVert
+
+pub fn null_im_font() -> ImFont
+
+pub fn null_im_font_atlas() -> ImFontAtlas
+
+pub fn null_im_font_atlas_builder() -> ImFontAtlasBuilder
+
+pub fn null_im_font_atlas_rect() -> ImFontAtlasRect
+
+pub fn null_im_font_baked() -> ImFontBaked
+
+pub fn null_im_font_config() -> ImFontConfig
+
+pub fn null_im_font_config_ptr() -> ImFontConfigPtr
+
+pub fn null_im_font_glyph() -> ImFontGlyph
+
+pub fn null_im_font_glyph_ranges_builder() -> ImFontGlyphRangesBuilder
+
+pub fn null_im_font_loader() -> ImFontLoader
+
+pub fn null_im_font_ptr() -> ImFontPtr
+
+pub fn null_im_gui_context() -> ImGuiContext
+
+pub fn null_im_gui_id_ptr() -> ImGuiIDPtr
+
+pub fn null_im_gui_input_text_callback() -> ImGuiInputTextCallback
+
+pub fn null_im_gui_input_text_callback_data() -> ImGuiInputTextCallbackData
+
+pub fn null_im_gui_io() -> ImGuiIO
+
+pub fn null_im_gui_key_data() -> ImGuiKeyData
+
+pub fn null_im_gui_list_clipper() -> ImGuiListClipper
+
+pub fn null_im_gui_mem_alloc_func() -> ImGuiMemAllocFunc
+
+pub fn null_im_gui_mem_alloc_func_ptr() -> ImGuiMemAllocFuncPtr
+
+pub fn null_im_gui_mem_free_func() -> ImGuiMemFreeFunc
+
+pub fn null_im_gui_mem_free_func_ptr() -> ImGuiMemFreeFuncPtr
+
+pub fn null_im_gui_multi_select_io() -> ImGuiMultiSelectIO
+
+pub fn null_im_gui_payload() -> ImGuiPayload
+
+pub fn null_im_gui_platform_ime_data() -> ImGuiPlatformImeData
+
+pub fn null_im_gui_platform_io() -> ImGuiPlatformIO
+
+pub fn null_im_gui_selection_basic_storage() -> ImGuiSelectionBasicStorage
+
+pub fn null_im_gui_selection_external_storage() -> ImGuiSelectionExternalStorage
+
+pub fn null_im_gui_selection_request() -> ImGuiSelectionRequest
+
+pub fn null_im_gui_selection_request_type() -> ImGuiSelectionRequestType
+
+pub fn null_im_gui_size_callback() -> ImGuiSizeCallback
+
+pub fn null_im_gui_size_callback_data() -> ImGuiSizeCallbackData
+
+pub fn null_im_gui_storage() -> ImGuiStorage
+
+pub fn null_im_gui_storage_pair() -> ImGuiStoragePair
+
+pub fn null_im_gui_style() -> ImGuiStyle
+
+pub fn null_im_gui_table_column_sort_specs() -> ImGuiTableColumnSortSpecs
+
+pub fn null_im_gui_table_sort_specs() -> ImGuiTableSortSpecs
+
+pub fn null_im_gui_text_buffer() -> ImGuiTextBuffer
+
+pub fn null_im_gui_text_filter() -> ImGuiTextFilter
+
+pub fn null_im_gui_text_filter_im_gui_text_range() -> ImGuiTextFilter_ImGuiTextRange
+
+pub fn null_im_gui_viewport() -> ImGuiViewport
+
+pub fn null_im_str() -> ImStr
+
+pub fn null_im_texture_data() -> ImTextureData
+
+pub fn null_im_texture_data_ptr() -> ImTextureDataPtr
+
+pub fn null_im_texture_format() -> ImTextureFormat
+
+pub fn null_im_texture_rect() -> ImTextureRect
+
+pub fn null_im_texture_ref() -> ImTextureRef
+
+pub fn null_im_texture_status() -> ImTextureStatus
+
+pub fn null_im_u16_ptr() -> ImU16Ptr
+
+pub fn null_im_u32_ptr() -> ImU32Ptr
+
+pub fn null_im_u8_ptr() -> ImU8Ptr
+
+pub fn null_im_vec2() -> ImVec2
+
+pub fn null_im_vec4() -> ImVec4
+
+pub fn null_im_vector_char() -> ImVector_char
+
+pub fn null_im_vector_float() -> ImVector_float
+
+pub fn null_im_vector_im_draw_channel() -> ImVector_ImDrawChannel
+
+pub fn null_im_vector_im_draw_cmd() -> ImVector_ImDrawCmd
+
+pub fn null_im_vector_im_draw_idx() -> ImVector_ImDrawIdx
+
+pub fn null_im_vector_im_draw_list_ptr() -> ImVector_ImDrawListPtr
+
+pub fn null_im_vector_im_draw_list_shared_data_ptr() -> ImVector_ImDrawListSharedDataPtr
+
+pub fn null_im_vector_im_draw_vert() -> ImVector_ImDrawVert
+
+pub fn null_im_vector_im_font_config() -> ImVector_ImFontConfig
+
+pub fn null_im_vector_im_font_config_ptr() -> ImVector_ImFontConfigPtr
+
+pub fn null_im_vector_im_font_glyph() -> ImVector_ImFontGlyph
+
+pub fn null_im_vector_im_font_ptr() -> ImVector_ImFontPtr
+
+pub fn null_im_vector_im_gui_selection_request() -> ImVector_ImGuiSelectionRequest
+
+pub fn null_im_vector_im_gui_storage_pair() -> ImVector_ImGuiStoragePair
+
+pub fn null_im_vector_im_gui_text_range() -> ImVector_ImGuiTextRange
+
+pub fn null_im_vector_im_texture_data_ptr() -> ImVector_ImTextureDataPtr
+
+pub fn null_im_vector_im_texture_rect() -> ImVector_ImTextureRect
+
+pub fn null_im_vector_im_texture_ref() -> ImVector_ImTextureRef
+
+pub fn null_im_vector_im_u16() -> ImVector_ImU16
+
+pub fn null_im_vector_im_u32() -> ImVector_ImU32
+
+pub fn null_im_vector_im_u8() -> ImVector_ImU8
+
+pub fn null_im_vector_im_vec2() -> ImVector_ImVec2
+
+pub fn null_im_vector_im_vec4() -> ImVector_ImVec4
+
+pub fn null_im_vector_im_wchar() -> ImVector_ImWchar
+
+pub fn null_im_wchar_ptr() -> ImWcharPtr
+
+pub fn null_int_ptr() -> IntPtr
+
+pub fn null_int_ptr_ptr() -> IntPtrPtr
+
+pub fn null_size_t_ptr() -> SizeTPtr
+
+pub fn null_u_int_ptr() -> UIntPtr
+
+pub fn null_va_list() -> VaList
+
+pub fn null_void_ptr() -> VoidPtr
+
+pub fn null_void_ptr_ptr() -> VoidPtrPtr
+
+pub fn raw_bridge_mode() -> @raw.BridgeMode
+
+pub fn size_t_ptr_free(SizeTPtr) -> Unit
+
+pub fn size_t_ptr_get(SizeTPtr) -> UInt64
+
+pub fn size_t_ptr_new(UInt64) -> SizeTPtr
+
+pub fn size_t_ptr_set(SizeTPtr, UInt64) -> Unit
+
+pub fn uint_ptr_free(UIntPtr) -> Unit
+
+pub fn uint_ptr_get(UIntPtr) -> UInt
+
+pub fn uint_ptr_new(UInt) -> UIntPtr
+
+pub fn uint_ptr_set(UIntPtr, UInt) -> Unit
+
+pub fn void_ptr_ptr_free(VoidPtrPtr) -> Unit
+
+pub fn void_ptr_ptr_get(VoidPtrPtr) -> VoidPtr
+
+pub fn void_ptr_ptr_new(VoidPtr) -> VoidPtrPtr
+
+pub fn void_ptr_ptr_set(VoidPtrPtr, VoidPtr) -> Unit
+
+pub fn with_cstring(String, (CString) -> Unit) -> Unit
+
+pub fn with_cstring_ptr(String, (CStringPtr) -> Unit) -> Unit
+
+// Errors
+pub(all) suberror RawBindingError {
+  RawBindingUnavailable(String)
+} derive(Eq, @debug.Debug)
+
+// Types and methods
+#external
+pub(all) type AnonymousType0
+
+#external
+pub(all) type AnonymousType1
+
+#external
+pub(all) type BoolPtr
+
+#external
+pub(all) type CString
+
+#external
+pub(all) type CStringPtr
+
+#external
+pub(all) type DoublePtr
+
+#external
+pub(all) type FloatPtr
+
+#external
+pub(all) type FunctionPtr
+
+#external
+pub(all) type ImColor
+
+#external
+pub(all) type ImDrawCallback
+
+#external
+pub(all) type ImDrawChannel
+
+#external
+pub(all) type ImDrawCmd
+
+#external
+pub(all) type ImDrawCmdHeader
+
+#external
+pub(all) type ImDrawData
+
+#external
+pub(all) type ImDrawIdxPtr
+
+#external
+pub(all) type ImDrawList
+
+#external
+pub(all) type ImDrawListPtr
+
+#external
+pub(all) type ImDrawListSharedData
+
+#external
+pub(all) type ImDrawListSharedDataPtr
+
+#external
+pub(all) type ImDrawListSplitter
+
+#external
+pub(all) type ImDrawVert
+
+#external
+pub(all) type ImFont
+
+#external
+pub(all) type ImFontAtlas
+
+#external
+pub(all) type ImFontAtlasBuilder
+
+#external
+pub(all) type ImFontAtlasRect
+
+#external
+pub(all) type ImFontBaked
+
+#external
+pub(all) type ImFontConfig
+
+#external
+pub(all) type ImFontConfigPtr
+
+#external
+pub(all) type ImFontGlyph
+
+#external
+pub(all) type ImFontGlyphRangesBuilder
+
+#external
+pub(all) type ImFontLoader
+
+#external
+pub(all) type ImFontPtr
+
+#external
+pub(all) type ImGuiContext
+
+#external
+pub(all) type ImGuiIDPtr
+
+#external
+pub(all) type ImGuiIO
+
+#external
+pub(all) type ImGuiInputTextCallback
+
+#external
+pub(all) type ImGuiInputTextCallbackData
+
+#external
+pub(all) type ImGuiKeyData
+
+#external
+pub(all) type ImGuiListClipper
+
+#external
+pub(all) type ImGuiMemAllocFunc
+
+#external
+pub(all) type ImGuiMemAllocFuncPtr
+
+#external
+pub(all) type ImGuiMemFreeFunc
+
+#external
+pub(all) type ImGuiMemFreeFuncPtr
+
+#external
+pub(all) type ImGuiMultiSelectIO
+
+#external
+pub(all) type ImGuiPayload
+
+#external
+pub(all) type ImGuiPlatformIO
+
+#external
+pub(all) type ImGuiPlatformImeData
+
+#external
+pub(all) type ImGuiSelectionBasicStorage
+
+#external
+pub(all) type ImGuiSelectionExternalStorage
+
+#external
+pub(all) type ImGuiSelectionRequest
+
+#external
+pub(all) type ImGuiSelectionRequestType
+
+#external
+pub(all) type ImGuiSizeCallback
+
+#external
+pub(all) type ImGuiSizeCallbackData
+
+#external
+pub(all) type ImGuiStorage
+
+#external
+pub(all) type ImGuiStoragePair
+
+#external
+pub(all) type ImGuiStyle
+
+#external
+pub(all) type ImGuiTableColumnSortSpecs
+
+#external
+pub(all) type ImGuiTableSortSpecs
+
+#external
+pub(all) type ImGuiTextBuffer
+
+#external
+pub(all) type ImGuiTextFilter
+
+#external
+pub(all) type ImGuiTextFilter_ImGuiTextRange
+
+#external
+pub(all) type ImGuiViewport
+
+#external
+pub(all) type ImStr
+
+#external
+pub(all) type ImTextureData
+
+#external
+pub(all) type ImTextureDataPtr
+
+#external
+pub(all) type ImTextureFormat
+
+#external
+pub(all) type ImTextureRect
+
+#external
+pub(all) type ImTextureRef
+
+#external
+pub(all) type ImTextureStatus
+
+#external
+pub(all) type ImU16Ptr
+
+#external
+pub(all) type ImU32Ptr
+
+#external
+pub(all) type ImU8Ptr
+
+#external
+pub(all) type ImVec2
+
+#external
+pub(all) type ImVec4
+
+#external
+pub(all) type ImVector_ImDrawChannel
+
+#external
+pub(all) type ImVector_ImDrawCmd
+
+#external
+pub(all) type ImVector_ImDrawIdx
+
+#external
+pub(all) type ImVector_ImDrawListPtr
+
+#external
+pub(all) type ImVector_ImDrawListSharedDataPtr
+
+#external
+pub(all) type ImVector_ImDrawVert
+
+#external
+pub(all) type ImVector_ImFontConfig
+
+#external
+pub(all) type ImVector_ImFontConfigPtr
+
+#external
+pub(all) type ImVector_ImFontGlyph
+
+#external
+pub(all) type ImVector_ImFontPtr
+
+#external
+pub(all) type ImVector_ImGuiSelectionRequest
+
+#external
+pub(all) type ImVector_ImGuiStoragePair
+
+#external
+pub(all) type ImVector_ImGuiTextRange
+
+#external
+pub(all) type ImVector_ImTextureDataPtr
+
+#external
+pub(all) type ImVector_ImTextureRect
+
+#external
+pub(all) type ImVector_ImTextureRef
+
+#external
+pub(all) type ImVector_ImU16
+
+#external
+pub(all) type ImVector_ImU32
+
+#external
+pub(all) type ImVector_ImU8
+
+#external
+pub(all) type ImVector_ImVec2
+
+#external
+pub(all) type ImVector_ImVec4
+
+#external
+pub(all) type ImVector_ImWchar
+
+#external
+pub(all) type ImVector_char
+
+#external
+pub(all) type ImVector_float
+
+#external
+pub(all) type ImWcharPtr
+
+#external
+pub(all) type IntPtr
+
+#external
+pub(all) type IntPtrPtr
+
+pub(all) struct OwnedCString {
+  mut raw : CString
+}
+pub fn OwnedCString::free(Self) -> Unit
+pub fn OwnedCString::new(String) -> Self
+pub fn OwnedCString::raw(Self) -> CString
+
+#external
+pub(all) type SizeTPtr
+
+#external
+pub(all) type UIntPtr
+
+#external
+pub(all) type VaList
+
+#external
+pub(all) type VoidPtr
+
+#external
+pub(all) type VoidPtrPtr
+
+// Type aliases
+
+// Traits
+

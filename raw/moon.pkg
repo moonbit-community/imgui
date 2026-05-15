@@ -1,0 +1,31 @@
+import {
+  "moonbitlang/core/encoding/utf8" @encoding/utf8,
+}
+
+import {
+  "moonbitlang/core/debug" @debug,
+} for "test"
+
+supported_targets = "+native"
+
+options(
+  link: {
+    "native": {
+      "cc": "/usr/bin/cc",
+      "cc-flags": "-fblocks -Wno-deprecated-declarations -Iupstream/imgui -Iupstream/imgui/backends -Iimgui/raw/upstream/imgui -Iimgui/raw/upstream/imgui/backends",
+      "cc-link-flags": "-framework AppKit -framework OpenGL -framework GameController -lc++",
+    },
+  },
+  "native-stub": [
+    "imgui_bridge.mm",
+    "upstream/imgui/imgui.cpp",
+    "upstream/imgui/imgui_demo.cpp",
+    "upstream/imgui/imgui_draw.cpp",
+    "upstream/imgui/imgui_tables.cpp",
+    "upstream/imgui/imgui_widgets.cpp",
+    "upstream/dear_bindings/dcimgui.cpp",
+    "generated_bridge.cpp",
+    "upstream/imgui/backends/imgui_impl_opengl2.cpp",
+    "upstream/imgui/backends/imgui_impl_osx.mm",
+  ],
+)
