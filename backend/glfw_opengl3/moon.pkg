@@ -1,0 +1,20 @@
+import {
+  "moonbit-community/imgui" @imgui,
+  "moonbit-community/imgui/raw" @raw,
+}
+
+supported_targets = "+native"
+
+options(
+  link: {
+    "native": {
+      "cc": "cc",
+      "cc-flags": "-Wno-deprecated-declarations -I../../raw/upstream/imgui -I../../raw/upstream/imgui/backends -Iimgui/raw/upstream/imgui -Iimgui/raw/upstream/imgui/backends",
+    },
+  },
+  "native-stub": [
+    "glfw_opengl3_bridge.cpp",
+    "imgui_impl_glfw_bundle.cpp",
+    "imgui_impl_opengl3_bundle.cpp",
+  ],
+)

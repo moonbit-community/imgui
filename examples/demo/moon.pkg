@@ -9,9 +9,9 @@ supported_targets = "+native"
 options(
   link: {
     "native": {
-      "cc": "/usr/bin/cc",
+      "cc": "cc",
       "cc-flags": "-fblocks -Wno-deprecated-declarations -Iraw/upstream/imgui -Iraw/upstream/imgui/backends -Iimgui/raw/upstream/imgui -Iimgui/raw/upstream/imgui/backends",
-      "cc-link-flags": "-framework AppKit -framework OpenGL -framework GameController -lc++",
+      "cc-link-flags": "-framework AppKit -framework OpenGL -framework GameController -lstdc++",
     },
   },
   "is-main": true,

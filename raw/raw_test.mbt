@@ -1,6 +1,6 @@
 ///|
 test "bridge reports Dear ImGui mode" {
-  @debug.assert_eq(@raw.bridge_mode(), NativeCocoa)
+  @debug.assert_eq(@raw.bridge_mode(), DearBindings)
   @debug.assert_eq(@raw.bridge_version(), 3)
   @debug.assert_eq(@raw.dear_imgui_version_number(), 19281)
 }

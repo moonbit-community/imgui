@@ -12,9 +12,14 @@ supported_targets = "+native"
 options(
   link: {
     "native": {
-      "cc": "/usr/bin/cc",
-      "cc-flags": "-fblocks -Wno-deprecated-declarations -Iraw/upstream/imgui -Iraw/upstream/imgui/backends -Iimgui/raw/upstream/imgui -Iimgui/raw/upstream/imgui/backends",
-      "cc-link-flags": "-framework AppKit -framework OpenGL -framework GameController -lc++",
+      "cc": "cc",
+      "cc-flags": "-fblocks -Wno-deprecated-declarations -I../../raw/upstream/imgui -I../../raw/upstream/imgui/backends -Iimgui/raw/upstream/imgui -Iimgui/raw/upstream/imgui/backends",
+      "cc-link-flags": "-framework AppKit -framework OpenGL -framework GameController -lstdc++",
     },
   },
+  "native-stub": [
+    "cocoa_opengl2_bridge.mm",
+    "imgui_impl_opengl2_bundle.cpp",
+    "imgui_impl_osx_bundle.mm",
+  ],
 )

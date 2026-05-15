@@ -1,9 +1,9 @@
 ///|
 fn main {
   let options = @backend.AppOptions::default()
-    .title("MoonBit Dear ImGui Demo")
+    .title("MoonBit Dear ImGui GLFW Demo")
     .size(960, 640)
-  println("Starting MoonBit ImGui Cocoa window demo.")
+  println("Starting MoonBit ImGui GLFW + OpenGL3 window demo.")
   @backend.run(
     () => {
       @imgui.set_next_window_size(
@@ -20,9 +20,9 @@ fn main {
         if @imgui.begin_table("Status", 2, flags=@raw.TableFlags::borders()) {
           @imgui.table_next_row()
           ignore(@imgui.table_next_column())
-          @imgui.text("Bridge")
+          @imgui.text("Backend")
           ignore(@imgui.table_next_column())
-          @imgui.text("Cocoa + OpenGL2")
+          @imgui.text("GLFW + OpenGL3")
           @imgui.end_table()
         }
       }
@@ -42,5 +42,5 @@ fn main {
     NoCurrentContext =>
       abort("imgui demo failed: no current Dear ImGui context")
   }
-  println("Native Cocoa demo closed.")
+  println("Native GLFW demo closed.")
 }
