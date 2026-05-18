@@ -2,7 +2,7 @@
 
 - Upstream ImGui: `1.92.8`
 - Source header: `raw/upstream/imgui/imgui.h`
-- Metadata source: `raw/upstream/dear_bindings/dcimgui.json`
+- Metadata source: `raw/dear_bindings/dcimgui.json`
 - Defines: 22 / 22
 - Enum groups: 43 / 43
 - Enum values: 732 / 732

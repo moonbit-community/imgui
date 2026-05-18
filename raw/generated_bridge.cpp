@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <moonbit.h>
-#include "upstream/dear_bindings/dcimgui.h"
+#include "dear_bindings/dcimgui.h"
 
 extern "C" {
 

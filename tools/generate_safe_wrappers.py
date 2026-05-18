@@ -291,7 +291,7 @@ def render_safe(metadata: dict[str, Any], model: BindingModel) -> tuple[str, str
         "# Dear ImGui safe wrapper coverage",
         "",
         "- Source header: `raw/upstream/imgui/imgui.h`",
-        "- Metadata source: `raw/upstream/dear_bindings/dcimgui.json`",
+        "- Metadata source: `raw/dear_bindings/dcimgui.json`",
         f"- Total Dear Bindings functions: {len(metadata['functions'])}",
         f"- Safe generated wrappers: {len(bound)}",
         f"- Skipped functions: {len(skipped)}",

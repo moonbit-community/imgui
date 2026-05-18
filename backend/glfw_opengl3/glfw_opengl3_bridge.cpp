@@ -9,8 +9,8 @@
 #if MOONBIT_IMGUI_HAS_GLFW
 
 #include "../../raw/upstream/imgui/imgui.h"
-#include "../../raw/upstream/imgui/backends/imgui_impl_glfw.h"
-#include "../../raw/upstream/imgui/backends/imgui_impl_opengl3.h"
+#include "upstream/imgui_impl_glfw.h"
+#include "upstream/imgui_impl_opengl3.h"
 
 #include <GLFW/glfw3.h>
 

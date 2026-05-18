@@ -5,9 +5,11 @@ ImGui API. The package is split into a generated raw layer, a generated safe
 wrapper that covers 95.39% of the Dear Bindings functions, and a smaller
 hand-written wrapper that is practical for application code.
 
-This checkout vendors Dear ImGui 1.92.8 source under `raw/upstream/imgui` and
-uses the official ImGui core plus Cocoa/OpenGL2 and GLFW/OpenGL3 backends for
-native demos. The generated raw package covers every public symbol emitted by
+This checkout pins Dear ImGui 1.92.8 as a git submodule under
+`raw/upstream/imgui` and pins the Dear Bindings generator as a git submodule
+under `raw/upstream/dear_bindings`. It uses the official ImGui core plus
+Cocoa/OpenGL2 and GLFW/OpenGL3 backends for native demos. The generated raw
+package covers every public symbol emitted by
 `dear_bindings` for the pinned `imgui.h`: defines, enum values, typedefs,
 opaque structs, struct field accessors, and all 760 generated C functions. The
 generated safe layer exposes 725 of those functions with context checks and
@@ -20,6 +22,12 @@ native macOS Cocoa window. On Ubuntu, install GLFW and Mesa development
 packages, then run `moon run examples/demo_glfw --target native`. The windows
 render both the MoonBit sample window and the official Dear ImGui demo window
 and stay open until closed.
+
+Clone this repository with submodules, or initialize them before building:
+
+```bash
+git submodule update --init --recursive
+```
 
 ## Packages
 
@@ -194,12 +202,12 @@ MOONBIT_IMGUI_CAPTURE=/tmp/moonbit-imgui-frame.ppm \
 
 ## Regeneration
 
-The generator contract lives in `tools/generate_bindings.py`. With vendored
+The generator contract lives in `tools/generate_bindings.py`. With generated
 `dear_bindings` metadata, run:
 
 ```bash
 python3 tools/generate_bindings.py \
-  --metadata raw/upstream/dear_bindings/dcimgui.json \
+  --metadata raw/dear_bindings/dcimgui.json \
   --moonbit-out raw/generated/generated.mbt \
   --cpp-out raw/generated_bridge.cpp \
   --coverage-out raw/generated_coverage.md
@@ -209,15 +217,15 @@ The generated safe wrapper is derived from the same metadata:
 
 ```bash
 python3 tools/generate_safe_wrappers.py \
-  --metadata raw/upstream/dear_bindings/dcimgui.json \
+  --metadata raw/dear_bindings/dcimgui.json \
   --safe-out safe_generated.mbt \
   --coverage-out safe_generated_coverage.md \
   --min-coverage 95
 ```
 
-The vendored Dear Bindings output lives under `raw/upstream/dear_bindings`.
-Regenerate it from the pinned Dear ImGui `imgui.h` before running the MoonBit
-generator after an upstream upgrade.
+The generated Dear Bindings C ABI output lives under `raw/dear_bindings`.
+Regenerate it with the pinned Dear Bindings submodule and pinned Dear ImGui
+`imgui.h` before running the MoonBit generator after an upstream upgrade.
 
 ## Release Notes
 
@@ -239,7 +247,8 @@ generator after an upstream upgrade.
   `ImVec2*`, `ImVec4*`, `const char*`, `const char**`, and `void**`.
 - The raw layer remains available for advanced users when the safe wrapper does
   not yet cover a public API.
-- Dear ImGui source is MIT licensed; the vendored license is preserved at
+- Dear ImGui source is MIT licensed; its submodule license is preserved at
   `raw/upstream/imgui/LICENSE.txt`.
-- Dear Bindings is MIT licensed; the vendored license is preserved at
-  `raw/upstream/dear_bindings/LICENSE.txt`.
+- Dear Bindings is MIT licensed; its submodule license is preserved at
+  `raw/upstream/dear_bindings/LICENSE.txt`, and the generated C ABI output
+  keeps its license copy at `raw/dear_bindings/LICENSE.txt`.

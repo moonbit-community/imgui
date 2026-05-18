@@ -23,7 +23,7 @@ options(
     "upstream/imgui/imgui_draw.cpp",
     "upstream/imgui/imgui_tables.cpp",
     "upstream/imgui/imgui_widgets.cpp",
-    "upstream/dear_bindings/dcimgui.cpp",
+    "dear_bindings/dcimgui.cpp",
     "generated_bridge.cpp",
   ],
 )

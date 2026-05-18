@@ -1,7 +1,7 @@
 # Dear ImGui safe wrapper coverage
 
 - Source header: `raw/upstream/imgui/imgui.h`
-- Metadata source: `raw/upstream/dear_bindings/dcimgui.json`
+- Metadata source: `raw/dear_bindings/dcimgui.json`
 - Total Dear Bindings functions: 760
 - Safe generated wrappers: 725
 - Skipped functions: 35

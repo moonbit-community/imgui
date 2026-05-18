@@ -8,8 +8,8 @@
 #include <moonbit.h>
 
 #include "../../raw/upstream/imgui/imgui.h"
-#include "../../raw/upstream/imgui/backends/imgui_impl_opengl2.h"
-#include "../../raw/upstream/imgui/backends/imgui_impl_osx.h"
+#include "upstream/imgui_impl_opengl2.h"
+#include "upstream/imgui_impl_osx.h"
 
 #include <algorithm>
 #include <cstdint>
