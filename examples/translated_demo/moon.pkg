@@ -1,0 +1,19 @@
+import {
+  "moonbit-community/imgui" @imgui,
+  "moonbit-community/imgui/backend/cocoa_opengl2" @backend,
+  "moonbit-community/imgui/raw" @raw,
+  "moonbit-community/imgui/raw/generated" @gen,
+}
+
+supported_targets = "+native"
+
+options(
+  link: {
+    "native": {
+      "cc": "cc",
+      "cc-flags": "-fblocks -Wno-deprecated-declarations -Iraw/upstream/imgui -Iraw/upstream/imgui/backends -Iimgui/raw/upstream/imgui -Iimgui/raw/upstream/imgui/backends",
+      "cc-link-flags": "-framework AppKit -framework OpenGL -framework GameController -lstdc++",
+    },
+  },
+  "is-main": true,
+)

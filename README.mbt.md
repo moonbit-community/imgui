@@ -18,10 +18,12 @@ Overloads that take `const char*` begin/end ranges expose a single full MoonBit
 `String` and pass a null end pointer to Dear ImGui.
 
 Running `moon run examples/demo --target native` from this repository opens a
-native macOS Cocoa window. On Ubuntu, install GLFW and Mesa development
-packages, then run `moon run examples/demo_glfw --target native`. The windows
-render both the MoonBit sample window and the official Dear ImGui demo window
-and stay open until closed.
+native macOS Cocoa window. `moon run examples/translated_demo --target native`
+opens a larger MoonBit translation of the official demo patterns without
+calling `ImGui_ShowDemoWindow` or upstream `imgui_demo.cpp`. On Ubuntu, install
+GLFW and Mesa development packages, then run
+`moon run examples/demo_glfw --target native`. The windows stay open until
+closed.
 
 Clone this repository with submodules, or initialize them before building:
 
@@ -45,6 +47,9 @@ git submodule update --init --recursive
 - `moonbit-community/imgui/examples/demo`: macOS native windowed demo.
 - `moonbit-community/imgui/examples/demo_glfw`: GLFW + OpenGL3 native windowed
   demo.
+- `moonbit-community/imgui/examples/translated_demo`: macOS native translated
+  demo that exercises menus, widgets, inputs, selection, layout, popups,
+  tables, draw lists, style data, and text from MoonBit binding calls.
 
 ## Example
 
@@ -179,6 +184,8 @@ path before running the demo:
 ```bash
 MOONBIT_IMGUI_CAPTURE=/tmp/moonbit-imgui-frame.ppm \
   moon run examples/demo --target native
+MOONBIT_IMGUI_CAPTURE=/tmp/moonbit-imgui-translated.ppm \
+  moon run examples/translated_demo --target native
 ```
 
 The bridge writes one rendered frame after the ImGui draw data becomes non-empty
