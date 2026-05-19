@@ -15,7 +15,11 @@ defer context.destroy()
 
 fn render_ui(state : State) -> Unit raise @imgui.ImGuiError {
   let ui = @imgui.ui()
-  ui.window("MoonBit Dear ImGui", flags=[@imgui.WindowFlag::MenuBar]) <| ui => {
+  ui.window(
+    "MoonBit Dear ImGui",
+    flags=[@imgui.WindowFlag::MenuBar],
+    style=[Rounding(6.0), Text(White)],
+  ) <| ui => {
     ui.menu_bar() <| ui => {
       ui.menu_item("Increment counter") <| () => {
         state.counter = state.counter + 1
@@ -29,7 +33,10 @@ fn render_ui(state : State) -> Unit raise @imgui.ImGuiError {
     ui.slider_float("Value", state.value, 0.0, 1.0) <| value => {
       state.value = value
     }
-    ui.button("Run") <| () => {
+    ui.button(
+      "Run",
+      style=[Background(Blue), Hovered(Cyan), Active(Green), Rounding(4.0)],
+    ) <| () => {
       state.counter = state.counter + 1
     }
   }
@@ -55,6 +62,10 @@ ignore(try! @imgui.render())
 - Buttons and menu items run their callback only when activated.
 - Composable flags are passed as enum arrays, for example
   `flags=[@imgui.WindowFlag::MenuBar, @imgui.WindowFlag::NoSavedSettings]`.
+- Scoped style sheets are passed as enum arrays, for example
+  `style=[Text(White), Background(Hex("#223344")), Rounding(6.0)]`.
+  Use `Slot(StyleColor, Color)` and `Metric(StyleMetric, Float)` only when a
+  precise style slot is needed.
 
 ## Packages
 

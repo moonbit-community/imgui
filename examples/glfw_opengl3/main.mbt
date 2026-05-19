@@ -192,7 +192,7 @@ fn render_ui(state : DemoState) -> Unit raise @imgui.ImGuiError {
   let style = @imgui.style()
   let font = @imgui.font()
   let ui = @imgui.ui()
-  ui.main_menu_bar() <| bar => {
+  ui.main_menu_bar(style=[Slot(MenuBarBackground, Hex("#20242A"))]) <| bar => {
     bar.menu_item("Main counter +1") <| () => {
       state.counter = state.counter + 1
     }
@@ -200,8 +200,11 @@ fn render_ui(state : DemoState) -> Unit raise @imgui.ImGuiError {
       state.counter = state.counter - 1
     }
   }
-  ui.window("MoonBit ImGui controls", flags=[MenuBar, HorizontalScrollbar]) <| ui => {
-    ui.menu_bar() <| bar => {
+  ui.window("MoonBit ImGui controls", flags=[MenuBar, HorizontalScrollbar], style=[
+    Rounding(6.0),
+    Slot(WindowBackground, Hex("#171B21")),
+  ]) <| ui => {
+    ui.menu_bar(style=[Text(White)]) <| bar => {
       bar.menu("Actions") <| menu => {
         menu.menu_item("Increment counter") <| () => {
           state.counter = state.counter + 1
@@ -225,14 +228,17 @@ fn render_ui(state : DemoState) -> Unit raise @imgui.ImGuiError {
     render_scopes(ui, state, style, font)
     render_tabs(ui, state)
 
-    ui.popup("MoonBit popup") <| popup => {
+    ui.popup("MoonBit popup", style=[Rounding(5.0), Text(Cyan)]) <| popup => {
       popup.text("Popup rendered by MoonBit.")
       popup.separator()
       popup.button("Close popup") <| () => { popup.close() }
     }
-    state.show_modal = ui.popup_modal("MoonBit modal", state.show_modal, flags=[
-        AlwaysAutoResize,
-      ]) <| popup => {
+    state.show_modal = ui.popup_modal(
+        "MoonBit modal",
+        state.show_modal,
+        flags=[AlwaysAutoResize],
+        style=[Rounding(8.0), Border(Cyan)],
+      ) <| popup => {
         popup.text("Modal scope is closed automatically.")
         popup.button("Accept") <| () => {
           state.show_modal = false
@@ -554,16 +560,20 @@ fn render_scopes(
       state.counter = state.counter + 1
     }
   }
-  ui.with_style_color_u32(@imgui.ColorId::button(), 0xFF3DA5FFU) <| ui => {
-    ui.button("Packed color button") <| () => {
-      state.counter = state.counter + 1
-    }
+  ui.style([
+    Slot(Button, Blue),
+    Slot(ButtonHovered, Cyan),
+    Slot(ButtonActive, Green),
+    Text(White),
+    Rounding(5.0),
+  ]) <| ui => {
+    ui.button("Styled button") <| () => { state.counter = state.counter + 1 }
   }
-  ui.with_style_var_float(@imgui.StyleVar::frame_rounding(), 3.0) <| ui => {
-    ui.button("Rounded via style var") <| () => {
-      state.counter = state.counter + 1
-    }
-  }
+  ui.button("Rounded direct style", style=[
+    Background(Hex("#223344")),
+    Hovered(Hex("#31506B")),
+    Rounding(8.0),
+  ]) <| () => { state.counter = state.counter + 1 }
   ui.with_font(font, size=@imgui.font_size()) <| ui => {
     ui.text("Current font scope")
   }
@@ -717,7 +727,7 @@ fn render_table(
   ignore(table.set_column_index(1))
   table.text("column = \{table.column_index()}")
   ignore(table.set_column_index(2))
-  table.set_bg_color(@imgui.TableBgTarget::cell_bg(), 0x333333FFU)
+  table.set_bg_color(@imgui.TableBgTarget::cell_bg(), Hex("#333333"))
   table.text("hovered = \{table.hovered_column()}")
   ignore(table.column_has_flag(0, IsVisible))
   ignore(table.row_index())
@@ -1034,149 +1044,144 @@ fn touch_value_api() -> Unit {
   ]
   let _ : Array[@imgui.TableRowFlag] = [Headers]
 
-  let mut bits = 0
-  for
-    value in [
-      @imgui.MouseButton::left(),
-      @imgui.MouseButton::right(),
-      @imgui.MouseButton::middle(),
-    ] {
-    bits = bits | value.value()
-  }
-  for
-    value in [
-      @imgui.Dir::none(),
-      @imgui.Dir::left(),
-      @imgui.Dir::right(),
-      @imgui.Dir::up(),
-      @imgui.Dir::down(),
-    ] {
-    bits = bits | value.value()
-  }
-  for
-    value in [
-      @imgui.TableBgTarget::none(),
-      @imgui.TableBgTarget::row_bg0(),
-      @imgui.TableBgTarget::row_bg1(),
-      @imgui.TableBgTarget::cell_bg(),
-    ] {
-    bits = bits | value.value()
-  }
-  let _ : Array[@imgui.StyleVar] = [
-    @imgui.StyleVar::alpha(),
-    @imgui.StyleVar::disabled_alpha(),
-    @imgui.StyleVar::window_rounding(),
-    @imgui.StyleVar::window_border_size(),
-    @imgui.StyleVar::child_rounding(),
-    @imgui.StyleVar::child_border_size(),
-    @imgui.StyleVar::popup_rounding(),
-    @imgui.StyleVar::popup_border_size(),
-    @imgui.StyleVar::frame_rounding(),
-    @imgui.StyleVar::frame_border_size(),
-    @imgui.StyleVar::indent_spacing(),
-    @imgui.StyleVar::scrollbar_size(),
-    @imgui.StyleVar::scrollbar_rounding(),
-    @imgui.StyleVar::scrollbar_padding(),
-    @imgui.StyleVar::grab_min_size(),
-    @imgui.StyleVar::grab_rounding(),
-    @imgui.StyleVar::image_rounding(),
-    @imgui.StyleVar::image_border_size(),
-    @imgui.StyleVar::tab_rounding(),
-    @imgui.StyleVar::tab_border_size(),
-    @imgui.StyleVar::tab_min_width_base(),
-    @imgui.StyleVar::tab_min_width_shrink(),
-    @imgui.StyleVar::tab_bar_border_size(),
-    @imgui.StyleVar::tab_bar_overline_size(),
-    @imgui.StyleVar::table_angled_headers_angle(),
-    @imgui.StyleVar::tree_lines_size(),
-    @imgui.StyleVar::tree_lines_rounding(),
-    @imgui.StyleVar::drag_drop_target_rounding(),
-    @imgui.StyleVar::separator_size(),
-    @imgui.StyleVar::separator_text_border_size(),
-    @imgui.StyleVar::count(),
+  let _ : Array[@imgui.MouseButton] = [
+    @imgui.MouseButton::left(),
+    @imgui.MouseButton::right(),
+    @imgui.MouseButton::middle(),
   ]
-  for
-    value in [
-      @imgui.Cond::none(),
-      @imgui.Cond::always(),
-      @imgui.Cond::once(),
-      @imgui.Cond::first_use_ever(),
-      @imgui.Cond::appearing(),
-    ] {
-    bits = bits | value.value()
-  }
-  let _ : Array[@imgui.ColorId] = [
-    @imgui.ColorId::text(),
-    @imgui.ColorId::text_disabled(),
-    @imgui.ColorId::window_bg(),
-    @imgui.ColorId::child_bg(),
-    @imgui.ColorId::popup_bg(),
-    @imgui.ColorId::border(),
-    @imgui.ColorId::border_shadow(),
-    @imgui.ColorId::frame_bg(),
-    @imgui.ColorId::frame_bg_hovered(),
-    @imgui.ColorId::frame_bg_active(),
-    @imgui.ColorId::title_bg(),
-    @imgui.ColorId::title_bg_active(),
-    @imgui.ColorId::title_bg_collapsed(),
-    @imgui.ColorId::menu_bar_bg(),
-    @imgui.ColorId::scrollbar_bg(),
-    @imgui.ColorId::scrollbar_grab(),
-    @imgui.ColorId::scrollbar_grab_hovered(),
-    @imgui.ColorId::scrollbar_grab_active(),
-    @imgui.ColorId::check_mark(),
-    @imgui.ColorId::checkbox_selected_bg(),
-    @imgui.ColorId::slider_grab(),
-    @imgui.ColorId::slider_grab_active(),
-    @imgui.ColorId::button(),
-    @imgui.ColorId::button_hovered(),
-    @imgui.ColorId::button_active(),
-    @imgui.ColorId::header(),
-    @imgui.ColorId::header_hovered(),
-    @imgui.ColorId::header_active(),
-    @imgui.ColorId::separator(),
-    @imgui.ColorId::separator_hovered(),
-    @imgui.ColorId::separator_active(),
-    @imgui.ColorId::resize_grip(),
-    @imgui.ColorId::resize_grip_hovered(),
-    @imgui.ColorId::resize_grip_active(),
-    @imgui.ColorId::tab(),
-    @imgui.ColorId::tab_active(),
-    @imgui.ColorId::tab_hovered(),
-    @imgui.ColorId::tab_selected(),
-    @imgui.ColorId::tab_selected_overline(),
-    @imgui.ColorId::tab_dimmed(),
-    @imgui.ColorId::tab_dimmed_selected(),
-    @imgui.ColorId::tab_dimmed_selected_overline(),
-    @imgui.ColorId::tab_unfocused(),
-    @imgui.ColorId::tab_unfocused_active(),
-    @imgui.ColorId::plot_lines(),
-    @imgui.ColorId::plot_lines_hovered(),
-    @imgui.ColorId::plot_histogram(),
-    @imgui.ColorId::plot_histogram_hovered(),
-    @imgui.ColorId::table_header_bg(),
-    @imgui.ColorId::table_border_strong(),
-    @imgui.ColorId::table_border_light(),
-    @imgui.ColorId::table_row_bg(),
-    @imgui.ColorId::table_row_bg_alt(),
-    @imgui.ColorId::text_link(),
-    @imgui.ColorId::text_selected_bg(),
-    @imgui.ColorId::tree_lines(),
-    @imgui.ColorId::drag_drop_target(),
-    @imgui.ColorId::drag_drop_target_bg(),
-    @imgui.ColorId::unsaved_marker(),
-    @imgui.ColorId::nav_cursor(),
-    @imgui.ColorId::nav_highlight(),
-    @imgui.ColorId::nav_windowing_highlight(),
-    @imgui.ColorId::nav_windowing_dim_bg(),
-    @imgui.ColorId::modal_window_dim_bg(),
-    @imgui.ColorId::input_text_cursor(),
-    @imgui.ColorId::count(),
+  let _ : Array[@imgui.Dir] = [
+    @imgui.Dir::none(),
+    @imgui.Dir::left(),
+    @imgui.Dir::right(),
+    @imgui.Dir::up(),
+    @imgui.Dir::down(),
+  ]
+  let _ : Array[@imgui.TableBgTarget] = [
+    @imgui.TableBgTarget::none(),
+    @imgui.TableBgTarget::row_bg0(),
+    @imgui.TableBgTarget::row_bg1(),
+    @imgui.TableBgTarget::cell_bg(),
+  ]
+  let _ : Array[@imgui.StyleMetric] = [
+    IndentSpacing,
+    ScrollbarSize,
+    ScrollbarPadding,
+    GrabMinSize,
+    TabMinWidthBase,
+    TabMinWidthShrink,
+    TabBarBorderSize,
+    TabBarOverlineSize,
+    TableAngledHeadersAngle,
+    TreeLinesSize,
+    SeparatorSize,
+    SeparatorTextBorderSize,
+  ]
+  let _ : Array[@imgui.Cond] = [
+    @imgui.Cond::none(),
+    @imgui.Cond::always(),
+    @imgui.Cond::once(),
+    @imgui.Cond::first_use_ever(),
+    @imgui.Cond::appearing(),
+  ]
+  let _ : Array[@imgui.StyleColor] = [
+    Text,
+    TextDisabled,
+    WindowBackground,
+    ChildBackground,
+    PopupBackground,
+    Border,
+    BorderShadow,
+    FrameBackground,
+    FrameBackgroundHovered,
+    FrameBackgroundActive,
+    TitleBackground,
+    TitleBackgroundActive,
+    TitleBackgroundCollapsed,
+    MenuBarBackground,
+    ScrollbarBackground,
+    ScrollbarGrab,
+    ScrollbarGrabHovered,
+    ScrollbarGrabActive,
+    CheckMark,
+    CheckboxSelectedBackground,
+    SliderGrab,
+    SliderGrabActive,
+    Button,
+    ButtonHovered,
+    ButtonActive,
+    Header,
+    HeaderHovered,
+    HeaderActive,
+    Separator,
+    SeparatorHovered,
+    SeparatorActive,
+    ResizeGrip,
+    ResizeGripHovered,
+    ResizeGripActive,
+    Tab,
+    TabActive,
+    TabHovered,
+    TabSelected,
+    TabSelectedOverline,
+    TabDimmed,
+    TabDimmedSelected,
+    TabDimmedSelectedOverline,
+    TabUnfocused,
+    TabUnfocusedActive,
+    PlotLines,
+    PlotLinesHovered,
+    PlotHistogram,
+    PlotHistogramHovered,
+    TableHeaderBackground,
+    TableBorderStrong,
+    TableBorderLight,
+    TableRowBackground,
+    TableRowBackgroundAlt,
+    TextLink,
+    TextSelectedBackground,
+    TreeLines,
+    DragDropTarget,
+    DragDropTargetBackground,
+    UnsavedMarker,
+    NavCursor,
+    NavHighlight,
+    NavWindowingHighlight,
+    NavWindowingDimBackground,
+    ModalWindowDimBackground,
+    InputTextCursor,
+  ]
+  let _ : Array[@imgui.Color] = [
+    Rgb(1, 2, 3),
+    Rgba(1, 2, 3, 0.5),
+    Hex("#112233"),
+    White,
+    Black,
+    Transparent,
+    Red,
+    Green,
+    Blue,
+    Yellow,
+    Cyan,
+    Magenta,
+    Gray,
+  ]
+  let _ : Array[@imgui.StyleSheet] = [
+    Text(White),
+    TextDisabled(Gray),
+    Background(Hex("#112233")),
+    Hovered(Cyan),
+    Active(Blue),
+    Border(Gray),
+    Slot(Button, Green),
+    Alpha(0.85),
+    DisabledAlpha(0.45),
+    Rounding(5.0),
+    BorderSize(1.0),
+    Metric(SeparatorSize, 1.0),
   ]
   ignore(@imgui.Vec4::new(1.0, 1.0, 1.0, 1.0))
   ignore(@imgui.Vec4::white())
   ignore(@imgui.Vec4::transparent())
-  ignore(bits)
 }
 
 ///|

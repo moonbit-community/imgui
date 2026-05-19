@@ -3,6 +3,8 @@
 pub(all) suberror ImGuiError {
   /// The operation requires a current context.
   NoCurrentContext
+  /// The supplied color literal cannot be parsed.
+  InvalidColor(String)
 } derive(Eq, Debug)
 
 ///|
@@ -81,6 +83,134 @@ pub(all) struct Vec4 {
   z : Float
   w : Float
 } derive(Eq, Debug)
+
+///|
+/// User-facing color value for scoped style sheets.
+pub(all) enum Color {
+  Rgb(Int, Int, Int)
+  Rgba(Int, Int, Int, Float)
+  Hex(String)
+  White
+  Black
+  Transparent
+  Red
+  Green
+  Blue
+  Yellow
+  Cyan
+  Magenta
+  Gray
+} derive(Eq, Debug)
+
+///|
+/// Exact color slots for scoped style sheets.
+pub(all) enum StyleColor {
+  Text
+  TextDisabled
+  WindowBackground
+  ChildBackground
+  PopupBackground
+  Border
+  BorderShadow
+  FrameBackground
+  FrameBackgroundHovered
+  FrameBackgroundActive
+  TitleBackground
+  TitleBackgroundActive
+  TitleBackgroundCollapsed
+  MenuBarBackground
+  ScrollbarBackground
+  ScrollbarGrab
+  ScrollbarGrabHovered
+  ScrollbarGrabActive
+  CheckMark
+  CheckboxSelectedBackground
+  SliderGrab
+  SliderGrabActive
+  Button
+  ButtonHovered
+  ButtonActive
+  Header
+  HeaderHovered
+  HeaderActive
+  Separator
+  SeparatorHovered
+  SeparatorActive
+  ResizeGrip
+  ResizeGripHovered
+  ResizeGripActive
+  Tab
+  TabActive
+  TabHovered
+  TabSelected
+  TabSelectedOverline
+  TabDimmed
+  TabDimmedSelected
+  TabDimmedSelectedOverline
+  TabUnfocused
+  TabUnfocusedActive
+  PlotLines
+  PlotLinesHovered
+  PlotHistogram
+  PlotHistogramHovered
+  TableHeaderBackground
+  TableBorderStrong
+  TableBorderLight
+  TableRowBackground
+  TableRowBackgroundAlt
+  TextLink
+  TextSelectedBackground
+  TreeLines
+  DragDropTarget
+  DragDropTargetBackground
+  UnsavedMarker
+  NavCursor
+  NavHighlight
+  NavWindowingHighlight
+  NavWindowingDimBackground
+  ModalWindowDimBackground
+  InputTextCursor
+} derive(Eq, Debug)
+
+///|
+/// Exact numeric style slots for scoped style sheets.
+pub(all) enum StyleMetric {
+  IndentSpacing
+  ScrollbarSize
+  ScrollbarPadding
+  GrabMinSize
+  TabMinWidthBase
+  TabMinWidthShrink
+  TabBarBorderSize
+  TabBarOverlineSize
+  TableAngledHeadersAngle
+  TreeLinesSize
+  SeparatorSize
+  SeparatorTextBorderSize
+} derive(Eq, Debug)
+
+///|
+/// Scoped, inheritable style entries applied while a UI callback runs.
+pub(all) enum StyleSheet {
+  Text(Color)
+  TextDisabled(Color)
+  Background(Color)
+  Hovered(Color)
+  Active(Color)
+  Border(Color)
+  Slot(StyleColor, Color)
+  Alpha(Float)
+  DisabledAlpha(Float)
+  Rounding(Float)
+  BorderSize(Float)
+  Metric(StyleMetric, Float)
+} derive(Eq, Debug)
+
+///|
+priv struct StyleRestore {
+  colors : Int
+  vars : Int
+}
 
 ///|
 /// Two-component float value for scalar widgets.
@@ -1021,15 +1151,15 @@ struct TableBgTarget {
 
 ///|
 /// ImGui style variable identifier.
-struct StyleVar {
+priv struct StyleVar {
   value : Int
-} derive(Eq, Debug)
+}
 
 ///|
 /// ImGui style color identifier.
-struct ColorId {
+priv struct ColorId {
   value : Int
-} derive(Eq, Debug)
+}
 
 ///|
 /// ImGui condition value.
@@ -1143,7 +1273,7 @@ pub fn MouseButton::middle() -> MouseButton {
 }
 
 ///|
-pub fn MouseButton::value(self : MouseButton) -> Int {
+fn MouseButton::value(self : MouseButton) -> Int {
   self.value
 }
 
@@ -1173,7 +1303,7 @@ pub fn Dir::down() -> Dir {
 }
 
 ///|
-pub fn Dir::value(self : Dir) -> Int {
+fn Dir::value(self : Dir) -> Int {
   self.value
 }
 
@@ -1198,163 +1328,158 @@ pub fn TableBgTarget::cell_bg() -> TableBgTarget {
 }
 
 ///|
-pub fn TableBgTarget::value(self : TableBgTarget) -> Int {
+fn TableBgTarget::value(self : TableBgTarget) -> Int {
   self.value
 }
 
 ///|
-pub fn StyleVar::alpha() -> StyleVar {
+fn StyleVar::alpha() -> StyleVar {
   { value: @bindings.im_gui_style_var_alpha() }
 }
 
 ///|
-pub fn StyleVar::disabled_alpha() -> StyleVar {
+fn StyleVar::disabled_alpha() -> StyleVar {
   { value: @bindings.im_gui_style_var_disabled_alpha() }
 }
 
 ///|
-pub fn StyleVar::window_rounding() -> StyleVar {
+fn StyleVar::window_rounding() -> StyleVar {
   { value: @bindings.im_gui_style_var_window_rounding() }
 }
 
 ///|
-pub fn StyleVar::window_border_size() -> StyleVar {
+fn StyleVar::window_border_size() -> StyleVar {
   { value: @bindings.im_gui_style_var_window_border_size() }
 }
 
 ///|
-pub fn StyleVar::child_rounding() -> StyleVar {
+fn StyleVar::child_rounding() -> StyleVar {
   { value: @bindings.im_gui_style_var_child_rounding() }
 }
 
 ///|
-pub fn StyleVar::child_border_size() -> StyleVar {
+fn StyleVar::child_border_size() -> StyleVar {
   { value: @bindings.im_gui_style_var_child_border_size() }
 }
 
 ///|
-pub fn StyleVar::popup_rounding() -> StyleVar {
+fn StyleVar::popup_rounding() -> StyleVar {
   { value: @bindings.im_gui_style_var_popup_rounding() }
 }
 
 ///|
-pub fn StyleVar::popup_border_size() -> StyleVar {
+fn StyleVar::popup_border_size() -> StyleVar {
   { value: @bindings.im_gui_style_var_popup_border_size() }
 }
 
 ///|
-pub fn StyleVar::frame_rounding() -> StyleVar {
+fn StyleVar::frame_rounding() -> StyleVar {
   { value: @bindings.im_gui_style_var_frame_rounding() }
 }
 
 ///|
-pub fn StyleVar::frame_border_size() -> StyleVar {
+fn StyleVar::frame_border_size() -> StyleVar {
   { value: @bindings.im_gui_style_var_frame_border_size() }
 }
 
 ///|
-pub fn StyleVar::indent_spacing() -> StyleVar {
+fn StyleVar::indent_spacing() -> StyleVar {
   { value: @bindings.im_gui_style_var_indent_spacing() }
 }
 
 ///|
-pub fn StyleVar::scrollbar_size() -> StyleVar {
+fn StyleVar::scrollbar_size() -> StyleVar {
   { value: @bindings.im_gui_style_var_scrollbar_size() }
 }
 
 ///|
-pub fn StyleVar::scrollbar_rounding() -> StyleVar {
+fn StyleVar::scrollbar_rounding() -> StyleVar {
   { value: @bindings.im_gui_style_var_scrollbar_rounding() }
 }
 
 ///|
-pub fn StyleVar::scrollbar_padding() -> StyleVar {
+fn StyleVar::scrollbar_padding() -> StyleVar {
   { value: @bindings.im_gui_style_var_scrollbar_padding() }
 }
 
 ///|
-pub fn StyleVar::grab_min_size() -> StyleVar {
+fn StyleVar::grab_min_size() -> StyleVar {
   { value: @bindings.im_gui_style_var_grab_min_size() }
 }
 
 ///|
-pub fn StyleVar::grab_rounding() -> StyleVar {
+fn StyleVar::grab_rounding() -> StyleVar {
   { value: @bindings.im_gui_style_var_grab_rounding() }
 }
 
 ///|
-pub fn StyleVar::image_rounding() -> StyleVar {
+fn StyleVar::image_rounding() -> StyleVar {
   { value: @bindings.im_gui_style_var_image_rounding() }
 }
 
 ///|
-pub fn StyleVar::image_border_size() -> StyleVar {
+fn StyleVar::image_border_size() -> StyleVar {
   { value: @bindings.im_gui_style_var_image_border_size() }
 }
 
 ///|
-pub fn StyleVar::tab_rounding() -> StyleVar {
+fn StyleVar::tab_rounding() -> StyleVar {
   { value: @bindings.im_gui_style_var_tab_rounding() }
 }
 
 ///|
-pub fn StyleVar::tab_border_size() -> StyleVar {
+fn StyleVar::tab_border_size() -> StyleVar {
   { value: @bindings.im_gui_style_var_tab_border_size() }
 }
 
 ///|
-pub fn StyleVar::tab_min_width_base() -> StyleVar {
+fn StyleVar::tab_min_width_base() -> StyleVar {
   { value: @bindings.im_gui_style_var_tab_min_width_base() }
 }
 
 ///|
-pub fn StyleVar::tab_min_width_shrink() -> StyleVar {
+fn StyleVar::tab_min_width_shrink() -> StyleVar {
   { value: @bindings.im_gui_style_var_tab_min_width_shrink() }
 }
 
 ///|
-pub fn StyleVar::tab_bar_border_size() -> StyleVar {
+fn StyleVar::tab_bar_border_size() -> StyleVar {
   { value: @bindings.im_gui_style_var_tab_bar_border_size() }
 }
 
 ///|
-pub fn StyleVar::tab_bar_overline_size() -> StyleVar {
+fn StyleVar::tab_bar_overline_size() -> StyleVar {
   { value: @bindings.im_gui_style_var_tab_bar_overline_size() }
 }
 
 ///|
-pub fn StyleVar::table_angled_headers_angle() -> StyleVar {
+fn StyleVar::table_angled_headers_angle() -> StyleVar {
   { value: @bindings.im_gui_style_var_table_angled_headers_angle() }
 }
 
 ///|
-pub fn StyleVar::tree_lines_size() -> StyleVar {
+fn StyleVar::tree_lines_size() -> StyleVar {
   { value: @bindings.im_gui_style_var_tree_lines_size() }
 }
 
 ///|
-pub fn StyleVar::tree_lines_rounding() -> StyleVar {
+fn StyleVar::tree_lines_rounding() -> StyleVar {
   { value: @bindings.im_gui_style_var_tree_lines_rounding() }
 }
 
 ///|
-pub fn StyleVar::drag_drop_target_rounding() -> StyleVar {
+fn StyleVar::drag_drop_target_rounding() -> StyleVar {
   { value: @bindings.im_gui_style_var_drag_drop_target_rounding() }
 }
 
 ///|
-pub fn StyleVar::separator_size() -> StyleVar {
+fn StyleVar::separator_size() -> StyleVar {
   { value: @bindings.im_gui_style_var_separator_size() }
 }
 
 ///|
-pub fn StyleVar::separator_text_border_size() -> StyleVar {
+fn StyleVar::separator_text_border_size() -> StyleVar {
   { value: @bindings.im_gui_style_var_separator_text_border_size() }
-}
-
-///|
-pub fn StyleVar::count() -> StyleVar {
-  { value: @bindings.im_gui_style_var_count() }
 }
 
 ///|
@@ -1388,338 +1513,333 @@ pub fn Cond::appearing() -> Cond {
 }
 
 ///|
-pub fn Cond::value(self : Cond) -> Int {
+fn Cond::value(self : Cond) -> Int {
   self.value
 }
 
 ///|
-pub fn ColorId::text() -> ColorId {
+fn ColorId::text() -> ColorId {
   { value: @bindings.im_gui_col_text() }
 }
 
 ///|
-pub fn ColorId::text_disabled() -> ColorId {
+fn ColorId::text_disabled() -> ColorId {
   { value: @bindings.im_gui_col_text_disabled() }
 }
 
 ///|
-pub fn ColorId::window_bg() -> ColorId {
+fn ColorId::window_bg() -> ColorId {
   { value: @bindings.im_gui_col_window_bg() }
 }
 
 ///|
-pub fn ColorId::child_bg() -> ColorId {
+fn ColorId::child_bg() -> ColorId {
   { value: @bindings.im_gui_col_child_bg() }
 }
 
 ///|
-pub fn ColorId::popup_bg() -> ColorId {
+fn ColorId::popup_bg() -> ColorId {
   { value: @bindings.im_gui_col_popup_bg() }
 }
 
 ///|
-pub fn ColorId::border() -> ColorId {
+fn ColorId::border() -> ColorId {
   { value: @bindings.im_gui_col_border() }
 }
 
 ///|
-pub fn ColorId::border_shadow() -> ColorId {
+fn ColorId::border_shadow() -> ColorId {
   { value: @bindings.im_gui_col_border_shadow() }
 }
 
 ///|
-pub fn ColorId::frame_bg() -> ColorId {
+fn ColorId::frame_bg() -> ColorId {
   { value: @bindings.im_gui_col_frame_bg() }
 }
 
 ///|
-pub fn ColorId::frame_bg_hovered() -> ColorId {
+fn ColorId::frame_bg_hovered() -> ColorId {
   { value: @bindings.im_gui_col_frame_bg_hovered() }
 }
 
 ///|
-pub fn ColorId::frame_bg_active() -> ColorId {
+fn ColorId::frame_bg_active() -> ColorId {
   { value: @bindings.im_gui_col_frame_bg_active() }
 }
 
 ///|
-pub fn ColorId::title_bg() -> ColorId {
+fn ColorId::title_bg() -> ColorId {
   { value: @bindings.im_gui_col_title_bg() }
 }
 
 ///|
-pub fn ColorId::title_bg_active() -> ColorId {
+fn ColorId::title_bg_active() -> ColorId {
   { value: @bindings.im_gui_col_title_bg_active() }
 }
 
 ///|
-pub fn ColorId::title_bg_collapsed() -> ColorId {
+fn ColorId::title_bg_collapsed() -> ColorId {
   { value: @bindings.im_gui_col_title_bg_collapsed() }
 }
 
 ///|
-pub fn ColorId::menu_bar_bg() -> ColorId {
+fn ColorId::menu_bar_bg() -> ColorId {
   { value: @bindings.im_gui_col_menu_bar_bg() }
 }
 
 ///|
-pub fn ColorId::scrollbar_bg() -> ColorId {
+fn ColorId::scrollbar_bg() -> ColorId {
   { value: @bindings.im_gui_col_scrollbar_bg() }
 }
 
 ///|
-pub fn ColorId::scrollbar_grab() -> ColorId {
+fn ColorId::scrollbar_grab() -> ColorId {
   { value: @bindings.im_gui_col_scrollbar_grab() }
 }
 
 ///|
-pub fn ColorId::scrollbar_grab_hovered() -> ColorId {
+fn ColorId::scrollbar_grab_hovered() -> ColorId {
   { value: @bindings.im_gui_col_scrollbar_grab_hovered() }
 }
 
 ///|
-pub fn ColorId::scrollbar_grab_active() -> ColorId {
+fn ColorId::scrollbar_grab_active() -> ColorId {
   { value: @bindings.im_gui_col_scrollbar_grab_active() }
 }
 
 ///|
-pub fn ColorId::check_mark() -> ColorId {
+fn ColorId::check_mark() -> ColorId {
   { value: @bindings.im_gui_col_check_mark() }
 }
 
 ///|
-pub fn ColorId::checkbox_selected_bg() -> ColorId {
+fn ColorId::checkbox_selected_bg() -> ColorId {
   { value: @bindings.im_gui_col_checkbox_selected_bg() }
 }
 
 ///|
-pub fn ColorId::slider_grab() -> ColorId {
+fn ColorId::slider_grab() -> ColorId {
   { value: @bindings.im_gui_col_slider_grab() }
 }
 
 ///|
-pub fn ColorId::slider_grab_active() -> ColorId {
+fn ColorId::slider_grab_active() -> ColorId {
   { value: @bindings.im_gui_col_slider_grab_active() }
 }
 
 ///|
-pub fn ColorId::button() -> ColorId {
+fn ColorId::button() -> ColorId {
   { value: @bindings.im_gui_col_button() }
 }
 
 ///|
-pub fn ColorId::button_hovered() -> ColorId {
+fn ColorId::button_hovered() -> ColorId {
   { value: @bindings.im_gui_col_button_hovered() }
 }
 
 ///|
-pub fn ColorId::button_active() -> ColorId {
+fn ColorId::button_active() -> ColorId {
   { value: @bindings.im_gui_col_button_active() }
 }
 
 ///|
-pub fn ColorId::header() -> ColorId {
+fn ColorId::header() -> ColorId {
   { value: @bindings.im_gui_col_header() }
 }
 
 ///|
-pub fn ColorId::header_hovered() -> ColorId {
+fn ColorId::header_hovered() -> ColorId {
   { value: @bindings.im_gui_col_header_hovered() }
 }
 
 ///|
-pub fn ColorId::header_active() -> ColorId {
+fn ColorId::header_active() -> ColorId {
   { value: @bindings.im_gui_col_header_active() }
 }
 
 ///|
-pub fn ColorId::separator() -> ColorId {
+fn ColorId::separator() -> ColorId {
   { value: @bindings.im_gui_col_separator() }
 }
 
 ///|
-pub fn ColorId::separator_hovered() -> ColorId {
+fn ColorId::separator_hovered() -> ColorId {
   { value: @bindings.im_gui_col_separator_hovered() }
 }
 
 ///|
-pub fn ColorId::separator_active() -> ColorId {
+fn ColorId::separator_active() -> ColorId {
   { value: @bindings.im_gui_col_separator_active() }
 }
 
 ///|
-pub fn ColorId::resize_grip() -> ColorId {
+fn ColorId::resize_grip() -> ColorId {
   { value: @bindings.im_gui_col_resize_grip() }
 }
 
 ///|
-pub fn ColorId::resize_grip_hovered() -> ColorId {
+fn ColorId::resize_grip_hovered() -> ColorId {
   { value: @bindings.im_gui_col_resize_grip_hovered() }
 }
 
 ///|
-pub fn ColorId::resize_grip_active() -> ColorId {
+fn ColorId::resize_grip_active() -> ColorId {
   { value: @bindings.im_gui_col_resize_grip_active() }
 }
 
 ///|
-pub fn ColorId::tab() -> ColorId {
+fn ColorId::tab() -> ColorId {
   { value: @bindings.im_gui_col_tab() }
 }
 
 ///|
-pub fn ColorId::tab_active() -> ColorId {
+fn ColorId::tab_active() -> ColorId {
   { value: @bindings.im_gui_col_tab_active() }
 }
 
 ///|
-pub fn ColorId::tab_hovered() -> ColorId {
+fn ColorId::tab_hovered() -> ColorId {
   { value: @bindings.im_gui_col_tab_hovered() }
 }
 
 ///|
-pub fn ColorId::tab_selected() -> ColorId {
+fn ColorId::tab_selected() -> ColorId {
   { value: @bindings.im_gui_col_tab_selected() }
 }
 
 ///|
-pub fn ColorId::tab_selected_overline() -> ColorId {
+fn ColorId::tab_selected_overline() -> ColorId {
   { value: @bindings.im_gui_col_tab_selected_overline() }
 }
 
 ///|
-pub fn ColorId::tab_dimmed() -> ColorId {
+fn ColorId::tab_dimmed() -> ColorId {
   { value: @bindings.im_gui_col_tab_dimmed() }
 }
 
 ///|
-pub fn ColorId::tab_dimmed_selected() -> ColorId {
+fn ColorId::tab_dimmed_selected() -> ColorId {
   { value: @bindings.im_gui_col_tab_dimmed_selected() }
 }
 
 ///|
-pub fn ColorId::tab_dimmed_selected_overline() -> ColorId {
+fn ColorId::tab_dimmed_selected_overline() -> ColorId {
   { value: @bindings.im_gui_col_tab_dimmed_selected_overline() }
 }
 
 ///|
-pub fn ColorId::tab_unfocused() -> ColorId {
+fn ColorId::tab_unfocused() -> ColorId {
   { value: @bindings.im_gui_col_tab_unfocused() }
 }
 
 ///|
-pub fn ColorId::tab_unfocused_active() -> ColorId {
+fn ColorId::tab_unfocused_active() -> ColorId {
   { value: @bindings.im_gui_col_tab_unfocused_active() }
 }
 
 ///|
-pub fn ColorId::plot_lines() -> ColorId {
+fn ColorId::plot_lines() -> ColorId {
   { value: @bindings.im_gui_col_plot_lines() }
 }
 
 ///|
-pub fn ColorId::plot_lines_hovered() -> ColorId {
+fn ColorId::plot_lines_hovered() -> ColorId {
   { value: @bindings.im_gui_col_plot_lines_hovered() }
 }
 
 ///|
-pub fn ColorId::plot_histogram() -> ColorId {
+fn ColorId::plot_histogram() -> ColorId {
   { value: @bindings.im_gui_col_plot_histogram() }
 }
 
 ///|
-pub fn ColorId::plot_histogram_hovered() -> ColorId {
+fn ColorId::plot_histogram_hovered() -> ColorId {
   { value: @bindings.im_gui_col_plot_histogram_hovered() }
 }
 
 ///|
-pub fn ColorId::table_header_bg() -> ColorId {
+fn ColorId::table_header_bg() -> ColorId {
   { value: @bindings.im_gui_col_table_header_bg() }
 }
 
 ///|
-pub fn ColorId::table_border_strong() -> ColorId {
+fn ColorId::table_border_strong() -> ColorId {
   { value: @bindings.im_gui_col_table_border_strong() }
 }
 
 ///|
-pub fn ColorId::table_border_light() -> ColorId {
+fn ColorId::table_border_light() -> ColorId {
   { value: @bindings.im_gui_col_table_border_light() }
 }
 
 ///|
-pub fn ColorId::table_row_bg() -> ColorId {
+fn ColorId::table_row_bg() -> ColorId {
   { value: @bindings.im_gui_col_table_row_bg() }
 }
 
 ///|
-pub fn ColorId::table_row_bg_alt() -> ColorId {
+fn ColorId::table_row_bg_alt() -> ColorId {
   { value: @bindings.im_gui_col_table_row_bg_alt() }
 }
 
 ///|
-pub fn ColorId::text_link() -> ColorId {
+fn ColorId::text_link() -> ColorId {
   { value: @bindings.im_gui_col_text_link() }
 }
 
 ///|
-pub fn ColorId::text_selected_bg() -> ColorId {
+fn ColorId::text_selected_bg() -> ColorId {
   { value: @bindings.im_gui_col_text_selected_bg() }
 }
 
 ///|
-pub fn ColorId::tree_lines() -> ColorId {
+fn ColorId::tree_lines() -> ColorId {
   { value: @bindings.im_gui_col_tree_lines() }
 }
 
 ///|
-pub fn ColorId::drag_drop_target() -> ColorId {
+fn ColorId::drag_drop_target() -> ColorId {
   { value: @bindings.im_gui_col_drag_drop_target() }
 }
 
 ///|
-pub fn ColorId::drag_drop_target_bg() -> ColorId {
+fn ColorId::drag_drop_target_bg() -> ColorId {
   { value: @bindings.im_gui_col_drag_drop_target_bg() }
 }
 
 ///|
-pub fn ColorId::unsaved_marker() -> ColorId {
+fn ColorId::unsaved_marker() -> ColorId {
   { value: @bindings.im_gui_col_unsaved_marker() }
 }
 
 ///|
-pub fn ColorId::nav_cursor() -> ColorId {
+fn ColorId::nav_cursor() -> ColorId {
   { value: @bindings.im_gui_col_nav_cursor() }
 }
 
 ///|
-pub fn ColorId::nav_highlight() -> ColorId {
+fn ColorId::nav_highlight() -> ColorId {
   { value: @bindings.im_gui_col_nav_highlight() }
 }
 
 ///|
-pub fn ColorId::nav_windowing_highlight() -> ColorId {
+fn ColorId::nav_windowing_highlight() -> ColorId {
   { value: @bindings.im_gui_col_nav_windowing_highlight() }
 }
 
 ///|
-pub fn ColorId::nav_windowing_dim_bg() -> ColorId {
+fn ColorId::nav_windowing_dim_bg() -> ColorId {
   { value: @bindings.im_gui_col_nav_windowing_dim_bg() }
 }
 
 ///|
-pub fn ColorId::modal_window_dim_bg() -> ColorId {
+fn ColorId::modal_window_dim_bg() -> ColorId {
   { value: @bindings.im_gui_col_modal_window_dim_bg() }
 }
 
 ///|
-pub fn ColorId::input_text_cursor() -> ColorId {
+fn ColorId::input_text_cursor() -> ColorId {
   { value: @bindings.im_gui_col_input_text_cursor() }
-}
-
-///|
-pub fn ColorId::count() -> ColorId {
-  { value: @bindings.im_gui_col_count() }
 }
 
 ///|
@@ -1865,6 +1985,7 @@ pub fn ui() -> Ui {
 /// Opens the main menu bar and closes it automatically.
 pub fn Ui::main_menu_bar(
   _self : Ui,
+  style? : Array[StyleSheet] = [],
   body : (MenuBarUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   let Ui(token) = _self
@@ -1873,6 +1994,8 @@ pub fn Ui::main_menu_bar(
   let active = @bindings.im_gui_begin_main_menu_bar()
   if active {
     defer @bindings.im_gui_end_main_menu_bar()
+    let restore = apply_style_sheet(style)
+    defer restore.reset()
     body(MenuBarUi(()))
   }
 }
@@ -1883,6 +2006,7 @@ pub fn Ui::window(
   _self : Ui,
   title : String,
   flags? : Array[WindowFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (WindowUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -1893,6 +2017,8 @@ pub fn Ui::window(
   )
   defer @bindings.im_gui_end()
   if active {
+    let restore = apply_style_sheet(style)
+    defer restore.reset()
     body(WindowUi(()))
   }
 }
@@ -1902,10 +2028,13 @@ pub fn Ui::window(
 pub fn WindowUi::text(
   _self : WindowUi,
   value : String,
+  style? : Array[StyleSheet] = [],
 ) -> Unit raise ImGuiError {
   let WindowUi(token) = _self
   ignore(token)
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   @bindings.im_gui_text_unformatted(utf8(value))
 }
 
@@ -1914,8 +2043,11 @@ pub fn WindowUi::text(
 pub fn WindowUi::text_disabled(
   _self : WindowUi,
   value : String,
+  style? : Array[StyleSheet] = [],
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   @bindings.im_gui_text_disabled_unformatted(utf8(value))
 }
 
@@ -1924,8 +2056,11 @@ pub fn WindowUi::text_disabled(
 pub fn WindowUi::text_wrapped(
   _self : WindowUi,
   value : String,
+  style? : Array[StyleSheet] = [],
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   @bindings.im_gui_text_wrapped_unformatted(utf8(value))
 }
 
@@ -1935,15 +2070,23 @@ pub fn WindowUi::label_text(
   _self : WindowUi,
   label : String,
   value : String,
+  style? : Array[StyleSheet] = [],
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   @bindings.im_gui_label_text_unformatted(utf8(label), utf8(value))
 }
 
 ///|
 /// Emits a bullet marker.
-pub fn WindowUi::bullet(_self : WindowUi) -> Unit raise ImGuiError {
+pub fn WindowUi::bullet(
+  _self : WindowUi,
+  style? : Array[StyleSheet] = [],
+) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   @bindings.im_gui_bullet()
 }
 
@@ -1952,8 +2095,11 @@ pub fn WindowUi::bullet(_self : WindowUi) -> Unit raise ImGuiError {
 pub fn WindowUi::bullet_text(
   _self : WindowUi,
   value : String,
+  style? : Array[StyleSheet] = [],
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   @bindings.im_gui_bullet_text_unformatted(utf8(value))
 }
 
@@ -1962,8 +2108,11 @@ pub fn WindowUi::bullet_text(
 pub fn WindowUi::separator_text(
   _self : WindowUi,
   label : String,
+  style? : Array[StyleSheet] = [],
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   @bindings.im_gui_separator_text(utf8(label))
 }
 
@@ -1972,9 +2121,12 @@ pub fn WindowUi::separator_text(
 pub fn WindowUi::button(
   _self : WindowUi,
   label : String,
+  style? : Array[StyleSheet] = [],
   body : () -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   if @bindings.im_gui_button(utf8(label)) {
     body()
   }
@@ -1985,9 +2137,12 @@ pub fn WindowUi::button(
 pub fn WindowUi::small_button(
   _self : WindowUi,
   label : String,
+  style? : Array[StyleSheet] = [],
   body : () -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   if @bindings.im_gui_small_button(utf8(label)) {
     body()
   }
@@ -1999,9 +2154,12 @@ pub fn WindowUi::arrow_button(
   _self : WindowUi,
   label : String,
   direction : Dir,
+  style? : Array[StyleSheet] = [],
   body : () -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   if @bindings.im_gui_arrow_button(utf8(label), direction.value()) {
     body()
   }
@@ -2012,9 +2170,12 @@ pub fn WindowUi::arrow_button(
 pub fn WindowUi::text_link(
   _self : WindowUi,
   label : String,
+  style? : Array[StyleSheet] = [],
   body : () -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   if @bindings.im_gui_text_link(utf8(label)) {
     body()
   }
@@ -2025,8 +2186,11 @@ pub fn WindowUi::text_link(
 pub fn WindowUi::text_link_open_url(
   _self : WindowUi,
   label : String,
+  style? : Array[StyleSheet] = [],
 ) -> Bool raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   @bindings.im_gui_text_link_open_url(utf8(label))
 }
 
@@ -2036,9 +2200,12 @@ pub fn WindowUi::checkbox(
   _self : WindowUi,
   label : String,
   checked : Bool,
+  style? : Array[StyleSheet] = [],
   body : (Bool) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let value = Ref(checked)
   if @bindings.im_gui_checkbox(utf8(label), Some(value)) {
     body(value.val)
@@ -2051,9 +2218,12 @@ pub fn WindowUi::radio_button(
   _self : WindowUi,
   label : String,
   active : Bool,
+  style? : Array[StyleSheet] = [],
   body : () -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   if @bindings.im_gui_radio_button(utf8(label), active) {
     body()
   }
@@ -2066,9 +2236,12 @@ pub fn WindowUi::radio_int(
   label : String,
   value : Int,
   button_value : Int,
+  style? : Array[StyleSheet] = [],
   body : (Int) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = Ref(value)
   if @bindings.im_gui_radio_button_int_ptr(
       utf8(label),
@@ -2089,9 +2262,12 @@ pub fn WindowUi::slider_float(
   max : Float,
   format? : String = "%.3f",
   flags? : Array[SliderFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Float) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = Ref(value)
   if @bindings.im_gui_slider_float_ex(
       utf8(label),
@@ -2115,9 +2291,12 @@ pub fn WindowUi::slider_int(
   max : Int,
   format? : String = "%d",
   flags? : Array[SliderFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Int) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = Ref(value)
   if @bindings.im_gui_slider_int_ex(
       utf8(label),
@@ -2141,9 +2320,12 @@ pub fn WindowUi::slider_angle(
   max_degrees? : Float = 360.0,
   format? : String = "%.0f deg",
   flags? : Array[SliderFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Float) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = Ref(value)
   if @bindings.im_gui_slider_angle_ex(
       utf8(label),
@@ -2167,9 +2349,12 @@ pub fn WindowUi::slider_float2(
   max : Float,
   format? : String = "%.3f",
   flags? : Array[SliderFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Float2) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = FixedArray::from_array([value.x, value.y])
   if @bindings.im_gui_slider_float2_ex(
       utf8(label),
@@ -2193,9 +2378,12 @@ pub fn WindowUi::slider_float3(
   max : Float,
   format? : String = "%.3f",
   flags? : Array[SliderFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Float3) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = FixedArray::from_array([value.x, value.y, value.z])
   if @bindings.im_gui_slider_float3_ex(
       utf8(label),
@@ -2219,9 +2407,12 @@ pub fn WindowUi::slider_float4(
   max : Float,
   format? : String = "%.3f",
   flags? : Array[SliderFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Float4) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = FixedArray::from_array([value.x, value.y, value.z, value.w])
   if @bindings.im_gui_slider_float4_ex(
       utf8(label),
@@ -2245,9 +2436,12 @@ pub fn WindowUi::slider_int2(
   max : Int,
   format? : String = "%d",
   flags? : Array[SliderFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Int2) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = FixedArray::from_array([value.x, value.y])
   if @bindings.im_gui_slider_int2_ex(
       utf8(label),
@@ -2271,9 +2465,12 @@ pub fn WindowUi::slider_int3(
   max : Int,
   format? : String = "%d",
   flags? : Array[SliderFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Int3) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = FixedArray::from_array([value.x, value.y, value.z])
   if @bindings.im_gui_slider_int3_ex(
       utf8(label),
@@ -2297,9 +2494,12 @@ pub fn WindowUi::slider_int4(
   max : Int,
   format? : String = "%d",
   flags? : Array[SliderFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Int4) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = FixedArray::from_array([value.x, value.y, value.z, value.w])
   if @bindings.im_gui_slider_int4_ex(
       utf8(label),
@@ -2324,9 +2524,12 @@ pub fn WindowUi::drag_float(
   max? : Float = 0.0,
   format? : String = "%.3f",
   flags? : Array[SliderFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Float) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = Ref(value)
   if @bindings.im_gui_drag_float_ex(
       utf8(label),
@@ -2352,9 +2555,12 @@ pub fn WindowUi::drag_int(
   max? : Int = 0,
   format? : String = "%d",
   flags? : Array[SliderFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Int) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = Ref(value)
   if @bindings.im_gui_drag_int_ex(
       utf8(label),
@@ -2380,9 +2586,12 @@ pub fn WindowUi::drag_float2(
   max? : Float = 0.0,
   format? : String = "%.3f",
   flags? : Array[SliderFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Float2) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = FixedArray::from_array([value.x, value.y])
   if @bindings.im_gui_drag_float2_ex(
       utf8(label),
@@ -2408,9 +2617,12 @@ pub fn WindowUi::drag_float3(
   max? : Float = 0.0,
   format? : String = "%.3f",
   flags? : Array[SliderFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Float3) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = FixedArray::from_array([value.x, value.y, value.z])
   if @bindings.im_gui_drag_float3_ex(
       utf8(label),
@@ -2436,9 +2648,12 @@ pub fn WindowUi::drag_float4(
   max? : Float = 0.0,
   format? : String = "%.3f",
   flags? : Array[SliderFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Float4) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = FixedArray::from_array([value.x, value.y, value.z, value.w])
   if @bindings.im_gui_drag_float4_ex(
       utf8(label),
@@ -2464,9 +2679,12 @@ pub fn WindowUi::drag_int2(
   max? : Int = 0,
   format? : String = "%d",
   flags? : Array[SliderFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Int2) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = FixedArray::from_array([value.x, value.y])
   if @bindings.im_gui_drag_int2_ex(
       utf8(label),
@@ -2492,9 +2710,12 @@ pub fn WindowUi::drag_int3(
   max? : Int = 0,
   format? : String = "%d",
   flags? : Array[SliderFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Int3) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = FixedArray::from_array([value.x, value.y, value.z])
   if @bindings.im_gui_drag_int3_ex(
       utf8(label),
@@ -2520,9 +2741,12 @@ pub fn WindowUi::drag_int4(
   max? : Int = 0,
   format? : String = "%d",
   flags? : Array[SliderFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Int4) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = FixedArray::from_array([value.x, value.y, value.z, value.w])
   if @bindings.im_gui_drag_int4_ex(
       utf8(label),
@@ -2548,9 +2772,12 @@ pub fn WindowUi::drag_float_range2(
   max? : Float = 0.0,
   format? : String = "%.3f",
   flags? : Array[SliderFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (FloatRange) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current_min = Ref(value.min)
   let current_max = Ref(value.max)
   if @bindings.im_gui_drag_float_range2_ex(
@@ -2579,9 +2806,12 @@ pub fn WindowUi::drag_int_range2(
   max? : Int = 0,
   format? : String = "%d",
   flags? : Array[SliderFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (IntRange) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current_min = Ref(value.min)
   let current_max = Ref(value.max)
   if @bindings.im_gui_drag_int_range2_ex(
@@ -2609,9 +2839,12 @@ pub fn WindowUi::input_float(
   step_fast? : Float = 0.0,
   format? : String = "%.3f",
   flags? : Array[InputTextFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Float) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = Ref(value)
   if @bindings.im_gui_input_float_ex(
       utf8(label),
@@ -2634,9 +2867,12 @@ pub fn WindowUi::input_int(
   step? : Int = 1,
   step_fast? : Int = 100,
   flags? : Array[InputTextFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Int) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = Ref(value)
   if @bindings.im_gui_input_int_ex(
       utf8(label),
@@ -2659,9 +2895,12 @@ pub fn WindowUi::input_double(
   step_fast? : Double = 0.0,
   format? : String = "%.6f",
   flags? : Array[InputTextFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Double) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = Ref(value)
   if @bindings.im_gui_input_double_ex(
       utf8(label),
@@ -2683,9 +2922,12 @@ pub fn WindowUi::input_float2(
   value : Float2,
   format? : String = "%.3f",
   flags? : Array[InputTextFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Float2) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = FixedArray::from_array([value.x, value.y])
   if @bindings.im_gui_input_float2_ex(
       utf8(label),
@@ -2705,9 +2947,12 @@ pub fn WindowUi::input_float3(
   value : Float3,
   format? : String = "%.3f",
   flags? : Array[InputTextFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Float3) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = FixedArray::from_array([value.x, value.y, value.z])
   if @bindings.im_gui_input_float3_ex(
       utf8(label),
@@ -2727,9 +2972,12 @@ pub fn WindowUi::input_float4(
   value : Float4,
   format? : String = "%.3f",
   flags? : Array[InputTextFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Float4) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = FixedArray::from_array([value.x, value.y, value.z, value.w])
   if @bindings.im_gui_input_float4_ex(
       utf8(label),
@@ -2748,9 +2996,12 @@ pub fn WindowUi::input_int2(
   label : String,
   value : Int2,
   flags? : Array[InputTextFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Int2) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = FixedArray::from_array([value.x, value.y])
   if @bindings.im_gui_input_int2(
       utf8(label),
@@ -2768,9 +3019,12 @@ pub fn WindowUi::input_int3(
   label : String,
   value : Int3,
   flags? : Array[InputTextFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Int3) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = FixedArray::from_array([value.x, value.y, value.z])
   if @bindings.im_gui_input_int3(
       utf8(label),
@@ -2788,9 +3042,12 @@ pub fn WindowUi::input_int4(
   label : String,
   value : Int4,
   flags? : Array[InputTextFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Int4) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = FixedArray::from_array([value.x, value.y, value.z, value.w])
   if @bindings.im_gui_input_int4(
       utf8(label),
@@ -2808,9 +3065,12 @@ pub fn WindowUi::input_text(
   label : String,
   buffer : Bytes,
   flags? : Array[InputTextFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (String) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   if @bindings.im_gui_input_text(
       utf8(label),
       buffer,
@@ -2829,9 +3089,12 @@ pub fn WindowUi::input_text_with_hint(
   hint : String,
   buffer : Bytes,
   flags? : Array[InputTextFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (String) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   if @bindings.im_gui_input_text_with_hint(
       utf8(label),
       utf8(hint),
@@ -2849,9 +3112,12 @@ pub fn WindowUi::input_text_multiline(
   _self : WindowUi,
   label : String,
   buffer : Bytes,
+  style? : Array[StyleSheet] = [],
   body : (String) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   if @bindings.im_gui_input_text_multiline(utf8(label), buffer, buffer.length()) {
     body(bytes_to_string(buffer))
   }
@@ -2864,9 +3130,12 @@ pub fn WindowUi::color_edit3(
   label : String,
   color : Vec4,
   flags? : Array[ColorEditFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Vec4) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let value = FixedArray::from_array([color.x, color.y, color.z])
   if @bindings.im_gui_color_edit3(
       utf8(label),
@@ -2884,9 +3153,12 @@ pub fn WindowUi::color_edit4(
   label : String,
   color : Vec4,
   flags? : Array[ColorEditFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Vec4) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let value = FixedArray::from_array([color.x, color.y, color.z, color.w])
   if @bindings.im_gui_color_edit4(
       utf8(label),
@@ -2904,9 +3176,12 @@ pub fn WindowUi::color_picker3(
   label : String,
   color : Vec4,
   flags? : Array[ColorEditFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Vec4) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let value = FixedArray::from_array([color.x, color.y, color.z])
   if @bindings.im_gui_color_picker3(
       utf8(label),
@@ -2924,9 +3199,12 @@ pub fn WindowUi::color_picker4(
   label : String,
   color : Vec4,
   flags? : Array[ColorEditFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (Vec4) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let value = FixedArray::from_array([color.x, color.y, color.z, color.w])
   if @bindings.im_gui_color_picker4(
       utf8(label),
@@ -3292,11 +3570,14 @@ pub fn WindowUi::set_scroll_here_y(
 pub fn WindowUi::with_item_width(
   _self : WindowUi,
   width : Float,
+  style? : Array[StyleSheet] = [],
   body : (WindowUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   @bindings.im_gui_push_item_width(width)
   defer @bindings.im_gui_pop_item_width()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   body(WindowUi(()))
 }
 
@@ -3304,46 +3585,39 @@ pub fn WindowUi::with_item_width(
 pub fn WindowUi::with_text_wrap_pos(
   _self : WindowUi,
   wrap_pos_x : Float,
+  style? : Array[StyleSheet] = [],
   body : (WindowUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   @bindings.im_gui_push_text_wrap_pos(wrap_pos_x)
   defer @bindings.im_gui_pop_text_wrap_pos()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   body(WindowUi(()))
 }
 
 ///|
 /// Adds a separator inside a window.
-pub fn WindowUi::separator(_self : WindowUi) -> Unit raise ImGuiError {
+pub fn WindowUi::separator(
+  _self : WindowUi,
+  style? : Array[StyleSheet] = [],
+) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   @bindings.im_gui_separator()
 }
 
 ///|
-/// Temporarily pushes an integer-packed style color.
-pub fn WindowUi::with_style_color_u32(
+/// Applies a scoped style sheet while `body` runs.
+pub fn WindowUi::style(
   _self : WindowUi,
-  color_id : ColorId,
-  color : UInt,
+  styles : Array[StyleSheet],
   body : (WindowUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  @bindings.im_gui_push_style_color(color_id.to_int(), color)
-  defer @bindings.im_gui_pop_style_color()
-  body(WindowUi(()))
-}
-
-///|
-/// Temporarily pushes a float style variable.
-pub fn WindowUi::with_style_var_float(
-  _self : WindowUi,
-  style_var : StyleVar,
-  value : Float,
-  body : (WindowUi) -> Unit raise ImGuiError,
-) -> Unit raise ImGuiError {
-  ensure_current_context()
-  @bindings.im_gui_push_style_var(style_var.to_int(), value)
-  defer @bindings.im_gui_pop_style_var()
+  let restore = apply_style_sheet(styles)
+  defer restore.reset()
   body(WindowUi(()))
 }
 
@@ -3363,6 +3637,7 @@ pub fn WindowUi::with_font(
   _self : WindowUi,
   font : Font,
   size? : Float = 0.0,
+  style? : Array[StyleSheet] = [],
   body : (WindowUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3372,6 +3647,8 @@ pub fn WindowUi::with_font(
     @bindings.im_gui_push_font(font.raw)
   }
   defer @bindings.im_gui_pop_font()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   body(WindowUi(()))
 }
 
@@ -3379,12 +3656,15 @@ pub fn WindowUi::with_font(
 /// Opens a menu bar and closes it automatically.
 pub fn WindowUi::menu_bar(
   _self : WindowUi,
+  style? : Array[StyleSheet] = [],
   body : (MenuBarUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   let active = @bindings.im_gui_begin_menu_bar()
   if active {
     defer @bindings.im_gui_end_menu_bar()
+    let restore = apply_style_sheet(style)
+    defer restore.reset()
     body(MenuBarUi(()))
   }
 }
@@ -3395,6 +3675,7 @@ pub fn WindowUi::tab_bar(
   _self : WindowUi,
   name : String,
   flags? : Array[TabBarFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (TabBarUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3404,6 +3685,8 @@ pub fn WindowUi::tab_bar(
   )
   if active {
     defer @bindings.im_gui_end_tab_bar()
+    let restore = apply_style_sheet(style)
+    defer restore.reset()
     body(TabBarUi(()))
   }
 }
@@ -3415,6 +3698,7 @@ pub fn WindowUi::table(
   name : String,
   columns : Int,
   flags? : Array[TableFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (TableUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3425,6 +3709,8 @@ pub fn WindowUi::table(
   )
   if active {
     defer @bindings.im_gui_end_table()
+    let restore = apply_style_sheet(style)
+    defer restore.reset()
     body(TableUi(()))
   }
 }
@@ -3433,11 +3719,14 @@ pub fn WindowUi::table(
 /// Starts a group and closes it automatically.
 pub fn WindowUi::group(
   _self : WindowUi,
+  style? : Array[StyleSheet] = [],
   body : (WindowUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   @bindings.im_gui_begin_group()
   defer @bindings.im_gui_end_group()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   body(WindowUi(()))
 }
 
@@ -3447,11 +3736,14 @@ pub fn WindowUi::columns(
   _self : WindowUi,
   count : Int,
   border? : Bool = true,
+  style? : Array[StyleSheet] = [],
   body : (WindowUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   @bindings.im_gui_columns_ex(count, None, border)
   defer @bindings.im_gui_columns()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   body(WindowUi(()))
 }
 
@@ -3504,11 +3796,14 @@ pub fn WindowUi::set_column_offset(
 pub fn WindowUi::disabled(
   _self : WindowUi,
   disabled? : Bool = true,
+  style? : Array[StyleSheet] = [],
   body : (WindowUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   @bindings.im_gui_begin_disabled(disabled)
   defer @bindings.im_gui_end_disabled()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   body(WindowUi(()))
 }
 
@@ -3518,11 +3813,14 @@ pub fn WindowUi::with_item_flag(
   _self : WindowUi,
   flag : ItemFlag,
   enabled : Bool,
+  style? : Array[StyleSheet] = [],
   body : (WindowUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   @bindings.im_gui_push_item_flag(flag.to_int(), enabled)
   defer @bindings.im_gui_pop_item_flag()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   body(WindowUi(()))
 }
 
@@ -3531,11 +3829,14 @@ pub fn WindowUi::with_item_flag(
 pub fn WindowUi::with_id(
   _self : WindowUi,
   id : String,
+  style? : Array[StyleSheet] = [],
   body : (WindowUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   @bindings.im_gui_push_id(utf8(id))
   defer @bindings.im_gui_pop_id()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   body(WindowUi(()))
 }
 
@@ -3556,11 +3857,14 @@ pub fn WindowUi::id_int(_self : WindowUi, value : Int) -> UInt raise ImGuiError 
 pub fn WindowUi::with_id_int(
   _self : WindowUi,
   id : Int,
+  style? : Array[StyleSheet] = [],
   body : (WindowUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   @bindings.im_gui_push_id_int(id)
   defer @bindings.im_gui_pop_id()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   body(WindowUi(()))
 }
 
@@ -3569,11 +3873,14 @@ pub fn WindowUi::with_id_int(
 pub fn WindowUi::button_repeat(
   _self : WindowUi,
   repeat : Bool,
+  style? : Array[StyleSheet] = [],
   body : (WindowUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   @bindings.im_gui_push_button_repeat(repeat)
   defer @bindings.im_gui_pop_button_repeat()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   body(WindowUi(()))
 }
 
@@ -3615,12 +3922,15 @@ pub fn WindowUi::popup(
   _self : WindowUi,
   name : String,
   flags? : Array[PopupFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (PopupUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   let active = @bindings.im_gui_begin_popup(utf8(name), popup_flag_bits(flags))
   if active {
     defer @bindings.im_gui_end_popup()
+    let restore = apply_style_sheet(style)
+    defer restore.reset()
     body(PopupUi(()))
   }
 }
@@ -3630,6 +3940,7 @@ pub fn WindowUi::popup(
 pub fn WindowUi::popup_context_item(
   _self : WindowUi,
   flags? : Array[PopupFlag] = [MouseButtonRight],
+  style? : Array[StyleSheet] = [],
   body : (PopupUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3639,6 +3950,8 @@ pub fn WindowUi::popup_context_item(
   )
   if active {
     defer @bindings.im_gui_end_popup()
+    let restore = apply_style_sheet(style)
+    defer restore.reset()
     body(PopupUi(()))
   }
 }
@@ -3648,6 +3961,7 @@ pub fn WindowUi::popup_context_item(
 pub fn WindowUi::popup_context_window(
   _self : WindowUi,
   flags? : Array[PopupFlag] = [MouseButtonRight],
+  style? : Array[StyleSheet] = [],
   body : (PopupUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3657,6 +3971,8 @@ pub fn WindowUi::popup_context_window(
   )
   if active {
     defer @bindings.im_gui_end_popup()
+    let restore = apply_style_sheet(style)
+    defer restore.reset()
     body(PopupUi(()))
   }
 }
@@ -3666,6 +3982,7 @@ pub fn WindowUi::popup_context_window(
 pub fn WindowUi::popup_context_void(
   _self : WindowUi,
   flags? : Array[PopupFlag] = [MouseButtonRight],
+  style? : Array[StyleSheet] = [],
   body : (PopupUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3675,6 +3992,8 @@ pub fn WindowUi::popup_context_void(
   )
   if active {
     defer @bindings.im_gui_end_popup()
+    let restore = apply_style_sheet(style)
+    defer restore.reset()
     body(PopupUi(()))
   }
 }
@@ -3686,6 +4005,7 @@ pub fn WindowUi::popup_modal(
   name : String,
   open : Bool,
   flags? : Array[WindowFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (PopupUi) -> Unit raise ImGuiError,
 ) -> Bool raise ImGuiError {
   ensure_current_context()
@@ -3697,6 +4017,8 @@ pub fn WindowUi::popup_modal(
   )
   if active {
     defer @bindings.im_gui_end_popup()
+    let restore = apply_style_sheet(style)
+    defer restore.reset()
     body(PopupUi(()))
   }
   current.val
@@ -3706,12 +4028,15 @@ pub fn WindowUi::popup_modal(
 /// Opens and closes a tooltip scope automatically when active.
 pub fn WindowUi::tooltip(
   _self : WindowUi,
+  style? : Array[StyleSheet] = [],
   body : (TooltipUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   let active = @bindings.im_gui_begin_tooltip()
   if active {
     defer @bindings.im_gui_end_tooltip()
+    let restore = apply_style_sheet(style)
+    defer restore.reset()
     body(TooltipUi(()))
   }
 }
@@ -3730,12 +4055,15 @@ pub fn WindowUi::set_tooltip(
 /// Opens and closes the last item's tooltip scope automatically when active.
 pub fn WindowUi::item_tooltip(
   _self : WindowUi,
+  style? : Array[StyleSheet] = [],
   body : (TooltipUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   let active = @bindings.im_gui_begin_item_tooltip()
   if active {
     defer @bindings.im_gui_end_tooltip()
+    let restore = apply_style_sheet(style)
+    defer restore.reset()
     body(TooltipUi(()))
   }
 }
@@ -3791,6 +4119,7 @@ pub fn WindowUi::combo(
   label : String,
   preview : String,
   flags? : Array[ComboFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (ComboUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3801,6 +4130,8 @@ pub fn WindowUi::combo(
   )
   if active {
     defer @bindings.im_gui_end_combo()
+    let restore = apply_style_sheet(style)
+    defer restore.reset()
     body(ComboUi(()))
   }
 }
@@ -3811,6 +4142,7 @@ pub fn WindowUi::tree_node(
   _self : WindowUi,
   label : String,
   flags? : Array[TreeNodeFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (TreeNodeUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3820,6 +4152,8 @@ pub fn WindowUi::tree_node(
   )
   if active {
     defer @bindings.im_gui_tree_pop()
+    let restore = apply_style_sheet(style)
+    defer restore.reset()
     body(TreeNodeUi(()))
   }
 }
@@ -3830,9 +4164,12 @@ pub fn WindowUi::collapsing_header(
   _self : WindowUi,
   label : String,
   flags? : Array[TreeNodeFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (WindowUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   if @bindings.im_gui_collapsing_header(utf8(label), tree_node_flag_bits(flags)) {
     body(WindowUi(()))
   }
@@ -3845,9 +4182,12 @@ pub fn WindowUi::collapsing_header_open(
   label : String,
   open : Bool,
   flags? : Array[TreeNodeFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (WindowUi) -> Unit raise ImGuiError,
 ) -> Bool raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = Ref(open)
   if @bindings.im_gui_collapsing_header_bool_ptr(
       utf8(label),
@@ -3866,9 +4206,12 @@ pub fn WindowUi::selectable(
   label : String,
   selected? : Bool = false,
   flags? : Array[SelectableFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : () -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = Ref(selected)
   if @bindings.im_gui_selectable_bool_ptr(
       utf8(label),
@@ -3885,6 +4228,7 @@ pub fn MenuBarUi::menu(
   _self : MenuBarUi,
   label : String,
   enabled? : Bool = true,
+  style? : Array[StyleSheet] = [],
   body : (MenuUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   let MenuBarUi(token) = _self
@@ -3893,6 +4237,8 @@ pub fn MenuBarUi::menu(
   let active = @bindings.im_gui_begin_menu_ex(utf8(label), enabled)
   if active {
     defer @bindings.im_gui_end_menu()
+    let restore = apply_style_sheet(style)
+    defer restore.reset()
     body(MenuUi(()))
   }
 }
@@ -3904,9 +4250,12 @@ pub fn MenuBarUi::menu_item(
   label : String,
   selected? : Bool = false,
   enabled? : Bool = true,
+  style? : Array[StyleSheet] = [],
   body : () -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   if @bindings.im_gui_menu_item_ex(utf8(label), None, selected, enabled) {
     body()
   }
@@ -3919,11 +4268,14 @@ pub fn MenuUi::menu_item(
   label : String,
   selected? : Bool = false,
   enabled? : Bool = true,
+  style? : Array[StyleSheet] = [],
   body : () -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   let MenuUi(token) = _self
   ignore(token)
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   if @bindings.im_gui_menu_item_ex(utf8(label), None, selected, enabled) {
     body()
   }
@@ -3935,6 +4287,7 @@ pub fn TabBarUi::tab_item(
   _self : TabBarUi,
   label : String,
   flags? : Array[TabItemFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (TabItemUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   let TabBarUi(token) = _self
@@ -3947,6 +4300,8 @@ pub fn TabBarUi::tab_item(
   )
   if active {
     defer @bindings.im_gui_end_tab_item()
+    let restore = apply_style_sheet(style)
+    defer restore.reset()
     body(TabItemUi(()))
   }
 }
@@ -3958,6 +4313,7 @@ pub fn TabBarUi::tab_item_open(
   label : String,
   open : Bool,
   flags? : Array[TabItemFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (TabItemUi) -> Unit raise ImGuiError,
 ) -> Bool raise ImGuiError {
   ensure_current_context()
@@ -3969,6 +4325,8 @@ pub fn TabBarUi::tab_item_open(
   )
   if active {
     defer @bindings.im_gui_end_tab_item()
+    let restore = apply_style_sheet(style)
+    defer restore.reset()
     body(TabItemUi(()))
   }
   current.val
@@ -3979,17 +4337,25 @@ pub fn TabBarUi::tab_item_open(
 pub fn TabItemUi::text(
   _self : TabItemUi,
   value : String,
+  style? : Array[StyleSheet] = [],
 ) -> Unit raise ImGuiError {
   let TabItemUi(token) = _self
   ignore(token)
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   @bindings.im_gui_text_unformatted(utf8(value))
 }
 
 ///|
 /// Adds a separator inside a tab item.
-pub fn TabItemUi::separator(_self : TabItemUi) -> Unit raise ImGuiError {
+pub fn TabItemUi::separator(
+  _self : TabItemUi,
+  style? : Array[StyleSheet] = [],
+) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   @bindings.im_gui_separator()
 }
 
@@ -4000,6 +4366,7 @@ pub fn TabItemUi::table(
   name : String,
   columns : Int,
   flags? : Array[TableFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : (TableUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -4010,6 +4377,8 @@ pub fn TabItemUi::table(
   )
   if active {
     defer @bindings.im_gui_end_table()
+    let restore = apply_style_sheet(style)
+    defer restore.reset()
     body(TableUi(()))
   }
 }
@@ -4113,11 +4482,11 @@ pub fn TableUi::set_column_enabled(
 pub fn TableUi::set_bg_color(
   _self : TableUi,
   target : TableBgTarget,
-  color : UInt,
+  color : Color,
   column? : Int = -1,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  @bindings.im_gui_table_set_bg_color(target.value(), color, column)
+  @bindings.im_gui_table_set_bg_color(target.value(), color.to_u32(), column)
 }
 
 ///|
@@ -4156,8 +4525,14 @@ pub fn TableUi::hovered_column(_self : TableUi) -> Int raise ImGuiError {
 
 ///|
 /// Emits text inside a table.
-pub fn TableUi::text(_self : TableUi, value : String) -> Unit raise ImGuiError {
+pub fn TableUi::text(
+  _self : TableUi,
+  value : String,
+  style? : Array[StyleSheet] = [],
+) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   @bindings.im_gui_text_unformatted(utf8(value))
 }
 
@@ -4168,8 +4543,11 @@ pub fn TableUi::selectable(
   label : String,
   selected? : Bool = false,
   flags? : Array[SelectableFlag] = [],
+  style? : Array[StyleSheet] = [],
 ) -> Bool raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = Ref(selected)
   @bindings.im_gui_selectable_bool_ptr(
     utf8(label),
@@ -4179,10 +4557,16 @@ pub fn TableUi::selectable(
 }
 
 ///|
-pub fn PopupUi::text(_self : PopupUi, value : String) -> Unit raise ImGuiError {
+pub fn PopupUi::text(
+  _self : PopupUi,
+  value : String,
+  style? : Array[StyleSheet] = [],
+) -> Unit raise ImGuiError {
   let PopupUi(token) = _self
   ignore(token)
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   @bindings.im_gui_text_unformatted(utf8(value))
 }
 
@@ -4190,17 +4574,25 @@ pub fn PopupUi::text(_self : PopupUi, value : String) -> Unit raise ImGuiError {
 pub fn PopupUi::button(
   _self : PopupUi,
   label : String,
+  style? : Array[StyleSheet] = [],
   body : () -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   if @bindings.im_gui_button(utf8(label)) {
     body()
   }
 }
 
 ///|
-pub fn PopupUi::separator(_self : PopupUi) -> Unit raise ImGuiError {
+pub fn PopupUi::separator(
+  _self : PopupUi,
+  style? : Array[StyleSheet] = [],
+) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   @bindings.im_gui_separator()
 }
 
@@ -4214,10 +4606,13 @@ pub fn PopupUi::close(_self : PopupUi) -> Unit raise ImGuiError {
 pub fn TooltipUi::text(
   _self : TooltipUi,
   value : String,
+  style? : Array[StyleSheet] = [],
 ) -> Unit raise ImGuiError {
   let TooltipUi(token) = _self
   ignore(token)
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   @bindings.im_gui_text_unformatted(utf8(value))
 }
 
@@ -4227,11 +4622,14 @@ pub fn ComboUi::selectable(
   label : String,
   selected? : Bool = false,
   flags? : Array[SelectableFlag] = [],
+  style? : Array[StyleSheet] = [],
   body : () -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   let ComboUi(token) = _self
   ignore(token)
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   let current = Ref(selected)
   if @bindings.im_gui_selectable_bool_ptr(
       utf8(label),
@@ -4246,10 +4644,13 @@ pub fn ComboUi::selectable(
 pub fn TreeNodeUi::text(
   _self : TreeNodeUi,
   value : String,
+  style? : Array[StyleSheet] = [],
 ) -> Unit raise ImGuiError {
   let TreeNodeUi(token) = _self
   ignore(token)
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   @bindings.im_gui_text_unformatted(utf8(value))
 }
 
@@ -4257,9 +4658,348 @@ pub fn TreeNodeUi::text(
 pub fn TreeNodeUi::bullet_text(
   _self : TreeNodeUi,
   value : String,
+  style? : Array[StyleSheet] = [],
 ) -> Unit raise ImGuiError {
   ensure_current_context()
+  let restore = apply_style_sheet(style)
+  defer restore.reset()
   @bindings.im_gui_bullet_text_unformatted(utf8(value))
+}
+
+///|
+fn StyleRestore::reset(self : StyleRestore) -> Unit {
+  if self.colors > 0 {
+    @bindings.im_gui_pop_style_color_ex(self.colors)
+  }
+  if self.vars > 0 {
+    @bindings.im_gui_pop_style_var_ex(self.vars)
+  }
+}
+
+///|
+fn apply_style_sheet(
+  styles : Array[StyleSheet],
+) -> StyleRestore raise ImGuiError {
+  let mut colors = 0
+  let mut vars = 0
+  for style in styles {
+    match style {
+      Text(color) => colors = colors + push_style_color(ColorId::text(), color)
+      TextDisabled(color) =>
+        colors = colors + push_style_color(ColorId::text_disabled(), color)
+      Background(color) =>
+        colors = colors +
+          push_style_colors(color, [
+            ColorId::window_bg(),
+            ColorId::child_bg(),
+            ColorId::popup_bg(),
+            ColorId::frame_bg(),
+            ColorId::button(),
+            ColorId::header(),
+            ColorId::tab(),
+            ColorId::table_row_bg(),
+            ColorId::table_row_bg_alt(),
+          ])
+      Hovered(color) =>
+        colors = colors +
+          push_style_colors(color, [
+            ColorId::frame_bg_hovered(),
+            ColorId::button_hovered(),
+            ColorId::header_hovered(),
+            ColorId::tab_hovered(),
+            ColorId::scrollbar_grab_hovered(),
+            ColorId::resize_grip_hovered(),
+            ColorId::separator_hovered(),
+          ])
+      Active(color) =>
+        colors = colors +
+          push_style_colors(color, [
+            ColorId::frame_bg_active(),
+            ColorId::button_active(),
+            ColorId::header_active(),
+            ColorId::tab_active(),
+            ColorId::scrollbar_grab_active(),
+            ColorId::resize_grip_active(),
+            ColorId::separator_active(),
+          ])
+      Border(color) =>
+        colors = colors +
+          push_style_colors(color, [
+            ColorId::border(),
+            ColorId::table_border_light(),
+            ColorId::table_border_strong(),
+          ])
+      Slot(slot, color) =>
+        colors = colors + push_style_color(slot.to_color_id(), color)
+      Alpha(value) => vars = vars + push_style_var(StyleVar::alpha(), value)
+      DisabledAlpha(value) =>
+        vars = vars + push_style_var(StyleVar::disabled_alpha(), value)
+      Rounding(value) =>
+        vars = vars +
+          push_style_vars(value, [
+            StyleVar::window_rounding(),
+            StyleVar::child_rounding(),
+            StyleVar::popup_rounding(),
+            StyleVar::frame_rounding(),
+            StyleVar::scrollbar_rounding(),
+            StyleVar::grab_rounding(),
+            StyleVar::image_rounding(),
+            StyleVar::tab_rounding(),
+            StyleVar::tree_lines_rounding(),
+            StyleVar::drag_drop_target_rounding(),
+          ])
+      BorderSize(value) =>
+        vars = vars +
+          push_style_vars(value, [
+            StyleVar::window_border_size(),
+            StyleVar::child_border_size(),
+            StyleVar::popup_border_size(),
+            StyleVar::frame_border_size(),
+            StyleVar::image_border_size(),
+            StyleVar::tab_border_size(),
+            StyleVar::separator_text_border_size(),
+          ])
+      Metric(metric, value) =>
+        vars = vars + push_style_var(metric.to_style_var(), value)
+    }
+  }
+  { colors, vars }
+}
+
+///|
+fn StyleColor::to_color_id(self : StyleColor) -> ColorId {
+  match self {
+    Text => ColorId::text()
+    TextDisabled => ColorId::text_disabled()
+    WindowBackground => ColorId::window_bg()
+    ChildBackground => ColorId::child_bg()
+    PopupBackground => ColorId::popup_bg()
+    Border => ColorId::border()
+    BorderShadow => ColorId::border_shadow()
+    FrameBackground => ColorId::frame_bg()
+    FrameBackgroundHovered => ColorId::frame_bg_hovered()
+    FrameBackgroundActive => ColorId::frame_bg_active()
+    TitleBackground => ColorId::title_bg()
+    TitleBackgroundActive => ColorId::title_bg_active()
+    TitleBackgroundCollapsed => ColorId::title_bg_collapsed()
+    MenuBarBackground => ColorId::menu_bar_bg()
+    ScrollbarBackground => ColorId::scrollbar_bg()
+    ScrollbarGrab => ColorId::scrollbar_grab()
+    ScrollbarGrabHovered => ColorId::scrollbar_grab_hovered()
+    ScrollbarGrabActive => ColorId::scrollbar_grab_active()
+    CheckMark => ColorId::check_mark()
+    CheckboxSelectedBackground => ColorId::checkbox_selected_bg()
+    SliderGrab => ColorId::slider_grab()
+    SliderGrabActive => ColorId::slider_grab_active()
+    Button => ColorId::button()
+    ButtonHovered => ColorId::button_hovered()
+    ButtonActive => ColorId::button_active()
+    Header => ColorId::header()
+    HeaderHovered => ColorId::header_hovered()
+    HeaderActive => ColorId::header_active()
+    Separator => ColorId::separator()
+    SeparatorHovered => ColorId::separator_hovered()
+    SeparatorActive => ColorId::separator_active()
+    ResizeGrip => ColorId::resize_grip()
+    ResizeGripHovered => ColorId::resize_grip_hovered()
+    ResizeGripActive => ColorId::resize_grip_active()
+    Tab => ColorId::tab()
+    TabActive => ColorId::tab_active()
+    TabHovered => ColorId::tab_hovered()
+    TabSelected => ColorId::tab_selected()
+    TabSelectedOverline => ColorId::tab_selected_overline()
+    TabDimmed => ColorId::tab_dimmed()
+    TabDimmedSelected => ColorId::tab_dimmed_selected()
+    TabDimmedSelectedOverline => ColorId::tab_dimmed_selected_overline()
+    TabUnfocused => ColorId::tab_unfocused()
+    TabUnfocusedActive => ColorId::tab_unfocused_active()
+    PlotLines => ColorId::plot_lines()
+    PlotLinesHovered => ColorId::plot_lines_hovered()
+    PlotHistogram => ColorId::plot_histogram()
+    PlotHistogramHovered => ColorId::plot_histogram_hovered()
+    TableHeaderBackground => ColorId::table_header_bg()
+    TableBorderStrong => ColorId::table_border_strong()
+    TableBorderLight => ColorId::table_border_light()
+    TableRowBackground => ColorId::table_row_bg()
+    TableRowBackgroundAlt => ColorId::table_row_bg_alt()
+    TextLink => ColorId::text_link()
+    TextSelectedBackground => ColorId::text_selected_bg()
+    TreeLines => ColorId::tree_lines()
+    DragDropTarget => ColorId::drag_drop_target()
+    DragDropTargetBackground => ColorId::drag_drop_target_bg()
+    UnsavedMarker => ColorId::unsaved_marker()
+    NavCursor => ColorId::nav_cursor()
+    NavHighlight => ColorId::nav_highlight()
+    NavWindowingHighlight => ColorId::nav_windowing_highlight()
+    NavWindowingDimBackground => ColorId::nav_windowing_dim_bg()
+    ModalWindowDimBackground => ColorId::modal_window_dim_bg()
+    InputTextCursor => ColorId::input_text_cursor()
+  }
+}
+
+///|
+fn StyleMetric::to_style_var(self : StyleMetric) -> StyleVar {
+  match self {
+    IndentSpacing => StyleVar::indent_spacing()
+    ScrollbarSize => StyleVar::scrollbar_size()
+    ScrollbarPadding => StyleVar::scrollbar_padding()
+    GrabMinSize => StyleVar::grab_min_size()
+    TabMinWidthBase => StyleVar::tab_min_width_base()
+    TabMinWidthShrink => StyleVar::tab_min_width_shrink()
+    TabBarBorderSize => StyleVar::tab_bar_border_size()
+    TabBarOverlineSize => StyleVar::tab_bar_overline_size()
+    TableAngledHeadersAngle => StyleVar::table_angled_headers_angle()
+    TreeLinesSize => StyleVar::tree_lines_size()
+    SeparatorSize => StyleVar::separator_size()
+    SeparatorTextBorderSize => StyleVar::separator_text_border_size()
+  }
+}
+
+///|
+fn push_style_color(id : ColorId, color : Color) -> Int raise ImGuiError {
+  @bindings.im_gui_push_style_color(id.to_int(), color.to_u32())
+  1
+}
+
+///|
+fn push_style_colors(
+  color : Color,
+  ids : Array[ColorId],
+) -> Int raise ImGuiError {
+  let packed = color.to_u32()
+  for id in ids {
+    @bindings.im_gui_push_style_color(id.to_int(), packed)
+  }
+  ids.length()
+}
+
+///|
+fn push_style_vars(value : Float, ids : Array[StyleVar]) -> Int {
+  for id in ids {
+    ignore(push_style_var(id, value))
+  }
+  ids.length()
+}
+
+///|
+fn push_style_var(id : StyleVar, value : Float) -> Int {
+  @bindings.im_gui_push_style_var(id.to_int(), value)
+  1
+}
+
+///|
+fn Color::to_u32(self : Color) -> UInt raise ImGuiError {
+  match self {
+    Rgb(r, g, b) => rgba_u32(r, g, b, byte_channel(255))
+    Rgba(r, g, b, a) => rgba_u32(r, g, b, alpha_channel(a))
+    Hex(value) => parse_hex_color(value)
+    White => rgba_u32(255, 255, 255, byte_channel(255))
+    Black => rgba_u32(0, 0, 0, byte_channel(255))
+    Transparent => rgba_u32(0, 0, 0, byte_channel(0))
+    Red => rgba_u32(220, 54, 46, byte_channel(255))
+    Green => rgba_u32(34, 166, 91, byte_channel(255))
+    Blue => rgba_u32(45, 112, 245, byte_channel(255))
+    Yellow => rgba_u32(240, 185, 45, byte_channel(255))
+    Cyan => rgba_u32(45, 188, 201, byte_channel(255))
+    Magenta => rgba_u32(205, 78, 212, byte_channel(255))
+    Gray => rgba_u32(128, 128, 128, byte_channel(255))
+  }
+}
+
+///|
+fn parse_hex_color(value : String) -> UInt raise ImGuiError {
+  let bytes = utf8(value)
+  let offset = if bytes.length() > 0 && bytes[0] == b'#' { 1 } else { 0 }
+  let length = bytes.length() - offset
+  match length {
+    3 => {
+      let r = hex_single(bytes, offset, value) * 17
+      let g = hex_single(bytes, offset + 1, value) * 17
+      let b = hex_single(bytes, offset + 2, value) * 17
+      rgba_u32(r, g, b, byte_channel(255))
+    }
+    6 =>
+      rgba_u32(
+        hex_pair(bytes, offset, value),
+        hex_pair(bytes, offset + 2, value),
+        hex_pair(bytes, offset + 4, value),
+        byte_channel(255),
+      )
+    8 =>
+      rgba_u32(
+        hex_pair(bytes, offset, value),
+        hex_pair(bytes, offset + 2, value),
+        hex_pair(bytes, offset + 4, value),
+        byte_channel(hex_pair(bytes, offset + 6, value)),
+      )
+    _ => raise InvalidColor(value)
+  }
+}
+
+///|
+fn hex_pair(
+  bytes : Bytes,
+  index : Int,
+  source : String,
+) -> Int raise ImGuiError {
+  match (hex_digit(bytes[index]), hex_digit(bytes[index + 1])) {
+    (Some(high), Some(low)) => high * 16 + low
+    _ => raise InvalidColor(source)
+  }
+}
+
+///|
+fn hex_single(
+  bytes : Bytes,
+  index : Int,
+  source : String,
+) -> Int raise ImGuiError {
+  match hex_digit(bytes[index]) {
+    Some(value) => value
+    None => raise InvalidColor(source)
+  }
+}
+
+///|
+fn hex_digit(value : Byte) -> Int? {
+  let code = value.to_int()
+  if code >= 48 && code <= 57 {
+    Some(code - 48)
+  } else if code >= 65 && code <= 70 {
+    Some(code - 55)
+  } else if code >= 97 && code <= 102 {
+    Some(code - 87)
+  } else {
+    None
+  }
+}
+
+///|
+fn rgba_u32(r : Int, g : Int, b : Int, a : UInt) -> UInt {
+  byte_channel(r) | (byte_channel(g) << 8) | (byte_channel(b) << 16) | (a << 24)
+}
+
+///|
+fn byte_channel(value : Int) -> UInt {
+  clamp_int(value, 0, 255).reinterpret_as_uint()
+}
+
+///|
+fn alpha_channel(value : Float) -> UInt {
+  let raw = value.to_double()
+  let clamped = if raw < 0.0 { 0.0 } else if raw > 1.0 { 1.0 } else { raw }
+  (clamped * 255.0 + 0.5).to_int().reinterpret_as_uint()
+}
+
+///|
+fn clamp_int(value : Int, min : Int, max : Int) -> Int {
+  if value < min {
+    min
+  } else if value > max {
+    max
+  } else {
+    value
+  }
 }
 
 ///|
