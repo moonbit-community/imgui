@@ -2,10 +2,10 @@
 
 MoonBit bindings for Dear ImGui on the native backend.
 
-The top-level `moonbit-community/imgui` package provides a small, scoped API for
+The top-level `moonbit-community/imgui` package provides a scoped API for
 building immediate-mode UI from MoonBit. It is designed for application code:
-windows, menus, tabs, tables, and widgets are used through trailing callbacks,
-and matching Dear ImGui scope close calls are handled automatically.
+windows, menus, tabs, popups, tables, and widgets are used through trailing
+callbacks, and matching Dear ImGui scope close calls are handled automatically.
 
 ## Example
 
@@ -43,12 +43,15 @@ ignore(try! @imgui.render())
 ## Scoped UI
 
 - `ui.window(...) <| ui => { ... }` opens a window and closes it automatically.
-- `ui.menu_bar(...)`, `ui.tab_bar(...)`, and `ui.table(...)` close their scopes
-  automatically.
+- `ui.menu_bar(...)`, `ui.tab_bar(...)`, `ui.table(...)`, `ui.popup(...)`,
+  `ui.popup_modal(...)`, `ui.tooltip(...)`, `ui.combo(...)`, `ui.group(...)`,
+  `ui.disabled(...)`, and `ui.tree_node(...)` close their scopes automatically.
 - Widgets with values pass the updated value directly to the callback:
-  `checkbox(... ) <| value => { ... }` and
-  `slider_float(... ) <| value => { ... }`.
+  `checkbox(...) <| value => { ... }`, `slider_float(...) <| value => { ... }`,
+  `input_text(...) <| value => { ... }`, and `color_edit4(...) <| value => { ... }`.
 - Buttons and menu items run their callback only when activated.
+- Flags are exposed as typed bitsets such as `WindowFlags`, `TableFlags`,
+  `InputTextFlags`, `SliderFlags`, and `ColorEditFlags`.
 
 ## Packages
 
@@ -81,7 +84,8 @@ moon run examples/glfw_opengl3 --target native
 ```
 
 The example opens a native window and renders MoonBit-authored interactive UI:
-checkboxes, a slider, buttons, menus, tabs, a table, and a secondary window.
+checkboxes, sliders, drag controls, text inputs, color editors, popups, a modal,
+menus, tabs, tables, and a secondary window.
 
 ## Validate
 

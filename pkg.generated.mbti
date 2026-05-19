@@ -11,13 +11,21 @@ pub fn clear_current_context() -> Unit
 
 pub fn dear_imgui_version_number() -> Int
 
+pub fn font() -> Font raise ImGuiError
+
+pub fn font_size() -> Float raise ImGuiError
+
 pub fn frame_count() -> Int
 
 pub fn has_current_context() -> Bool
 
+pub fn io() -> Io raise ImGuiError
+
 pub fn new_frame() -> Unit raise ImGuiError
 
-pub fn render() -> DrawData raise ImGuiError
+pub fn render() -> @bindings.ImDrawData raise ImGuiError
+
+pub fn style() -> Style raise ImGuiError
 
 pub fn ui() -> Ui
 
@@ -27,6 +35,138 @@ pub(all) suberror ImGuiError {
 } derive(Eq, @debug.Debug)
 
 // Types and methods
+pub(all) struct ColorEditFlags {
+  bits : Int
+} derive(Eq, @debug.Debug)
+pub fn ColorEditFlags::alpha_bar() -> Self
+pub fn ColorEditFlags::alpha_no_bg() -> Self
+pub fn ColorEditFlags::alpha_opaque() -> Self
+pub fn ColorEditFlags::alpha_preview() -> Self
+pub fn ColorEditFlags::alpha_preview_half() -> Self
+pub fn ColorEditFlags::combine(Self, Self) -> Self
+pub fn ColorEditFlags::display_hex() -> Self
+pub fn ColorEditFlags::display_hsv() -> Self
+pub fn ColorEditFlags::display_rgb() -> Self
+pub fn ColorEditFlags::float() -> Self
+pub fn ColorEditFlags::hdr() -> Self
+pub fn ColorEditFlags::input_hsv() -> Self
+pub fn ColorEditFlags::input_rgb() -> Self
+pub fn ColorEditFlags::no_alpha() -> Self
+pub fn ColorEditFlags::no_border() -> Self
+pub fn ColorEditFlags::no_color_markers() -> Self
+pub fn ColorEditFlags::no_drag_drop() -> Self
+pub fn ColorEditFlags::no_inputs() -> Self
+pub fn ColorEditFlags::no_label() -> Self
+pub fn ColorEditFlags::no_options() -> Self
+pub fn ColorEditFlags::no_picker() -> Self
+pub fn ColorEditFlags::no_side_preview() -> Self
+pub fn ColorEditFlags::no_small_preview() -> Self
+pub fn ColorEditFlags::no_tooltip() -> Self
+pub fn ColorEditFlags::none() -> Self
+pub fn ColorEditFlags::picker_hue_bar() -> Self
+pub fn ColorEditFlags::picker_hue_wheel() -> Self
+pub fn ColorEditFlags::uint8() -> Self
+pub fn ColorEditFlags::value(Self) -> Int
+
+pub(all) struct ColorId {
+  value : Int
+} derive(Eq, @debug.Debug)
+pub fn ColorId::border() -> Self
+pub fn ColorId::border_shadow() -> Self
+pub fn ColorId::button() -> Self
+pub fn ColorId::button_active() -> Self
+pub fn ColorId::button_hovered() -> Self
+pub fn ColorId::check_mark() -> Self
+pub fn ColorId::checkbox_selected_bg() -> Self
+pub fn ColorId::child_bg() -> Self
+pub fn ColorId::count() -> Self
+pub fn ColorId::drag_drop_target() -> Self
+pub fn ColorId::drag_drop_target_bg() -> Self
+pub fn ColorId::frame_bg() -> Self
+pub fn ColorId::frame_bg_active() -> Self
+pub fn ColorId::frame_bg_hovered() -> Self
+pub fn ColorId::header() -> Self
+pub fn ColorId::header_active() -> Self
+pub fn ColorId::header_hovered() -> Self
+pub fn ColorId::input_text_cursor() -> Self
+pub fn ColorId::menu_bar_bg() -> Self
+pub fn ColorId::modal_window_dim_bg() -> Self
+pub fn ColorId::nav_cursor() -> Self
+pub fn ColorId::nav_highlight() -> Self
+pub fn ColorId::nav_windowing_dim_bg() -> Self
+pub fn ColorId::nav_windowing_highlight() -> Self
+pub fn ColorId::plot_histogram() -> Self
+pub fn ColorId::plot_histogram_hovered() -> Self
+pub fn ColorId::plot_lines() -> Self
+pub fn ColorId::plot_lines_hovered() -> Self
+pub fn ColorId::popup_bg() -> Self
+pub fn ColorId::resize_grip() -> Self
+pub fn ColorId::resize_grip_active() -> Self
+pub fn ColorId::resize_grip_hovered() -> Self
+pub fn ColorId::scrollbar_bg() -> Self
+pub fn ColorId::scrollbar_grab() -> Self
+pub fn ColorId::scrollbar_grab_active() -> Self
+pub fn ColorId::scrollbar_grab_hovered() -> Self
+pub fn ColorId::separator() -> Self
+pub fn ColorId::separator_active() -> Self
+pub fn ColorId::separator_hovered() -> Self
+pub fn ColorId::slider_grab() -> Self
+pub fn ColorId::slider_grab_active() -> Self
+pub fn ColorId::tab() -> Self
+pub fn ColorId::tab_active() -> Self
+pub fn ColorId::tab_dimmed() -> Self
+pub fn ColorId::tab_dimmed_selected() -> Self
+pub fn ColorId::tab_dimmed_selected_overline() -> Self
+pub fn ColorId::tab_hovered() -> Self
+pub fn ColorId::tab_selected() -> Self
+pub fn ColorId::tab_selected_overline() -> Self
+pub fn ColorId::tab_unfocused() -> Self
+pub fn ColorId::tab_unfocused_active() -> Self
+pub fn ColorId::table_border_light() -> Self
+pub fn ColorId::table_border_strong() -> Self
+pub fn ColorId::table_header_bg() -> Self
+pub fn ColorId::table_row_bg() -> Self
+pub fn ColorId::table_row_bg_alt() -> Self
+pub fn ColorId::text() -> Self
+pub fn ColorId::text_disabled() -> Self
+pub fn ColorId::text_link() -> Self
+pub fn ColorId::text_selected_bg() -> Self
+pub fn ColorId::title_bg() -> Self
+pub fn ColorId::title_bg_active() -> Self
+pub fn ColorId::title_bg_collapsed() -> Self
+pub fn ColorId::tree_lines() -> Self
+pub fn ColorId::unsaved_marker() -> Self
+pub fn ColorId::value(Self) -> Int
+pub fn ColorId::window_bg() -> Self
+
+pub(all) struct ComboFlags {
+  bits : Int
+} derive(Eq, @debug.Debug)
+pub fn ComboFlags::combine(Self, Self) -> Self
+pub fn ComboFlags::height_large() -> Self
+pub fn ComboFlags::height_largest() -> Self
+pub fn ComboFlags::height_regular() -> Self
+pub fn ComboFlags::height_small() -> Self
+pub fn ComboFlags::no_arrow_button() -> Self
+pub fn ComboFlags::no_preview() -> Self
+pub fn ComboFlags::none() -> Self
+pub fn ComboFlags::popup_align_left() -> Self
+pub fn ComboFlags::value(Self) -> Int
+pub fn ComboFlags::width_fit_preview() -> Self
+
+type ComboUi
+pub fn ComboUi::selectable(Self, String, selected? : Bool, flags? : SelectableFlags, () -> Unit raise ImGuiError) -> Unit raise ImGuiError
+
+pub(all) struct Cond {
+  value : Int
+} derive(Eq, @debug.Debug)
+pub fn Cond::always() -> Self
+pub fn Cond::appearing() -> Self
+pub fn Cond::first_use_ever() -> Self
+pub fn Cond::none() -> Self
+pub fn Cond::once() -> Self
+pub fn Cond::value(Self) -> Int
+
 pub(all) struct Context {
   raw : @bindings.ImGuiContext
 }
@@ -35,8 +175,44 @@ pub fn Context::destroy(Self) -> Unit
 pub fn Context::make_current(Self) -> Unit
 pub fn Context::raw(Self) -> @bindings.ImGuiContext
 
-type DrawData
-pub fn DrawData::raw(Self) -> @bindings.ImDrawData
+type Font
+pub fn Font::is_null(Self) -> Bool
+
+pub(all) struct InputTextFlags {
+  bits : Int
+} derive(Eq, @debug.Debug)
+pub fn InputTextFlags::allow_tab_input() -> Self
+pub fn InputTextFlags::always_overwrite() -> Self
+pub fn InputTextFlags::auto_select_all() -> Self
+pub fn InputTextFlags::callback_always() -> Self
+pub fn InputTextFlags::callback_char_filter() -> Self
+pub fn InputTextFlags::callback_completion() -> Self
+pub fn InputTextFlags::callback_edit() -> Self
+pub fn InputTextFlags::callback_history() -> Self
+pub fn InputTextFlags::callback_resize() -> Self
+pub fn InputTextFlags::chars_decimal() -> Self
+pub fn InputTextFlags::chars_hexadecimal() -> Self
+pub fn InputTextFlags::chars_no_blank() -> Self
+pub fn InputTextFlags::chars_scientific() -> Self
+pub fn InputTextFlags::chars_uppercase() -> Self
+pub fn InputTextFlags::combine(Self, Self) -> Self
+pub fn InputTextFlags::ctrl_enter_for_new_line() -> Self
+pub fn InputTextFlags::display_empty_ref_val() -> Self
+pub fn InputTextFlags::elide_left() -> Self
+pub fn InputTextFlags::enter_returns_true() -> Self
+pub fn InputTextFlags::escape_clears_all() -> Self
+pub fn InputTextFlags::no_horizontal_scroll() -> Self
+pub fn InputTextFlags::no_undo_redo() -> Self
+pub fn InputTextFlags::none() -> Self
+pub fn InputTextFlags::parse_empty_ref_val() -> Self
+pub fn InputTextFlags::password() -> Self
+pub fn InputTextFlags::read_only() -> Self
+pub fn InputTextFlags::value(Self) -> Int
+pub fn InputTextFlags::word_wrap() -> Self
+
+type Io
+pub fn Io::add_focus_event(Self, Bool) -> Unit
+pub fn Io::set_app_accepting_events(Self, Bool) -> Unit
 
 type MenuBarUi
 pub fn MenuBarUi::menu(Self, String, enabled? : Bool, (MenuUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
@@ -45,69 +221,395 @@ pub fn MenuBarUi::menu_item(Self, String, selected? : Bool, () -> Unit raise ImG
 type MenuUi
 pub fn MenuUi::menu_item(Self, String, selected? : Bool, () -> Unit raise ImGuiError) -> Unit raise ImGuiError
 
+pub(all) struct PopupFlags {
+  bits : Int
+} derive(Eq, @debug.Debug)
+pub fn PopupFlags::any_popup() -> Self
+pub fn PopupFlags::any_popup_id() -> Self
+pub fn PopupFlags::any_popup_level() -> Self
+pub fn PopupFlags::combine(Self, Self) -> Self
+pub fn PopupFlags::mouse_button_left() -> Self
+pub fn PopupFlags::mouse_button_middle() -> Self
+pub fn PopupFlags::mouse_button_right() -> Self
+pub fn PopupFlags::no_open_over_existing_popup() -> Self
+pub fn PopupFlags::no_open_over_items() -> Self
+pub fn PopupFlags::no_reopen() -> Self
+pub fn PopupFlags::none() -> Self
+pub fn PopupFlags::value(Self) -> Int
+
+type PopupUi
+pub fn PopupUi::button(Self, String, () -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn PopupUi::close(Self) -> Unit raise ImGuiError
+pub fn PopupUi::separator(Self) -> Unit raise ImGuiError
+pub fn PopupUi::text(Self, String) -> Unit raise ImGuiError
+
 pub(all) struct SelectableFlags {
   bits : Int
 } derive(Eq, @debug.Debug)
+pub fn SelectableFlags::allow_double_click() -> Self
+pub fn SelectableFlags::allow_overlap() -> Self
+pub fn SelectableFlags::combine(Self, Self) -> Self
+pub fn SelectableFlags::disabled() -> Self
+pub fn SelectableFlags::dont_close_popups() -> Self
+pub fn SelectableFlags::highlight() -> Self
+pub fn SelectableFlags::no_auto_close_popups() -> Self
 pub fn SelectableFlags::none() -> Self
+pub fn SelectableFlags::select_on_nav() -> Self
+pub fn SelectableFlags::span_all_columns() -> Self
 pub fn SelectableFlags::value(Self) -> Int
+
+pub(all) struct SliderFlags {
+  bits : Int
+} derive(Eq, @debug.Debug)
+pub fn SliderFlags::always_clamp() -> Self
+pub fn SliderFlags::clamp_on_input() -> Self
+pub fn SliderFlags::clamp_zero_range() -> Self
+pub fn SliderFlags::color_markers() -> Self
+pub fn SliderFlags::combine(Self, Self) -> Self
+pub fn SliderFlags::logarithmic() -> Self
+pub fn SliderFlags::no_input() -> Self
+pub fn SliderFlags::no_round_to_format() -> Self
+pub fn SliderFlags::no_speed_tweaks() -> Self
+pub fn SliderFlags::none() -> Self
+pub fn SliderFlags::value(Self) -> Int
+pub fn SliderFlags::wrap_around() -> Self
+
+type Style
+pub fn Style::colors_classic(Self) -> Unit
+pub fn Style::colors_dark(Self) -> Unit
+pub fn Style::colors_light(Self) -> Unit
+pub fn Style::scale_all_sizes(Self, Float) -> Unit
+
+pub(all) struct StyleVar {
+  value : Int
+} derive(Eq, @debug.Debug)
+pub fn StyleVar::alpha() -> Self
+pub fn StyleVar::child_border_size() -> Self
+pub fn StyleVar::child_rounding() -> Self
+pub fn StyleVar::count() -> Self
+pub fn StyleVar::disabled_alpha() -> Self
+pub fn StyleVar::drag_drop_target_rounding() -> Self
+pub fn StyleVar::frame_border_size() -> Self
+pub fn StyleVar::frame_rounding() -> Self
+pub fn StyleVar::grab_min_size() -> Self
+pub fn StyleVar::grab_rounding() -> Self
+pub fn StyleVar::image_border_size() -> Self
+pub fn StyleVar::image_rounding() -> Self
+pub fn StyleVar::indent_spacing() -> Self
+pub fn StyleVar::popup_border_size() -> Self
+pub fn StyleVar::popup_rounding() -> Self
+pub fn StyleVar::scrollbar_padding() -> Self
+pub fn StyleVar::scrollbar_rounding() -> Self
+pub fn StyleVar::scrollbar_size() -> Self
+pub fn StyleVar::separator_size() -> Self
+pub fn StyleVar::separator_text_border_size() -> Self
+pub fn StyleVar::tab_bar_border_size() -> Self
+pub fn StyleVar::tab_bar_overline_size() -> Self
+pub fn StyleVar::tab_border_size() -> Self
+pub fn StyleVar::tab_min_width_base() -> Self
+pub fn StyleVar::tab_min_width_shrink() -> Self
+pub fn StyleVar::tab_rounding() -> Self
+pub fn StyleVar::table_angled_headers_angle() -> Self
+pub fn StyleVar::tree_lines_rounding() -> Self
+pub fn StyleVar::tree_lines_size() -> Self
+pub fn StyleVar::value(Self) -> Int
+pub fn StyleVar::window_border_size() -> Self
+pub fn StyleVar::window_rounding() -> Self
 
 pub(all) struct TabBarFlags {
   bits : Int
 } derive(Eq, @debug.Debug)
+pub fn TabBarFlags::auto_select_new_tabs() -> Self
+pub fn TabBarFlags::combine(Self, Self) -> Self
+pub fn TabBarFlags::draw_selected_overline() -> Self
+pub fn TabBarFlags::fitting_policy_mixed() -> Self
+pub fn TabBarFlags::fitting_policy_resize_down() -> Self
+pub fn TabBarFlags::fitting_policy_scroll() -> Self
+pub fn TabBarFlags::fitting_policy_shrink() -> Self
+pub fn TabBarFlags::no_close_with_middle_mouse_button() -> Self
+pub fn TabBarFlags::no_tab_list_scrolling_buttons() -> Self
+pub fn TabBarFlags::no_tooltip() -> Self
 pub fn TabBarFlags::none() -> Self
+pub fn TabBarFlags::reorderable() -> Self
+pub fn TabBarFlags::tab_list_popup_button() -> Self
 pub fn TabBarFlags::value(Self) -> Int
 
 type TabBarUi
-pub fn TabBarUi::tab_item(Self, String, (TabItemUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn TabBarUi::tab_item(Self, String, flags? : TabItemFlags, (TabItemUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+
+pub(all) struct TabItemFlags {
+  bits : Int
+} derive(Eq, @debug.Debug)
+pub fn TabItemFlags::combine(Self, Self) -> Self
+pub fn TabItemFlags::leading() -> Self
+pub fn TabItemFlags::no_assumed_closure() -> Self
+pub fn TabItemFlags::no_close_with_middle_mouse_button() -> Self
+pub fn TabItemFlags::no_push_id() -> Self
+pub fn TabItemFlags::no_reorder() -> Self
+pub fn TabItemFlags::no_tooltip() -> Self
+pub fn TabItemFlags::none() -> Self
+pub fn TabItemFlags::set_selected() -> Self
+pub fn TabItemFlags::trailing() -> Self
+pub fn TabItemFlags::unsaved_document() -> Self
+pub fn TabItemFlags::value(Self) -> Int
 
 type TabItemUi
 pub fn TabItemUi::separator(Self) -> Unit raise ImGuiError
 pub fn TabItemUi::table(Self, String, Int, flags? : TableFlags, (TableUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn TabItemUi::text(Self, String) -> Unit raise ImGuiError
 
+pub(all) struct TableBgTarget {
+  value : Int
+} derive(Eq, @debug.Debug)
+pub fn TableBgTarget::cell_bg() -> Self
+pub fn TableBgTarget::none() -> Self
+pub fn TableBgTarget::row_bg0() -> Self
+pub fn TableBgTarget::row_bg1() -> Self
+pub fn TableBgTarget::value(Self) -> Int
+
+pub(all) struct TableColumnFlags {
+  bits : Int
+} derive(Eq, @debug.Debug)
+pub fn TableColumnFlags::angled_header() -> Self
+pub fn TableColumnFlags::combine(Self, Self) -> Self
+pub fn TableColumnFlags::default_hide() -> Self
+pub fn TableColumnFlags::default_sort() -> Self
+pub fn TableColumnFlags::disabled() -> Self
+pub fn TableColumnFlags::indent_disable() -> Self
+pub fn TableColumnFlags::indent_enable() -> Self
+pub fn TableColumnFlags::is_enabled() -> Self
+pub fn TableColumnFlags::is_hovered() -> Self
+pub fn TableColumnFlags::is_sorted() -> Self
+pub fn TableColumnFlags::is_visible() -> Self
+pub fn TableColumnFlags::no_clip() -> Self
+pub fn TableColumnFlags::no_header_label() -> Self
+pub fn TableColumnFlags::no_header_width() -> Self
+pub fn TableColumnFlags::no_hide() -> Self
+pub fn TableColumnFlags::no_reorder() -> Self
+pub fn TableColumnFlags::no_resize() -> Self
+pub fn TableColumnFlags::no_sort() -> Self
+pub fn TableColumnFlags::no_sort_ascending() -> Self
+pub fn TableColumnFlags::no_sort_descending() -> Self
+pub fn TableColumnFlags::none() -> Self
+pub fn TableColumnFlags::prefer_sort_ascending() -> Self
+pub fn TableColumnFlags::prefer_sort_descending() -> Self
+pub fn TableColumnFlags::value(Self) -> Int
+pub fn TableColumnFlags::width_fixed() -> Self
+pub fn TableColumnFlags::width_stretch() -> Self
+
 pub(all) struct TableFlags {
   bits : Int
 } derive(Eq, @debug.Debug)
 pub fn TableFlags::borders() -> Self
+pub fn TableFlags::borders_h() -> Self
+pub fn TableFlags::borders_inner() -> Self
+pub fn TableFlags::borders_inner_h() -> Self
+pub fn TableFlags::borders_inner_v() -> Self
+pub fn TableFlags::borders_outer() -> Self
+pub fn TableFlags::borders_outer_h() -> Self
+pub fn TableFlags::borders_outer_v() -> Self
+pub fn TableFlags::borders_v() -> Self
 pub fn TableFlags::combine(Self, Self) -> Self
+pub fn TableFlags::context_menu_in_body() -> Self
+pub fn TableFlags::hideable() -> Self
+pub fn TableFlags::highlight_hovered_column() -> Self
+pub fn TableFlags::no_borders_in_body() -> Self
+pub fn TableFlags::no_borders_in_body_until_resize() -> Self
+pub fn TableFlags::no_clip() -> Self
+pub fn TableFlags::no_host_extend_x() -> Self
+pub fn TableFlags::no_host_extend_y() -> Self
+pub fn TableFlags::no_keep_columns_visible() -> Self
+pub fn TableFlags::no_pad_inner_x() -> Self
+pub fn TableFlags::no_pad_outer_x() -> Self
+pub fn TableFlags::no_saved_settings() -> Self
 pub fn TableFlags::none() -> Self
+pub fn TableFlags::pad_outer_x() -> Self
+pub fn TableFlags::precise_widths() -> Self
+pub fn TableFlags::reorderable() -> Self
+pub fn TableFlags::resizable() -> Self
 pub fn TableFlags::row_bg() -> Self
+pub fn TableFlags::scroll_x() -> Self
+pub fn TableFlags::scroll_y() -> Self
+pub fn TableFlags::sizing_fixed_fit() -> Self
+pub fn TableFlags::sizing_fixed_same() -> Self
+pub fn TableFlags::sizing_stretch_prop() -> Self
+pub fn TableFlags::sizing_stretch_same() -> Self
+pub fn TableFlags::sort_multi() -> Self
+pub fn TableFlags::sort_tristate() -> Self
+pub fn TableFlags::sortable() -> Self
 pub fn TableFlags::value(Self) -> Int
 
+pub(all) struct TableRowFlags {
+  bits : Int
+} derive(Eq, @debug.Debug)
+pub fn TableRowFlags::combine(Self, Self) -> Self
+pub fn TableRowFlags::headers() -> Self
+pub fn TableRowFlags::none() -> Self
+pub fn TableRowFlags::value(Self) -> Int
+
 type TableUi
+pub fn TableUi::column_count(Self) -> Int raise ImGuiError
+pub fn TableUi::column_flags(Self, Int) -> TableColumnFlags raise ImGuiError
+pub fn TableUi::column_index(Self) -> Int raise ImGuiError
+pub fn TableUi::header(Self, String) -> Unit raise ImGuiError
+pub fn TableUi::headers_row(Self) -> Unit raise ImGuiError
+pub fn TableUi::hovered_column(Self) -> Int raise ImGuiError
 pub fn TableUi::next_column(Self) -> Bool raise ImGuiError
-pub fn TableUi::next_row(Self) -> Unit raise ImGuiError
+pub fn TableUi::next_row(Self, flags? : TableRowFlags, min_height? : Float) -> Unit raise ImGuiError
+pub fn TableUi::row_index(Self) -> Int raise ImGuiError
 pub fn TableUi::selectable(Self, String, selected? : Bool, flags? : SelectableFlags) -> Bool raise ImGuiError
+pub fn TableUi::set_bg_color(Self, TableBgTarget, UInt, column? : Int) -> Unit raise ImGuiError
+pub fn TableUi::set_column_enabled(Self, Int, Bool) -> Unit raise ImGuiError
+pub fn TableUi::set_column_index(Self, Int) -> Bool raise ImGuiError
+pub fn TableUi::setup_column(Self, String, flags? : TableColumnFlags, init_width_or_weight? : Float, user_id? : UInt) -> Unit raise ImGuiError
+pub fn TableUi::setup_scroll_freeze(Self, Int, Int) -> Unit raise ImGuiError
 pub fn TableUi::text(Self, String) -> Unit raise ImGuiError
+
+type TooltipUi
+pub fn TooltipUi::text(Self, String) -> Unit raise ImGuiError
+
+pub(all) struct TreeNodeFlags {
+  bits : Int
+} derive(Eq, @debug.Debug)
+pub fn TreeNodeFlags::allow_overlap() -> Self
+pub fn TreeNodeFlags::bullet() -> Self
+pub fn TreeNodeFlags::collapsing_header() -> Self
+pub fn TreeNodeFlags::combine(Self, Self) -> Self
+pub fn TreeNodeFlags::default_open() -> Self
+pub fn TreeNodeFlags::draw_lines_full() -> Self
+pub fn TreeNodeFlags::draw_lines_none() -> Self
+pub fn TreeNodeFlags::draw_lines_to_nodes() -> Self
+pub fn TreeNodeFlags::frame_padding() -> Self
+pub fn TreeNodeFlags::framed() -> Self
+pub fn TreeNodeFlags::label_span_all_columns() -> Self
+pub fn TreeNodeFlags::leaf() -> Self
+pub fn TreeNodeFlags::nav_left_jumps_back_here() -> Self
+pub fn TreeNodeFlags::nav_left_jumps_to_parent() -> Self
+pub fn TreeNodeFlags::no_auto_open_on_log() -> Self
+pub fn TreeNodeFlags::no_tree_push_on_open() -> Self
+pub fn TreeNodeFlags::none() -> Self
+pub fn TreeNodeFlags::open_on_arrow() -> Self
+pub fn TreeNodeFlags::open_on_double_click() -> Self
+pub fn TreeNodeFlags::selected() -> Self
+pub fn TreeNodeFlags::span_all_columns() -> Self
+pub fn TreeNodeFlags::span_avail_width() -> Self
+pub fn TreeNodeFlags::span_full_width() -> Self
+pub fn TreeNodeFlags::span_label_width() -> Self
+pub fn TreeNodeFlags::span_text_width() -> Self
+pub fn TreeNodeFlags::value(Self) -> Int
+
+type TreeNodeUi
+pub fn TreeNodeUi::bullet_text(Self, String) -> Unit raise ImGuiError
+pub fn TreeNodeUi::text(Self, String) -> Unit raise ImGuiError
 
 type Ui
 pub fn Ui::window(Self, String, flags? : WindowFlags, (WindowUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+
+pub(all) struct Vec4 {
+  x : Float
+  y : Float
+  z : Float
+  w : Float
+} derive(Eq, @debug.Debug)
+pub fn Vec4::new(Float, Float, Float, Float) -> Self
+pub fn Vec4::rgba(Float, Float, Float, Float) -> Self
+pub fn Vec4::transparent() -> Self
+pub fn Vec4::white() -> Self
 
 pub(all) struct WindowFlags {
   bits : Int
 } derive(Eq, @debug.Debug)
 pub fn WindowFlags::always_auto_resize() -> Self
+pub fn WindowFlags::always_horizontal_scrollbar() -> Self
+pub fn WindowFlags::always_vertical_scrollbar() -> Self
 pub fn WindowFlags::combine(Self, Self) -> Self
+pub fn WindowFlags::horizontal_scrollbar() -> Self
 pub fn WindowFlags::menu_bar() -> Self
+pub fn WindowFlags::no_background() -> Self
+pub fn WindowFlags::no_bring_to_front_on_focus() -> Self
+pub fn WindowFlags::no_collapse() -> Self
+pub fn WindowFlags::no_decoration() -> Self
+pub fn WindowFlags::no_focus_on_appearing() -> Self
+pub fn WindowFlags::no_inputs() -> Self
+pub fn WindowFlags::no_mouse_inputs() -> Self
 pub fn WindowFlags::no_move() -> Self
+pub fn WindowFlags::no_nav() -> Self
+pub fn WindowFlags::no_nav_focus() -> Self
+pub fn WindowFlags::no_nav_inputs() -> Self
 pub fn WindowFlags::no_resize() -> Self
+pub fn WindowFlags::no_saved_settings() -> Self
+pub fn WindowFlags::no_scroll_with_mouse() -> Self
 pub fn WindowFlags::no_scrollbar() -> Self
 pub fn WindowFlags::no_title_bar() -> Self
 pub fn WindowFlags::none() -> Self
+pub fn WindowFlags::unsaved_document() -> Self
 pub fn WindowFlags::value(Self) -> Int
 
 type WindowUi
+pub fn WindowUi::align_text_to_frame_padding(Self) -> Unit raise ImGuiError
+pub fn WindowUi::bullet(Self) -> Unit raise ImGuiError
+pub fn WindowUi::bullet_text(Self, String) -> Unit raise ImGuiError
 pub fn WindowUi::button(Self, String, () -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::checkbox(Self, String, Bool, (Bool) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::collapsing_header(Self, String, flags? : TreeNodeFlags, (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::color_edit3(Self, String, Vec4, flags? : ColorEditFlags, (Vec4) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::color_edit4(Self, String, Vec4, flags? : ColorEditFlags, (Vec4) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::color_picker3(Self, String, Vec4, flags? : ColorEditFlags, (Vec4) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::color_picker4(Self, String, Vec4, flags? : ColorEditFlags, (Vec4) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::combo(Self, String, String, flags? : ComboFlags, (ComboUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::disabled(Self, disabled? : Bool, (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::drag_float(Self, String, Float, speed? : Float, min? : Float, max? : Float, format? : String, flags? : SliderFlags, (Float) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::drag_int(Self, String, Int, speed? : Float, min? : Int, max? : Int, format? : String, flags? : SliderFlags, (Int) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::group(Self, (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::indent(Self, width? : Float) -> Unit raise ImGuiError
+pub fn WindowUi::input_double(Self, String, Double, step? : Double, step_fast? : Double, format? : String, flags? : InputTextFlags, (Double) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::input_float(Self, String, Float, step? : Float, step_fast? : Float, format? : String, flags? : InputTextFlags, (Float) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::input_int(Self, String, Int, step? : Int, step_fast? : Int, flags? : InputTextFlags, (Int) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::input_text(Self, String, Bytes, flags? : InputTextFlags, (String) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::input_text_multiline(Self, String, Bytes, (String) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::input_text_with_hint(Self, String, String, Bytes, flags? : InputTextFlags, (String) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::is_item_hovered(Self) -> Bool raise ImGuiError
+pub fn WindowUi::is_popup_open(Self, String, flags? : PopupFlags) -> Bool raise ImGuiError
+pub fn WindowUi::label_text(Self, String, String) -> Unit raise ImGuiError
 pub fn WindowUi::menu_bar(Self, (MenuBarUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::new_line(Self) -> Unit raise ImGuiError
+pub fn WindowUi::open_popup(Self, String, flags? : PopupFlags) -> Unit raise ImGuiError
+pub fn WindowUi::popup(Self, String, flags? : PopupFlags, (PopupUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::popup_modal(Self, String, Bool, flags? : WindowFlags, (PopupUi) -> Unit raise ImGuiError) -> Bool raise ImGuiError
+pub fn WindowUi::radio_button(Self, String, Bool, () -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::radio_int(Self, String, Int, Int, (Int) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::same_line(Self) -> Unit raise ImGuiError
+pub fn WindowUi::same_line_ex(Self, Float, Float) -> Unit raise ImGuiError
+pub fn WindowUi::selectable(Self, String, selected? : Bool, flags? : SelectableFlags, () -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::separator(Self) -> Unit raise ImGuiError
-pub fn WindowUi::slider_float(Self, String, Float, Float, Float, (Float) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::separator_text(Self, String) -> Unit raise ImGuiError
+pub fn WindowUi::set_color_edit_options(Self, ColorEditFlags) -> Unit raise ImGuiError
+pub fn WindowUi::set_next_item_allow_overlap(Self) -> Unit raise ImGuiError
+pub fn WindowUi::set_next_item_open(Self, Bool, cond? : Cond) -> Unit raise ImGuiError
+pub fn WindowUi::set_next_item_width(Self, Float) -> Unit raise ImGuiError
+pub fn WindowUi::set_tooltip(Self, String) -> Unit raise ImGuiError
+pub fn WindowUi::slider_float(Self, String, Float, Float, Float, format? : String, flags? : SliderFlags, (Float) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::slider_int(Self, String, Int, Int, Int, format? : String, flags? : SliderFlags, (Int) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::small_button(Self, String, () -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::spacing(Self) -> Unit raise ImGuiError
 pub fn WindowUi::tab_bar(Self, String, flags? : TabBarFlags, (TabBarUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::table(Self, String, Int, flags? : TableFlags, (TableUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::text(Self, String) -> Unit raise ImGuiError
+pub fn WindowUi::text_disabled(Self, String) -> Unit raise ImGuiError
+pub fn WindowUi::text_wrapped(Self, String) -> Unit raise ImGuiError
+pub fn WindowUi::tooltip(Self, (TooltipUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::tree_node(Self, String, flags? : TreeNodeFlags, (TreeNodeUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::unindent(Self, width? : Float) -> Unit raise ImGuiError
+pub fn WindowUi::with_font(Self, Font, size? : Float, (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::with_id(Self, String, (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::with_id_int(Self, Int, (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::with_item_width(Self, Float, (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::with_style_color_u32(Self, ColorId, UInt, (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::with_style_var_float(Self, StyleVar, Float, (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::with_text_wrap_pos(Self, Float, (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 
 // Type aliases
+pub using @bindings {type ImDrawData as DrawData}
 
 // Traits
 
