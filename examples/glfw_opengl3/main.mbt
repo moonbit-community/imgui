@@ -10,11 +10,36 @@ struct DemoState {
   mut input_float_value : Float
   mut input_int_value : Int
   mut input_double_value : Double
+  mut angle : Float
+  mut float2 : @imgui.Float2
+  mut float3 : @imgui.Float3
+  mut float4 : @imgui.Float4
+  mut int2 : @imgui.Int2
+  mut int3 : @imgui.Int3
+  mut int4 : @imgui.Int4
+  mut drag_float2 : @imgui.Float2
+  mut drag_float3 : @imgui.Float3
+  mut drag_float4 : @imgui.Float4
+  mut drag_int2 : @imgui.Int2
+  mut drag_int3 : @imgui.Int3
+  mut drag_int4 : @imgui.Int4
+  mut float_range : @imgui.FloatRange
+  mut int_range : @imgui.IntRange
+  mut input_float2 : @imgui.Float2
+  mut input_float3 : @imgui.Float3
+  mut input_float4 : @imgui.Float4
+  mut input_int2 : @imgui.Int2
+  mut input_int3 : @imgui.Int3
+  mut input_int4 : @imgui.Int4
+  mut flag_int : Int
+  mut flag_uint : UInt
   mut counter : Int
   mut selected_row : Int
   mut selected_item : Int
   mut combo_index : Int
   mut radio_choice : Int
+  mut optional_tab_open : Bool
+  mut header_open : Bool
   mut show_metrics : Bool
   mut progress : Float
   mut color : @imgui.Vec4
@@ -40,11 +65,36 @@ fn DemoState::new() -> DemoState {
     input_float_value: 1.25,
     input_int_value: 12,
     input_double_value: 3.14159,
+    angle: 0.35,
+    float2: @imgui.Float2::new(0.25, 0.75),
+    float3: @imgui.Float3::new(0.10, 0.50, 0.90),
+    float4: @imgui.Float4::new(0.15, 0.35, 0.65, 0.85),
+    int2: @imgui.Int2::new(1, 2),
+    int3: @imgui.Int3::new(1, 2, 3),
+    int4: @imgui.Int4::new(1, 2, 3, 4),
+    drag_float2: @imgui.Float2::new(1.0, 2.0),
+    drag_float3: @imgui.Float3::new(1.0, 2.0, 3.0),
+    drag_float4: @imgui.Float4::new(1.0, 2.0, 3.0, 4.0),
+    drag_int2: @imgui.Int2::new(2, 4),
+    drag_int3: @imgui.Int3::new(2, 4, 6),
+    drag_int4: @imgui.Int4::new(2, 4, 6, 8),
+    float_range: @imgui.FloatRange::new(0.20, 0.80),
+    int_range: @imgui.IntRange::new(2, 8),
+    input_float2: @imgui.Float2::new(0.0, 1.0),
+    input_float3: @imgui.Float3::new(0.0, 1.0, 2.0),
+    input_float4: @imgui.Float4::new(0.0, 1.0, 2.0, 3.0),
+    input_int2: @imgui.Int2::new(10, 20),
+    input_int3: @imgui.Int3::new(10, 20, 30),
+    input_int4: @imgui.Int4::new(10, 20, 30, 40),
+    flag_int: 1,
+    flag_uint: 1U,
     counter: 0,
     selected_row: 1,
     selected_item: 0,
     combo_index: 0,
     radio_choice: 0,
+    optional_tab_open: true,
+    header_open: true,
     show_metrics: true,
     progress: 0.35,
     color: @imgui.Vec4::rgba(0.20, 0.55, 0.95, 1.0),
@@ -141,10 +191,19 @@ fn render_ui(state : DemoState) -> Unit raise @imgui.ImGuiError {
   touch_value_api()
   let io = @imgui.io()
   io.set_app_accepting_events(true)
+  io.add_focus_event(true)
 
   let style = @imgui.style()
   let font = @imgui.font()
   let ui = @imgui.ui()
+  ui.main_menu_bar() <| bar => {
+    bar.menu_item("Main counter +1") <| () => {
+      state.counter = state.counter + 1
+    }
+    bar.menu_item("Disabled main action", enabled=false) <| () => {
+      state.counter = state.counter - 1
+    }
+  }
   ui.window(
     "MoonBit ImGui controls",
     flags=@imgui.WindowFlags::menu_bar().combine(
@@ -158,6 +217,9 @@ fn render_ui(state : DemoState) -> Unit raise @imgui.ImGuiError {
         }
         menu.menu_item("Toggle details", selected=state.show_another) <| () => {
           state.show_another = !state.show_another
+        }
+        menu.menu_item("Disabled nested action", enabled=false) <| () => {
+          state.counter = state.counter - 1
         }
       }
       bar.menu_item("Open popup") <| () => { ui.open_popup("MoonBit popup") }
@@ -225,6 +287,13 @@ fn render_text_and_layout(
   ui.bullet_text("Bullet text")
   ui.same_line_ex(360.0, 8.0)
   ui.small_button("Small +1") <| () => { state.counter = state.counter + 1 }
+  ui.same_line()
+  ui.arrow_button("arrow-right", @imgui.Dir::right()) <| () => {
+    state.counter = state.counter + 1
+  }
+  ui.text_link("Text link") <| () => { state.counter = state.counter + 1 }
+  ui.same_line()
+  ignore(ui.text_link_open_url("https://github.com/moonbit-community/imgui"))
   ui.new_line()
   ui.spacing()
   ui.indent(width=18.0)
@@ -232,19 +301,67 @@ fn render_text_and_layout(
   ui.unindent(width=18.0)
   ui.align_text_to_frame_padding()
   ui.text("Aligned text")
+  let line_height = ui.text_line_height()
+  let line_height_with_spacing = ui.text_line_height_with_spacing()
+  let frame_height = ui.frame_height()
+  let frame_height_with_spacing = ui.frame_height_with_spacing()
+  ui.label_text(
+    "Heights",
+    "\{line_height}/\{line_height_with_spacing}/\{frame_height}/\{frame_height_with_spacing}",
+  )
+  ui.label_text("Item width", "\{ui.calc_item_width()}")
+  let cursor_x = ui.cursor_pos_x()
+  let cursor_y = ui.cursor_pos_y()
+  ui.set_cursor_pos_x(cursor_x + 12.0)
+  ui.text("Cursor X adjusted")
+  ui.set_cursor_pos_x(cursor_x)
+  ui.set_cursor_pos_y(cursor_y + ui.text_line_height_with_spacing())
+  ui.text("Cursor Y adjusted")
+  ui.set_window_font_scale(1.0)
+  ui.set_nav_cursor_visible(true)
+  let layout_id = ui.id("layout-id")
+  let layout_int_id = ui.id_int(123)
+  ui.label_text("Generated IDs", "\{layout_id}/\{layout_int_id}")
   ui.set_next_item_width(220.0)
+  if @imgui.frame_count() == 1 {
+    ui.set_keyboard_focus_here()
+  }
   ui.input_text("Editable text", state.text_buffer) <| value => {
     state.text_value = value
   }
   ui.set_next_item_allow_overlap()
+  ui.set_next_item_storage_id(layout_id)
+  ui.set_next_item_selection_user_data(1L)
   ui.button("Overlap target") <| () => { state.counter = state.counter + 1 }
-  if ui.is_item_hovered() {
+  ui.set_item_default_focus()
+  if ui.is_item_clicked(button=@imgui.MouseButton::left()) {
+    state.counter = state.counter + 1
+  }
+  let item_state = ui.item_state()
+  let any_item_state = ui.any_item_state()
+  let item_flags = ui.item_flags()
+  ui.label_text(
+    "Last item",
+    "id=\{ui.item_id()} flags=\{item_flags.value()} clicked=\{item_state.clicked} active=\{any_item_state.active}",
+  )
+  ui.item_tooltip() <| tooltip => { tooltip.text("Item tooltip scope") }
+  ui.set_item_tooltip("SetItemTooltip on the last item")
+  if ui.is_item_hovered(flags=@imgui.HoveredFlags::for_tooltip()) {
     ui.tooltip() <| tooltip => { tooltip.text("Tooltip scope") }
   }
   ui.set_tooltip("SetTooltipUnformatted on the last item")
   ui.with_text_wrap_pos(520.0) <| ui => {
     ui.text_wrapped("This text is inside a pushed text wrap scope.")
   }
+  let window_state = ui.window_state()
+  ui.label_text(
+    "Window",
+    "\{ui.window_width()}x\{ui.window_height()} focused=\{window_state.focused} hovered=\{ui.is_window_hovered(flags=@imgui.HoveredFlags::root_and_child_windows())}",
+  )
+  ui.label_text(
+    "Focus",
+    "any=\{ui.is_window_focused(flags=@imgui.FocusedFlags::root_and_child_windows())} appearing=\{window_state.appearing}",
+  )
 }
 
 ///|
@@ -261,6 +378,20 @@ fn render_controls(
   ui.same_line()
   ui.checkbox("Show metrics", state.show_metrics) <| value => {
     state.show_metrics = value
+  }
+  ui.checkbox_flags_int("Int flag 0x01", state.flag_int, 1) <| value => {
+    state.flag_int = value
+  }
+  ui.same_line()
+  ui.checkbox_flags_int("Int flag 0x02", state.flag_int, 2) <| value => {
+    state.flag_int = value
+  }
+  ui.checkbox_flags_uint("UInt flag 0x01", state.flag_uint, 1U) <| value => {
+    state.flag_uint = value
+  }
+  ui.same_line()
+  ui.checkbox_flags_uint("UInt flag 0x02", state.flag_uint, 2U) <| value => {
+    state.flag_uint = value
   }
 
   ui.radio_button("Radio A", state.radio_choice == 0) <| () => {
@@ -288,6 +419,27 @@ fn render_controls(
   ui.slider_int("Int slider", state.int_slider, 0, 10) <| value => {
     state.int_slider = value
   }
+  ui.slider_angle("Angle slider", state.angle) <| value => {
+    state.angle = value
+  }
+  ui.slider_float2("Float2 slider", state.float2, 0.0, 1.0) <| value => {
+    state.float2 = value
+  }
+  ui.slider_float3("Float3 slider", state.float3, 0.0, 1.0) <| value => {
+    state.float3 = value
+  }
+  ui.slider_float4("Float4 slider", state.float4, 0.0, 1.0) <| value => {
+    state.float4 = value
+  }
+  ui.slider_int2("Int2 slider", state.int2, 0, 10) <| value => {
+    state.int2 = value
+  }
+  ui.slider_int3("Int3 slider", state.int3, 0, 10) <| value => {
+    state.int3 = value
+  }
+  ui.slider_int4("Int4 slider", state.int4, 0, 10) <| value => {
+    state.int4 = value
+  }
   ui.drag_float(
     "Drag float",
     state.drag_float_value,
@@ -298,6 +450,50 @@ fn render_controls(
   ui.drag_int("Drag int", state.drag_int_value, speed=0.2, min=0, max=30) <| value => {
     state.drag_int_value = value
   }
+  ui.drag_float2(
+    "Drag float2",
+    state.drag_float2,
+    speed=0.05,
+    min=0.0,
+    max=10.0,
+  ) <| value => { state.drag_float2 = value }
+  ui.drag_float3(
+    "Drag float3",
+    state.drag_float3,
+    speed=0.05,
+    min=0.0,
+    max=10.0,
+  ) <| value => { state.drag_float3 = value }
+  ui.drag_float4(
+    "Drag float4",
+    state.drag_float4,
+    speed=0.05,
+    min=0.0,
+    max=10.0,
+  ) <| value => { state.drag_float4 = value }
+  ui.drag_int2("Drag int2", state.drag_int2, speed=0.2, min=0, max=30) <| value => {
+    state.drag_int2 = value
+  }
+  ui.drag_int3("Drag int3", state.drag_int3, speed=0.2, min=0, max=30) <| value => {
+    state.drag_int3 = value
+  }
+  ui.drag_int4("Drag int4", state.drag_int4, speed=0.2, min=0, max=30) <| value => {
+    state.drag_int4 = value
+  }
+  ui.drag_float_range2(
+    "Drag float range",
+    state.float_range,
+    speed=0.01,
+    min=0.0,
+    max=1.0,
+  ) <| value => { state.float_range = value }
+  ui.drag_int_range2(
+    "Drag int range",
+    state.int_range,
+    speed=0.2,
+    min=0,
+    max=20,
+  ) <| value => { state.int_range = value }
   ui.input_float("Input float", state.input_float_value, step=0.1) <| value => {
     state.input_float_value = value
   }
@@ -306,6 +502,24 @@ fn render_controls(
   }
   ui.input_double("Input double", state.input_double_value) <| value => {
     state.input_double_value = value
+  }
+  ui.input_float2("Input float2", state.input_float2) <| value => {
+    state.input_float2 = value
+  }
+  ui.input_float3("Input float3", state.input_float3) <| value => {
+    state.input_float3 = value
+  }
+  ui.input_float4("Input float4", state.input_float4) <| value => {
+    state.input_float4 = value
+  }
+  ui.input_int2("Input int2", state.input_int2) <| value => {
+    state.input_int2 = value
+  }
+  ui.input_int3("Input int3", state.input_int3) <| value => {
+    state.input_int3 = value
+  }
+  ui.input_int4("Input int4", state.input_int4) <| value => {
+    state.input_int4 = value
   }
   ui.input_text_with_hint(
     "Text with hint",
@@ -342,6 +556,11 @@ fn render_controls(
       state.picker = value
     }
   }
+  state.header_open = ui.collapsing_header_open(
+      "Closeable header",
+      state.header_open,
+      flags=@imgui.TreeNodeFlags::default_open(),
+    ) <| ui => { ui.text("The close button updates MoonBit state.") }
 }
 
 ///|
@@ -368,6 +587,14 @@ fn render_scopes(
       ui.button("Disabled-aware button") <| () => {
         state.counter = state.counter + 1
       }
+    }
+  }
+  ui.with_item_flag(@imgui.ItemFlags::no_tab_stop(), true) <| ui => {
+    ui.button("No tab stop item") <| () => { state.counter = state.counter + 1 }
+  }
+  ui.button_repeat(true) <| ui => {
+    ui.small_button("Hold repeat +") <| () => {
+      state.counter = state.counter + 1
     }
   }
   ui.with_style_color_u32(@imgui.ColorId::button(), 0xFF3DA5FFU) <| ui => {
@@ -419,8 +646,55 @@ fn render_scopes(
   }
   let popup_open = ui.is_popup_open("MoonBit popup")
   ui.text("popup open = \{popup_open}")
+  ui.button("Right click item") <| () => { state.counter = state.counter + 1 }
+  ui.open_popup_on_item_click()
+  ui.popup_context_item() <| popup => {
+    popup.text("Item context popup")
+    popup.button("Close item popup") <| () => { popup.close() }
+  }
+  ui.popup_context_window() <| popup => {
+    popup.text("Window context popup")
+    popup.button("Close window popup") <| () => { popup.close() }
+  }
+  ui.popup_context_void() <| popup => {
+    popup.text("Void context popup")
+    popup.button("Close void popup") <| () => { popup.close() }
+  }
   ui.selectable("Selectable command", selected=state.selected_item == 9) <| () => {
     state.selected_item = 9
+  }
+  ui.button("Keep window expanded") <| () => {
+    ui.set_window_collapsed(false, cond=@imgui.Cond::always())
+  }
+  ui.same_line()
+  ui.button("Focus by title") <| () => {
+    ui.set_window_focus_by_name("MoonBit ImGui controls")
+  }
+  ui.same_line()
+  ui.button("Focus current") <| () => { ui.set_window_focus() }
+  let scroll = ui.scroll_state()
+  ui.label_text(
+    "Scroll",
+    "\{scroll.x}/\{scroll.y} max=\{scroll.max_x}/\{scroll.max_y}",
+  )
+  ui.button("Scroll top-left") <| () => {
+    ui.set_scroll_x(0.0)
+    ui.set_scroll_y(0.0)
+  }
+  ui.same_line()
+  ui.button("Scroll here") <| () => {
+    ui.set_scroll_here_x()
+    ui.set_scroll_here_y()
+  }
+  ui.columns(3) <| cols => {
+    cols.set_column_width(0, 120.0)
+    cols.text("Column A")
+    cols.next_column()
+    cols.set_column_offset(1, 140.0)
+    cols.text("Column B")
+    cols.next_column()
+    let column = cols.column_state()
+    cols.text("Column \{column.index + 1}/\{column.count}")
   }
 }
 
@@ -447,6 +721,10 @@ fn render_tabs(
       tab.text("Table rendered from a tab item.")
       render_rows_from_tab(tab, state)
     }
+    state.optional_tab_open = tabs.tab_item_open(
+        "Closeable",
+        state.optional_tab_open,
+      ) <| tab => { tab.text("This tab uses the open-state overload.") }
   }
 
   let table_flags = @imgui.TableFlags::borders()
@@ -489,10 +767,13 @@ fn render_table(
   )
   table.setup_column(
     "Meta",
-    flags=@imgui.TableColumnFlags::width_fixed(),
+    flags=@imgui.TableColumnFlags::width_fixed().combine(
+      @imgui.TableColumnFlags::angled_header(),
+    ),
     init_width_or_weight=120.0,
   )
   table.setup_scroll_freeze(0, 1)
+  table.angled_headers_row()
   table.headers_row()
   table.header("Manual header")
   table.set_column_enabled(2, true)
@@ -800,6 +1081,84 @@ fn touch_value_api() -> Unit {
   }
   for
     value in [
+      @imgui.ItemFlags::none(),
+      @imgui.ItemFlags::no_tab_stop(),
+      @imgui.ItemFlags::no_nav(),
+      @imgui.ItemFlags::no_nav_default_focus(),
+      @imgui.ItemFlags::button_repeat(),
+      @imgui.ItemFlags::auto_close_popups(),
+      @imgui.ItemFlags::allow_duplicate_id(),
+      @imgui.ItemFlags::disabled(),
+    ] {
+    bits = bits | value.value()
+  }
+  for
+    value in [
+      @imgui.FocusedFlags::none(),
+      @imgui.FocusedFlags::child_windows(),
+      @imgui.FocusedFlags::root_window(),
+      @imgui.FocusedFlags::any_window(),
+      @imgui.FocusedFlags::no_popup_hierarchy(),
+      @imgui.FocusedFlags::root_and_child_windows(),
+    ] {
+    bits = bits | value.value()
+  }
+  for
+    value in [
+      @imgui.HoveredFlags::none(),
+      @imgui.HoveredFlags::child_windows(),
+      @imgui.HoveredFlags::root_window(),
+      @imgui.HoveredFlags::any_window(),
+      @imgui.HoveredFlags::no_popup_hierarchy(),
+      @imgui.HoveredFlags::allow_when_blocked_by_popup(),
+      @imgui.HoveredFlags::allow_when_blocked_by_active_item(),
+      @imgui.HoveredFlags::allow_when_overlapped_by_item(),
+      @imgui.HoveredFlags::allow_when_overlapped_by_window(),
+      @imgui.HoveredFlags::allow_when_disabled(),
+      @imgui.HoveredFlags::no_nav_override(),
+      @imgui.HoveredFlags::allow_when_overlapped(),
+      @imgui.HoveredFlags::rect_only(),
+      @imgui.HoveredFlags::root_and_child_windows(),
+      @imgui.HoveredFlags::for_tooltip(),
+      @imgui.HoveredFlags::stationary(),
+      @imgui.HoveredFlags::delay_none(),
+      @imgui.HoveredFlags::delay_short(),
+      @imgui.HoveredFlags::delay_normal(),
+      @imgui.HoveredFlags::no_shared_delay(),
+    ] {
+    bits = bits | value.value()
+  }
+  for
+    value in [
+      @imgui.ButtonFlags::none(),
+      @imgui.ButtonFlags::mouse_button_left(),
+      @imgui.ButtonFlags::mouse_button_right(),
+      @imgui.ButtonFlags::mouse_button_middle(),
+      @imgui.ButtonFlags::enable_nav(),
+      @imgui.ButtonFlags::allow_overlap(),
+    ] {
+    bits = bits | value.value()
+  }
+  for
+    value in [
+      @imgui.MouseButton::left(),
+      @imgui.MouseButton::right(),
+      @imgui.MouseButton::middle(),
+    ] {
+    bits = bits | value.value()
+  }
+  for
+    value in [
+      @imgui.Dir::none(),
+      @imgui.Dir::left(),
+      @imgui.Dir::right(),
+      @imgui.Dir::up(),
+      @imgui.Dir::down(),
+    ] {
+    bits = bits | value.value()
+  }
+  for
+    value in [
       @imgui.TableColumnFlags::none(),
       @imgui.TableColumnFlags::disabled(),
       @imgui.TableColumnFlags::default_hide(),
@@ -956,6 +1315,9 @@ fn touch_value_api() -> Unit {
     ] {
     bits = bits | value.value()
   }
+  ignore(@imgui.Vec4::new(1.0, 1.0, 1.0, 1.0))
+  ignore(@imgui.Vec4::white())
+  ignore(@imgui.Vec4::transparent())
   ignore(bits)
 }
 

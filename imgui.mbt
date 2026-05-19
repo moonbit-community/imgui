@@ -7,7 +7,7 @@ pub(all) suberror ImGuiError {
 
 ///|
 /// Owned Dear ImGui context.
-pub(all) struct Context {
+struct Context {
   raw : @bindings.ImGuiContext
 }
 
@@ -83,6 +83,118 @@ pub(all) struct Vec4 {
 } derive(Eq, Debug)
 
 ///|
+/// Two-component float value for scalar widgets.
+pub(all) struct Float2 {
+  x : Float
+  y : Float
+} derive(Eq, Debug)
+
+///|
+/// Three-component float value for scalar widgets.
+pub(all) struct Float3 {
+  x : Float
+  y : Float
+  z : Float
+} derive(Eq, Debug)
+
+///|
+/// Four-component float value for scalar widgets.
+pub(all) struct Float4 {
+  x : Float
+  y : Float
+  z : Float
+  w : Float
+} derive(Eq, Debug)
+
+///|
+/// Two-component integer value for scalar widgets.
+pub(all) struct Int2 {
+  x : Int
+  y : Int
+} derive(Eq, Debug)
+
+///|
+/// Three-component integer value for scalar widgets.
+pub(all) struct Int3 {
+  x : Int
+  y : Int
+  z : Int
+} derive(Eq, Debug)
+
+///|
+/// Four-component integer value for scalar widgets.
+pub(all) struct Int4 {
+  x : Int
+  y : Int
+  z : Int
+  w : Int
+} derive(Eq, Debug)
+
+///|
+/// Float range value for range drag widgets.
+pub(all) struct FloatRange {
+  min : Float
+  max : Float
+} derive(Eq, Debug)
+
+///|
+/// Integer range value for range drag widgets.
+pub(all) struct IntRange {
+  min : Int
+  max : Int
+} derive(Eq, Debug)
+
+///|
+/// State for the last submitted item.
+pub(all) struct ItemState {
+  active : Bool
+  hovered : Bool
+  focused : Bool
+  clicked : Bool
+  edited : Bool
+  activated : Bool
+  deactivated : Bool
+  deactivated_after_edit : Bool
+  toggled_open : Bool
+  visible : Bool
+} derive(Eq, Debug)
+
+///|
+/// Aggregate state for all submitted items in the current frame.
+pub(all) struct AnyItemState {
+  active : Bool
+  hovered : Bool
+  focused : Bool
+} derive(Eq, Debug)
+
+///|
+/// State for the current window.
+pub(all) struct WindowState {
+  appearing : Bool
+  collapsed : Bool
+  focused : Bool
+  hovered : Bool
+} derive(Eq, Debug)
+
+///|
+/// Scroll state for the current window.
+pub(all) struct ScrollState {
+  x : Float
+  y : Float
+  max_x : Float
+  max_y : Float
+} derive(Eq, Debug)
+
+///|
+/// Old columns API state for the current column set.
+pub(all) struct ColumnState {
+  index : Int
+  count : Int
+  width : Float
+  offset : Float
+} derive(Eq, Debug)
+
+///|
 /// Raw draw data handle returned after rendering.
 pub type DrawData = @bindings.ImDrawData
 
@@ -107,104 +219,180 @@ pub fn Vec4::transparent() -> Vec4 {
 }
 
 ///|
+pub fn Float2::new(x : Float, y : Float) -> Float2 {
+  { x, y }
+}
+
+///|
+pub fn Float3::new(x : Float, y : Float, z : Float) -> Float3 {
+  { x, y, z }
+}
+
+///|
+pub fn Float4::new(x : Float, y : Float, z : Float, w : Float) -> Float4 {
+  { x, y, z, w }
+}
+
+///|
+pub fn Int2::new(x : Int, y : Int) -> Int2 {
+  { x, y }
+}
+
+///|
+pub fn Int3::new(x : Int, y : Int, z : Int) -> Int3 {
+  { x, y, z }
+}
+
+///|
+pub fn Int4::new(x : Int, y : Int, z : Int, w : Int) -> Int4 {
+  { x, y, z, w }
+}
+
+///|
+pub fn FloatRange::new(min : Float, max : Float) -> FloatRange {
+  { min, max }
+}
+
+///|
+pub fn IntRange::new(min : Int, max : Int) -> IntRange {
+  { min, max }
+}
+
+///|
 /// ImGui window flags bitset.
-pub(all) struct WindowFlags {
+struct WindowFlags {
   bits : Int
 } derive(Eq, Debug)
 
 ///|
 /// ImGui selectable flags bitset.
-pub(all) struct SelectableFlags {
+struct SelectableFlags {
   bits : Int
 } derive(Eq, Debug)
 
 ///|
 /// ImGui table flags bitset.
-pub(all) struct TableFlags {
+struct TableFlags {
   bits : Int
 } derive(Eq, Debug)
 
 ///|
 /// ImGui tab bar flags bitset.
-pub(all) struct TabBarFlags {
+struct TabBarFlags {
   bits : Int
 } derive(Eq, Debug)
 
 ///|
 /// ImGui tab item flags bitset.
-pub(all) struct TabItemFlags {
+struct TabItemFlags {
   bits : Int
 } derive(Eq, Debug)
 
 ///|
 /// ImGui popup flags bitset.
-pub(all) struct PopupFlags {
+struct PopupFlags {
   bits : Int
 } derive(Eq, Debug)
 
 ///|
 /// ImGui tree node flags bitset.
-pub(all) struct TreeNodeFlags {
+struct TreeNodeFlags {
   bits : Int
 } derive(Eq, Debug)
 
 ///|
 /// ImGui combo flags bitset.
-pub(all) struct ComboFlags {
+struct ComboFlags {
   bits : Int
 } derive(Eq, Debug)
 
 ///|
 /// ImGui input text flags bitset.
-pub(all) struct InputTextFlags {
+struct InputTextFlags {
   bits : Int
 } derive(Eq, Debug)
 
 ///|
 /// ImGui slider and drag flags bitset.
-pub(all) struct SliderFlags {
+struct SliderFlags {
   bits : Int
 } derive(Eq, Debug)
 
 ///|
 /// ImGui color edit flags bitset.
-pub(all) struct ColorEditFlags {
+struct ColorEditFlags {
   bits : Int
 } derive(Eq, Debug)
 
 ///|
+/// ImGui item flags bitset.
+struct ItemFlags {
+  bits : Int
+} derive(Eq, Debug)
+
+///|
+/// ImGui focused flags bitset.
+struct FocusedFlags {
+  bits : Int
+} derive(Eq, Debug)
+
+///|
+/// ImGui hovered flags bitset.
+struct HoveredFlags {
+  bits : Int
+} derive(Eq, Debug)
+
+///|
+/// ImGui button flags bitset.
+struct ButtonFlags {
+  bits : Int
+} derive(Eq, Debug)
+
+///|
+/// ImGui mouse button identifier.
+struct MouseButton {
+  value : Int
+} derive(Eq, Debug)
+
+///|
+/// ImGui direction identifier.
+struct Dir {
+  value : Int
+} derive(Eq, Debug)
+
+///|
 /// ImGui table column flags bitset.
-pub(all) struct TableColumnFlags {
+struct TableColumnFlags {
   bits : Int
 } derive(Eq, Debug)
 
 ///|
 /// ImGui table row flags bitset.
-pub(all) struct TableRowFlags {
+struct TableRowFlags {
   bits : Int
 } derive(Eq, Debug)
 
 ///|
 /// ImGui table background target.
-pub(all) struct TableBgTarget {
+struct TableBgTarget {
   value : Int
 } derive(Eq, Debug)
 
 ///|
 /// ImGui style variable identifier.
-pub(all) struct StyleVar {
+struct StyleVar {
   value : Int
 } derive(Eq, Debug)
 
 ///|
 /// ImGui style color identifier.
-pub(all) struct ColorId {
+struct ColorId {
   value : Int
 } derive(Eq, Debug)
 
 ///|
 /// ImGui condition value.
-pub(all) struct Cond {
+struct Cond {
   value : Int
 } derive(Eq, Debug)
 
@@ -1323,6 +1511,305 @@ pub fn ColorEditFlags::combine(
 }
 
 ///|
+pub fn ItemFlags::none() -> ItemFlags {
+  { bits: @bindings.im_gui_item_flags_none() }
+}
+
+///|
+pub fn ItemFlags::no_tab_stop() -> ItemFlags {
+  { bits: @bindings.im_gui_item_flags_no_tab_stop() }
+}
+
+///|
+pub fn ItemFlags::no_nav() -> ItemFlags {
+  { bits: @bindings.im_gui_item_flags_no_nav() }
+}
+
+///|
+pub fn ItemFlags::no_nav_default_focus() -> ItemFlags {
+  { bits: @bindings.im_gui_item_flags_no_nav_default_focus() }
+}
+
+///|
+pub fn ItemFlags::button_repeat() -> ItemFlags {
+  { bits: @bindings.im_gui_item_flags_button_repeat() }
+}
+
+///|
+pub fn ItemFlags::auto_close_popups() -> ItemFlags {
+  { bits: @bindings.im_gui_item_flags_auto_close_popups() }
+}
+
+///|
+pub fn ItemFlags::allow_duplicate_id() -> ItemFlags {
+  { bits: @bindings.im_gui_item_flags_allow_duplicate_id() }
+}
+
+///|
+pub fn ItemFlags::disabled() -> ItemFlags {
+  { bits: @bindings.im_gui_item_flags_disabled() }
+}
+
+///|
+pub fn ItemFlags::value(self : ItemFlags) -> Int {
+  self.bits
+}
+
+///|
+pub fn ItemFlags::combine(self : ItemFlags, other : ItemFlags) -> ItemFlags {
+  { bits: self.value() | other.value() }
+}
+
+///|
+pub fn FocusedFlags::none() -> FocusedFlags {
+  { bits: @bindings.im_gui_focused_flags_none() }
+}
+
+///|
+pub fn FocusedFlags::child_windows() -> FocusedFlags {
+  { bits: @bindings.im_gui_focused_flags_child_windows() }
+}
+
+///|
+pub fn FocusedFlags::root_window() -> FocusedFlags {
+  { bits: @bindings.im_gui_focused_flags_root_window() }
+}
+
+///|
+pub fn FocusedFlags::any_window() -> FocusedFlags {
+  { bits: @bindings.im_gui_focused_flags_any_window() }
+}
+
+///|
+pub fn FocusedFlags::no_popup_hierarchy() -> FocusedFlags {
+  { bits: @bindings.im_gui_focused_flags_no_popup_hierarchy() }
+}
+
+///|
+pub fn FocusedFlags::root_and_child_windows() -> FocusedFlags {
+  { bits: @bindings.im_gui_focused_flags_root_and_child_windows() }
+}
+
+///|
+pub fn FocusedFlags::value(self : FocusedFlags) -> Int {
+  self.bits
+}
+
+///|
+pub fn FocusedFlags::combine(
+  self : FocusedFlags,
+  other : FocusedFlags,
+) -> FocusedFlags {
+  { bits: self.value() | other.value() }
+}
+
+///|
+pub fn HoveredFlags::none() -> HoveredFlags {
+  { bits: @bindings.im_gui_hovered_flags_none() }
+}
+
+///|
+pub fn HoveredFlags::child_windows() -> HoveredFlags {
+  { bits: @bindings.im_gui_hovered_flags_child_windows() }
+}
+
+///|
+pub fn HoveredFlags::root_window() -> HoveredFlags {
+  { bits: @bindings.im_gui_hovered_flags_root_window() }
+}
+
+///|
+pub fn HoveredFlags::any_window() -> HoveredFlags {
+  { bits: @bindings.im_gui_hovered_flags_any_window() }
+}
+
+///|
+pub fn HoveredFlags::no_popup_hierarchy() -> HoveredFlags {
+  { bits: @bindings.im_gui_hovered_flags_no_popup_hierarchy() }
+}
+
+///|
+pub fn HoveredFlags::allow_when_blocked_by_popup() -> HoveredFlags {
+  { bits: @bindings.im_gui_hovered_flags_allow_when_blocked_by_popup() }
+}
+
+///|
+pub fn HoveredFlags::allow_when_blocked_by_active_item() -> HoveredFlags {
+  { bits: @bindings.im_gui_hovered_flags_allow_when_blocked_by_active_item() }
+}
+
+///|
+pub fn HoveredFlags::allow_when_overlapped_by_item() -> HoveredFlags {
+  { bits: @bindings.im_gui_hovered_flags_allow_when_overlapped_by_item() }
+}
+
+///|
+pub fn HoveredFlags::allow_when_overlapped_by_window() -> HoveredFlags {
+  { bits: @bindings.im_gui_hovered_flags_allow_when_overlapped_by_window() }
+}
+
+///|
+pub fn HoveredFlags::allow_when_disabled() -> HoveredFlags {
+  { bits: @bindings.im_gui_hovered_flags_allow_when_disabled() }
+}
+
+///|
+pub fn HoveredFlags::no_nav_override() -> HoveredFlags {
+  { bits: @bindings.im_gui_hovered_flags_no_nav_override() }
+}
+
+///|
+pub fn HoveredFlags::allow_when_overlapped() -> HoveredFlags {
+  { bits: @bindings.im_gui_hovered_flags_allow_when_overlapped() }
+}
+
+///|
+pub fn HoveredFlags::rect_only() -> HoveredFlags {
+  { bits: @bindings.im_gui_hovered_flags_rect_only() }
+}
+
+///|
+pub fn HoveredFlags::root_and_child_windows() -> HoveredFlags {
+  { bits: @bindings.im_gui_hovered_flags_root_and_child_windows() }
+}
+
+///|
+pub fn HoveredFlags::for_tooltip() -> HoveredFlags {
+  { bits: @bindings.im_gui_hovered_flags_for_tooltip() }
+}
+
+///|
+pub fn HoveredFlags::stationary() -> HoveredFlags {
+  { bits: @bindings.im_gui_hovered_flags_stationary() }
+}
+
+///|
+pub fn HoveredFlags::delay_none() -> HoveredFlags {
+  { bits: @bindings.im_gui_hovered_flags_delay_none() }
+}
+
+///|
+pub fn HoveredFlags::delay_short() -> HoveredFlags {
+  { bits: @bindings.im_gui_hovered_flags_delay_short() }
+}
+
+///|
+pub fn HoveredFlags::delay_normal() -> HoveredFlags {
+  { bits: @bindings.im_gui_hovered_flags_delay_normal() }
+}
+
+///|
+pub fn HoveredFlags::no_shared_delay() -> HoveredFlags {
+  { bits: @bindings.im_gui_hovered_flags_no_shared_delay() }
+}
+
+///|
+pub fn HoveredFlags::value(self : HoveredFlags) -> Int {
+  self.bits
+}
+
+///|
+pub fn HoveredFlags::combine(
+  self : HoveredFlags,
+  other : HoveredFlags,
+) -> HoveredFlags {
+  { bits: self.value() | other.value() }
+}
+
+///|
+pub fn ButtonFlags::none() -> ButtonFlags {
+  { bits: @bindings.im_gui_button_flags_none() }
+}
+
+///|
+pub fn ButtonFlags::mouse_button_left() -> ButtonFlags {
+  { bits: @bindings.im_gui_button_flags_mouse_button_left() }
+}
+
+///|
+pub fn ButtonFlags::mouse_button_right() -> ButtonFlags {
+  { bits: @bindings.im_gui_button_flags_mouse_button_right() }
+}
+
+///|
+pub fn ButtonFlags::mouse_button_middle() -> ButtonFlags {
+  { bits: @bindings.im_gui_button_flags_mouse_button_middle() }
+}
+
+///|
+pub fn ButtonFlags::enable_nav() -> ButtonFlags {
+  { bits: @bindings.im_gui_button_flags_enable_nav() }
+}
+
+///|
+pub fn ButtonFlags::allow_overlap() -> ButtonFlags {
+  { bits: @bindings.im_gui_button_flags_allow_overlap() }
+}
+
+///|
+pub fn ButtonFlags::value(self : ButtonFlags) -> Int {
+  self.bits
+}
+
+///|
+pub fn ButtonFlags::combine(
+  self : ButtonFlags,
+  other : ButtonFlags,
+) -> ButtonFlags {
+  { bits: self.value() | other.value() }
+}
+
+///|
+pub fn MouseButton::left() -> MouseButton {
+  { value: @bindings.im_gui_mouse_button_left() }
+}
+
+///|
+pub fn MouseButton::right() -> MouseButton {
+  { value: @bindings.im_gui_mouse_button_right() }
+}
+
+///|
+pub fn MouseButton::middle() -> MouseButton {
+  { value: @bindings.im_gui_mouse_button_middle() }
+}
+
+///|
+pub fn MouseButton::value(self : MouseButton) -> Int {
+  self.value
+}
+
+///|
+pub fn Dir::none() -> Dir {
+  { value: @bindings.im_gui_dir_none() }
+}
+
+///|
+pub fn Dir::left() -> Dir {
+  { value: @bindings.im_gui_dir_left() }
+}
+
+///|
+pub fn Dir::right() -> Dir {
+  { value: @bindings.im_gui_dir_right() }
+}
+
+///|
+pub fn Dir::up() -> Dir {
+  { value: @bindings.im_gui_dir_up() }
+}
+
+///|
+pub fn Dir::down() -> Dir {
+  { value: @bindings.im_gui_dir_down() }
+}
+
+///|
+pub fn Dir::value(self : Dir) -> Int {
+  self.value
+}
+
+///|
 pub fn TableColumnFlags::none() -> TableColumnFlags {
   { bits: @bindings.im_gui_table_column_flags_none() }
 }
@@ -2050,12 +2537,6 @@ pub fn Context::make_current(self : Context) -> Unit {
 }
 
 ///|
-/// Returns the raw context handle.
-pub fn Context::raw(self : Context) -> @bindings.ImGuiContext {
-  self.raw
-}
-
-///|
 /// Clears the current context.
 pub fn clear_current_context() -> Unit {
   @bindings.im_gui_set_current_context(@bindings.ImGuiContext::null())
@@ -2069,7 +2550,7 @@ pub fn has_current_context() -> Bool {
 
 ///|
 /// Returns the Dear ImGui version number from the generated binding constants.
-pub fn dear_imgui_version_number() -> Int {
+pub fn version_number() -> Int {
   @bindings.imgui_version_num()
 }
 
@@ -2166,6 +2647,20 @@ pub fn Font::is_null(self : Font) -> Bool {
 /// Returns a root UI builder.
 pub fn ui() -> Ui {
   Ui::{  }
+}
+
+///|
+/// Opens the main menu bar and closes it automatically.
+pub fn Ui::main_menu_bar(
+  _self : Ui,
+  body : (MenuBarUi) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let active = @bindings.im_gui_begin_main_menu_bar()
+  if active {
+    defer @bindings.im_gui_end_main_menu_bar()
+    body(MenuBarUi::{  })
+  }
 }
 
 ///|
@@ -2279,6 +2774,43 @@ pub fn WindowUi::small_button(
 }
 
 ///|
+/// Runs `body` when an arrow button is activated.
+pub fn WindowUi::arrow_button(
+  _self : WindowUi,
+  label : String,
+  direction : Dir,
+  body : () -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  if @bindings.im_gui_arrow_button(utf8(label), direction.value()) {
+    body()
+  }
+}
+
+///|
+/// Emits a clickable text link and runs `body` when activated.
+pub fn WindowUi::text_link(
+  _self : WindowUi,
+  label : String,
+  body : () -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  if @bindings.im_gui_text_link(utf8(label)) {
+    body()
+  }
+}
+
+///|
+/// Emits a clickable URL text link using the label as URL.
+pub fn WindowUi::text_link_open_url(
+  _self : WindowUi,
+  label : String,
+) -> Bool raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_text_link_open_url(utf8(label))
+}
+
+///|
 /// Runs `body` with the updated checked value when the checkbox changes.
 pub fn WindowUi::checkbox(
   _self : WindowUi,
@@ -2290,6 +2822,46 @@ pub fn WindowUi::checkbox(
   let value = Ref(checked)
   if @bindings.im_gui_checkbox(utf8(label), Some(value)) {
     body(value.val)
+  }
+}
+
+///|
+/// Runs `body` with the updated integer flags when a flag checkbox changes.
+pub fn WindowUi::checkbox_flags_int(
+  _self : WindowUi,
+  label : String,
+  flags : Int,
+  flag_value : Int,
+  body : (Int) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current = Ref(flags)
+  if @bindings.im_gui_checkbox_flags_int_ptr(
+      utf8(label),
+      Some(current),
+      flag_value,
+    ) {
+    body(current.val)
+  }
+}
+
+///|
+/// Runs `body` with the updated unsigned flags when a flag checkbox changes.
+pub fn WindowUi::checkbox_flags_uint(
+  _self : WindowUi,
+  label : String,
+  flags : UInt,
+  flag_value : UInt,
+  body : (UInt) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current = Ref(flags)
+  if @bindings.im_gui_checkbox_flags_uint_ptr(
+      utf8(label),
+      Some(current),
+      flag_value,
+    ) {
+    body(current.val)
   }
 }
 
@@ -2380,6 +2952,188 @@ pub fn WindowUi::slider_int(
 }
 
 ///|
+/// Runs `body` with the updated angle in radians when the slider changes.
+pub fn WindowUi::slider_angle(
+  _self : WindowUi,
+  label : String,
+  value : Float,
+  min_degrees? : Float = -360.0,
+  max_degrees? : Float = 360.0,
+  format? : String = "%.0f deg",
+  flags? : SliderFlags = SliderFlags::none(),
+  body : (Float) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current = Ref(value)
+  if @bindings.im_gui_slider_angle_ex(
+      utf8(label),
+      Some(current),
+      min_degrees,
+      max_degrees,
+      utf8(format),
+      flags.value(),
+    ) {
+    body(current.val)
+  }
+}
+
+///|
+/// Runs `body` with the updated two-component float value.
+pub fn WindowUi::slider_float2(
+  _self : WindowUi,
+  label : String,
+  value : Float2,
+  min : Float,
+  max : Float,
+  format? : String = "%.3f",
+  flags? : SliderFlags = SliderFlags::none(),
+  body : (Float2) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current = FixedArray::from_array([value.x, value.y])
+  if @bindings.im_gui_slider_float2_ex(
+      utf8(label),
+      current,
+      min,
+      max,
+      utf8(format),
+      flags.value(),
+    ) {
+    body(Float2::new(current[0], current[1]))
+  }
+}
+
+///|
+/// Runs `body` with the updated three-component float value.
+pub fn WindowUi::slider_float3(
+  _self : WindowUi,
+  label : String,
+  value : Float3,
+  min : Float,
+  max : Float,
+  format? : String = "%.3f",
+  flags? : SliderFlags = SliderFlags::none(),
+  body : (Float3) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current = FixedArray::from_array([value.x, value.y, value.z])
+  if @bindings.im_gui_slider_float3_ex(
+      utf8(label),
+      current,
+      min,
+      max,
+      utf8(format),
+      flags.value(),
+    ) {
+    body(Float3::new(current[0], current[1], current[2]))
+  }
+}
+
+///|
+/// Runs `body` with the updated four-component float value.
+pub fn WindowUi::slider_float4(
+  _self : WindowUi,
+  label : String,
+  value : Float4,
+  min : Float,
+  max : Float,
+  format? : String = "%.3f",
+  flags? : SliderFlags = SliderFlags::none(),
+  body : (Float4) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current = FixedArray::from_array([value.x, value.y, value.z, value.w])
+  if @bindings.im_gui_slider_float4_ex(
+      utf8(label),
+      current,
+      min,
+      max,
+      utf8(format),
+      flags.value(),
+    ) {
+    body(Float4::new(current[0], current[1], current[2], current[3]))
+  }
+}
+
+///|
+/// Runs `body` with the updated two-component integer value.
+pub fn WindowUi::slider_int2(
+  _self : WindowUi,
+  label : String,
+  value : Int2,
+  min : Int,
+  max : Int,
+  format? : String = "%d",
+  flags? : SliderFlags = SliderFlags::none(),
+  body : (Int2) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current = FixedArray::from_array([value.x, value.y])
+  if @bindings.im_gui_slider_int2_ex(
+      utf8(label),
+      current,
+      min,
+      max,
+      utf8(format),
+      flags.value(),
+    ) {
+    body(Int2::new(current[0], current[1]))
+  }
+}
+
+///|
+/// Runs `body` with the updated three-component integer value.
+pub fn WindowUi::slider_int3(
+  _self : WindowUi,
+  label : String,
+  value : Int3,
+  min : Int,
+  max : Int,
+  format? : String = "%d",
+  flags? : SliderFlags = SliderFlags::none(),
+  body : (Int3) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current = FixedArray::from_array([value.x, value.y, value.z])
+  if @bindings.im_gui_slider_int3_ex(
+      utf8(label),
+      current,
+      min,
+      max,
+      utf8(format),
+      flags.value(),
+    ) {
+    body(Int3::new(current[0], current[1], current[2]))
+  }
+}
+
+///|
+/// Runs `body` with the updated four-component integer value.
+pub fn WindowUi::slider_int4(
+  _self : WindowUi,
+  label : String,
+  value : Int4,
+  min : Int,
+  max : Int,
+  format? : String = "%d",
+  flags? : SliderFlags = SliderFlags::none(),
+  body : (Int4) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current = FixedArray::from_array([value.x, value.y, value.z, value.w])
+  if @bindings.im_gui_slider_int4_ex(
+      utf8(label),
+      current,
+      min,
+      max,
+      utf8(format),
+      flags.value(),
+    ) {
+    body(Int4::new(current[0], current[1], current[2], current[3]))
+  }
+}
+
+///|
 /// Runs `body` with the updated value when the drag control changes.
 pub fn WindowUi::drag_float(
   _self : WindowUi,
@@ -2432,6 +3186,236 @@ pub fn WindowUi::drag_int(
       flags.value(),
     ) {
     body(current.val)
+  }
+}
+
+///|
+/// Runs `body` with the updated two-component float value.
+pub fn WindowUi::drag_float2(
+  _self : WindowUi,
+  label : String,
+  value : Float2,
+  speed? : Float = 1.0,
+  min? : Float = 0.0,
+  max? : Float = 0.0,
+  format? : String = "%.3f",
+  flags? : SliderFlags = SliderFlags::none(),
+  body : (Float2) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current = FixedArray::from_array([value.x, value.y])
+  if @bindings.im_gui_drag_float2_ex(
+      utf8(label),
+      current,
+      speed,
+      min,
+      max,
+      utf8(format),
+      flags.value(),
+    ) {
+    body(Float2::new(current[0], current[1]))
+  }
+}
+
+///|
+/// Runs `body` with the updated three-component float value.
+pub fn WindowUi::drag_float3(
+  _self : WindowUi,
+  label : String,
+  value : Float3,
+  speed? : Float = 1.0,
+  min? : Float = 0.0,
+  max? : Float = 0.0,
+  format? : String = "%.3f",
+  flags? : SliderFlags = SliderFlags::none(),
+  body : (Float3) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current = FixedArray::from_array([value.x, value.y, value.z])
+  if @bindings.im_gui_drag_float3_ex(
+      utf8(label),
+      current,
+      speed,
+      min,
+      max,
+      utf8(format),
+      flags.value(),
+    ) {
+    body(Float3::new(current[0], current[1], current[2]))
+  }
+}
+
+///|
+/// Runs `body` with the updated four-component float value.
+pub fn WindowUi::drag_float4(
+  _self : WindowUi,
+  label : String,
+  value : Float4,
+  speed? : Float = 1.0,
+  min? : Float = 0.0,
+  max? : Float = 0.0,
+  format? : String = "%.3f",
+  flags? : SliderFlags = SliderFlags::none(),
+  body : (Float4) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current = FixedArray::from_array([value.x, value.y, value.z, value.w])
+  if @bindings.im_gui_drag_float4_ex(
+      utf8(label),
+      current,
+      speed,
+      min,
+      max,
+      utf8(format),
+      flags.value(),
+    ) {
+    body(Float4::new(current[0], current[1], current[2], current[3]))
+  }
+}
+
+///|
+/// Runs `body` with the updated two-component integer value.
+pub fn WindowUi::drag_int2(
+  _self : WindowUi,
+  label : String,
+  value : Int2,
+  speed? : Float = 1.0,
+  min? : Int = 0,
+  max? : Int = 0,
+  format? : String = "%d",
+  flags? : SliderFlags = SliderFlags::none(),
+  body : (Int2) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current = FixedArray::from_array([value.x, value.y])
+  if @bindings.im_gui_drag_int2_ex(
+      utf8(label),
+      current,
+      speed,
+      min,
+      max,
+      utf8(format),
+      flags.value(),
+    ) {
+    body(Int2::new(current[0], current[1]))
+  }
+}
+
+///|
+/// Runs `body` with the updated three-component integer value.
+pub fn WindowUi::drag_int3(
+  _self : WindowUi,
+  label : String,
+  value : Int3,
+  speed? : Float = 1.0,
+  min? : Int = 0,
+  max? : Int = 0,
+  format? : String = "%d",
+  flags? : SliderFlags = SliderFlags::none(),
+  body : (Int3) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current = FixedArray::from_array([value.x, value.y, value.z])
+  if @bindings.im_gui_drag_int3_ex(
+      utf8(label),
+      current,
+      speed,
+      min,
+      max,
+      utf8(format),
+      flags.value(),
+    ) {
+    body(Int3::new(current[0], current[1], current[2]))
+  }
+}
+
+///|
+/// Runs `body` with the updated four-component integer value.
+pub fn WindowUi::drag_int4(
+  _self : WindowUi,
+  label : String,
+  value : Int4,
+  speed? : Float = 1.0,
+  min? : Int = 0,
+  max? : Int = 0,
+  format? : String = "%d",
+  flags? : SliderFlags = SliderFlags::none(),
+  body : (Int4) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current = FixedArray::from_array([value.x, value.y, value.z, value.w])
+  if @bindings.im_gui_drag_int4_ex(
+      utf8(label),
+      current,
+      speed,
+      min,
+      max,
+      utf8(format),
+      flags.value(),
+    ) {
+    body(Int4::new(current[0], current[1], current[2], current[3]))
+  }
+}
+
+///|
+/// Runs `body` with the updated float range.
+pub fn WindowUi::drag_float_range2(
+  _self : WindowUi,
+  label : String,
+  value : FloatRange,
+  speed? : Float = 1.0,
+  min? : Float = 0.0,
+  max? : Float = 0.0,
+  format? : String = "%.3f",
+  flags? : SliderFlags = SliderFlags::none(),
+  body : (FloatRange) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current_min = Ref(value.min)
+  let current_max = Ref(value.max)
+  if @bindings.im_gui_drag_float_range2_ex(
+      utf8(label),
+      Some(current_min),
+      Some(current_max),
+      speed,
+      min,
+      max,
+      utf8(format),
+      None,
+      flags.value(),
+    ) {
+    body(FloatRange::new(current_min.val, current_max.val))
+  }
+}
+
+///|
+/// Runs `body` with the updated integer range.
+pub fn WindowUi::drag_int_range2(
+  _self : WindowUi,
+  label : String,
+  value : IntRange,
+  speed? : Float = 1.0,
+  min? : Int = 0,
+  max? : Int = 0,
+  format? : String = "%d",
+  flags? : SliderFlags = SliderFlags::none(),
+  body : (IntRange) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current_min = Ref(value.min)
+  let current_max = Ref(value.max)
+  if @bindings.im_gui_drag_int_range2_ex(
+      utf8(label),
+      Some(current_min),
+      Some(current_max),
+      speed,
+      min,
+      max,
+      utf8(format),
+      None,
+      flags.value(),
+    ) {
+    body(IntRange::new(current_min.val, current_max.val))
   }
 }
 
@@ -2508,6 +3492,120 @@ pub fn WindowUi::input_double(
       flags.value(),
     ) {
     body(current.val)
+  }
+}
+
+///|
+/// Runs `body` with the updated two-component float input.
+pub fn WindowUi::input_float2(
+  _self : WindowUi,
+  label : String,
+  value : Float2,
+  format? : String = "%.3f",
+  flags? : InputTextFlags = InputTextFlags::none(),
+  body : (Float2) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current = FixedArray::from_array([value.x, value.y])
+  if @bindings.im_gui_input_float2_ex(
+      utf8(label),
+      current,
+      utf8(format),
+      flags.value(),
+    ) {
+    body(Float2::new(current[0], current[1]))
+  }
+}
+
+///|
+/// Runs `body` with the updated three-component float input.
+pub fn WindowUi::input_float3(
+  _self : WindowUi,
+  label : String,
+  value : Float3,
+  format? : String = "%.3f",
+  flags? : InputTextFlags = InputTextFlags::none(),
+  body : (Float3) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current = FixedArray::from_array([value.x, value.y, value.z])
+  if @bindings.im_gui_input_float3_ex(
+      utf8(label),
+      current,
+      utf8(format),
+      flags.value(),
+    ) {
+    body(Float3::new(current[0], current[1], current[2]))
+  }
+}
+
+///|
+/// Runs `body` with the updated four-component float input.
+pub fn WindowUi::input_float4(
+  _self : WindowUi,
+  label : String,
+  value : Float4,
+  format? : String = "%.3f",
+  flags? : InputTextFlags = InputTextFlags::none(),
+  body : (Float4) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current = FixedArray::from_array([value.x, value.y, value.z, value.w])
+  if @bindings.im_gui_input_float4_ex(
+      utf8(label),
+      current,
+      utf8(format),
+      flags.value(),
+    ) {
+    body(Float4::new(current[0], current[1], current[2], current[3]))
+  }
+}
+
+///|
+/// Runs `body` with the updated two-component integer input.
+pub fn WindowUi::input_int2(
+  _self : WindowUi,
+  label : String,
+  value : Int2,
+  flags? : InputTextFlags = InputTextFlags::none(),
+  body : (Int2) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current = FixedArray::from_array([value.x, value.y])
+  if @bindings.im_gui_input_int2(utf8(label), current, flags.value()) {
+    body(Int2::new(current[0], current[1]))
+  }
+}
+
+///|
+/// Runs `body` with the updated three-component integer input.
+pub fn WindowUi::input_int3(
+  _self : WindowUi,
+  label : String,
+  value : Int3,
+  flags? : InputTextFlags = InputTextFlags::none(),
+  body : (Int3) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current = FixedArray::from_array([value.x, value.y, value.z])
+  if @bindings.im_gui_input_int3(utf8(label), current, flags.value()) {
+    body(Int3::new(current[0], current[1], current[2]))
+  }
+}
+
+///|
+/// Runs `body` with the updated four-component integer input.
+pub fn WindowUi::input_int4(
+  _self : WindowUi,
+  label : String,
+  value : Int4,
+  flags? : InputTextFlags = InputTextFlags::none(),
+  body : (Int4) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let current = FixedArray::from_array([value.x, value.y, value.z, value.w])
+  if @bindings.im_gui_input_int4(utf8(label), current, flags.value()) {
+    body(Int4::new(current[0], current[1], current[2], current[3]))
   }
 }
 
@@ -2593,7 +3691,7 @@ pub fn WindowUi::color_edit4(
   body : (Vec4) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  let value = vec4(color)
+  let value = FixedArray::from_array([color.x, color.y, color.z, color.w])
   if @bindings.im_gui_color_edit4(utf8(label), value, flags.value()) {
     body(Vec4::rgba(value[0], value[1], value[2], value[3]))
   }
@@ -2625,7 +3723,7 @@ pub fn WindowUi::color_picker4(
   body : (Vec4) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  let value = vec4(color)
+  let value = FixedArray::from_array([color.x, color.y, color.z, color.w])
   if @bindings.im_gui_color_picker4(utf8(label), value, flags.value(), None) {
     body(Vec4::rgba(value[0], value[1], value[2], value[3]))
   }
@@ -2688,6 +3786,70 @@ pub fn WindowUi::align_text_to_frame_padding(
 }
 
 ///|
+pub fn WindowUi::text_line_height(_self : WindowUi) -> Float raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_get_text_line_height()
+}
+
+///|
+pub fn WindowUi::text_line_height_with_spacing(
+  _self : WindowUi,
+) -> Float raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_get_text_line_height_with_spacing()
+}
+
+///|
+pub fn WindowUi::frame_height(_self : WindowUi) -> Float raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_get_frame_height()
+}
+
+///|
+pub fn WindowUi::frame_height_with_spacing(
+  _self : WindowUi,
+) -> Float raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_get_frame_height_with_spacing()
+}
+
+///|
+pub fn WindowUi::calc_item_width(_self : WindowUi) -> Float raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_calc_item_width()
+}
+
+///|
+pub fn WindowUi::cursor_pos_x(_self : WindowUi) -> Float raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_get_cursor_pos_x()
+}
+
+///|
+pub fn WindowUi::cursor_pos_y(_self : WindowUi) -> Float raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_get_cursor_pos_y()
+}
+
+///|
+pub fn WindowUi::set_cursor_pos_x(
+  _self : WindowUi,
+  value : Float,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_set_cursor_pos_x(value)
+}
+
+///|
+pub fn WindowUi::set_cursor_pos_y(
+  _self : WindowUi,
+  value : Float,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_set_cursor_pos_y(value)
+}
+
+///|
 pub fn WindowUi::set_next_item_width(
   _self : WindowUi,
   width : Float,
@@ -2712,6 +3874,209 @@ pub fn WindowUi::set_next_item_allow_overlap(
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   @bindings.im_gui_set_next_item_allow_overlap()
+}
+
+///|
+pub fn WindowUi::set_next_item_storage_id(
+  _self : WindowUi,
+  id : UInt,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_set_next_item_storage_id(id)
+}
+
+///|
+pub fn WindowUi::set_next_item_selection_user_data(
+  _self : WindowUi,
+  value : Int64,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_set_next_item_selection_user_data(value)
+}
+
+///|
+/// Sets keyboard focus to the next item.
+pub fn WindowUi::set_keyboard_focus_here(
+  _self : WindowUi,
+  offset? : Int = 0,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_set_keyboard_focus_here_ex(offset)
+}
+
+///|
+/// Sets default focus to the last item.
+pub fn WindowUi::set_item_default_focus(
+  _self : WindowUi,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_set_item_default_focus()
+}
+
+///|
+pub fn WindowUi::set_nav_cursor_visible(
+  _self : WindowUi,
+  visible : Bool,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_set_nav_cursor_visible(visible)
+}
+
+///|
+/// Returns state for the last submitted item.
+pub fn WindowUi::item_state(_self : WindowUi) -> ItemState raise ImGuiError {
+  ensure_current_context()
+  {
+    active: @bindings.im_gui_is_item_active(),
+    hovered: @bindings.im_gui_is_item_hovered(0),
+    focused: @bindings.im_gui_is_item_focused(),
+    clicked: @bindings.im_gui_is_item_clicked(),
+    edited: @bindings.im_gui_is_item_edited(),
+    activated: @bindings.im_gui_is_item_activated(),
+    deactivated: @bindings.im_gui_is_item_deactivated(),
+    deactivated_after_edit: @bindings.im_gui_is_item_deactivated_after_edit(),
+    toggled_open: @bindings.im_gui_is_item_toggled_open(),
+    visible: @bindings.im_gui_is_item_visible(),
+  }
+}
+
+///|
+/// Returns aggregate state for submitted items in the current frame.
+pub fn WindowUi::any_item_state(
+  _self : WindowUi,
+) -> AnyItemState raise ImGuiError {
+  ensure_current_context()
+  {
+    active: @bindings.im_gui_is_any_item_active(),
+    hovered: @bindings.im_gui_is_any_item_hovered(),
+    focused: @bindings.im_gui_is_any_item_focused(),
+  }
+}
+
+///|
+/// Returns state for the current window.
+pub fn WindowUi::window_state(_self : WindowUi) -> WindowState raise ImGuiError {
+  ensure_current_context()
+  {
+    appearing: @bindings.im_gui_is_window_appearing(),
+    collapsed: @bindings.im_gui_is_window_collapsed(),
+    focused: @bindings.im_gui_is_window_focused(FocusedFlags::none().value()),
+    hovered: @bindings.im_gui_is_window_hovered(HoveredFlags::none().value()),
+  }
+}
+
+///|
+pub fn WindowUi::window_width(_self : WindowUi) -> Float raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_get_window_width()
+}
+
+///|
+pub fn WindowUi::window_height(_self : WindowUi) -> Float raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_get_window_height()
+}
+
+///|
+pub fn WindowUi::is_window_focused(
+  _self : WindowUi,
+  flags? : FocusedFlags = FocusedFlags::none(),
+) -> Bool raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_is_window_focused(flags.value())
+}
+
+///|
+pub fn WindowUi::is_window_hovered(
+  _self : WindowUi,
+  flags? : HoveredFlags = HoveredFlags::none(),
+) -> Bool raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_is_window_hovered(flags.value())
+}
+
+///|
+/// Sets the current window collapsed state.
+pub fn WindowUi::set_window_collapsed(
+  _self : WindowUi,
+  collapsed : Bool,
+  cond? : Cond = Cond::none(),
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_set_window_collapsed(collapsed, cond.value())
+}
+
+///|
+/// Focuses the current window.
+pub fn WindowUi::set_window_focus(_self : WindowUi) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_set_window_focus()
+}
+
+///|
+pub fn WindowUi::set_window_focus_by_name(
+  _self : WindowUi,
+  name : String,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_set_window_focus_str(utf8(name))
+}
+
+///|
+pub fn WindowUi::set_window_font_scale(
+  _self : WindowUi,
+  scale : Float,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_set_window_font_scale(scale)
+}
+
+///|
+/// Returns scroll state for the current window.
+pub fn WindowUi::scroll_state(_self : WindowUi) -> ScrollState raise ImGuiError {
+  ensure_current_context()
+  {
+    x: @bindings.im_gui_get_scroll_x(),
+    y: @bindings.im_gui_get_scroll_y(),
+    max_x: @bindings.im_gui_get_scroll_max_x(),
+    max_y: @bindings.im_gui_get_scroll_max_y(),
+  }
+}
+
+///|
+pub fn WindowUi::set_scroll_x(
+  _self : WindowUi,
+  value : Float,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_set_scroll_x(value)
+}
+
+///|
+pub fn WindowUi::set_scroll_y(
+  _self : WindowUi,
+  value : Float,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_set_scroll_y(value)
+}
+
+///|
+pub fn WindowUi::set_scroll_here_x(
+  _self : WindowUi,
+  center_x_ratio? : Float = 0.5,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_set_scroll_here_x(center_x_ratio)
+}
+
+///|
+pub fn WindowUi::set_scroll_here_y(
+  _self : WindowUi,
+  center_y_ratio? : Float = 0.5,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_set_scroll_here_y(center_y_ratio)
 }
 
 ///|
@@ -2861,6 +4226,64 @@ pub fn WindowUi::group(
 }
 
 ///|
+/// Opens an old columns layout and restores one column automatically.
+pub fn WindowUi::columns(
+  _self : WindowUi,
+  count : Int,
+  border? : Bool = true,
+  body : (WindowUi) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_columns_ex(count, None, border)
+  defer @bindings.im_gui_columns()
+  body(WindowUi::{  })
+}
+
+///|
+/// Moves to the next old columns layout column.
+pub fn WindowUi::next_column(_self : WindowUi) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_next_column()
+}
+
+///|
+/// Returns state for an old columns layout column.
+pub fn WindowUi::column_state(
+  _self : WindowUi,
+  column? : Int = -1,
+) -> ColumnState raise ImGuiError {
+  ensure_current_context()
+  {
+    index: @bindings.im_gui_get_column_index(),
+    count: @bindings.im_gui_get_columns_count(),
+    width: @bindings.im_gui_get_column_width(column),
+    offset: @bindings.im_gui_get_column_offset(column),
+  }
+}
+
+///|
+/// Sets an old columns layout column width.
+pub fn WindowUi::set_column_width(
+  _self : WindowUi,
+  column : Int,
+  width : Float,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_set_column_width(column, width)
+}
+
+///|
+/// Sets an old columns layout column offset.
+pub fn WindowUi::set_column_offset(
+  _self : WindowUi,
+  column : Int,
+  offset : Float,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_set_column_offset(column, offset)
+}
+
+///|
 /// Starts a disabled scope and closes it automatically.
 pub fn WindowUi::disabled(
   _self : WindowUi,
@@ -2870,6 +4293,20 @@ pub fn WindowUi::disabled(
   ensure_current_context()
   @bindings.im_gui_begin_disabled(disabled)
   defer @bindings.im_gui_end_disabled()
+  body(WindowUi::{  })
+}
+
+///|
+/// Pushes an item flag and pops it automatically.
+pub fn WindowUi::with_item_flag(
+  _self : WindowUi,
+  flag : ItemFlags,
+  enabled : Bool,
+  body : (WindowUi) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_push_item_flag(flag.value(), enabled)
+  defer @bindings.im_gui_pop_item_flag()
   body(WindowUi::{  })
 }
 
@@ -2887,6 +4324,18 @@ pub fn WindowUi::with_id(
 }
 
 ///|
+pub fn WindowUi::id(_self : WindowUi, value : String) -> UInt raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_get_id(utf8(value))
+}
+
+///|
+pub fn WindowUi::id_int(_self : WindowUi, value : Int) -> UInt raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_get_id_int(value)
+}
+
+///|
 /// Pushes an integer ID and pops it automatically.
 pub fn WindowUi::with_id_int(
   _self : WindowUi,
@@ -2900,6 +4349,19 @@ pub fn WindowUi::with_id_int(
 }
 
 ///|
+/// Pushes button repeat behavior and pops it automatically.
+pub fn WindowUi::button_repeat(
+  _self : WindowUi,
+  repeat : Bool,
+  body : (WindowUi) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_push_button_repeat(repeat)
+  defer @bindings.im_gui_pop_button_repeat()
+  body(WindowUi::{  })
+}
+
+///|
 /// Opens a popup by name.
 pub fn WindowUi::open_popup(
   _self : WindowUi,
@@ -2908,6 +4370,16 @@ pub fn WindowUi::open_popup(
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   @bindings.im_gui_open_popup(utf8(name), flags.value())
+}
+
+///|
+/// Opens a popup from the last item click.
+pub fn WindowUi::open_popup_on_item_click(
+  _self : WindowUi,
+  flags? : PopupFlags = PopupFlags::mouse_button_right(),
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_open_popup_on_item_click(None, flags.value())
 }
 
 ///|
@@ -2931,6 +4403,54 @@ pub fn WindowUi::popup(
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   let active = @bindings.im_gui_begin_popup(utf8(name), flags.value())
+  if active {
+    defer @bindings.im_gui_end_popup()
+    body(PopupUi::{  })
+  }
+}
+
+///|
+/// Opens and closes the last item's context popup automatically when active.
+pub fn WindowUi::popup_context_item(
+  _self : WindowUi,
+  flags? : PopupFlags = PopupFlags::mouse_button_right(),
+  body : (PopupUi) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let active = @bindings.im_gui_begin_popup_context_item_ex(None, flags.value())
+  if active {
+    defer @bindings.im_gui_end_popup()
+    body(PopupUi::{  })
+  }
+}
+
+///|
+/// Opens and closes the current window's context popup automatically when active.
+pub fn WindowUi::popup_context_window(
+  _self : WindowUi,
+  flags? : PopupFlags = PopupFlags::mouse_button_right(),
+  body : (PopupUi) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let active = @bindings.im_gui_begin_popup_context_window_ex(
+    None,
+    flags.value(),
+  )
+  if active {
+    defer @bindings.im_gui_end_popup()
+    body(PopupUi::{  })
+  }
+}
+
+///|
+/// Opens and closes the void context popup automatically when active.
+pub fn WindowUi::popup_context_void(
+  _self : WindowUi,
+  flags? : PopupFlags = PopupFlags::mouse_button_right(),
+  body : (PopupUi) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let active = @bindings.im_gui_begin_popup_context_void_ex(None, flags.value())
   if active {
     defer @bindings.im_gui_end_popup()
     body(PopupUi::{  })
@@ -2985,10 +4505,58 @@ pub fn WindowUi::set_tooltip(
 }
 
 ///|
-/// Returns whether the last item is hovered.
-pub fn WindowUi::is_item_hovered(_self : WindowUi) -> Bool raise ImGuiError {
+/// Opens and closes the last item's tooltip scope automatically when active.
+pub fn WindowUi::item_tooltip(
+  _self : WindowUi,
+  body : (TooltipUi) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
   ensure_current_context()
-  @bindings.im_gui_is_item_hovered(0)
+  let active = @bindings.im_gui_begin_item_tooltip()
+  if active {
+    defer @bindings.im_gui_end_tooltip()
+    body(TooltipUi::{  })
+  }
+}
+
+///|
+/// Sets the last item's tooltip.
+pub fn WindowUi::set_item_tooltip(
+  _self : WindowUi,
+  value : String,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_set_item_tooltip_unformatted(utf8(value))
+}
+
+///|
+/// Returns whether the last item is hovered.
+pub fn WindowUi::is_item_hovered(
+  _self : WindowUi,
+  flags? : HoveredFlags = HoveredFlags::none(),
+) -> Bool raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_is_item_hovered(flags.value())
+}
+
+///|
+pub fn WindowUi::is_item_clicked(
+  _self : WindowUi,
+  button? : MouseButton = MouseButton::left(),
+) -> Bool raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_is_item_clicked_ex(button.value())
+}
+
+///|
+pub fn WindowUi::item_id(_self : WindowUi) -> UInt raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_get_item_id()
+}
+
+///|
+pub fn WindowUi::item_flags(_self : WindowUi) -> ItemFlags raise ImGuiError {
+  ensure_current_context()
+  { bits: @bindings.im_gui_get_item_flags() }
 }
 
 ///|
@@ -3043,6 +4611,27 @@ pub fn WindowUi::collapsing_header(
 }
 
 ///|
+/// Runs `body` when a closeable collapsing header is open and returns open state.
+pub fn WindowUi::collapsing_header_open(
+  _self : WindowUi,
+  label : String,
+  open : Bool,
+  flags? : TreeNodeFlags = TreeNodeFlags::none(),
+  body : (WindowUi) -> Unit raise ImGuiError,
+) -> Bool raise ImGuiError {
+  ensure_current_context()
+  let current = Ref(open)
+  if @bindings.im_gui_collapsing_header_bool_ptr(
+      utf8(label),
+      Some(current),
+      flags.value(),
+    ) {
+    body(WindowUi::{  })
+  }
+  current.val
+}
+
+///|
 /// Runs `body` when a selectable item is activated.
 pub fn WindowUi::selectable(
   _self : WindowUi,
@@ -3084,10 +4673,11 @@ pub fn MenuBarUi::menu_item(
   _self : MenuBarUi,
   label : String,
   selected? : Bool = false,
+  enabled? : Bool = true,
   body : () -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  if @bindings.im_gui_menu_item_ex(utf8(label), None, selected, true) {
+  if @bindings.im_gui_menu_item_ex(utf8(label), None, selected, enabled) {
     body()
   }
 }
@@ -3098,10 +4688,11 @@ pub fn MenuUi::menu_item(
   _self : MenuUi,
   label : String,
   selected? : Bool = false,
+  enabled? : Bool = true,
   body : () -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  if @bindings.im_gui_menu_item_ex(utf8(label), None, selected, true) {
+  if @bindings.im_gui_menu_item_ex(utf8(label), None, selected, enabled) {
     body()
   }
 }
@@ -3120,6 +4711,29 @@ pub fn TabBarUi::tab_item(
     defer @bindings.im_gui_end_tab_item()
     body(TabItemUi::{  })
   }
+}
+
+///|
+/// Opens a closeable tab item and returns the updated open state.
+pub fn TabBarUi::tab_item_open(
+  _self : TabBarUi,
+  label : String,
+  open : Bool,
+  flags? : TabItemFlags = TabItemFlags::none(),
+  body : (TabItemUi) -> Unit raise ImGuiError,
+) -> Bool raise ImGuiError {
+  ensure_current_context()
+  let current = Ref(open)
+  let active = @bindings.im_gui_begin_tab_item(
+    utf8(label),
+    Some(current),
+    flags.value(),
+  )
+  if active {
+    defer @bindings.im_gui_end_tab_item()
+    body(TabItemUi::{  })
+  }
+  current.val
 }
 
 ///|
@@ -3190,6 +4804,13 @@ pub fn TableUi::setup_scroll_freeze(
 pub fn TableUi::headers_row(_self : TableUi) -> Unit raise ImGuiError {
   ensure_current_context()
   @bindings.im_gui_table_headers_row()
+}
+
+///|
+/// Emits an angled table headers row.
+pub fn TableUi::angled_headers_row(_self : TableUi) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_table_angled_headers_row()
 }
 
 ///|
@@ -3394,11 +5015,6 @@ fn ensure_current_context() -> Unit raise ImGuiError {
 ///|
 fn utf8(value : String) -> Bytes {
   @encoding/utf8.encode(value)
-}
-
-///|
-fn vec4(value : Vec4) -> FixedArray[Float] {
-  FixedArray::from_array([value.x, value.y, value.z, value.w])
 }
 
 ///|

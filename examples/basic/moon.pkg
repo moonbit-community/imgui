@@ -1,6 +1,5 @@
 import {
   "moonbit-community/imgui" @imgui,
-  "moonbit-community/imgui/bindings" @bindings,
 }
 
 supported_targets = "+native"

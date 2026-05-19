@@ -43,15 +43,18 @@ ignore(try! @imgui.render())
 ## Scoped UI
 
 - `ui.window(...) <| ui => { ... }` opens a window and closes it automatically.
-- `ui.menu_bar(...)`, `ui.tab_bar(...)`, `ui.table(...)`, `ui.popup(...)`,
-  `ui.popup_modal(...)`, `ui.tooltip(...)`, `ui.combo(...)`, `ui.group(...)`,
-  `ui.disabled(...)`, and `ui.tree_node(...)` close their scopes automatically.
+- `ui.main_menu_bar(...)`, `ui.menu_bar(...)`, `ui.tab_bar(...)`,
+  `ui.table(...)`, `ui.popup(...)`, `ui.popup_modal(...)`,
+  `ui.popup_context_item(...)`, `ui.tooltip(...)`, `ui.item_tooltip(...)`,
+  `ui.combo(...)`, `ui.group(...)`, `ui.disabled(...)`, `ui.with_id(...)`,
+  and `ui.tree_node(...)` close their scopes automatically.
 - Widgets with values pass the updated value directly to the callback:
-  `checkbox(...) <| value => { ... }`, `slider_float(...) <| value => { ... }`,
-  `input_text(...) <| value => { ... }`, and `color_edit4(...) <| value => { ... }`.
+  `checkbox(...) <| value => { ... }`, `slider_float4(...) <| value => { ... }`,
+  `drag_int_range2(...) <| value => { ... }`, `input_text(...) <| value => { ... }`,
+  and `color_edit4(...) <| value => { ... }`.
 - Buttons and menu items run their callback only when activated.
 - Flags are exposed as typed bitsets such as `WindowFlags`, `TableFlags`,
-  `InputTextFlags`, `SliderFlags`, and `ColorEditFlags`.
+  `InputTextFlags`, `SliderFlags`, `HoveredFlags`, and `ColorEditFlags`.
 
 ## Packages
 
@@ -84,8 +87,9 @@ moon run examples/glfw_opengl3 --target native
 ```
 
 The example opens a native window and renders MoonBit-authored interactive UI:
-checkboxes, sliders, drag controls, text inputs, color editors, popups, a modal,
-menus, tabs, tables, and a secondary window.
+checkboxes, scalar and multi-component sliders, drag controls, text inputs,
+color editors, popups, a modal, context menus, menus, tabs, tables, columns,
+item/window state queries, and a secondary window.
 
 ## Validate
 
@@ -93,11 +97,6 @@ menus, tabs, tables, and a secondary window.
 moon check --target native
 moon test --target native
 ```
-
-## Design Notes
-
-Binding generation, ABI rules, and package boundary details are documented in
-`bindings/design.md`.
 
 Dear ImGui source is MIT licensed. Dear Bindings is MIT licensed. The MoonBit
 wrapper code in this repository is Apache-2.0 licensed.
