@@ -4,7 +4,7 @@ options(
   link: {
     "native": {
       "stub-cc": "c++",
-      "stub-cc-flags": "-fno-exceptions -fno-rtti -fno-threadsafe-statics -Wno-deprecated-declarations -Iupstream/imgui -Iupstream/imgui/backends -Idear_bindings",
+      "stub-cc-flags": "-fno-exceptions -fno-rtti -fno-threadsafe-statics -Wno-deprecated-declarations -I. -Iupstream/imgui -Iupstream/imgui/backends",
     },
   },
   "native-stub": [
@@ -13,7 +13,7 @@ options(
     "upstream/imgui/imgui_draw.cpp",
     "upstream/imgui/imgui_tables.cpp",
     "upstream/imgui/imgui_widgets.cpp",
-    "dear_bindings/dcimgui.cpp",
+    "dcimgui.cpp",
     "generated_runtime.cpp",
   ],
 )

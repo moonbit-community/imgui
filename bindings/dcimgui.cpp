@@ -2,8 +2,8 @@
 // **DO NOT EDIT DIRECTLY**
 // https://github.com/dearimgui/dear_bindings
 
-#include "../upstream/imgui/imgui.h"
-#include "../upstream/imgui/imgui_internal.h"
+#include "upstream/imgui/imgui.h"
+#include "upstream/imgui/imgui_internal.h"
 
 #include <stdio.h>
 

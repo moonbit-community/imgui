@@ -1,0 +1,81 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "moonbit-community/imgui/bindings/glfw"
+
+import {
+  "moonbitlang/core/ref",
+}
+
+// Values
+pub fn context_version_major() -> Int
+
+pub fn context_version_minor() -> Int
+
+pub fn create_window(Int, Int, Bytes, Monitor, Window) -> Window
+
+pub fn destroy_window(Window) -> Unit
+
+pub fn floating() -> Int
+
+pub fn focus_window(Window) -> Unit
+
+pub fn get_framebuffer_size(Window, @ref.Ref[Int], @ref.Ref[Int]) -> Unit
+
+pub fn get_window_attrib(Window, Int) -> Int
+
+pub fn iconified() -> Int
+
+pub fn imgui_init_for_open_gl(Window, Bool) -> Bool
+
+pub fn imgui_new_frame() -> Unit
+
+pub fn imgui_shutdown() -> Unit
+
+pub fn initialize() -> Bool
+
+pub fn make_context_current(Window) -> Unit
+
+pub fn opengl_core_profile() -> Int
+
+pub fn opengl_forward_compat() -> Int
+
+pub fn opengl_profile() -> Int
+
+pub fn poll_events() -> Unit
+
+pub fn set_window_pos(Window, Int, Int) -> Unit
+
+pub fn show_window(Window) -> Unit
+
+pub fn sleep(Int) -> Unit
+
+pub fn swap_buffers(Window) -> Unit
+
+pub fn swap_interval(Int) -> Unit
+
+pub fn terminate() -> Unit
+
+pub fn true_value() -> Int
+
+pub fn visible() -> Int
+
+pub fn window_hint(Int, Int) -> Unit
+
+pub fn window_should_close(Window) -> Bool
+
+// Errors
+
+// Types and methods
+#external
+pub(all) type Monitor
+pub fn Monitor::is_null(Self) -> Bool
+pub fn Monitor::null() -> Self
+
+#external
+pub(all) type Window
+pub fn Window::is_null(Self) -> Bool
+pub fn Window::null() -> Self
+
+// Type aliases
+
+// Traits
+

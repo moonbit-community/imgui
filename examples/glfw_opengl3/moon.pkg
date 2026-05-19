@@ -1,0 +1,17 @@
+import {
+  "moonbit-community/imgui" @imgui,
+  "moonbit-community/imgui/bindings/glfw" @glfw,
+  "moonbit-community/imgui/bindings/opengl3" @opengl3,
+  "moonbitlang/core/encoding/utf8" @encoding/utf8,
+}
+
+supported_targets = "+native"
+
+options(
+  link: {
+    "native": {
+      "cc-link-flags": "-L/opt/homebrew/lib -L/usr/local/lib -lglfw -framework OpenGL",
+    },
+  },
+  "is-main": true,
+)

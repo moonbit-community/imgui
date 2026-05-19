@@ -1,0 +1,15 @@
+import {
+  "moonbit-community/imgui/bindings" @bindings,
+}
+
+supported_targets = "+native"
+
+options(
+  link: {
+    "native": {
+      "stub-cc": "c++",
+      "stub-cc-flags": "-fno-exceptions -fno-rtti -fno-threadsafe-statics -Wno-deprecated-declarations -Ibindings -Ibindings/upstream/imgui -Ibindings/upstream/imgui/backends",
+    },
+  },
+  "native-stub": [ "imgui_impl_opengl3.cpp", "dcimgui_impl_opengl3.cpp" ],
+)

@@ -1,0 +1,14 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "moonbit-community/imgui/examples/glfw_opengl3"
+
+// Values
+
+// Errors
+
+// Types and methods
+type DemoState
+
+// Type aliases
+
+// Traits
+
