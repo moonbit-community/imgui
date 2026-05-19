@@ -202,7 +202,7 @@ fn render_ui(state : DemoState) -> Unit raise @imgui.ImGuiError {
   }
   ui.window("MoonBit ImGui controls", flags=[MenuBar, HorizontalScrollbar], style=[
     Rounding(6.0),
-    Slot(WindowBackground, Hex("#171B21")),
+    Background(Hex("#171B21")),
   ]) <| ui => {
     ui.menu_bar(style=[Text(White)]) <| bar => {
       bar.menu("Actions") <| menu => {
@@ -561,9 +561,9 @@ fn render_scopes(
     }
   }
   ui.style([
-    Slot(Button, Blue),
-    Slot(ButtonHovered, Cyan),
-    Slot(ButtonActive, Green),
+    Background(Blue),
+    Hovered(Cyan),
+    Active(Green),
     Text(White),
     Rounding(5.0),
   ]) <| ui => {
@@ -1062,20 +1062,6 @@ fn touch_value_api() -> Unit {
     @imgui.TableBgTarget::row_bg1(),
     @imgui.TableBgTarget::cell_bg(),
   ]
-  let _ : Array[@imgui.StyleMetric] = [
-    IndentSpacing,
-    ScrollbarSize,
-    ScrollbarPadding,
-    GrabMinSize,
-    TabMinWidthBase,
-    TabMinWidthShrink,
-    TabBarBorderSize,
-    TabBarOverlineSize,
-    TableAngledHeadersAngle,
-    TreeLinesSize,
-    SeparatorSize,
-    SeparatorTextBorderSize,
-  ]
   let _ : Array[@imgui.Cond] = [
     @imgui.Cond::none(),
     @imgui.Cond::always(),
@@ -1084,43 +1070,17 @@ fn touch_value_api() -> Unit {
     @imgui.Cond::appearing(),
   ]
   let _ : Array[@imgui.StyleColor] = [
-    Text,
-    TextDisabled,
-    WindowBackground,
-    ChildBackground,
-    PopupBackground,
-    Border,
     BorderShadow,
-    FrameBackground,
-    FrameBackgroundHovered,
-    FrameBackgroundActive,
     TitleBackground,
     TitleBackgroundActive,
     TitleBackgroundCollapsed,
     MenuBarBackground,
     ScrollbarBackground,
     ScrollbarGrab,
-    ScrollbarGrabHovered,
-    ScrollbarGrabActive,
     CheckMark,
     CheckboxSelectedBackground,
     SliderGrab,
     SliderGrabActive,
-    Button,
-    ButtonHovered,
-    ButtonActive,
-    Header,
-    HeaderHovered,
-    HeaderActive,
-    Separator,
-    SeparatorHovered,
-    SeparatorActive,
-    ResizeGrip,
-    ResizeGripHovered,
-    ResizeGripActive,
-    Tab,
-    TabActive,
-    TabHovered,
     TabSelected,
     TabSelectedOverline,
     TabDimmed,
@@ -1133,10 +1093,6 @@ fn touch_value_api() -> Unit {
     PlotHistogram,
     PlotHistogramHovered,
     TableHeaderBackground,
-    TableBorderStrong,
-    TableBorderLight,
-    TableRowBackground,
-    TableRowBackgroundAlt,
     TextLink,
     TextSelectedBackground,
     TreeLines,
@@ -1172,12 +1128,23 @@ fn touch_value_api() -> Unit {
     Hovered(Cyan),
     Active(Blue),
     Border(Gray),
-    Slot(Button, Green),
+    Slot(TextLink, Green),
     Alpha(0.85),
     DisabledAlpha(0.45),
     Rounding(5.0),
     BorderSize(1.0),
-    Metric(SeparatorSize, 1.0),
+    IndentSpacing(18.0),
+    ScrollbarSize(14.0),
+    ScrollbarPadding(2.0),
+    GrabMinSize(8.0),
+    TabMinWidthBase(40.0),
+    TabMinWidthShrink(20.0),
+    TabBarBorderSize(1.0),
+    TabBarOverlineSize(2.0),
+    TableAngledHeadersAngle(0.6),
+    TreeLinesSize(1.0),
+    SeparatorSize(1.0),
+    SeparatorTextBorderSize(1.0),
   ]
   ignore(@imgui.Vec4::new(1.0, 1.0, 1.0, 1.0))
   ignore(@imgui.Vec4::white())

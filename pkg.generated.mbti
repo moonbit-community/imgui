@@ -344,43 +344,17 @@ pub fn Style::colors_light(Self) -> Unit
 pub fn Style::scale_all_sizes(Self, Float) -> Unit
 
 pub(all) enum StyleColor {
-  Text
-  TextDisabled
-  WindowBackground
-  ChildBackground
-  PopupBackground
-  Border
   BorderShadow
-  FrameBackground
-  FrameBackgroundHovered
-  FrameBackgroundActive
   TitleBackground
   TitleBackgroundActive
   TitleBackgroundCollapsed
   MenuBarBackground
   ScrollbarBackground
   ScrollbarGrab
-  ScrollbarGrabHovered
-  ScrollbarGrabActive
   CheckMark
   CheckboxSelectedBackground
   SliderGrab
   SliderGrabActive
-  Button
-  ButtonHovered
-  ButtonActive
-  Header
-  HeaderHovered
-  HeaderActive
-  Separator
-  SeparatorHovered
-  SeparatorActive
-  ResizeGrip
-  ResizeGripHovered
-  ResizeGripActive
-  Tab
-  TabActive
-  TabHovered
   TabSelected
   TabSelectedOverline
   TabDimmed
@@ -393,10 +367,6 @@ pub(all) enum StyleColor {
   PlotHistogram
   PlotHistogramHovered
   TableHeaderBackground
-  TableBorderStrong
-  TableBorderLight
-  TableRowBackground
-  TableRowBackgroundAlt
   TextLink
   TextSelectedBackground
   TreeLines
@@ -411,21 +381,6 @@ pub(all) enum StyleColor {
   InputTextCursor
 } derive(Eq, @debug.Debug)
 
-pub(all) enum StyleMetric {
-  IndentSpacing
-  ScrollbarSize
-  ScrollbarPadding
-  GrabMinSize
-  TabMinWidthBase
-  TabMinWidthShrink
-  TabBarBorderSize
-  TabBarOverlineSize
-  TableAngledHeadersAngle
-  TreeLinesSize
-  SeparatorSize
-  SeparatorTextBorderSize
-} derive(Eq, @debug.Debug)
-
 pub(all) enum StyleSheet {
   Text(Color)
   TextDisabled(Color)
@@ -438,7 +393,18 @@ pub(all) enum StyleSheet {
   DisabledAlpha(Float)
   Rounding(Float)
   BorderSize(Float)
-  Metric(StyleMetric, Float)
+  IndentSpacing(Float)
+  ScrollbarSize(Float)
+  ScrollbarPadding(Float)
+  GrabMinSize(Float)
+  TabMinWidthBase(Float)
+  TabMinWidthShrink(Float)
+  TabBarBorderSize(Float)
+  TabBarOverlineSize(Float)
+  TableAngledHeadersAngle(Float)
+  TreeLinesSize(Float)
+  SeparatorSize(Float)
+  SeparatorTextBorderSize(Float)
 } derive(Eq, @debug.Debug)
 
 pub(all) enum TabBarFlag {

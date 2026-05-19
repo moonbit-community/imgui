@@ -103,45 +103,19 @@ pub(all) enum Color {
 } derive(Eq, Debug)
 
 ///|
-/// Exact color slots for scoped style sheets.
+/// Exact color slots not covered by broader scoped style sheets.
 pub(all) enum StyleColor {
-  Text
-  TextDisabled
-  WindowBackground
-  ChildBackground
-  PopupBackground
-  Border
   BorderShadow
-  FrameBackground
-  FrameBackgroundHovered
-  FrameBackgroundActive
   TitleBackground
   TitleBackgroundActive
   TitleBackgroundCollapsed
   MenuBarBackground
   ScrollbarBackground
   ScrollbarGrab
-  ScrollbarGrabHovered
-  ScrollbarGrabActive
   CheckMark
   CheckboxSelectedBackground
   SliderGrab
   SliderGrabActive
-  Button
-  ButtonHovered
-  ButtonActive
-  Header
-  HeaderHovered
-  HeaderActive
-  Separator
-  SeparatorHovered
-  SeparatorActive
-  ResizeGrip
-  ResizeGripHovered
-  ResizeGripActive
-  Tab
-  TabActive
-  TabHovered
   TabSelected
   TabSelectedOverline
   TabDimmed
@@ -154,10 +128,6 @@ pub(all) enum StyleColor {
   PlotHistogram
   PlotHistogramHovered
   TableHeaderBackground
-  TableBorderStrong
-  TableBorderLight
-  TableRowBackground
-  TableRowBackgroundAlt
   TextLink
   TextSelectedBackground
   TreeLines
@@ -170,23 +140,6 @@ pub(all) enum StyleColor {
   NavWindowingDimBackground
   ModalWindowDimBackground
   InputTextCursor
-} derive(Eq, Debug)
-
-///|
-/// Exact numeric style slots for scoped style sheets.
-pub(all) enum StyleMetric {
-  IndentSpacing
-  ScrollbarSize
-  ScrollbarPadding
-  GrabMinSize
-  TabMinWidthBase
-  TabMinWidthShrink
-  TabBarBorderSize
-  TabBarOverlineSize
-  TableAngledHeadersAngle
-  TreeLinesSize
-  SeparatorSize
-  SeparatorTextBorderSize
 } derive(Eq, Debug)
 
 ///|
@@ -203,7 +156,18 @@ pub(all) enum StyleSheet {
   DisabledAlpha(Float)
   Rounding(Float)
   BorderSize(Float)
-  Metric(StyleMetric, Float)
+  IndentSpacing(Float)
+  ScrollbarSize(Float)
+  ScrollbarPadding(Float)
+  GrabMinSize(Float)
+  TabMinWidthBase(Float)
+  TabMinWidthShrink(Float)
+  TabBarBorderSize(Float)
+  TabBarOverlineSize(Float)
+  TableAngledHeadersAngle(Float)
+  TreeLinesSize(Float)
+  SeparatorSize(Float)
+  SeparatorTextBorderSize(Float)
 } derive(Eq, Debug)
 
 ///|
@@ -1658,11 +1622,6 @@ fn ColorId::header_active() -> ColorId {
 }
 
 ///|
-fn ColorId::separator() -> ColorId {
-  { value: @bindings.im_gui_col_separator() }
-}
-
-///|
 fn ColorId::separator_hovered() -> ColorId {
   { value: @bindings.im_gui_col_separator_hovered() }
 }
@@ -1670,11 +1629,6 @@ fn ColorId::separator_hovered() -> ColorId {
 ///|
 fn ColorId::separator_active() -> ColorId {
   { value: @bindings.im_gui_col_separator_active() }
-}
-
-///|
-fn ColorId::resize_grip() -> ColorId {
-  { value: @bindings.im_gui_col_resize_grip() }
 }
 
 ///|
@@ -4759,8 +4713,32 @@ fn apply_style_sheet(
             StyleVar::tab_border_size(),
             StyleVar::separator_text_border_size(),
           ])
-      Metric(metric, value) =>
-        vars = vars + push_style_var(metric.to_style_var(), value)
+      IndentSpacing(value) =>
+        vars = vars + push_style_var(StyleVar::indent_spacing(), value)
+      ScrollbarSize(value) =>
+        vars = vars + push_style_var(StyleVar::scrollbar_size(), value)
+      ScrollbarPadding(value) =>
+        vars = vars + push_style_var(StyleVar::scrollbar_padding(), value)
+      GrabMinSize(value) =>
+        vars = vars + push_style_var(StyleVar::grab_min_size(), value)
+      TabMinWidthBase(value) =>
+        vars = vars + push_style_var(StyleVar::tab_min_width_base(), value)
+      TabMinWidthShrink(value) =>
+        vars = vars + push_style_var(StyleVar::tab_min_width_shrink(), value)
+      TabBarBorderSize(value) =>
+        vars = vars + push_style_var(StyleVar::tab_bar_border_size(), value)
+      TabBarOverlineSize(value) =>
+        vars = vars + push_style_var(StyleVar::tab_bar_overline_size(), value)
+      TableAngledHeadersAngle(value) =>
+        vars = vars +
+          push_style_var(StyleVar::table_angled_headers_angle(), value)
+      TreeLinesSize(value) =>
+        vars = vars + push_style_var(StyleVar::tree_lines_size(), value)
+      SeparatorSize(value) =>
+        vars = vars + push_style_var(StyleVar::separator_size(), value)
+      SeparatorTextBorderSize(value) =>
+        vars = vars +
+          push_style_var(StyleVar::separator_text_border_size(), value)
     }
   }
   { colors, vars }
@@ -4769,43 +4747,17 @@ fn apply_style_sheet(
 ///|
 fn StyleColor::to_color_id(self : StyleColor) -> ColorId {
   match self {
-    Text => ColorId::text()
-    TextDisabled => ColorId::text_disabled()
-    WindowBackground => ColorId::window_bg()
-    ChildBackground => ColorId::child_bg()
-    PopupBackground => ColorId::popup_bg()
-    Border => ColorId::border()
     BorderShadow => ColorId::border_shadow()
-    FrameBackground => ColorId::frame_bg()
-    FrameBackgroundHovered => ColorId::frame_bg_hovered()
-    FrameBackgroundActive => ColorId::frame_bg_active()
     TitleBackground => ColorId::title_bg()
     TitleBackgroundActive => ColorId::title_bg_active()
     TitleBackgroundCollapsed => ColorId::title_bg_collapsed()
     MenuBarBackground => ColorId::menu_bar_bg()
     ScrollbarBackground => ColorId::scrollbar_bg()
     ScrollbarGrab => ColorId::scrollbar_grab()
-    ScrollbarGrabHovered => ColorId::scrollbar_grab_hovered()
-    ScrollbarGrabActive => ColorId::scrollbar_grab_active()
     CheckMark => ColorId::check_mark()
     CheckboxSelectedBackground => ColorId::checkbox_selected_bg()
     SliderGrab => ColorId::slider_grab()
     SliderGrabActive => ColorId::slider_grab_active()
-    Button => ColorId::button()
-    ButtonHovered => ColorId::button_hovered()
-    ButtonActive => ColorId::button_active()
-    Header => ColorId::header()
-    HeaderHovered => ColorId::header_hovered()
-    HeaderActive => ColorId::header_active()
-    Separator => ColorId::separator()
-    SeparatorHovered => ColorId::separator_hovered()
-    SeparatorActive => ColorId::separator_active()
-    ResizeGrip => ColorId::resize_grip()
-    ResizeGripHovered => ColorId::resize_grip_hovered()
-    ResizeGripActive => ColorId::resize_grip_active()
-    Tab => ColorId::tab()
-    TabActive => ColorId::tab_active()
-    TabHovered => ColorId::tab_hovered()
     TabSelected => ColorId::tab_selected()
     TabSelectedOverline => ColorId::tab_selected_overline()
     TabDimmed => ColorId::tab_dimmed()
@@ -4818,10 +4770,6 @@ fn StyleColor::to_color_id(self : StyleColor) -> ColorId {
     PlotHistogram => ColorId::plot_histogram()
     PlotHistogramHovered => ColorId::plot_histogram_hovered()
     TableHeaderBackground => ColorId::table_header_bg()
-    TableBorderStrong => ColorId::table_border_strong()
-    TableBorderLight => ColorId::table_border_light()
-    TableRowBackground => ColorId::table_row_bg()
-    TableRowBackgroundAlt => ColorId::table_row_bg_alt()
     TextLink => ColorId::text_link()
     TextSelectedBackground => ColorId::text_selected_bg()
     TreeLines => ColorId::tree_lines()
@@ -4834,24 +4782,6 @@ fn StyleColor::to_color_id(self : StyleColor) -> ColorId {
     NavWindowingDimBackground => ColorId::nav_windowing_dim_bg()
     ModalWindowDimBackground => ColorId::modal_window_dim_bg()
     InputTextCursor => ColorId::input_text_cursor()
-  }
-}
-
-///|
-fn StyleMetric::to_style_var(self : StyleMetric) -> StyleVar {
-  match self {
-    IndentSpacing => StyleVar::indent_spacing()
-    ScrollbarSize => StyleVar::scrollbar_size()
-    ScrollbarPadding => StyleVar::scrollbar_padding()
-    GrabMinSize => StyleVar::grab_min_size()
-    TabMinWidthBase => StyleVar::tab_min_width_base()
-    TabMinWidthShrink => StyleVar::tab_min_width_shrink()
-    TabBarBorderSize => StyleVar::tab_bar_border_size()
-    TabBarOverlineSize => StyleVar::tab_bar_overline_size()
-    TableAngledHeadersAngle => StyleVar::table_angled_headers_angle()
-    TreeLinesSize => StyleVar::tree_lines_size()
-    SeparatorSize => StyleVar::separator_size()
-    SeparatorTextBorderSize => StyleVar::separator_text_border_size()
   }
 }
 
