@@ -15,7 +15,7 @@ defer context.destroy()
 
 fn render_ui(state : State) -> Unit raise @imgui.ImGuiError {
   let ui = @imgui.ui()
-  ui.window("MoonBit Dear ImGui", flags=@imgui.WindowFlags::menu_bar()) <| ui => {
+  ui.window("MoonBit Dear ImGui", flags=[@imgui.WindowFlag::MenuBar]) <| ui => {
     ui.menu_bar() <| ui => {
       ui.menu_item("Increment counter") <| () => {
         state.counter = state.counter + 1
@@ -53,8 +53,8 @@ ignore(try! @imgui.render())
   `drag_int_range2(...) <| value => { ... }`, `input_text(...) <| value => { ... }`,
   and `color_edit4(...) <| value => { ... }`.
 - Buttons and menu items run their callback only when activated.
-- Flags are exposed as typed bitsets such as `WindowFlags`, `TableFlags`,
-  `InputTextFlags`, `SliderFlags`, `HoveredFlags`, and `ColorEditFlags`.
+- Composable flags are passed as enum arrays, for example
+  `flags=[@imgui.WindowFlag::MenuBar, @imgui.WindowFlag::NoSavedSettings]`.
 
 ## Packages
 

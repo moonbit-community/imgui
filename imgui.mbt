@@ -259,93 +259,746 @@ pub fn IntRange::new(min : Int, max : Int) -> IntRange {
 }
 
 ///|
-/// ImGui window flags bitset.
-struct WindowFlags {
-  bits : Int
+/// Composable ImGui window flag.
+pub(all) enum WindowFlag {
+  NoTitleBar
+  NoResize
+  NoMove
+  NoScrollbar
+  MenuBar
+  AlwaysAutoResize
+  NoScrollWithMouse
+  NoCollapse
+  NoBackground
+  NoSavedSettings
+  NoMouseInputs
+  HorizontalScrollbar
+  NoFocusOnAppearing
+  NoBringToFrontOnFocus
+  AlwaysVerticalScrollbar
+  AlwaysHorizontalScrollbar
+  NoNavInputs
+  NoNavFocus
+  UnsavedDocument
+  NoNav
+  NoDecoration
+  NoInputs
 } derive(Eq, Debug)
 
 ///|
-/// ImGui selectable flags bitset.
-struct SelectableFlags {
-  bits : Int
+fn WindowFlag::to_int(self : WindowFlag) -> Int {
+  match self {
+    NoTitleBar => @bindings.im_gui_window_flags_no_title_bar()
+    NoResize => @bindings.im_gui_window_flags_no_resize()
+    NoMove => @bindings.im_gui_window_flags_no_move()
+    NoScrollbar => @bindings.im_gui_window_flags_no_scrollbar()
+    MenuBar => @bindings.im_gui_window_flags_menu_bar()
+    AlwaysAutoResize => @bindings.im_gui_window_flags_always_auto_resize()
+    NoScrollWithMouse => @bindings.im_gui_window_flags_no_scroll_with_mouse()
+    NoCollapse => @bindings.im_gui_window_flags_no_collapse()
+    NoBackground => @bindings.im_gui_window_flags_no_background()
+    NoSavedSettings => @bindings.im_gui_window_flags_no_saved_settings()
+    NoMouseInputs => @bindings.im_gui_window_flags_no_mouse_inputs()
+    HorizontalScrollbar => @bindings.im_gui_window_flags_horizontal_scrollbar()
+    NoFocusOnAppearing => @bindings.im_gui_window_flags_no_focus_on_appearing()
+    NoBringToFrontOnFocus =>
+      @bindings.im_gui_window_flags_no_bring_to_front_on_focus()
+    AlwaysVerticalScrollbar =>
+      @bindings.im_gui_window_flags_always_vertical_scrollbar()
+    AlwaysHorizontalScrollbar =>
+      @bindings.im_gui_window_flags_always_horizontal_scrollbar()
+    NoNavInputs => @bindings.im_gui_window_flags_no_nav_inputs()
+    NoNavFocus => @bindings.im_gui_window_flags_no_nav_focus()
+    UnsavedDocument => @bindings.im_gui_window_flags_unsaved_document()
+    NoNav => @bindings.im_gui_window_flags_no_nav()
+    NoDecoration => @bindings.im_gui_window_flags_no_decoration()
+    NoInputs => @bindings.im_gui_window_flags_no_inputs()
+  }
+}
+
+///|
+fn window_flag_bits(flags : Array[WindowFlag]) -> Int {
+  let mut bits = 0
+  for flag in flags {
+    bits = bits | flag.to_int()
+  }
+  bits
+}
+
+///|
+/// Composable ImGui selectable flag.
+pub(all) enum SelectableFlag {
+  NoAutoClosePopups
+  SpanAllColumns
+  AllowDoubleClick
+  Disabled
+  AllowOverlap
+  Highlight
+  SelectOnNav
+  DontClosePopups
 } derive(Eq, Debug)
 
 ///|
-/// ImGui table flags bitset.
-struct TableFlags {
-  bits : Int
+fn SelectableFlag::to_int(self : SelectableFlag) -> Int {
+  match self {
+    NoAutoClosePopups =>
+      @bindings.im_gui_selectable_flags_no_auto_close_popups()
+    SpanAllColumns => @bindings.im_gui_selectable_flags_span_all_columns()
+    AllowDoubleClick => @bindings.im_gui_selectable_flags_allow_double_click()
+    Disabled => @bindings.im_gui_selectable_flags_disabled()
+    AllowOverlap => @bindings.im_gui_selectable_flags_allow_overlap()
+    Highlight => @bindings.im_gui_selectable_flags_highlight()
+    SelectOnNav => @bindings.im_gui_selectable_flags_select_on_nav()
+    DontClosePopups => @bindings.im_gui_selectable_flags_dont_close_popups()
+  }
+}
+
+///|
+fn selectable_flag_bits(flags : Array[SelectableFlag]) -> Int {
+  let mut bits = 0
+  for flag in flags {
+    bits = bits | flag.to_int()
+  }
+  bits
+}
+
+///|
+/// Composable ImGui table flag.
+pub(all) enum TableFlag {
+  Resizable
+  Reorderable
+  Hideable
+  Sortable
+  NoSavedSettings
+  ContextMenuInBody
+  Borders
+  RowBg
+  BordersInnerH
+  BordersOuterH
+  BordersInnerV
+  BordersOuterV
+  BordersH
+  BordersV
+  BordersInner
+  BordersOuter
+  NoBordersInBody
+  NoBordersInBodyUntilResize
+  SizingFixedFit
+  SizingFixedSame
+  SizingStretchProp
+  SizingStretchSame
+  NoHostExtendX
+  NoHostExtendY
+  NoKeepColumnsVisible
+  PreciseWidths
+  NoClip
+  PadOuterX
+  NoPadOuterX
+  NoPadInnerX
+  ScrollX
+  ScrollY
+  SortMulti
+  SortTristate
+  HighlightHoveredColumn
 } derive(Eq, Debug)
 
 ///|
-/// ImGui tab bar flags bitset.
-struct TabBarFlags {
-  bits : Int
+fn TableFlag::to_int(self : TableFlag) -> Int {
+  match self {
+    Resizable => @bindings.im_gui_table_flags_resizable()
+    Reorderable => @bindings.im_gui_table_flags_reorderable()
+    Hideable => @bindings.im_gui_table_flags_hideable()
+    Sortable => @bindings.im_gui_table_flags_sortable()
+    NoSavedSettings => @bindings.im_gui_table_flags_no_saved_settings()
+    ContextMenuInBody => @bindings.im_gui_table_flags_context_menu_in_body()
+    Borders => @bindings.im_gui_table_flags_borders()
+    RowBg => @bindings.im_gui_table_flags_row_bg()
+    BordersInnerH => @bindings.im_gui_table_flags_borders_inner_h()
+    BordersOuterH => @bindings.im_gui_table_flags_borders_outer_h()
+    BordersInnerV => @bindings.im_gui_table_flags_borders_inner_v()
+    BordersOuterV => @bindings.im_gui_table_flags_borders_outer_v()
+    BordersH => @bindings.im_gui_table_flags_borders_h()
+    BordersV => @bindings.im_gui_table_flags_borders_v()
+    BordersInner => @bindings.im_gui_table_flags_borders_inner()
+    BordersOuter => @bindings.im_gui_table_flags_borders_outer()
+    NoBordersInBody => @bindings.im_gui_table_flags_no_borders_in_body()
+    NoBordersInBodyUntilResize =>
+      @bindings.im_gui_table_flags_no_borders_in_body_until_resize()
+    SizingFixedFit => @bindings.im_gui_table_flags_sizing_fixed_fit()
+    SizingFixedSame => @bindings.im_gui_table_flags_sizing_fixed_same()
+    SizingStretchProp => @bindings.im_gui_table_flags_sizing_stretch_prop()
+    SizingStretchSame => @bindings.im_gui_table_flags_sizing_stretch_same()
+    NoHostExtendX => @bindings.im_gui_table_flags_no_host_extend_x()
+    NoHostExtendY => @bindings.im_gui_table_flags_no_host_extend_y()
+    NoKeepColumnsVisible =>
+      @bindings.im_gui_table_flags_no_keep_columns_visible()
+    PreciseWidths => @bindings.im_gui_table_flags_precise_widths()
+    NoClip => @bindings.im_gui_table_flags_no_clip()
+    PadOuterX => @bindings.im_gui_table_flags_pad_outer_x()
+    NoPadOuterX => @bindings.im_gui_table_flags_no_pad_outer_x()
+    NoPadInnerX => @bindings.im_gui_table_flags_no_pad_inner_x()
+    ScrollX => @bindings.im_gui_table_flags_scroll_x()
+    ScrollY => @bindings.im_gui_table_flags_scroll_y()
+    SortMulti => @bindings.im_gui_table_flags_sort_multi()
+    SortTristate => @bindings.im_gui_table_flags_sort_tristate()
+    HighlightHoveredColumn =>
+      @bindings.im_gui_table_flags_highlight_hovered_column()
+  }
+}
+
+///|
+fn table_flag_bits(flags : Array[TableFlag]) -> Int {
+  let mut bits = 0
+  for flag in flags {
+    bits = bits | flag.to_int()
+  }
+  bits
+}
+
+///|
+/// Composable ImGui tab bar flag.
+pub(all) enum TabBarFlag {
+  Reorderable
+  AutoSelectNewTabs
+  TabListPopupButton
+  NoCloseWithMiddleMouseButton
+  NoTabListScrollingButtons
+  NoTooltip
+  DrawSelectedOverline
+  FittingPolicyMixed
+  FittingPolicyShrink
+  FittingPolicyScroll
+  FittingPolicyResizeDown
 } derive(Eq, Debug)
 
 ///|
-/// ImGui tab item flags bitset.
-struct TabItemFlags {
-  bits : Int
+fn TabBarFlag::to_int(self : TabBarFlag) -> Int {
+  match self {
+    Reorderable => @bindings.im_gui_tab_bar_flags_reorderable()
+    AutoSelectNewTabs => @bindings.im_gui_tab_bar_flags_auto_select_new_tabs()
+    TabListPopupButton => @bindings.im_gui_tab_bar_flags_tab_list_popup_button()
+    NoCloseWithMiddleMouseButton =>
+      @bindings.im_gui_tab_bar_flags_no_close_with_middle_mouse_button()
+    NoTabListScrollingButtons =>
+      @bindings.im_gui_tab_bar_flags_no_tab_list_scrolling_buttons()
+    NoTooltip => @bindings.im_gui_tab_bar_flags_no_tooltip()
+    DrawSelectedOverline =>
+      @bindings.im_gui_tab_bar_flags_draw_selected_overline()
+    FittingPolicyMixed => @bindings.im_gui_tab_bar_flags_fitting_policy_mixed()
+    FittingPolicyShrink =>
+      @bindings.im_gui_tab_bar_flags_fitting_policy_shrink()
+    FittingPolicyScroll =>
+      @bindings.im_gui_tab_bar_flags_fitting_policy_scroll()
+    FittingPolicyResizeDown =>
+      @bindings.im_gui_tab_bar_flags_fitting_policy_resize_down()
+  }
+}
+
+///|
+fn tab_bar_flag_bits(flags : Array[TabBarFlag]) -> Int {
+  let mut bits = 0
+  for flag in flags {
+    bits = bits | flag.to_int()
+  }
+  bits
+}
+
+///|
+/// Composable ImGui tab item flag.
+pub(all) enum TabItemFlag {
+  UnsavedDocument
+  SetSelected
+  NoCloseWithMiddleMouseButton
+  NoPushId
+  NoTooltip
+  NoReorder
+  Leading
+  Trailing
+  NoAssumedClosure
 } derive(Eq, Debug)
 
 ///|
-/// ImGui popup flags bitset.
-struct PopupFlags {
-  bits : Int
+fn TabItemFlag::to_int(self : TabItemFlag) -> Int {
+  match self {
+    UnsavedDocument => @bindings.im_gui_tab_item_flags_unsaved_document()
+    SetSelected => @bindings.im_gui_tab_item_flags_set_selected()
+    NoCloseWithMiddleMouseButton =>
+      @bindings.im_gui_tab_item_flags_no_close_with_middle_mouse_button()
+    NoPushId => @bindings.im_gui_tab_item_flags_no_push_id()
+    NoTooltip => @bindings.im_gui_tab_item_flags_no_tooltip()
+    NoReorder => @bindings.im_gui_tab_item_flags_no_reorder()
+    Leading => @bindings.im_gui_tab_item_flags_leading()
+    Trailing => @bindings.im_gui_tab_item_flags_trailing()
+    NoAssumedClosure => @bindings.im_gui_tab_item_flags_no_assumed_closure()
+  }
+}
+
+///|
+fn tab_item_flag_bits(flags : Array[TabItemFlag]) -> Int {
+  let mut bits = 0
+  for flag in flags {
+    bits = bits | flag.to_int()
+  }
+  bits
+}
+
+///|
+/// Composable ImGui popup flag.
+pub(all) enum PopupFlag {
+  MouseButtonLeft
+  MouseButtonRight
+  MouseButtonMiddle
+  NoReopen
+  NoOpenOverExistingPopup
+  NoOpenOverItems
+  AnyPopId
+  AnyPopupLevel
+  AnyPopup
 } derive(Eq, Debug)
 
 ///|
-/// ImGui tree node flags bitset.
-struct TreeNodeFlags {
-  bits : Int
+fn PopupFlag::to_int(self : PopupFlag) -> Int {
+  match self {
+    MouseButtonLeft => @bindings.im_gui_popup_flags_mouse_button_left()
+    MouseButtonRight => @bindings.im_gui_popup_flags_mouse_button_right()
+    MouseButtonMiddle => @bindings.im_gui_popup_flags_mouse_button_middle()
+    NoReopen => @bindings.im_gui_popup_flags_no_reopen()
+    NoOpenOverExistingPopup =>
+      @bindings.im_gui_popup_flags_no_open_over_existing_popup()
+    NoOpenOverItems => @bindings.im_gui_popup_flags_no_open_over_items()
+    AnyPopId => @bindings.im_gui_popup_flags_any_popup_id()
+    AnyPopupLevel => @bindings.im_gui_popup_flags_any_popup_level()
+    AnyPopup => @bindings.im_gui_popup_flags_any_popup()
+  }
+}
+
+///|
+fn popup_flag_bits(flags : Array[PopupFlag]) -> Int {
+  let mut bits = 0
+  for flag in flags {
+    bits = bits | flag.to_int()
+  }
+  bits
+}
+
+///|
+/// Composable ImGui tree node flag.
+pub(all) enum TreeNodeFlag {
+  Selected
+  Framed
+  AllowOverlap
+  NoTreePushOnOpen
+  NoAutoOpenOnLog
+  DefaultOpen
+  OpenOnDoubleClick
+  OpenOnArrow
+  Leaf
+  Bullet
+  FramePadding
+  SpanAvailWidth
+  SpanFullWidth
+  SpanLabelWidth
+  SpanAllColumns
+  LabelSpanAllColumns
+  NavLeftJumpsToParent
+  CollapsingHeader
+  DrawLinesNone
+  DrawLinesFull
+  DrawLinesToNodes
+  NavLeftJumpsBackHere
+  SpanTextWidth
 } derive(Eq, Debug)
 
 ///|
-/// ImGui combo flags bitset.
-struct ComboFlags {
-  bits : Int
+fn TreeNodeFlag::to_int(self : TreeNodeFlag) -> Int {
+  match self {
+    Selected => @bindings.im_gui_tree_node_flags_selected()
+    Framed => @bindings.im_gui_tree_node_flags_framed()
+    AllowOverlap => @bindings.im_gui_tree_node_flags_allow_overlap()
+    NoTreePushOnOpen => @bindings.im_gui_tree_node_flags_no_tree_push_on_open()
+    NoAutoOpenOnLog => @bindings.im_gui_tree_node_flags_no_auto_open_on_log()
+    DefaultOpen => @bindings.im_gui_tree_node_flags_default_open()
+    OpenOnDoubleClick => @bindings.im_gui_tree_node_flags_open_on_double_click()
+    OpenOnArrow => @bindings.im_gui_tree_node_flags_open_on_arrow()
+    Leaf => @bindings.im_gui_tree_node_flags_leaf()
+    Bullet => @bindings.im_gui_tree_node_flags_bullet()
+    FramePadding => @bindings.im_gui_tree_node_flags_frame_padding()
+    SpanAvailWidth => @bindings.im_gui_tree_node_flags_span_avail_width()
+    SpanFullWidth => @bindings.im_gui_tree_node_flags_span_full_width()
+    SpanLabelWidth => @bindings.im_gui_tree_node_flags_span_label_width()
+    SpanAllColumns => @bindings.im_gui_tree_node_flags_span_all_columns()
+    LabelSpanAllColumns =>
+      @bindings.im_gui_tree_node_flags_label_span_all_columns()
+    NavLeftJumpsToParent =>
+      @bindings.im_gui_tree_node_flags_nav_left_jumps_to_parent()
+    CollapsingHeader => @bindings.im_gui_tree_node_flags_collapsing_header()
+    DrawLinesNone => @bindings.im_gui_tree_node_flags_draw_lines_none()
+    DrawLinesFull => @bindings.im_gui_tree_node_flags_draw_lines_full()
+    DrawLinesToNodes => @bindings.im_gui_tree_node_flags_draw_lines_to_nodes()
+    NavLeftJumpsBackHere =>
+      @bindings.im_gui_tree_node_flags_nav_left_jumps_back_here()
+    SpanTextWidth => @bindings.im_gui_tree_node_flags_span_text_width()
+  }
+}
+
+///|
+fn tree_node_flag_bits(flags : Array[TreeNodeFlag]) -> Int {
+  let mut bits = 0
+  for flag in flags {
+    bits = bits | flag.to_int()
+  }
+  bits
+}
+
+///|
+/// Composable ImGui combo flag.
+pub(all) enum ComboFlag {
+  PopupAlignLeft
+  HeightSmall
+  HeightRegular
+  HeightLarge
+  HeightLargest
+  NoArrowButton
+  NoPreview
+  WidthFitPreview
 } derive(Eq, Debug)
 
 ///|
-/// ImGui input text flags bitset.
-struct InputTextFlags {
-  bits : Int
+fn ComboFlag::to_int(self : ComboFlag) -> Int {
+  match self {
+    PopupAlignLeft => @bindings.im_gui_combo_flags_popup_align_left()
+    HeightSmall => @bindings.im_gui_combo_flags_height_small()
+    HeightRegular => @bindings.im_gui_combo_flags_height_regular()
+    HeightLarge => @bindings.im_gui_combo_flags_height_large()
+    HeightLargest => @bindings.im_gui_combo_flags_height_largest()
+    NoArrowButton => @bindings.im_gui_combo_flags_no_arrow_button()
+    NoPreview => @bindings.im_gui_combo_flags_no_preview()
+    WidthFitPreview => @bindings.im_gui_combo_flags_width_fit_preview()
+  }
+}
+
+///|
+fn combo_flag_bits(flags : Array[ComboFlag]) -> Int {
+  let mut bits = 0
+  for flag in flags {
+    bits = bits | flag.to_int()
+  }
+  bits
+}
+
+///|
+/// Composable ImGui input text flag.
+pub(all) enum InputTextFlag {
+  CharsDecimal
+  CharsHexadecimal
+  CharsUppercase
+  CharsNoBlank
+  AutoSelectAll
+  EnterReturnsTrue
+  CallbackCompletion
+  CallbackHistory
+  CallbackAlways
+  CallbackCharFilter
+  AllowTabInput
+  CtrlEnterForNewLine
+  NoHorizontalScroll
+  AlwaysOverwrite
+  ReadOnly
+  Password
+  NoUndoRedo
+  CharsScientific
+  CallbackResize
+  CallbackEdit
+  EscapeClearsAll
+  DisplayEmptyRefVal
+  ParseEmptyRefVal
+  ElideLeft
+  WordWrap
 } derive(Eq, Debug)
 
 ///|
-/// ImGui slider and drag flags bitset.
-struct SliderFlags {
-  bits : Int
+fn InputTextFlag::to_int(self : InputTextFlag) -> Int {
+  match self {
+    CharsDecimal => @bindings.im_gui_input_text_flags_chars_decimal()
+    CharsHexadecimal => @bindings.im_gui_input_text_flags_chars_hexadecimal()
+    CharsUppercase => @bindings.im_gui_input_text_flags_chars_uppercase()
+    CharsNoBlank => @bindings.im_gui_input_text_flags_chars_no_blank()
+    AutoSelectAll => @bindings.im_gui_input_text_flags_auto_select_all()
+    EnterReturnsTrue => @bindings.im_gui_input_text_flags_enter_returns_true()
+    CallbackCompletion =>
+      @bindings.im_gui_input_text_flags_callback_completion()
+    CallbackHistory => @bindings.im_gui_input_text_flags_callback_history()
+    CallbackAlways => @bindings.im_gui_input_text_flags_callback_always()
+    CallbackCharFilter =>
+      @bindings.im_gui_input_text_flags_callback_char_filter()
+    AllowTabInput => @bindings.im_gui_input_text_flags_allow_tab_input()
+    CtrlEnterForNewLine =>
+      @bindings.im_gui_input_text_flags_ctrl_enter_for_new_line()
+    NoHorizontalScroll =>
+      @bindings.im_gui_input_text_flags_no_horizontal_scroll()
+    AlwaysOverwrite => @bindings.im_gui_input_text_flags_always_overwrite()
+    ReadOnly => @bindings.im_gui_input_text_flags_read_only()
+    Password => @bindings.im_gui_input_text_flags_password()
+    NoUndoRedo => @bindings.im_gui_input_text_flags_no_undo_redo()
+    CharsScientific => @bindings.im_gui_input_text_flags_chars_scientific()
+    CallbackResize => @bindings.im_gui_input_text_flags_callback_resize()
+    CallbackEdit => @bindings.im_gui_input_text_flags_callback_edit()
+    EscapeClearsAll => @bindings.im_gui_input_text_flags_escape_clears_all()
+    DisplayEmptyRefVal =>
+      @bindings.im_gui_input_text_flags_display_empty_ref_val()
+    ParseEmptyRefVal => @bindings.im_gui_input_text_flags_parse_empty_ref_val()
+    ElideLeft => @bindings.im_gui_input_text_flags_elide_left()
+    WordWrap => @bindings.im_gui_input_text_flags_word_wrap()
+  }
+}
+
+///|
+fn input_text_flag_bits(flags : Array[InputTextFlag]) -> Int {
+  let mut bits = 0
+  for flag in flags {
+    bits = bits | flag.to_int()
+  }
+  bits
+}
+
+///|
+/// Composable ImGui slider and drag flag.
+pub(all) enum SliderFlag {
+  Logarithmic
+  NoRoundToFormat
+  NoInput
+  WrapAround
+  ClampOnInput
+  ClampZeroRange
+  NoSpeedTweaks
+  ColorMarkers
+  AlwaysClamp
 } derive(Eq, Debug)
 
 ///|
-/// ImGui color edit flags bitset.
-struct ColorEditFlags {
-  bits : Int
+fn SliderFlag::to_int(self : SliderFlag) -> Int {
+  match self {
+    Logarithmic => @bindings.im_gui_slider_flags_logarithmic()
+    NoRoundToFormat => @bindings.im_gui_slider_flags_no_round_to_format()
+    NoInput => @bindings.im_gui_slider_flags_no_input()
+    WrapAround => @bindings.im_gui_slider_flags_wrap_around()
+    ClampOnInput => @bindings.im_gui_slider_flags_clamp_on_input()
+    ClampZeroRange => @bindings.im_gui_slider_flags_clamp_zero_range()
+    NoSpeedTweaks => @bindings.im_gui_slider_flags_no_speed_tweaks()
+    ColorMarkers => @bindings.im_gui_slider_flags_color_markers()
+    AlwaysClamp => @bindings.im_gui_slider_flags_always_clamp()
+  }
+}
+
+///|
+fn slider_flag_bits(flags : Array[SliderFlag]) -> Int {
+  let mut bits = 0
+  for flag in flags {
+    bits = bits | flag.to_int()
+  }
+  bits
+}
+
+///|
+/// Composable ImGui color edit flag.
+pub(all) enum ColorEditFlag {
+  NoAlpha
+  NoPicker
+  NoOptions
+  NoSmallPreview
+  NoInputs
+  NoTooltip
+  NoLabel
+  NoSidePreview
+  NoDragDrop
+  NoBorder
+  NoColorMarkers
+  AlphaOpaque
+  AlphaNoBg
+  AlphaPreviewHalf
+  AlphaBar
+  Hdr
+  DisplayRgb
+  DisplayHsv
+  DisplayHex
+  UInt8
+  FloatMode
+  PickerHueBar
+  PickerHueWheel
+  InputRgb
+  InputHsv
+  AlphaPreview
 } derive(Eq, Debug)
 
 ///|
-/// ImGui item flags bitset.
-struct ItemFlags {
-  bits : Int
+fn ColorEditFlag::to_int(self : ColorEditFlag) -> Int {
+  match self {
+    NoAlpha => @bindings.im_gui_color_edit_flags_no_alpha()
+    NoPicker => @bindings.im_gui_color_edit_flags_no_picker()
+    NoOptions => @bindings.im_gui_color_edit_flags_no_options()
+    NoSmallPreview => @bindings.im_gui_color_edit_flags_no_small_preview()
+    NoInputs => @bindings.im_gui_color_edit_flags_no_inputs()
+    NoTooltip => @bindings.im_gui_color_edit_flags_no_tooltip()
+    NoLabel => @bindings.im_gui_color_edit_flags_no_label()
+    NoSidePreview => @bindings.im_gui_color_edit_flags_no_side_preview()
+    NoDragDrop => @bindings.im_gui_color_edit_flags_no_drag_drop()
+    NoBorder => @bindings.im_gui_color_edit_flags_no_border()
+    NoColorMarkers => @bindings.im_gui_color_edit_flags_no_color_markers()
+    AlphaOpaque => @bindings.im_gui_color_edit_flags_alpha_opaque()
+    AlphaNoBg => @bindings.im_gui_color_edit_flags_alpha_no_bg()
+    AlphaPreviewHalf => @bindings.im_gui_color_edit_flags_alpha_preview_half()
+    AlphaBar => @bindings.im_gui_color_edit_flags_alpha_bar()
+    Hdr => @bindings.im_gui_color_edit_flags_hdr()
+    DisplayRgb => @bindings.im_gui_color_edit_flags_display_rgb()
+    DisplayHsv => @bindings.im_gui_color_edit_flags_display_hsv()
+    DisplayHex => @bindings.im_gui_color_edit_flags_display_hex()
+    UInt8 => @bindings.im_gui_color_edit_flags_uint8()
+    FloatMode => @bindings.im_gui_color_edit_flags_float()
+    PickerHueBar => @bindings.im_gui_color_edit_flags_picker_hue_bar()
+    PickerHueWheel => @bindings.im_gui_color_edit_flags_picker_hue_wheel()
+    InputRgb => @bindings.im_gui_color_edit_flags_input_rgb()
+    InputHsv => @bindings.im_gui_color_edit_flags_input_hsv()
+    AlphaPreview => @bindings.im_gui_color_edit_flags_alpha_preview()
+  }
+}
+
+///|
+fn color_edit_flag_bits(flags : Array[ColorEditFlag]) -> Int {
+  let mut bits = 0
+  for flag in flags {
+    bits = bits | flag.to_int()
+  }
+  bits
+}
+
+///|
+/// Composable ImGui item flag.
+pub(all) enum ItemFlag {
+  NoTabStop
+  NoNav
+  NoNavDefaultFocus
+  ButtonRepeat
+  AutoClosePopups
+  AllowDuplicateId
+  Disabled
 } derive(Eq, Debug)
 
 ///|
-/// ImGui focused flags bitset.
-struct FocusedFlags {
-  bits : Int
+fn ItemFlag::to_int(self : ItemFlag) -> Int {
+  match self {
+    NoTabStop => @bindings.im_gui_item_flags_no_tab_stop()
+    NoNav => @bindings.im_gui_item_flags_no_nav()
+    NoNavDefaultFocus => @bindings.im_gui_item_flags_no_nav_default_focus()
+    ButtonRepeat => @bindings.im_gui_item_flags_button_repeat()
+    AutoClosePopups => @bindings.im_gui_item_flags_auto_close_popups()
+    AllowDuplicateId => @bindings.im_gui_item_flags_allow_duplicate_id()
+    Disabled => @bindings.im_gui_item_flags_disabled()
+  }
+}
+
+///|
+/// Composable ImGui focused query flag.
+pub(all) enum FocusedFlag {
+  ChildWindows
+  RootWindow
+  AnyWindow
+  NoPopupHierarchy
+  RootAndChildWindows
 } derive(Eq, Debug)
 
 ///|
-/// ImGui hovered flags bitset.
-struct HoveredFlags {
-  bits : Int
+fn FocusedFlag::to_int(self : FocusedFlag) -> Int {
+  match self {
+    ChildWindows => @bindings.im_gui_focused_flags_child_windows()
+    RootWindow => @bindings.im_gui_focused_flags_root_window()
+    AnyWindow => @bindings.im_gui_focused_flags_any_window()
+    NoPopupHierarchy => @bindings.im_gui_focused_flags_no_popup_hierarchy()
+    RootAndChildWindows =>
+      @bindings.im_gui_focused_flags_root_and_child_windows()
+  }
+}
+
+///|
+fn focused_flag_bits(flags : Array[FocusedFlag]) -> Int {
+  let mut bits = 0
+  for flag in flags {
+    bits = bits | flag.to_int()
+  }
+  bits
+}
+
+///|
+/// Composable ImGui hovered query flag.
+pub(all) enum HoveredFlag {
+  ChildWindows
+  RootWindow
+  AnyWindow
+  NoPopupHierarchy
+  AllowWhenBlockedByPopup
+  AllowWhenBlockedByActiveItem
+  AllowWhenOverlappedByItem
+  AllowWhenOverlappedByWindow
+  AllowWhenDisabled
+  NoNavOverride
+  AllowWhenOverlapped
+  RectOnly
+  RootAndChildWindows
+  ForTooltip
+  Stationary
+  DelayNone
+  DelayShort
+  DelayNormal
+  NoSharedDelay
 } derive(Eq, Debug)
 
 ///|
-/// ImGui button flags bitset.
-struct ButtonFlags {
-  bits : Int
+fn HoveredFlag::to_int(self : HoveredFlag) -> Int {
+  match self {
+    ChildWindows => @bindings.im_gui_hovered_flags_child_windows()
+    RootWindow => @bindings.im_gui_hovered_flags_root_window()
+    AnyWindow => @bindings.im_gui_hovered_flags_any_window()
+    NoPopupHierarchy => @bindings.im_gui_hovered_flags_no_popup_hierarchy()
+    AllowWhenBlockedByPopup =>
+      @bindings.im_gui_hovered_flags_allow_when_blocked_by_popup()
+    AllowWhenBlockedByActiveItem =>
+      @bindings.im_gui_hovered_flags_allow_when_blocked_by_active_item()
+    AllowWhenOverlappedByItem =>
+      @bindings.im_gui_hovered_flags_allow_when_overlapped_by_item()
+    AllowWhenOverlappedByWindow =>
+      @bindings.im_gui_hovered_flags_allow_when_overlapped_by_window()
+    AllowWhenDisabled => @bindings.im_gui_hovered_flags_allow_when_disabled()
+    NoNavOverride => @bindings.im_gui_hovered_flags_no_nav_override()
+    AllowWhenOverlapped =>
+      @bindings.im_gui_hovered_flags_allow_when_overlapped()
+    RectOnly => @bindings.im_gui_hovered_flags_rect_only()
+    RootAndChildWindows =>
+      @bindings.im_gui_hovered_flags_root_and_child_windows()
+    ForTooltip => @bindings.im_gui_hovered_flags_for_tooltip()
+    Stationary => @bindings.im_gui_hovered_flags_stationary()
+    DelayNone => @bindings.im_gui_hovered_flags_delay_none()
+    DelayShort => @bindings.im_gui_hovered_flags_delay_short()
+    DelayNormal => @bindings.im_gui_hovered_flags_delay_normal()
+    NoSharedDelay => @bindings.im_gui_hovered_flags_no_shared_delay()
+  }
+}
+
+///|
+fn hovered_flag_bits(flags : Array[HoveredFlag]) -> Int {
+  let mut bits = 0
+  for flag in flags {
+    bits = bits | flag.to_int()
+  }
+  bits
+}
+
+///|
+/// Composable ImGui invisible button flag.
+pub(all) enum ButtonFlag {
+  MouseButtonLeft
+  MouseButtonRight
+  MouseButtonMiddle
+  EnableNav
+  AllowOverlap
 } derive(Eq, Debug)
 
 ///|
@@ -358,18 +1011,6 @@ struct MouseButton {
 /// ImGui direction identifier.
 struct Dir {
   value : Int
-} derive(Eq, Debug)
-
-///|
-/// ImGui table column flags bitset.
-struct TableColumnFlags {
-  bits : Int
-} derive(Eq, Debug)
-
-///|
-/// ImGui table row flags bitset.
-struct TableRowFlags {
-  bits : Int
 } derive(Eq, Debug)
 
 ///|
@@ -397,1366 +1038,93 @@ struct Cond {
 } derive(Eq, Debug)
 
 ///|
-pub fn WindowFlags::none() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_none() }
-}
-
-///|
-pub fn WindowFlags::no_title_bar() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_no_title_bar() }
-}
-
-///|
-pub fn WindowFlags::no_resize() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_no_resize() }
-}
-
-///|
-pub fn WindowFlags::no_move() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_no_move() }
-}
-
-///|
-pub fn WindowFlags::no_scrollbar() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_no_scrollbar() }
-}
-
-///|
-pub fn WindowFlags::menu_bar() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_menu_bar() }
-}
-
-///|
-pub fn WindowFlags::always_auto_resize() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_always_auto_resize() }
-}
-
-///|
-pub fn WindowFlags::no_scroll_with_mouse() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_no_scroll_with_mouse() }
-}
-
-///|
-pub fn WindowFlags::no_collapse() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_no_collapse() }
-}
-
-///|
-pub fn WindowFlags::no_background() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_no_background() }
-}
-
-///|
-pub fn WindowFlags::no_saved_settings() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_no_saved_settings() }
-}
-
-///|
-pub fn WindowFlags::no_mouse_inputs() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_no_mouse_inputs() }
-}
-
-///|
-pub fn WindowFlags::horizontal_scrollbar() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_horizontal_scrollbar() }
-}
-
-///|
-pub fn WindowFlags::no_focus_on_appearing() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_no_focus_on_appearing() }
-}
-
-///|
-pub fn WindowFlags::no_bring_to_front_on_focus() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_no_bring_to_front_on_focus() }
-}
-
-///|
-pub fn WindowFlags::always_vertical_scrollbar() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_always_vertical_scrollbar() }
-}
-
-///|
-pub fn WindowFlags::always_horizontal_scrollbar() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_always_horizontal_scrollbar() }
-}
-
-///|
-pub fn WindowFlags::no_nav_inputs() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_no_nav_inputs() }
-}
-
-///|
-pub fn WindowFlags::no_nav_focus() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_no_nav_focus() }
-}
-
-///|
-pub fn WindowFlags::unsaved_document() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_unsaved_document() }
-}
-
-///|
-pub fn WindowFlags::no_nav() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_no_nav() }
-}
-
-///|
-pub fn WindowFlags::no_decoration() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_no_decoration() }
-}
-
-///|
-pub fn WindowFlags::no_inputs() -> WindowFlags {
-  { bits: @bindings.im_gui_window_flags_no_inputs() }
-}
-
-///|
-pub fn WindowFlags::value(self : WindowFlags) -> Int {
-  self.bits
-}
-
-///|
-pub fn WindowFlags::combine(
-  self : WindowFlags,
-  other : WindowFlags,
-) -> WindowFlags {
-  { bits: self.value() | other.value() }
-}
-
-///|
-pub fn SelectableFlags::none() -> SelectableFlags {
-  { bits: @bindings.im_gui_selectable_flags_none() }
-}
-
-///|
-pub fn SelectableFlags::no_auto_close_popups() -> SelectableFlags {
-  { bits: @bindings.im_gui_selectable_flags_no_auto_close_popups() }
-}
-
-///|
-pub fn SelectableFlags::span_all_columns() -> SelectableFlags {
-  { bits: @bindings.im_gui_selectable_flags_span_all_columns() }
-}
-
-///|
-pub fn SelectableFlags::allow_double_click() -> SelectableFlags {
-  { bits: @bindings.im_gui_selectable_flags_allow_double_click() }
-}
-
-///|
-pub fn SelectableFlags::disabled() -> SelectableFlags {
-  { bits: @bindings.im_gui_selectable_flags_disabled() }
-}
-
-///|
-pub fn SelectableFlags::allow_overlap() -> SelectableFlags {
-  { bits: @bindings.im_gui_selectable_flags_allow_overlap() }
-}
-
-///|
-pub fn SelectableFlags::highlight() -> SelectableFlags {
-  { bits: @bindings.im_gui_selectable_flags_highlight() }
-}
-
-///|
-pub fn SelectableFlags::select_on_nav() -> SelectableFlags {
-  { bits: @bindings.im_gui_selectable_flags_select_on_nav() }
-}
-
-///|
-pub fn SelectableFlags::dont_close_popups() -> SelectableFlags {
-  { bits: @bindings.im_gui_selectable_flags_dont_close_popups() }
-}
-
-///|
-pub fn SelectableFlags::value(self : SelectableFlags) -> Int {
-  self.bits
-}
-
-///|
-pub fn SelectableFlags::combine(
-  self : SelectableFlags,
-  other : SelectableFlags,
-) -> SelectableFlags {
-  { bits: self.value() | other.value() }
-}
-
-///|
-pub fn TableFlags::none() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_none() }
-}
-
-///|
-pub fn TableFlags::resizable() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_resizable() }
-}
-
-///|
-pub fn TableFlags::reorderable() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_reorderable() }
-}
-
-///|
-pub fn TableFlags::hideable() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_hideable() }
-}
-
-///|
-pub fn TableFlags::sortable() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_sortable() }
-}
-
-///|
-pub fn TableFlags::no_saved_settings() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_no_saved_settings() }
-}
-
-///|
-pub fn TableFlags::context_menu_in_body() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_context_menu_in_body() }
-}
-
-///|
-pub fn TableFlags::borders() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_borders() }
-}
-
-///|
-pub fn TableFlags::row_bg() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_row_bg() }
-}
-
-///|
-pub fn TableFlags::borders_inner_h() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_borders_inner_h() }
-}
-
-///|
-pub fn TableFlags::borders_outer_h() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_borders_outer_h() }
-}
-
-///|
-pub fn TableFlags::borders_inner_v() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_borders_inner_v() }
-}
-
-///|
-pub fn TableFlags::borders_outer_v() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_borders_outer_v() }
-}
-
-///|
-pub fn TableFlags::borders_h() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_borders_h() }
-}
-
-///|
-pub fn TableFlags::borders_v() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_borders_v() }
-}
-
-///|
-pub fn TableFlags::borders_inner() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_borders_inner() }
-}
-
-///|
-pub fn TableFlags::borders_outer() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_borders_outer() }
-}
-
-///|
-pub fn TableFlags::no_borders_in_body() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_no_borders_in_body() }
-}
-
-///|
-pub fn TableFlags::no_borders_in_body_until_resize() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_no_borders_in_body_until_resize() }
-}
-
-///|
-pub fn TableFlags::sizing_fixed_fit() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_sizing_fixed_fit() }
-}
-
-///|
-pub fn TableFlags::sizing_fixed_same() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_sizing_fixed_same() }
-}
-
-///|
-pub fn TableFlags::sizing_stretch_prop() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_sizing_stretch_prop() }
-}
-
-///|
-pub fn TableFlags::sizing_stretch_same() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_sizing_stretch_same() }
-}
-
-///|
-pub fn TableFlags::no_host_extend_x() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_no_host_extend_x() }
-}
-
-///|
-pub fn TableFlags::no_host_extend_y() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_no_host_extend_y() }
-}
-
-///|
-pub fn TableFlags::no_keep_columns_visible() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_no_keep_columns_visible() }
-}
-
-///|
-pub fn TableFlags::precise_widths() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_precise_widths() }
-}
-
-///|
-pub fn TableFlags::no_clip() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_no_clip() }
-}
-
-///|
-pub fn TableFlags::pad_outer_x() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_pad_outer_x() }
-}
-
-///|
-pub fn TableFlags::no_pad_outer_x() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_no_pad_outer_x() }
-}
-
-///|
-pub fn TableFlags::no_pad_inner_x() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_no_pad_inner_x() }
-}
-
-///|
-pub fn TableFlags::scroll_x() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_scroll_x() }
-}
-
-///|
-pub fn TableFlags::scroll_y() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_scroll_y() }
-}
-
-///|
-pub fn TableFlags::sort_multi() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_sort_multi() }
-}
-
-///|
-pub fn TableFlags::sort_tristate() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_sort_tristate() }
-}
-
-///|
-pub fn TableFlags::highlight_hovered_column() -> TableFlags {
-  { bits: @bindings.im_gui_table_flags_highlight_hovered_column() }
-}
-
-///|
-pub fn TableFlags::value(self : TableFlags) -> Int {
-  self.bits
-}
-
-///|
-pub fn TableFlags::combine(self : TableFlags, other : TableFlags) -> TableFlags {
-  { bits: self.value() | other.value() }
-}
-
-///|
-pub fn TabBarFlags::none() -> TabBarFlags {
-  { bits: @bindings.im_gui_tab_bar_flags_none() }
-}
-
-///|
-pub fn TabBarFlags::reorderable() -> TabBarFlags {
-  { bits: @bindings.im_gui_tab_bar_flags_reorderable() }
-}
-
-///|
-pub fn TabBarFlags::auto_select_new_tabs() -> TabBarFlags {
-  { bits: @bindings.im_gui_tab_bar_flags_auto_select_new_tabs() }
-}
-
-///|
-pub fn TabBarFlags::tab_list_popup_button() -> TabBarFlags {
-  { bits: @bindings.im_gui_tab_bar_flags_tab_list_popup_button() }
-}
-
-///|
-pub fn TabBarFlags::no_close_with_middle_mouse_button() -> TabBarFlags {
-  { bits: @bindings.im_gui_tab_bar_flags_no_close_with_middle_mouse_button() }
-}
-
-///|
-pub fn TabBarFlags::no_tab_list_scrolling_buttons() -> TabBarFlags {
-  { bits: @bindings.im_gui_tab_bar_flags_no_tab_list_scrolling_buttons() }
-}
-
-///|
-pub fn TabBarFlags::no_tooltip() -> TabBarFlags {
-  { bits: @bindings.im_gui_tab_bar_flags_no_tooltip() }
-}
-
-///|
-pub fn TabBarFlags::draw_selected_overline() -> TabBarFlags {
-  { bits: @bindings.im_gui_tab_bar_flags_draw_selected_overline() }
-}
-
-///|
-pub fn TabBarFlags::fitting_policy_mixed() -> TabBarFlags {
-  { bits: @bindings.im_gui_tab_bar_flags_fitting_policy_mixed() }
-}
-
-///|
-pub fn TabBarFlags::fitting_policy_shrink() -> TabBarFlags {
-  { bits: @bindings.im_gui_tab_bar_flags_fitting_policy_shrink() }
-}
-
-///|
-pub fn TabBarFlags::fitting_policy_scroll() -> TabBarFlags {
-  { bits: @bindings.im_gui_tab_bar_flags_fitting_policy_scroll() }
-}
-
-///|
-pub fn TabBarFlags::fitting_policy_resize_down() -> TabBarFlags {
-  { bits: @bindings.im_gui_tab_bar_flags_fitting_policy_resize_down() }
-}
-
-///|
-pub fn TabBarFlags::value(self : TabBarFlags) -> Int {
-  self.bits
-}
-
-///|
-pub fn TabBarFlags::combine(
-  self : TabBarFlags,
-  other : TabBarFlags,
-) -> TabBarFlags {
-  { bits: self.value() | other.value() }
-}
-
-///|
-pub fn TabItemFlags::none() -> TabItemFlags {
-  { bits: @bindings.im_gui_tab_item_flags_none() }
-}
-
-///|
-pub fn TabItemFlags::unsaved_document() -> TabItemFlags {
-  { bits: @bindings.im_gui_tab_item_flags_unsaved_document() }
-}
-
-///|
-pub fn TabItemFlags::set_selected() -> TabItemFlags {
-  { bits: @bindings.im_gui_tab_item_flags_set_selected() }
-}
-
-///|
-pub fn TabItemFlags::no_close_with_middle_mouse_button() -> TabItemFlags {
-  { bits: @bindings.im_gui_tab_item_flags_no_close_with_middle_mouse_button() }
-}
-
-///|
-pub fn TabItemFlags::no_push_id() -> TabItemFlags {
-  { bits: @bindings.im_gui_tab_item_flags_no_push_id() }
-}
-
-///|
-pub fn TabItemFlags::no_tooltip() -> TabItemFlags {
-  { bits: @bindings.im_gui_tab_item_flags_no_tooltip() }
-}
-
-///|
-pub fn TabItemFlags::no_reorder() -> TabItemFlags {
-  { bits: @bindings.im_gui_tab_item_flags_no_reorder() }
-}
-
-///|
-pub fn TabItemFlags::leading() -> TabItemFlags {
-  { bits: @bindings.im_gui_tab_item_flags_leading() }
-}
-
-///|
-pub fn TabItemFlags::trailing() -> TabItemFlags {
-  { bits: @bindings.im_gui_tab_item_flags_trailing() }
-}
-
-///|
-pub fn TabItemFlags::no_assumed_closure() -> TabItemFlags {
-  { bits: @bindings.im_gui_tab_item_flags_no_assumed_closure() }
-}
-
-///|
-pub fn TabItemFlags::value(self : TabItemFlags) -> Int {
-  self.bits
-}
-
-///|
-pub fn TabItemFlags::combine(
-  self : TabItemFlags,
-  other : TabItemFlags,
-) -> TabItemFlags {
-  { bits: self.value() | other.value() }
-}
-
-///|
-pub fn PopupFlags::none() -> PopupFlags {
-  { bits: @bindings.im_gui_popup_flags_none() }
-}
-
-///|
-pub fn PopupFlags::mouse_button_left() -> PopupFlags {
-  { bits: @bindings.im_gui_popup_flags_mouse_button_left() }
-}
-
-///|
-pub fn PopupFlags::mouse_button_right() -> PopupFlags {
-  { bits: @bindings.im_gui_popup_flags_mouse_button_right() }
-}
-
-///|
-pub fn PopupFlags::mouse_button_middle() -> PopupFlags {
-  { bits: @bindings.im_gui_popup_flags_mouse_button_middle() }
-}
-
-///|
-pub fn PopupFlags::no_reopen() -> PopupFlags {
-  { bits: @bindings.im_gui_popup_flags_no_reopen() }
-}
-
-///|
-pub fn PopupFlags::no_open_over_existing_popup() -> PopupFlags {
-  { bits: @bindings.im_gui_popup_flags_no_open_over_existing_popup() }
-}
-
-///|
-pub fn PopupFlags::no_open_over_items() -> PopupFlags {
-  { bits: @bindings.im_gui_popup_flags_no_open_over_items() }
-}
-
-///|
-pub fn PopupFlags::any_popup_id() -> PopupFlags {
-  { bits: @bindings.im_gui_popup_flags_any_popup_id() }
-}
-
-///|
-pub fn PopupFlags::any_popup_level() -> PopupFlags {
-  { bits: @bindings.im_gui_popup_flags_any_popup_level() }
-}
-
-///|
-pub fn PopupFlags::any_popup() -> PopupFlags {
-  { bits: @bindings.im_gui_popup_flags_any_popup() }
-}
-
-///|
-pub fn PopupFlags::value(self : PopupFlags) -> Int {
-  self.bits
-}
-
-///|
-pub fn PopupFlags::combine(self : PopupFlags, other : PopupFlags) -> PopupFlags {
-  { bits: self.value() | other.value() }
-}
-
-///|
-pub fn TreeNodeFlags::none() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_none() }
-}
-
-///|
-pub fn TreeNodeFlags::selected() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_selected() }
-}
-
-///|
-pub fn TreeNodeFlags::framed() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_framed() }
-}
-
-///|
-pub fn TreeNodeFlags::allow_overlap() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_allow_overlap() }
-}
-
-///|
-pub fn TreeNodeFlags::no_tree_push_on_open() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_no_tree_push_on_open() }
-}
-
-///|
-pub fn TreeNodeFlags::no_auto_open_on_log() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_no_auto_open_on_log() }
-}
-
-///|
-pub fn TreeNodeFlags::default_open() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_default_open() }
-}
-
-///|
-pub fn TreeNodeFlags::open_on_double_click() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_open_on_double_click() }
-}
-
-///|
-pub fn TreeNodeFlags::open_on_arrow() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_open_on_arrow() }
-}
-
-///|
-pub fn TreeNodeFlags::leaf() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_leaf() }
-}
-
-///|
-pub fn TreeNodeFlags::bullet() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_bullet() }
-}
-
-///|
-pub fn TreeNodeFlags::frame_padding() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_frame_padding() }
-}
-
-///|
-pub fn TreeNodeFlags::span_avail_width() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_span_avail_width() }
-}
-
-///|
-pub fn TreeNodeFlags::span_full_width() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_span_full_width() }
-}
-
-///|
-pub fn TreeNodeFlags::span_label_width() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_span_label_width() }
-}
-
-///|
-pub fn TreeNodeFlags::span_all_columns() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_span_all_columns() }
-}
-
-///|
-pub fn TreeNodeFlags::label_span_all_columns() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_label_span_all_columns() }
-}
-
-///|
-pub fn TreeNodeFlags::nav_left_jumps_to_parent() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_nav_left_jumps_to_parent() }
-}
-
-///|
-pub fn TreeNodeFlags::collapsing_header() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_collapsing_header() }
-}
-
-///|
-pub fn TreeNodeFlags::draw_lines_none() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_draw_lines_none() }
-}
-
-///|
-pub fn TreeNodeFlags::draw_lines_full() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_draw_lines_full() }
-}
-
-///|
-pub fn TreeNodeFlags::draw_lines_to_nodes() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_draw_lines_to_nodes() }
-}
-
-///|
-pub fn TreeNodeFlags::nav_left_jumps_back_here() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_nav_left_jumps_back_here() }
-}
-
-///|
-pub fn TreeNodeFlags::span_text_width() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_span_text_width() }
-}
-
-///|
-pub fn TreeNodeFlags::value(self : TreeNodeFlags) -> Int {
-  self.bits
-}
-
-///|
-pub fn TreeNodeFlags::combine(
-  self : TreeNodeFlags,
-  other : TreeNodeFlags,
-) -> TreeNodeFlags {
-  { bits: self.value() | other.value() }
-}
-
-///|
-pub fn ComboFlags::none() -> ComboFlags {
-  { bits: @bindings.im_gui_combo_flags_none() }
-}
-
-///|
-pub fn ComboFlags::popup_align_left() -> ComboFlags {
-  { bits: @bindings.im_gui_combo_flags_popup_align_left() }
-}
-
-///|
-pub fn ComboFlags::height_small() -> ComboFlags {
-  { bits: @bindings.im_gui_combo_flags_height_small() }
-}
-
-///|
-pub fn ComboFlags::height_regular() -> ComboFlags {
-  { bits: @bindings.im_gui_combo_flags_height_regular() }
-}
-
-///|
-pub fn ComboFlags::height_large() -> ComboFlags {
-  { bits: @bindings.im_gui_combo_flags_height_large() }
-}
-
-///|
-pub fn ComboFlags::height_largest() -> ComboFlags {
-  { bits: @bindings.im_gui_combo_flags_height_largest() }
-}
-
-///|
-pub fn ComboFlags::no_arrow_button() -> ComboFlags {
-  { bits: @bindings.im_gui_combo_flags_no_arrow_button() }
-}
-
-///|
-pub fn ComboFlags::no_preview() -> ComboFlags {
-  { bits: @bindings.im_gui_combo_flags_no_preview() }
-}
-
-///|
-pub fn ComboFlags::width_fit_preview() -> ComboFlags {
-  { bits: @bindings.im_gui_combo_flags_width_fit_preview() }
-}
-
-///|
-pub fn ComboFlags::value(self : ComboFlags) -> Int {
-  self.bits
-}
-
-///|
-pub fn ComboFlags::combine(self : ComboFlags, other : ComboFlags) -> ComboFlags {
-  { bits: self.value() | other.value() }
-}
-
-///|
-pub fn InputTextFlags::none() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_none() }
-}
-
-///|
-pub fn InputTextFlags::chars_decimal() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_chars_decimal() }
-}
-
-///|
-pub fn InputTextFlags::chars_hexadecimal() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_chars_hexadecimal() }
-}
-
-///|
-pub fn InputTextFlags::chars_uppercase() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_chars_uppercase() }
-}
-
-///|
-pub fn InputTextFlags::chars_no_blank() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_chars_no_blank() }
-}
-
-///|
-pub fn InputTextFlags::auto_select_all() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_auto_select_all() }
-}
-
-///|
-pub fn InputTextFlags::enter_returns_true() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_enter_returns_true() }
-}
-
-///|
-pub fn InputTextFlags::callback_completion() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_callback_completion() }
-}
-
-///|
-pub fn InputTextFlags::callback_history() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_callback_history() }
-}
-
-///|
-pub fn InputTextFlags::callback_always() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_callback_always() }
-}
-
-///|
-pub fn InputTextFlags::callback_char_filter() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_callback_char_filter() }
-}
-
-///|
-pub fn InputTextFlags::allow_tab_input() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_allow_tab_input() }
-}
-
-///|
-pub fn InputTextFlags::ctrl_enter_for_new_line() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_ctrl_enter_for_new_line() }
-}
-
-///|
-pub fn InputTextFlags::no_horizontal_scroll() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_no_horizontal_scroll() }
-}
-
-///|
-pub fn InputTextFlags::always_overwrite() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_always_overwrite() }
-}
-
-///|
-pub fn InputTextFlags::read_only() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_read_only() }
-}
-
-///|
-pub fn InputTextFlags::password() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_password() }
-}
-
-///|
-pub fn InputTextFlags::no_undo_redo() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_no_undo_redo() }
-}
-
-///|
-pub fn InputTextFlags::chars_scientific() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_chars_scientific() }
-}
-
-///|
-pub fn InputTextFlags::callback_resize() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_callback_resize() }
-}
-
-///|
-pub fn InputTextFlags::callback_edit() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_callback_edit() }
-}
-
-///|
-pub fn InputTextFlags::escape_clears_all() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_escape_clears_all() }
-}
-
-///|
-pub fn InputTextFlags::display_empty_ref_val() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_display_empty_ref_val() }
-}
-
-///|
-pub fn InputTextFlags::parse_empty_ref_val() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_parse_empty_ref_val() }
-}
-
-///|
-pub fn InputTextFlags::elide_left() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_elide_left() }
-}
-
-///|
-pub fn InputTextFlags::word_wrap() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_word_wrap() }
-}
-
-///|
-pub fn InputTextFlags::value(self : InputTextFlags) -> Int {
-  self.bits
-}
-
-///|
-pub fn InputTextFlags::combine(
-  self : InputTextFlags,
-  other : InputTextFlags,
-) -> InputTextFlags {
-  { bits: self.value() | other.value() }
-}
-
-///|
-pub fn SliderFlags::none() -> SliderFlags {
-  { bits: @bindings.im_gui_slider_flags_none() }
-}
-
-///|
-pub fn SliderFlags::logarithmic() -> SliderFlags {
-  { bits: @bindings.im_gui_slider_flags_logarithmic() }
-}
-
-///|
-pub fn SliderFlags::no_round_to_format() -> SliderFlags {
-  { bits: @bindings.im_gui_slider_flags_no_round_to_format() }
-}
-
-///|
-pub fn SliderFlags::no_input() -> SliderFlags {
-  { bits: @bindings.im_gui_slider_flags_no_input() }
-}
-
-///|
-pub fn SliderFlags::wrap_around() -> SliderFlags {
-  { bits: @bindings.im_gui_slider_flags_wrap_around() }
-}
-
-///|
-pub fn SliderFlags::clamp_on_input() -> SliderFlags {
-  { bits: @bindings.im_gui_slider_flags_clamp_on_input() }
-}
-
-///|
-pub fn SliderFlags::clamp_zero_range() -> SliderFlags {
-  { bits: @bindings.im_gui_slider_flags_clamp_zero_range() }
-}
-
-///|
-pub fn SliderFlags::no_speed_tweaks() -> SliderFlags {
-  { bits: @bindings.im_gui_slider_flags_no_speed_tweaks() }
-}
-
-///|
-pub fn SliderFlags::color_markers() -> SliderFlags {
-  { bits: @bindings.im_gui_slider_flags_color_markers() }
-}
-
-///|
-pub fn SliderFlags::always_clamp() -> SliderFlags {
-  { bits: @bindings.im_gui_slider_flags_always_clamp() }
-}
-
-///|
-pub fn SliderFlags::value(self : SliderFlags) -> Int {
-  self.bits
-}
-
-///|
-pub fn SliderFlags::combine(
-  self : SliderFlags,
-  other : SliderFlags,
-) -> SliderFlags {
-  { bits: self.value() | other.value() }
-}
-
-///|
-pub fn ColorEditFlags::none() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_none() }
-}
-
-///|
-pub fn ColorEditFlags::no_alpha() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_no_alpha() }
-}
-
-///|
-pub fn ColorEditFlags::no_picker() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_no_picker() }
-}
-
-///|
-pub fn ColorEditFlags::no_options() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_no_options() }
-}
-
-///|
-pub fn ColorEditFlags::no_small_preview() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_no_small_preview() }
-}
-
-///|
-pub fn ColorEditFlags::no_inputs() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_no_inputs() }
-}
-
-///|
-pub fn ColorEditFlags::no_tooltip() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_no_tooltip() }
-}
-
-///|
-pub fn ColorEditFlags::no_label() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_no_label() }
-}
-
-///|
-pub fn ColorEditFlags::no_side_preview() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_no_side_preview() }
-}
-
-///|
-pub fn ColorEditFlags::no_drag_drop() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_no_drag_drop() }
-}
-
-///|
-pub fn ColorEditFlags::no_border() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_no_border() }
-}
-
-///|
-pub fn ColorEditFlags::no_color_markers() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_no_color_markers() }
-}
-
-///|
-pub fn ColorEditFlags::alpha_opaque() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_alpha_opaque() }
-}
-
-///|
-pub fn ColorEditFlags::alpha_no_bg() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_alpha_no_bg() }
-}
-
-///|
-pub fn ColorEditFlags::alpha_preview_half() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_alpha_preview_half() }
-}
-
-///|
-pub fn ColorEditFlags::alpha_bar() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_alpha_bar() }
-}
-
-///|
-pub fn ColorEditFlags::hdr() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_hdr() }
-}
-
-///|
-pub fn ColorEditFlags::display_rgb() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_display_rgb() }
-}
-
-///|
-pub fn ColorEditFlags::display_hsv() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_display_hsv() }
-}
-
-///|
-pub fn ColorEditFlags::display_hex() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_display_hex() }
-}
-
-///|
-pub fn ColorEditFlags::uint8() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_uint8() }
-}
-
-///|
-pub fn ColorEditFlags::float() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_float() }
-}
-
-///|
-pub fn ColorEditFlags::picker_hue_bar() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_picker_hue_bar() }
-}
-
-///|
-pub fn ColorEditFlags::picker_hue_wheel() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_picker_hue_wheel() }
-}
-
-///|
-pub fn ColorEditFlags::input_rgb() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_input_rgb() }
-}
-
-///|
-pub fn ColorEditFlags::input_hsv() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_input_hsv() }
-}
-
-///|
-pub fn ColorEditFlags::alpha_preview() -> ColorEditFlags {
-  { bits: @bindings.im_gui_color_edit_flags_alpha_preview() }
-}
-
-///|
-pub fn ColorEditFlags::value(self : ColorEditFlags) -> Int {
-  self.bits
-}
-
-///|
-pub fn ColorEditFlags::combine(
-  self : ColorEditFlags,
-  other : ColorEditFlags,
-) -> ColorEditFlags {
-  { bits: self.value() | other.value() }
-}
-
-///|
-pub fn ItemFlags::none() -> ItemFlags {
-  { bits: @bindings.im_gui_item_flags_none() }
-}
-
-///|
-pub fn ItemFlags::no_tab_stop() -> ItemFlags {
-  { bits: @bindings.im_gui_item_flags_no_tab_stop() }
-}
-
-///|
-pub fn ItemFlags::no_nav() -> ItemFlags {
-  { bits: @bindings.im_gui_item_flags_no_nav() }
-}
-
-///|
-pub fn ItemFlags::no_nav_default_focus() -> ItemFlags {
-  { bits: @bindings.im_gui_item_flags_no_nav_default_focus() }
-}
-
-///|
-pub fn ItemFlags::button_repeat() -> ItemFlags {
-  { bits: @bindings.im_gui_item_flags_button_repeat() }
-}
-
-///|
-pub fn ItemFlags::auto_close_popups() -> ItemFlags {
-  { bits: @bindings.im_gui_item_flags_auto_close_popups() }
-}
-
-///|
-pub fn ItemFlags::allow_duplicate_id() -> ItemFlags {
-  { bits: @bindings.im_gui_item_flags_allow_duplicate_id() }
-}
-
-///|
-pub fn ItemFlags::disabled() -> ItemFlags {
-  { bits: @bindings.im_gui_item_flags_disabled() }
-}
-
-///|
-pub fn ItemFlags::value(self : ItemFlags) -> Int {
-  self.bits
-}
-
-///|
-pub fn ItemFlags::combine(self : ItemFlags, other : ItemFlags) -> ItemFlags {
-  { bits: self.value() | other.value() }
-}
-
-///|
-pub fn FocusedFlags::none() -> FocusedFlags {
-  { bits: @bindings.im_gui_focused_flags_none() }
-}
-
-///|
-pub fn FocusedFlags::child_windows() -> FocusedFlags {
-  { bits: @bindings.im_gui_focused_flags_child_windows() }
-}
-
-///|
-pub fn FocusedFlags::root_window() -> FocusedFlags {
-  { bits: @bindings.im_gui_focused_flags_root_window() }
-}
-
-///|
-pub fn FocusedFlags::any_window() -> FocusedFlags {
-  { bits: @bindings.im_gui_focused_flags_any_window() }
-}
-
-///|
-pub fn FocusedFlags::no_popup_hierarchy() -> FocusedFlags {
-  { bits: @bindings.im_gui_focused_flags_no_popup_hierarchy() }
-}
-
-///|
-pub fn FocusedFlags::root_and_child_windows() -> FocusedFlags {
-  { bits: @bindings.im_gui_focused_flags_root_and_child_windows() }
-}
-
-///|
-pub fn FocusedFlags::value(self : FocusedFlags) -> Int {
-  self.bits
-}
-
-///|
-pub fn FocusedFlags::combine(
-  self : FocusedFlags,
-  other : FocusedFlags,
-) -> FocusedFlags {
-  { bits: self.value() | other.value() }
-}
-
-///|
-pub fn HoveredFlags::none() -> HoveredFlags {
-  { bits: @bindings.im_gui_hovered_flags_none() }
-}
-
-///|
-pub fn HoveredFlags::child_windows() -> HoveredFlags {
-  { bits: @bindings.im_gui_hovered_flags_child_windows() }
-}
-
-///|
-pub fn HoveredFlags::root_window() -> HoveredFlags {
-  { bits: @bindings.im_gui_hovered_flags_root_window() }
-}
-
-///|
-pub fn HoveredFlags::any_window() -> HoveredFlags {
-  { bits: @bindings.im_gui_hovered_flags_any_window() }
-}
-
-///|
-pub fn HoveredFlags::no_popup_hierarchy() -> HoveredFlags {
-  { bits: @bindings.im_gui_hovered_flags_no_popup_hierarchy() }
-}
-
-///|
-pub fn HoveredFlags::allow_when_blocked_by_popup() -> HoveredFlags {
-  { bits: @bindings.im_gui_hovered_flags_allow_when_blocked_by_popup() }
-}
-
-///|
-pub fn HoveredFlags::allow_when_blocked_by_active_item() -> HoveredFlags {
-  { bits: @bindings.im_gui_hovered_flags_allow_when_blocked_by_active_item() }
-}
-
-///|
-pub fn HoveredFlags::allow_when_overlapped_by_item() -> HoveredFlags {
-  { bits: @bindings.im_gui_hovered_flags_allow_when_overlapped_by_item() }
-}
-
-///|
-pub fn HoveredFlags::allow_when_overlapped_by_window() -> HoveredFlags {
-  { bits: @bindings.im_gui_hovered_flags_allow_when_overlapped_by_window() }
-}
-
-///|
-pub fn HoveredFlags::allow_when_disabled() -> HoveredFlags {
-  { bits: @bindings.im_gui_hovered_flags_allow_when_disabled() }
-}
-
-///|
-pub fn HoveredFlags::no_nav_override() -> HoveredFlags {
-  { bits: @bindings.im_gui_hovered_flags_no_nav_override() }
-}
-
-///|
-pub fn HoveredFlags::allow_when_overlapped() -> HoveredFlags {
-  { bits: @bindings.im_gui_hovered_flags_allow_when_overlapped() }
-}
-
-///|
-pub fn HoveredFlags::rect_only() -> HoveredFlags {
-  { bits: @bindings.im_gui_hovered_flags_rect_only() }
-}
-
-///|
-pub fn HoveredFlags::root_and_child_windows() -> HoveredFlags {
-  { bits: @bindings.im_gui_hovered_flags_root_and_child_windows() }
-}
-
-///|
-pub fn HoveredFlags::for_tooltip() -> HoveredFlags {
-  { bits: @bindings.im_gui_hovered_flags_for_tooltip() }
-}
-
-///|
-pub fn HoveredFlags::stationary() -> HoveredFlags {
-  { bits: @bindings.im_gui_hovered_flags_stationary() }
-}
-
-///|
-pub fn HoveredFlags::delay_none() -> HoveredFlags {
-  { bits: @bindings.im_gui_hovered_flags_delay_none() }
-}
-
-///|
-pub fn HoveredFlags::delay_short() -> HoveredFlags {
-  { bits: @bindings.im_gui_hovered_flags_delay_short() }
-}
-
-///|
-pub fn HoveredFlags::delay_normal() -> HoveredFlags {
-  { bits: @bindings.im_gui_hovered_flags_delay_normal() }
-}
-
-///|
-pub fn HoveredFlags::no_shared_delay() -> HoveredFlags {
-  { bits: @bindings.im_gui_hovered_flags_no_shared_delay() }
-}
-
-///|
-pub fn HoveredFlags::value(self : HoveredFlags) -> Int {
-  self.bits
-}
-
-///|
-pub fn HoveredFlags::combine(
-  self : HoveredFlags,
-  other : HoveredFlags,
-) -> HoveredFlags {
-  { bits: self.value() | other.value() }
-}
-
-///|
-pub fn ButtonFlags::none() -> ButtonFlags {
-  { bits: @bindings.im_gui_button_flags_none() }
-}
-
-///|
-pub fn ButtonFlags::mouse_button_left() -> ButtonFlags {
-  { bits: @bindings.im_gui_button_flags_mouse_button_left() }
-}
-
-///|
-pub fn ButtonFlags::mouse_button_right() -> ButtonFlags {
-  { bits: @bindings.im_gui_button_flags_mouse_button_right() }
-}
-
-///|
-pub fn ButtonFlags::mouse_button_middle() -> ButtonFlags {
-  { bits: @bindings.im_gui_button_flags_mouse_button_middle() }
-}
-
-///|
-pub fn ButtonFlags::enable_nav() -> ButtonFlags {
-  { bits: @bindings.im_gui_button_flags_enable_nav() }
-}
-
-///|
-pub fn ButtonFlags::allow_overlap() -> ButtonFlags {
-  { bits: @bindings.im_gui_button_flags_allow_overlap() }
-}
-
-///|
-pub fn ButtonFlags::value(self : ButtonFlags) -> Int {
-  self.bits
-}
-
-///|
-pub fn ButtonFlags::combine(
-  self : ButtonFlags,
-  other : ButtonFlags,
-) -> ButtonFlags {
-  { bits: self.value() | other.value() }
+/// Composable ImGui table column flag.
+pub(all) enum TableColumnFlag {
+  Disabled
+  DefaultHide
+  DefaultSort
+  WidthStretch
+  WidthFixed
+  NoResize
+  NoReorder
+  NoHide
+  NoClip
+  NoSort
+  NoSortAscending
+  NoSortDescending
+  NoHeaderLabel
+  NoHeaderWidth
+  PreferSortAscending
+  PreferSortDescending
+  IndentEnable
+  IndentDisable
+  AngledHeader
+  IsEnabled
+  IsVisible
+  IsSorted
+  IsHovered
+} derive(Eq, Debug)
+
+///|
+fn TableColumnFlag::to_int(self : TableColumnFlag) -> Int {
+  match self {
+    Disabled => @bindings.im_gui_table_column_flags_disabled()
+    DefaultHide => @bindings.im_gui_table_column_flags_default_hide()
+    DefaultSort => @bindings.im_gui_table_column_flags_default_sort()
+    WidthStretch => @bindings.im_gui_table_column_flags_width_stretch()
+    WidthFixed => @bindings.im_gui_table_column_flags_width_fixed()
+    NoResize => @bindings.im_gui_table_column_flags_no_resize()
+    NoReorder => @bindings.im_gui_table_column_flags_no_reorder()
+    NoHide => @bindings.im_gui_table_column_flags_no_hide()
+    NoClip => @bindings.im_gui_table_column_flags_no_clip()
+    NoSort => @bindings.im_gui_table_column_flags_no_sort()
+    NoSortAscending => @bindings.im_gui_table_column_flags_no_sort_ascending()
+    NoSortDescending => @bindings.im_gui_table_column_flags_no_sort_descending()
+    NoHeaderLabel => @bindings.im_gui_table_column_flags_no_header_label()
+    NoHeaderWidth => @bindings.im_gui_table_column_flags_no_header_width()
+    PreferSortAscending =>
+      @bindings.im_gui_table_column_flags_prefer_sort_ascending()
+    PreferSortDescending =>
+      @bindings.im_gui_table_column_flags_prefer_sort_descending()
+    IndentEnable => @bindings.im_gui_table_column_flags_indent_enable()
+    IndentDisable => @bindings.im_gui_table_column_flags_indent_disable()
+    AngledHeader => @bindings.im_gui_table_column_flags_angled_header()
+    IsEnabled => @bindings.im_gui_table_column_flags_is_enabled()
+    IsVisible => @bindings.im_gui_table_column_flags_is_visible()
+    IsSorted => @bindings.im_gui_table_column_flags_is_sorted()
+    IsHovered => @bindings.im_gui_table_column_flags_is_hovered()
+  }
+}
+
+///|
+fn table_column_flag_bits(flags : Array[TableColumnFlag]) -> Int {
+  let mut bits = 0
+  for flag in flags {
+    bits = bits | flag.to_int()
+  }
+  bits
+}
+
+///|
+/// Composable ImGui table row flag.
+pub(all) enum TableRowFlag {
+  Headers
+} derive(Eq, Debug)
+
+///|
+fn TableRowFlag::to_int(self : TableRowFlag) -> Int {
+  match self {
+    Headers => @bindings.im_gui_table_row_flags_headers()
+  }
+}
+
+///|
+fn table_row_flag_bits(flags : Array[TableRowFlag]) -> Int {
+  let mut bits = 0
+  for flag in flags {
+    bits = bits | flag.to_int()
+  }
+  bits
 }
 
 ///|
@@ -1807,162 +1175,6 @@ pub fn Dir::down() -> Dir {
 ///|
 pub fn Dir::value(self : Dir) -> Int {
   self.value
-}
-
-///|
-pub fn TableColumnFlags::none() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_none() }
-}
-
-///|
-pub fn TableColumnFlags::disabled() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_disabled() }
-}
-
-///|
-pub fn TableColumnFlags::default_hide() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_default_hide() }
-}
-
-///|
-pub fn TableColumnFlags::default_sort() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_default_sort() }
-}
-
-///|
-pub fn TableColumnFlags::width_stretch() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_width_stretch() }
-}
-
-///|
-pub fn TableColumnFlags::width_fixed() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_width_fixed() }
-}
-
-///|
-pub fn TableColumnFlags::no_resize() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_no_resize() }
-}
-
-///|
-pub fn TableColumnFlags::no_reorder() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_no_reorder() }
-}
-
-///|
-pub fn TableColumnFlags::no_hide() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_no_hide() }
-}
-
-///|
-pub fn TableColumnFlags::no_clip() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_no_clip() }
-}
-
-///|
-pub fn TableColumnFlags::no_sort() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_no_sort() }
-}
-
-///|
-pub fn TableColumnFlags::no_sort_ascending() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_no_sort_ascending() }
-}
-
-///|
-pub fn TableColumnFlags::no_sort_descending() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_no_sort_descending() }
-}
-
-///|
-pub fn TableColumnFlags::no_header_label() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_no_header_label() }
-}
-
-///|
-pub fn TableColumnFlags::no_header_width() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_no_header_width() }
-}
-
-///|
-pub fn TableColumnFlags::prefer_sort_ascending() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_prefer_sort_ascending() }
-}
-
-///|
-pub fn TableColumnFlags::prefer_sort_descending() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_prefer_sort_descending() }
-}
-
-///|
-pub fn TableColumnFlags::indent_enable() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_indent_enable() }
-}
-
-///|
-pub fn TableColumnFlags::indent_disable() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_indent_disable() }
-}
-
-///|
-pub fn TableColumnFlags::angled_header() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_angled_header() }
-}
-
-///|
-pub fn TableColumnFlags::is_enabled() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_is_enabled() }
-}
-
-///|
-pub fn TableColumnFlags::is_visible() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_is_visible() }
-}
-
-///|
-pub fn TableColumnFlags::is_sorted() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_is_sorted() }
-}
-
-///|
-pub fn TableColumnFlags::is_hovered() -> TableColumnFlags {
-  { bits: @bindings.im_gui_table_column_flags_is_hovered() }
-}
-
-///|
-pub fn TableColumnFlags::value(self : TableColumnFlags) -> Int {
-  self.bits
-}
-
-///|
-pub fn TableColumnFlags::combine(
-  self : TableColumnFlags,
-  other : TableColumnFlags,
-) -> TableColumnFlags {
-  { bits: self.value() | other.value() }
-}
-
-///|
-pub fn TableRowFlags::none() -> TableRowFlags {
-  { bits: @bindings.im_gui_table_row_flags_none() }
-}
-
-///|
-pub fn TableRowFlags::headers() -> TableRowFlags {
-  { bits: @bindings.im_gui_table_row_flags_headers() }
-}
-
-///|
-pub fn TableRowFlags::value(self : TableRowFlags) -> Int {
-  self.bits
-}
-
-///|
-pub fn TableRowFlags::combine(
-  self : TableRowFlags,
-  other : TableRowFlags,
-) -> TableRowFlags {
-  { bits: self.value() | other.value() }
 }
 
 ///|
@@ -2668,11 +1880,15 @@ pub fn Ui::main_menu_bar(
 pub fn Ui::window(
   _self : Ui,
   title : String,
-  flags? : WindowFlags = WindowFlags::none(),
+  flags? : Array[WindowFlag] = [],
   body : (WindowUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  let active = @bindings.im_gui_begin(utf8(title), None, flags.value())
+  let active = @bindings.im_gui_begin(
+    utf8(title),
+    None,
+    window_flag_bits(flags),
+  )
   defer @bindings.im_gui_end()
   if active {
     body(WindowUi::{  })
@@ -2908,7 +2124,7 @@ pub fn WindowUi::slider_float(
   min : Float,
   max : Float,
   format? : String = "%.3f",
-  flags? : SliderFlags = SliderFlags::none(),
+  flags? : Array[SliderFlag] = [],
   body : (Float) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -2919,7 +2135,7 @@ pub fn WindowUi::slider_float(
       min,
       max,
       utf8(format),
-      flags.value(),
+      slider_flag_bits(flags),
     ) {
     body(current.val)
   }
@@ -2934,7 +2150,7 @@ pub fn WindowUi::slider_int(
   min : Int,
   max : Int,
   format? : String = "%d",
-  flags? : SliderFlags = SliderFlags::none(),
+  flags? : Array[SliderFlag] = [],
   body : (Int) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -2945,7 +2161,7 @@ pub fn WindowUi::slider_int(
       min,
       max,
       utf8(format),
-      flags.value(),
+      slider_flag_bits(flags),
     ) {
     body(current.val)
   }
@@ -2960,7 +2176,7 @@ pub fn WindowUi::slider_angle(
   min_degrees? : Float = -360.0,
   max_degrees? : Float = 360.0,
   format? : String = "%.0f deg",
-  flags? : SliderFlags = SliderFlags::none(),
+  flags? : Array[SliderFlag] = [],
   body : (Float) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -2971,7 +2187,7 @@ pub fn WindowUi::slider_angle(
       min_degrees,
       max_degrees,
       utf8(format),
-      flags.value(),
+      slider_flag_bits(flags),
     ) {
     body(current.val)
   }
@@ -2986,7 +2202,7 @@ pub fn WindowUi::slider_float2(
   min : Float,
   max : Float,
   format? : String = "%.3f",
-  flags? : SliderFlags = SliderFlags::none(),
+  flags? : Array[SliderFlag] = [],
   body : (Float2) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -2997,7 +2213,7 @@ pub fn WindowUi::slider_float2(
       min,
       max,
       utf8(format),
-      flags.value(),
+      slider_flag_bits(flags),
     ) {
     body(Float2::new(current[0], current[1]))
   }
@@ -3012,7 +2228,7 @@ pub fn WindowUi::slider_float3(
   min : Float,
   max : Float,
   format? : String = "%.3f",
-  flags? : SliderFlags = SliderFlags::none(),
+  flags? : Array[SliderFlag] = [],
   body : (Float3) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3023,7 +2239,7 @@ pub fn WindowUi::slider_float3(
       min,
       max,
       utf8(format),
-      flags.value(),
+      slider_flag_bits(flags),
     ) {
     body(Float3::new(current[0], current[1], current[2]))
   }
@@ -3038,7 +2254,7 @@ pub fn WindowUi::slider_float4(
   min : Float,
   max : Float,
   format? : String = "%.3f",
-  flags? : SliderFlags = SliderFlags::none(),
+  flags? : Array[SliderFlag] = [],
   body : (Float4) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3049,7 +2265,7 @@ pub fn WindowUi::slider_float4(
       min,
       max,
       utf8(format),
-      flags.value(),
+      slider_flag_bits(flags),
     ) {
     body(Float4::new(current[0], current[1], current[2], current[3]))
   }
@@ -3064,7 +2280,7 @@ pub fn WindowUi::slider_int2(
   min : Int,
   max : Int,
   format? : String = "%d",
-  flags? : SliderFlags = SliderFlags::none(),
+  flags? : Array[SliderFlag] = [],
   body : (Int2) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3075,7 +2291,7 @@ pub fn WindowUi::slider_int2(
       min,
       max,
       utf8(format),
-      flags.value(),
+      slider_flag_bits(flags),
     ) {
     body(Int2::new(current[0], current[1]))
   }
@@ -3090,7 +2306,7 @@ pub fn WindowUi::slider_int3(
   min : Int,
   max : Int,
   format? : String = "%d",
-  flags? : SliderFlags = SliderFlags::none(),
+  flags? : Array[SliderFlag] = [],
   body : (Int3) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3101,7 +2317,7 @@ pub fn WindowUi::slider_int3(
       min,
       max,
       utf8(format),
-      flags.value(),
+      slider_flag_bits(flags),
     ) {
     body(Int3::new(current[0], current[1], current[2]))
   }
@@ -3116,7 +2332,7 @@ pub fn WindowUi::slider_int4(
   min : Int,
   max : Int,
   format? : String = "%d",
-  flags? : SliderFlags = SliderFlags::none(),
+  flags? : Array[SliderFlag] = [],
   body : (Int4) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3127,7 +2343,7 @@ pub fn WindowUi::slider_int4(
       min,
       max,
       utf8(format),
-      flags.value(),
+      slider_flag_bits(flags),
     ) {
     body(Int4::new(current[0], current[1], current[2], current[3]))
   }
@@ -3143,7 +2359,7 @@ pub fn WindowUi::drag_float(
   min? : Float = 0.0,
   max? : Float = 0.0,
   format? : String = "%.3f",
-  flags? : SliderFlags = SliderFlags::none(),
+  flags? : Array[SliderFlag] = [],
   body : (Float) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3155,7 +2371,7 @@ pub fn WindowUi::drag_float(
       min,
       max,
       utf8(format),
-      flags.value(),
+      slider_flag_bits(flags),
     ) {
     body(current.val)
   }
@@ -3171,7 +2387,7 @@ pub fn WindowUi::drag_int(
   min? : Int = 0,
   max? : Int = 0,
   format? : String = "%d",
-  flags? : SliderFlags = SliderFlags::none(),
+  flags? : Array[SliderFlag] = [],
   body : (Int) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3183,7 +2399,7 @@ pub fn WindowUi::drag_int(
       min,
       max,
       utf8(format),
-      flags.value(),
+      slider_flag_bits(flags),
     ) {
     body(current.val)
   }
@@ -3199,7 +2415,7 @@ pub fn WindowUi::drag_float2(
   min? : Float = 0.0,
   max? : Float = 0.0,
   format? : String = "%.3f",
-  flags? : SliderFlags = SliderFlags::none(),
+  flags? : Array[SliderFlag] = [],
   body : (Float2) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3211,7 +2427,7 @@ pub fn WindowUi::drag_float2(
       min,
       max,
       utf8(format),
-      flags.value(),
+      slider_flag_bits(flags),
     ) {
     body(Float2::new(current[0], current[1]))
   }
@@ -3227,7 +2443,7 @@ pub fn WindowUi::drag_float3(
   min? : Float = 0.0,
   max? : Float = 0.0,
   format? : String = "%.3f",
-  flags? : SliderFlags = SliderFlags::none(),
+  flags? : Array[SliderFlag] = [],
   body : (Float3) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3239,7 +2455,7 @@ pub fn WindowUi::drag_float3(
       min,
       max,
       utf8(format),
-      flags.value(),
+      slider_flag_bits(flags),
     ) {
     body(Float3::new(current[0], current[1], current[2]))
   }
@@ -3255,7 +2471,7 @@ pub fn WindowUi::drag_float4(
   min? : Float = 0.0,
   max? : Float = 0.0,
   format? : String = "%.3f",
-  flags? : SliderFlags = SliderFlags::none(),
+  flags? : Array[SliderFlag] = [],
   body : (Float4) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3267,7 +2483,7 @@ pub fn WindowUi::drag_float4(
       min,
       max,
       utf8(format),
-      flags.value(),
+      slider_flag_bits(flags),
     ) {
     body(Float4::new(current[0], current[1], current[2], current[3]))
   }
@@ -3283,7 +2499,7 @@ pub fn WindowUi::drag_int2(
   min? : Int = 0,
   max? : Int = 0,
   format? : String = "%d",
-  flags? : SliderFlags = SliderFlags::none(),
+  flags? : Array[SliderFlag] = [],
   body : (Int2) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3295,7 +2511,7 @@ pub fn WindowUi::drag_int2(
       min,
       max,
       utf8(format),
-      flags.value(),
+      slider_flag_bits(flags),
     ) {
     body(Int2::new(current[0], current[1]))
   }
@@ -3311,7 +2527,7 @@ pub fn WindowUi::drag_int3(
   min? : Int = 0,
   max? : Int = 0,
   format? : String = "%d",
-  flags? : SliderFlags = SliderFlags::none(),
+  flags? : Array[SliderFlag] = [],
   body : (Int3) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3323,7 +2539,7 @@ pub fn WindowUi::drag_int3(
       min,
       max,
       utf8(format),
-      flags.value(),
+      slider_flag_bits(flags),
     ) {
     body(Int3::new(current[0], current[1], current[2]))
   }
@@ -3339,7 +2555,7 @@ pub fn WindowUi::drag_int4(
   min? : Int = 0,
   max? : Int = 0,
   format? : String = "%d",
-  flags? : SliderFlags = SliderFlags::none(),
+  flags? : Array[SliderFlag] = [],
   body : (Int4) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3351,7 +2567,7 @@ pub fn WindowUi::drag_int4(
       min,
       max,
       utf8(format),
-      flags.value(),
+      slider_flag_bits(flags),
     ) {
     body(Int4::new(current[0], current[1], current[2], current[3]))
   }
@@ -3367,7 +2583,7 @@ pub fn WindowUi::drag_float_range2(
   min? : Float = 0.0,
   max? : Float = 0.0,
   format? : String = "%.3f",
-  flags? : SliderFlags = SliderFlags::none(),
+  flags? : Array[SliderFlag] = [],
   body : (FloatRange) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3382,7 +2598,7 @@ pub fn WindowUi::drag_float_range2(
       max,
       utf8(format),
       None,
-      flags.value(),
+      slider_flag_bits(flags),
     ) {
     body(FloatRange::new(current_min.val, current_max.val))
   }
@@ -3398,7 +2614,7 @@ pub fn WindowUi::drag_int_range2(
   min? : Int = 0,
   max? : Int = 0,
   format? : String = "%d",
-  flags? : SliderFlags = SliderFlags::none(),
+  flags? : Array[SliderFlag] = [],
   body : (IntRange) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3413,7 +2629,7 @@ pub fn WindowUi::drag_int_range2(
       max,
       utf8(format),
       None,
-      flags.value(),
+      slider_flag_bits(flags),
     ) {
     body(IntRange::new(current_min.val, current_max.val))
   }
@@ -3428,7 +2644,7 @@ pub fn WindowUi::input_float(
   step? : Float = 0.0,
   step_fast? : Float = 0.0,
   format? : String = "%.3f",
-  flags? : InputTextFlags = InputTextFlags::none(),
+  flags? : Array[InputTextFlag] = [],
   body : (Float) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3439,7 +2655,7 @@ pub fn WindowUi::input_float(
       step,
       step_fast,
       utf8(format),
-      flags.value(),
+      input_text_flag_bits(flags),
     ) {
     body(current.val)
   }
@@ -3453,7 +2669,7 @@ pub fn WindowUi::input_int(
   value : Int,
   step? : Int = 1,
   step_fast? : Int = 100,
-  flags? : InputTextFlags = InputTextFlags::none(),
+  flags? : Array[InputTextFlag] = [],
   body : (Int) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3463,7 +2679,7 @@ pub fn WindowUi::input_int(
       Some(current),
       step,
       step_fast,
-      flags.value(),
+      input_text_flag_bits(flags),
     ) {
     body(current.val)
   }
@@ -3478,7 +2694,7 @@ pub fn WindowUi::input_double(
   step? : Double = 0.0,
   step_fast? : Double = 0.0,
   format? : String = "%.6f",
-  flags? : InputTextFlags = InputTextFlags::none(),
+  flags? : Array[InputTextFlag] = [],
   body : (Double) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3489,7 +2705,7 @@ pub fn WindowUi::input_double(
       step,
       step_fast,
       utf8(format),
-      flags.value(),
+      input_text_flag_bits(flags),
     ) {
     body(current.val)
   }
@@ -3502,7 +2718,7 @@ pub fn WindowUi::input_float2(
   label : String,
   value : Float2,
   format? : String = "%.3f",
-  flags? : InputTextFlags = InputTextFlags::none(),
+  flags? : Array[InputTextFlag] = [],
   body : (Float2) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3511,7 +2727,7 @@ pub fn WindowUi::input_float2(
       utf8(label),
       current,
       utf8(format),
-      flags.value(),
+      input_text_flag_bits(flags),
     ) {
     body(Float2::new(current[0], current[1]))
   }
@@ -3524,7 +2740,7 @@ pub fn WindowUi::input_float3(
   label : String,
   value : Float3,
   format? : String = "%.3f",
-  flags? : InputTextFlags = InputTextFlags::none(),
+  flags? : Array[InputTextFlag] = [],
   body : (Float3) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3533,7 +2749,7 @@ pub fn WindowUi::input_float3(
       utf8(label),
       current,
       utf8(format),
-      flags.value(),
+      input_text_flag_bits(flags),
     ) {
     body(Float3::new(current[0], current[1], current[2]))
   }
@@ -3546,7 +2762,7 @@ pub fn WindowUi::input_float4(
   label : String,
   value : Float4,
   format? : String = "%.3f",
-  flags? : InputTextFlags = InputTextFlags::none(),
+  flags? : Array[InputTextFlag] = [],
   body : (Float4) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3555,7 +2771,7 @@ pub fn WindowUi::input_float4(
       utf8(label),
       current,
       utf8(format),
-      flags.value(),
+      input_text_flag_bits(flags),
     ) {
     body(Float4::new(current[0], current[1], current[2], current[3]))
   }
@@ -3567,12 +2783,16 @@ pub fn WindowUi::input_int2(
   _self : WindowUi,
   label : String,
   value : Int2,
-  flags? : InputTextFlags = InputTextFlags::none(),
+  flags? : Array[InputTextFlag] = [],
   body : (Int2) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   let current = FixedArray::from_array([value.x, value.y])
-  if @bindings.im_gui_input_int2(utf8(label), current, flags.value()) {
+  if @bindings.im_gui_input_int2(
+      utf8(label),
+      current,
+      input_text_flag_bits(flags),
+    ) {
     body(Int2::new(current[0], current[1]))
   }
 }
@@ -3583,12 +2803,16 @@ pub fn WindowUi::input_int3(
   _self : WindowUi,
   label : String,
   value : Int3,
-  flags? : InputTextFlags = InputTextFlags::none(),
+  flags? : Array[InputTextFlag] = [],
   body : (Int3) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   let current = FixedArray::from_array([value.x, value.y, value.z])
-  if @bindings.im_gui_input_int3(utf8(label), current, flags.value()) {
+  if @bindings.im_gui_input_int3(
+      utf8(label),
+      current,
+      input_text_flag_bits(flags),
+    ) {
     body(Int3::new(current[0], current[1], current[2]))
   }
 }
@@ -3599,12 +2823,16 @@ pub fn WindowUi::input_int4(
   _self : WindowUi,
   label : String,
   value : Int4,
-  flags? : InputTextFlags = InputTextFlags::none(),
+  flags? : Array[InputTextFlag] = [],
   body : (Int4) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   let current = FixedArray::from_array([value.x, value.y, value.z, value.w])
-  if @bindings.im_gui_input_int4(utf8(label), current, flags.value()) {
+  if @bindings.im_gui_input_int4(
+      utf8(label),
+      current,
+      input_text_flag_bits(flags),
+    ) {
     body(Int4::new(current[0], current[1], current[2], current[3]))
   }
 }
@@ -3615,7 +2843,7 @@ pub fn WindowUi::input_text(
   _self : WindowUi,
   label : String,
   buffer : Bytes,
-  flags? : InputTextFlags = InputTextFlags::none(),
+  flags? : Array[InputTextFlag] = [],
   body : (String) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3623,7 +2851,7 @@ pub fn WindowUi::input_text(
       utf8(label),
       buffer,
       buffer.length(),
-      flags.value(),
+      input_text_flag_bits(flags),
     ) {
     body(bytes_to_string(buffer))
   }
@@ -3636,7 +2864,7 @@ pub fn WindowUi::input_text_with_hint(
   label : String,
   hint : String,
   buffer : Bytes,
-  flags? : InputTextFlags = InputTextFlags::none(),
+  flags? : Array[InputTextFlag] = [],
   body : (String) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3645,7 +2873,7 @@ pub fn WindowUi::input_text_with_hint(
       utf8(hint),
       buffer,
       buffer.length(),
-      flags.value(),
+      input_text_flag_bits(flags),
     ) {
     body(bytes_to_string(buffer))
   }
@@ -3671,12 +2899,16 @@ pub fn WindowUi::color_edit3(
   _self : WindowUi,
   label : String,
   color : Vec4,
-  flags? : ColorEditFlags = ColorEditFlags::none(),
+  flags? : Array[ColorEditFlag] = [],
   body : (Vec4) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   let value = FixedArray::from_array([color.x, color.y, color.z])
-  if @bindings.im_gui_color_edit3(utf8(label), value, flags.value()) {
+  if @bindings.im_gui_color_edit3(
+      utf8(label),
+      value,
+      color_edit_flag_bits(flags),
+    ) {
     body(Vec4::rgba(value[0], value[1], value[2], color.w))
   }
 }
@@ -3687,12 +2919,16 @@ pub fn WindowUi::color_edit4(
   _self : WindowUi,
   label : String,
   color : Vec4,
-  flags? : ColorEditFlags = ColorEditFlags::none(),
+  flags? : Array[ColorEditFlag] = [],
   body : (Vec4) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   let value = FixedArray::from_array([color.x, color.y, color.z, color.w])
-  if @bindings.im_gui_color_edit4(utf8(label), value, flags.value()) {
+  if @bindings.im_gui_color_edit4(
+      utf8(label),
+      value,
+      color_edit_flag_bits(flags),
+    ) {
     body(Vec4::rgba(value[0], value[1], value[2], value[3]))
   }
 }
@@ -3703,12 +2939,16 @@ pub fn WindowUi::color_picker3(
   _self : WindowUi,
   label : String,
   color : Vec4,
-  flags? : ColorEditFlags = ColorEditFlags::none(),
+  flags? : Array[ColorEditFlag] = [],
   body : (Vec4) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   let value = FixedArray::from_array([color.x, color.y, color.z])
-  if @bindings.im_gui_color_picker3(utf8(label), value, flags.value()) {
+  if @bindings.im_gui_color_picker3(
+      utf8(label),
+      value,
+      color_edit_flag_bits(flags),
+    ) {
     body(Vec4::rgba(value[0], value[1], value[2], color.w))
   }
 }
@@ -3719,12 +2959,17 @@ pub fn WindowUi::color_picker4(
   _self : WindowUi,
   label : String,
   color : Vec4,
-  flags? : ColorEditFlags = ColorEditFlags::none(),
+  flags? : Array[ColorEditFlag] = [],
   body : (Vec4) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   let value = FixedArray::from_array([color.x, color.y, color.z, color.w])
-  if @bindings.im_gui_color_picker4(utf8(label), value, flags.value(), None) {
+  if @bindings.im_gui_color_picker4(
+      utf8(label),
+      value,
+      color_edit_flag_bits(flags),
+      None,
+    ) {
     body(Vec4::rgba(value[0], value[1], value[2], value[3]))
   }
 }
@@ -3960,8 +3205,8 @@ pub fn WindowUi::window_state(_self : WindowUi) -> WindowState raise ImGuiError 
   {
     appearing: @bindings.im_gui_is_window_appearing(),
     collapsed: @bindings.im_gui_is_window_collapsed(),
-    focused: @bindings.im_gui_is_window_focused(FocusedFlags::none().value()),
-    hovered: @bindings.im_gui_is_window_hovered(HoveredFlags::none().value()),
+    focused: @bindings.im_gui_is_window_focused(0),
+    hovered: @bindings.im_gui_is_window_hovered(0),
   }
 }
 
@@ -3980,19 +3225,19 @@ pub fn WindowUi::window_height(_self : WindowUi) -> Float raise ImGuiError {
 ///|
 pub fn WindowUi::is_window_focused(
   _self : WindowUi,
-  flags? : FocusedFlags = FocusedFlags::none(),
+  flags? : Array[FocusedFlag] = [],
 ) -> Bool raise ImGuiError {
   ensure_current_context()
-  @bindings.im_gui_is_window_focused(flags.value())
+  @bindings.im_gui_is_window_focused(focused_flag_bits(flags))
 }
 
 ///|
 pub fn WindowUi::is_window_hovered(
   _self : WindowUi,
-  flags? : HoveredFlags = HoveredFlags::none(),
+  flags? : Array[HoveredFlag] = [],
 ) -> Bool raise ImGuiError {
   ensure_current_context()
-  @bindings.im_gui_is_window_hovered(flags.value())
+  @bindings.im_gui_is_window_hovered(hovered_flag_bits(flags))
 }
 
 ///|
@@ -4142,10 +3387,10 @@ pub fn WindowUi::with_style_var_float(
 /// Sets global color editor options.
 pub fn WindowUi::set_color_edit_options(
   _self : WindowUi,
-  flags : ColorEditFlags,
+  flags : Array[ColorEditFlag],
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  @bindings.im_gui_set_color_edit_options(flags.value())
+  @bindings.im_gui_set_color_edit_options(color_edit_flag_bits(flags))
 }
 
 ///|
@@ -4185,11 +3430,14 @@ pub fn WindowUi::menu_bar(
 pub fn WindowUi::tab_bar(
   _self : WindowUi,
   name : String,
-  flags? : TabBarFlags = TabBarFlags::none(),
+  flags? : Array[TabBarFlag] = [],
   body : (TabBarUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  let active = @bindings.im_gui_begin_tab_bar(utf8(name), flags.value())
+  let active = @bindings.im_gui_begin_tab_bar(
+    utf8(name),
+    tab_bar_flag_bits(flags),
+  )
   if active {
     defer @bindings.im_gui_end_tab_bar()
     body(TabBarUi::{  })
@@ -4202,11 +3450,15 @@ pub fn WindowUi::table(
   _self : WindowUi,
   name : String,
   columns : Int,
-  flags? : TableFlags = TableFlags::none(),
+  flags? : Array[TableFlag] = [],
   body : (TableUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  let active = @bindings.im_gui_begin_table(utf8(name), columns, flags.value())
+  let active = @bindings.im_gui_begin_table(
+    utf8(name),
+    columns,
+    table_flag_bits(flags),
+  )
   if active {
     defer @bindings.im_gui_end_table()
     body(TableUi::{  })
@@ -4300,12 +3552,12 @@ pub fn WindowUi::disabled(
 /// Pushes an item flag and pops it automatically.
 pub fn WindowUi::with_item_flag(
   _self : WindowUi,
-  flag : ItemFlags,
+  flag : ItemFlag,
   enabled : Bool,
   body : (WindowUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  @bindings.im_gui_push_item_flag(flag.value(), enabled)
+  @bindings.im_gui_push_item_flag(flag.to_int(), enabled)
   defer @bindings.im_gui_pop_item_flag()
   body(WindowUi::{  })
 }
@@ -4366,20 +3618,20 @@ pub fn WindowUi::button_repeat(
 pub fn WindowUi::open_popup(
   _self : WindowUi,
   name : String,
-  flags? : PopupFlags = PopupFlags::none(),
+  flags? : Array[PopupFlag] = [],
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  @bindings.im_gui_open_popup(utf8(name), flags.value())
+  @bindings.im_gui_open_popup(utf8(name), popup_flag_bits(flags))
 }
 
 ///|
 /// Opens a popup from the last item click.
 pub fn WindowUi::open_popup_on_item_click(
   _self : WindowUi,
-  flags? : PopupFlags = PopupFlags::mouse_button_right(),
+  flags? : Array[PopupFlag] = [PopupFlag::MouseButtonRight],
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  @bindings.im_gui_open_popup_on_item_click(None, flags.value())
+  @bindings.im_gui_open_popup_on_item_click(None, popup_flag_bits(flags))
 }
 
 ///|
@@ -4387,10 +3639,10 @@ pub fn WindowUi::open_popup_on_item_click(
 pub fn WindowUi::is_popup_open(
   _self : WindowUi,
   name : String,
-  flags? : PopupFlags = PopupFlags::none(),
+  flags? : Array[PopupFlag] = [],
 ) -> Bool raise ImGuiError {
   ensure_current_context()
-  @bindings.im_gui_is_popup_open(utf8(name), flags.value())
+  @bindings.im_gui_is_popup_open(utf8(name), popup_flag_bits(flags))
 }
 
 ///|
@@ -4398,11 +3650,11 @@ pub fn WindowUi::is_popup_open(
 pub fn WindowUi::popup(
   _self : WindowUi,
   name : String,
-  flags? : PopupFlags = PopupFlags::none(),
+  flags? : Array[PopupFlag] = [],
   body : (PopupUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  let active = @bindings.im_gui_begin_popup(utf8(name), flags.value())
+  let active = @bindings.im_gui_begin_popup(utf8(name), popup_flag_bits(flags))
   if active {
     defer @bindings.im_gui_end_popup()
     body(PopupUi::{  })
@@ -4413,11 +3665,14 @@ pub fn WindowUi::popup(
 /// Opens and closes the last item's context popup automatically when active.
 pub fn WindowUi::popup_context_item(
   _self : WindowUi,
-  flags? : PopupFlags = PopupFlags::mouse_button_right(),
+  flags? : Array[PopupFlag] = [PopupFlag::MouseButtonRight],
   body : (PopupUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  let active = @bindings.im_gui_begin_popup_context_item_ex(None, flags.value())
+  let active = @bindings.im_gui_begin_popup_context_item_ex(
+    None,
+    popup_flag_bits(flags),
+  )
   if active {
     defer @bindings.im_gui_end_popup()
     body(PopupUi::{  })
@@ -4428,13 +3683,13 @@ pub fn WindowUi::popup_context_item(
 /// Opens and closes the current window's context popup automatically when active.
 pub fn WindowUi::popup_context_window(
   _self : WindowUi,
-  flags? : PopupFlags = PopupFlags::mouse_button_right(),
+  flags? : Array[PopupFlag] = [PopupFlag::MouseButtonRight],
   body : (PopupUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   let active = @bindings.im_gui_begin_popup_context_window_ex(
     None,
-    flags.value(),
+    popup_flag_bits(flags),
   )
   if active {
     defer @bindings.im_gui_end_popup()
@@ -4446,11 +3701,14 @@ pub fn WindowUi::popup_context_window(
 /// Opens and closes the void context popup automatically when active.
 pub fn WindowUi::popup_context_void(
   _self : WindowUi,
-  flags? : PopupFlags = PopupFlags::mouse_button_right(),
+  flags? : Array[PopupFlag] = [PopupFlag::MouseButtonRight],
   body : (PopupUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  let active = @bindings.im_gui_begin_popup_context_void_ex(None, flags.value())
+  let active = @bindings.im_gui_begin_popup_context_void_ex(
+    None,
+    popup_flag_bits(flags),
+  )
   if active {
     defer @bindings.im_gui_end_popup()
     body(PopupUi::{  })
@@ -4463,7 +3721,7 @@ pub fn WindowUi::popup_modal(
   _self : WindowUi,
   name : String,
   open : Bool,
-  flags? : WindowFlags = WindowFlags::none(),
+  flags? : Array[WindowFlag] = [],
   body : (PopupUi) -> Unit raise ImGuiError,
 ) -> Bool raise ImGuiError {
   ensure_current_context()
@@ -4471,7 +3729,7 @@ pub fn WindowUi::popup_modal(
   let active = @bindings.im_gui_begin_popup_modal(
     utf8(name),
     Some(current),
-    flags.value(),
+    window_flag_bits(flags),
   )
   if active {
     defer @bindings.im_gui_end_popup()
@@ -4532,10 +3790,10 @@ pub fn WindowUi::set_item_tooltip(
 /// Returns whether the last item is hovered.
 pub fn WindowUi::is_item_hovered(
   _self : WindowUi,
-  flags? : HoveredFlags = HoveredFlags::none(),
+  flags? : Array[HoveredFlag] = [],
 ) -> Bool raise ImGuiError {
   ensure_current_context()
-  @bindings.im_gui_is_item_hovered(flags.value())
+  @bindings.im_gui_is_item_hovered(hovered_flag_bits(flags))
 }
 
 ///|
@@ -4554,9 +3812,12 @@ pub fn WindowUi::item_id(_self : WindowUi) -> UInt raise ImGuiError {
 }
 
 ///|
-pub fn WindowUi::item_flags(_self : WindowUi) -> ItemFlags raise ImGuiError {
+pub fn WindowUi::has_item_flag(
+  _self : WindowUi,
+  flag : ItemFlag,
+) -> Bool raise ImGuiError {
   ensure_current_context()
-  { bits: @bindings.im_gui_get_item_flags() }
+  (@bindings.im_gui_get_item_flags() & flag.to_int()) != 0
 }
 
 ///|
@@ -4565,14 +3826,14 @@ pub fn WindowUi::combo(
   _self : WindowUi,
   label : String,
   preview : String,
-  flags? : ComboFlags = ComboFlags::none(),
+  flags? : Array[ComboFlag] = [],
   body : (ComboUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   let active = @bindings.im_gui_begin_combo(
     utf8(label),
     utf8(preview),
-    flags.value(),
+    combo_flag_bits(flags),
   )
   if active {
     defer @bindings.im_gui_end_combo()
@@ -4585,11 +3846,14 @@ pub fn WindowUi::combo(
 pub fn WindowUi::tree_node(
   _self : WindowUi,
   label : String,
-  flags? : TreeNodeFlags = TreeNodeFlags::none(),
+  flags? : Array[TreeNodeFlag] = [],
   body : (TreeNodeUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  let active = @bindings.im_gui_tree_node_ex(utf8(label), flags.value())
+  let active = @bindings.im_gui_tree_node_ex(
+    utf8(label),
+    tree_node_flag_bits(flags),
+  )
   if active {
     defer @bindings.im_gui_tree_pop()
     body(TreeNodeUi::{  })
@@ -4601,11 +3865,11 @@ pub fn WindowUi::tree_node(
 pub fn WindowUi::collapsing_header(
   _self : WindowUi,
   label : String,
-  flags? : TreeNodeFlags = TreeNodeFlags::none(),
+  flags? : Array[TreeNodeFlag] = [],
   body : (WindowUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  if @bindings.im_gui_collapsing_header(utf8(label), flags.value()) {
+  if @bindings.im_gui_collapsing_header(utf8(label), tree_node_flag_bits(flags)) {
     body(WindowUi::{  })
   }
 }
@@ -4616,7 +3880,7 @@ pub fn WindowUi::collapsing_header_open(
   _self : WindowUi,
   label : String,
   open : Bool,
-  flags? : TreeNodeFlags = TreeNodeFlags::none(),
+  flags? : Array[TreeNodeFlag] = [],
   body : (WindowUi) -> Unit raise ImGuiError,
 ) -> Bool raise ImGuiError {
   ensure_current_context()
@@ -4624,7 +3888,7 @@ pub fn WindowUi::collapsing_header_open(
   if @bindings.im_gui_collapsing_header_bool_ptr(
       utf8(label),
       Some(current),
-      flags.value(),
+      tree_node_flag_bits(flags),
     ) {
     body(WindowUi::{  })
   }
@@ -4637,7 +3901,7 @@ pub fn WindowUi::selectable(
   _self : WindowUi,
   label : String,
   selected? : Bool = false,
-  flags? : SelectableFlags = SelectableFlags::none(),
+  flags? : Array[SelectableFlag] = [],
   body : () -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -4645,7 +3909,7 @@ pub fn WindowUi::selectable(
   if @bindings.im_gui_selectable_bool_ptr(
       utf8(label),
       Some(current),
-      flags.value(),
+      selectable_flag_bits(flags),
     ) {
     body()
   }
@@ -4702,11 +3966,15 @@ pub fn MenuUi::menu_item(
 pub fn TabBarUi::tab_item(
   _self : TabBarUi,
   label : String,
-  flags? : TabItemFlags = TabItemFlags::none(),
+  flags? : Array[TabItemFlag] = [],
   body : (TabItemUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  let active = @bindings.im_gui_begin_tab_item(utf8(label), None, flags.value())
+  let active = @bindings.im_gui_begin_tab_item(
+    utf8(label),
+    None,
+    tab_item_flag_bits(flags),
+  )
   if active {
     defer @bindings.im_gui_end_tab_item()
     body(TabItemUi::{  })
@@ -4719,7 +3987,7 @@ pub fn TabBarUi::tab_item_open(
   _self : TabBarUi,
   label : String,
   open : Bool,
-  flags? : TabItemFlags = TabItemFlags::none(),
+  flags? : Array[TabItemFlag] = [],
   body : (TabItemUi) -> Unit raise ImGuiError,
 ) -> Bool raise ImGuiError {
   ensure_current_context()
@@ -4727,7 +3995,7 @@ pub fn TabBarUi::tab_item_open(
   let active = @bindings.im_gui_begin_tab_item(
     utf8(label),
     Some(current),
-    flags.value(),
+    tab_item_flag_bits(flags),
   )
   if active {
     defer @bindings.im_gui_end_tab_item()
@@ -4759,11 +4027,15 @@ pub fn TabItemUi::table(
   _self : TabItemUi,
   name : String,
   columns : Int,
-  flags? : TableFlags = TableFlags::none(),
+  flags? : Array[TableFlag] = [],
   body : (TableUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  let active = @bindings.im_gui_begin_table(utf8(name), columns, flags.value())
+  let active = @bindings.im_gui_begin_table(
+    utf8(name),
+    columns,
+    table_flag_bits(flags),
+  )
   if active {
     defer @bindings.im_gui_end_table()
     body(TableUi::{  })
@@ -4775,14 +4047,14 @@ pub fn TabItemUi::table(
 pub fn TableUi::setup_column(
   _self : TableUi,
   label : String,
-  flags? : TableColumnFlags = TableColumnFlags::none(),
+  flags? : Array[TableColumnFlag] = [],
   init_width_or_weight? : Float = 0.0,
   user_id? : UInt = 0U,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   @bindings.im_gui_table_setup_column_ex(
     utf8(label),
-    flags.value(),
+    table_column_flag_bits(flags),
     init_width_or_weight,
     user_id,
   )
@@ -4827,11 +4099,11 @@ pub fn TableUi::header(
 /// Starts a new table row.
 pub fn TableUi::next_row(
   _self : TableUi,
-  flags? : TableRowFlags = TableRowFlags::none(),
+  flags? : Array[TableRowFlag] = [],
   min_height? : Float = 0.0,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  @bindings.im_gui_table_next_row_ex(flags.value(), min_height)
+  @bindings.im_gui_table_next_row_ex(table_row_flag_bits(flags), min_height)
 }
 
 ///|
@@ -4893,12 +4165,13 @@ pub fn TableUi::row_index(_self : TableUi) -> Int raise ImGuiError {
 }
 
 ///|
-pub fn TableUi::column_flags(
+pub fn TableUi::column_has_flag(
   _self : TableUi,
   column : Int,
-) -> TableColumnFlags raise ImGuiError {
+  flag : TableColumnFlag,
+) -> Bool raise ImGuiError {
   ensure_current_context()
-  { bits: @bindings.im_gui_table_get_column_flags(column) }
+  (@bindings.im_gui_table_get_column_flags(column) & flag.to_int()) != 0
 }
 
 ///|
@@ -4920,14 +4193,14 @@ pub fn TableUi::selectable(
   _self : TableUi,
   label : String,
   selected? : Bool = false,
-  flags? : SelectableFlags = SelectableFlags::none(),
+  flags? : Array[SelectableFlag] = [],
 ) -> Bool raise ImGuiError {
   ensure_current_context()
   let current = Ref(selected)
   @bindings.im_gui_selectable_bool_ptr(
     utf8(label),
     Some(current),
-    flags.value(),
+    selectable_flag_bits(flags),
   )
 }
 
@@ -4975,7 +4248,7 @@ pub fn ComboUi::selectable(
   _self : ComboUi,
   label : String,
   selected? : Bool = false,
-  flags? : SelectableFlags = SelectableFlags::none(),
+  flags? : Array[SelectableFlag] = [],
   body : () -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -4983,7 +4256,7 @@ pub fn ComboUi::selectable(
   if @bindings.im_gui_selectable_bool_ptr(
       utf8(label),
       Some(current),
-      flags.value(),
+      selectable_flag_bits(flags),
     ) {
     body()
   }
