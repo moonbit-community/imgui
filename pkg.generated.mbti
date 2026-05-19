@@ -7,71 +7,19 @@ import {
 }
 
 // Values
-pub fn begin_menu(String, enabled? : Bool) -> Bool raise ImGuiError
-
-pub fn begin_menu_bar() -> Bool raise ImGuiError
-
-pub fn begin_tab_bar(String, flags? : TabBarFlags) -> Bool raise ImGuiError
-
-pub fn begin_tab_item(String) -> Bool raise ImGuiError
-
-pub fn begin_table(String, Int, flags? : TableFlags) -> Bool raise ImGuiError
-
-pub fn begin_window(String, flags? : WindowFlags) -> Bool raise ImGuiError
-
-pub fn button(String) -> Bool raise ImGuiError
-
-pub fn checkbox(String, Bool) -> CheckboxResult raise ImGuiError
-
 pub fn clear_current_context() -> Unit
 
-pub fn collapsing_header(String, flags? : TreeNodeFlags) -> Bool raise ImGuiError
-
 pub fn dear_imgui_version_number() -> Int
-
-pub fn end_frame() -> Unit raise ImGuiError
-
-pub fn end_menu() -> Unit raise ImGuiError
-
-pub fn end_menu_bar() -> Unit raise ImGuiError
-
-pub fn end_tab_bar() -> Unit raise ImGuiError
-
-pub fn end_tab_item() -> Unit raise ImGuiError
-
-pub fn end_table() -> Unit raise ImGuiError
-
-pub fn end_window() -> Unit raise ImGuiError
 
 pub fn frame_count() -> Int
 
 pub fn has_current_context() -> Bool
 
-pub fn menu_item(String, selected? : Bool) -> Bool raise ImGuiError
-
 pub fn new_frame() -> Unit raise ImGuiError
 
 pub fn render() -> @bindings.ImDrawData raise ImGuiError
 
-pub fn same_line() -> Unit raise ImGuiError
-
-pub fn selectable(String, selected? : Bool, flags? : SelectableFlags) -> Bool raise ImGuiError
-
-pub fn separator() -> Unit raise ImGuiError
-
-pub fn show_demo_window(open? : Bool) -> Unit raise ImGuiError
-
-pub fn slider_float(String, Float, Float, Float) -> FloatEditResult raise ImGuiError
-
-pub fn table_next_column() -> Bool raise ImGuiError
-
-pub fn table_next_row() -> Unit raise ImGuiError
-
-pub fn text(String) -> Unit raise ImGuiError
-
-pub fn tree_node(String, flags? : TreeNodeFlags) -> Bool raise ImGuiError
-
-pub fn tree_pop() -> Unit raise ImGuiError
+pub fn ui() -> Ui
 
 // Errors
 pub(all) suberror ImGuiError {
@@ -79,11 +27,6 @@ pub(all) suberror ImGuiError {
 } derive(Eq, @debug.Debug)
 
 // Types and methods
-pub(all) struct CheckboxResult {
-  changed : Bool
-  checked : Bool
-} derive(Eq, @debug.Debug)
-
 pub(all) struct Context {
   raw : @bindings.ImGuiContext
 }
@@ -92,17 +35,14 @@ pub fn Context::destroy(Self) -> Unit
 pub fn Context::make_current(Self) -> Unit
 pub fn Context::raw(Self) -> @bindings.ImGuiContext
 
-pub(all) struct FloatEditResult {
-  changed : Bool
-  value : Float
-} derive(Eq, @debug.Debug)
+pub struct MenuBarUi {
+}
+pub fn MenuBarUi::menu(Self, String, enabled? : Bool, (MenuUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn MenuBarUi::menu_item(Self, String, selected? : Bool, () -> Unit raise ImGuiError) -> Unit raise ImGuiError
 
-pub(all) struct InputTextFlags {
-  bits : Int
-} derive(Eq, @debug.Debug)
-pub fn InputTextFlags::none() -> Self
-pub fn InputTextFlags::read_only() -> Self
-pub fn InputTextFlags::value(Self) -> Int
+pub struct MenuUi {
+}
+pub fn MenuUi::menu_item(Self, String, selected? : Bool, () -> Unit raise ImGuiError) -> Unit raise ImGuiError
 
 pub(all) struct SelectableFlags {
   bits : Int
@@ -116,6 +56,16 @@ pub(all) struct TabBarFlags {
 pub fn TabBarFlags::none() -> Self
 pub fn TabBarFlags::value(Self) -> Int
 
+pub struct TabBarUi {
+}
+pub fn TabBarUi::tab_item(Self, String, (TabItemUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+
+pub struct TabItemUi {
+}
+pub fn TabItemUi::separator(Self) -> Unit raise ImGuiError
+pub fn TabItemUi::table(Self, String, Int, flags? : TableFlags, (TableUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn TabItemUi::text(Self, String) -> Unit raise ImGuiError
+
 pub(all) struct TableFlags {
   bits : Int
 } derive(Eq, @debug.Debug)
@@ -125,14 +75,16 @@ pub fn TableFlags::none() -> Self
 pub fn TableFlags::row_bg() -> Self
 pub fn TableFlags::value(Self) -> Int
 
-pub(all) struct TreeNodeFlags {
-  bits : Int
-} derive(Eq, @debug.Debug)
-pub fn TreeNodeFlags::combine(Self, Self) -> Self
-pub fn TreeNodeFlags::default_open() -> Self
-pub fn TreeNodeFlags::leaf() -> Self
-pub fn TreeNodeFlags::none() -> Self
-pub fn TreeNodeFlags::value(Self) -> Int
+pub struct TableUi {
+}
+pub fn TableUi::next_column(Self) -> Bool raise ImGuiError
+pub fn TableUi::next_row(Self) -> Unit raise ImGuiError
+pub fn TableUi::selectable(Self, String, selected? : Bool, flags? : SelectableFlags) -> Bool raise ImGuiError
+pub fn TableUi::text(Self, String) -> Unit raise ImGuiError
+
+pub struct Ui {
+}
+pub fn Ui::window(Self, String, flags? : WindowFlags, (WindowUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 
 pub(all) struct WindowFlags {
   bits : Int
@@ -146,6 +98,18 @@ pub fn WindowFlags::no_scrollbar() -> Self
 pub fn WindowFlags::no_title_bar() -> Self
 pub fn WindowFlags::none() -> Self
 pub fn WindowFlags::value(Self) -> Int
+
+pub struct WindowUi {
+}
+pub fn WindowUi::button(Self, String, () -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::checkbox(Self, String, Bool, (Bool) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::menu_bar(Self, (MenuBarUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::same_line(Self) -> Unit raise ImGuiError
+pub fn WindowUi::separator(Self) -> Unit raise ImGuiError
+pub fn WindowUi::slider_float(Self, String, Float, Float, Float, (Float) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::tab_bar(Self, String, flags? : TabBarFlags, (TabBarUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::table(Self, String, Int, flags? : TableFlags, (TableUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::text(Self, String) -> Unit raise ImGuiError
 
 // Type aliases
 pub using @bindings {type ImDrawData as DrawData}

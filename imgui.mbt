@@ -12,24 +12,40 @@ pub(all) struct Context {
 }
 
 ///|
+/// Root UI builder for scoped, callback-style Dear ImGui calls.
+pub struct Ui {}
+
+///|
+/// UI operations available inside a window.
+pub struct WindowUi {}
+
+///|
+/// UI operations available inside a menu bar.
+pub struct MenuBarUi {}
+
+///|
+/// UI operations available inside a menu.
+pub struct MenuUi {}
+
+///|
+/// UI operations available inside a tab bar.
+pub struct TabBarUi {}
+
+///|
+/// UI operations available inside a tab item.
+pub struct TabItemUi {}
+
+///|
+/// UI operations available inside a table.
+pub struct TableUi {}
+
+///|
 /// Raw draw data handle returned after rendering.
 pub type DrawData = @bindings.ImDrawData
 
 ///|
 /// ImGui window flags bitset.
 pub(all) struct WindowFlags {
-  bits : Int
-} derive(Eq, Debug)
-
-///|
-/// ImGui input text flags bitset.
-pub(all) struct InputTextFlags {
-  bits : Int
-} derive(Eq, Debug)
-
-///|
-/// ImGui tree node flags bitset.
-pub(all) struct TreeNodeFlags {
   bits : Int
 } derive(Eq, Debug)
 
@@ -49,20 +65,6 @@ pub(all) struct TableFlags {
 /// ImGui tab bar flags bitset.
 pub(all) struct TabBarFlags {
   bits : Int
-} derive(Eq, Debug)
-
-///|
-/// Result of a checkbox call.
-pub(all) struct CheckboxResult {
-  changed : Bool
-  checked : Bool
-} derive(Eq, Debug)
-
-///|
-/// Result of a floating point edit call.
-pub(all) struct FloatEditResult {
-  changed : Bool
-  value : Float
 } derive(Eq, Debug)
 
 ///|
@@ -110,49 +112,6 @@ pub fn WindowFlags::combine(
   self : WindowFlags,
   other : WindowFlags,
 ) -> WindowFlags {
-  { bits: self.value() | other.value() }
-}
-
-///|
-pub fn InputTextFlags::none() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_none() }
-}
-
-///|
-pub fn InputTextFlags::read_only() -> InputTextFlags {
-  { bits: @bindings.im_gui_input_text_flags_read_only() }
-}
-
-///|
-pub fn InputTextFlags::value(self : InputTextFlags) -> Int {
-  self.bits
-}
-
-///|
-pub fn TreeNodeFlags::none() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_none() }
-}
-
-///|
-pub fn TreeNodeFlags::default_open() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_default_open() }
-}
-
-///|
-pub fn TreeNodeFlags::leaf() -> TreeNodeFlags {
-  { bits: @bindings.im_gui_tree_node_flags_leaf() }
-}
-
-///|
-pub fn TreeNodeFlags::value(self : TreeNodeFlags) -> Int {
-  self.bits
-}
-
-///|
-pub fn TreeNodeFlags::combine(
-  self : TreeNodeFlags,
-  other : TreeNodeFlags,
-) -> TreeNodeFlags {
   { bits: self.value() | other.value() }
 }
 
@@ -254,13 +213,6 @@ pub fn new_frame() -> Unit raise ImGuiError {
 }
 
 ///|
-/// Ends the current frame without rendering.
-pub fn end_frame() -> Unit raise ImGuiError {
-  ensure_current_context()
-  @bindings.im_gui_end_frame()
-}
-
-///|
 /// Renders the current frame and returns draw data when available.
 pub fn render() -> DrawData raise ImGuiError {
   ensure_current_context()
@@ -275,152 +227,261 @@ pub fn frame_count() -> Int {
 }
 
 ///|
-/// Starts an ImGui window.
-pub fn begin_window(
+/// Returns a root UI builder.
+pub fn ui() -> Ui {
+  Ui::{  }
+}
+
+///|
+/// Opens a window, runs `body` when visible, and always closes the ImGui scope.
+pub fn Ui::window(
+  _self : Ui,
   title : String,
   flags? : WindowFlags = WindowFlags::none(),
-) -> Bool raise ImGuiError {
+  body : (WindowUi) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
   ensure_current_context()
-  @bindings.im_gui_begin(utf8(title), None, flags.value())
+  let active = @bindings.im_gui_begin(utf8(title), None, flags.value())
+  defer @bindings.im_gui_end()
+  if active {
+    body(WindowUi::{  })
+  }
 }
 
 ///|
-/// Ends the current ImGui window.
-pub fn end_window() -> Unit raise ImGuiError {
-  ensure_current_context()
-  @bindings.im_gui_end()
-}
-
-///|
-/// Adds a text item.
-pub fn text(value : String) -> Unit raise ImGuiError {
+/// Emits text inside a window.
+pub fn WindowUi::text(
+  _self : WindowUi,
+  value : String,
+) -> Unit raise ImGuiError {
   ensure_current_context()
   @bindings.im_gui_text_unformatted(utf8(value))
 }
 
 ///|
-/// Adds a button and returns whether it was activated.
-pub fn button(label : String) -> Bool raise ImGuiError {
+/// Runs `body` when the button is activated.
+pub fn WindowUi::button(
+  _self : WindowUi,
+  label : String,
+  body : () -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
   ensure_current_context()
-  @bindings.im_gui_button(utf8(label))
+  if @bindings.im_gui_button(utf8(label)) {
+    body()
+  }
 }
 
 ///|
-/// Adds a checkbox and returns the updated value.
-pub fn checkbox(
+/// Runs `body` with the updated checked value when the checkbox changes.
+pub fn WindowUi::checkbox(
+  _self : WindowUi,
   label : String,
   checked : Bool,
-) -> CheckboxResult raise ImGuiError {
+  body : (Bool) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
   ensure_current_context()
   let value = Ref(checked)
-  let changed = @bindings.im_gui_checkbox(utf8(label), Some(value))
-  { changed, checked: value.val }
+  if @bindings.im_gui_checkbox(utf8(label), Some(value)) {
+    body(value.val)
+  }
 }
 
 ///|
-/// Adds a floating point slider and returns the updated value.
-pub fn slider_float(
+/// Runs `body` with the updated value when the slider changes.
+pub fn WindowUi::slider_float(
+  _self : WindowUi,
   label : String,
   value : Float,
   min : Float,
   max : Float,
-) -> FloatEditResult raise ImGuiError {
+  body : (Float) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
   ensure_current_context()
   let current = Ref(value)
-  let changed = @bindings.im_gui_slider_float(
-    utf8(label),
-    Some(current),
-    min,
-    max,
-  )
-  { changed, value: current.val }
+  if @bindings.im_gui_slider_float(utf8(label), Some(current), min, max) {
+    body(current.val)
+  }
 }
 
 ///|
-/// Keeps the next item on the same line.
-pub fn same_line() -> Unit raise ImGuiError {
+/// Keeps the next window item on the same line.
+pub fn WindowUi::same_line(_self : WindowUi) -> Unit raise ImGuiError {
   ensure_current_context()
   @bindings.im_gui_same_line()
 }
 
 ///|
-/// Adds a visual separator.
-pub fn separator() -> Unit raise ImGuiError {
+/// Adds a separator inside a window.
+pub fn WindowUi::separator(_self : WindowUi) -> Unit raise ImGuiError {
   ensure_current_context()
   @bindings.im_gui_separator()
 }
 
 ///|
-/// Starts a menu bar.
-pub fn begin_menu_bar() -> Bool raise ImGuiError {
+/// Opens a menu bar and closes it automatically.
+pub fn WindowUi::menu_bar(
+  _self : WindowUi,
+  body : (MenuBarUi) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
   ensure_current_context()
-  @bindings.im_gui_begin_menu_bar()
+  let active = @bindings.im_gui_begin_menu_bar()
+  if active {
+    defer @bindings.im_gui_end_menu_bar()
+    body(MenuBarUi::{  })
+  }
 }
 
 ///|
-/// Ends the current menu bar.
-pub fn end_menu_bar() -> Unit raise ImGuiError {
+/// Opens a tab bar and closes it automatically.
+pub fn WindowUi::tab_bar(
+  _self : WindowUi,
+  name : String,
+  flags? : TabBarFlags = TabBarFlags::none(),
+  body : (TabBarUi) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
   ensure_current_context()
-  @bindings.im_gui_end_menu_bar()
+  let active = @bindings.im_gui_begin_tab_bar(utf8(name), flags.value())
+  if active {
+    defer @bindings.im_gui_end_tab_bar()
+    body(TabBarUi::{  })
+  }
 }
 
 ///|
-/// Starts a menu.
-pub fn begin_menu(
+/// Opens a table and closes it automatically.
+pub fn WindowUi::table(
+  _self : WindowUi,
+  name : String,
+  columns : Int,
+  flags? : TableFlags = TableFlags::none(),
+  body : (TableUi) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let active = @bindings.im_gui_begin_table(utf8(name), columns, flags.value())
+  if active {
+    defer @bindings.im_gui_end_table()
+    body(TableUi::{  })
+  }
+}
+
+///|
+/// Opens a menu from a menu bar and closes it automatically.
+pub fn MenuBarUi::menu(
+  _self : MenuBarUi,
   label : String,
   enabled? : Bool = true,
-) -> Bool raise ImGuiError {
+  body : (MenuUi) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
   ensure_current_context()
-  @bindings.im_gui_begin_menu_ex(utf8(label), enabled)
+  let active = @bindings.im_gui_begin_menu_ex(utf8(label), enabled)
+  if active {
+    defer @bindings.im_gui_end_menu()
+    body(MenuUi::{  })
+  }
 }
 
 ///|
-/// Ends the current menu.
-pub fn end_menu() -> Unit raise ImGuiError {
-  ensure_current_context()
-  @bindings.im_gui_end_menu()
-}
-
-///|
-/// Adds a menu item and returns whether it was activated.
-pub fn menu_item(
+/// Runs `body` when a menu item is activated.
+pub fn MenuBarUi::menu_item(
+  _self : MenuBarUi,
   label : String,
   selected? : Bool = false,
-) -> Bool raise ImGuiError {
+  body : () -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
   ensure_current_context()
-  @bindings.im_gui_menu_item_ex(utf8(label), None, selected, true)
+  if @bindings.im_gui_menu_item_ex(utf8(label), None, selected, true) {
+    body()
+  }
 }
 
 ///|
-/// Starts a tree node.
-pub fn tree_node(
+/// Runs `body` when a menu item is activated.
+pub fn MenuUi::menu_item(
+  _self : MenuUi,
   label : String,
-  flags? : TreeNodeFlags = TreeNodeFlags::none(),
-) -> Bool raise ImGuiError {
+  selected? : Bool = false,
+  body : () -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
   ensure_current_context()
-  @bindings.im_gui_tree_node_ex(utf8(label), flags.value())
+  if @bindings.im_gui_menu_item_ex(utf8(label), None, selected, true) {
+    body()
+  }
 }
 
 ///|
-/// Ends the current tree node.
-pub fn tree_pop() -> Unit raise ImGuiError {
-  ensure_current_context()
-  @bindings.im_gui_tree_pop()
-}
-
-///|
-/// Adds a collapsing header.
-pub fn collapsing_header(
+/// Opens a tab item and closes it automatically.
+pub fn TabBarUi::tab_item(
+  _self : TabBarUi,
   label : String,
-  flags? : TreeNodeFlags = TreeNodeFlags::none(),
-) -> Bool raise ImGuiError {
+  body : (TabItemUi) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
   ensure_current_context()
-  @bindings.im_gui_collapsing_header(utf8(label), flags.value())
+  let active = @bindings.im_gui_begin_tab_item(utf8(label), None, 0)
+  if active {
+    defer @bindings.im_gui_end_tab_item()
+    body(TabItemUi::{  })
+  }
 }
 
 ///|
-/// Adds a selectable item.
-pub fn selectable(
+/// Emits text inside a tab item.
+pub fn TabItemUi::text(
+  _self : TabItemUi,
+  value : String,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_text_unformatted(utf8(value))
+}
+
+///|
+/// Adds a separator inside a tab item.
+pub fn TabItemUi::separator(_self : TabItemUi) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_separator()
+}
+
+///|
+/// Opens a table inside a tab item and closes it automatically.
+pub fn TabItemUi::table(
+  _self : TabItemUi,
+  name : String,
+  columns : Int,
+  flags? : TableFlags = TableFlags::none(),
+  body : (TableUi) -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
+  ensure_current_context()
+  let active = @bindings.im_gui_begin_table(utf8(name), columns, flags.value())
+  if active {
+    defer @bindings.im_gui_end_table()
+    body(TableUi::{  })
+  }
+}
+
+///|
+/// Starts a new table row.
+pub fn TableUi::next_row(_self : TableUi) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_table_next_row()
+}
+
+///|
+/// Moves to the next table column.
+pub fn TableUi::next_column(_self : TableUi) -> Bool raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_table_next_column()
+}
+
+///|
+/// Emits text inside a table.
+pub fn TableUi::text(_self : TableUi, value : String) -> Unit raise ImGuiError {
+  ensure_current_context()
+  @bindings.im_gui_text_unformatted(utf8(value))
+}
+
+///|
+/// Adds a selectable item inside a table.
+pub fn TableUi::selectable(
+  _self : TableUi,
   label : String,
   selected? : Bool = false,
   flags? : SelectableFlags = SelectableFlags::none(),
@@ -432,77 +493,6 @@ pub fn selectable(
     flags.value(),
     @bindings.ImVec2::null(),
   )
-}
-
-///|
-/// Starts a table.
-pub fn begin_table(
-  name : String,
-  columns : Int,
-  flags? : TableFlags = TableFlags::none(),
-) -> Bool raise ImGuiError {
-  ensure_current_context()
-  @bindings.im_gui_begin_table(utf8(name), columns, flags.value())
-}
-
-///|
-/// Starts a new table row.
-pub fn table_next_row() -> Unit raise ImGuiError {
-  ensure_current_context()
-  @bindings.im_gui_table_next_row()
-}
-
-///|
-/// Moves to the next table column.
-pub fn table_next_column() -> Bool raise ImGuiError {
-  ensure_current_context()
-  @bindings.im_gui_table_next_column()
-}
-
-///|
-/// Ends the current table.
-pub fn end_table() -> Unit raise ImGuiError {
-  ensure_current_context()
-  @bindings.im_gui_end_table()
-}
-
-///|
-/// Starts a tab bar.
-pub fn begin_tab_bar(
-  name : String,
-  flags? : TabBarFlags = TabBarFlags::none(),
-) -> Bool raise ImGuiError {
-  ensure_current_context()
-  @bindings.im_gui_begin_tab_bar(utf8(name), flags.value())
-}
-
-///|
-/// Starts a tab item.
-pub fn begin_tab_item(label : String) -> Bool raise ImGuiError {
-  ensure_current_context()
-  @bindings.im_gui_begin_tab_item(utf8(label), None, 0)
-}
-
-///|
-/// Ends the current tab item.
-pub fn end_tab_item() -> Unit raise ImGuiError {
-  ensure_current_context()
-  @bindings.im_gui_end_tab_item()
-}
-
-///|
-/// Ends the current tab bar.
-pub fn end_tab_bar() -> Unit raise ImGuiError {
-  ensure_current_context()
-  @bindings.im_gui_end_tab_bar()
-}
-
-///|
-/// Adds Dear ImGui's demo window.
-pub fn show_demo_window(open? : Bool = true) -> Unit raise ImGuiError {
-  ensure_current_context()
-  let value = Ref(open)
-  @bindings.im_gui_show_demo_window(Some(value))
 }
 
 ///|

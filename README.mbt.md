@@ -1,31 +1,11 @@
 # moonbit-community/imgui
 
-Native MoonBit bindings for Dear ImGui.
+MoonBit bindings for Dear ImGui on the native backend.
 
-This repository intentionally exposes two library packages:
-
-- `moonbit-community/imgui/bindings`: generated, mechanical extern bindings for
-  the C API emitted by `dear_bindings`.
-- `moonbit-community/imgui`: a small user-facing wrapper built on top of
-  `bindings`.
-
-Backend bindings are opt-in subpackages under `moonbit-community/imgui/bindings`,
-for example `moonbit-community/imgui/bindings/glfw` and
-`moonbit-community/imgui/bindings/opengl3`.
-
-`bindings` does not contain hand-written C, C++, or MoonBit helper code. It is
-generated from `bindings/dcimgui.json` and follows MoonBit native
-ABI rules directly: `Bytes` for non-null UTF-8 `char*`, `Ref[T]` for non-null
-primitive `T*`, `Option[Ref[T]]` for nullable primitive `T*`, and direct
-`#external` handle types for C pointers represented by external types. The
-generated runtime source only provides a null external handle constructor used
-by `T::null()`.
-
-The generated core Dear Bindings C API output is kept directly under
-`bindings/`. Generated backend Dear Bindings output is kept directly in the
-matching backend package directory, such as `bindings/glfw/` or
-`bindings/opengl3/`. Dear ImGui and the Dear Bindings generator are pinned as
-git submodules under `bindings/upstream/`.
+The top-level `moonbit-community/imgui` package provides a small, scoped API for
+building immediate-mode UI from MoonBit. It is designed for application code:
+windows, menus, tabs, tables, and widgets are used through trailing callbacks,
+and matching Dear ImGui scope close calls are handled automatically.
 
 ## Example
 
@@ -33,100 +13,87 @@ git submodules under `bindings/upstream/`.
 let context = @imgui.Context::create()
 defer context.destroy()
 
-try! @imgui.new_frame()
-if try! @imgui.begin_window("MoonBit Dear ImGui") {
-  try! @imgui.text("Hello from MoonBit")
-  ignore(try! @imgui.button("Run"))
+fn render_ui(state : State) -> Unit raise @imgui.ImGuiError {
+  let ui = @imgui.ui()
+  ui.window("MoonBit Dear ImGui", flags=@imgui.WindowFlags::menu_bar()) <| ui => {
+    ui.menu_bar() <| ui => {
+      ui.menu_item("Increment counter") <| () => {
+        state.counter = state.counter + 1
+      }
+    }
+
+    ui.text("Hello from MoonBit")
+    ui.checkbox("Enabled", state.enabled) <| value => {
+      state.enabled = value
+    }
+    ui.slider_float("Value", state.value, 0.0, 1.0) <| value => {
+      state.value = value
+    }
+    ui.button("Run") <| () => {
+      state.counter = state.counter + 1
+    }
+  }
 }
-try! @imgui.end_window()
+
+try! @imgui.new_frame()
+try! render_ui(state)
 ignore(try! @imgui.render())
 ```
 
+## Scoped UI
+
+- `ui.window(...) <| ui => { ... }` opens a window and closes it automatically.
+- `ui.menu_bar(...)`, `ui.tab_bar(...)`, and `ui.table(...)` close their scopes
+  automatically.
+- Widgets with values pass the updated value directly to the callback:
+  `checkbox(... ) <| value => { ... }` and
+  `slider_float(... ) <| value => { ... }`.
+- Buttons and menu items run their callback only when activated.
+
 ## Packages
 
-### `moonbit-community/imgui/bindings`
+- `moonbit-community/imgui`: user-facing API.
+- `moonbit-community/imgui/bindings/glfw`: GLFW platform backend bindings.
+- `moonbit-community/imgui/bindings/opengl3`: OpenGL3 renderer backend bindings.
 
-Generated direct extern declarations for the Dear Bindings C API. The package
-also links the generated `dcimgui.cpp` file and upstream Dear ImGui source
-files. Unsupported ABI shapes are reported in
-`bindings/generated_coverage.md` instead of being patched with custom C++ glue.
+The low-level generated binding package is available as
+`moonbit-community/imgui/bindings` for advanced users who need direct access to
+Dear ImGui C API symbols.
 
-### `moonbit-community/imgui`
+## Run The Window Example
 
-User-facing convenience API with context lifecycle, common widgets, basic
-bitflag wrappers, and context checks.
-
-### Backend Binding Packages
-
-Backend packages expose direct extern bindings for platform and renderer
-integration. They are intentionally separate from `imgui/bindings` so the main
-binding package stays limited to Dear ImGui's public C API.
-
-## Build
-
-Initialize submodules before building:
+Initialize submodules first:
 
 ```bash
 git submodule update --init --recursive
 ```
 
-Check the module:
-
-```bash
-moon check --target native
-```
-
-Run tests. The GLFW/OpenGL3 example is part of the module, so GLFW must be
-available when running the full native test build:
-
-```bash
-moon test --target native
-```
-
-Run the basic executable example:
-
-```bash
-moon run examples/basic --target native
-```
-
-Run the GLFW/OpenGL3 window example after installing GLFW. On macOS with
-Homebrew:
+Install GLFW. On macOS with Homebrew:
 
 ```bash
 brew install glfw
 ```
 
-Then start the real window example:
+Then run the GLFW/OpenGL3 example:
 
 ```bash
 moon run examples/glfw_opengl3 --target native
 ```
 
-This example opens a native GLFW window and renders MoonBit-authored interactive
-UI: checkboxes, a slider, buttons, menus, tabs, a table, and a secondary window.
-It does not call Dear ImGui's official demo window.
+The example opens a native window and renders MoonBit-authored interactive UI:
+checkboxes, a slider, buttons, menus, tabs, a table, and a secondary window.
 
-## Regeneration
-
-Regenerate the MoonBit extern declarations after updating
-`bindings/dcimgui.json`:
+## Validate
 
 ```bash
-python3 tools/generate_bindings.py \
-  --metadata bindings/dcimgui.json \
-  --moonbit-out bindings/generated.mbt \
-  --coverage-out bindings/generated_coverage.md \
-  --c-out bindings/generated_runtime.cpp
+moon check --target native
+moon test --target native
 ```
 
-## Scope
+## Design Notes
 
-- `imgui.h` is in scope.
-- `imgui_internal.h` is out of scope.
-- C varargs and C++ struct-by-value returns are not ABI-direct with the supplied
-  MoonBit ABI and are listed as unsupported in the generated coverage report.
-- Backend APIs are kept in separate opt-in packages under `imgui/bindings/*`.
-  They are not included in the core `imgui/bindings` package.
+Binding generation, ABI rules, and package boundary details are documented in
+`bindings/design.md`.
 
 Dear ImGui source is MIT licensed. Dear Bindings is MIT licensed. The MoonBit
 wrapper code in this repository is Apache-2.0 licensed.

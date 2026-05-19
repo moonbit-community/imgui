@@ -95,111 +95,93 @@ fn main {
 
 ///|
 fn render_ui(state : DemoState) -> Unit raise @imgui.ImGuiError {
-  if @imgui.begin_window(
-      "MoonBit ImGui controls",
-      flags=@imgui.WindowFlags::menu_bar(),
-    ) {
-    if @imgui.begin_menu_bar() {
-      if @imgui.begin_menu("Actions") {
-        if @imgui.menu_item("Increment counter") {
-          state.counter = state.counter + 1
-        }
-        if @imgui.menu_item("Toggle details", selected=state.show_another) {
-          state.show_another = !state.show_another
-        }
-        @imgui.end_menu()
+  let ui = @imgui.ui()
+  ui.window("MoonBit ImGui controls", flags=@imgui.WindowFlags::menu_bar()) <| ui => {
+    ui.menu_bar() <| ui => {
+      ui.menu_item("Increment counter") <| () => {
+        state.counter = state.counter + 1
       }
-      @imgui.end_menu_bar()
+      ui.menu_item("Toggle details", selected=state.show_another) <| () => {
+        state.show_another = !state.show_another
+      }
     }
 
-    @imgui.text("This window is rendered from MoonBit through Dear ImGui.")
+    ui.text("This window is rendered from MoonBit through Dear ImGui.")
 
-    let another = @imgui.checkbox("Show another window", state.show_another)
-    if another.changed {
-      state.show_another = another.checked
+    ui.checkbox("Show another window", state.show_another) <| value => {
+      state.show_another = value
     }
 
-    let enabled = @imgui.checkbox("Enabled", state.enabled)
-    if enabled.changed {
-      state.enabled = enabled.checked
+    ui.checkbox("Enabled", state.enabled) <| value => { state.enabled = value }
+
+    ui.checkbox("Show live metrics", state.show_metrics) <| value => {
+      state.show_metrics = value
     }
 
-    let metrics = @imgui.checkbox("Show live metrics", state.show_metrics)
-    if metrics.changed {
-      state.show_metrics = metrics.checked
+    ui.slider_float("Float value", state.slider, 0.0, 1.0) <| value => {
+      state.slider = value
     }
 
-    let slider = @imgui.slider_float("Float value", state.slider, 0.0, 1.0)
-    if slider.changed {
-      state.slider = slider.value
-    }
-
-    if @imgui.button("Increment counter") {
+    ui.button("Increment counter") <| () => {
       state.counter = state.counter + 1
     }
-    @imgui.same_line()
-    @imgui.text("counter = \{state.counter}")
+    ui.same_line()
+    ui.text("counter = \{state.counter}")
 
-    @imgui.separator()
-    if @imgui.begin_tab_bar("main-tabs") {
-      if @imgui.begin_tab_item("State") {
-        @imgui.text("enabled = \{state.enabled}")
-        @imgui.text("slider = \{state.slider}")
-        @imgui.text("selected row = \{state.selected_row}")
-        @imgui.end_tab_item()
+    ui.separator()
+    ui.tab_bar("main-tabs") <| ui => {
+      ui.tab_item("State") <| ui => {
+        ui.text("enabled = \{state.enabled}")
+        ui.text("slider = \{state.slider}")
+        ui.text("selected row = \{state.selected_row}")
       }
-      if @imgui.begin_tab_item("Rows") {
-        render_rows(state)
-        @imgui.end_tab_item()
-      }
-      @imgui.end_tab_bar()
+      ui.tab_item("Rows") <| ui => { render_rows(ui, state) }
     }
 
     if state.show_metrics {
-      @imgui.separator()
-      @imgui.text("frame = \{@imgui.frame_count()}")
+      ui.separator()
+      ui.text("frame = \{@imgui.frame_count()}")
     }
   }
-  @imgui.end_window()
 
   if state.show_another {
-    if @imgui.begin_window("Another MoonBit window") {
-      @imgui.text("This window can be toggled from the main controls.")
-      if @imgui.button("Close") {
-        state.show_another = false
-      }
+    ui.window("Another MoonBit window") <| ui => {
+      ui.text("This window can be toggled from the main controls.")
+      ui.button("Close") <| () => { state.show_another = false }
     }
-    @imgui.end_window()
   }
 }
 
 ///|
-fn render_rows(state : DemoState) -> Unit raise @imgui.ImGuiError {
-  if @imgui.begin_table(
-      "interactive-table",
-      2,
-      flags=@imgui.TableFlags::borders().combine(@imgui.TableFlags::row_bg()),
-    ) {
-    render_row(state, 1, "First")
-    render_row(state, 2, "Second")
-    render_row(state, 3, "Third")
-    @imgui.end_table()
+fn render_rows(
+  ui : @imgui.TabItemUi,
+  state : DemoState,
+) -> Unit raise @imgui.ImGuiError {
+  ui.table(
+    "interactive-table",
+    2,
+    flags=@imgui.TableFlags::borders().combine(@imgui.TableFlags::row_bg()),
+  ) <| ui => {
+    render_row(ui, state, 1, "First")
+    render_row(ui, state, 2, "Second")
+    render_row(ui, state, 3, "Third")
   }
 }
 
 ///|
 fn render_row(
+  ui : @imgui.TableUi,
   state : DemoState,
   index : Int,
   label : String,
 ) -> Unit raise @imgui.ImGuiError {
-  @imgui.table_next_row()
-  ignore(@imgui.table_next_column())
-  if @imgui.selectable(label, selected=state.selected_row == index) {
+  ui.next_row()
+  ignore(ui.next_column())
+  if ui.selectable(label, selected=state.selected_row == index) {
     state.selected_row = index
   }
-  ignore(@imgui.table_next_column())
-  @imgui.text("row \{index}")
+  ignore(ui.next_column())
+  ui.text("row \{index}")
 }
 
 ///|
