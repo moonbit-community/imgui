@@ -1,10 +1,64 @@
 ///|
+struct DemoState {
+  widget_check : @gen.BoolPtr
+  widget_radio : @gen.IntPtr
+  widget_slider : @gen.FloatPtr
+  widget_input : @gen.IntPtr
+  widget_combo : @gen.IntPtr
+  input_float : @gen.FloatPtr
+  input_int : @gen.IntPtr
+  input_double : @gen.DoublePtr
+  window_flags : @gen.IntPtr
+  selection_combo : @gen.IntPtr
+  mut widget_text : String
+  mut simple_text : String
+  mut unicode_text : String
+  mut selected_row : Int
+}
+
+///|
+fn DemoState::new() -> DemoState {
+  {
+    widget_check: @gen.bool_ptr_new(true),
+    widget_radio: @gen.int_ptr_new(1),
+    widget_slider: @gen.float_ptr_new(0.42),
+    widget_input: @gen.int_ptr_new(7),
+    widget_combo: @gen.int_ptr_new(1),
+    input_float: @gen.float_ptr_new(0.25),
+    input_int: @gen.int_ptr_new(42),
+    input_double: @gen.double_ptr_new(0.125),
+    window_flags: @gen.int_ptr_new(@gen.im_gui_window_flags_no_resize()),
+    selection_combo: @gen.int_ptr_new(0),
+    widget_text: "MoonBit owns this buffer",
+    simple_text: "editable UTF-8 text",
+    unicode_text: "hello MoonBit",
+    selected_row: 2,
+  }
+}
+
+///|
+fn DemoState::destroy(self : DemoState) -> Unit {
+  @gen.bool_ptr_free(self.widget_check)
+  @gen.int_ptr_free(self.widget_radio)
+  @gen.float_ptr_free(self.widget_slider)
+  @gen.int_ptr_free(self.widget_input)
+  @gen.int_ptr_free(self.widget_combo)
+  @gen.float_ptr_free(self.input_float)
+  @gen.int_ptr_free(self.input_int)
+  @gen.double_ptr_free(self.input_double)
+  @gen.int_ptr_free(self.window_flags)
+  @gen.int_ptr_free(self.selection_combo)
+}
+
+///|
 fn main {
   let options = @backend.AppOptions::default()
     .title("MoonBit Dear ImGui Translated Demo")
     .size(1120, 760)
+  let state = DemoState::new()
+  defer state.destroy()
   println("Starting MoonBit translated ImGui demo.")
-  @backend.run(() => render_translated_demo(), options~) catch {
+  @backend.run(() => render_translated_demo(state), options~) catch {
     BackendCreationFailed(title) =>
       abort(
         "translated imgui demo failed: could not create backend window '\{title}'",
@@ -28,7 +82,7 @@ fn main {
 }
 
 ///|
-fn render_translated_demo() -> Unit raise @imgui.ImGuiError {
+fn render_translated_demo(state : DemoState) -> Unit raise @imgui.ImGuiError {
   @imgui.set_next_window_size(900.0, 700.0, cond=@raw.Cond::first_use_ever())
   let flags = @gen.im_gui_window_flags_menu_bar()
   if @imgui.im_gui_begin(
@@ -42,7 +96,7 @@ fn render_translated_demo() -> Unit raise @imgui.ImGuiError {
     )
     @imgui.im_gui_separator()
     render_status_strip()
-    render_tabs()
+    render_tabs(state)
   }
   @imgui.im_gui_end()
 }
@@ -107,19 +161,19 @@ fn render_status_strip() -> Unit raise @imgui.ImGuiError {
 }
 
 ///|
-fn render_tabs() -> Unit raise @imgui.ImGuiError {
+fn render_tabs(state : DemoState) -> Unit raise @imgui.ImGuiError {
   let tab_flags = @gen.im_gui_tab_bar_flags_reorderable()
   if @imgui.im_gui_begin_tab_bar("translated demo tabs", tab_flags) {
     if @imgui.begin_tab_item("Widgets") {
-      render_widgets_tab()
+      render_widgets_tab(state)
       @imgui.end_tab_item()
     }
     if @imgui.begin_tab_item("Inputs") {
-      render_inputs_tab()
+      render_inputs_tab(state)
       @imgui.end_tab_item()
     }
     if @imgui.begin_tab_item("Selection") {
-      render_selection_tab()
+      render_selection_tab(state)
       @imgui.end_tab_item()
     }
     if @imgui.begin_tab_item("Layout") {
@@ -151,7 +205,7 @@ fn render_tabs() -> Unit raise @imgui.ImGuiError {
 }
 
 ///|
-fn render_widgets_tab() -> Unit raise @imgui.ImGuiError {
+fn render_widgets_tab(state : DemoState) -> Unit raise @imgui.ImGuiError {
   @imgui.im_gui_separator_text("Basic widgets")
   ignore(@imgui.im_gui_button("Button"))
   @imgui.im_gui_same_line()
@@ -160,40 +214,54 @@ fn render_widgets_tab() -> Unit raise @imgui.ImGuiError {
     @imgui.im_gui_set_tooltip("Tooltip rendered from MoonBit")
   }
 
-  let check = @gen.bool_ptr_new(true)
-  defer @gen.bool_ptr_free(check)
-  ignore(@imgui.im_gui_checkbox("checkbox", check))
-  let radio = @gen.int_ptr_new(1)
-  defer @gen.int_ptr_free(radio)
-  ignore(@imgui.im_gui_radio_button_int_ptr("radio a", radio, 0))
+  ignore(@imgui.im_gui_checkbox("checkbox", state.widget_check))
+  let checked = @gen.bool_ptr_get(state.widget_check)
   @imgui.im_gui_same_line()
-  ignore(@imgui.im_gui_radio_button_int_ptr("radio b", radio, 1))
+  @imgui.im_gui_text("value=\{checked}")
+  ignore(@imgui.im_gui_radio_button_int_ptr("radio a", state.widget_radio, 0))
   @imgui.im_gui_same_line()
-  ignore(@imgui.im_gui_radio_button_int_ptr("radio c", radio, 2))
+  ignore(@imgui.im_gui_radio_button_int_ptr("radio b", state.widget_radio, 1))
+  @imgui.im_gui_same_line()
+  ignore(@imgui.im_gui_radio_button_int_ptr("radio c", state.widget_radio, 2))
 
-  let slider = @gen.float_ptr_new(0.42)
-  defer @gen.float_ptr_free(slider)
   ignore(
-    @imgui.im_gui_slider_float_ex("slider float", slider, 0.0, 1.0, "%.3f", 0),
+    @imgui.im_gui_slider_float_ex(
+      "slider float",
+      state.widget_slider,
+      0.0,
+      1.0,
+      "%.3f",
+      0,
+    ),
   )
   ignore(
-    @imgui.im_gui_drag_float_ex("drag float", slider, 0.01, 0.0, 1.0, "%.3f", 0),
+    @imgui.im_gui_drag_float_ex(
+      "drag float",
+      state.widget_slider,
+      0.01,
+      0.0,
+      1.0,
+      "%.3f",
+      0,
+    ),
   )
-  let input = @gen.int_ptr_new(7)
-  defer @gen.int_ptr_free(input)
-  ignore(@imgui.im_gui_input_int_ex("input int", input, 1, 100, 0))
+  ignore(@imgui.im_gui_input_int_ex("input int", state.widget_input, 1, 100, 0))
 
-  let text_result = @imgui.input_text("input text", "MoonBit owns this buffer")
+  let text_result = @imgui.input_text("input text", state.widget_text)
   if text_result.changed {
+    state.widget_text = text_result.value
     @imgui.im_gui_text("input changed")
   }
 
-  let combo_current = @gen.int_ptr_new(1)
-  defer @gen.int_ptr_free(combo_current)
   ignore(
     @imgui.im_gui_combo(
-      "combo", combo_current, "AAAA\u{0000}BBBB\u{0000}CCCC\u{0000}\u{0000}",
+      "combo",
+      state.widget_combo,
+      "AAAA\u{0000}BBBB\u{0000}CCCC\u{0000}\u{0000}",
     ),
+  )
+  @imgui.im_gui_text(
+    "radio=\{@gen.int_ptr_get(state.widget_radio)} input=\{@gen.int_ptr_get(state.widget_input)} combo=\{@gen.int_ptr_get(state.widget_combo)}",
   )
 
   let progress_size = @gen.im_vec2_new(-1.0, 0.0)
@@ -206,80 +274,101 @@ fn render_widgets_tab() -> Unit raise @imgui.ImGuiError {
 }
 
 ///|
-fn render_inputs_tab() -> Unit raise @imgui.ImGuiError {
+fn render_inputs_tab(state : DemoState) -> Unit raise @imgui.ImGuiError {
   @imgui.im_gui_separator_text("Input, drag, and slider widgets")
   @imgui.im_gui_push_item_width(260.0)
-  let float_value = @gen.float_ptr_new(0.25)
-  defer @gen.float_ptr_free(float_value)
-  let int_value = @gen.int_ptr_new(42)
-  defer @gen.int_ptr_free(int_value)
-  let double_value = @gen.double_ptr_new(0.125)
-  defer @gen.double_ptr_free(double_value)
 
-  ignore(@imgui.im_gui_drag_float("drag float", float_value))
-  ignore(@imgui.im_gui_drag_int_ex("drag int", int_value, 1.0, 0, 100, "%d", 0))
-  ignore(@imgui.im_gui_slider_float("slider float", float_value, 0.0, 1.0))
-  ignore(@imgui.im_gui_slider_int("slider int", int_value, 0, 100))
+  ignore(@imgui.im_gui_drag_float("drag float", state.input_float))
+  ignore(
+    @imgui.im_gui_drag_int_ex("drag int", state.input_int, 1.0, 0, 100, "%d", 0),
+  )
+  ignore(
+    @imgui.im_gui_slider_float("slider float", state.input_float, 0.0, 1.0),
+  )
+  ignore(@imgui.im_gui_slider_int("slider int", state.input_int, 0, 100))
   ignore(
     @imgui.im_gui_slider_angle_ex(
-      "slider angle", float_value, -90.0, 90.0, "%.0f deg", 0,
+      "slider angle",
+      state.input_float,
+      -90.0,
+      90.0,
+      "%.0f deg",
+      0,
     ),
   )
   ignore(
     @imgui.im_gui_input_float_ex(
-      "input float", float_value, 0.1, 1.0, "%.3f", 0,
+      "input float",
+      state.input_float,
+      0.1,
+      1.0,
+      "%.3f",
+      0,
     ),
   )
-  ignore(@imgui.im_gui_input_int("input int", int_value))
-  ignore(@imgui.im_gui_input_double("input double", double_value))
+  ignore(@imgui.im_gui_input_int("input int", state.input_int))
+  ignore(@imgui.im_gui_input_double("input double", state.input_double))
   @imgui.im_gui_pop_item_width()
 
   @imgui.im_gui_separator_text("Text input wrappers")
-  let simple = @imgui.input_text("MoonBit input", "editable UTF-8 text")
+  let simple = @imgui.input_text("MoonBit input", state.simple_text)
   if simple.changed {
+    state.simple_text = simple.value
     @imgui.im_gui_text("simple input changed")
   }
-  let wrapped = @imgui.input_text("Unicode input", "hello MoonBit")
+  let wrapped = @imgui.input_text("Unicode input", state.unicode_text)
+  if wrapped.changed {
+    state.unicode_text = wrapped.value
+  }
   @imgui.im_gui_text_wrapped(
-    "Current value copied back through the wrapper: \{wrapped.value}",
+    "Current value copied back through the wrapper: \{state.unicode_text}",
   )
 
   @imgui.im_gui_separator_text("Flag editors")
-  let window_flags = @gen.int_ptr_new(@gen.im_gui_window_flags_no_resize())
-  defer @gen.int_ptr_free(window_flags)
   ignore(
     @imgui.im_gui_checkbox_flags_int_ptr(
       "NoResize bit",
-      window_flags,
+      state.window_flags,
       @gen.im_gui_window_flags_no_resize(),
     ),
   )
   ignore(
     @imgui.im_gui_checkbox_flags_int_ptr(
       "NoMove bit",
-      window_flags,
+      state.window_flags,
       @gen.im_gui_window_flags_no_move(),
     ),
   )
-  @imgui.im_gui_text("Edited flags value: \{@gen.int_ptr_get(window_flags)}")
+  @imgui.im_gui_text(
+    "Edited flags value: \{@gen.int_ptr_get(state.window_flags)}",
+  )
 }
 
 ///|
-fn render_selection_tab() -> Unit raise @imgui.ImGuiError {
+fn render_selection_tab(state : DemoState) -> Unit raise @imgui.ImGuiError {
   @imgui.im_gui_separator_text("Combo boxes")
-  let combo_current = @gen.int_ptr_new(0)
-  defer @gen.int_ptr_free(combo_current)
   let combo_size = @gen.im_vec2_new(0.0, 0.0)
   defer @gen.im_vec2_free(combo_size)
-  if @imgui.im_gui_begin_combo("BeginCombo", "Alpha", 0) {
-    ignore(@imgui.im_gui_selectable_ex("Alpha", true, 0, combo_size))
-    ignore(@imgui.im_gui_selectable("Beta"))
-    ignore(@imgui.im_gui_selectable("Gamma"))
+  let combo_index = @gen.int_ptr_get(state.selection_combo)
+  if @imgui.im_gui_begin_combo("BeginCombo", combo_label(combo_index), 0) {
+    let mut i = 0
+    while i < 3 {
+      let selected = combo_index == i
+      if @imgui.im_gui_selectable_ex(combo_label(i), selected, 0, combo_size) {
+        @gen.int_ptr_set(state.selection_combo, i)
+      }
+      if selected {
+        @imgui.im_gui_set_item_default_focus()
+      }
+      i += 1
+    }
     @imgui.im_gui_end_combo()
   }
   ignore(
     @imgui.im_gui_combo(
-      "Combo multi-string", combo_current, "One\u{0000}Two\u{0000}Three\u{0000}\u{0000}",
+      "Combo multi-string",
+      state.selection_combo,
+      "One\u{0000}Two\u{0000}Three\u{0000}\u{0000}",
     ),
   )
 
@@ -292,15 +381,22 @@ fn render_selection_tab() -> Unit raise @imgui.ImGuiError {
     let mut i = 0
     while i < 8 {
       @imgui.im_gui_push_id_int(i)
-      let selected = i == 2
-      ignore(
-        @imgui.im_gui_selectable_ex(
+      let selected = state.selected_row == i
+      if @imgui.im_gui_selectable_ex(
           "Selectable row \{i}",
           selected,
           @gen.im_gui_selectable_flags_allow_double_click(),
           row_size,
-        ),
-      )
+        ) {
+        state.selected_row = i
+      }
+      if selected {
+        @imgui.im_gui_same_line()
+        @imgui.im_gui_text_disabled("selected")
+      }
+      if @imgui.im_gui_is_item_hovered(@gen.im_gui_hovered_flags_none()) {
+        @imgui.im_gui_set_tooltip("Click to select row \{i}")
+      }
       if @imgui.im_gui_is_item_clicked_ex(@gen.im_gui_mouse_button_left()) {
         @imgui.im_gui_set_tooltip("Row \{i} was clicked")
       }
@@ -308,6 +404,20 @@ fn render_selection_tab() -> Unit raise @imgui.ImGuiError {
       i = i + 1
     }
     @imgui.im_gui_end_list_box()
+  }
+  @imgui.im_gui_text(
+    "Selected combo=\{@gen.int_ptr_get(state.selection_combo)} row=\{state.selected_row}",
+  )
+}
+
+///|
+fn combo_label(index : Int) -> String {
+  if index == 0 {
+    "Alpha"
+  } else if index == 1 {
+    "Beta"
+  } else {
+    "Gamma"
   }
 }
 
