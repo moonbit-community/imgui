@@ -2,7 +2,7 @@
 
 Native MoonBit bindings for Dear ImGui.
 
-This repository intentionally exposes only two MoonBit packages:
+This repository intentionally exposes two library packages:
 
 - `moonbit-community/imgui/bindings`: generated, mechanical extern bindings for
   the C API emitted by `dear_bindings`.
@@ -14,8 +14,8 @@ generated from `bindings/dear_bindings/dcimgui.json` and follows MoonBit native
 ABI rules directly: `Bytes` for non-null UTF-8 `char*`, `Ref[T]` for non-null
 primitive `T*`, `Option[Ref[T]]` for nullable primitive `T*`, and direct
 `#external` handle types for C pointers represented by external types. The
-generated `generated_runtime.c` file only provides a null external handle
-constructor used by `T::null()`.
+generated runtime source only provides a null external handle constructor used
+by `T::null()`.
 
 The generated Dear Bindings C API output is kept in
 `bindings/dear_bindings/`. Dear ImGui and the Dear Bindings generator are pinned
@@ -70,6 +70,12 @@ Run tests:
 moon test --target native
 ```
 
+Run the basic executable example:
+
+```bash
+moon run examples/basic --target native
+```
+
 ## Regeneration
 
 Regenerate the MoonBit extern declarations after updating
@@ -80,7 +86,7 @@ python3 tools/generate_bindings.py \
   --metadata bindings/dear_bindings/dcimgui.json \
   --moonbit-out bindings/generated.mbt \
   --coverage-out bindings/generated_coverage.md \
-  --c-out bindings/generated_runtime.c
+  --c-out bindings/generated_runtime.cpp
 ```
 
 ## Scope

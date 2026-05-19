@@ -5,13 +5,15 @@ rules and package boundaries.
 
 ## Package Layout
 
-The repository must expose exactly two MoonBit packages:
+The repository must expose exactly two library MoonBit packages:
 
 - `moonbit-community/imgui/bindings`
 - `moonbit-community/imgui`
 
-No other MoonBit packages are allowed. In particular, there must be no `raw`,
-`generated`, `advanced`, backend, or example package.
+No other library or backend MoonBit packages are allowed. In particular, there
+must be no `raw`, `generated`, `advanced`, or backend package. Runnable examples
+may exist under `examples/`, but they are demonstration entrypoints and must not
+be imported by the two library packages.
 
 `moonbit-community/imgui/bindings` is the pure generated binding package for the
 C API emitted by `dear_bindings`. It must not contain hand-written C, C++, or
@@ -86,9 +88,9 @@ Nullable external handles are represented by `T::null()` and tested with
 `T::is_null(value)`. Do not use `Option[T]` for external handles.
 
 If MoonBit does not provide a built-in null constructor for external types, the
-generator may emit a small generated C support file that returns `NULL` for
-`T::null()`. This file is generated ABI support, not hand-written bridge code.
-`T::is_null` should bind to the MoonBit runtime `moonbit_is_null(void*)`
+generator may emit a small generated C or C++ support source that returns `NULL`
+for `T::null()`. This file is generated ABI support, not hand-written bridge
+code. `T::is_null` should bind to the MoonBit runtime `moonbit_is_null(void*)`
 function when available.
 
 C function pointer typedefs map to `FuncRef[...]` when they are ABI-direct.

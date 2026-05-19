@@ -8,13 +8,3 @@ import {
 } for "test"
 
 supported_targets = "+native"
-
-options(
-  link: {
-    "native": {
-      "cc": "cc",
-      "cc-flags": "-Wno-deprecated-declarations -Ibindings/dear_bindings -Ibindings/upstream/imgui -Ibindings/upstream/imgui/backends",
-      "cc-link-flags": "-lstdc++",
-    },
-  },
-)
