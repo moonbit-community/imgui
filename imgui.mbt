@@ -13,31 +13,31 @@ pub(all) struct Context {
 
 ///|
 /// Root UI builder for scoped, callback-style Dear ImGui calls.
-pub struct Ui {}
+struct Ui {}
 
 ///|
 /// UI operations available inside a window.
-pub struct WindowUi {}
+struct WindowUi {}
 
 ///|
 /// UI operations available inside a menu bar.
-pub struct MenuBarUi {}
+struct MenuBarUi {}
 
 ///|
 /// UI operations available inside a menu.
-pub struct MenuUi {}
+struct MenuUi {}
 
 ///|
 /// UI operations available inside a tab bar.
-pub struct TabBarUi {}
+struct TabBarUi {}
 
 ///|
 /// UI operations available inside a tab item.
-pub struct TabItemUi {}
+struct TabItemUi {}
 
 ///|
 /// UI operations available inside a table.
-pub struct TableUi {}
+struct TableUi {}
 
 ///|
 /// Raw draw data handle returned after rendering.

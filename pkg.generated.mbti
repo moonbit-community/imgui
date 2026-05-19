@@ -35,13 +35,11 @@ pub fn Context::destroy(Self) -> Unit
 pub fn Context::make_current(Self) -> Unit
 pub fn Context::raw(Self) -> @bindings.ImGuiContext
 
-pub struct MenuBarUi {
-}
+type MenuBarUi
 pub fn MenuBarUi::menu(Self, String, enabled? : Bool, (MenuUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn MenuBarUi::menu_item(Self, String, selected? : Bool, () -> Unit raise ImGuiError) -> Unit raise ImGuiError
 
-pub struct MenuUi {
-}
+type MenuUi
 pub fn MenuUi::menu_item(Self, String, selected? : Bool, () -> Unit raise ImGuiError) -> Unit raise ImGuiError
 
 pub(all) struct SelectableFlags {
@@ -56,12 +54,10 @@ pub(all) struct TabBarFlags {
 pub fn TabBarFlags::none() -> Self
 pub fn TabBarFlags::value(Self) -> Int
 
-pub struct TabBarUi {
-}
+type TabBarUi
 pub fn TabBarUi::tab_item(Self, String, (TabItemUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 
-pub struct TabItemUi {
-}
+type TabItemUi
 pub fn TabItemUi::separator(Self) -> Unit raise ImGuiError
 pub fn TabItemUi::table(Self, String, Int, flags? : TableFlags, (TableUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn TabItemUi::text(Self, String) -> Unit raise ImGuiError
@@ -75,15 +71,13 @@ pub fn TableFlags::none() -> Self
 pub fn TableFlags::row_bg() -> Self
 pub fn TableFlags::value(Self) -> Int
 
-pub struct TableUi {
-}
+type TableUi
 pub fn TableUi::next_column(Self) -> Bool raise ImGuiError
 pub fn TableUi::next_row(Self) -> Unit raise ImGuiError
 pub fn TableUi::selectable(Self, String, selected? : Bool, flags? : SelectableFlags) -> Bool raise ImGuiError
 pub fn TableUi::text(Self, String) -> Unit raise ImGuiError
 
-pub struct Ui {
-}
+type Ui
 pub fn Ui::window(Self, String, flags? : WindowFlags, (WindowUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 
 pub(all) struct WindowFlags {
@@ -99,8 +93,7 @@ pub fn WindowFlags::no_title_bar() -> Self
 pub fn WindowFlags::none() -> Self
 pub fn WindowFlags::value(Self) -> Int
 
-pub struct WindowUi {
-}
+type WindowUi
 pub fn WindowUi::button(Self, String, () -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::checkbox(Self, String, Bool, (Bool) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::menu_bar(Self, (MenuBarUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
