@@ -1,29 +1,20 @@
-import {
-  "moonbitlang/core/encoding/utf8" @encoding/utf8,
-}
-
-import {
-  "moonbitlang/core/debug" @debug,
-} for "test"
-
 supported_targets = "+native"
 
 options(
   link: {
     "native": {
       "cc": "cc",
-      "cc-flags": "-Wno-deprecated-declarations -Iupstream/imgui -Iupstream/imgui/backends -Iimgui/raw/upstream/imgui -Iimgui/raw/upstream/imgui/backends",
+      "cc-flags": "-Wno-deprecated-declarations -Iupstream/imgui -Iupstream/imgui/backends -Idear_bindings",
       "cc-link-flags": "-lstdc++",
     },
   },
   "native-stub": [
-    "imgui_bridge.cpp",
     "upstream/imgui/imgui.cpp",
     "upstream/imgui/imgui_demo.cpp",
     "upstream/imgui/imgui_draw.cpp",
     "upstream/imgui/imgui_tables.cpp",
     "upstream/imgui/imgui_widgets.cpp",
     "dear_bindings/dcimgui.cpp",
-    "generated_bridge.cpp",
+    "generated_runtime.c",
   ],
 )

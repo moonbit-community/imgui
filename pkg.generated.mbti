@@ -2,7 +2,7 @@
 package "moonbit-community/imgui"
 
 import {
-  "moonbit-community/imgui/raw",
+  "moonbit-community/imgui/bindings",
   "moonbitlang/core/debug",
 }
 
@@ -11,25 +11,21 @@ pub fn begin_menu(String, enabled? : Bool) -> Bool raise ImGuiError
 
 pub fn begin_menu_bar() -> Bool raise ImGuiError
 
-pub fn begin_tab_bar(String, flags? : @raw.TabBarFlags) -> Bool raise ImGuiError
+pub fn begin_tab_bar(String, flags? : TabBarFlags) -> Bool raise ImGuiError
 
 pub fn begin_tab_item(String) -> Bool raise ImGuiError
 
-pub fn begin_table(String, Int, flags? : @raw.TableFlags) -> Bool raise ImGuiError
+pub fn begin_table(String, Int, flags? : TableFlags) -> Bool raise ImGuiError
 
-pub fn begin_window(String, flags? : @raw.WindowFlags) -> Bool raise ImGuiError
-
-pub fn bridge_mode() -> @raw.BridgeMode
-
-pub fn bridge_version() -> Int
+pub fn begin_window(String, flags? : WindowFlags) -> Bool raise ImGuiError
 
 pub fn button(String) -> Bool raise ImGuiError
 
-pub fn checkbox(String, Bool) -> @raw.CheckboxResult raise ImGuiError
+pub fn checkbox(String, Bool) -> CheckboxResult raise ImGuiError
 
 pub fn clear_current_context() -> Unit
 
-pub fn collapsing_header(String, flags? : @raw.TreeNodeFlags) -> Bool raise ImGuiError
+pub fn collapsing_header(String, flags? : TreeNodeFlags) -> Bool raise ImGuiError
 
 pub fn dear_imgui_version_number() -> Int
 
@@ -51,25 +47,21 @@ pub fn frame_count() -> Int
 
 pub fn has_current_context() -> Bool
 
-pub fn input_text(String, String, flags? : @raw.InputTextFlags, capacity? : Int) -> @raw.TextEditResult raise ImGuiError
-
 pub fn menu_item(String, selected? : Bool) -> Bool raise ImGuiError
 
 pub fn new_frame() -> Unit raise ImGuiError
 
-pub fn render() -> @raw.DrawData raise ImGuiError
+pub fn render() -> @bindings.ImDrawData raise ImGuiError
 
 pub fn same_line() -> Unit raise ImGuiError
 
-pub fn selectable(String, selected? : Bool, flags? : @raw.SelectableFlags) -> Bool raise ImGuiError
+pub fn selectable(String, selected? : Bool, flags? : SelectableFlags) -> Bool raise ImGuiError
 
 pub fn separator() -> Unit raise ImGuiError
 
-pub fn set_next_window_size(Double, Double, cond? : @raw.Cond) -> Unit raise ImGuiError
-
 pub fn show_demo_window(open? : Bool) -> Unit raise ImGuiError
 
-pub fn slider_float(String, Double, Double, Double) -> @raw.FloatEditResult raise ImGuiError
+pub fn slider_float(String, Float, Float, Float) -> FloatEditResult raise ImGuiError
 
 pub fn table_next_column() -> Bool raise ImGuiError
 
@@ -77,29 +69,86 @@ pub fn table_next_row() -> Unit raise ImGuiError
 
 pub fn text(String) -> Unit raise ImGuiError
 
-pub fn tree_node(String, flags? : @raw.TreeNodeFlags) -> Bool raise ImGuiError
+pub fn tree_node(String, flags? : TreeNodeFlags) -> Bool raise ImGuiError
 
 pub fn tree_pop() -> Unit raise ImGuiError
 
 // Errors
 pub(all) suberror ImGuiError {
   NoCurrentContext
-  BackendCreationFailed(String)
-  BackendWindowDestroyed(String)
-  BackendFrameFailed(String)
-  BackendRenderFailed(String)
 } derive(Eq, @debug.Debug)
 
 // Types and methods
+pub(all) struct CheckboxResult {
+  changed : Bool
+  checked : Bool
+} derive(Eq, @debug.Debug)
+
 pub(all) struct Context {
-  raw : @raw.Context
+  raw : @bindings.ImGuiContext
 }
 pub fn Context::create() -> Self
 pub fn Context::destroy(Self) -> Unit
 pub fn Context::make_current(Self) -> Unit
-pub fn Context::raw(Self) -> @raw.Context
+pub fn Context::raw(Self) -> @bindings.ImGuiContext
+
+pub(all) struct FloatEditResult {
+  changed : Bool
+  value : Float
+} derive(Eq, @debug.Debug)
+
+pub(all) struct InputTextFlags {
+  bits : Int
+} derive(Eq, @debug.Debug)
+pub fn InputTextFlags::none() -> Self
+pub fn InputTextFlags::read_only() -> Self
+pub fn InputTextFlags::value(Self) -> Int
+
+pub(all) struct SelectableFlags {
+  bits : Int
+} derive(Eq, @debug.Debug)
+pub fn SelectableFlags::none() -> Self
+pub fn SelectableFlags::value(Self) -> Int
+
+pub(all) struct TabBarFlags {
+  bits : Int
+} derive(Eq, @debug.Debug)
+pub fn TabBarFlags::none() -> Self
+pub fn TabBarFlags::value(Self) -> Int
+
+pub(all) struct TableFlags {
+  bits : Int
+} derive(Eq, @debug.Debug)
+pub fn TableFlags::borders() -> Self
+pub fn TableFlags::combine(Self, Self) -> Self
+pub fn TableFlags::none() -> Self
+pub fn TableFlags::row_bg() -> Self
+pub fn TableFlags::value(Self) -> Int
+
+pub(all) struct TreeNodeFlags {
+  bits : Int
+} derive(Eq, @debug.Debug)
+pub fn TreeNodeFlags::combine(Self, Self) -> Self
+pub fn TreeNodeFlags::default_open() -> Self
+pub fn TreeNodeFlags::leaf() -> Self
+pub fn TreeNodeFlags::none() -> Self
+pub fn TreeNodeFlags::value(Self) -> Int
+
+pub(all) struct WindowFlags {
+  bits : Int
+} derive(Eq, @debug.Debug)
+pub fn WindowFlags::always_auto_resize() -> Self
+pub fn WindowFlags::combine(Self, Self) -> Self
+pub fn WindowFlags::menu_bar() -> Self
+pub fn WindowFlags::no_move() -> Self
+pub fn WindowFlags::no_resize() -> Self
+pub fn WindowFlags::no_scrollbar() -> Self
+pub fn WindowFlags::no_title_bar() -> Self
+pub fn WindowFlags::none() -> Self
+pub fn WindowFlags::value(Self) -> Int
 
 // Type aliases
+pub using @bindings {type ImDrawData as DrawData}
 
 // Traits
 

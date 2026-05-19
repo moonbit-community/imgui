@@ -1,6 +1,6 @@
-[submodule "raw/upstream/imgui"]
-	path = raw/upstream/imgui
+[submodule "bindings/upstream/imgui"]
+	path = bindings/upstream/imgui
 	url = https://github.com/ocornut/imgui.git
-[submodule "raw/upstream/dear_bindings"]
-	path = raw/upstream/dear_bindings
+[submodule "bindings/upstream/dear_bindings"]
+	path = bindings/upstream/dear_bindings
 	url = https://github.com/dearimgui/dear_bindings.git

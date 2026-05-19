@@ -1,5 +1,6 @@
 import {
-  "moonbit-community/imgui/raw" @raw,
+  "moonbit-community/imgui/bindings" @bindings,
+  "moonbitlang/core/encoding/utf8" @encoding/utf8,
 }
 
 import {
@@ -12,7 +13,7 @@ options(
   link: {
     "native": {
       "cc": "cc",
-      "cc-flags": "-Wno-deprecated-declarations -Iraw/upstream/imgui -Iraw/upstream/imgui/backends -Iimgui/raw/upstream/imgui -Iimgui/raw/upstream/imgui/backends",
+      "cc-flags": "-Wno-deprecated-declarations -Ibindings/dear_bindings -Ibindings/upstream/imgui -Ibindings/upstream/imgui/backends",
       "cc-link-flags": "-lstdc++",
     },
   },
