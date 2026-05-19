@@ -345,36 +345,29 @@ pub fn Style::scale_all_sizes(Self, Float) -> Unit
 
 pub(all) enum StyleColor {
   BorderShadow
-  TitleBackground
-  TitleBackgroundActive
-  TitleBackgroundCollapsed
-  MenuBarBackground
-  ScrollbarBackground
   ScrollbarGrab
+  ScrollbarGrabHovered
+  ScrollbarGrabActive
+  Separator
+  SeparatorHovered
+  SeparatorActive
+  ResizeGrip
+  ResizeGripHovered
+  ResizeGripActive
   CheckMark
-  CheckboxSelectedBackground
   SliderGrab
   SliderGrabActive
-  TabSelected
   TabSelectedOverline
-  TabDimmed
-  TabDimmedSelected
   TabDimmedSelectedOverline
-  TabUnfocused
-  TabUnfocusedActive
   PlotLines
   PlotLinesHovered
   PlotHistogram
   PlotHistogramHovered
-  TableHeaderBackground
   TextLink
-  TextSelectedBackground
   TreeLines
   DragDropTarget
-  DragDropTargetBackground
   UnsavedMarker
   NavCursor
-  NavHighlight
   NavWindowingHighlight
   NavWindowingDimBackground
   ModalWindowDimBackground
@@ -385,8 +378,13 @@ pub(all) enum StyleSheet {
   Text(Color)
   TextDisabled(Color)
   Background(Color)
-  Hovered(Color)
-  Active(Color)
+  HoveredBg(Color)
+  ActiveBg(Color)
+  CollapsedBg(Color)
+  SelectedBg(Color)
+  DimmedBg(Color)
+  DimmedSelectedBg(Color)
+  DropTargetBg(Color)
   Border(Color)
   Slot(StyleColor, Color)
   Alpha(Float)

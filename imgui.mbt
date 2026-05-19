@@ -106,36 +106,29 @@ pub(all) enum Color {
 /// Exact color slots not covered by broader scoped style sheets.
 pub(all) enum StyleColor {
   BorderShadow
-  TitleBackground
-  TitleBackgroundActive
-  TitleBackgroundCollapsed
-  MenuBarBackground
-  ScrollbarBackground
   ScrollbarGrab
+  ScrollbarGrabHovered
+  ScrollbarGrabActive
+  Separator
+  SeparatorHovered
+  SeparatorActive
+  ResizeGrip
+  ResizeGripHovered
+  ResizeGripActive
   CheckMark
-  CheckboxSelectedBackground
   SliderGrab
   SliderGrabActive
-  TabSelected
   TabSelectedOverline
-  TabDimmed
-  TabDimmedSelected
   TabDimmedSelectedOverline
-  TabUnfocused
-  TabUnfocusedActive
   PlotLines
   PlotLinesHovered
   PlotHistogram
   PlotHistogramHovered
-  TableHeaderBackground
   TextLink
-  TextSelectedBackground
   TreeLines
   DragDropTarget
-  DragDropTargetBackground
   UnsavedMarker
   NavCursor
-  NavHighlight
   NavWindowingHighlight
   NavWindowingDimBackground
   ModalWindowDimBackground
@@ -148,8 +141,13 @@ pub(all) enum StyleSheet {
   Text(Color)
   TextDisabled(Color)
   Background(Color)
-  Hovered(Color)
-  Active(Color)
+  HoveredBg(Color)
+  ActiveBg(Color)
+  CollapsedBg(Color)
+  SelectedBg(Color)
+  DimmedBg(Color)
+  DimmedSelectedBg(Color)
+  DropTargetBg(Color)
   Border(Color)
   Slot(StyleColor, Color)
   Alpha(Float)
@@ -1622,6 +1620,11 @@ fn ColorId::header_active() -> ColorId {
 }
 
 ///|
+fn ColorId::separator() -> ColorId {
+  { value: @bindings.im_gui_col_separator() }
+}
+
+///|
 fn ColorId::separator_hovered() -> ColorId {
   { value: @bindings.im_gui_col_separator_hovered() }
 }
@@ -1629,6 +1632,11 @@ fn ColorId::separator_hovered() -> ColorId {
 ///|
 fn ColorId::separator_active() -> ColorId {
   { value: @bindings.im_gui_col_separator_active() }
+}
+
+///|
+fn ColorId::resize_grip() -> ColorId {
+  { value: @bindings.im_gui_col_resize_grip() }
 }
 
 ///|
@@ -1644,11 +1652,6 @@ fn ColorId::resize_grip_active() -> ColorId {
 ///|
 fn ColorId::tab() -> ColorId {
   { value: @bindings.im_gui_col_tab() }
-}
-
-///|
-fn ColorId::tab_active() -> ColorId {
-  { value: @bindings.im_gui_col_tab_active() }
 }
 
 ///|
@@ -1679,16 +1682,6 @@ fn ColorId::tab_dimmed_selected() -> ColorId {
 ///|
 fn ColorId::tab_dimmed_selected_overline() -> ColorId {
   { value: @bindings.im_gui_col_tab_dimmed_selected_overline() }
-}
-
-///|
-fn ColorId::tab_unfocused() -> ColorId {
-  { value: @bindings.im_gui_col_tab_unfocused() }
-}
-
-///|
-fn ColorId::tab_unfocused_active() -> ColorId {
-  { value: @bindings.im_gui_col_tab_unfocused_active() }
 }
 
 ///|
@@ -1769,11 +1762,6 @@ fn ColorId::unsaved_marker() -> ColorId {
 ///|
 fn ColorId::nav_cursor() -> ColorId {
   { value: @bindings.im_gui_col_nav_cursor() }
-}
-
-///|
-fn ColorId::nav_highlight() -> ColorId {
-  { value: @bindings.im_gui_col_nav_highlight() }
 }
 
 ///|
@@ -4648,34 +4636,49 @@ fn apply_style_sheet(
             ColorId::child_bg(),
             ColorId::popup_bg(),
             ColorId::frame_bg(),
+            ColorId::title_bg(),
+            ColorId::menu_bar_bg(),
+            ColorId::scrollbar_bg(),
             ColorId::button(),
             ColorId::header(),
             ColorId::tab(),
+            ColorId::table_header_bg(),
             ColorId::table_row_bg(),
             ColorId::table_row_bg_alt(),
           ])
-      Hovered(color) =>
+      HoveredBg(color) =>
         colors = colors +
           push_style_colors(color, [
             ColorId::frame_bg_hovered(),
             ColorId::button_hovered(),
             ColorId::header_hovered(),
             ColorId::tab_hovered(),
-            ColorId::scrollbar_grab_hovered(),
-            ColorId::resize_grip_hovered(),
-            ColorId::separator_hovered(),
           ])
-      Active(color) =>
+      ActiveBg(color) =>
         colors = colors +
           push_style_colors(color, [
             ColorId::frame_bg_active(),
+            ColorId::title_bg_active(),
             ColorId::button_active(),
             ColorId::header_active(),
-            ColorId::tab_active(),
-            ColorId::scrollbar_grab_active(),
-            ColorId::resize_grip_active(),
-            ColorId::separator_active(),
           ])
+      CollapsedBg(color) =>
+        colors = colors + push_style_color(ColorId::title_bg_collapsed(), color)
+      SelectedBg(color) =>
+        colors = colors +
+          push_style_colors(color, [
+            ColorId::checkbox_selected_bg(),
+            ColorId::tab_selected(),
+            ColorId::text_selected_bg(),
+          ])
+      DimmedBg(color) =>
+        colors = colors + push_style_color(ColorId::tab_dimmed(), color)
+      DimmedSelectedBg(color) =>
+        colors = colors +
+          push_style_color(ColorId::tab_dimmed_selected(), color)
+      DropTargetBg(color) =>
+        colors = colors +
+          push_style_color(ColorId::drag_drop_target_bg(), color)
       Border(color) =>
         colors = colors +
           push_style_colors(color, [
@@ -4748,36 +4751,29 @@ fn apply_style_sheet(
 fn StyleColor::to_color_id(self : StyleColor) -> ColorId {
   match self {
     BorderShadow => ColorId::border_shadow()
-    TitleBackground => ColorId::title_bg()
-    TitleBackgroundActive => ColorId::title_bg_active()
-    TitleBackgroundCollapsed => ColorId::title_bg_collapsed()
-    MenuBarBackground => ColorId::menu_bar_bg()
-    ScrollbarBackground => ColorId::scrollbar_bg()
     ScrollbarGrab => ColorId::scrollbar_grab()
+    ScrollbarGrabHovered => ColorId::scrollbar_grab_hovered()
+    ScrollbarGrabActive => ColorId::scrollbar_grab_active()
+    Separator => ColorId::separator()
+    SeparatorHovered => ColorId::separator_hovered()
+    SeparatorActive => ColorId::separator_active()
+    ResizeGrip => ColorId::resize_grip()
+    ResizeGripHovered => ColorId::resize_grip_hovered()
+    ResizeGripActive => ColorId::resize_grip_active()
     CheckMark => ColorId::check_mark()
-    CheckboxSelectedBackground => ColorId::checkbox_selected_bg()
     SliderGrab => ColorId::slider_grab()
     SliderGrabActive => ColorId::slider_grab_active()
-    TabSelected => ColorId::tab_selected()
     TabSelectedOverline => ColorId::tab_selected_overline()
-    TabDimmed => ColorId::tab_dimmed()
-    TabDimmedSelected => ColorId::tab_dimmed_selected()
     TabDimmedSelectedOverline => ColorId::tab_dimmed_selected_overline()
-    TabUnfocused => ColorId::tab_unfocused()
-    TabUnfocusedActive => ColorId::tab_unfocused_active()
     PlotLines => ColorId::plot_lines()
     PlotLinesHovered => ColorId::plot_lines_hovered()
     PlotHistogram => ColorId::plot_histogram()
     PlotHistogramHovered => ColorId::plot_histogram_hovered()
-    TableHeaderBackground => ColorId::table_header_bg()
     TextLink => ColorId::text_link()
-    TextSelectedBackground => ColorId::text_selected_bg()
     TreeLines => ColorId::tree_lines()
     DragDropTarget => ColorId::drag_drop_target()
-    DragDropTargetBackground => ColorId::drag_drop_target_bg()
     UnsavedMarker => ColorId::unsaved_marker()
     NavCursor => ColorId::nav_cursor()
-    NavHighlight => ColorId::nav_highlight()
     NavWindowingHighlight => ColorId::nav_windowing_highlight()
     NavWindowingDimBackground => ColorId::nav_windowing_dim_bg()
     ModalWindowDimBackground => ColorId::modal_window_dim_bg()

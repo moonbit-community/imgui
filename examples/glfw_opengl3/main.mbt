@@ -192,7 +192,7 @@ fn render_ui(state : DemoState) -> Unit raise @imgui.ImGuiError {
   let style = @imgui.style()
   let font = @imgui.font()
   let ui = @imgui.ui()
-  ui.main_menu_bar(style=[Slot(MenuBarBackground, Hex("#20242A"))]) <| bar => {
+  ui.main_menu_bar(style=[Background(Hex("#20242A"))]) <| bar => {
     bar.menu_item("Main counter +1") <| () => {
       state.counter = state.counter + 1
     }
@@ -203,6 +203,13 @@ fn render_ui(state : DemoState) -> Unit raise @imgui.ImGuiError {
   ui.window("MoonBit ImGui controls", flags=[MenuBar, HorizontalScrollbar], style=[
     Rounding(6.0),
     Background(Hex("#171B21")),
+    HoveredBg(Hex("#263142")),
+    ActiveBg(Hex("#2D5B89")),
+    CollapsedBg(Hex("#15191F")),
+    SelectedBg(Cyan),
+    DimmedBg(Gray),
+    DimmedSelectedBg(Blue),
+    DropTargetBg(Yellow),
   ]) <| ui => {
     ui.menu_bar(style=[Text(White)]) <| bar => {
       bar.menu("Actions") <| menu => {
@@ -562,8 +569,8 @@ fn render_scopes(
   }
   ui.style([
     Background(Blue),
-    Hovered(Cyan),
-    Active(Green),
+    HoveredBg(Cyan),
+    ActiveBg(Green),
     Text(White),
     Rounding(5.0),
   ]) <| ui => {
@@ -571,7 +578,7 @@ fn render_scopes(
   }
   ui.button("Rounded direct style", style=[
     Background(Hex("#223344")),
-    Hovered(Hex("#31506B")),
+    HoveredBg(Hex("#31506B")),
     Rounding(8.0),
   ]) <| () => { state.counter = state.counter + 1 }
   ui.with_font(font, size=@imgui.font_size()) <| ui => {
@@ -1071,36 +1078,29 @@ fn touch_value_api() -> Unit {
   ]
   let _ : Array[@imgui.StyleColor] = [
     BorderShadow,
-    TitleBackground,
-    TitleBackgroundActive,
-    TitleBackgroundCollapsed,
-    MenuBarBackground,
-    ScrollbarBackground,
     ScrollbarGrab,
+    ScrollbarGrabHovered,
+    ScrollbarGrabActive,
+    Separator,
+    SeparatorHovered,
+    SeparatorActive,
+    ResizeGrip,
+    ResizeGripHovered,
+    ResizeGripActive,
     CheckMark,
-    CheckboxSelectedBackground,
     SliderGrab,
     SliderGrabActive,
-    TabSelected,
     TabSelectedOverline,
-    TabDimmed,
-    TabDimmedSelected,
     TabDimmedSelectedOverline,
-    TabUnfocused,
-    TabUnfocusedActive,
     PlotLines,
     PlotLinesHovered,
     PlotHistogram,
     PlotHistogramHovered,
-    TableHeaderBackground,
     TextLink,
-    TextSelectedBackground,
     TreeLines,
     DragDropTarget,
-    DragDropTargetBackground,
     UnsavedMarker,
     NavCursor,
-    NavHighlight,
     NavWindowingHighlight,
     NavWindowingDimBackground,
     ModalWindowDimBackground,
@@ -1125,8 +1125,13 @@ fn touch_value_api() -> Unit {
     Text(White),
     TextDisabled(Gray),
     Background(Hex("#112233")),
-    Hovered(Cyan),
-    Active(Blue),
+    HoveredBg(Cyan),
+    ActiveBg(Blue),
+    CollapsedBg(Hex("#101820")),
+    SelectedBg(Cyan),
+    DimmedBg(Gray),
+    DimmedSelectedBg(Blue),
+    DropTargetBg(Yellow),
     Border(Gray),
     Slot(TextLink, Green),
     Alpha(0.85),

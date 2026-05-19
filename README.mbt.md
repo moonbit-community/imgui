@@ -35,7 +35,7 @@ fn render_ui(state : State) -> Unit raise @imgui.ImGuiError {
     }
     ui.button(
       "Run",
-      style=[Background(Blue), Hovered(Cyan), Active(Green), Rounding(4.0)],
+      style=[Background(Blue), HoveredBg(Cyan), ActiveBg(Green), Rounding(4.0)],
     ) <| () => {
       state.counter = state.counter + 1
     }
@@ -63,7 +63,7 @@ ignore(try! @imgui.render())
 - Composable flags are passed as enum arrays, for example
   `flags=[@imgui.WindowFlag::MenuBar, @imgui.WindowFlag::NoSavedSettings]`.
 - Scoped style sheets are passed as enum arrays, for example
-  `style=[Text(White), Background(Hex("#223344")), Rounding(6.0)]`.
+  `style=[Text(White), Background(Hex("#223344")), SelectedBg(Cyan), CollapsedBg(Gray), Rounding(6.0)]`.
   Use `Slot(StyleColor, Color)` only when a precise color slot is needed.
 
 ## Packages
