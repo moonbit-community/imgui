@@ -1,9 +1,9 @@
 # moonbit-community/imgui
 
 `moonbit-community/imgui` provides native MoonBit bindings for the public Dear
-ImGui API. The package is split into a generated raw layer, a generated safe
-wrapper that covers 95.39% of the Dear Bindings functions, and a smaller
-hand-written wrapper that is practical for application code.
+ImGui API. The top-level package is the user-facing MoonBit API: it exposes
+context lifecycle, common widgets, typed flags, and backend-friendly helpers
+without leaking generated C pointer wrappers.
 
 This checkout pins Dear ImGui 1.92.8 as a git submodule under
 `raw/upstream/imgui` and pins the Dear Bindings generator as a git submodule
@@ -12,14 +12,12 @@ Cocoa/OpenGL2 and GLFW/OpenGL3 backends for native demos. The generated raw
 package covers every public symbol emitted by
 `dear_bindings` for the pinned `imgui.h`: defines, enum values, typedefs,
 opaque structs, struct field accessors, and all 760 generated C functions. The
-generated safe layer exposes 725 of those functions with context checks and
-converts MoonBit UTF-16 `String` values to UTF-8 `const char*` inputs.
-Overloads that take `const char*` begin/end ranges expose a single full MoonBit
-`String` and pass a null end pointer to Dear ImGui.
-The top-level `moonbit-community/imgui` package strips Dear ImGui's C namespace
-prefixes, so application code uses names such as `@imgui.button`,
-`@imgui.begin`, and `@imgui.draw_list_add_line`. Exact C ABI names such as
-`im_gui_button` remain available only in `raw/generated`.
+advanced generated safe package exposes 725 of those functions with context
+checks for coverage validation and lower-level integrations. The top-level
+`moonbit-community/imgui` package strips Dear ImGui's C namespace prefixes, so
+application code uses names such as `@imgui.button` and
+`@imgui.begin_window`. Exact C ABI names such as `im_gui_button` remain
+available only in `raw/generated`.
 
 Running `moon run examples/demo --target native` from this repository opens a
 native macOS Cocoa window. `moon run examples/translated_demo --target native`
@@ -41,9 +39,11 @@ git submodule update --init --recursive
   and direct widget calls.
 - `moonbit-community/imgui/raw/generated`: complete generated Dear Bindings
   surface for advanced users and generator validation.
-- `moonbit-community/imgui`: context lifecycle, generated safe wrappers, and
-  MoonBit-friendly widget helpers that raise `ImGuiError` when a current
-  context is required.
+- `moonbit-community/imgui/advanced`: generated safe wrappers over
+  `raw/generated`. This package is for advanced users and may expose raw
+  generated handle and pointer types.
+- `moonbit-community/imgui`: context lifecycle and MoonBit-friendly widget
+  helpers that raise `ImGuiError` when a current context is required.
 - `moonbit-community/imgui/backend/cocoa_opengl2`: macOS Cocoa + OpenGL2
   lifecycle wrapper.
 - `moonbit-community/imgui/backend/glfw_opengl3`: GLFW + OpenGL3 lifecycle
@@ -112,7 +112,7 @@ ignore(@generated.im_font_atlas_build(@generated.im_gui_io_field_get_fonts(io)))
 @generated.im_gui_render()
 ```
 
-## Generated Safe Example
+## Advanced Generated Safe Example
 
 ```moonbit nocheck
 let context = @imgui.Context::create()
@@ -120,11 +120,11 @@ defer context.destroy()
 
 try! @imgui.new_frame()
 if try! @imgui.begin_window("Generated safe API") {
-  try! @imgui.text_unformatted("String arguments are converted safely")
-  ignore(try! @imgui.button("Generated button"))
+  try! @advanced.text_unformatted("String arguments are converted safely")
+  ignore(try! @advanced.button_generated("Generated button"))
 }
 try! @imgui.end_window()
-ignore(try! @imgui.render())
+try! @advanced.render_generated()
 ```
 
 Executable packages that depend on a backend must currently repeat the native
@@ -229,7 +229,7 @@ The generated safe wrapper is derived from the same metadata:
 ```bash
 python3 tools/generate_safe_wrappers.py \
   --metadata raw/dear_bindings/dcimgui.json \
-  --safe-out safe_generated.mbt \
+  --safe-out advanced/safe_generated.mbt \
   --coverage-out safe_generated_coverage.md \
   --min-coverage 95
 ```

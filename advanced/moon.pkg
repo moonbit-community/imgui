@@ -1,0 +1,20 @@
+import {
+  "moonbit-community/imgui" @imgui,
+  "moonbit-community/imgui/raw/generated" @raw_generated,
+}
+
+import {
+  "moonbitlang/core/debug" @debug,
+} for "test"
+
+supported_targets = "+native"
+
+options(
+  link: {
+    "native": {
+      "cc": "cc",
+      "cc-flags": "-Wno-deprecated-declarations -I../raw/upstream/imgui -I../raw/upstream/imgui/backends -Iimgui/raw/upstream/imgui -Iimgui/raw/upstream/imgui/backends",
+      "cc-link-flags": "-lstdc++",
+    },
+  },
+)

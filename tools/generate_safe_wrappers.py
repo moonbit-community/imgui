@@ -276,7 +276,7 @@ def render_custom_vararg_literal(
     lines = [
         "///|",
         f"/// Safe literal-text wrapper for `{fn['name']}`.",
-        f"pub fn {public_name}({', '.join(params)}) -> {ret}{' raise ImGuiError' if guarded else ''} {{",
+        f"pub fn {public_name}({', '.join(params)}) -> {ret}{' raise @imgui.ImGuiError' if guarded else ''} {{",
     ]
     if guarded:
         lines.append("  ensure_current_context()")
@@ -317,7 +317,7 @@ def render_function(model: BindingModel, fn: dict[str, Any]) -> list[str]:
     lines = [
         "///|",
         f"/// Safe generated wrapper for `{fn['name']}`.",
-        f"pub fn {public_name}({', '.join(params)}) -> {ret}{' raise ImGuiError' if guarded else ''} {{",
+        f"pub fn {public_name}({', '.join(params)}) -> {ret}{' raise @imgui.ImGuiError' if guarded else ''} {{",
     ]
     if guarded:
         lines.append("  ensure_current_context()")
@@ -366,6 +366,11 @@ def render_safe(metadata: dict[str, Any], model: BindingModel) -> tuple[str, str
         "///|",
         "/// Safe generated function coverage percentage.",
         f"pub fn safe_generated_coverage_percent() -> Double {{ {coverage:.4f} }}",
+        "",
+        "///|",
+        "fn ensure_current_context() -> Unit raise @imgui.ImGuiError {",
+        "  guard @imgui.has_current_context() else { raise @imgui.NoCurrentContext }",
+        "}",
         "",
     ]
     for fn in bound:

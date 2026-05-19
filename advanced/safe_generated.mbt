@@ -25,6 +25,11 @@ pub fn safe_generated_coverage_percent() -> Double {
 }
 
 ///|
+fn ensure_current_context() -> Unit raise @imgui.ImGuiError {
+  guard @imgui.has_current_context() else { raise @imgui.NoCurrentContext }
+}
+
+///|
 /// Safe generated wrapper for `ImTextureRef_GetTexID`.
 pub fn texture_ref_get_tex_id(_p0 : @raw_generated.ImTextureRef) -> UInt64 {
   @raw_generated.im_texture_ref_get_tex_id(_p0)
@@ -58,49 +63,49 @@ pub fn set_current_context(_p0 : @raw_generated.ImGuiContext) -> Unit {
 
 ///|
 /// Safe generated wrapper for `ImGui_GetIO`.
-pub fn get_io() -> @raw_generated.ImGuiIO raise ImGuiError {
+pub fn get_io() -> @raw_generated.ImGuiIO raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_io()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetPlatformIO`.
-pub fn get_platform_io() -> @raw_generated.ImGuiPlatformIO raise ImGuiError {
+pub fn get_platform_io() -> @raw_generated.ImGuiPlatformIO raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_platform_io()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetStyle`.
-pub fn get_style() -> @raw_generated.ImGuiStyle raise ImGuiError {
+pub fn get_style() -> @raw_generated.ImGuiStyle raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_style()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_NewFrame`.
-pub fn new_frame_generated() -> Unit raise ImGuiError {
+pub fn new_frame_generated() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_new_frame()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_EndFrame`.
-pub fn end_frame_generated() -> Unit raise ImGuiError {
+pub fn end_frame_generated() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_end_frame()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_Render`.
-pub fn render_generated() -> Unit raise ImGuiError {
+pub fn render_generated() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_render()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetDrawData`.
-pub fn get_draw_data() -> @raw_generated.ImDrawData raise ImGuiError {
+pub fn get_draw_data() -> @raw_generated.ImDrawData raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_draw_data()
 }
@@ -109,7 +114,7 @@ pub fn get_draw_data() -> @raw_generated.ImDrawData raise ImGuiError {
 /// Safe generated wrapper for `ImGui_ShowDemoWindow`.
 pub fn show_demo_window_generated(
   _p0 : @raw_generated.BoolPtr,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_show_demo_window(_p0)
 }
@@ -118,7 +123,7 @@ pub fn show_demo_window_generated(
 /// Safe generated wrapper for `ImGui_ShowMetricsWindow`.
 pub fn show_metrics_window(
   _p0 : @raw_generated.BoolPtr,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_show_metrics_window(_p0)
 }
@@ -127,14 +132,14 @@ pub fn show_metrics_window(
 /// Safe generated wrapper for `ImGui_ShowDebugLogWindow`.
 pub fn show_debug_log_window(
   _p0 : @raw_generated.BoolPtr,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_show_debug_log_window(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_ShowIDStackToolWindow`.
-pub fn show_id_stack_tool_window() -> Unit raise ImGuiError {
+pub fn show_id_stack_tool_window() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_show_id_stack_tool_window()
 }
@@ -143,14 +148,16 @@ pub fn show_id_stack_tool_window() -> Unit raise ImGuiError {
 /// Safe generated wrapper for `ImGui_ShowIDStackToolWindowEx`.
 pub fn show_id_stack_tool_window_ex(
   _p0 : @raw_generated.BoolPtr,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_show_id_stack_tool_window_ex(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_ShowAboutWindow`.
-pub fn show_about_window(_p0 : @raw_generated.BoolPtr) -> Unit raise ImGuiError {
+pub fn show_about_window(
+  _p0 : @raw_generated.BoolPtr,
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_show_about_window(_p0)
 }
@@ -159,14 +166,14 @@ pub fn show_about_window(_p0 : @raw_generated.BoolPtr) -> Unit raise ImGuiError 
 /// Safe generated wrapper for `ImGui_ShowStyleEditor`.
 pub fn show_style_editor(
   _p0 : @raw_generated.ImGuiStyle,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_show_style_editor(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_ShowStyleSelector`.
-pub fn show_style_selector(_p0 : String) -> Bool raise ImGuiError {
+pub fn show_style_selector(_p0 : String) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -175,7 +182,7 @@ pub fn show_style_selector(_p0 : String) -> Bool raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_ShowFontSelector`.
-pub fn show_font_selector(_p0 : String) -> Unit raise ImGuiError {
+pub fn show_font_selector(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -184,7 +191,7 @@ pub fn show_font_selector(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_ShowUserGuide`.
-pub fn show_user_guide() -> Unit raise ImGuiError {
+pub fn show_user_guide() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_show_user_guide()
 }
@@ -199,7 +206,7 @@ pub fn get_version() -> String {
 /// Safe generated wrapper for `ImGui_StyleColorsDark`.
 pub fn style_colors_dark(
   _p0 : @raw_generated.ImGuiStyle,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_style_colors_dark(_p0)
 }
@@ -208,7 +215,7 @@ pub fn style_colors_dark(
 /// Safe generated wrapper for `ImGui_StyleColorsLight`.
 pub fn style_colors_light(
   _p0 : @raw_generated.ImGuiStyle,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_style_colors_light(_p0)
 }
@@ -217,7 +224,7 @@ pub fn style_colors_light(
 /// Safe generated wrapper for `ImGui_StyleColorsClassic`.
 pub fn style_colors_classic(
   _p0 : @raw_generated.ImGuiStyle,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_style_colors_classic(_p0)
 }
@@ -228,7 +235,7 @@ pub fn begin(
   _p0 : String,
   _p1 : @raw_generated.BoolPtr,
   _p2 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -237,7 +244,7 @@ pub fn begin(
 
 ///|
 /// Safe generated wrapper for `ImGui_End`.
-pub fn end() -> Unit raise ImGuiError {
+pub fn end() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_end()
 }
@@ -249,7 +256,7 @@ pub fn begin_child(
   _p1 : @raw_generated.ImVec2,
   _p2 : Int,
   _p3 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -263,77 +270,77 @@ pub fn begin_child_id(
   _p1 : @raw_generated.ImVec2,
   _p2 : Int,
   _p3 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_begin_child_id(_p0, _p1, _p2, _p3)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_EndChild`.
-pub fn end_child() -> Unit raise ImGuiError {
+pub fn end_child() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_end_child()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsWindowAppearing`.
-pub fn is_window_appearing() -> Bool raise ImGuiError {
+pub fn is_window_appearing() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_window_appearing()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsWindowCollapsed`.
-pub fn is_window_collapsed() -> Bool raise ImGuiError {
+pub fn is_window_collapsed() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_window_collapsed()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsWindowFocused`.
-pub fn is_window_focused(_p0 : Int) -> Bool raise ImGuiError {
+pub fn is_window_focused(_p0 : Int) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_window_focused(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsWindowHovered`.
-pub fn is_window_hovered(_p0 : Int) -> Bool raise ImGuiError {
+pub fn is_window_hovered(_p0 : Int) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_window_hovered(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetWindowDrawList`.
-pub fn get_window_draw_list() -> @raw_generated.ImDrawList raise ImGuiError {
+pub fn get_window_draw_list() -> @raw_generated.ImDrawList raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_window_draw_list()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetWindowPos`.
-pub fn get_window_pos() -> @raw_generated.ImVec2 raise ImGuiError {
+pub fn get_window_pos() -> @raw_generated.ImVec2 raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_window_pos()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetWindowSize`.
-pub fn get_window_size() -> @raw_generated.ImVec2 raise ImGuiError {
+pub fn get_window_size() -> @raw_generated.ImVec2 raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_window_size()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetWindowWidth`.
-pub fn get_window_width() -> Float raise ImGuiError {
+pub fn get_window_width() -> Float raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_window_width()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetWindowHeight`.
-pub fn get_window_height() -> Float raise ImGuiError {
+pub fn get_window_height() -> Float raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_window_height()
 }
@@ -343,7 +350,7 @@ pub fn get_window_height() -> Float raise ImGuiError {
 pub fn set_next_window_pos(
   _p0 : @raw_generated.ImVec2,
   _p1 : Int,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_next_window_pos(_p0, _p1)
 }
@@ -354,7 +361,7 @@ pub fn set_next_window_pos_ex(
   _p0 : @raw_generated.ImVec2,
   _p1 : Int,
   _p2 : @raw_generated.ImVec2,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_next_window_pos_ex(_p0, _p1, _p2)
 }
@@ -364,7 +371,7 @@ pub fn set_next_window_pos_ex(
 pub fn set_next_window_size_generated(
   _p0 : @raw_generated.ImVec2,
   _p1 : Int,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_next_window_size(_p0, _p1)
 }
@@ -373,7 +380,7 @@ pub fn set_next_window_size_generated(
 /// Safe generated wrapper for `ImGui_SetNextWindowContentSize`.
 pub fn set_next_window_content_size(
   _p0 : @raw_generated.ImVec2,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_next_window_content_size(_p0)
 }
@@ -383,14 +390,14 @@ pub fn set_next_window_content_size(
 pub fn set_next_window_collapsed(
   _p0 : Bool,
   _p1 : Int,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_next_window_collapsed(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetNextWindowFocus`.
-pub fn set_next_window_focus() -> Unit raise ImGuiError {
+pub fn set_next_window_focus() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_next_window_focus()
 }
@@ -399,14 +406,14 @@ pub fn set_next_window_focus() -> Unit raise ImGuiError {
 /// Safe generated wrapper for `ImGui_SetNextWindowScroll`.
 pub fn set_next_window_scroll(
   _p0 : @raw_generated.ImVec2,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_next_window_scroll(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetNextWindowBgAlpha`.
-pub fn set_next_window_bg_alpha(_p0 : Float) -> Unit raise ImGuiError {
+pub fn set_next_window_bg_alpha(_p0 : Float) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_next_window_bg_alpha(_p0)
 }
@@ -416,7 +423,7 @@ pub fn set_next_window_bg_alpha(_p0 : Float) -> Unit raise ImGuiError {
 pub fn set_window_pos(
   _p0 : @raw_generated.ImVec2,
   _p1 : Int,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_window_pos(_p0, _p1)
 }
@@ -426,21 +433,24 @@ pub fn set_window_pos(
 pub fn set_window_size(
   _p0 : @raw_generated.ImVec2,
   _p1 : Int,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_window_size(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetWindowCollapsed`.
-pub fn set_window_collapsed(_p0 : Bool, _p1 : Int) -> Unit raise ImGuiError {
+pub fn set_window_collapsed(
+  _p0 : Bool,
+  _p1 : Int,
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_window_collapsed(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetWindowFocus`.
-pub fn set_window_focus() -> Unit raise ImGuiError {
+pub fn set_window_focus() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_window_focus()
 }
@@ -451,7 +461,7 @@ pub fn set_window_pos_str(
   _p0 : String,
   _p1 : @raw_generated.ImVec2,
   _p2 : Int,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -464,7 +474,7 @@ pub fn set_window_size_str(
   _p0 : String,
   _p1 : @raw_generated.ImVec2,
   _p2 : Int,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -477,7 +487,7 @@ pub fn set_window_collapsed_str(
   _p0 : String,
   _p1 : Bool,
   _p2 : Int,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -486,7 +496,7 @@ pub fn set_window_collapsed_str(
 
 ///|
 /// Safe generated wrapper for `ImGui_SetWindowFocusStr`.
-pub fn set_window_focus_str(_p0 : String) -> Unit raise ImGuiError {
+pub fn set_window_focus_str(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -495,70 +505,76 @@ pub fn set_window_focus_str(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_GetScrollX`.
-pub fn get_scroll_x() -> Float raise ImGuiError {
+pub fn get_scroll_x() -> Float raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_scroll_x()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetScrollY`.
-pub fn get_scroll_y() -> Float raise ImGuiError {
+pub fn get_scroll_y() -> Float raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_scroll_y()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetScrollX`.
-pub fn set_scroll_x(_p0 : Float) -> Unit raise ImGuiError {
+pub fn set_scroll_x(_p0 : Float) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_scroll_x(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetScrollY`.
-pub fn set_scroll_y(_p0 : Float) -> Unit raise ImGuiError {
+pub fn set_scroll_y(_p0 : Float) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_scroll_y(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetScrollMaxX`.
-pub fn get_scroll_max_x() -> Float raise ImGuiError {
+pub fn get_scroll_max_x() -> Float raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_scroll_max_x()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetScrollMaxY`.
-pub fn get_scroll_max_y() -> Float raise ImGuiError {
+pub fn get_scroll_max_y() -> Float raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_scroll_max_y()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetScrollHereX`.
-pub fn set_scroll_here_x(_p0 : Float) -> Unit raise ImGuiError {
+pub fn set_scroll_here_x(_p0 : Float) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_scroll_here_x(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetScrollHereY`.
-pub fn set_scroll_here_y(_p0 : Float) -> Unit raise ImGuiError {
+pub fn set_scroll_here_y(_p0 : Float) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_scroll_here_y(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetScrollFromPosX`.
-pub fn set_scroll_from_pos_x(_p0 : Float, _p1 : Float) -> Unit raise ImGuiError {
+pub fn set_scroll_from_pos_x(
+  _p0 : Float,
+  _p1 : Float,
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_scroll_from_pos_x(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetScrollFromPosY`.
-pub fn set_scroll_from_pos_y(_p0 : Float, _p1 : Float) -> Unit raise ImGuiError {
+pub fn set_scroll_from_pos_y(
+  _p0 : Float,
+  _p1 : Float,
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_scroll_from_pos_y(_p0, _p1)
 }
@@ -568,42 +584,42 @@ pub fn set_scroll_from_pos_y(_p0 : Float, _p1 : Float) -> Unit raise ImGuiError 
 pub fn push_font_float(
   _p0 : @raw_generated.ImFont,
   _p1 : Float,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_push_font_float(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PopFont`.
-pub fn pop_font() -> Unit raise ImGuiError {
+pub fn pop_font() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_pop_font()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetFont`.
-pub fn get_font() -> @raw_generated.ImFont raise ImGuiError {
+pub fn get_font() -> @raw_generated.ImFont raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_font()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetFontSize`.
-pub fn get_font_size() -> Float raise ImGuiError {
+pub fn get_font_size() -> Float raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_font_size()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetFontBaked`.
-pub fn get_font_baked() -> @raw_generated.ImFontBaked raise ImGuiError {
+pub fn get_font_baked() -> @raw_generated.ImFontBaked raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_font_baked()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PushStyleColor`.
-pub fn push_style_color(_p0 : Int, _p1 : UInt) -> Unit raise ImGuiError {
+pub fn push_style_color(_p0 : Int, _p1 : UInt) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_push_style_color(_p0, _p1)
 }
@@ -613,28 +629,28 @@ pub fn push_style_color(_p0 : Int, _p1 : UInt) -> Unit raise ImGuiError {
 pub fn push_style_color_im_vec4_ptr(
   _p0 : Int,
   _p1 : @raw_generated.ImVec4,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_push_style_color_im_vec4_ptr(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PopStyleColor`.
-pub fn pop_style_color() -> Unit raise ImGuiError {
+pub fn pop_style_color() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_pop_style_color()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PopStyleColorEx`.
-pub fn pop_style_color_ex(_p0 : Int) -> Unit raise ImGuiError {
+pub fn pop_style_color_ex(_p0 : Int) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_pop_style_color_ex(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PushStyleVar`.
-pub fn push_style_var(_p0 : Int, _p1 : Float) -> Unit raise ImGuiError {
+pub fn push_style_var(_p0 : Int, _p1 : Float) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_push_style_var(_p0, _p1)
 }
@@ -644,112 +660,112 @@ pub fn push_style_var(_p0 : Int, _p1 : Float) -> Unit raise ImGuiError {
 pub fn push_style_var_im_vec2_ptr(
   _p0 : Int,
   _p1 : @raw_generated.ImVec2,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_push_style_var_im_vec2_ptr(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PushStyleVarX`.
-pub fn push_style_var_x(_p0 : Int, _p1 : Float) -> Unit raise ImGuiError {
+pub fn push_style_var_x(_p0 : Int, _p1 : Float) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_push_style_var_x(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PushStyleVarY`.
-pub fn push_style_var_y(_p0 : Int, _p1 : Float) -> Unit raise ImGuiError {
+pub fn push_style_var_y(_p0 : Int, _p1 : Float) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_push_style_var_y(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PopStyleVar`.
-pub fn pop_style_var() -> Unit raise ImGuiError {
+pub fn pop_style_var() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_pop_style_var()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PopStyleVarEx`.
-pub fn pop_style_var_ex(_p0 : Int) -> Unit raise ImGuiError {
+pub fn pop_style_var_ex(_p0 : Int) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_pop_style_var_ex(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PushItemFlag`.
-pub fn push_item_flag(_p0 : Int, _p1 : Bool) -> Unit raise ImGuiError {
+pub fn push_item_flag(_p0 : Int, _p1 : Bool) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_push_item_flag(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PopItemFlag`.
-pub fn pop_item_flag() -> Unit raise ImGuiError {
+pub fn pop_item_flag() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_pop_item_flag()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PushItemWidth`.
-pub fn push_item_width(_p0 : Float) -> Unit raise ImGuiError {
+pub fn push_item_width(_p0 : Float) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_push_item_width(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PopItemWidth`.
-pub fn pop_item_width() -> Unit raise ImGuiError {
+pub fn pop_item_width() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_pop_item_width()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetNextItemWidth`.
-pub fn set_next_item_width(_p0 : Float) -> Unit raise ImGuiError {
+pub fn set_next_item_width(_p0 : Float) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_next_item_width(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_CalcItemWidth`.
-pub fn calc_item_width() -> Float raise ImGuiError {
+pub fn calc_item_width() -> Float raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_calc_item_width()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PushTextWrapPos`.
-pub fn push_text_wrap_pos(_p0 : Float) -> Unit raise ImGuiError {
+pub fn push_text_wrap_pos(_p0 : Float) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_push_text_wrap_pos(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PopTextWrapPos`.
-pub fn pop_text_wrap_pos() -> Unit raise ImGuiError {
+pub fn pop_text_wrap_pos() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_pop_text_wrap_pos()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetFontTexUvWhitePixel`.
-pub fn get_font_tex_uv_white_pixel() -> @raw_generated.ImVec2 raise ImGuiError {
+pub fn get_font_tex_uv_white_pixel() -> @raw_generated.ImVec2 raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_font_tex_uv_white_pixel()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetColorU32`.
-pub fn get_color_u32(_p0 : Int) -> UInt raise ImGuiError {
+pub fn get_color_u32(_p0 : Int) -> UInt raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_color_u32(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetColorU32Ex`.
-pub fn get_color_u32_ex(_p0 : Int, _p1 : Float) -> UInt raise ImGuiError {
+pub fn get_color_u32_ex(_p0 : Int, _p1 : Float) -> UInt raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_color_u32_ex(_p0, _p1)
 }
@@ -758,14 +774,14 @@ pub fn get_color_u32_ex(_p0 : Int, _p1 : Float) -> UInt raise ImGuiError {
 /// Safe generated wrapper for `ImGui_GetColorU32ImVec4`.
 pub fn get_color_u32_im_vec4(
   _p0 : @raw_generated.ImVec4,
-) -> UInt raise ImGuiError {
+) -> UInt raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_color_u32_im_vec4(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetColorU32ImU32`.
-pub fn get_color_u32_im_u32(_p0 : UInt) -> UInt raise ImGuiError {
+pub fn get_color_u32_im_u32(_p0 : UInt) -> UInt raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_color_u32_im_u32(_p0)
 }
@@ -775,7 +791,7 @@ pub fn get_color_u32_im_u32(_p0 : UInt) -> UInt raise ImGuiError {
 pub fn get_color_u32_im_u32_ex(
   _p0 : UInt,
   _p1 : Float,
-) -> UInt raise ImGuiError {
+) -> UInt raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_color_u32_im_u32_ex(_p0, _p1)
 }
@@ -784,14 +800,14 @@ pub fn get_color_u32_im_u32_ex(
 /// Safe generated wrapper for `ImGui_GetStyleColorVec4`.
 pub fn get_style_color_vec4(
   _p0 : Int,
-) -> @raw_generated.ImVec4 raise ImGuiError {
+) -> @raw_generated.ImVec4 raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_style_color_vec4(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetCursorScreenPos`.
-pub fn get_cursor_screen_pos() -> @raw_generated.ImVec2 raise ImGuiError {
+pub fn get_cursor_screen_pos() -> @raw_generated.ImVec2 raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_cursor_screen_pos()
 }
@@ -800,189 +816,191 @@ pub fn get_cursor_screen_pos() -> @raw_generated.ImVec2 raise ImGuiError {
 /// Safe generated wrapper for `ImGui_SetCursorScreenPos`.
 pub fn set_cursor_screen_pos(
   _p0 : @raw_generated.ImVec2,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_cursor_screen_pos(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetContentRegionAvail`.
-pub fn get_content_region_avail() -> @raw_generated.ImVec2 raise ImGuiError {
+pub fn get_content_region_avail() -> @raw_generated.ImVec2 raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_content_region_avail()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetCursorPos`.
-pub fn get_cursor_pos() -> @raw_generated.ImVec2 raise ImGuiError {
+pub fn get_cursor_pos() -> @raw_generated.ImVec2 raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_cursor_pos()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetCursorPosX`.
-pub fn get_cursor_pos_x() -> Float raise ImGuiError {
+pub fn get_cursor_pos_x() -> Float raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_cursor_pos_x()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetCursorPosY`.
-pub fn get_cursor_pos_y() -> Float raise ImGuiError {
+pub fn get_cursor_pos_y() -> Float raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_cursor_pos_y()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetCursorPos`.
-pub fn set_cursor_pos(_p0 : @raw_generated.ImVec2) -> Unit raise ImGuiError {
+pub fn set_cursor_pos(
+  _p0 : @raw_generated.ImVec2,
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_cursor_pos(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetCursorPosX`.
-pub fn set_cursor_pos_x(_p0 : Float) -> Unit raise ImGuiError {
+pub fn set_cursor_pos_x(_p0 : Float) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_cursor_pos_x(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetCursorPosY`.
-pub fn set_cursor_pos_y(_p0 : Float) -> Unit raise ImGuiError {
+pub fn set_cursor_pos_y(_p0 : Float) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_cursor_pos_y(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetCursorStartPos`.
-pub fn get_cursor_start_pos() -> @raw_generated.ImVec2 raise ImGuiError {
+pub fn get_cursor_start_pos() -> @raw_generated.ImVec2 raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_cursor_start_pos()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_Separator`.
-pub fn separator_generated() -> Unit raise ImGuiError {
+pub fn separator_generated() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_separator()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SameLine`.
-pub fn same_line_generated() -> Unit raise ImGuiError {
+pub fn same_line_generated() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_same_line()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SameLineEx`.
-pub fn same_line_ex(_p0 : Float, _p1 : Float) -> Unit raise ImGuiError {
+pub fn same_line_ex(_p0 : Float, _p1 : Float) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_same_line_ex(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_NewLine`.
-pub fn new_line() -> Unit raise ImGuiError {
+pub fn new_line() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_new_line()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_Spacing`.
-pub fn spacing() -> Unit raise ImGuiError {
+pub fn spacing() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_spacing()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_Dummy`.
-pub fn dummy(_p0 : @raw_generated.ImVec2) -> Unit raise ImGuiError {
+pub fn dummy(_p0 : @raw_generated.ImVec2) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_dummy(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_Indent`.
-pub fn indent() -> Unit raise ImGuiError {
+pub fn indent() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_indent()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IndentEx`.
-pub fn indent_ex(_p0 : Float) -> Unit raise ImGuiError {
+pub fn indent_ex(_p0 : Float) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_indent_ex(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_Unindent`.
-pub fn unindent() -> Unit raise ImGuiError {
+pub fn unindent() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_unindent()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_UnindentEx`.
-pub fn unindent_ex(_p0 : Float) -> Unit raise ImGuiError {
+pub fn unindent_ex(_p0 : Float) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_unindent_ex(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_BeginGroup`.
-pub fn begin_group() -> Unit raise ImGuiError {
+pub fn begin_group() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_begin_group()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_EndGroup`.
-pub fn end_group() -> Unit raise ImGuiError {
+pub fn end_group() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_end_group()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_AlignTextToFramePadding`.
-pub fn align_text_to_frame_padding() -> Unit raise ImGuiError {
+pub fn align_text_to_frame_padding() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_align_text_to_frame_padding()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetTextLineHeight`.
-pub fn get_text_line_height() -> Float raise ImGuiError {
+pub fn get_text_line_height() -> Float raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_text_line_height()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetTextLineHeightWithSpacing`.
-pub fn get_text_line_height_with_spacing() -> Float raise ImGuiError {
+pub fn get_text_line_height_with_spacing() -> Float raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_text_line_height_with_spacing()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetFrameHeight`.
-pub fn get_frame_height() -> Float raise ImGuiError {
+pub fn get_frame_height() -> Float raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_frame_height()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetFrameHeightWithSpacing`.
-pub fn get_frame_height_with_spacing() -> Float raise ImGuiError {
+pub fn get_frame_height_with_spacing() -> Float raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_frame_height_with_spacing()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PushID`.
-pub fn push_id(_p0 : String) -> Unit raise ImGuiError {
+pub fn push_id(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -991,7 +1009,7 @@ pub fn push_id(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_PushIDStr`.
-pub fn push_id_str(_p0 : String) -> Unit raise ImGuiError {
+pub fn push_id_str(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1000,28 +1018,30 @@ pub fn push_id_str(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_PushIDPtr`.
-pub fn push_id_ptr(_p0 : @raw_generated.VoidPtr) -> Unit raise ImGuiError {
+pub fn push_id_ptr(
+  _p0 : @raw_generated.VoidPtr,
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_push_id_ptr(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PushIDInt`.
-pub fn push_id_int(_p0 : Int) -> Unit raise ImGuiError {
+pub fn push_id_int(_p0 : Int) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_push_id_int(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PopID`.
-pub fn pop_id() -> Unit raise ImGuiError {
+pub fn pop_id() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_pop_id()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetID`.
-pub fn get_id(_p0 : String) -> UInt raise ImGuiError {
+pub fn get_id(_p0 : String) -> UInt raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1030,7 +1050,7 @@ pub fn get_id(_p0 : String) -> UInt raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_GetIDStr`.
-pub fn get_id_str(_p0 : String) -> UInt raise ImGuiError {
+pub fn get_id_str(_p0 : String) -> UInt raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1039,21 +1059,21 @@ pub fn get_id_str(_p0 : String) -> UInt raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_GetIDPtr`.
-pub fn get_id_ptr(_p0 : @raw_generated.VoidPtr) -> UInt raise ImGuiError {
+pub fn get_id_ptr(_p0 : @raw_generated.VoidPtr) -> UInt raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_id_ptr(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetIDInt`.
-pub fn get_id_int(_p0 : Int) -> UInt raise ImGuiError {
+pub fn get_id_int(_p0 : Int) -> UInt raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_id_int(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_TextUnformatted`.
-pub fn text_unformatted(_p0 : String) -> Unit raise ImGuiError {
+pub fn text_unformatted(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1062,7 +1082,7 @@ pub fn text_unformatted(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_TextUnformattedEx`.
-pub fn text_unformatted_ex(_p0 : String) -> Unit raise ImGuiError {
+pub fn text_unformatted_ex(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1074,7 +1094,7 @@ pub fn text_unformatted_ex(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe literal-text wrapper for `ImGui_Text`.
-pub fn text_generated(_p0 : String) -> Unit raise ImGuiError {
+pub fn text_generated(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1086,7 +1106,7 @@ pub fn text_generated(_p0 : String) -> Unit raise ImGuiError {
 pub fn text_colored(
   _p0 : @raw_generated.ImVec4,
   _p1 : String,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c1 = @raw_generated.OwnedCString::new(_p1)
   defer _c1.free()
@@ -1098,7 +1118,7 @@ pub fn text_colored(
 pub fn text_colored_unformatted(
   _p0 : @raw_generated.ImVec4,
   _p1 : String,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c1 = @raw_generated.OwnedCString::new(_p1)
   defer _c1.free()
@@ -1107,7 +1127,7 @@ pub fn text_colored_unformatted(
 
 ///|
 /// Safe literal-text wrapper for `ImGui_TextDisabled`.
-pub fn text_disabled(_p0 : String) -> Unit raise ImGuiError {
+pub fn text_disabled(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1116,7 +1136,7 @@ pub fn text_disabled(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_TextDisabledUnformatted`.
-pub fn text_disabled_unformatted(_p0 : String) -> Unit raise ImGuiError {
+pub fn text_disabled_unformatted(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1125,7 +1145,7 @@ pub fn text_disabled_unformatted(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe literal-text wrapper for `ImGui_TextWrapped`.
-pub fn text_wrapped(_p0 : String) -> Unit raise ImGuiError {
+pub fn text_wrapped(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1134,7 +1154,7 @@ pub fn text_wrapped(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_TextWrappedUnformatted`.
-pub fn text_wrapped_unformatted(_p0 : String) -> Unit raise ImGuiError {
+pub fn text_wrapped_unformatted(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1143,7 +1163,7 @@ pub fn text_wrapped_unformatted(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe literal-text wrapper for `ImGui_LabelText`.
-pub fn label_text(_p0 : String, _p1 : String) -> Unit raise ImGuiError {
+pub fn label_text(_p0 : String, _p1 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1157,7 +1177,7 @@ pub fn label_text(_p0 : String, _p1 : String) -> Unit raise ImGuiError {
 pub fn label_text_unformatted(
   _p0 : String,
   _p1 : String,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1168,7 +1188,7 @@ pub fn label_text_unformatted(
 
 ///|
 /// Safe literal-text wrapper for `ImGui_BulletText`.
-pub fn bullet_text(_p0 : String) -> Unit raise ImGuiError {
+pub fn bullet_text(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1177,7 +1197,7 @@ pub fn bullet_text(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_BulletTextUnformatted`.
-pub fn bullet_text_unformatted(_p0 : String) -> Unit raise ImGuiError {
+pub fn bullet_text_unformatted(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1186,7 +1206,7 @@ pub fn bullet_text_unformatted(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_SeparatorText`.
-pub fn separator_text(_p0 : String) -> Unit raise ImGuiError {
+pub fn separator_text(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1195,7 +1215,7 @@ pub fn separator_text(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_Button`.
-pub fn button_generated(_p0 : String) -> Bool raise ImGuiError {
+pub fn button_generated(_p0 : String) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1207,7 +1227,7 @@ pub fn button_generated(_p0 : String) -> Bool raise ImGuiError {
 pub fn button_ex(
   _p0 : String,
   _p1 : @raw_generated.ImVec2,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1216,7 +1236,7 @@ pub fn button_ex(
 
 ///|
 /// Safe generated wrapper for `ImGui_SmallButton`.
-pub fn small_button(_p0 : String) -> Bool raise ImGuiError {
+pub fn small_button(_p0 : String) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1229,7 +1249,7 @@ pub fn invisible_button(
   _p0 : String,
   _p1 : @raw_generated.ImVec2,
   _p2 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1238,7 +1258,7 @@ pub fn invisible_button(
 
 ///|
 /// Safe generated wrapper for `ImGui_ArrowButton`.
-pub fn arrow_button(_p0 : String, _p1 : Int) -> Bool raise ImGuiError {
+pub fn arrow_button(_p0 : String, _p1 : Int) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1250,7 +1270,7 @@ pub fn arrow_button(_p0 : String, _p1 : Int) -> Bool raise ImGuiError {
 pub fn checkbox_generated(
   _p0 : String,
   _p1 : @raw_generated.BoolPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1263,7 +1283,7 @@ pub fn checkbox_flags_int_ptr(
   _p0 : String,
   _p1 : @raw_generated.IntPtr,
   _p2 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1276,7 +1296,7 @@ pub fn checkbox_flags_uint_ptr(
   _p0 : String,
   _p1 : @raw_generated.UIntPtr,
   _p2 : UInt,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1285,7 +1305,7 @@ pub fn checkbox_flags_uint_ptr(
 
 ///|
 /// Safe generated wrapper for `ImGui_RadioButton`.
-pub fn radio_button(_p0 : String, _p1 : Bool) -> Bool raise ImGuiError {
+pub fn radio_button(_p0 : String, _p1 : Bool) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1298,7 +1318,7 @@ pub fn radio_button_int_ptr(
   _p0 : String,
   _p1 : @raw_generated.IntPtr,
   _p2 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1311,7 +1331,7 @@ pub fn progress_bar(
   _p0 : Float,
   _p1 : @raw_generated.ImVec2,
   _p2 : String,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c2 = @raw_generated.OwnedCString::new(_p2)
   defer _c2.free()
@@ -1320,14 +1340,14 @@ pub fn progress_bar(
 
 ///|
 /// Safe generated wrapper for `ImGui_Bullet`.
-pub fn bullet() -> Unit raise ImGuiError {
+pub fn bullet() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_bullet()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_TextLink`.
-pub fn text_link(_p0 : String) -> Bool raise ImGuiError {
+pub fn text_link(_p0 : String) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1336,7 +1356,7 @@ pub fn text_link(_p0 : String) -> Bool raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_TextLinkOpenURL`.
-pub fn text_link_open_url(_p0 : String) -> Bool raise ImGuiError {
+pub fn text_link_open_url(_p0 : String) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1348,7 +1368,7 @@ pub fn text_link_open_url(_p0 : String) -> Bool raise ImGuiError {
 pub fn text_link_open_url_ex(
   _p0 : String,
   _p1 : String,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1362,7 +1382,7 @@ pub fn text_link_open_url_ex(
 pub fn image(
   _p0 : @raw_generated.ImTextureRef,
   _p1 : @raw_generated.ImVec2,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_image(_p0, _p1)
 }
@@ -1374,7 +1394,7 @@ pub fn image_ex(
   _p1 : @raw_generated.ImVec2,
   _p2 : @raw_generated.ImVec2,
   _p3 : @raw_generated.ImVec2,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_image_ex(_p0, _p1, _p2, _p3)
 }
@@ -1384,7 +1404,7 @@ pub fn image_ex(
 pub fn image_with_bg(
   _p0 : @raw_generated.ImTextureRef,
   _p1 : @raw_generated.ImVec2,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_image_with_bg(_p0, _p1)
 }
@@ -1398,7 +1418,7 @@ pub fn image_with_bg_ex(
   _p3 : @raw_generated.ImVec2,
   _p4 : @raw_generated.ImVec4,
   _p5 : @raw_generated.ImVec4,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_image_with_bg_ex(_p0, _p1, _p2, _p3, _p4, _p5)
 }
@@ -1409,7 +1429,7 @@ pub fn image_button(
   _p0 : String,
   _p1 : @raw_generated.ImTextureRef,
   _p2 : @raw_generated.ImVec2,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1426,7 +1446,7 @@ pub fn image_button_ex(
   _p4 : @raw_generated.ImVec2,
   _p5 : @raw_generated.ImVec4,
   _p6 : @raw_generated.ImVec4,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1439,7 +1459,7 @@ pub fn begin_combo(
   _p0 : String,
   _p1 : String,
   _p2 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1450,7 +1470,7 @@ pub fn begin_combo(
 
 ///|
 /// Safe generated wrapper for `ImGui_EndCombo`.
-pub fn end_combo() -> Unit raise ImGuiError {
+pub fn end_combo() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_end_combo()
 }
@@ -1462,7 +1482,7 @@ pub fn combo_char(
   _p1 : @raw_generated.IntPtr,
   _p2 : @raw_generated.CStringPtr,
   _p3 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1477,7 +1497,7 @@ pub fn combo_char_ex(
   _p2 : @raw_generated.CStringPtr,
   _p3 : Int,
   _p4 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1490,7 +1510,7 @@ pub fn combo(
   _p0 : String,
   _p1 : @raw_generated.IntPtr,
   _p2 : String,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1506,7 +1526,7 @@ pub fn combo_ex(
   _p1 : @raw_generated.IntPtr,
   _p2 : String,
   _p3 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1520,7 +1540,7 @@ pub fn combo_ex(
 pub fn drag_float(
   _p0 : String,
   _p1 : @raw_generated.FloatPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1537,7 +1557,7 @@ pub fn drag_float_ex(
   _p4 : Float,
   _p5 : String,
   _p6 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1559,7 +1579,7 @@ pub fn drag_float_ex(
 pub fn drag_float2(
   _p0 : String,
   _p1 : @raw_generated.FloatPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1576,7 +1596,7 @@ pub fn drag_float2_ex(
   _p4 : Float,
   _p5 : String,
   _p6 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1598,7 +1618,7 @@ pub fn drag_float2_ex(
 pub fn drag_float3(
   _p0 : String,
   _p1 : @raw_generated.FloatPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1615,7 +1635,7 @@ pub fn drag_float3_ex(
   _p4 : Float,
   _p5 : String,
   _p6 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1637,7 +1657,7 @@ pub fn drag_float3_ex(
 pub fn drag_float4(
   _p0 : String,
   _p1 : @raw_generated.FloatPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1654,7 +1674,7 @@ pub fn drag_float4_ex(
   _p4 : Float,
   _p5 : String,
   _p6 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1677,7 +1697,7 @@ pub fn drag_float_range2(
   _p0 : String,
   _p1 : @raw_generated.FloatPtr,
   _p2 : @raw_generated.FloatPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1696,7 +1716,7 @@ pub fn drag_float_range2_ex(
   _p6 : String,
   _p7 : String,
   _p8 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1722,7 +1742,7 @@ pub fn drag_float_range2_ex(
 pub fn drag_int(
   _p0 : String,
   _p1 : @raw_generated.IntPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1739,7 +1759,7 @@ pub fn drag_int_ex(
   _p4 : Int,
   _p5 : String,
   _p6 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1761,7 +1781,7 @@ pub fn drag_int_ex(
 pub fn drag_int2(
   _p0 : String,
   _p1 : @raw_generated.IntPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1778,7 +1798,7 @@ pub fn drag_int2_ex(
   _p4 : Int,
   _p5 : String,
   _p6 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1800,7 +1820,7 @@ pub fn drag_int2_ex(
 pub fn drag_int3(
   _p0 : String,
   _p1 : @raw_generated.IntPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1817,7 +1837,7 @@ pub fn drag_int3_ex(
   _p4 : Int,
   _p5 : String,
   _p6 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1839,7 +1859,7 @@ pub fn drag_int3_ex(
 pub fn drag_int4(
   _p0 : String,
   _p1 : @raw_generated.IntPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1856,7 +1876,7 @@ pub fn drag_int4_ex(
   _p4 : Int,
   _p5 : String,
   _p6 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1879,7 +1899,7 @@ pub fn drag_int_range2(
   _p0 : String,
   _p1 : @raw_generated.IntPtr,
   _p2 : @raw_generated.IntPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1898,7 +1918,7 @@ pub fn drag_int_range2_ex(
   _p6 : String,
   _p7 : String,
   _p8 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1925,7 +1945,7 @@ pub fn drag_scalar(
   _p0 : String,
   _p1 : Int,
   _p2 : @raw_generated.VoidPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1943,7 +1963,7 @@ pub fn drag_scalar_ex(
   _p5 : @raw_generated.VoidPtr,
   _p6 : String,
   _p7 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1968,7 +1988,7 @@ pub fn drag_scalar_n(
   _p1 : Int,
   _p2 : @raw_generated.VoidPtr,
   _p3 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -1987,7 +2007,7 @@ pub fn drag_scalar_n_ex(
   _p6 : @raw_generated.VoidPtr,
   _p7 : String,
   _p8 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2013,7 +2033,7 @@ pub fn slider_float_generated(
   _p1 : @raw_generated.FloatPtr,
   _p2 : Float,
   _p3 : Float,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2029,7 +2049,7 @@ pub fn slider_float_ex(
   _p3 : Float,
   _p4 : String,
   _p5 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2052,7 +2072,7 @@ pub fn slider_float2(
   _p1 : @raw_generated.FloatPtr,
   _p2 : Float,
   _p3 : Float,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2068,7 +2088,7 @@ pub fn slider_float2_ex(
   _p3 : Float,
   _p4 : String,
   _p5 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2091,7 +2111,7 @@ pub fn slider_float3(
   _p1 : @raw_generated.FloatPtr,
   _p2 : Float,
   _p3 : Float,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2107,7 +2127,7 @@ pub fn slider_float3_ex(
   _p3 : Float,
   _p4 : String,
   _p5 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2130,7 +2150,7 @@ pub fn slider_float4(
   _p1 : @raw_generated.FloatPtr,
   _p2 : Float,
   _p3 : Float,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2146,7 +2166,7 @@ pub fn slider_float4_ex(
   _p3 : Float,
   _p4 : String,
   _p5 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2167,7 +2187,7 @@ pub fn slider_float4_ex(
 pub fn slider_angle(
   _p0 : String,
   _p1 : @raw_generated.FloatPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2183,7 +2203,7 @@ pub fn slider_angle_ex(
   _p3 : Float,
   _p4 : String,
   _p5 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2206,7 +2226,7 @@ pub fn slider_int(
   _p1 : @raw_generated.IntPtr,
   _p2 : Int,
   _p3 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2222,7 +2242,7 @@ pub fn slider_int_ex(
   _p3 : Int,
   _p4 : String,
   _p5 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2238,7 +2258,7 @@ pub fn slider_int2(
   _p1 : @raw_generated.IntPtr,
   _p2 : Int,
   _p3 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2254,7 +2274,7 @@ pub fn slider_int2_ex(
   _p3 : Int,
   _p4 : String,
   _p5 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2270,7 +2290,7 @@ pub fn slider_int3(
   _p1 : @raw_generated.IntPtr,
   _p2 : Int,
   _p3 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2286,7 +2306,7 @@ pub fn slider_int3_ex(
   _p3 : Int,
   _p4 : String,
   _p5 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2302,7 +2322,7 @@ pub fn slider_int4(
   _p1 : @raw_generated.IntPtr,
   _p2 : Int,
   _p3 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2318,7 +2338,7 @@ pub fn slider_int4_ex(
   _p3 : Int,
   _p4 : String,
   _p5 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2335,7 +2355,7 @@ pub fn slider_scalar(
   _p2 : @raw_generated.VoidPtr,
   _p3 : @raw_generated.VoidPtr,
   _p4 : @raw_generated.VoidPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2352,7 +2372,7 @@ pub fn slider_scalar_ex(
   _p4 : @raw_generated.VoidPtr,
   _p5 : String,
   _p6 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2378,7 +2398,7 @@ pub fn slider_scalar_n(
   _p3 : Int,
   _p4 : @raw_generated.VoidPtr,
   _p5 : @raw_generated.VoidPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2396,7 +2416,7 @@ pub fn slider_scalar_n_ex(
   _p5 : @raw_generated.VoidPtr,
   _p6 : String,
   _p7 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2422,7 +2442,7 @@ pub fn v_slider_float(
   _p2 : @raw_generated.FloatPtr,
   _p3 : Float,
   _p4 : Float,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2439,7 +2459,7 @@ pub fn v_slider_float_ex(
   _p4 : Float,
   _p5 : String,
   _p6 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2464,7 +2484,7 @@ pub fn v_slider_int(
   _p2 : @raw_generated.IntPtr,
   _p3 : Int,
   _p4 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2481,7 +2501,7 @@ pub fn v_slider_int_ex(
   _p4 : Int,
   _p5 : String,
   _p6 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2507,7 +2527,7 @@ pub fn v_slider_scalar(
   _p3 : @raw_generated.VoidPtr,
   _p4 : @raw_generated.VoidPtr,
   _p5 : @raw_generated.VoidPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2525,7 +2545,7 @@ pub fn v_slider_scalar_ex(
   _p5 : @raw_generated.VoidPtr,
   _p6 : String,
   _p7 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2550,7 +2570,7 @@ pub fn input_text_generated(
   _p1 : @raw_generated.CString,
   _p2 : UInt64,
   _p3 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2563,7 +2583,7 @@ pub fn input_text_multiline(
   _p0 : String,
   _p1 : @raw_generated.CString,
   _p2 : UInt64,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2578,7 +2598,7 @@ pub fn input_text_with_hint(
   _p2 : @raw_generated.CString,
   _p3 : UInt64,
   _p4 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2598,7 +2618,7 @@ pub fn input_text_with_hint(
 pub fn input_float(
   _p0 : String,
   _p1 : @raw_generated.FloatPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2614,7 +2634,7 @@ pub fn input_float_ex(
   _p3 : Float,
   _p4 : String,
   _p5 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2628,7 +2648,7 @@ pub fn input_float_ex(
 pub fn input_float2(
   _p0 : String,
   _p1 : @raw_generated.FloatPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2642,7 +2662,7 @@ pub fn input_float2_ex(
   _p1 : @raw_generated.FloatPtr,
   _p2 : String,
   _p3 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2656,7 +2676,7 @@ pub fn input_float2_ex(
 pub fn input_float3(
   _p0 : String,
   _p1 : @raw_generated.FloatPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2670,7 +2690,7 @@ pub fn input_float3_ex(
   _p1 : @raw_generated.FloatPtr,
   _p2 : String,
   _p3 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2684,7 +2704,7 @@ pub fn input_float3_ex(
 pub fn input_float4(
   _p0 : String,
   _p1 : @raw_generated.FloatPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2698,7 +2718,7 @@ pub fn input_float4_ex(
   _p1 : @raw_generated.FloatPtr,
   _p2 : String,
   _p3 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2712,7 +2732,7 @@ pub fn input_float4_ex(
 pub fn input_int(
   _p0 : String,
   _p1 : @raw_generated.IntPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2727,7 +2747,7 @@ pub fn input_int_ex(
   _p2 : Int,
   _p3 : Int,
   _p4 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2740,7 +2760,7 @@ pub fn input_int2(
   _p0 : String,
   _p1 : @raw_generated.IntPtr,
   _p2 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2753,7 +2773,7 @@ pub fn input_int3(
   _p0 : String,
   _p1 : @raw_generated.IntPtr,
   _p2 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2766,7 +2786,7 @@ pub fn input_int4(
   _p0 : String,
   _p1 : @raw_generated.IntPtr,
   _p2 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2778,7 +2798,7 @@ pub fn input_int4(
 pub fn input_double(
   _p0 : String,
   _p1 : @raw_generated.DoublePtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2794,7 +2814,7 @@ pub fn input_double_ex(
   _p3 : Double,
   _p4 : String,
   _p5 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2816,7 +2836,7 @@ pub fn input_scalar(
   _p0 : String,
   _p1 : Int,
   _p2 : @raw_generated.VoidPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2833,7 +2853,7 @@ pub fn input_scalar_ex(
   _p4 : @raw_generated.VoidPtr,
   _p5 : String,
   _p6 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2857,7 +2877,7 @@ pub fn input_scalar_n(
   _p1 : Int,
   _p2 : @raw_generated.VoidPtr,
   _p3 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2875,7 +2895,7 @@ pub fn input_scalar_n_ex(
   _p5 : @raw_generated.VoidPtr,
   _p6 : String,
   _p7 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2899,7 +2919,7 @@ pub fn color_edit3(
   _p0 : String,
   _p1 : @raw_generated.FloatPtr,
   _p2 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2912,7 +2932,7 @@ pub fn color_edit4(
   _p0 : String,
   _p1 : @raw_generated.FloatPtr,
   _p2 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2925,7 +2945,7 @@ pub fn color_picker3(
   _p0 : String,
   _p1 : @raw_generated.FloatPtr,
   _p2 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2939,7 +2959,7 @@ pub fn color_picker4(
   _p1 : @raw_generated.FloatPtr,
   _p2 : Int,
   _p3 : @raw_generated.FloatPtr,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2952,7 +2972,7 @@ pub fn color_button(
   _p0 : String,
   _p1 : @raw_generated.ImVec4,
   _p2 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2966,7 +2986,7 @@ pub fn color_button_ex(
   _p1 : @raw_generated.ImVec4,
   _p2 : Int,
   _p3 : @raw_generated.ImVec2,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2975,14 +2995,14 @@ pub fn color_button_ex(
 
 ///|
 /// Safe generated wrapper for `ImGui_SetColorEditOptions`.
-pub fn set_color_edit_options(_p0 : Int) -> Unit raise ImGuiError {
+pub fn set_color_edit_options(_p0 : Int) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_color_edit_options(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_TreeNode`.
-pub fn tree_node_generated(_p0 : String) -> Bool raise ImGuiError {
+pub fn tree_node_generated(_p0 : String) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -2991,7 +3011,10 @@ pub fn tree_node_generated(_p0 : String) -> Bool raise ImGuiError {
 
 ///|
 /// Safe literal-text wrapper for `ImGui_TreeNodeStr`.
-pub fn tree_node_str(_p0 : String, _p1 : String) -> Bool raise ImGuiError {
+pub fn tree_node_str(
+  _p0 : String,
+  _p1 : String,
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3005,7 +3028,7 @@ pub fn tree_node_str(_p0 : String, _p1 : String) -> Bool raise ImGuiError {
 pub fn tree_node_str_unformatted(
   _p0 : String,
   _p1 : String,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3019,7 +3042,7 @@ pub fn tree_node_str_unformatted(
 pub fn tree_node_ptr(
   _p0 : @raw_generated.VoidPtr,
   _p1 : String,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c1 = @raw_generated.OwnedCString::new(_p1)
   defer _c1.free()
@@ -3031,7 +3054,7 @@ pub fn tree_node_ptr(
 pub fn tree_node_ptr_unformatted(
   _p0 : @raw_generated.VoidPtr,
   _p1 : String,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c1 = @raw_generated.OwnedCString::new(_p1)
   defer _c1.free()
@@ -3040,7 +3063,7 @@ pub fn tree_node_ptr_unformatted(
 
 ///|
 /// Safe generated wrapper for `ImGui_TreeNodeEx`.
-pub fn tree_node_ex(_p0 : String, _p1 : Int) -> Bool raise ImGuiError {
+pub fn tree_node_ex(_p0 : String, _p1 : Int) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3053,7 +3076,7 @@ pub fn tree_node_ex_str(
   _p0 : String,
   _p1 : Int,
   _p2 : String,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3068,7 +3091,7 @@ pub fn tree_node_ex_str_unformatted(
   _p0 : String,
   _p1 : Int,
   _p2 : String,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3083,7 +3106,7 @@ pub fn tree_node_ex_ptr(
   _p0 : @raw_generated.VoidPtr,
   _p1 : Int,
   _p2 : String,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c2 = @raw_generated.OwnedCString::new(_p2)
   defer _c2.free()
@@ -3096,7 +3119,7 @@ pub fn tree_node_ex_ptr_unformatted(
   _p0 : @raw_generated.VoidPtr,
   _p1 : Int,
   _p2 : String,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c2 = @raw_generated.OwnedCString::new(_p2)
   defer _c2.free()
@@ -3105,7 +3128,7 @@ pub fn tree_node_ex_ptr_unformatted(
 
 ///|
 /// Safe generated wrapper for `ImGui_TreePush`.
-pub fn tree_push(_p0 : String) -> Unit raise ImGuiError {
+pub fn tree_push(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3114,21 +3137,23 @@ pub fn tree_push(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_TreePushPtr`.
-pub fn tree_push_ptr(_p0 : @raw_generated.VoidPtr) -> Unit raise ImGuiError {
+pub fn tree_push_ptr(
+  _p0 : @raw_generated.VoidPtr,
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_tree_push_ptr(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_TreePop`.
-pub fn tree_pop_generated() -> Unit raise ImGuiError {
+pub fn tree_pop_generated() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_tree_pop()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetTreeNodeToLabelSpacing`.
-pub fn get_tree_node_to_label_spacing() -> Float raise ImGuiError {
+pub fn get_tree_node_to_label_spacing() -> Float raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_tree_node_to_label_spacing()
 }
@@ -3138,7 +3163,7 @@ pub fn get_tree_node_to_label_spacing() -> Float raise ImGuiError {
 pub fn collapsing_header_generated(
   _p0 : String,
   _p1 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3151,7 +3176,7 @@ pub fn collapsing_header_bool_ptr(
   _p0 : String,
   _p1 : @raw_generated.BoolPtr,
   _p2 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3160,28 +3185,31 @@ pub fn collapsing_header_bool_ptr(
 
 ///|
 /// Safe generated wrapper for `ImGui_SetNextItemOpen`.
-pub fn set_next_item_open(_p0 : Bool, _p1 : Int) -> Unit raise ImGuiError {
+pub fn set_next_item_open(
+  _p0 : Bool,
+  _p1 : Int,
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_next_item_open(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetNextItemStorageID`.
-pub fn set_next_item_storage_id(_p0 : UInt) -> Unit raise ImGuiError {
+pub fn set_next_item_storage_id(_p0 : UInt) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_next_item_storage_id(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_TreeNodeGetOpen`.
-pub fn tree_node_get_open(_p0 : UInt) -> Bool raise ImGuiError {
+pub fn tree_node_get_open(_p0 : UInt) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_tree_node_get_open(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_Selectable`.
-pub fn selectable_generated(_p0 : String) -> Bool raise ImGuiError {
+pub fn selectable_generated(_p0 : String) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3195,7 +3223,7 @@ pub fn selectable_ex(
   _p1 : Bool,
   _p2 : Int,
   _p3 : @raw_generated.ImVec2,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3208,7 +3236,7 @@ pub fn selectable_bool_ptr(
   _p0 : String,
   _p1 : @raw_generated.BoolPtr,
   _p2 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3222,7 +3250,7 @@ pub fn selectable_bool_ptr_ex(
   _p1 : @raw_generated.BoolPtr,
   _p2 : Int,
   _p3 : @raw_generated.ImVec2,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3233,7 +3261,7 @@ pub fn selectable_bool_ptr_ex(
 /// Safe generated wrapper for `ImGui_BeginMultiSelect`.
 pub fn begin_multi_select(
   _p0 : Int,
-) -> @raw_generated.ImGuiMultiSelectIO raise ImGuiError {
+) -> @raw_generated.ImGuiMultiSelectIO raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_begin_multi_select(_p0)
 }
@@ -3244,28 +3272,30 @@ pub fn begin_multi_select_ex(
   _p0 : Int,
   _p1 : Int,
   _p2 : Int,
-) -> @raw_generated.ImGuiMultiSelectIO raise ImGuiError {
+) -> @raw_generated.ImGuiMultiSelectIO raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_begin_multi_select_ex(_p0, _p1, _p2)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_EndMultiSelect`.
-pub fn end_multi_select() -> @raw_generated.ImGuiMultiSelectIO raise ImGuiError {
+pub fn end_multi_select() -> @raw_generated.ImGuiMultiSelectIO raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_end_multi_select()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetNextItemSelectionUserData`.
-pub fn set_next_item_selection_user_data(_p0 : Int64) -> Unit raise ImGuiError {
+pub fn set_next_item_selection_user_data(
+  _p0 : Int64,
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_next_item_selection_user_data(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsItemToggledSelection`.
-pub fn is_item_toggled_selection() -> Bool raise ImGuiError {
+pub fn is_item_toggled_selection() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_item_toggled_selection()
 }
@@ -3275,7 +3305,7 @@ pub fn is_item_toggled_selection() -> Bool raise ImGuiError {
 pub fn begin_list_box(
   _p0 : String,
   _p1 : @raw_generated.ImVec2,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3284,7 +3314,7 @@ pub fn begin_list_box(
 
 ///|
 /// Safe generated wrapper for `ImGui_EndListBox`.
-pub fn end_list_box() -> Unit raise ImGuiError {
+pub fn end_list_box() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_end_list_box()
 }
@@ -3297,7 +3327,7 @@ pub fn list_box(
   _p2 : @raw_generated.CStringPtr,
   _p3 : Int,
   _p4 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3310,7 +3340,7 @@ pub fn plot_lines(
   _p0 : String,
   _p1 : @raw_generated.FloatPtr,
   _p2 : Int,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3329,7 +3359,7 @@ pub fn plot_lines_ex(
   _p6 : Float,
   _p7 : @raw_generated.ImVec2,
   _p8 : Int,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3354,7 +3384,7 @@ pub fn plot_histogram(
   _p0 : String,
   _p1 : @raw_generated.FloatPtr,
   _p2 : Int,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3373,7 +3403,7 @@ pub fn plot_histogram_ex(
   _p6 : Float,
   _p7 : @raw_generated.ImVec2,
   _p8 : Int,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3394,35 +3424,35 @@ pub fn plot_histogram_ex(
 
 ///|
 /// Safe generated wrapper for `ImGui_BeginMenuBar`.
-pub fn begin_menu_bar_generated() -> Bool raise ImGuiError {
+pub fn begin_menu_bar_generated() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_begin_menu_bar()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_EndMenuBar`.
-pub fn end_menu_bar_generated() -> Unit raise ImGuiError {
+pub fn end_menu_bar_generated() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_end_menu_bar()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_BeginMainMenuBar`.
-pub fn begin_main_menu_bar() -> Bool raise ImGuiError {
+pub fn begin_main_menu_bar() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_begin_main_menu_bar()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_EndMainMenuBar`.
-pub fn end_main_menu_bar() -> Unit raise ImGuiError {
+pub fn end_main_menu_bar() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_end_main_menu_bar()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_BeginMenu`.
-pub fn begin_menu_generated(_p0 : String) -> Bool raise ImGuiError {
+pub fn begin_menu_generated(_p0 : String) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3431,7 +3461,7 @@ pub fn begin_menu_generated(_p0 : String) -> Bool raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_BeginMenuEx`.
-pub fn begin_menu_ex(_p0 : String, _p1 : Bool) -> Bool raise ImGuiError {
+pub fn begin_menu_ex(_p0 : String, _p1 : Bool) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3440,14 +3470,14 @@ pub fn begin_menu_ex(_p0 : String, _p1 : Bool) -> Bool raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_EndMenu`.
-pub fn end_menu_generated() -> Unit raise ImGuiError {
+pub fn end_menu_generated() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_end_menu()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_MenuItem`.
-pub fn menu_item_generated(_p0 : String) -> Bool raise ImGuiError {
+pub fn menu_item_generated(_p0 : String) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3461,7 +3491,7 @@ pub fn menu_item_ex(
   _p1 : String,
   _p2 : Bool,
   _p3 : Bool,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3477,7 +3507,7 @@ pub fn menu_item_bool_ptr(
   _p1 : String,
   _p2 : @raw_generated.BoolPtr,
   _p3 : Bool,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3488,21 +3518,21 @@ pub fn menu_item_bool_ptr(
 
 ///|
 /// Safe generated wrapper for `ImGui_BeginTooltip`.
-pub fn begin_tooltip() -> Bool raise ImGuiError {
+pub fn begin_tooltip() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_begin_tooltip()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_EndTooltip`.
-pub fn end_tooltip() -> Unit raise ImGuiError {
+pub fn end_tooltip() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_end_tooltip()
 }
 
 ///|
 /// Safe literal-text wrapper for `ImGui_SetTooltip`.
-pub fn set_tooltip(_p0 : String) -> Unit raise ImGuiError {
+pub fn set_tooltip(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3511,7 +3541,7 @@ pub fn set_tooltip(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_SetTooltipUnformatted`.
-pub fn set_tooltip_unformatted(_p0 : String) -> Unit raise ImGuiError {
+pub fn set_tooltip_unformatted(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3520,14 +3550,14 @@ pub fn set_tooltip_unformatted(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_BeginItemTooltip`.
-pub fn begin_item_tooltip() -> Bool raise ImGuiError {
+pub fn begin_item_tooltip() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_begin_item_tooltip()
 }
 
 ///|
 /// Safe literal-text wrapper for `ImGui_SetItemTooltip`.
-pub fn set_item_tooltip(_p0 : String) -> Unit raise ImGuiError {
+pub fn set_item_tooltip(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3536,7 +3566,9 @@ pub fn set_item_tooltip(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_SetItemTooltipUnformatted`.
-pub fn set_item_tooltip_unformatted(_p0 : String) -> Unit raise ImGuiError {
+pub fn set_item_tooltip_unformatted(
+  _p0 : String,
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3545,7 +3577,7 @@ pub fn set_item_tooltip_unformatted(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_BeginPopup`.
-pub fn begin_popup(_p0 : String, _p1 : Int) -> Bool raise ImGuiError {
+pub fn begin_popup(_p0 : String, _p1 : Int) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3558,7 +3590,7 @@ pub fn begin_popup_modal(
   _p0 : String,
   _p1 : @raw_generated.BoolPtr,
   _p2 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3567,14 +3599,14 @@ pub fn begin_popup_modal(
 
 ///|
 /// Safe generated wrapper for `ImGui_EndPopup`.
-pub fn end_popup() -> Unit raise ImGuiError {
+pub fn end_popup() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_end_popup()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_OpenPopup`.
-pub fn open_popup(_p0 : String, _p1 : Int) -> Unit raise ImGuiError {
+pub fn open_popup(_p0 : String, _p1 : Int) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3583,7 +3615,7 @@ pub fn open_popup(_p0 : String, _p1 : Int) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_OpenPopupID`.
-pub fn open_popup_id(_p0 : UInt, _p1 : Int) -> Unit raise ImGuiError {
+pub fn open_popup_id(_p0 : UInt, _p1 : Int) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_open_popup_id(_p0, _p1)
 }
@@ -3593,7 +3625,7 @@ pub fn open_popup_id(_p0 : UInt, _p1 : Int) -> Unit raise ImGuiError {
 pub fn open_popup_on_item_click(
   _p0 : String,
   _p1 : Int,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3602,14 +3634,14 @@ pub fn open_popup_on_item_click(
 
 ///|
 /// Safe generated wrapper for `ImGui_CloseCurrentPopup`.
-pub fn close_current_popup() -> Unit raise ImGuiError {
+pub fn close_current_popup() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_close_current_popup()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_BeginPopupContextItem`.
-pub fn begin_popup_context_item() -> Bool raise ImGuiError {
+pub fn begin_popup_context_item() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_begin_popup_context_item()
 }
@@ -3619,7 +3651,7 @@ pub fn begin_popup_context_item() -> Bool raise ImGuiError {
 pub fn begin_popup_context_item_ex(
   _p0 : String,
   _p1 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3628,7 +3660,7 @@ pub fn begin_popup_context_item_ex(
 
 ///|
 /// Safe generated wrapper for `ImGui_BeginPopupContextWindow`.
-pub fn begin_popup_context_window() -> Bool raise ImGuiError {
+pub fn begin_popup_context_window() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_begin_popup_context_window()
 }
@@ -3638,7 +3670,7 @@ pub fn begin_popup_context_window() -> Bool raise ImGuiError {
 pub fn begin_popup_context_window_ex(
   _p0 : String,
   _p1 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3647,7 +3679,7 @@ pub fn begin_popup_context_window_ex(
 
 ///|
 /// Safe generated wrapper for `ImGui_BeginPopupContextVoid`.
-pub fn begin_popup_context_void() -> Bool raise ImGuiError {
+pub fn begin_popup_context_void() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_begin_popup_context_void()
 }
@@ -3657,7 +3689,7 @@ pub fn begin_popup_context_void() -> Bool raise ImGuiError {
 pub fn begin_popup_context_void_ex(
   _p0 : String,
   _p1 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3666,7 +3698,7 @@ pub fn begin_popup_context_void_ex(
 
 ///|
 /// Safe generated wrapper for `ImGui_IsPopupOpen`.
-pub fn is_popup_open(_p0 : String, _p1 : Int) -> Bool raise ImGuiError {
+pub fn is_popup_open(_p0 : String, _p1 : Int) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3679,7 +3711,7 @@ pub fn begin_table_generated(
   _p0 : String,
   _p1 : Int,
   _p2 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3694,7 +3726,7 @@ pub fn begin_table_ex(
   _p2 : Int,
   _p3 : @raw_generated.ImVec2,
   _p4 : Float,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3703,42 +3735,48 @@ pub fn begin_table_ex(
 
 ///|
 /// Safe generated wrapper for `ImGui_EndTable`.
-pub fn end_table_generated() -> Unit raise ImGuiError {
+pub fn end_table_generated() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_end_table()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_TableNextRow`.
-pub fn table_next_row_generated() -> Unit raise ImGuiError {
+pub fn table_next_row_generated() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_table_next_row()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_TableNextRowEx`.
-pub fn table_next_row_ex(_p0 : Int, _p1 : Float) -> Unit raise ImGuiError {
+pub fn table_next_row_ex(
+  _p0 : Int,
+  _p1 : Float,
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_table_next_row_ex(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_TableNextColumn`.
-pub fn table_next_column_generated() -> Bool raise ImGuiError {
+pub fn table_next_column_generated() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_table_next_column()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_TableSetColumnIndex`.
-pub fn table_set_column_index(_p0 : Int) -> Bool raise ImGuiError {
+pub fn table_set_column_index(_p0 : Int) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_table_set_column_index(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_TableSetupColumn`.
-pub fn table_setup_column(_p0 : String, _p1 : Int) -> Unit raise ImGuiError {
+pub fn table_setup_column(
+  _p0 : String,
+  _p1 : Int,
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3752,7 +3790,7 @@ pub fn table_setup_column_ex(
   _p1 : Int,
   _p2 : Float,
   _p3 : UInt,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3761,14 +3799,17 @@ pub fn table_setup_column_ex(
 
 ///|
 /// Safe generated wrapper for `ImGui_TableSetupScrollFreeze`.
-pub fn table_setup_scroll_freeze(_p0 : Int, _p1 : Int) -> Unit raise ImGuiError {
+pub fn table_setup_scroll_freeze(
+  _p0 : Int,
+  _p1 : Int,
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_table_setup_scroll_freeze(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_TableHeader`.
-pub fn table_header(_p0 : String) -> Unit raise ImGuiError {
+pub fn table_header(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3777,49 +3818,49 @@ pub fn table_header(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_TableHeadersRow`.
-pub fn table_headers_row() -> Unit raise ImGuiError {
+pub fn table_headers_row() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_table_headers_row()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_TableAngledHeadersRow`.
-pub fn table_angled_headers_row() -> Unit raise ImGuiError {
+pub fn table_angled_headers_row() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_table_angled_headers_row()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_TableGetSortSpecs`.
-pub fn table_get_sort_specs() -> @raw_generated.ImGuiTableSortSpecs raise ImGuiError {
+pub fn table_get_sort_specs() -> @raw_generated.ImGuiTableSortSpecs raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_table_get_sort_specs()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_TableGetColumnCount`.
-pub fn table_get_column_count() -> Int raise ImGuiError {
+pub fn table_get_column_count() -> Int raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_table_get_column_count()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_TableGetColumnIndex`.
-pub fn table_get_column_index() -> Int raise ImGuiError {
+pub fn table_get_column_index() -> Int raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_table_get_column_index()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_TableGetRowIndex`.
-pub fn table_get_row_index() -> Int raise ImGuiError {
+pub fn table_get_row_index() -> Int raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_table_get_row_index()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_TableGetColumnName`.
-pub fn table_get_column_name(_p0 : Int) -> String raise ImGuiError {
+pub fn table_get_column_name(_p0 : Int) -> String raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.cstring_to_string(
     @raw_generated.im_gui_table_get_column_name(_p0),
@@ -3828,21 +3869,24 @@ pub fn table_get_column_name(_p0 : Int) -> String raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_TableGetColumnFlags`.
-pub fn table_get_column_flags(_p0 : Int) -> Int raise ImGuiError {
+pub fn table_get_column_flags(_p0 : Int) -> Int raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_table_get_column_flags(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_TableSetColumnEnabled`.
-pub fn table_set_column_enabled(_p0 : Int, _p1 : Bool) -> Unit raise ImGuiError {
+pub fn table_set_column_enabled(
+  _p0 : Int,
+  _p1 : Bool,
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_table_set_column_enabled(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_TableGetHoveredColumn`.
-pub fn table_get_hovered_column() -> Int raise ImGuiError {
+pub fn table_get_hovered_column() -> Int raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_table_get_hovered_column()
 }
@@ -3853,21 +3897,25 @@ pub fn table_set_bg_color(
   _p0 : Int,
   _p1 : UInt,
   _p2 : Int,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_table_set_bg_color(_p0, _p1, _p2)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_Columns`.
-pub fn columns() -> Unit raise ImGuiError {
+pub fn columns() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_columns()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_ColumnsEx`.
-pub fn columns_ex(_p0 : Int, _p1 : String, _p2 : Bool) -> Unit raise ImGuiError {
+pub fn columns_ex(
+  _p0 : Int,
+  _p1 : String,
+  _p2 : Bool,
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c1 = @raw_generated.OwnedCString::new(_p1)
   defer _c1.free()
@@ -3876,49 +3924,52 @@ pub fn columns_ex(_p0 : Int, _p1 : String, _p2 : Bool) -> Unit raise ImGuiError 
 
 ///|
 /// Safe generated wrapper for `ImGui_NextColumn`.
-pub fn next_column() -> Unit raise ImGuiError {
+pub fn next_column() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_next_column()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetColumnIndex`.
-pub fn get_column_index() -> Int raise ImGuiError {
+pub fn get_column_index() -> Int raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_column_index()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetColumnWidth`.
-pub fn get_column_width(_p0 : Int) -> Float raise ImGuiError {
+pub fn get_column_width(_p0 : Int) -> Float raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_column_width(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetColumnWidth`.
-pub fn set_column_width(_p0 : Int, _p1 : Float) -> Unit raise ImGuiError {
+pub fn set_column_width(_p0 : Int, _p1 : Float) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_column_width(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetColumnOffset`.
-pub fn get_column_offset(_p0 : Int) -> Float raise ImGuiError {
+pub fn get_column_offset(_p0 : Int) -> Float raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_column_offset(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetColumnOffset`.
-pub fn set_column_offset(_p0 : Int, _p1 : Float) -> Unit raise ImGuiError {
+pub fn set_column_offset(
+  _p0 : Int,
+  _p1 : Float,
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_column_offset(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetColumnsCount`.
-pub fn get_columns_count() -> Int raise ImGuiError {
+pub fn get_columns_count() -> Int raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_columns_count()
 }
@@ -3928,7 +3979,7 @@ pub fn get_columns_count() -> Int raise ImGuiError {
 pub fn begin_tab_bar_generated(
   _p0 : String,
   _p1 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3937,7 +3988,7 @@ pub fn begin_tab_bar_generated(
 
 ///|
 /// Safe generated wrapper for `ImGui_EndTabBar`.
-pub fn end_tab_bar_generated() -> Unit raise ImGuiError {
+pub fn end_tab_bar_generated() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_end_tab_bar()
 }
@@ -3948,7 +3999,7 @@ pub fn begin_tab_item_generated(
   _p0 : String,
   _p1 : @raw_generated.BoolPtr,
   _p2 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3957,14 +4008,14 @@ pub fn begin_tab_item_generated(
 
 ///|
 /// Safe generated wrapper for `ImGui_EndTabItem`.
-pub fn end_tab_item_generated() -> Unit raise ImGuiError {
+pub fn end_tab_item_generated() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_end_tab_item()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_TabItemButton`.
-pub fn tab_item_button(_p0 : String, _p1 : Int) -> Bool raise ImGuiError {
+pub fn tab_item_button(_p0 : String, _p1 : Int) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3973,7 +4024,7 @@ pub fn tab_item_button(_p0 : String, _p1 : Int) -> Bool raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_SetTabItemClosed`.
-pub fn set_tab_item_closed(_p0 : String) -> Unit raise ImGuiError {
+pub fn set_tab_item_closed(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -3982,14 +4033,14 @@ pub fn set_tab_item_closed(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_LogToTTY`.
-pub fn log_to_tty(_p0 : Int) -> Unit raise ImGuiError {
+pub fn log_to_tty(_p0 : Int) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_log_to_tty(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_LogToFile`.
-pub fn log_to_file(_p0 : Int, _p1 : String) -> Unit raise ImGuiError {
+pub fn log_to_file(_p0 : Int, _p1 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c1 = @raw_generated.OwnedCString::new(_p1)
   defer _c1.free()
@@ -3998,28 +4049,28 @@ pub fn log_to_file(_p0 : Int, _p1 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_LogToClipboard`.
-pub fn log_to_clipboard(_p0 : Int) -> Unit raise ImGuiError {
+pub fn log_to_clipboard(_p0 : Int) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_log_to_clipboard(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_LogFinish`.
-pub fn log_finish() -> Unit raise ImGuiError {
+pub fn log_finish() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_log_finish()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_LogButtons`.
-pub fn log_buttons() -> Unit raise ImGuiError {
+pub fn log_buttons() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_log_buttons()
 }
 
 ///|
 /// Safe literal-text wrapper for `ImGui_LogText`.
-pub fn log_text(_p0 : String) -> Unit raise ImGuiError {
+pub fn log_text(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -4028,7 +4079,7 @@ pub fn log_text(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_LogTextUnformatted`.
-pub fn log_text_unformatted(_p0 : String) -> Unit raise ImGuiError {
+pub fn log_text_unformatted(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -4037,7 +4088,7 @@ pub fn log_text_unformatted(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_BeginDragDropSource`.
-pub fn begin_drag_drop_source(_p0 : Int) -> Bool raise ImGuiError {
+pub fn begin_drag_drop_source(_p0 : Int) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_begin_drag_drop_source(_p0)
 }
@@ -4049,7 +4100,7 @@ pub fn set_drag_drop_payload(
   _p1 : @raw_generated.VoidPtr,
   _p2 : UInt64,
   _p3 : Int,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -4058,14 +4109,14 @@ pub fn set_drag_drop_payload(
 
 ///|
 /// Safe generated wrapper for `ImGui_EndDragDropSource`.
-pub fn end_drag_drop_source() -> Unit raise ImGuiError {
+pub fn end_drag_drop_source() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_end_drag_drop_source()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_BeginDragDropTarget`.
-pub fn begin_drag_drop_target() -> Bool raise ImGuiError {
+pub fn begin_drag_drop_target() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_begin_drag_drop_target()
 }
@@ -4075,7 +4126,7 @@ pub fn begin_drag_drop_target() -> Bool raise ImGuiError {
 pub fn accept_drag_drop_payload(
   _p0 : String,
   _p1 : Int,
-) -> @raw_generated.ImGuiPayload raise ImGuiError {
+) -> @raw_generated.ImGuiPayload raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -4084,28 +4135,28 @@ pub fn accept_drag_drop_payload(
 
 ///|
 /// Safe generated wrapper for `ImGui_EndDragDropTarget`.
-pub fn end_drag_drop_target() -> Unit raise ImGuiError {
+pub fn end_drag_drop_target() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_end_drag_drop_target()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetDragDropPayload`.
-pub fn get_drag_drop_payload() -> @raw_generated.ImGuiPayload raise ImGuiError {
+pub fn get_drag_drop_payload() -> @raw_generated.ImGuiPayload raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_drag_drop_payload()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_BeginDisabled`.
-pub fn begin_disabled(_p0 : Bool) -> Unit raise ImGuiError {
+pub fn begin_disabled(_p0 : Bool) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_begin_disabled(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_EndDisabled`.
-pub fn end_disabled() -> Unit raise ImGuiError {
+pub fn end_disabled() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_end_disabled()
 }
@@ -4116,203 +4167,203 @@ pub fn push_clip_rect(
   _p0 : @raw_generated.ImVec2,
   _p1 : @raw_generated.ImVec2,
   _p2 : Bool,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_push_clip_rect(_p0, _p1, _p2)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PopClipRect`.
-pub fn pop_clip_rect() -> Unit raise ImGuiError {
+pub fn pop_clip_rect() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_pop_clip_rect()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetItemDefaultFocus`.
-pub fn set_item_default_focus() -> Unit raise ImGuiError {
+pub fn set_item_default_focus() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_item_default_focus()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetKeyboardFocusHere`.
-pub fn set_keyboard_focus_here() -> Unit raise ImGuiError {
+pub fn set_keyboard_focus_here() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_keyboard_focus_here()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetKeyboardFocusHereEx`.
-pub fn set_keyboard_focus_here_ex(_p0 : Int) -> Unit raise ImGuiError {
+pub fn set_keyboard_focus_here_ex(_p0 : Int) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_keyboard_focus_here_ex(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetNavCursorVisible`.
-pub fn set_nav_cursor_visible(_p0 : Bool) -> Unit raise ImGuiError {
+pub fn set_nav_cursor_visible(_p0 : Bool) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_nav_cursor_visible(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetNextItemAllowOverlap`.
-pub fn set_next_item_allow_overlap() -> Unit raise ImGuiError {
+pub fn set_next_item_allow_overlap() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_next_item_allow_overlap()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsItemHovered`.
-pub fn is_item_hovered(_p0 : Int) -> Bool raise ImGuiError {
+pub fn is_item_hovered(_p0 : Int) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_item_hovered(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsItemActive`.
-pub fn is_item_active() -> Bool raise ImGuiError {
+pub fn is_item_active() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_item_active()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsItemFocused`.
-pub fn is_item_focused() -> Bool raise ImGuiError {
+pub fn is_item_focused() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_item_focused()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsItemClicked`.
-pub fn is_item_clicked() -> Bool raise ImGuiError {
+pub fn is_item_clicked() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_item_clicked()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsItemClickedEx`.
-pub fn is_item_clicked_ex(_p0 : Int) -> Bool raise ImGuiError {
+pub fn is_item_clicked_ex(_p0 : Int) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_item_clicked_ex(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsItemVisible`.
-pub fn is_item_visible() -> Bool raise ImGuiError {
+pub fn is_item_visible() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_item_visible()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsItemEdited`.
-pub fn is_item_edited() -> Bool raise ImGuiError {
+pub fn is_item_edited() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_item_edited()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsItemActivated`.
-pub fn is_item_activated() -> Bool raise ImGuiError {
+pub fn is_item_activated() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_item_activated()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsItemDeactivated`.
-pub fn is_item_deactivated() -> Bool raise ImGuiError {
+pub fn is_item_deactivated() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_item_deactivated()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsItemDeactivatedAfterEdit`.
-pub fn is_item_deactivated_after_edit() -> Bool raise ImGuiError {
+pub fn is_item_deactivated_after_edit() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_item_deactivated_after_edit()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsItemToggledOpen`.
-pub fn is_item_toggled_open() -> Bool raise ImGuiError {
+pub fn is_item_toggled_open() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_item_toggled_open()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsAnyItemHovered`.
-pub fn is_any_item_hovered() -> Bool raise ImGuiError {
+pub fn is_any_item_hovered() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_any_item_hovered()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsAnyItemActive`.
-pub fn is_any_item_active() -> Bool raise ImGuiError {
+pub fn is_any_item_active() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_any_item_active()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsAnyItemFocused`.
-pub fn is_any_item_focused() -> Bool raise ImGuiError {
+pub fn is_any_item_focused() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_any_item_focused()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetItemID`.
-pub fn get_item_id() -> UInt raise ImGuiError {
+pub fn get_item_id() -> UInt raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_item_id()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetItemRectMin`.
-pub fn get_item_rect_min() -> @raw_generated.ImVec2 raise ImGuiError {
+pub fn get_item_rect_min() -> @raw_generated.ImVec2 raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_item_rect_min()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetItemRectMax`.
-pub fn get_item_rect_max() -> @raw_generated.ImVec2 raise ImGuiError {
+pub fn get_item_rect_max() -> @raw_generated.ImVec2 raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_item_rect_max()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetItemRectSize`.
-pub fn get_item_rect_size() -> @raw_generated.ImVec2 raise ImGuiError {
+pub fn get_item_rect_size() -> @raw_generated.ImVec2 raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_item_rect_size()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetItemFlags`.
-pub fn get_item_flags() -> Int raise ImGuiError {
+pub fn get_item_flags() -> Int raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_item_flags()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetMainViewport`.
-pub fn get_main_viewport() -> @raw_generated.ImGuiViewport raise ImGuiError {
+pub fn get_main_viewport() -> @raw_generated.ImGuiViewport raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_main_viewport()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetBackgroundDrawList`.
-pub fn get_background_draw_list() -> @raw_generated.ImDrawList raise ImGuiError {
+pub fn get_background_draw_list() -> @raw_generated.ImDrawList raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_background_draw_list()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetForegroundDrawList`.
-pub fn get_foreground_draw_list() -> @raw_generated.ImDrawList raise ImGuiError {
+pub fn get_foreground_draw_list() -> @raw_generated.ImDrawList raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_foreground_draw_list()
 }
@@ -4321,7 +4372,7 @@ pub fn get_foreground_draw_list() -> @raw_generated.ImDrawList raise ImGuiError 
 /// Safe generated wrapper for `ImGui_IsRectVisibleBySize`.
 pub fn is_rect_visible_by_size(
   _p0 : @raw_generated.ImVec2,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_rect_visible_by_size(_p0)
 }
@@ -4331,35 +4382,35 @@ pub fn is_rect_visible_by_size(
 pub fn is_rect_visible_im_vec2_ptr(
   _p0 : @raw_generated.ImVec2,
   _p1 : @raw_generated.ImVec2,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_rect_visible_im_vec2_ptr(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetTime`.
-pub fn get_time() -> Double raise ImGuiError {
+pub fn get_time() -> Double raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_time()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetFrameCount`.
-pub fn get_frame_count() -> Int raise ImGuiError {
+pub fn get_frame_count() -> Int raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_frame_count()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetDrawListSharedData`.
-pub fn get_draw_list_shared_data() -> @raw_generated.ImDrawListSharedData raise ImGuiError {
+pub fn get_draw_list_shared_data() -> @raw_generated.ImDrawListSharedData raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_draw_list_shared_data()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetStyleColorName`.
-pub fn get_style_color_name(_p0 : Int) -> String raise ImGuiError {
+pub fn get_style_color_name(_p0 : Int) -> String raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.cstring_to_string(
     @raw_generated.im_gui_get_style_color_name(_p0),
@@ -4370,21 +4421,23 @@ pub fn get_style_color_name(_p0 : Int) -> String raise ImGuiError {
 /// Safe generated wrapper for `ImGui_SetStateStorage`.
 pub fn set_state_storage(
   _p0 : @raw_generated.ImGuiStorage,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_state_storage(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetStateStorage`.
-pub fn get_state_storage() -> @raw_generated.ImGuiStorage raise ImGuiError {
+pub fn get_state_storage() -> @raw_generated.ImGuiStorage raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_state_storage()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_CalcTextSize`.
-pub fn calc_text_size(_p0 : String) -> @raw_generated.ImVec2 raise ImGuiError {
+pub fn calc_text_size(
+  _p0 : String,
+) -> @raw_generated.ImVec2 raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -4397,7 +4450,7 @@ pub fn calc_text_size_ex(
   _p0 : String,
   _p2 : Bool,
   _p3 : Float,
-) -> @raw_generated.ImVec2 raise ImGuiError {
+) -> @raw_generated.ImVec2 raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -4413,7 +4466,7 @@ pub fn calc_text_size_ex(
 /// Safe generated wrapper for `ImGui_ColorConvertU32ToFloat4`.
 pub fn color_convert_u32_to_float4(
   _p0 : UInt,
-) -> @raw_generated.ImVec4 raise ImGuiError {
+) -> @raw_generated.ImVec4 raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_color_convert_u32_to_float4(_p0)
 }
@@ -4422,7 +4475,7 @@ pub fn color_convert_u32_to_float4(
 /// Safe generated wrapper for `ImGui_ColorConvertFloat4ToU32`.
 pub fn color_convert_float4_to_u32(
   _p0 : @raw_generated.ImVec4,
-) -> UInt raise ImGuiError {
+) -> UInt raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_color_convert_float4_to_u32(_p0)
 }
@@ -4436,7 +4489,7 @@ pub fn color_convert_rg_bto_hsv(
   _p3 : @raw_generated.FloatPtr,
   _p4 : @raw_generated.FloatPtr,
   _p5 : @raw_generated.FloatPtr,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_color_convert_rg_bto_hsv(_p0, _p1, _p2, _p3, _p4, _p5)
 }
@@ -4450,42 +4503,42 @@ pub fn color_convert_hs_vto_rgb(
   _p3 : @raw_generated.FloatPtr,
   _p4 : @raw_generated.FloatPtr,
   _p5 : @raw_generated.FloatPtr,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_color_convert_hs_vto_rgb(_p0, _p1, _p2, _p3, _p4, _p5)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsKeyDown`.
-pub fn is_key_down(_p0 : Int) -> Bool raise ImGuiError {
+pub fn is_key_down(_p0 : Int) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_key_down(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsKeyPressed`.
-pub fn is_key_pressed(_p0 : Int) -> Bool raise ImGuiError {
+pub fn is_key_pressed(_p0 : Int) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_key_pressed(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsKeyPressedEx`.
-pub fn is_key_pressed_ex(_p0 : Int, _p1 : Bool) -> Bool raise ImGuiError {
+pub fn is_key_pressed_ex(_p0 : Int, _p1 : Bool) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_key_pressed_ex(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsKeyReleased`.
-pub fn is_key_released(_p0 : Int) -> Bool raise ImGuiError {
+pub fn is_key_released(_p0 : Int) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_key_released(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsKeyChordPressed`.
-pub fn is_key_chord_pressed(_p0 : Int) -> Bool raise ImGuiError {
+pub fn is_key_chord_pressed(_p0 : Int) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_key_chord_pressed(_p0)
 }
@@ -4496,14 +4549,14 @@ pub fn get_key_pressed_amount(
   _p0 : Int,
   _p1 : Float,
   _p2 : Float,
-) -> Int raise ImGuiError {
+) -> Int raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_key_pressed_amount(_p0, _p1, _p2)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetKeyName`.
-pub fn get_key_name(_p0 : Int) -> String raise ImGuiError {
+pub fn get_key_name(_p0 : Int) -> String raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.cstring_to_string(@raw_generated.im_gui_get_key_name(_p0))
 }
@@ -4512,63 +4565,69 @@ pub fn get_key_name(_p0 : Int) -> String raise ImGuiError {
 /// Safe generated wrapper for `ImGui_SetNextFrameWantCaptureKeyboard`.
 pub fn set_next_frame_want_capture_keyboard(
   _p0 : Bool,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_next_frame_want_capture_keyboard(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_Shortcut`.
-pub fn shortcut(_p0 : Int, _p1 : Int) -> Bool raise ImGuiError {
+pub fn shortcut(_p0 : Int, _p1 : Int) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_shortcut(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetNextItemShortcut`.
-pub fn set_next_item_shortcut(_p0 : Int, _p1 : Int) -> Unit raise ImGuiError {
+pub fn set_next_item_shortcut(
+  _p0 : Int,
+  _p1 : Int,
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_next_item_shortcut(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetItemKeyOwner`.
-pub fn set_item_key_owner(_p0 : Int) -> Bool raise ImGuiError {
+pub fn set_item_key_owner(_p0 : Int) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_item_key_owner(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsMouseDown`.
-pub fn is_mouse_down(_p0 : Int) -> Bool raise ImGuiError {
+pub fn is_mouse_down(_p0 : Int) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_mouse_down(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsMouseClicked`.
-pub fn is_mouse_clicked(_p0 : Int) -> Bool raise ImGuiError {
+pub fn is_mouse_clicked(_p0 : Int) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_mouse_clicked(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsMouseClickedEx`.
-pub fn is_mouse_clicked_ex(_p0 : Int, _p1 : Bool) -> Bool raise ImGuiError {
+pub fn is_mouse_clicked_ex(
+  _p0 : Int,
+  _p1 : Bool,
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_mouse_clicked_ex(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsMouseReleased`.
-pub fn is_mouse_released(_p0 : Int) -> Bool raise ImGuiError {
+pub fn is_mouse_released(_p0 : Int) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_mouse_released(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsMouseDoubleClicked`.
-pub fn is_mouse_double_clicked(_p0 : Int) -> Bool raise ImGuiError {
+pub fn is_mouse_double_clicked(_p0 : Int) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_mouse_double_clicked(_p0)
 }
@@ -4578,14 +4637,14 @@ pub fn is_mouse_double_clicked(_p0 : Int) -> Bool raise ImGuiError {
 pub fn is_mouse_released_with_delay(
   _p0 : Int,
   _p1 : Float,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_mouse_released_with_delay(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetMouseClickedCount`.
-pub fn get_mouse_clicked_count(_p0 : Int) -> Int raise ImGuiError {
+pub fn get_mouse_clicked_count(_p0 : Int) -> Int raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_mouse_clicked_count(_p0)
 }
@@ -4595,7 +4654,7 @@ pub fn get_mouse_clicked_count(_p0 : Int) -> Int raise ImGuiError {
 pub fn is_mouse_hovering_rect(
   _p0 : @raw_generated.ImVec2,
   _p1 : @raw_generated.ImVec2,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_mouse_hovering_rect(_p0, _p1)
 }
@@ -4606,42 +4665,47 @@ pub fn is_mouse_hovering_rect_ex(
   _p0 : @raw_generated.ImVec2,
   _p1 : @raw_generated.ImVec2,
   _p2 : Bool,
-) -> Bool raise ImGuiError {
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_mouse_hovering_rect_ex(_p0, _p1, _p2)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsMousePosValid`.
-pub fn is_mouse_pos_valid(_p0 : @raw_generated.ImVec2) -> Bool raise ImGuiError {
+pub fn is_mouse_pos_valid(
+  _p0 : @raw_generated.ImVec2,
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_mouse_pos_valid(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsAnyMouseDown`.
-pub fn is_any_mouse_down() -> Bool raise ImGuiError {
+pub fn is_any_mouse_down() -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_any_mouse_down()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetMousePos`.
-pub fn get_mouse_pos() -> @raw_generated.ImVec2 raise ImGuiError {
+pub fn get_mouse_pos() -> @raw_generated.ImVec2 raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_mouse_pos()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetMousePosOnOpeningCurrentPopup`.
-pub fn get_mouse_pos_on_opening_current_popup() -> @raw_generated.ImVec2 raise ImGuiError {
+pub fn get_mouse_pos_on_opening_current_popup() -> @raw_generated.ImVec2 raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_mouse_pos_on_opening_current_popup()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_IsMouseDragging`.
-pub fn is_mouse_dragging(_p0 : Int, _p1 : Float) -> Bool raise ImGuiError {
+pub fn is_mouse_dragging(
+  _p0 : Int,
+  _p1 : Float,
+) -> Bool raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_is_mouse_dragging(_p0, _p1)
 }
@@ -4651,56 +4715,58 @@ pub fn is_mouse_dragging(_p0 : Int, _p1 : Float) -> Bool raise ImGuiError {
 pub fn get_mouse_drag_delta(
   _p0 : Int,
   _p1 : Float,
-) -> @raw_generated.ImVec2 raise ImGuiError {
+) -> @raw_generated.ImVec2 raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_mouse_drag_delta(_p0, _p1)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_ResetMouseDragDelta`.
-pub fn reset_mouse_drag_delta() -> Unit raise ImGuiError {
+pub fn reset_mouse_drag_delta() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_reset_mouse_drag_delta()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_ResetMouseDragDeltaEx`.
-pub fn reset_mouse_drag_delta_ex(_p0 : Int) -> Unit raise ImGuiError {
+pub fn reset_mouse_drag_delta_ex(_p0 : Int) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_reset_mouse_drag_delta_ex(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetMouseCursor`.
-pub fn get_mouse_cursor() -> Int raise ImGuiError {
+pub fn get_mouse_cursor() -> Int raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_mouse_cursor()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetMouseCursor`.
-pub fn set_mouse_cursor(_p0 : Int) -> Unit raise ImGuiError {
+pub fn set_mouse_cursor(_p0 : Int) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_mouse_cursor(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetNextFrameWantCaptureMouse`.
-pub fn set_next_frame_want_capture_mouse(_p0 : Bool) -> Unit raise ImGuiError {
+pub fn set_next_frame_want_capture_mouse(
+  _p0 : Bool,
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_next_frame_want_capture_mouse(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetClipboardText`.
-pub fn get_clipboard_text() -> String raise ImGuiError {
+pub fn get_clipboard_text() -> String raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.cstring_to_string(@raw_generated.im_gui_get_clipboard_text())
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetClipboardText`.
-pub fn set_clipboard_text(_p0 : String) -> Unit raise ImGuiError {
+pub fn set_clipboard_text(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -4709,7 +4775,9 @@ pub fn set_clipboard_text(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_LoadIniSettingsFromDisk`.
-pub fn load_ini_settings_from_disk(_p0 : String) -> Unit raise ImGuiError {
+pub fn load_ini_settings_from_disk(
+  _p0 : String,
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -4721,7 +4789,7 @@ pub fn load_ini_settings_from_disk(_p0 : String) -> Unit raise ImGuiError {
 pub fn load_ini_settings_from_memory(
   _p0 : String,
   _p1 : UInt64,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -4730,7 +4798,7 @@ pub fn load_ini_settings_from_memory(
 
 ///|
 /// Safe generated wrapper for `ImGui_SaveIniSettingsToDisk`.
-pub fn save_ini_settings_to_disk(_p0 : String) -> Unit raise ImGuiError {
+pub fn save_ini_settings_to_disk(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -4741,7 +4809,7 @@ pub fn save_ini_settings_to_disk(_p0 : String) -> Unit raise ImGuiError {
 /// Safe generated wrapper for `ImGui_SaveIniSettingsToMemory`.
 pub fn save_ini_settings_to_memory(
   _p0 : @raw_generated.SizeTPtr,
-) -> String raise ImGuiError {
+) -> String raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.cstring_to_string(
     @raw_generated.im_gui_save_ini_settings_to_memory(_p0),
@@ -4750,7 +4818,7 @@ pub fn save_ini_settings_to_memory(
 
 ///|
 /// Safe generated wrapper for `ImGui_DebugTextEncoding`.
-pub fn debug_text_encoding(_p0 : String) -> Unit raise ImGuiError {
+pub fn debug_text_encoding(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -4759,14 +4827,14 @@ pub fn debug_text_encoding(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_DebugFlashStyleColor`.
-pub fn debug_flash_style_color(_p0 : Int) -> Unit raise ImGuiError {
+pub fn debug_flash_style_color(_p0 : Int) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_debug_flash_style_color(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_DebugStartItemPicker`.
-pub fn debug_start_item_picker() -> Unit raise ImGuiError {
+pub fn debug_start_item_picker() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_debug_start_item_picker()
 }
@@ -4797,7 +4865,7 @@ pub fn debug_check_version_and_data_layout(
 
 ///|
 /// Safe literal-text wrapper for `ImGui_DebugLog`.
-pub fn debug_log(_p0 : String) -> Unit raise ImGuiError {
+pub fn debug_log(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -4806,7 +4874,7 @@ pub fn debug_log(_p0 : String) -> Unit raise ImGuiError {
 
 ///|
 /// Safe generated wrapper for `ImGui_DebugLogUnformatted`.
-pub fn debug_log_unformatted(_p0 : String) -> Unit raise ImGuiError {
+pub fn debug_log_unformatted(_p0 : String) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   let _c0 = @raw_generated.OwnedCString::new(_p0)
   defer _c0.free()
@@ -7428,14 +7496,14 @@ pub fn platform_io_clear_renderer_handlers(
 
 ///|
 /// Safe generated wrapper for `ImGui_PushFont`.
-pub fn push_font(_p0 : @raw_generated.ImFont) -> Unit raise ImGuiError {
+pub fn push_font(_p0 : @raw_generated.ImFont) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_push_font(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_SetWindowFontScale`.
-pub fn set_window_font_scale(_p0 : Float) -> Unit raise ImGuiError {
+pub fn set_window_font_scale(_p0 : Float) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_set_window_font_scale(_p0)
 }
@@ -7449,56 +7517,56 @@ pub fn image_im_vec4_ptr(
   _p3 : @raw_generated.ImVec2,
   _p4 : @raw_generated.ImVec4,
   _p5 : @raw_generated.ImVec4,
-) -> Unit raise ImGuiError {
+) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_image_im_vec4_ptr(_p0, _p1, _p2, _p3, _p4, _p5)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PushButtonRepeat`.
-pub fn push_button_repeat(_p0 : Bool) -> Unit raise ImGuiError {
+pub fn push_button_repeat(_p0 : Bool) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_push_button_repeat(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PopButtonRepeat`.
-pub fn pop_button_repeat() -> Unit raise ImGuiError {
+pub fn pop_button_repeat() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_pop_button_repeat()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PushTabStop`.
-pub fn push_tab_stop(_p0 : Bool) -> Unit raise ImGuiError {
+pub fn push_tab_stop(_p0 : Bool) -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_push_tab_stop(_p0)
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_PopTabStop`.
-pub fn pop_tab_stop() -> Unit raise ImGuiError {
+pub fn pop_tab_stop() -> Unit raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_pop_tab_stop()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetContentRegionMax`.
-pub fn get_content_region_max() -> @raw_generated.ImVec2 raise ImGuiError {
+pub fn get_content_region_max() -> @raw_generated.ImVec2 raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_content_region_max()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetWindowContentRegionMin`.
-pub fn get_window_content_region_min() -> @raw_generated.ImVec2 raise ImGuiError {
+pub fn get_window_content_region_min() -> @raw_generated.ImVec2 raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_window_content_region_min()
 }
 
 ///|
 /// Safe generated wrapper for `ImGui_GetWindowContentRegionMax`.
-pub fn get_window_content_region_max() -> @raw_generated.ImVec2 raise ImGuiError {
+pub fn get_window_content_region_max() -> @raw_generated.ImVec2 raise @imgui.ImGuiError {
   ensure_current_context()
   @raw_generated.im_gui_get_window_content_region_max()
 }
