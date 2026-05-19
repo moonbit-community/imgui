@@ -88,7 +88,7 @@ fn main {
     @opengl3.viewport(0, 0, framebuffer_width.val, framebuffer_height.val)
     @opengl3.clear_color(0.08, 0.09, 0.10, 1.0)
     @opengl3.clear(@opengl3.color_buffer_bit())
-    @opengl3.render_draw_data(draw_data)
+    @opengl3.render_draw_data(draw_data.raw())
     @glfw.swap_buffers(window)
   }
 }

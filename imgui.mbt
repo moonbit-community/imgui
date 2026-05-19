@@ -40,8 +40,10 @@ struct TabItemUi {}
 struct TableUi {}
 
 ///|
-/// Raw draw data handle returned after rendering.
-pub type DrawData = @bindings.ImDrawData
+/// Rendered Dear ImGui draw data.
+struct DrawData {
+  raw : @bindings.ImDrawData
+}
 
 ///|
 /// ImGui window flags bitset.
@@ -217,7 +219,13 @@ pub fn new_frame() -> Unit raise ImGuiError {
 pub fn render() -> DrawData raise ImGuiError {
   ensure_current_context()
   @bindings.im_gui_render()
-  @bindings.im_gui_get_draw_data()
+  { raw: @bindings.im_gui_get_draw_data() }
+}
+
+///|
+/// Returns the generated binding handle for backend interop.
+pub fn DrawData::raw(self : DrawData) -> @bindings.ImDrawData {
+  self.raw
 }
 
 ///|

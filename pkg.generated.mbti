@@ -17,7 +17,7 @@ pub fn has_current_context() -> Bool
 
 pub fn new_frame() -> Unit raise ImGuiError
 
-pub fn render() -> @bindings.ImDrawData raise ImGuiError
+pub fn render() -> DrawData raise ImGuiError
 
 pub fn ui() -> Ui
 
@@ -34,6 +34,9 @@ pub fn Context::create() -> Self
 pub fn Context::destroy(Self) -> Unit
 pub fn Context::make_current(Self) -> Unit
 pub fn Context::raw(Self) -> @bindings.ImGuiContext
+
+type DrawData
+pub fn DrawData::raw(Self) -> @bindings.ImDrawData
 
 type MenuBarUi
 pub fn MenuBarUi::menu(Self, String, enabled? : Bool, (MenuUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
@@ -105,7 +108,6 @@ pub fn WindowUi::table(Self, String, Int, flags? : TableFlags, (TableUi) -> Unit
 pub fn WindowUi::text(Self, String) -> Unit raise ImGuiError
 
 // Type aliases
-pub using @bindings {type ImDrawData as DrawData}
 
 // Traits
 
