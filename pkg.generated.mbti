@@ -144,7 +144,6 @@ pub fn ColorId::title_bg_active() -> Self
 pub fn ColorId::title_bg_collapsed() -> Self
 pub fn ColorId::tree_lines() -> Self
 pub fn ColorId::unsaved_marker() -> Self
-pub fn ColorId::value(Self) -> Int
 pub fn ColorId::window_bg() -> Self
 
 pub(all) struct ColumnState {
@@ -428,7 +427,6 @@ pub fn StyleVar::tab_rounding() -> Self
 pub fn StyleVar::table_angled_headers_angle() -> Self
 pub fn StyleVar::tree_lines_rounding() -> Self
 pub fn StyleVar::tree_lines_size() -> Self
-pub fn StyleVar::value(Self) -> Int
 pub fn StyleVar::window_border_size() -> Self
 pub fn StyleVar::window_rounding() -> Self
 
@@ -651,8 +649,6 @@ pub fn WindowUi::button(Self, String, () -> Unit raise ImGuiError) -> Unit raise
 pub fn WindowUi::button_repeat(Self, Bool, (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::calc_item_width(Self) -> Float raise ImGuiError
 pub fn WindowUi::checkbox(Self, String, Bool, (Bool) -> Unit raise ImGuiError) -> Unit raise ImGuiError
-pub fn WindowUi::checkbox_flags_int(Self, String, Int, Int, (Int) -> Unit raise ImGuiError) -> Unit raise ImGuiError
-pub fn WindowUi::checkbox_flags_uint(Self, String, UInt, UInt, (UInt) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::collapsing_header(Self, String, flags? : Array[TreeNodeFlag], (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::collapsing_header_open(Self, String, Bool, flags? : Array[TreeNodeFlag], (Self) -> Unit raise ImGuiError) -> Bool raise ImGuiError
 pub fn WindowUi::color_edit3(Self, String, Vec4, flags? : Array[ColorEditFlag], (Vec4) -> Unit raise ImGuiError) -> Unit raise ImGuiError

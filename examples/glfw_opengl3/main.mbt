@@ -31,8 +31,6 @@ struct DemoState {
   mut input_int2 : @imgui.Int2
   mut input_int3 : @imgui.Int3
   mut input_int4 : @imgui.Int4
-  mut flag_int : Int
-  mut flag_uint : UInt
   mut counter : Int
   mut selected_row : Int
   mut selected_item : Int
@@ -86,8 +84,6 @@ fn DemoState::new() -> DemoState {
     input_int2: @imgui.Int2::new(10, 20),
     input_int3: @imgui.Int3::new(10, 20, 30),
     input_int4: @imgui.Int4::new(10, 20, 30, 40),
-    flag_int: 1,
-    flag_uint: 1U,
     counter: 0,
     selected_row: 1,
     selected_item: 0,
@@ -204,10 +200,7 @@ fn render_ui(state : DemoState) -> Unit raise @imgui.ImGuiError {
       state.counter = state.counter - 1
     }
   }
-  ui.window("MoonBit ImGui controls", flags=[
-    @imgui.WindowFlag::MenuBar,
-    @imgui.WindowFlag::HorizontalScrollbar,
-  ]) <| ui => {
+  ui.window("MoonBit ImGui controls", flags=[MenuBar, HorizontalScrollbar]) <| ui => {
     ui.menu_bar() <| bar => {
       bar.menu("Actions") <| menu => {
         menu.menu_item("Increment counter") <| () => {
@@ -238,7 +231,7 @@ fn render_ui(state : DemoState) -> Unit raise @imgui.ImGuiError {
       popup.button("Close popup") <| () => { popup.close() }
     }
     state.show_modal = ui.popup_modal("MoonBit modal", state.show_modal, flags=[
-        @imgui.WindowFlag::AlwaysAutoResize,
+        AlwaysAutoResize,
       ]) <| popup => {
         popup.text("Modal scope is closed automatically.")
         popup.button("Accept") <| () => {
@@ -256,9 +249,7 @@ fn render_ui(state : DemoState) -> Unit raise @imgui.ImGuiError {
   }
 
   if state.show_another {
-    ui.window("Another MoonBit window", flags=[
-      @imgui.WindowFlag::NoSavedSettings,
-    ]) <| ui => {
+    ui.window("Another MoonBit window", flags=[NoSavedSettings]) <| ui => {
       ui.text("This window can be toggled from the main controls.")
       ui.button("Close") <| () => { state.show_another = false }
     }
@@ -334,14 +325,14 @@ fn render_text_and_layout(
   }
   let item_state = ui.item_state()
   let any_item_state = ui.any_item_state()
-  let last_item_disabled = ui.has_item_flag(@imgui.ItemFlag::Disabled)
+  let last_item_disabled = ui.has_item_flag(Disabled)
   ui.label_text(
     "Last item",
     "id=\{ui.item_id()} disabled=\{last_item_disabled} clicked=\{item_state.clicked} active=\{any_item_state.active}",
   )
   ui.item_tooltip() <| tooltip => { tooltip.text("Item tooltip scope") }
   ui.set_item_tooltip("SetItemTooltip on the last item")
-  if ui.is_item_hovered(flags=[@imgui.HoveredFlag::ForTooltip]) {
+  if ui.is_item_hovered(flags=[ForTooltip]) {
     ui.tooltip() <| tooltip => { tooltip.text("Tooltip scope") }
   }
   ui.set_tooltip("SetTooltipUnformatted on the last item")
@@ -351,11 +342,11 @@ fn render_text_and_layout(
   let window_state = ui.window_state()
   ui.label_text(
     "Window",
-    "\{ui.window_width()}x\{ui.window_height()} focused=\{window_state.focused} hovered=\{ui.is_window_hovered(flags=[@imgui.HoveredFlag::RootAndChildWindows])}",
+    "\{ui.window_width()}x\{ui.window_height()} focused=\{window_state.focused} hovered=\{ui.is_window_hovered(flags=[RootAndChildWindows])}",
   )
   ui.label_text(
     "Focus",
-    "any=\{ui.is_window_focused(flags=[@imgui.FocusedFlag::RootAndChildWindows])} appearing=\{window_state.appearing}",
+    "any=\{ui.is_window_focused(flags=[RootAndChildWindows])} appearing=\{window_state.appearing}",
   )
 }
 
@@ -374,21 +365,6 @@ fn render_controls(
   ui.checkbox("Show metrics", state.show_metrics) <| value => {
     state.show_metrics = value
   }
-  ui.checkbox_flags_int("Int flag 0x01", state.flag_int, 1) <| value => {
-    state.flag_int = value
-  }
-  ui.same_line()
-  ui.checkbox_flags_int("Int flag 0x02", state.flag_int, 2) <| value => {
-    state.flag_int = value
-  }
-  ui.checkbox_flags_uint("UInt flag 0x01", state.flag_uint, 1U) <| value => {
-    state.flag_uint = value
-  }
-  ui.same_line()
-  ui.checkbox_flags_uint("UInt flag 0x02", state.flag_uint, 2U) <| value => {
-    state.flag_uint = value
-  }
-
   ui.radio_button("Radio A", state.radio_choice == 0) <| () => {
     state.radio_choice = 0
   }
@@ -404,9 +380,9 @@ fn render_controls(
     }
   }
 
-  ui.slider_float("Float slider", state.slider, 0.0, 1.0, flags=[
-    @imgui.SliderFlag::AlwaysClamp,
-  ]) <| value => { state.slider = value }
+  ui.slider_float("Float slider", state.slider, 0.0, 1.0, flags=[AlwaysClamp]) <| value => {
+    state.slider = value
+  }
   ui.slider_int("Int slider", state.int_slider, 0, 10) <| value => {
     state.int_slider = value
   }
@@ -513,7 +489,7 @@ fn render_controls(
     state.input_int4 = value
   }
   ui.input_text_with_hint("Text with hint", "type here", state.hint_buffer, flags=[
-    @imgui.InputTextFlag::EnterReturnsTrue,
+    EnterReturnsTrue,
   ]) <| value => { state.hint_value = value }
   ui.input_text_multiline("Multiline text", state.multi_buffer) <| value => {
     state.multi_value = value
@@ -528,11 +504,8 @@ fn render_controls(
   ui.color_edit4("Color edit RGBA", state.color) <| value => {
     state.color = value
   }
-  ui.set_color_edit_options([
-    @imgui.ColorEditFlag::DisplayRgb,
-    @imgui.ColorEditFlag::PickerHueBar,
-  ])
-  ui.collapsing_header("Color pickers", flags=[@imgui.TreeNodeFlag::DefaultOpen]) <| ui => {
+  ui.set_color_edit_options([DisplayRgb, PickerHueBar])
+  ui.collapsing_header("Color pickers", flags=[DefaultOpen]) <| ui => {
     ui.color_picker3("Picker RGB", state.picker) <| value => {
       state.picker = value
     }
@@ -543,7 +516,7 @@ fn render_controls(
   state.header_open = ui.collapsing_header_open(
       "Closeable header",
       state.header_open,
-      flags=[@imgui.TreeNodeFlag::DefaultOpen],
+      flags=[DefaultOpen],
     ) <| ui => { ui.text("The close button updates MoonBit state.") }
 }
 
@@ -573,7 +546,7 @@ fn render_scopes(
       }
     }
   }
-  ui.with_item_flag(@imgui.ItemFlag::NoTabStop, true) <| ui => {
+  ui.with_item_flag(NoTabStop, true) <| ui => {
     ui.button("No tab stop item") <| () => { state.counter = state.counter + 1 }
   }
   ui.button_repeat(true) <| ui => {
@@ -595,9 +568,7 @@ fn render_scopes(
     ui.text("Current font scope")
   }
 
-  ui.combo("Combo", combo_label(state.combo_index), flags=[
-    @imgui.ComboFlag::HeightRegular,
-  ]) <| combo => {
+  ui.combo("Combo", combo_label(state.combo_index), flags=[HeightRegular]) <| combo => {
     combo.selectable("First", selected=state.combo_index == 0) <| () => {
       state.combo_index = 0
     }
@@ -610,10 +581,7 @@ fn render_scopes(
   }
 
   ui.set_next_item_open(true, cond=@imgui.Cond::first_use_ever())
-  ui.tree_node("Tree node", flags=[
-    @imgui.TreeNodeFlag::DefaultOpen,
-    @imgui.TreeNodeFlag::OpenOnArrow,
-  ]) <| tree => {
+  ui.tree_node("Tree node", flags=[DefaultOpen, OpenOnArrow]) <| tree => {
     tree.text("Tree node text")
     tree.bullet_text("Tree bullet text")
   }
@@ -684,11 +652,8 @@ fn render_tabs(
   state : DemoState,
 ) -> Unit raise @imgui.ImGuiError {
   ui.separator_text("Tabs and tables")
-  ui.tab_bar("main-tabs", flags=[
-    @imgui.TabBarFlag::Reorderable,
-    @imgui.TabBarFlag::DrawSelectedOverline,
-  ]) <| tabs => {
-    tabs.tab_item("State", flags=[@imgui.TabItemFlag::NoReorder]) <| tab => {
+  ui.tab_bar("main-tabs", flags=[Reorderable, DrawSelectedOverline]) <| tabs => {
+    tabs.tab_item("State", flags=[NoReorder]) <| tab => {
       tab.text("enabled = \{state.enabled}")
       tab.text("slider = \{state.slider}")
       tab.text("selected row = \{state.selected_row}")
@@ -705,11 +670,7 @@ fn render_tabs(
       ) <| tab => { tab.text("This tab uses the open-state overload.") }
   }
 
-  let table_flags = [
-    @imgui.TableFlag::Borders,
-    @imgui.TableFlag::RowBg,
-    @imgui.TableFlag::Hideable,
-  ]
+  let table_flags : Array[@imgui.TableFlag] = [Borders, RowBg, Hideable]
   ui.table("window-table", 3, flags=table_flags) <| table => {
     render_table(table, state)
   }
@@ -720,10 +681,7 @@ fn render_rows_from_tab(
   ui : @imgui.TabItemUi,
   state : DemoState,
 ) -> Unit raise @imgui.ImGuiError {
-  ui.table("tab-table", 2, flags=[
-    @imgui.TableFlag::Borders,
-    @imgui.TableFlag::RowBg,
-  ]) <| table => {
+  ui.table("tab-table", 2, flags=[Borders, RowBg]) <| table => {
     table.setup_column("Name")
     table.setup_column("Value")
     table.headers_row()
@@ -738,18 +696,11 @@ fn render_table(
   table : @imgui.TableUi,
   state : DemoState,
 ) -> Unit raise @imgui.ImGuiError {
-  table.setup_column("Item", flags=[@imgui.TableColumnFlag::WidthStretch])
-  table.setup_column(
-    "Value",
-    flags=[@imgui.TableColumnFlag::WidthFixed],
-    init_width_or_weight=120.0,
-  )
+  table.setup_column("Item", flags=[WidthStretch])
+  table.setup_column("Value", flags=[WidthFixed], init_width_or_weight=120.0)
   table.setup_column(
     "Meta",
-    flags=[
-      @imgui.TableColumnFlag::WidthFixed,
-      @imgui.TableColumnFlag::AngledHeader,
-    ],
+    flags=[WidthFixed, AngledHeader],
     init_width_or_weight=120.0,
   )
   table.setup_scroll_freeze(0, 1)
@@ -760,7 +711,7 @@ fn render_table(
   render_row(table, state, 1, "Alpha")
   render_row(table, state, 2, "Beta")
   render_row(table, state, 3, "Gamma")
-  table.next_row(flags=[@imgui.TableRowFlag::Headers])
+  table.next_row(flags=[Headers])
   ignore(table.set_column_index(0))
   table.text("columns = \{table.column_count()}")
   ignore(table.set_column_index(1))
@@ -768,7 +719,7 @@ fn render_table(
   ignore(table.set_column_index(2))
   table.set_bg_color(@imgui.TableBgTarget::cell_bg(), 0x333333FFU)
   table.text("hovered = \{table.hovered_column()}")
-  ignore(table.column_has_flag(0, @imgui.TableColumnFlag::IsVisible))
+  ignore(table.column_has_flag(0, IsVisible))
   ignore(table.row_index())
 }
 
@@ -782,7 +733,7 @@ fn render_row(
   table.next_row()
   ignore(table.next_column())
   if table.selectable(label, selected=state.selected_row == index, flags=[
-      @imgui.SelectableFlag::SpanAllColumns,
+      SpanAllColumns,
     ]) {
     state.selected_row = index
   }
@@ -805,283 +756,283 @@ fn combo_label(index : Int) -> String {
 
 ///|
 fn touch_value_api() -> Unit {
-  ignore([
-    @imgui.WindowFlag::NoTitleBar,
-    @imgui.WindowFlag::NoResize,
-    @imgui.WindowFlag::NoMove,
-    @imgui.WindowFlag::NoScrollbar,
-    @imgui.WindowFlag::MenuBar,
-    @imgui.WindowFlag::AlwaysAutoResize,
-    @imgui.WindowFlag::NoScrollWithMouse,
-    @imgui.WindowFlag::NoCollapse,
-    @imgui.WindowFlag::NoBackground,
-    @imgui.WindowFlag::NoSavedSettings,
-    @imgui.WindowFlag::NoMouseInputs,
-    @imgui.WindowFlag::HorizontalScrollbar,
-    @imgui.WindowFlag::NoFocusOnAppearing,
-    @imgui.WindowFlag::NoBringToFrontOnFocus,
-    @imgui.WindowFlag::AlwaysVerticalScrollbar,
-    @imgui.WindowFlag::AlwaysHorizontalScrollbar,
-    @imgui.WindowFlag::NoNavInputs,
-    @imgui.WindowFlag::NoNavFocus,
-    @imgui.WindowFlag::UnsavedDocument,
-    @imgui.WindowFlag::NoNav,
-    @imgui.WindowFlag::NoDecoration,
-    @imgui.WindowFlag::NoInputs,
-  ])
-  ignore([
-    @imgui.SelectableFlag::NoAutoClosePopups,
-    @imgui.SelectableFlag::SpanAllColumns,
-    @imgui.SelectableFlag::AllowDoubleClick,
-    @imgui.SelectableFlag::Disabled,
-    @imgui.SelectableFlag::AllowOverlap,
-    @imgui.SelectableFlag::Highlight,
-    @imgui.SelectableFlag::SelectOnNav,
-    @imgui.SelectableFlag::DontClosePopups,
-  ])
-  ignore([
-    @imgui.TableFlag::Resizable,
-    @imgui.TableFlag::Reorderable,
-    @imgui.TableFlag::Hideable,
-    @imgui.TableFlag::Sortable,
-    @imgui.TableFlag::NoSavedSettings,
-    @imgui.TableFlag::ContextMenuInBody,
-    @imgui.TableFlag::Borders,
-    @imgui.TableFlag::RowBg,
-    @imgui.TableFlag::BordersInnerH,
-    @imgui.TableFlag::BordersOuterH,
-    @imgui.TableFlag::BordersInnerV,
-    @imgui.TableFlag::BordersOuterV,
-    @imgui.TableFlag::BordersH,
-    @imgui.TableFlag::BordersV,
-    @imgui.TableFlag::BordersInner,
-    @imgui.TableFlag::BordersOuter,
-    @imgui.TableFlag::NoBordersInBody,
-    @imgui.TableFlag::NoBordersInBodyUntilResize,
-    @imgui.TableFlag::SizingFixedFit,
-    @imgui.TableFlag::SizingFixedSame,
-    @imgui.TableFlag::SizingStretchProp,
-    @imgui.TableFlag::SizingStretchSame,
-    @imgui.TableFlag::NoHostExtendX,
-    @imgui.TableFlag::NoHostExtendY,
-    @imgui.TableFlag::NoKeepColumnsVisible,
-    @imgui.TableFlag::PreciseWidths,
-    @imgui.TableFlag::NoClip,
-    @imgui.TableFlag::PadOuterX,
-    @imgui.TableFlag::NoPadOuterX,
-    @imgui.TableFlag::NoPadInnerX,
-    @imgui.TableFlag::ScrollX,
-    @imgui.TableFlag::ScrollY,
-    @imgui.TableFlag::SortMulti,
-    @imgui.TableFlag::SortTristate,
-    @imgui.TableFlag::HighlightHoveredColumn,
-  ])
-  ignore([
-    @imgui.TabBarFlag::Reorderable,
-    @imgui.TabBarFlag::AutoSelectNewTabs,
-    @imgui.TabBarFlag::TabListPopupButton,
-    @imgui.TabBarFlag::NoCloseWithMiddleMouseButton,
-    @imgui.TabBarFlag::NoTabListScrollingButtons,
-    @imgui.TabBarFlag::NoTooltip,
-    @imgui.TabBarFlag::DrawSelectedOverline,
-    @imgui.TabBarFlag::FittingPolicyMixed,
-    @imgui.TabBarFlag::FittingPolicyShrink,
-    @imgui.TabBarFlag::FittingPolicyScroll,
-    @imgui.TabBarFlag::FittingPolicyResizeDown,
-  ])
-  ignore([
-    @imgui.TabItemFlag::UnsavedDocument,
-    @imgui.TabItemFlag::SetSelected,
-    @imgui.TabItemFlag::NoCloseWithMiddleMouseButton,
-    @imgui.TabItemFlag::NoPushId,
-    @imgui.TabItemFlag::NoTooltip,
-    @imgui.TabItemFlag::NoReorder,
-    @imgui.TabItemFlag::Leading,
-    @imgui.TabItemFlag::Trailing,
-    @imgui.TabItemFlag::NoAssumedClosure,
-  ])
-  ignore([
-    @imgui.PopupFlag::MouseButtonLeft,
-    @imgui.PopupFlag::MouseButtonRight,
-    @imgui.PopupFlag::MouseButtonMiddle,
-    @imgui.PopupFlag::NoReopen,
-    @imgui.PopupFlag::NoOpenOverExistingPopup,
-    @imgui.PopupFlag::NoOpenOverItems,
-    @imgui.PopupFlag::AnyPopId,
-    @imgui.PopupFlag::AnyPopupLevel,
-    @imgui.PopupFlag::AnyPopup,
-  ])
-  ignore([
-    @imgui.TreeNodeFlag::Selected,
-    @imgui.TreeNodeFlag::Framed,
-    @imgui.TreeNodeFlag::AllowOverlap,
-    @imgui.TreeNodeFlag::NoTreePushOnOpen,
-    @imgui.TreeNodeFlag::NoAutoOpenOnLog,
-    @imgui.TreeNodeFlag::DefaultOpen,
-    @imgui.TreeNodeFlag::OpenOnDoubleClick,
-    @imgui.TreeNodeFlag::OpenOnArrow,
-    @imgui.TreeNodeFlag::Leaf,
-    @imgui.TreeNodeFlag::Bullet,
-    @imgui.TreeNodeFlag::FramePadding,
-    @imgui.TreeNodeFlag::SpanAvailWidth,
-    @imgui.TreeNodeFlag::SpanFullWidth,
-    @imgui.TreeNodeFlag::SpanLabelWidth,
-    @imgui.TreeNodeFlag::SpanAllColumns,
-    @imgui.TreeNodeFlag::LabelSpanAllColumns,
-    @imgui.TreeNodeFlag::NavLeftJumpsToParent,
-    @imgui.TreeNodeFlag::CollapsingHeader,
-    @imgui.TreeNodeFlag::DrawLinesNone,
-    @imgui.TreeNodeFlag::DrawLinesFull,
-    @imgui.TreeNodeFlag::DrawLinesToNodes,
-    @imgui.TreeNodeFlag::NavLeftJumpsBackHere,
-    @imgui.TreeNodeFlag::SpanTextWidth,
-  ])
-  ignore([
-    @imgui.ComboFlag::PopupAlignLeft,
-    @imgui.ComboFlag::HeightSmall,
-    @imgui.ComboFlag::HeightRegular,
-    @imgui.ComboFlag::HeightLarge,
-    @imgui.ComboFlag::HeightLargest,
-    @imgui.ComboFlag::NoArrowButton,
-    @imgui.ComboFlag::NoPreview,
-    @imgui.ComboFlag::WidthFitPreview,
-  ])
-  ignore([
-    @imgui.InputTextFlag::CharsDecimal,
-    @imgui.InputTextFlag::CharsHexadecimal,
-    @imgui.InputTextFlag::CharsUppercase,
-    @imgui.InputTextFlag::CharsNoBlank,
-    @imgui.InputTextFlag::AutoSelectAll,
-    @imgui.InputTextFlag::EnterReturnsTrue,
-    @imgui.InputTextFlag::CallbackCompletion,
-    @imgui.InputTextFlag::CallbackHistory,
-    @imgui.InputTextFlag::CallbackAlways,
-    @imgui.InputTextFlag::CallbackCharFilter,
-    @imgui.InputTextFlag::AllowTabInput,
-    @imgui.InputTextFlag::CtrlEnterForNewLine,
-    @imgui.InputTextFlag::NoHorizontalScroll,
-    @imgui.InputTextFlag::AlwaysOverwrite,
-    @imgui.InputTextFlag::ReadOnly,
-    @imgui.InputTextFlag::Password,
-    @imgui.InputTextFlag::NoUndoRedo,
-    @imgui.InputTextFlag::CharsScientific,
-    @imgui.InputTextFlag::CallbackResize,
-    @imgui.InputTextFlag::CallbackEdit,
-    @imgui.InputTextFlag::EscapeClearsAll,
-    @imgui.InputTextFlag::DisplayEmptyRefVal,
-    @imgui.InputTextFlag::ParseEmptyRefVal,
-    @imgui.InputTextFlag::ElideLeft,
-    @imgui.InputTextFlag::WordWrap,
-  ])
-  ignore([
-    @imgui.SliderFlag::Logarithmic,
-    @imgui.SliderFlag::NoRoundToFormat,
-    @imgui.SliderFlag::NoInput,
-    @imgui.SliderFlag::WrapAround,
-    @imgui.SliderFlag::ClampOnInput,
-    @imgui.SliderFlag::ClampZeroRange,
-    @imgui.SliderFlag::NoSpeedTweaks,
-    @imgui.SliderFlag::ColorMarkers,
-    @imgui.SliderFlag::AlwaysClamp,
-  ])
-  ignore([
-    @imgui.ColorEditFlag::NoAlpha,
-    @imgui.ColorEditFlag::NoPicker,
-    @imgui.ColorEditFlag::NoOptions,
-    @imgui.ColorEditFlag::NoSmallPreview,
-    @imgui.ColorEditFlag::NoInputs,
-    @imgui.ColorEditFlag::NoTooltip,
-    @imgui.ColorEditFlag::NoLabel,
-    @imgui.ColorEditFlag::NoSidePreview,
-    @imgui.ColorEditFlag::NoDragDrop,
-    @imgui.ColorEditFlag::NoBorder,
-    @imgui.ColorEditFlag::NoColorMarkers,
-    @imgui.ColorEditFlag::AlphaOpaque,
-    @imgui.ColorEditFlag::AlphaNoBg,
-    @imgui.ColorEditFlag::AlphaPreviewHalf,
-    @imgui.ColorEditFlag::AlphaBar,
-    @imgui.ColorEditFlag::Hdr,
-    @imgui.ColorEditFlag::DisplayRgb,
-    @imgui.ColorEditFlag::DisplayHsv,
-    @imgui.ColorEditFlag::DisplayHex,
-    @imgui.ColorEditFlag::UInt8,
-    @imgui.ColorEditFlag::FloatMode,
-    @imgui.ColorEditFlag::PickerHueBar,
-    @imgui.ColorEditFlag::PickerHueWheel,
-    @imgui.ColorEditFlag::InputRgb,
-    @imgui.ColorEditFlag::InputHsv,
-    @imgui.ColorEditFlag::AlphaPreview,
-  ])
-  ignore([
-    @imgui.ItemFlag::NoTabStop,
-    @imgui.ItemFlag::NoNav,
-    @imgui.ItemFlag::NoNavDefaultFocus,
-    @imgui.ItemFlag::ButtonRepeat,
-    @imgui.ItemFlag::AutoClosePopups,
-    @imgui.ItemFlag::AllowDuplicateId,
-    @imgui.ItemFlag::Disabled,
-  ])
-  ignore([
-    @imgui.FocusedFlag::ChildWindows,
-    @imgui.FocusedFlag::RootWindow,
-    @imgui.FocusedFlag::AnyWindow,
-    @imgui.FocusedFlag::NoPopupHierarchy,
-    @imgui.FocusedFlag::RootAndChildWindows,
-  ])
-  ignore([
-    @imgui.HoveredFlag::ChildWindows,
-    @imgui.HoveredFlag::RootWindow,
-    @imgui.HoveredFlag::AnyWindow,
-    @imgui.HoveredFlag::NoPopupHierarchy,
-    @imgui.HoveredFlag::AllowWhenBlockedByPopup,
-    @imgui.HoveredFlag::AllowWhenBlockedByActiveItem,
-    @imgui.HoveredFlag::AllowWhenOverlappedByItem,
-    @imgui.HoveredFlag::AllowWhenOverlappedByWindow,
-    @imgui.HoveredFlag::AllowWhenDisabled,
-    @imgui.HoveredFlag::NoNavOverride,
-    @imgui.HoveredFlag::AllowWhenOverlapped,
-    @imgui.HoveredFlag::RectOnly,
-    @imgui.HoveredFlag::RootAndChildWindows,
-    @imgui.HoveredFlag::ForTooltip,
-    @imgui.HoveredFlag::Stationary,
-    @imgui.HoveredFlag::DelayNone,
-    @imgui.HoveredFlag::DelayShort,
-    @imgui.HoveredFlag::DelayNormal,
-    @imgui.HoveredFlag::NoSharedDelay,
-  ])
-  ignore([
-    @imgui.ButtonFlag::MouseButtonLeft,
-    @imgui.ButtonFlag::MouseButtonRight,
-    @imgui.ButtonFlag::MouseButtonMiddle,
-    @imgui.ButtonFlag::EnableNav,
-    @imgui.ButtonFlag::AllowOverlap,
-  ])
-  ignore([
-    @imgui.TableColumnFlag::Disabled,
-    @imgui.TableColumnFlag::DefaultHide,
-    @imgui.TableColumnFlag::DefaultSort,
-    @imgui.TableColumnFlag::WidthStretch,
-    @imgui.TableColumnFlag::WidthFixed,
-    @imgui.TableColumnFlag::NoResize,
-    @imgui.TableColumnFlag::NoReorder,
-    @imgui.TableColumnFlag::NoHide,
-    @imgui.TableColumnFlag::NoClip,
-    @imgui.TableColumnFlag::NoSort,
-    @imgui.TableColumnFlag::NoSortAscending,
-    @imgui.TableColumnFlag::NoSortDescending,
-    @imgui.TableColumnFlag::NoHeaderLabel,
-    @imgui.TableColumnFlag::NoHeaderWidth,
-    @imgui.TableColumnFlag::PreferSortAscending,
-    @imgui.TableColumnFlag::PreferSortDescending,
-    @imgui.TableColumnFlag::IndentEnable,
-    @imgui.TableColumnFlag::IndentDisable,
-    @imgui.TableColumnFlag::AngledHeader,
-    @imgui.TableColumnFlag::IsEnabled,
-    @imgui.TableColumnFlag::IsVisible,
-    @imgui.TableColumnFlag::IsSorted,
-    @imgui.TableColumnFlag::IsHovered,
-  ])
-  ignore([@imgui.TableRowFlag::Headers])
+  let _ : Array[@imgui.WindowFlag] = [
+    NoTitleBar,
+    NoResize,
+    NoMove,
+    NoScrollbar,
+    MenuBar,
+    AlwaysAutoResize,
+    NoScrollWithMouse,
+    NoCollapse,
+    NoBackground,
+    NoSavedSettings,
+    NoMouseInputs,
+    HorizontalScrollbar,
+    NoFocusOnAppearing,
+    NoBringToFrontOnFocus,
+    AlwaysVerticalScrollbar,
+    AlwaysHorizontalScrollbar,
+    NoNavInputs,
+    NoNavFocus,
+    UnsavedDocument,
+    NoNav,
+    NoDecoration,
+    NoInputs,
+  ]
+  let _ : Array[@imgui.SelectableFlag] = [
+    NoAutoClosePopups,
+    SpanAllColumns,
+    AllowDoubleClick,
+    Disabled,
+    AllowOverlap,
+    Highlight,
+    SelectOnNav,
+    DontClosePopups,
+  ]
+  let _ : Array[@imgui.TableFlag] = [
+    Resizable,
+    Reorderable,
+    Hideable,
+    Sortable,
+    NoSavedSettings,
+    ContextMenuInBody,
+    Borders,
+    RowBg,
+    BordersInnerH,
+    BordersOuterH,
+    BordersInnerV,
+    BordersOuterV,
+    BordersH,
+    BordersV,
+    BordersInner,
+    BordersOuter,
+    NoBordersInBody,
+    NoBordersInBodyUntilResize,
+    SizingFixedFit,
+    SizingFixedSame,
+    SizingStretchProp,
+    SizingStretchSame,
+    NoHostExtendX,
+    NoHostExtendY,
+    NoKeepColumnsVisible,
+    PreciseWidths,
+    NoClip,
+    PadOuterX,
+    NoPadOuterX,
+    NoPadInnerX,
+    ScrollX,
+    ScrollY,
+    SortMulti,
+    SortTristate,
+    HighlightHoveredColumn,
+  ]
+  let _ : Array[@imgui.TabBarFlag] = [
+    Reorderable,
+    AutoSelectNewTabs,
+    TabListPopupButton,
+    NoCloseWithMiddleMouseButton,
+    NoTabListScrollingButtons,
+    NoTooltip,
+    DrawSelectedOverline,
+    FittingPolicyMixed,
+    FittingPolicyShrink,
+    FittingPolicyScroll,
+    FittingPolicyResizeDown,
+  ]
+  let _ : Array[@imgui.TabItemFlag] = [
+    UnsavedDocument,
+    SetSelected,
+    NoCloseWithMiddleMouseButton,
+    NoPushId,
+    NoTooltip,
+    NoReorder,
+    Leading,
+    Trailing,
+    NoAssumedClosure,
+  ]
+  let _ : Array[@imgui.PopupFlag] = [
+    MouseButtonLeft,
+    MouseButtonRight,
+    MouseButtonMiddle,
+    NoReopen,
+    NoOpenOverExistingPopup,
+    NoOpenOverItems,
+    AnyPopId,
+    AnyPopupLevel,
+    AnyPopup,
+  ]
+  let _ : Array[@imgui.TreeNodeFlag] = [
+    Selected,
+    Framed,
+    AllowOverlap,
+    NoTreePushOnOpen,
+    NoAutoOpenOnLog,
+    DefaultOpen,
+    OpenOnDoubleClick,
+    OpenOnArrow,
+    Leaf,
+    Bullet,
+    FramePadding,
+    SpanAvailWidth,
+    SpanFullWidth,
+    SpanLabelWidth,
+    SpanAllColumns,
+    LabelSpanAllColumns,
+    NavLeftJumpsToParent,
+    CollapsingHeader,
+    DrawLinesNone,
+    DrawLinesFull,
+    DrawLinesToNodes,
+    NavLeftJumpsBackHere,
+    SpanTextWidth,
+  ]
+  let _ : Array[@imgui.ComboFlag] = [
+    PopupAlignLeft,
+    HeightSmall,
+    HeightRegular,
+    HeightLarge,
+    HeightLargest,
+    NoArrowButton,
+    NoPreview,
+    WidthFitPreview,
+  ]
+  let _ : Array[@imgui.InputTextFlag] = [
+    CharsDecimal,
+    CharsHexadecimal,
+    CharsUppercase,
+    CharsNoBlank,
+    AutoSelectAll,
+    EnterReturnsTrue,
+    CallbackCompletion,
+    CallbackHistory,
+    CallbackAlways,
+    CallbackCharFilter,
+    AllowTabInput,
+    CtrlEnterForNewLine,
+    NoHorizontalScroll,
+    AlwaysOverwrite,
+    ReadOnly,
+    Password,
+    NoUndoRedo,
+    CharsScientific,
+    CallbackResize,
+    CallbackEdit,
+    EscapeClearsAll,
+    DisplayEmptyRefVal,
+    ParseEmptyRefVal,
+    ElideLeft,
+    WordWrap,
+  ]
+  let _ : Array[@imgui.SliderFlag] = [
+    Logarithmic,
+    NoRoundToFormat,
+    NoInput,
+    WrapAround,
+    ClampOnInput,
+    ClampZeroRange,
+    NoSpeedTweaks,
+    ColorMarkers,
+    AlwaysClamp,
+  ]
+  let _ : Array[@imgui.ColorEditFlag] = [
+    NoAlpha,
+    NoPicker,
+    NoOptions,
+    NoSmallPreview,
+    NoInputs,
+    NoTooltip,
+    NoLabel,
+    NoSidePreview,
+    NoDragDrop,
+    NoBorder,
+    NoColorMarkers,
+    AlphaOpaque,
+    AlphaNoBg,
+    AlphaPreviewHalf,
+    AlphaBar,
+    Hdr,
+    DisplayRgb,
+    DisplayHsv,
+    DisplayHex,
+    UInt8,
+    FloatMode,
+    PickerHueBar,
+    PickerHueWheel,
+    InputRgb,
+    InputHsv,
+    AlphaPreview,
+  ]
+  let _ : Array[@imgui.ItemFlag] = [
+    NoTabStop,
+    NoNav,
+    NoNavDefaultFocus,
+    ButtonRepeat,
+    AutoClosePopups,
+    AllowDuplicateId,
+    Disabled,
+  ]
+  let _ : Array[@imgui.FocusedFlag] = [
+    ChildWindows,
+    RootWindow,
+    AnyWindow,
+    NoPopupHierarchy,
+    RootAndChildWindows,
+  ]
+  let _ : Array[@imgui.HoveredFlag] = [
+    ChildWindows,
+    RootWindow,
+    AnyWindow,
+    NoPopupHierarchy,
+    AllowWhenBlockedByPopup,
+    AllowWhenBlockedByActiveItem,
+    AllowWhenOverlappedByItem,
+    AllowWhenOverlappedByWindow,
+    AllowWhenDisabled,
+    NoNavOverride,
+    AllowWhenOverlapped,
+    RectOnly,
+    RootAndChildWindows,
+    ForTooltip,
+    Stationary,
+    DelayNone,
+    DelayShort,
+    DelayNormal,
+    NoSharedDelay,
+  ]
+  let _ : Array[@imgui.ButtonFlag] = [
+    MouseButtonLeft,
+    MouseButtonRight,
+    MouseButtonMiddle,
+    EnableNav,
+    AllowOverlap,
+  ]
+  let _ : Array[@imgui.TableColumnFlag] = [
+    Disabled,
+    DefaultHide,
+    DefaultSort,
+    WidthStretch,
+    WidthFixed,
+    NoResize,
+    NoReorder,
+    NoHide,
+    NoClip,
+    NoSort,
+    NoSortAscending,
+    NoSortDescending,
+    NoHeaderLabel,
+    NoHeaderWidth,
+    PreferSortAscending,
+    PreferSortDescending,
+    IndentEnable,
+    IndentDisable,
+    AngledHeader,
+    IsEnabled,
+    IsVisible,
+    IsSorted,
+    IsHovered,
+  ]
+  let _ : Array[@imgui.TableRowFlag] = [Headers]
 
   let mut bits = 0
   for
@@ -1111,42 +1062,39 @@ fn touch_value_api() -> Unit {
     ] {
     bits = bits | value.value()
   }
-  for
-    value in [
-      @imgui.StyleVar::alpha(),
-      @imgui.StyleVar::disabled_alpha(),
-      @imgui.StyleVar::window_rounding(),
-      @imgui.StyleVar::window_border_size(),
-      @imgui.StyleVar::child_rounding(),
-      @imgui.StyleVar::child_border_size(),
-      @imgui.StyleVar::popup_rounding(),
-      @imgui.StyleVar::popup_border_size(),
-      @imgui.StyleVar::frame_rounding(),
-      @imgui.StyleVar::frame_border_size(),
-      @imgui.StyleVar::indent_spacing(),
-      @imgui.StyleVar::scrollbar_size(),
-      @imgui.StyleVar::scrollbar_rounding(),
-      @imgui.StyleVar::scrollbar_padding(),
-      @imgui.StyleVar::grab_min_size(),
-      @imgui.StyleVar::grab_rounding(),
-      @imgui.StyleVar::image_rounding(),
-      @imgui.StyleVar::image_border_size(),
-      @imgui.StyleVar::tab_rounding(),
-      @imgui.StyleVar::tab_border_size(),
-      @imgui.StyleVar::tab_min_width_base(),
-      @imgui.StyleVar::tab_min_width_shrink(),
-      @imgui.StyleVar::tab_bar_border_size(),
-      @imgui.StyleVar::tab_bar_overline_size(),
-      @imgui.StyleVar::table_angled_headers_angle(),
-      @imgui.StyleVar::tree_lines_size(),
-      @imgui.StyleVar::tree_lines_rounding(),
-      @imgui.StyleVar::drag_drop_target_rounding(),
-      @imgui.StyleVar::separator_size(),
-      @imgui.StyleVar::separator_text_border_size(),
-      @imgui.StyleVar::count(),
-    ] {
-    bits = bits | value.value()
-  }
+  let _ : Array[@imgui.StyleVar] = [
+    @imgui.StyleVar::alpha(),
+    @imgui.StyleVar::disabled_alpha(),
+    @imgui.StyleVar::window_rounding(),
+    @imgui.StyleVar::window_border_size(),
+    @imgui.StyleVar::child_rounding(),
+    @imgui.StyleVar::child_border_size(),
+    @imgui.StyleVar::popup_rounding(),
+    @imgui.StyleVar::popup_border_size(),
+    @imgui.StyleVar::frame_rounding(),
+    @imgui.StyleVar::frame_border_size(),
+    @imgui.StyleVar::indent_spacing(),
+    @imgui.StyleVar::scrollbar_size(),
+    @imgui.StyleVar::scrollbar_rounding(),
+    @imgui.StyleVar::scrollbar_padding(),
+    @imgui.StyleVar::grab_min_size(),
+    @imgui.StyleVar::grab_rounding(),
+    @imgui.StyleVar::image_rounding(),
+    @imgui.StyleVar::image_border_size(),
+    @imgui.StyleVar::tab_rounding(),
+    @imgui.StyleVar::tab_border_size(),
+    @imgui.StyleVar::tab_min_width_base(),
+    @imgui.StyleVar::tab_min_width_shrink(),
+    @imgui.StyleVar::tab_bar_border_size(),
+    @imgui.StyleVar::tab_bar_overline_size(),
+    @imgui.StyleVar::table_angled_headers_angle(),
+    @imgui.StyleVar::tree_lines_size(),
+    @imgui.StyleVar::tree_lines_rounding(),
+    @imgui.StyleVar::drag_drop_target_rounding(),
+    @imgui.StyleVar::separator_size(),
+    @imgui.StyleVar::separator_text_border_size(),
+    @imgui.StyleVar::count(),
+  ]
   for
     value in [
       @imgui.Cond::none(),
@@ -1157,77 +1105,74 @@ fn touch_value_api() -> Unit {
     ] {
     bits = bits | value.value()
   }
-  for
-    value in [
-      @imgui.ColorId::text(),
-      @imgui.ColorId::text_disabled(),
-      @imgui.ColorId::window_bg(),
-      @imgui.ColorId::child_bg(),
-      @imgui.ColorId::popup_bg(),
-      @imgui.ColorId::border(),
-      @imgui.ColorId::border_shadow(),
-      @imgui.ColorId::frame_bg(),
-      @imgui.ColorId::frame_bg_hovered(),
-      @imgui.ColorId::frame_bg_active(),
-      @imgui.ColorId::title_bg(),
-      @imgui.ColorId::title_bg_active(),
-      @imgui.ColorId::title_bg_collapsed(),
-      @imgui.ColorId::menu_bar_bg(),
-      @imgui.ColorId::scrollbar_bg(),
-      @imgui.ColorId::scrollbar_grab(),
-      @imgui.ColorId::scrollbar_grab_hovered(),
-      @imgui.ColorId::scrollbar_grab_active(),
-      @imgui.ColorId::check_mark(),
-      @imgui.ColorId::checkbox_selected_bg(),
-      @imgui.ColorId::slider_grab(),
-      @imgui.ColorId::slider_grab_active(),
-      @imgui.ColorId::button(),
-      @imgui.ColorId::button_hovered(),
-      @imgui.ColorId::button_active(),
-      @imgui.ColorId::header(),
-      @imgui.ColorId::header_hovered(),
-      @imgui.ColorId::header_active(),
-      @imgui.ColorId::separator(),
-      @imgui.ColorId::separator_hovered(),
-      @imgui.ColorId::separator_active(),
-      @imgui.ColorId::resize_grip(),
-      @imgui.ColorId::resize_grip_hovered(),
-      @imgui.ColorId::resize_grip_active(),
-      @imgui.ColorId::tab(),
-      @imgui.ColorId::tab_active(),
-      @imgui.ColorId::tab_hovered(),
-      @imgui.ColorId::tab_selected(),
-      @imgui.ColorId::tab_selected_overline(),
-      @imgui.ColorId::tab_dimmed(),
-      @imgui.ColorId::tab_dimmed_selected(),
-      @imgui.ColorId::tab_dimmed_selected_overline(),
-      @imgui.ColorId::tab_unfocused(),
-      @imgui.ColorId::tab_unfocused_active(),
-      @imgui.ColorId::plot_lines(),
-      @imgui.ColorId::plot_lines_hovered(),
-      @imgui.ColorId::plot_histogram(),
-      @imgui.ColorId::plot_histogram_hovered(),
-      @imgui.ColorId::table_header_bg(),
-      @imgui.ColorId::table_border_strong(),
-      @imgui.ColorId::table_border_light(),
-      @imgui.ColorId::table_row_bg(),
-      @imgui.ColorId::table_row_bg_alt(),
-      @imgui.ColorId::text_link(),
-      @imgui.ColorId::text_selected_bg(),
-      @imgui.ColorId::tree_lines(),
-      @imgui.ColorId::drag_drop_target(),
-      @imgui.ColorId::drag_drop_target_bg(),
-      @imgui.ColorId::unsaved_marker(),
-      @imgui.ColorId::nav_cursor(),
-      @imgui.ColorId::nav_highlight(),
-      @imgui.ColorId::nav_windowing_highlight(),
-      @imgui.ColorId::nav_windowing_dim_bg(),
-      @imgui.ColorId::modal_window_dim_bg(),
-      @imgui.ColorId::input_text_cursor(),
-      @imgui.ColorId::count(),
-    ] {
-    bits = bits | value.value()
-  }
+  let _ : Array[@imgui.ColorId] = [
+    @imgui.ColorId::text(),
+    @imgui.ColorId::text_disabled(),
+    @imgui.ColorId::window_bg(),
+    @imgui.ColorId::child_bg(),
+    @imgui.ColorId::popup_bg(),
+    @imgui.ColorId::border(),
+    @imgui.ColorId::border_shadow(),
+    @imgui.ColorId::frame_bg(),
+    @imgui.ColorId::frame_bg_hovered(),
+    @imgui.ColorId::frame_bg_active(),
+    @imgui.ColorId::title_bg(),
+    @imgui.ColorId::title_bg_active(),
+    @imgui.ColorId::title_bg_collapsed(),
+    @imgui.ColorId::menu_bar_bg(),
+    @imgui.ColorId::scrollbar_bg(),
+    @imgui.ColorId::scrollbar_grab(),
+    @imgui.ColorId::scrollbar_grab_hovered(),
+    @imgui.ColorId::scrollbar_grab_active(),
+    @imgui.ColorId::check_mark(),
+    @imgui.ColorId::checkbox_selected_bg(),
+    @imgui.ColorId::slider_grab(),
+    @imgui.ColorId::slider_grab_active(),
+    @imgui.ColorId::button(),
+    @imgui.ColorId::button_hovered(),
+    @imgui.ColorId::button_active(),
+    @imgui.ColorId::header(),
+    @imgui.ColorId::header_hovered(),
+    @imgui.ColorId::header_active(),
+    @imgui.ColorId::separator(),
+    @imgui.ColorId::separator_hovered(),
+    @imgui.ColorId::separator_active(),
+    @imgui.ColorId::resize_grip(),
+    @imgui.ColorId::resize_grip_hovered(),
+    @imgui.ColorId::resize_grip_active(),
+    @imgui.ColorId::tab(),
+    @imgui.ColorId::tab_active(),
+    @imgui.ColorId::tab_hovered(),
+    @imgui.ColorId::tab_selected(),
+    @imgui.ColorId::tab_selected_overline(),
+    @imgui.ColorId::tab_dimmed(),
+    @imgui.ColorId::tab_dimmed_selected(),
+    @imgui.ColorId::tab_dimmed_selected_overline(),
+    @imgui.ColorId::tab_unfocused(),
+    @imgui.ColorId::tab_unfocused_active(),
+    @imgui.ColorId::plot_lines(),
+    @imgui.ColorId::plot_lines_hovered(),
+    @imgui.ColorId::plot_histogram(),
+    @imgui.ColorId::plot_histogram_hovered(),
+    @imgui.ColorId::table_header_bg(),
+    @imgui.ColorId::table_border_strong(),
+    @imgui.ColorId::table_border_light(),
+    @imgui.ColorId::table_row_bg(),
+    @imgui.ColorId::table_row_bg_alt(),
+    @imgui.ColorId::text_link(),
+    @imgui.ColorId::text_selected_bg(),
+    @imgui.ColorId::tree_lines(),
+    @imgui.ColorId::drag_drop_target(),
+    @imgui.ColorId::drag_drop_target_bg(),
+    @imgui.ColorId::unsaved_marker(),
+    @imgui.ColorId::nav_cursor(),
+    @imgui.ColorId::nav_highlight(),
+    @imgui.ColorId::nav_windowing_highlight(),
+    @imgui.ColorId::nav_windowing_dim_bg(),
+    @imgui.ColorId::modal_window_dim_bg(),
+    @imgui.ColorId::input_text_cursor(),
+    @imgui.ColorId::count(),
+  ]
   ignore(@imgui.Vec4::new(1.0, 1.0, 1.0, 1.0))
   ignore(@imgui.Vec4::white())
   ignore(@imgui.Vec4::transparent())

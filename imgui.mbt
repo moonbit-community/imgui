@@ -13,47 +13,47 @@ struct Context {
 
 ///|
 /// Root UI builder for scoped, callback-style Dear ImGui calls.
-struct Ui {}
+struct Ui(Unit)
 
 ///|
 /// UI operations available inside a window.
-struct WindowUi {}
+struct WindowUi(Unit)
 
 ///|
 /// UI operations available inside a menu bar.
-struct MenuBarUi {}
+struct MenuBarUi(Unit)
 
 ///|
 /// UI operations available inside a menu.
-struct MenuUi {}
+struct MenuUi(Unit)
 
 ///|
 /// UI operations available inside a tab bar.
-struct TabBarUi {}
+struct TabBarUi(Unit)
 
 ///|
 /// UI operations available inside a tab item.
-struct TabItemUi {}
+struct TabItemUi(Unit)
 
 ///|
 /// UI operations available inside a table.
-struct TableUi {}
+struct TableUi(Unit)
 
 ///|
 /// UI operations available inside a popup.
-struct PopupUi {}
+struct PopupUi(Unit)
 
 ///|
 /// UI operations available inside a tooltip.
-struct TooltipUi {}
+struct TooltipUi(Unit)
 
 ///|
 /// UI operations available inside a combo popup.
-struct ComboUi {}
+struct ComboUi(Unit)
 
 ///|
 /// UI operations available inside a tree node.
-struct TreeNodeUi {}
+struct TreeNodeUi(Unit)
 
 ///|
 /// Current ImGui IO handle.
@@ -1358,7 +1358,7 @@ pub fn StyleVar::count() -> StyleVar {
 }
 
 ///|
-pub fn StyleVar::value(self : StyleVar) -> Int {
+fn StyleVar::to_int(self : StyleVar) -> Int {
   self.value
 }
 
@@ -1723,7 +1723,7 @@ pub fn ColorId::count() -> ColorId {
 }
 
 ///|
-pub fn ColorId::value(self : ColorId) -> Int {
+fn ColorId::to_int(self : ColorId) -> Int {
   self.value
 }
 
@@ -1858,7 +1858,7 @@ pub fn Font::is_null(self : Font) -> Bool {
 ///|
 /// Returns a root UI builder.
 pub fn ui() -> Ui {
-  Ui::{  }
+  Ui(())
 }
 
 ///|
@@ -1867,11 +1867,13 @@ pub fn Ui::main_menu_bar(
   _self : Ui,
   body : (MenuBarUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
+  let Ui(token) = _self
+  ignore(token)
   ensure_current_context()
   let active = @bindings.im_gui_begin_main_menu_bar()
   if active {
     defer @bindings.im_gui_end_main_menu_bar()
-    body(MenuBarUi::{  })
+    body(MenuBarUi(()))
   }
 }
 
@@ -1891,7 +1893,7 @@ pub fn Ui::window(
   )
   defer @bindings.im_gui_end()
   if active {
-    body(WindowUi::{  })
+    body(WindowUi(()))
   }
 }
 
@@ -1901,6 +1903,8 @@ pub fn WindowUi::text(
   _self : WindowUi,
   value : String,
 ) -> Unit raise ImGuiError {
+  let WindowUi(token) = _self
+  ignore(token)
   ensure_current_context()
   @bindings.im_gui_text_unformatted(utf8(value))
 }
@@ -2038,46 +2042,6 @@ pub fn WindowUi::checkbox(
   let value = Ref(checked)
   if @bindings.im_gui_checkbox(utf8(label), Some(value)) {
     body(value.val)
-  }
-}
-
-///|
-/// Runs `body` with the updated integer flags when a flag checkbox changes.
-pub fn WindowUi::checkbox_flags_int(
-  _self : WindowUi,
-  label : String,
-  flags : Int,
-  flag_value : Int,
-  body : (Int) -> Unit raise ImGuiError,
-) -> Unit raise ImGuiError {
-  ensure_current_context()
-  let current = Ref(flags)
-  if @bindings.im_gui_checkbox_flags_int_ptr(
-      utf8(label),
-      Some(current),
-      flag_value,
-    ) {
-    body(current.val)
-  }
-}
-
-///|
-/// Runs `body` with the updated unsigned flags when a flag checkbox changes.
-pub fn WindowUi::checkbox_flags_uint(
-  _self : WindowUi,
-  label : String,
-  flags : UInt,
-  flag_value : UInt,
-  body : (UInt) -> Unit raise ImGuiError,
-) -> Unit raise ImGuiError {
-  ensure_current_context()
-  let current = Ref(flags)
-  if @bindings.im_gui_checkbox_flags_uint_ptr(
-      utf8(label),
-      Some(current),
-      flag_value,
-    ) {
-    body(current.val)
   }
 }
 
@@ -3333,7 +3297,7 @@ pub fn WindowUi::with_item_width(
   ensure_current_context()
   @bindings.im_gui_push_item_width(width)
   defer @bindings.im_gui_pop_item_width()
-  body(WindowUi::{  })
+  body(WindowUi(()))
 }
 
 ///|
@@ -3345,7 +3309,7 @@ pub fn WindowUi::with_text_wrap_pos(
   ensure_current_context()
   @bindings.im_gui_push_text_wrap_pos(wrap_pos_x)
   defer @bindings.im_gui_pop_text_wrap_pos()
-  body(WindowUi::{  })
+  body(WindowUi(()))
 }
 
 ///|
@@ -3364,9 +3328,9 @@ pub fn WindowUi::with_style_color_u32(
   body : (WindowUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  @bindings.im_gui_push_style_color(color_id.value(), color)
+  @bindings.im_gui_push_style_color(color_id.to_int(), color)
   defer @bindings.im_gui_pop_style_color()
-  body(WindowUi::{  })
+  body(WindowUi(()))
 }
 
 ///|
@@ -3378,9 +3342,9 @@ pub fn WindowUi::with_style_var_float(
   body : (WindowUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
-  @bindings.im_gui_push_style_var(style_var.value(), value)
+  @bindings.im_gui_push_style_var(style_var.to_int(), value)
   defer @bindings.im_gui_pop_style_var()
-  body(WindowUi::{  })
+  body(WindowUi(()))
 }
 
 ///|
@@ -3408,7 +3372,7 @@ pub fn WindowUi::with_font(
     @bindings.im_gui_push_font(font.raw)
   }
   defer @bindings.im_gui_pop_font()
-  body(WindowUi::{  })
+  body(WindowUi(()))
 }
 
 ///|
@@ -3421,7 +3385,7 @@ pub fn WindowUi::menu_bar(
   let active = @bindings.im_gui_begin_menu_bar()
   if active {
     defer @bindings.im_gui_end_menu_bar()
-    body(MenuBarUi::{  })
+    body(MenuBarUi(()))
   }
 }
 
@@ -3440,7 +3404,7 @@ pub fn WindowUi::tab_bar(
   )
   if active {
     defer @bindings.im_gui_end_tab_bar()
-    body(TabBarUi::{  })
+    body(TabBarUi(()))
   }
 }
 
@@ -3461,7 +3425,7 @@ pub fn WindowUi::table(
   )
   if active {
     defer @bindings.im_gui_end_table()
-    body(TableUi::{  })
+    body(TableUi(()))
   }
 }
 
@@ -3474,7 +3438,7 @@ pub fn WindowUi::group(
   ensure_current_context()
   @bindings.im_gui_begin_group()
   defer @bindings.im_gui_end_group()
-  body(WindowUi::{  })
+  body(WindowUi(()))
 }
 
 ///|
@@ -3488,7 +3452,7 @@ pub fn WindowUi::columns(
   ensure_current_context()
   @bindings.im_gui_columns_ex(count, None, border)
   defer @bindings.im_gui_columns()
-  body(WindowUi::{  })
+  body(WindowUi(()))
 }
 
 ///|
@@ -3545,7 +3509,7 @@ pub fn WindowUi::disabled(
   ensure_current_context()
   @bindings.im_gui_begin_disabled(disabled)
   defer @bindings.im_gui_end_disabled()
-  body(WindowUi::{  })
+  body(WindowUi(()))
 }
 
 ///|
@@ -3559,7 +3523,7 @@ pub fn WindowUi::with_item_flag(
   ensure_current_context()
   @bindings.im_gui_push_item_flag(flag.to_int(), enabled)
   defer @bindings.im_gui_pop_item_flag()
-  body(WindowUi::{  })
+  body(WindowUi(()))
 }
 
 ///|
@@ -3572,7 +3536,7 @@ pub fn WindowUi::with_id(
   ensure_current_context()
   @bindings.im_gui_push_id(utf8(id))
   defer @bindings.im_gui_pop_id()
-  body(WindowUi::{  })
+  body(WindowUi(()))
 }
 
 ///|
@@ -3597,7 +3561,7 @@ pub fn WindowUi::with_id_int(
   ensure_current_context()
   @bindings.im_gui_push_id_int(id)
   defer @bindings.im_gui_pop_id()
-  body(WindowUi::{  })
+  body(WindowUi(()))
 }
 
 ///|
@@ -3610,7 +3574,7 @@ pub fn WindowUi::button_repeat(
   ensure_current_context()
   @bindings.im_gui_push_button_repeat(repeat)
   defer @bindings.im_gui_pop_button_repeat()
-  body(WindowUi::{  })
+  body(WindowUi(()))
 }
 
 ///|
@@ -3628,7 +3592,7 @@ pub fn WindowUi::open_popup(
 /// Opens a popup from the last item click.
 pub fn WindowUi::open_popup_on_item_click(
   _self : WindowUi,
-  flags? : Array[PopupFlag] = [PopupFlag::MouseButtonRight],
+  flags? : Array[PopupFlag] = [MouseButtonRight],
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   @bindings.im_gui_open_popup_on_item_click(None, popup_flag_bits(flags))
@@ -3657,7 +3621,7 @@ pub fn WindowUi::popup(
   let active = @bindings.im_gui_begin_popup(utf8(name), popup_flag_bits(flags))
   if active {
     defer @bindings.im_gui_end_popup()
-    body(PopupUi::{  })
+    body(PopupUi(()))
   }
 }
 
@@ -3665,7 +3629,7 @@ pub fn WindowUi::popup(
 /// Opens and closes the last item's context popup automatically when active.
 pub fn WindowUi::popup_context_item(
   _self : WindowUi,
-  flags? : Array[PopupFlag] = [PopupFlag::MouseButtonRight],
+  flags? : Array[PopupFlag] = [MouseButtonRight],
   body : (PopupUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3675,7 +3639,7 @@ pub fn WindowUi::popup_context_item(
   )
   if active {
     defer @bindings.im_gui_end_popup()
-    body(PopupUi::{  })
+    body(PopupUi(()))
   }
 }
 
@@ -3683,7 +3647,7 @@ pub fn WindowUi::popup_context_item(
 /// Opens and closes the current window's context popup automatically when active.
 pub fn WindowUi::popup_context_window(
   _self : WindowUi,
-  flags? : Array[PopupFlag] = [PopupFlag::MouseButtonRight],
+  flags? : Array[PopupFlag] = [MouseButtonRight],
   body : (PopupUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3693,7 +3657,7 @@ pub fn WindowUi::popup_context_window(
   )
   if active {
     defer @bindings.im_gui_end_popup()
-    body(PopupUi::{  })
+    body(PopupUi(()))
   }
 }
 
@@ -3701,7 +3665,7 @@ pub fn WindowUi::popup_context_window(
 /// Opens and closes the void context popup automatically when active.
 pub fn WindowUi::popup_context_void(
   _self : WindowUi,
-  flags? : Array[PopupFlag] = [PopupFlag::MouseButtonRight],
+  flags? : Array[PopupFlag] = [MouseButtonRight],
   body : (PopupUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
   ensure_current_context()
@@ -3711,7 +3675,7 @@ pub fn WindowUi::popup_context_void(
   )
   if active {
     defer @bindings.im_gui_end_popup()
-    body(PopupUi::{  })
+    body(PopupUi(()))
   }
 }
 
@@ -3733,7 +3697,7 @@ pub fn WindowUi::popup_modal(
   )
   if active {
     defer @bindings.im_gui_end_popup()
-    body(PopupUi::{  })
+    body(PopupUi(()))
   }
   current.val
 }
@@ -3748,7 +3712,7 @@ pub fn WindowUi::tooltip(
   let active = @bindings.im_gui_begin_tooltip()
   if active {
     defer @bindings.im_gui_end_tooltip()
-    body(TooltipUi::{  })
+    body(TooltipUi(()))
   }
 }
 
@@ -3772,7 +3736,7 @@ pub fn WindowUi::item_tooltip(
   let active = @bindings.im_gui_begin_item_tooltip()
   if active {
     defer @bindings.im_gui_end_tooltip()
-    body(TooltipUi::{  })
+    body(TooltipUi(()))
   }
 }
 
@@ -3837,7 +3801,7 @@ pub fn WindowUi::combo(
   )
   if active {
     defer @bindings.im_gui_end_combo()
-    body(ComboUi::{  })
+    body(ComboUi(()))
   }
 }
 
@@ -3856,7 +3820,7 @@ pub fn WindowUi::tree_node(
   )
   if active {
     defer @bindings.im_gui_tree_pop()
-    body(TreeNodeUi::{  })
+    body(TreeNodeUi(()))
   }
 }
 
@@ -3870,7 +3834,7 @@ pub fn WindowUi::collapsing_header(
 ) -> Unit raise ImGuiError {
   ensure_current_context()
   if @bindings.im_gui_collapsing_header(utf8(label), tree_node_flag_bits(flags)) {
-    body(WindowUi::{  })
+    body(WindowUi(()))
   }
 }
 
@@ -3890,7 +3854,7 @@ pub fn WindowUi::collapsing_header_open(
       Some(current),
       tree_node_flag_bits(flags),
     ) {
-    body(WindowUi::{  })
+    body(WindowUi(()))
   }
   current.val
 }
@@ -3923,11 +3887,13 @@ pub fn MenuBarUi::menu(
   enabled? : Bool = true,
   body : (MenuUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
+  let MenuBarUi(token) = _self
+  ignore(token)
   ensure_current_context()
   let active = @bindings.im_gui_begin_menu_ex(utf8(label), enabled)
   if active {
     defer @bindings.im_gui_end_menu()
-    body(MenuUi::{  })
+    body(MenuUi(()))
   }
 }
 
@@ -3955,6 +3921,8 @@ pub fn MenuUi::menu_item(
   enabled? : Bool = true,
   body : () -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
+  let MenuUi(token) = _self
+  ignore(token)
   ensure_current_context()
   if @bindings.im_gui_menu_item_ex(utf8(label), None, selected, enabled) {
     body()
@@ -3969,6 +3937,8 @@ pub fn TabBarUi::tab_item(
   flags? : Array[TabItemFlag] = [],
   body : (TabItemUi) -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
+  let TabBarUi(token) = _self
+  ignore(token)
   ensure_current_context()
   let active = @bindings.im_gui_begin_tab_item(
     utf8(label),
@@ -3977,7 +3947,7 @@ pub fn TabBarUi::tab_item(
   )
   if active {
     defer @bindings.im_gui_end_tab_item()
-    body(TabItemUi::{  })
+    body(TabItemUi(()))
   }
 }
 
@@ -3999,7 +3969,7 @@ pub fn TabBarUi::tab_item_open(
   )
   if active {
     defer @bindings.im_gui_end_tab_item()
-    body(TabItemUi::{  })
+    body(TabItemUi(()))
   }
   current.val
 }
@@ -4010,6 +3980,8 @@ pub fn TabItemUi::text(
   _self : TabItemUi,
   value : String,
 ) -> Unit raise ImGuiError {
+  let TabItemUi(token) = _self
+  ignore(token)
   ensure_current_context()
   @bindings.im_gui_text_unformatted(utf8(value))
 }
@@ -4038,7 +4010,7 @@ pub fn TabItemUi::table(
   )
   if active {
     defer @bindings.im_gui_end_table()
-    body(TableUi::{  })
+    body(TableUi(()))
   }
 }
 
@@ -4051,6 +4023,8 @@ pub fn TableUi::setup_column(
   init_width_or_weight? : Float = 0.0,
   user_id? : UInt = 0U,
 ) -> Unit raise ImGuiError {
+  let TableUi(token) = _self
+  ignore(token)
   ensure_current_context()
   @bindings.im_gui_table_setup_column_ex(
     utf8(label),
@@ -4206,6 +4180,8 @@ pub fn TableUi::selectable(
 
 ///|
 pub fn PopupUi::text(_self : PopupUi, value : String) -> Unit raise ImGuiError {
+  let PopupUi(token) = _self
+  ignore(token)
   ensure_current_context()
   @bindings.im_gui_text_unformatted(utf8(value))
 }
@@ -4239,6 +4215,8 @@ pub fn TooltipUi::text(
   _self : TooltipUi,
   value : String,
 ) -> Unit raise ImGuiError {
+  let TooltipUi(token) = _self
+  ignore(token)
   ensure_current_context()
   @bindings.im_gui_text_unformatted(utf8(value))
 }
@@ -4251,6 +4229,8 @@ pub fn ComboUi::selectable(
   flags? : Array[SelectableFlag] = [],
   body : () -> Unit raise ImGuiError,
 ) -> Unit raise ImGuiError {
+  let ComboUi(token) = _self
+  ignore(token)
   ensure_current_context()
   let current = Ref(selected)
   if @bindings.im_gui_selectable_bool_ptr(
@@ -4267,6 +4247,8 @@ pub fn TreeNodeUi::text(
   _self : TreeNodeUi,
   value : String,
 ) -> Unit raise ImGuiError {
+  let TreeNodeUi(token) = _self
+  ignore(token)
   ensure_current_context()
   @bindings.im_gui_text_unformatted(utf8(value))
 }
