@@ -8,15 +8,79 @@ import {
 }
 
 // Values
+pub fn accept_drag_drop_payload(String, Int) -> @generated.ImGuiPayload raise ImGuiError
+
+pub fn align_text_to_frame_padding() -> Unit raise ImGuiError
+
+pub fn arrow_button(String, Int) -> Bool raise ImGuiError
+
+pub fn begin(String, @generated.BoolPtr, Int) -> Bool raise ImGuiError
+
+pub fn begin_child(String, @generated.ImVec2, Int, Int) -> Bool raise ImGuiError
+
+pub fn begin_child_id(UInt, @generated.ImVec2, Int, Int) -> Bool raise ImGuiError
+
+pub fn begin_combo(String, String, Int) -> Bool raise ImGuiError
+
+pub fn begin_disabled(Bool) -> Unit raise ImGuiError
+
+pub fn begin_drag_drop_source(Int) -> Bool raise ImGuiError
+
+pub fn begin_drag_drop_target() -> Bool raise ImGuiError
+
+pub fn begin_group() -> Unit raise ImGuiError
+
+pub fn begin_item_tooltip() -> Bool raise ImGuiError
+
+pub fn begin_list_box(String, @generated.ImVec2) -> Bool raise ImGuiError
+
+pub fn begin_main_menu_bar() -> Bool raise ImGuiError
+
 pub fn begin_menu(String, enabled? : Bool) -> Bool raise ImGuiError
 
 pub fn begin_menu_bar() -> Bool raise ImGuiError
 
+pub fn begin_menu_bar_generated() -> Bool raise ImGuiError
+
+pub fn begin_menu_ex(String, Bool) -> Bool raise ImGuiError
+
+pub fn begin_menu_generated(String) -> Bool raise ImGuiError
+
+pub fn begin_multi_select(Int) -> @generated.ImGuiMultiSelectIO raise ImGuiError
+
+pub fn begin_multi_select_ex(Int, Int, Int) -> @generated.ImGuiMultiSelectIO raise ImGuiError
+
+pub fn begin_popup(String, Int) -> Bool raise ImGuiError
+
+pub fn begin_popup_context_item() -> Bool raise ImGuiError
+
+pub fn begin_popup_context_item_ex(String, Int) -> Bool raise ImGuiError
+
+pub fn begin_popup_context_void() -> Bool raise ImGuiError
+
+pub fn begin_popup_context_void_ex(String, Int) -> Bool raise ImGuiError
+
+pub fn begin_popup_context_window() -> Bool raise ImGuiError
+
+pub fn begin_popup_context_window_ex(String, Int) -> Bool raise ImGuiError
+
+pub fn begin_popup_modal(String, @generated.BoolPtr, Int) -> Bool raise ImGuiError
+
 pub fn begin_tab_bar(String, flags? : @raw.TabBarFlags) -> Bool raise ImGuiError
+
+pub fn begin_tab_bar_generated(String, Int) -> Bool raise ImGuiError
 
 pub fn begin_tab_item(String) -> Bool raise ImGuiError
 
+pub fn begin_tab_item_generated(String, @generated.BoolPtr, Int) -> Bool raise ImGuiError
+
 pub fn begin_table(String, Int, flags? : @raw.TableFlags) -> Bool raise ImGuiError
+
+pub fn begin_table_ex(String, Int, Int, @generated.ImVec2, Float) -> Bool raise ImGuiError
+
+pub fn begin_table_generated(String, Int, Int) -> Bool raise ImGuiError
+
+pub fn begin_tooltip() -> Bool raise ImGuiError
 
 pub fn begin_window(String, flags? : @raw.WindowFlags) -> Bool raise ImGuiError
 
@@ -24,1491 +88,1009 @@ pub fn bridge_mode() -> @raw.BridgeMode
 
 pub fn bridge_version() -> Int
 
+pub fn bullet() -> Unit raise ImGuiError
+
+pub fn bullet_text(String) -> Unit raise ImGuiError
+
+pub fn bullet_text_unformatted(String) -> Unit raise ImGuiError
+
 pub fn button(String) -> Bool raise ImGuiError
+
+pub fn button_ex(String, @generated.ImVec2) -> Bool raise ImGuiError
+
+pub fn button_generated(String) -> Bool raise ImGuiError
+
+pub fn calc_item_width() -> Float raise ImGuiError
+
+pub fn calc_text_size(String) -> @generated.ImVec2 raise ImGuiError
+
+pub fn calc_text_size_ex(String, Bool, Float) -> @generated.ImVec2 raise ImGuiError
 
 pub fn checkbox(String, Bool) -> @raw.CheckboxResult raise ImGuiError
 
+pub fn checkbox_flags_int_ptr(String, @generated.IntPtr, Int) -> Bool raise ImGuiError
+
+pub fn checkbox_flags_uint_ptr(String, @generated.UIntPtr, UInt) -> Bool raise ImGuiError
+
+pub fn checkbox_generated(String, @generated.BoolPtr) -> Bool raise ImGuiError
+
 pub fn clear_current_context() -> Unit
+
+pub fn close_current_popup() -> Unit raise ImGuiError
 
 pub fn collapsing_header(String, flags? : @raw.TreeNodeFlags) -> Bool raise ImGuiError
 
+pub fn collapsing_header_bool_ptr(String, @generated.BoolPtr, Int) -> Bool raise ImGuiError
+
+pub fn collapsing_header_generated(String, Int) -> Bool raise ImGuiError
+
+pub fn color_button(String, @generated.ImVec4, Int) -> Bool raise ImGuiError
+
+pub fn color_button_ex(String, @generated.ImVec4, Int, @generated.ImVec2) -> Bool raise ImGuiError
+
+pub fn color_convert_float4_to_u32(@generated.ImVec4) -> UInt raise ImGuiError
+
+pub fn color_convert_hs_vto_rgb(Float, Float, Float, @generated.FloatPtr, @generated.FloatPtr, @generated.FloatPtr) -> Unit raise ImGuiError
+
+pub fn color_convert_rg_bto_hsv(Float, Float, Float, @generated.FloatPtr, @generated.FloatPtr, @generated.FloatPtr) -> Unit raise ImGuiError
+
+pub fn color_convert_u32_to_float4(UInt) -> @generated.ImVec4 raise ImGuiError
+
+pub fn color_edit3(String, @generated.FloatPtr, Int) -> Bool raise ImGuiError
+
+pub fn color_edit4(String, @generated.FloatPtr, Int) -> Bool raise ImGuiError
+
+pub fn color_hsv(Float, Float, Float, Float) -> @generated.ImColor
+
+pub fn color_picker3(String, @generated.FloatPtr, Int) -> Bool raise ImGuiError
+
+pub fn color_picker4(String, @generated.FloatPtr, Int, @generated.FloatPtr) -> Bool raise ImGuiError
+
+pub fn color_set_hsv(@generated.ImColor, Float, Float, Float, Float) -> Unit
+
+pub fn columns() -> Unit raise ImGuiError
+
+pub fn columns_ex(Int, String, Bool) -> Unit raise ImGuiError
+
+pub fn combo(String, @generated.IntPtr, String) -> Bool raise ImGuiError
+
+pub fn combo_char(String, @generated.IntPtr, @generated.CStringPtr, Int) -> Bool raise ImGuiError
+
+pub fn combo_char_ex(String, @generated.IntPtr, @generated.CStringPtr, Int, Int) -> Bool raise ImGuiError
+
+pub fn combo_ex(String, @generated.IntPtr, String, Int) -> Bool raise ImGuiError
+
+pub fn create_context(@generated.ImFontAtlas) -> @generated.ImGuiContext
+
 pub fn dear_imgui_version_number() -> Int
 
+pub fn debug_check_version_and_data_layout(String, UInt64, UInt64, UInt64, UInt64, UInt64, UInt64) -> Bool
+
+pub fn debug_flash_style_color(Int) -> Unit raise ImGuiError
+
+pub fn debug_log(String) -> Unit raise ImGuiError
+
+pub fn debug_log_unformatted(String) -> Unit raise ImGuiError
+
+pub fn debug_start_item_picker() -> Unit raise ImGuiError
+
+pub fn debug_text_encoding(String) -> Unit raise ImGuiError
+
+pub fn destroy_context(@generated.ImGuiContext) -> Unit
+
+pub fn drag_float(String, @generated.FloatPtr) -> Bool raise ImGuiError
+
+pub fn drag_float2(String, @generated.FloatPtr) -> Bool raise ImGuiError
+
+pub fn drag_float2_ex(String, @generated.FloatPtr, Float, Float, Float, String, Int) -> Bool raise ImGuiError
+
+pub fn drag_float3(String, @generated.FloatPtr) -> Bool raise ImGuiError
+
+pub fn drag_float3_ex(String, @generated.FloatPtr, Float, Float, Float, String, Int) -> Bool raise ImGuiError
+
+pub fn drag_float4(String, @generated.FloatPtr) -> Bool raise ImGuiError
+
+pub fn drag_float4_ex(String, @generated.FloatPtr, Float, Float, Float, String, Int) -> Bool raise ImGuiError
+
+pub fn drag_float_ex(String, @generated.FloatPtr, Float, Float, Float, String, Int) -> Bool raise ImGuiError
+
+pub fn drag_float_range2(String, @generated.FloatPtr, @generated.FloatPtr) -> Bool raise ImGuiError
+
+pub fn drag_float_range2_ex(String, @generated.FloatPtr, @generated.FloatPtr, Float, Float, Float, String, String, Int) -> Bool raise ImGuiError
+
+pub fn drag_int(String, @generated.IntPtr) -> Bool raise ImGuiError
+
+pub fn drag_int2(String, @generated.IntPtr) -> Bool raise ImGuiError
+
+pub fn drag_int2_ex(String, @generated.IntPtr, Float, Int, Int, String, Int) -> Bool raise ImGuiError
+
+pub fn drag_int3(String, @generated.IntPtr) -> Bool raise ImGuiError
+
+pub fn drag_int3_ex(String, @generated.IntPtr, Float, Int, Int, String, Int) -> Bool raise ImGuiError
+
+pub fn drag_int4(String, @generated.IntPtr) -> Bool raise ImGuiError
+
+pub fn drag_int4_ex(String, @generated.IntPtr, Float, Int, Int, String, Int) -> Bool raise ImGuiError
+
+pub fn drag_int_ex(String, @generated.IntPtr, Float, Int, Int, String, Int) -> Bool raise ImGuiError
+
+pub fn drag_int_range2(String, @generated.IntPtr, @generated.IntPtr) -> Bool raise ImGuiError
+
+pub fn drag_int_range2_ex(String, @generated.IntPtr, @generated.IntPtr, Float, Int, Int, String, String, Int) -> Bool raise ImGuiError
+
+pub fn drag_scalar(String, Int, @generated.VoidPtr) -> Bool raise ImGuiError
+
+pub fn drag_scalar_ex(String, Int, @generated.VoidPtr, Float, @generated.VoidPtr, @generated.VoidPtr, String, Int) -> Bool raise ImGuiError
+
+pub fn drag_scalar_n(String, Int, @generated.VoidPtr, Int) -> Bool raise ImGuiError
+
+pub fn drag_scalar_n_ex(String, Int, @generated.VoidPtr, Int, Float, @generated.VoidPtr, @generated.VoidPtr, String, Int) -> Bool raise ImGuiError
+
+pub fn draw_cmd_get_tex_id(@generated.ImDrawCmd) -> UInt64
+
+pub fn draw_data_add_draw_list(@generated.ImDrawData, @generated.ImDrawList) -> Unit
+
+pub fn draw_data_clear(@generated.ImDrawData) -> Unit
+
+pub fn draw_data_de_index_all_buffers(@generated.ImDrawData) -> Unit
+
+pub fn draw_data_scale_clip_rects(@generated.ImDrawData, @generated.ImVec2) -> Unit
+
+pub fn draw_list_add_bezier_cubic(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt, Float, Int) -> Unit
+
+pub fn draw_list_add_bezier_quadratic(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt, Float, Int) -> Unit
+
+pub fn draw_list_add_circle(@generated.ImDrawList, @generated.ImVec2, Float, UInt) -> Unit
+
+pub fn draw_list_add_circle_ex(@generated.ImDrawList, @generated.ImVec2, Float, UInt, Int, Float) -> Unit
+
+pub fn draw_list_add_circle_filled(@generated.ImDrawList, @generated.ImVec2, Float, UInt, Int) -> Unit
+
+pub fn draw_list_add_concave_poly_filled(@generated.ImDrawList, @generated.ImVec2, Int, UInt) -> Unit
+
+pub fn draw_list_add_convex_poly_filled(@generated.ImDrawList, @generated.ImVec2, Int, UInt) -> Unit
+
+pub fn draw_list_add_draw_cmd(@generated.ImDrawList) -> Unit
+
+pub fn draw_list_add_ellipse(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
+
+pub fn draw_list_add_ellipse_ex(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt, Float, Int, Float) -> Unit
+
+pub fn draw_list_add_ellipse_filled(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
+
+pub fn draw_list_add_ellipse_filled_ex(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt, Float, Int) -> Unit
+
+pub fn draw_list_add_image(@generated.ImDrawList, @generated.ImTextureRef, @generated.ImVec2, @generated.ImVec2) -> Unit
+
+pub fn draw_list_add_image_ex(@generated.ImDrawList, @generated.ImTextureRef, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
+
+pub fn draw_list_add_image_quad(@generated.ImDrawList, @generated.ImTextureRef, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2) -> Unit
+
+pub fn draw_list_add_image_quad_ex(@generated.ImDrawList, @generated.ImTextureRef, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
+
+pub fn draw_list_add_image_rounded(@generated.ImDrawList, @generated.ImTextureRef, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt, Float, Int) -> Unit
+
+pub fn draw_list_add_line(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
+
+pub fn draw_list_add_line_ex(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt, Float) -> Unit
+
+pub fn draw_list_add_line_h(@generated.ImDrawList, Float, Float, Float, UInt) -> Unit
+
+pub fn draw_list_add_line_h_ex(@generated.ImDrawList, Float, Float, Float, UInt, Float) -> Unit
+
+pub fn draw_list_add_line_v(@generated.ImDrawList, Float, Float, Float, UInt) -> Unit
+
+pub fn draw_list_add_line_v_ex(@generated.ImDrawList, Float, Float, Float, UInt, Float) -> Unit
+
+pub fn draw_list_add_ngon(@generated.ImDrawList, @generated.ImVec2, Float, UInt, Int) -> Unit
+
+pub fn draw_list_add_ngon_ex(@generated.ImDrawList, @generated.ImVec2, Float, UInt, Int, Float) -> Unit
+
+pub fn draw_list_add_ngon_filled(@generated.ImDrawList, @generated.ImVec2, Float, UInt, Int) -> Unit
+
+pub fn draw_list_add_polyline(@generated.ImDrawList, @generated.ImVec2, Int, UInt, Float, Int) -> Unit
+
+pub fn draw_list_add_polyline_draw_flags(@generated.ImDrawList, @generated.ImVec2, Int, UInt, Int, Float) -> Unit
+
+pub fn draw_list_add_quad(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
+
+pub fn draw_list_add_quad_ex(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt, Float) -> Unit
+
+pub fn draw_list_add_quad_filled(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
+
+pub fn draw_list_add_rect(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
+
+pub fn draw_list_add_rect_draw_flags(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt, Float, Int, Float) -> Unit
+
+pub fn draw_list_add_rect_ex(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt, Float, Float, Int) -> Unit
+
+pub fn draw_list_add_rect_filled(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
+
+pub fn draw_list_add_rect_filled_ex(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt, Float, Int) -> Unit
+
+pub fn draw_list_add_rect_filled_multi_color(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt, UInt, UInt, UInt) -> Unit
+
+pub fn draw_list_add_text(@generated.ImDrawList, @generated.ImVec2, UInt, String) -> Unit
+
+pub fn draw_list_add_text_ex(@generated.ImDrawList, @generated.ImVec2, UInt, String) -> Unit
+
+pub fn draw_list_add_text_im_font_ptr(@generated.ImDrawList, @generated.ImFont, Float, @generated.ImVec2, UInt, String) -> Unit
+
+pub fn draw_list_add_text_im_font_ptr_ex(@generated.ImDrawList, @generated.ImFont, Float, @generated.ImVec2, UInt, String, Float, @generated.ImVec4) -> Unit
+
+pub fn draw_list_add_triangle(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
+
+pub fn draw_list_add_triangle_ex(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt, Float) -> Unit
+
+pub fn draw_list_add_triangle_filled(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
+
+pub fn draw_list_calc_circle_auto_segment_count(@generated.ImDrawList, Float) -> Int
+
+pub fn draw_list_channels_merge(@generated.ImDrawList) -> Unit
+
+pub fn draw_list_channels_set_current(@generated.ImDrawList, Int) -> Unit
+
+pub fn draw_list_channels_split(@generated.ImDrawList, Int) -> Unit
+
+pub fn draw_list_clear_free_memory(@generated.ImDrawList) -> Unit
+
+pub fn draw_list_clone_output(@generated.ImDrawList) -> @generated.ImDrawList
+
+pub fn draw_list_get_clip_rect_max(@generated.ImDrawList) -> @generated.ImVec2
+
+pub fn draw_list_get_clip_rect_min(@generated.ImDrawList) -> @generated.ImVec2
+
+pub fn draw_list_on_changed_clip_rect(@generated.ImDrawList) -> Unit
+
+pub fn draw_list_on_changed_texture(@generated.ImDrawList) -> Unit
+
+pub fn draw_list_on_changed_vtx_offset(@generated.ImDrawList) -> Unit
+
+pub fn draw_list_path_arc_to(@generated.ImDrawList, @generated.ImVec2, Float, Float, Float, Int) -> Unit
+
+pub fn draw_list_path_arc_to_fast(@generated.ImDrawList, @generated.ImVec2, Float, Int, Int) -> Unit
+
+pub fn draw_list_path_arc_to_fast_ex(@generated.ImDrawList, @generated.ImVec2, Float, Int, Int, Int) -> Unit
+
+pub fn draw_list_path_arc_to_n(@generated.ImDrawList, @generated.ImVec2, Float, Float, Float, Int) -> Unit
+
+pub fn draw_list_path_bezier_cubic_curve_to(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, Int) -> Unit
+
+pub fn draw_list_path_bezier_quadratic_curve_to(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, Int) -> Unit
+
+pub fn draw_list_path_clear(@generated.ImDrawList) -> Unit
+
+pub fn draw_list_path_elliptical_arc_to(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, Float, Float, Float) -> Unit
+
+pub fn draw_list_path_elliptical_arc_to_ex(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, Float, Float, Float, Int) -> Unit
+
+pub fn draw_list_path_fill_concave(@generated.ImDrawList, UInt) -> Unit
+
+pub fn draw_list_path_fill_convex(@generated.ImDrawList, UInt) -> Unit
+
+pub fn draw_list_path_line_to(@generated.ImDrawList, @generated.ImVec2) -> Unit
+
+pub fn draw_list_path_line_to_merge_duplicate(@generated.ImDrawList, @generated.ImVec2) -> Unit
+
+pub fn draw_list_path_rect(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, Float, Int) -> Unit
+
+pub fn draw_list_path_stroke(@generated.ImDrawList, UInt, Float, Int) -> Unit
+
+pub fn draw_list_path_stroke_draw_flags(@generated.ImDrawList, UInt, Int, Float) -> Unit
+
+pub fn draw_list_pop_clip_rect(@generated.ImDrawList) -> Unit
+
+pub fn draw_list_pop_texture(@generated.ImDrawList) -> Unit
+
+pub fn draw_list_pop_texture_id(@generated.ImDrawList) -> Unit
+
+pub fn draw_list_pop_unused_draw_cmd(@generated.ImDrawList) -> Unit
+
+pub fn draw_list_prim_quad_uv(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
+
+pub fn draw_list_prim_rect(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
+
+pub fn draw_list_prim_rect_uv(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
+
+pub fn draw_list_prim_reserve(@generated.ImDrawList, Int, Int) -> Unit
+
+pub fn draw_list_prim_unreserve(@generated.ImDrawList, Int, Int) -> Unit
+
+pub fn draw_list_prim_vtx(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
+
+pub fn draw_list_prim_write_idx(@generated.ImDrawList, Int) -> Unit
+
+pub fn draw_list_prim_write_vtx(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
+
+pub fn draw_list_push_clip_rect(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, Bool) -> Unit
+
+pub fn draw_list_push_clip_rect_full_screen(@generated.ImDrawList) -> Unit
+
+pub fn draw_list_push_texture(@generated.ImDrawList, @generated.ImTextureRef) -> Unit
+
+pub fn draw_list_push_texture_id(@generated.ImDrawList, @generated.ImTextureRef) -> Unit
+
+pub fn draw_list_reset_for_new_frame(@generated.ImDrawList) -> Unit
+
+pub fn draw_list_set_draw_list_shared_data(@generated.ImDrawList, @generated.ImDrawListSharedData) -> Unit
+
+pub fn draw_list_set_texture(@generated.ImDrawList, @generated.ImTextureRef) -> Unit
+
+pub fn draw_list_splitter_clear(@generated.ImDrawListSplitter) -> Unit
+
+pub fn draw_list_splitter_clear_free_memory(@generated.ImDrawListSplitter) -> Unit
+
+pub fn draw_list_splitter_merge(@generated.ImDrawListSplitter, @generated.ImDrawList) -> Unit
+
+pub fn draw_list_splitter_set_current_channel(@generated.ImDrawListSplitter, @generated.ImDrawList, Int) -> Unit
+
+pub fn draw_list_splitter_split(@generated.ImDrawListSplitter, @generated.ImDrawList, Int) -> Unit
+
+pub fn draw_list_try_merge_draw_cmds(@generated.ImDrawList) -> Unit
+
+pub fn dummy(@generated.ImVec2) -> Unit raise ImGuiError
+
+pub fn end() -> Unit raise ImGuiError
+
+pub fn end_child() -> Unit raise ImGuiError
+
+pub fn end_combo() -> Unit raise ImGuiError
+
+pub fn end_disabled() -> Unit raise ImGuiError
+
+pub fn end_drag_drop_source() -> Unit raise ImGuiError
+
+pub fn end_drag_drop_target() -> Unit raise ImGuiError
+
 pub fn end_frame() -> Unit raise ImGuiError
+
+pub fn end_frame_generated() -> Unit raise ImGuiError
+
+pub fn end_group() -> Unit raise ImGuiError
+
+pub fn end_list_box() -> Unit raise ImGuiError
+
+pub fn end_main_menu_bar() -> Unit raise ImGuiError
 
 pub fn end_menu() -> Unit raise ImGuiError
 
 pub fn end_menu_bar() -> Unit raise ImGuiError
 
+pub fn end_menu_bar_generated() -> Unit raise ImGuiError
+
+pub fn end_menu_generated() -> Unit raise ImGuiError
+
+pub fn end_multi_select() -> @generated.ImGuiMultiSelectIO raise ImGuiError
+
+pub fn end_popup() -> Unit raise ImGuiError
+
 pub fn end_tab_bar() -> Unit raise ImGuiError
+
+pub fn end_tab_bar_generated() -> Unit raise ImGuiError
 
 pub fn end_tab_item() -> Unit raise ImGuiError
 
+pub fn end_tab_item_generated() -> Unit raise ImGuiError
+
 pub fn end_table() -> Unit raise ImGuiError
+
+pub fn end_table_generated() -> Unit raise ImGuiError
+
+pub fn end_tooltip() -> Unit raise ImGuiError
 
 pub fn end_window() -> Unit raise ImGuiError
 
+pub fn font_add_remap_char(@generated.ImFont, Int, Int) -> Unit
+
+pub fn font_atlas_add_custom_rect(@generated.ImFontAtlas, Int, Int, @generated.ImFontAtlasRect) -> Int
+
+pub fn font_atlas_add_custom_rect_font_glyph(@generated.ImFontAtlas, @generated.ImFont, Int, Int, Int, Float, @generated.ImVec2) -> Int
+
+pub fn font_atlas_add_custom_rect_font_glyph_for_size(@generated.ImFontAtlas, @generated.ImFont, Float, Int, Int, Int, Float, @generated.ImVec2) -> Int
+
+pub fn font_atlas_add_custom_rect_regular(@generated.ImFontAtlas, Int, Int) -> Int
+
+pub fn font_atlas_add_font(@generated.ImFontAtlas, @generated.ImFontConfig) -> @generated.ImFont
+
+pub fn font_atlas_add_font_default(@generated.ImFontAtlas, @generated.ImFontConfig) -> @generated.ImFont
+
+pub fn font_atlas_add_font_default_bitmap(@generated.ImFontAtlas, @generated.ImFontConfig) -> @generated.ImFont
+
+pub fn font_atlas_add_font_default_vector(@generated.ImFontAtlas, @generated.ImFontConfig) -> @generated.ImFont
+
+pub fn font_atlas_add_font_from_file_ttf(@generated.ImFontAtlas, String, Float, @generated.ImFontConfig, @generated.ImWcharPtr) -> @generated.ImFont
+
+pub fn font_atlas_add_font_from_memory_compressed_base85_ttf(@generated.ImFontAtlas, String, Float, @generated.ImFontConfig, @generated.ImWcharPtr) -> @generated.ImFont
+
+pub fn font_atlas_add_font_from_memory_compressed_ttf(@generated.ImFontAtlas, @generated.VoidPtr, Int, Float, @generated.ImFontConfig, @generated.ImWcharPtr) -> @generated.ImFont
+
+pub fn font_atlas_add_font_from_memory_ttf(@generated.ImFontAtlas, @generated.VoidPtr, Int, Float, @generated.ImFontConfig, @generated.ImWcharPtr) -> @generated.ImFont
+
+pub fn font_atlas_build(@generated.ImFontAtlas) -> Bool
+
+pub fn font_atlas_calc_custom_rect_uv(@generated.ImFontAtlas, @generated.ImFontAtlasRect, @generated.ImVec2, @generated.ImVec2) -> Unit
+
+pub fn font_atlas_clear(@generated.ImFontAtlas) -> Unit
+
+pub fn font_atlas_clear_fonts(@generated.ImFontAtlas) -> Unit
+
+pub fn font_atlas_clear_input_data(@generated.ImFontAtlas) -> Unit
+
+pub fn font_atlas_clear_tex_data(@generated.ImFontAtlas) -> Unit
+
+pub fn font_atlas_compact_cache(@generated.ImFontAtlas) -> Unit
+
+pub fn font_atlas_get_custom_rect(@generated.ImFontAtlas, Int, @generated.ImFontAtlasRect) -> Bool
+
+pub fn font_atlas_get_custom_rect_by_index(@generated.ImFontAtlas, Int) -> @generated.ImFontAtlasRect
+
+pub fn font_atlas_get_glyph_ranges_chinese_full(@generated.ImFontAtlas) -> @generated.ImWcharPtr
+
+pub fn font_atlas_get_glyph_ranges_chinese_simplified_common(@generated.ImFontAtlas) -> @generated.ImWcharPtr
+
+pub fn font_atlas_get_glyph_ranges_cyrillic(@generated.ImFontAtlas) -> @generated.ImWcharPtr
+
+pub fn font_atlas_get_glyph_ranges_default(@generated.ImFontAtlas) -> @generated.ImWcharPtr
+
+pub fn font_atlas_get_glyph_ranges_greek(@generated.ImFontAtlas) -> @generated.ImWcharPtr
+
+pub fn font_atlas_get_glyph_ranges_japanese(@generated.ImFontAtlas) -> @generated.ImWcharPtr
+
+pub fn font_atlas_get_glyph_ranges_korean(@generated.ImFontAtlas) -> @generated.ImWcharPtr
+
+pub fn font_atlas_get_glyph_ranges_thai(@generated.ImFontAtlas) -> @generated.ImWcharPtr
+
+pub fn font_atlas_get_glyph_ranges_vietnamese(@generated.ImFontAtlas) -> @generated.ImWcharPtr
+
+pub fn font_atlas_get_tex_data_as_alpha8(@generated.ImFontAtlas, @generated.IntPtrPtr, @generated.IntPtr, @generated.IntPtr, @generated.IntPtr) -> Unit
+
+pub fn font_atlas_get_tex_data_as_rgba32(@generated.ImFontAtlas, @generated.IntPtrPtr, @generated.IntPtr, @generated.IntPtr, @generated.IntPtr) -> Unit
+
+pub fn font_atlas_is_built(@generated.ImFontAtlas) -> Bool
+
+pub fn font_atlas_remove_custom_rect(@generated.ImFontAtlas, Int) -> Unit
+
+pub fn font_atlas_remove_font(@generated.ImFontAtlas, @generated.ImFont) -> Unit
+
+pub fn font_atlas_set_font_loader(@generated.ImFontAtlas, @generated.ImFontLoader) -> Unit
+
+pub fn font_atlas_set_tex_id(@generated.ImFontAtlas, UInt64) -> Unit
+
+pub fn font_atlas_set_tex_id_im_texture_ref_ptr(@generated.ImFontAtlas, @generated.ImTextureRef) -> Unit
+
+pub fn font_baked_clear_output_data(@generated.ImFontBaked) -> Unit
+
+pub fn font_baked_find_glyph(@generated.ImFontBaked, Int) -> @generated.ImFontGlyph
+
+pub fn font_baked_find_glyph_no_fallback(@generated.ImFontBaked, Int) -> @generated.ImFontGlyph
+
+pub fn font_baked_get_char_advance(@generated.ImFontBaked, Int) -> Float
+
+pub fn font_baked_is_glyph_loaded(@generated.ImFontBaked, Int) -> Bool
+
+pub fn font_calc_text_size_a(@generated.ImFont, Float, Float, Float, String) -> @generated.ImVec2
+
+pub fn font_calc_text_size_a_ex(@generated.ImFont, Float, Float, Float, String, @generated.CStringPtr) -> @generated.ImVec2
+
+pub fn font_calc_word_wrap_position(@generated.ImFont, Float, String, Float) -> String
+
+pub fn font_calc_word_wrap_position_a(@generated.ImFont, Float, String, Float) -> String
+
+pub fn font_clear_output_data(@generated.ImFont) -> Unit
+
+pub fn font_get_debug_name(@generated.ImFont) -> String
+
+pub fn font_get_font_baked(@generated.ImFont, Float) -> @generated.ImFontBaked
+
+pub fn font_get_font_baked_ex(@generated.ImFont, Float, Float) -> @generated.ImFontBaked
+
+pub fn font_glyph_ranges_builder_add_char(@generated.ImFontGlyphRangesBuilder, Int) -> Unit
+
+pub fn font_glyph_ranges_builder_add_ranges(@generated.ImFontGlyphRangesBuilder, @generated.ImWcharPtr) -> Unit
+
+pub fn font_glyph_ranges_builder_add_text(@generated.ImFontGlyphRangesBuilder, String) -> Unit
+
+pub fn font_glyph_ranges_builder_build_ranges(@generated.ImFontGlyphRangesBuilder, @generated.ImVector_ImWchar) -> Unit
+
+pub fn font_glyph_ranges_builder_clear(@generated.ImFontGlyphRangesBuilder) -> Unit
+
+pub fn font_glyph_ranges_builder_get_bit(@generated.ImFontGlyphRangesBuilder, UInt64) -> Bool
+
+pub fn font_glyph_ranges_builder_set_bit(@generated.ImFontGlyphRangesBuilder, UInt64) -> Unit
+
+pub fn font_is_glyph_in_font(@generated.ImFont, Int) -> Bool
+
+pub fn font_is_glyph_range_unused(@generated.ImFont, UInt, UInt) -> Bool
+
+pub fn font_is_loaded(@generated.ImFont) -> Bool
+
+pub fn font_render_char(@generated.ImFont, @generated.ImDrawList, Float, @generated.ImVec2, UInt, Int) -> Unit
+
+pub fn font_render_char_ex(@generated.ImFont, @generated.ImDrawList, Float, @generated.ImVec2, UInt, Int, @generated.ImVec4) -> Unit
+
+pub fn font_render_text(@generated.ImFont, @generated.ImDrawList, Float, @generated.ImVec2, UInt, @generated.ImVec4, String, Float, Int) -> Unit
+
 pub fn frame_count() -> Int
+
+pub fn get_allocator_functions(@generated.ImGuiMemAllocFuncPtr, @generated.ImGuiMemFreeFuncPtr, @generated.VoidPtrPtr) -> Unit
+
+pub fn get_background_draw_list() -> @generated.ImDrawList raise ImGuiError
+
+pub fn get_clipboard_text() -> String raise ImGuiError
+
+pub fn get_color_u32(Int) -> UInt raise ImGuiError
+
+pub fn get_color_u32_ex(Int, Float) -> UInt raise ImGuiError
+
+pub fn get_color_u32_im_u32(UInt) -> UInt raise ImGuiError
+
+pub fn get_color_u32_im_u32_ex(UInt, Float) -> UInt raise ImGuiError
+
+pub fn get_color_u32_im_vec4(@generated.ImVec4) -> UInt raise ImGuiError
+
+pub fn get_column_index() -> Int raise ImGuiError
+
+pub fn get_column_offset(Int) -> Float raise ImGuiError
+
+pub fn get_column_width(Int) -> Float raise ImGuiError
+
+pub fn get_columns_count() -> Int raise ImGuiError
+
+pub fn get_content_region_avail() -> @generated.ImVec2 raise ImGuiError
+
+pub fn get_content_region_max() -> @generated.ImVec2 raise ImGuiError
+
+pub fn get_current_context() -> @generated.ImGuiContext
+
+pub fn get_cursor_pos() -> @generated.ImVec2 raise ImGuiError
+
+pub fn get_cursor_pos_x() -> Float raise ImGuiError
+
+pub fn get_cursor_pos_y() -> Float raise ImGuiError
+
+pub fn get_cursor_screen_pos() -> @generated.ImVec2 raise ImGuiError
+
+pub fn get_cursor_start_pos() -> @generated.ImVec2 raise ImGuiError
+
+pub fn get_drag_drop_payload() -> @generated.ImGuiPayload raise ImGuiError
+
+pub fn get_draw_data() -> @generated.ImDrawData raise ImGuiError
+
+pub fn get_draw_list_shared_data() -> @generated.ImDrawListSharedData raise ImGuiError
+
+pub fn get_font() -> @generated.ImFont raise ImGuiError
+
+pub fn get_font_baked() -> @generated.ImFontBaked raise ImGuiError
+
+pub fn get_font_size() -> Float raise ImGuiError
+
+pub fn get_font_tex_uv_white_pixel() -> @generated.ImVec2 raise ImGuiError
+
+pub fn get_foreground_draw_list() -> @generated.ImDrawList raise ImGuiError
+
+pub fn get_frame_count() -> Int raise ImGuiError
+
+pub fn get_frame_height() -> Float raise ImGuiError
+
+pub fn get_frame_height_with_spacing() -> Float raise ImGuiError
+
+pub fn get_id(String) -> UInt raise ImGuiError
+
+pub fn get_id_int(Int) -> UInt raise ImGuiError
+
+pub fn get_id_ptr(@generated.VoidPtr) -> UInt raise ImGuiError
+
+pub fn get_id_str(String) -> UInt raise ImGuiError
+
+pub fn get_io() -> @generated.ImGuiIO raise ImGuiError
+
+pub fn get_item_flags() -> Int raise ImGuiError
+
+pub fn get_item_id() -> UInt raise ImGuiError
+
+pub fn get_item_rect_max() -> @generated.ImVec2 raise ImGuiError
+
+pub fn get_item_rect_min() -> @generated.ImVec2 raise ImGuiError
+
+pub fn get_item_rect_size() -> @generated.ImVec2 raise ImGuiError
+
+pub fn get_key_name(Int) -> String raise ImGuiError
+
+pub fn get_key_pressed_amount(Int, Float, Float) -> Int raise ImGuiError
+
+pub fn get_main_viewport() -> @generated.ImGuiViewport raise ImGuiError
+
+pub fn get_mouse_clicked_count(Int) -> Int raise ImGuiError
+
+pub fn get_mouse_cursor() -> Int raise ImGuiError
+
+pub fn get_mouse_drag_delta(Int, Float) -> @generated.ImVec2 raise ImGuiError
+
+pub fn get_mouse_pos() -> @generated.ImVec2 raise ImGuiError
+
+pub fn get_mouse_pos_on_opening_current_popup() -> @generated.ImVec2 raise ImGuiError
+
+pub fn get_platform_io() -> @generated.ImGuiPlatformIO raise ImGuiError
+
+pub fn get_scroll_max_x() -> Float raise ImGuiError
+
+pub fn get_scroll_max_y() -> Float raise ImGuiError
+
+pub fn get_scroll_x() -> Float raise ImGuiError
+
+pub fn get_scroll_y() -> Float raise ImGuiError
+
+pub fn get_state_storage() -> @generated.ImGuiStorage raise ImGuiError
+
+pub fn get_style() -> @generated.ImGuiStyle raise ImGuiError
+
+pub fn get_style_color_name(Int) -> String raise ImGuiError
+
+pub fn get_style_color_vec4(Int) -> @generated.ImVec4 raise ImGuiError
+
+pub fn get_text_line_height() -> Float raise ImGuiError
+
+pub fn get_text_line_height_with_spacing() -> Float raise ImGuiError
+
+pub fn get_time() -> Double raise ImGuiError
+
+pub fn get_tree_node_to_label_spacing() -> Float raise ImGuiError
+
+pub fn get_version() -> String
+
+pub fn get_window_content_region_max() -> @generated.ImVec2 raise ImGuiError
+
+pub fn get_window_content_region_min() -> @generated.ImVec2 raise ImGuiError
+
+pub fn get_window_draw_list() -> @generated.ImDrawList raise ImGuiError
+
+pub fn get_window_height() -> Float raise ImGuiError
+
+pub fn get_window_pos() -> @generated.ImVec2 raise ImGuiError
+
+pub fn get_window_size() -> @generated.ImVec2 raise ImGuiError
+
+pub fn get_window_width() -> Float raise ImGuiError
 
 pub fn has_current_context() -> Bool
 
-pub fn im_color_hsv(Float, Float, Float, Float) -> @generated.ImColor
+pub fn image(@generated.ImTextureRef, @generated.ImVec2) -> Unit raise ImGuiError
 
-pub fn im_color_set_hsv(@generated.ImColor, Float, Float, Float, Float) -> Unit
+pub fn image_button(String, @generated.ImTextureRef, @generated.ImVec2) -> Bool raise ImGuiError
 
-pub fn im_draw_cmd_get_tex_id(@generated.ImDrawCmd) -> UInt64
+pub fn image_button_ex(String, @generated.ImTextureRef, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec4, @generated.ImVec4) -> Bool raise ImGuiError
 
-pub fn im_draw_data_add_draw_list(@generated.ImDrawData, @generated.ImDrawList) -> Unit
+pub fn image_ex(@generated.ImTextureRef, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2) -> Unit raise ImGuiError
 
-pub fn im_draw_data_clear(@generated.ImDrawData) -> Unit
+pub fn image_im_vec4_ptr(@generated.ImTextureRef, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec4, @generated.ImVec4) -> Unit raise ImGuiError
 
-pub fn im_draw_data_de_index_all_buffers(@generated.ImDrawData) -> Unit
+pub fn image_with_bg(@generated.ImTextureRef, @generated.ImVec2) -> Unit raise ImGuiError
 
-pub fn im_draw_data_scale_clip_rects(@generated.ImDrawData, @generated.ImVec2) -> Unit
+pub fn image_with_bg_ex(@generated.ImTextureRef, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec4, @generated.ImVec4) -> Unit raise ImGuiError
 
-pub fn im_draw_list_add_bezier_cubic(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt, Float, Int) -> Unit
+pub fn indent() -> Unit raise ImGuiError
 
-pub fn im_draw_list_add_bezier_quadratic(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt, Float, Int) -> Unit
+pub fn indent_ex(Float) -> Unit raise ImGuiError
 
-pub fn im_draw_list_add_circle(@generated.ImDrawList, @generated.ImVec2, Float, UInt) -> Unit
+pub fn input_double(String, @generated.DoublePtr) -> Bool raise ImGuiError
 
-pub fn im_draw_list_add_circle_ex(@generated.ImDrawList, @generated.ImVec2, Float, UInt, Int, Float) -> Unit
+pub fn input_double_ex(String, @generated.DoublePtr, Double, Double, String, Int) -> Bool raise ImGuiError
 
-pub fn im_draw_list_add_circle_filled(@generated.ImDrawList, @generated.ImVec2, Float, UInt, Int) -> Unit
+pub fn input_float(String, @generated.FloatPtr) -> Bool raise ImGuiError
 
-pub fn im_draw_list_add_concave_poly_filled(@generated.ImDrawList, @generated.ImVec2, Int, UInt) -> Unit
+pub fn input_float2(String, @generated.FloatPtr) -> Bool raise ImGuiError
 
-pub fn im_draw_list_add_convex_poly_filled(@generated.ImDrawList, @generated.ImVec2, Int, UInt) -> Unit
+pub fn input_float2_ex(String, @generated.FloatPtr, String, Int) -> Bool raise ImGuiError
 
-pub fn im_draw_list_add_draw_cmd(@generated.ImDrawList) -> Unit
+pub fn input_float3(String, @generated.FloatPtr) -> Bool raise ImGuiError
 
-pub fn im_draw_list_add_ellipse(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
+pub fn input_float3_ex(String, @generated.FloatPtr, String, Int) -> Bool raise ImGuiError
 
-pub fn im_draw_list_add_ellipse_ex(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt, Float, Int, Float) -> Unit
+pub fn input_float4(String, @generated.FloatPtr) -> Bool raise ImGuiError
 
-pub fn im_draw_list_add_ellipse_filled(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
+pub fn input_float4_ex(String, @generated.FloatPtr, String, Int) -> Bool raise ImGuiError
 
-pub fn im_draw_list_add_ellipse_filled_ex(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt, Float, Int) -> Unit
+pub fn input_float_ex(String, @generated.FloatPtr, Float, Float, String, Int) -> Bool raise ImGuiError
 
-pub fn im_draw_list_add_image(@generated.ImDrawList, @generated.ImTextureRef, @generated.ImVec2, @generated.ImVec2) -> Unit
+pub fn input_int(String, @generated.IntPtr) -> Bool raise ImGuiError
 
-pub fn im_draw_list_add_image_ex(@generated.ImDrawList, @generated.ImTextureRef, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
+pub fn input_int2(String, @generated.IntPtr, Int) -> Bool raise ImGuiError
 
-pub fn im_draw_list_add_image_quad(@generated.ImDrawList, @generated.ImTextureRef, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2) -> Unit
+pub fn input_int3(String, @generated.IntPtr, Int) -> Bool raise ImGuiError
 
-pub fn im_draw_list_add_image_quad_ex(@generated.ImDrawList, @generated.ImTextureRef, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
+pub fn input_int4(String, @generated.IntPtr, Int) -> Bool raise ImGuiError
 
-pub fn im_draw_list_add_image_rounded(@generated.ImDrawList, @generated.ImTextureRef, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt, Float, Int) -> Unit
+pub fn input_int_ex(String, @generated.IntPtr, Int, Int, Int) -> Bool raise ImGuiError
 
-pub fn im_draw_list_add_line(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
+pub fn input_scalar(String, Int, @generated.VoidPtr) -> Bool raise ImGuiError
 
-pub fn im_draw_list_add_line_ex(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt, Float) -> Unit
+pub fn input_scalar_ex(String, Int, @generated.VoidPtr, @generated.VoidPtr, @generated.VoidPtr, String, Int) -> Bool raise ImGuiError
 
-pub fn im_draw_list_add_line_h(@generated.ImDrawList, Float, Float, Float, UInt) -> Unit
+pub fn input_scalar_n(String, Int, @generated.VoidPtr, Int) -> Bool raise ImGuiError
 
-pub fn im_draw_list_add_line_h_ex(@generated.ImDrawList, Float, Float, Float, UInt, Float) -> Unit
-
-pub fn im_draw_list_add_line_v(@generated.ImDrawList, Float, Float, Float, UInt) -> Unit
-
-pub fn im_draw_list_add_line_v_ex(@generated.ImDrawList, Float, Float, Float, UInt, Float) -> Unit
-
-pub fn im_draw_list_add_ngon(@generated.ImDrawList, @generated.ImVec2, Float, UInt, Int) -> Unit
-
-pub fn im_draw_list_add_ngon_ex(@generated.ImDrawList, @generated.ImVec2, Float, UInt, Int, Float) -> Unit
-
-pub fn im_draw_list_add_ngon_filled(@generated.ImDrawList, @generated.ImVec2, Float, UInt, Int) -> Unit
-
-pub fn im_draw_list_add_polyline(@generated.ImDrawList, @generated.ImVec2, Int, UInt, Float, Int) -> Unit
-
-pub fn im_draw_list_add_polyline_im_draw_flags(@generated.ImDrawList, @generated.ImVec2, Int, UInt, Int, Float) -> Unit
-
-pub fn im_draw_list_add_quad(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
-
-pub fn im_draw_list_add_quad_ex(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt, Float) -> Unit
-
-pub fn im_draw_list_add_quad_filled(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
-
-pub fn im_draw_list_add_rect(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
-
-pub fn im_draw_list_add_rect_ex(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt, Float, Float, Int) -> Unit
-
-pub fn im_draw_list_add_rect_filled(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
-
-pub fn im_draw_list_add_rect_filled_ex(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt, Float, Int) -> Unit
-
-pub fn im_draw_list_add_rect_filled_multi_color(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt, UInt, UInt, UInt) -> Unit
-
-pub fn im_draw_list_add_rect_im_draw_flags(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt, Float, Int, Float) -> Unit
-
-pub fn im_draw_list_add_text(@generated.ImDrawList, @generated.ImVec2, UInt, String) -> Unit
-
-pub fn im_draw_list_add_text_ex(@generated.ImDrawList, @generated.ImVec2, UInt, String) -> Unit
-
-pub fn im_draw_list_add_text_im_font_ptr(@generated.ImDrawList, @generated.ImFont, Float, @generated.ImVec2, UInt, String) -> Unit
-
-pub fn im_draw_list_add_text_im_font_ptr_ex(@generated.ImDrawList, @generated.ImFont, Float, @generated.ImVec2, UInt, String, Float, @generated.ImVec4) -> Unit
-
-pub fn im_draw_list_add_triangle(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
-
-pub fn im_draw_list_add_triangle_ex(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt, Float) -> Unit
-
-pub fn im_draw_list_add_triangle_filled(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
-
-pub fn im_draw_list_calc_circle_auto_segment_count(@generated.ImDrawList, Float) -> Int
-
-pub fn im_draw_list_channels_merge(@generated.ImDrawList) -> Unit
-
-pub fn im_draw_list_channels_set_current(@generated.ImDrawList, Int) -> Unit
-
-pub fn im_draw_list_channels_split(@generated.ImDrawList, Int) -> Unit
-
-pub fn im_draw_list_clear_free_memory(@generated.ImDrawList) -> Unit
-
-pub fn im_draw_list_clone_output(@generated.ImDrawList) -> @generated.ImDrawList
-
-pub fn im_draw_list_get_clip_rect_max(@generated.ImDrawList) -> @generated.ImVec2
-
-pub fn im_draw_list_get_clip_rect_min(@generated.ImDrawList) -> @generated.ImVec2
-
-pub fn im_draw_list_on_changed_clip_rect(@generated.ImDrawList) -> Unit
-
-pub fn im_draw_list_on_changed_texture(@generated.ImDrawList) -> Unit
-
-pub fn im_draw_list_on_changed_vtx_offset(@generated.ImDrawList) -> Unit
-
-pub fn im_draw_list_path_arc_to(@generated.ImDrawList, @generated.ImVec2, Float, Float, Float, Int) -> Unit
-
-pub fn im_draw_list_path_arc_to_fast(@generated.ImDrawList, @generated.ImVec2, Float, Int, Int) -> Unit
-
-pub fn im_draw_list_path_arc_to_fast_ex(@generated.ImDrawList, @generated.ImVec2, Float, Int, Int, Int) -> Unit
-
-pub fn im_draw_list_path_arc_to_n(@generated.ImDrawList, @generated.ImVec2, Float, Float, Float, Int) -> Unit
-
-pub fn im_draw_list_path_bezier_cubic_curve_to(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, Int) -> Unit
-
-pub fn im_draw_list_path_bezier_quadratic_curve_to(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, Int) -> Unit
-
-pub fn im_draw_list_path_clear(@generated.ImDrawList) -> Unit
-
-pub fn im_draw_list_path_elliptical_arc_to(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, Float, Float, Float) -> Unit
-
-pub fn im_draw_list_path_elliptical_arc_to_ex(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, Float, Float, Float, Int) -> Unit
-
-pub fn im_draw_list_path_fill_concave(@generated.ImDrawList, UInt) -> Unit
-
-pub fn im_draw_list_path_fill_convex(@generated.ImDrawList, UInt) -> Unit
-
-pub fn im_draw_list_path_line_to(@generated.ImDrawList, @generated.ImVec2) -> Unit
-
-pub fn im_draw_list_path_line_to_merge_duplicate(@generated.ImDrawList, @generated.ImVec2) -> Unit
-
-pub fn im_draw_list_path_rect(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, Float, Int) -> Unit
-
-pub fn im_draw_list_path_stroke(@generated.ImDrawList, UInt, Float, Int) -> Unit
-
-pub fn im_draw_list_path_stroke_im_draw_flags(@generated.ImDrawList, UInt, Int, Float) -> Unit
-
-pub fn im_draw_list_pop_clip_rect(@generated.ImDrawList) -> Unit
-
-pub fn im_draw_list_pop_texture(@generated.ImDrawList) -> Unit
-
-pub fn im_draw_list_pop_texture_id(@generated.ImDrawList) -> Unit
-
-pub fn im_draw_list_pop_unused_draw_cmd(@generated.ImDrawList) -> Unit
-
-pub fn im_draw_list_prim_quad_uv(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
-
-pub fn im_draw_list_prim_rect(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
-
-pub fn im_draw_list_prim_rect_uv(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
-
-pub fn im_draw_list_prim_reserve(@generated.ImDrawList, Int, Int) -> Unit
-
-pub fn im_draw_list_prim_unreserve(@generated.ImDrawList, Int, Int) -> Unit
-
-pub fn im_draw_list_prim_vtx(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
-
-pub fn im_draw_list_prim_write_idx(@generated.ImDrawList, Int) -> Unit
-
-pub fn im_draw_list_prim_write_vtx(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, UInt) -> Unit
-
-pub fn im_draw_list_push_clip_rect(@generated.ImDrawList, @generated.ImVec2, @generated.ImVec2, Bool) -> Unit
-
-pub fn im_draw_list_push_clip_rect_full_screen(@generated.ImDrawList) -> Unit
-
-pub fn im_draw_list_push_texture(@generated.ImDrawList, @generated.ImTextureRef) -> Unit
-
-pub fn im_draw_list_push_texture_id(@generated.ImDrawList, @generated.ImTextureRef) -> Unit
-
-pub fn im_draw_list_reset_for_new_frame(@generated.ImDrawList) -> Unit
-
-pub fn im_draw_list_set_draw_list_shared_data(@generated.ImDrawList, @generated.ImDrawListSharedData) -> Unit
-
-pub fn im_draw_list_set_texture(@generated.ImDrawList, @generated.ImTextureRef) -> Unit
-
-pub fn im_draw_list_splitter_clear(@generated.ImDrawListSplitter) -> Unit
-
-pub fn im_draw_list_splitter_clear_free_memory(@generated.ImDrawListSplitter) -> Unit
-
-pub fn im_draw_list_splitter_merge(@generated.ImDrawListSplitter, @generated.ImDrawList) -> Unit
-
-pub fn im_draw_list_splitter_set_current_channel(@generated.ImDrawListSplitter, @generated.ImDrawList, Int) -> Unit
-
-pub fn im_draw_list_splitter_split(@generated.ImDrawListSplitter, @generated.ImDrawList, Int) -> Unit
-
-pub fn im_draw_list_try_merge_draw_cmds(@generated.ImDrawList) -> Unit
-
-pub fn im_font_add_remap_char(@generated.ImFont, Int, Int) -> Unit
-
-pub fn im_font_atlas_add_custom_rect(@generated.ImFontAtlas, Int, Int, @generated.ImFontAtlasRect) -> Int
-
-pub fn im_font_atlas_add_custom_rect_font_glyph(@generated.ImFontAtlas, @generated.ImFont, Int, Int, Int, Float, @generated.ImVec2) -> Int
-
-pub fn im_font_atlas_add_custom_rect_font_glyph_for_size(@generated.ImFontAtlas, @generated.ImFont, Float, Int, Int, Int, Float, @generated.ImVec2) -> Int
-
-pub fn im_font_atlas_add_custom_rect_regular(@generated.ImFontAtlas, Int, Int) -> Int
-
-pub fn im_font_atlas_add_font(@generated.ImFontAtlas, @generated.ImFontConfig) -> @generated.ImFont
-
-pub fn im_font_atlas_add_font_default(@generated.ImFontAtlas, @generated.ImFontConfig) -> @generated.ImFont
-
-pub fn im_font_atlas_add_font_default_bitmap(@generated.ImFontAtlas, @generated.ImFontConfig) -> @generated.ImFont
-
-pub fn im_font_atlas_add_font_default_vector(@generated.ImFontAtlas, @generated.ImFontConfig) -> @generated.ImFont
-
-pub fn im_font_atlas_add_font_from_file_ttf(@generated.ImFontAtlas, String, Float, @generated.ImFontConfig, @generated.ImWcharPtr) -> @generated.ImFont
-
-pub fn im_font_atlas_add_font_from_memory_compressed_base85_ttf(@generated.ImFontAtlas, String, Float, @generated.ImFontConfig, @generated.ImWcharPtr) -> @generated.ImFont
-
-pub fn im_font_atlas_add_font_from_memory_compressed_ttf(@generated.ImFontAtlas, @generated.VoidPtr, Int, Float, @generated.ImFontConfig, @generated.ImWcharPtr) -> @generated.ImFont
-
-pub fn im_font_atlas_add_font_from_memory_ttf(@generated.ImFontAtlas, @generated.VoidPtr, Int, Float, @generated.ImFontConfig, @generated.ImWcharPtr) -> @generated.ImFont
-
-pub fn im_font_atlas_build(@generated.ImFontAtlas) -> Bool
-
-pub fn im_font_atlas_calc_custom_rect_uv(@generated.ImFontAtlas, @generated.ImFontAtlasRect, @generated.ImVec2, @generated.ImVec2) -> Unit
-
-pub fn im_font_atlas_clear(@generated.ImFontAtlas) -> Unit
-
-pub fn im_font_atlas_clear_fonts(@generated.ImFontAtlas) -> Unit
-
-pub fn im_font_atlas_clear_input_data(@generated.ImFontAtlas) -> Unit
-
-pub fn im_font_atlas_clear_tex_data(@generated.ImFontAtlas) -> Unit
-
-pub fn im_font_atlas_compact_cache(@generated.ImFontAtlas) -> Unit
-
-pub fn im_font_atlas_get_custom_rect(@generated.ImFontAtlas, Int, @generated.ImFontAtlasRect) -> Bool
-
-pub fn im_font_atlas_get_custom_rect_by_index(@generated.ImFontAtlas, Int) -> @generated.ImFontAtlasRect
-
-pub fn im_font_atlas_get_glyph_ranges_chinese_full(@generated.ImFontAtlas) -> @generated.ImWcharPtr
-
-pub fn im_font_atlas_get_glyph_ranges_chinese_simplified_common(@generated.ImFontAtlas) -> @generated.ImWcharPtr
-
-pub fn im_font_atlas_get_glyph_ranges_cyrillic(@generated.ImFontAtlas) -> @generated.ImWcharPtr
-
-pub fn im_font_atlas_get_glyph_ranges_default(@generated.ImFontAtlas) -> @generated.ImWcharPtr
-
-pub fn im_font_atlas_get_glyph_ranges_greek(@generated.ImFontAtlas) -> @generated.ImWcharPtr
-
-pub fn im_font_atlas_get_glyph_ranges_japanese(@generated.ImFontAtlas) -> @generated.ImWcharPtr
-
-pub fn im_font_atlas_get_glyph_ranges_korean(@generated.ImFontAtlas) -> @generated.ImWcharPtr
-
-pub fn im_font_atlas_get_glyph_ranges_thai(@generated.ImFontAtlas) -> @generated.ImWcharPtr
-
-pub fn im_font_atlas_get_glyph_ranges_vietnamese(@generated.ImFontAtlas) -> @generated.ImWcharPtr
-
-pub fn im_font_atlas_get_tex_data_as_alpha8(@generated.ImFontAtlas, @generated.IntPtrPtr, @generated.IntPtr, @generated.IntPtr, @generated.IntPtr) -> Unit
-
-pub fn im_font_atlas_get_tex_data_as_rgba32(@generated.ImFontAtlas, @generated.IntPtrPtr, @generated.IntPtr, @generated.IntPtr, @generated.IntPtr) -> Unit
-
-pub fn im_font_atlas_is_built(@generated.ImFontAtlas) -> Bool
-
-pub fn im_font_atlas_remove_custom_rect(@generated.ImFontAtlas, Int) -> Unit
-
-pub fn im_font_atlas_remove_font(@generated.ImFontAtlas, @generated.ImFont) -> Unit
-
-pub fn im_font_atlas_set_font_loader(@generated.ImFontAtlas, @generated.ImFontLoader) -> Unit
-
-pub fn im_font_atlas_set_tex_id(@generated.ImFontAtlas, UInt64) -> Unit
-
-pub fn im_font_atlas_set_tex_id_im_texture_ref_ptr(@generated.ImFontAtlas, @generated.ImTextureRef) -> Unit
-
-pub fn im_font_baked_clear_output_data(@generated.ImFontBaked) -> Unit
-
-pub fn im_font_baked_find_glyph(@generated.ImFontBaked, Int) -> @generated.ImFontGlyph
-
-pub fn im_font_baked_find_glyph_no_fallback(@generated.ImFontBaked, Int) -> @generated.ImFontGlyph
-
-pub fn im_font_baked_get_char_advance(@generated.ImFontBaked, Int) -> Float
-
-pub fn im_font_baked_is_glyph_loaded(@generated.ImFontBaked, Int) -> Bool
-
-pub fn im_font_calc_text_size_a(@generated.ImFont, Float, Float, Float, String) -> @generated.ImVec2
-
-pub fn im_font_calc_text_size_a_ex(@generated.ImFont, Float, Float, Float, String, @generated.CStringPtr) -> @generated.ImVec2
-
-pub fn im_font_calc_word_wrap_position(@generated.ImFont, Float, String, Float) -> String
-
-pub fn im_font_calc_word_wrap_position_a(@generated.ImFont, Float, String, Float) -> String
-
-pub fn im_font_clear_output_data(@generated.ImFont) -> Unit
-
-pub fn im_font_get_debug_name(@generated.ImFont) -> String
-
-pub fn im_font_get_font_baked(@generated.ImFont, Float) -> @generated.ImFontBaked
-
-pub fn im_font_get_font_baked_ex(@generated.ImFont, Float, Float) -> @generated.ImFontBaked
-
-pub fn im_font_glyph_ranges_builder_add_char(@generated.ImFontGlyphRangesBuilder, Int) -> Unit
-
-pub fn im_font_glyph_ranges_builder_add_ranges(@generated.ImFontGlyphRangesBuilder, @generated.ImWcharPtr) -> Unit
-
-pub fn im_font_glyph_ranges_builder_add_text(@generated.ImFontGlyphRangesBuilder, String) -> Unit
-
-pub fn im_font_glyph_ranges_builder_build_ranges(@generated.ImFontGlyphRangesBuilder, @generated.ImVector_ImWchar) -> Unit
-
-pub fn im_font_glyph_ranges_builder_clear(@generated.ImFontGlyphRangesBuilder) -> Unit
-
-pub fn im_font_glyph_ranges_builder_get_bit(@generated.ImFontGlyphRangesBuilder, UInt64) -> Bool
-
-pub fn im_font_glyph_ranges_builder_set_bit(@generated.ImFontGlyphRangesBuilder, UInt64) -> Unit
-
-pub fn im_font_is_glyph_in_font(@generated.ImFont, Int) -> Bool
-
-pub fn im_font_is_glyph_range_unused(@generated.ImFont, UInt, UInt) -> Bool
-
-pub fn im_font_is_loaded(@generated.ImFont) -> Bool
-
-pub fn im_font_render_char(@generated.ImFont, @generated.ImDrawList, Float, @generated.ImVec2, UInt, Int) -> Unit
-
-pub fn im_font_render_char_ex(@generated.ImFont, @generated.ImDrawList, Float, @generated.ImVec2, UInt, Int, @generated.ImVec4) -> Unit
-
-pub fn im_font_render_text(@generated.ImFont, @generated.ImDrawList, Float, @generated.ImVec2, UInt, @generated.ImVec4, String, Float, Int) -> Unit
-
-pub fn im_gui_accept_drag_drop_payload(String, Int) -> @generated.ImGuiPayload raise ImGuiError
-
-pub fn im_gui_align_text_to_frame_padding() -> Unit raise ImGuiError
-
-pub fn im_gui_arrow_button(String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_begin(String, @generated.BoolPtr, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_begin_child(String, @generated.ImVec2, Int, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_begin_child_id(UInt, @generated.ImVec2, Int, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_begin_combo(String, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_begin_disabled(Bool) -> Unit raise ImGuiError
-
-pub fn im_gui_begin_drag_drop_source(Int) -> Bool raise ImGuiError
-
-pub fn im_gui_begin_drag_drop_target() -> Bool raise ImGuiError
-
-pub fn im_gui_begin_group() -> Unit raise ImGuiError
-
-pub fn im_gui_begin_item_tooltip() -> Bool raise ImGuiError
-
-pub fn im_gui_begin_list_box(String, @generated.ImVec2) -> Bool raise ImGuiError
-
-pub fn im_gui_begin_main_menu_bar() -> Bool raise ImGuiError
-
-pub fn im_gui_begin_menu(String) -> Bool raise ImGuiError
-
-pub fn im_gui_begin_menu_bar() -> Bool raise ImGuiError
-
-pub fn im_gui_begin_menu_ex(String, Bool) -> Bool raise ImGuiError
-
-pub fn im_gui_begin_multi_select(Int) -> @generated.ImGuiMultiSelectIO raise ImGuiError
-
-pub fn im_gui_begin_multi_select_ex(Int, Int, Int) -> @generated.ImGuiMultiSelectIO raise ImGuiError
-
-pub fn im_gui_begin_popup(String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_begin_popup_context_item() -> Bool raise ImGuiError
-
-pub fn im_gui_begin_popup_context_item_ex(String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_begin_popup_context_void() -> Bool raise ImGuiError
-
-pub fn im_gui_begin_popup_context_void_ex(String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_begin_popup_context_window() -> Bool raise ImGuiError
-
-pub fn im_gui_begin_popup_context_window_ex(String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_begin_popup_modal(String, @generated.BoolPtr, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_begin_tab_bar(String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_begin_tab_item(String, @generated.BoolPtr, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_begin_table(String, Int, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_begin_table_ex(String, Int, Int, @generated.ImVec2, Float) -> Bool raise ImGuiError
-
-pub fn im_gui_begin_tooltip() -> Bool raise ImGuiError
-
-pub fn im_gui_bullet() -> Unit raise ImGuiError
-
-pub fn im_gui_bullet_text(String) -> Unit raise ImGuiError
-
-pub fn im_gui_bullet_text_unformatted(String) -> Unit raise ImGuiError
-
-pub fn im_gui_button(String) -> Bool raise ImGuiError
-
-pub fn im_gui_button_ex(String, @generated.ImVec2) -> Bool raise ImGuiError
-
-pub fn im_gui_calc_item_width() -> Float raise ImGuiError
-
-pub fn im_gui_calc_text_size(String) -> @generated.ImVec2 raise ImGuiError
-
-pub fn im_gui_calc_text_size_ex(String, Bool, Float) -> @generated.ImVec2 raise ImGuiError
-
-pub fn im_gui_checkbox(String, @generated.BoolPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_checkbox_flags_int_ptr(String, @generated.IntPtr, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_checkbox_flags_uint_ptr(String, @generated.UIntPtr, UInt) -> Bool raise ImGuiError
-
-pub fn im_gui_close_current_popup() -> Unit raise ImGuiError
-
-pub fn im_gui_collapsing_header(String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_collapsing_header_bool_ptr(String, @generated.BoolPtr, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_color_button(String, @generated.ImVec4, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_color_button_ex(String, @generated.ImVec4, Int, @generated.ImVec2) -> Bool raise ImGuiError
-
-pub fn im_gui_color_convert_float4_to_u32(@generated.ImVec4) -> UInt raise ImGuiError
-
-pub fn im_gui_color_convert_hs_vto_rgb(Float, Float, Float, @generated.FloatPtr, @generated.FloatPtr, @generated.FloatPtr) -> Unit raise ImGuiError
-
-pub fn im_gui_color_convert_rg_bto_hsv(Float, Float, Float, @generated.FloatPtr, @generated.FloatPtr, @generated.FloatPtr) -> Unit raise ImGuiError
-
-pub fn im_gui_color_convert_u32_to_float4(UInt) -> @generated.ImVec4 raise ImGuiError
-
-pub fn im_gui_color_edit3(String, @generated.FloatPtr, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_color_edit4(String, @generated.FloatPtr, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_color_picker3(String, @generated.FloatPtr, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_color_picker4(String, @generated.FloatPtr, Int, @generated.FloatPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_columns() -> Unit raise ImGuiError
-
-pub fn im_gui_columns_ex(Int, String, Bool) -> Unit raise ImGuiError
-
-pub fn im_gui_combo(String, @generated.IntPtr, String) -> Bool raise ImGuiError
-
-pub fn im_gui_combo_char(String, @generated.IntPtr, @generated.CStringPtr, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_combo_char_ex(String, @generated.IntPtr, @generated.CStringPtr, Int, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_combo_ex(String, @generated.IntPtr, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_create_context(@generated.ImFontAtlas) -> @generated.ImGuiContext
-
-pub fn im_gui_debug_check_version_and_data_layout(String, UInt64, UInt64, UInt64, UInt64, UInt64, UInt64) -> Bool
-
-pub fn im_gui_debug_flash_style_color(Int) -> Unit raise ImGuiError
-
-pub fn im_gui_debug_log(String) -> Unit raise ImGuiError
-
-pub fn im_gui_debug_log_unformatted(String) -> Unit raise ImGuiError
-
-pub fn im_gui_debug_start_item_picker() -> Unit raise ImGuiError
-
-pub fn im_gui_debug_text_encoding(String) -> Unit raise ImGuiError
-
-pub fn im_gui_destroy_context(@generated.ImGuiContext) -> Unit
-
-pub fn im_gui_drag_float(String, @generated.FloatPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_float2(String, @generated.FloatPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_float2_ex(String, @generated.FloatPtr, Float, Float, Float, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_float3(String, @generated.FloatPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_float3_ex(String, @generated.FloatPtr, Float, Float, Float, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_float4(String, @generated.FloatPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_float4_ex(String, @generated.FloatPtr, Float, Float, Float, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_float_ex(String, @generated.FloatPtr, Float, Float, Float, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_float_range2(String, @generated.FloatPtr, @generated.FloatPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_float_range2_ex(String, @generated.FloatPtr, @generated.FloatPtr, Float, Float, Float, String, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_int(String, @generated.IntPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_int2(String, @generated.IntPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_int2_ex(String, @generated.IntPtr, Float, Int, Int, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_int3(String, @generated.IntPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_int3_ex(String, @generated.IntPtr, Float, Int, Int, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_int4(String, @generated.IntPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_int4_ex(String, @generated.IntPtr, Float, Int, Int, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_int_ex(String, @generated.IntPtr, Float, Int, Int, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_int_range2(String, @generated.IntPtr, @generated.IntPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_int_range2_ex(String, @generated.IntPtr, @generated.IntPtr, Float, Int, Int, String, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_scalar(String, Int, @generated.VoidPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_scalar_ex(String, Int, @generated.VoidPtr, Float, @generated.VoidPtr, @generated.VoidPtr, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_scalar_n(String, Int, @generated.VoidPtr, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_drag_scalar_n_ex(String, Int, @generated.VoidPtr, Int, Float, @generated.VoidPtr, @generated.VoidPtr, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_dummy(@generated.ImVec2) -> Unit raise ImGuiError
-
-pub fn im_gui_end() -> Unit raise ImGuiError
-
-pub fn im_gui_end_child() -> Unit raise ImGuiError
-
-pub fn im_gui_end_combo() -> Unit raise ImGuiError
-
-pub fn im_gui_end_disabled() -> Unit raise ImGuiError
-
-pub fn im_gui_end_drag_drop_source() -> Unit raise ImGuiError
-
-pub fn im_gui_end_drag_drop_target() -> Unit raise ImGuiError
-
-pub fn im_gui_end_frame() -> Unit raise ImGuiError
-
-pub fn im_gui_end_group() -> Unit raise ImGuiError
-
-pub fn im_gui_end_list_box() -> Unit raise ImGuiError
-
-pub fn im_gui_end_main_menu_bar() -> Unit raise ImGuiError
-
-pub fn im_gui_end_menu() -> Unit raise ImGuiError
-
-pub fn im_gui_end_menu_bar() -> Unit raise ImGuiError
-
-pub fn im_gui_end_multi_select() -> @generated.ImGuiMultiSelectIO raise ImGuiError
-
-pub fn im_gui_end_popup() -> Unit raise ImGuiError
-
-pub fn im_gui_end_tab_bar() -> Unit raise ImGuiError
-
-pub fn im_gui_end_tab_item() -> Unit raise ImGuiError
-
-pub fn im_gui_end_table() -> Unit raise ImGuiError
-
-pub fn im_gui_end_tooltip() -> Unit raise ImGuiError
-
-pub fn im_gui_get_allocator_functions(@generated.ImGuiMemAllocFuncPtr, @generated.ImGuiMemFreeFuncPtr, @generated.VoidPtrPtr) -> Unit
-
-pub fn im_gui_get_background_draw_list() -> @generated.ImDrawList raise ImGuiError
-
-pub fn im_gui_get_clipboard_text() -> String raise ImGuiError
-
-pub fn im_gui_get_color_u32(Int) -> UInt raise ImGuiError
-
-pub fn im_gui_get_color_u32_ex(Int, Float) -> UInt raise ImGuiError
-
-pub fn im_gui_get_color_u32_im_u32(UInt) -> UInt raise ImGuiError
-
-pub fn im_gui_get_color_u32_im_u32_ex(UInt, Float) -> UInt raise ImGuiError
-
-pub fn im_gui_get_color_u32_im_vec4(@generated.ImVec4) -> UInt raise ImGuiError
-
-pub fn im_gui_get_column_index() -> Int raise ImGuiError
-
-pub fn im_gui_get_column_offset(Int) -> Float raise ImGuiError
-
-pub fn im_gui_get_column_width(Int) -> Float raise ImGuiError
-
-pub fn im_gui_get_columns_count() -> Int raise ImGuiError
-
-pub fn im_gui_get_content_region_avail() -> @generated.ImVec2 raise ImGuiError
-
-pub fn im_gui_get_content_region_max() -> @generated.ImVec2 raise ImGuiError
-
-pub fn im_gui_get_current_context() -> @generated.ImGuiContext
-
-pub fn im_gui_get_cursor_pos() -> @generated.ImVec2 raise ImGuiError
-
-pub fn im_gui_get_cursor_pos_x() -> Float raise ImGuiError
-
-pub fn im_gui_get_cursor_pos_y() -> Float raise ImGuiError
-
-pub fn im_gui_get_cursor_screen_pos() -> @generated.ImVec2 raise ImGuiError
-
-pub fn im_gui_get_cursor_start_pos() -> @generated.ImVec2 raise ImGuiError
-
-pub fn im_gui_get_drag_drop_payload() -> @generated.ImGuiPayload raise ImGuiError
-
-pub fn im_gui_get_draw_data() -> @generated.ImDrawData raise ImGuiError
-
-pub fn im_gui_get_draw_list_shared_data() -> @generated.ImDrawListSharedData raise ImGuiError
-
-pub fn im_gui_get_font() -> @generated.ImFont raise ImGuiError
-
-pub fn im_gui_get_font_baked() -> @generated.ImFontBaked raise ImGuiError
-
-pub fn im_gui_get_font_size() -> Float raise ImGuiError
-
-pub fn im_gui_get_font_tex_uv_white_pixel() -> @generated.ImVec2 raise ImGuiError
-
-pub fn im_gui_get_foreground_draw_list() -> @generated.ImDrawList raise ImGuiError
-
-pub fn im_gui_get_frame_count() -> Int raise ImGuiError
-
-pub fn im_gui_get_frame_height() -> Float raise ImGuiError
-
-pub fn im_gui_get_frame_height_with_spacing() -> Float raise ImGuiError
-
-pub fn im_gui_get_id(String) -> UInt raise ImGuiError
-
-pub fn im_gui_get_id_int(Int) -> UInt raise ImGuiError
-
-pub fn im_gui_get_id_ptr(@generated.VoidPtr) -> UInt raise ImGuiError
-
-pub fn im_gui_get_id_str(String) -> UInt raise ImGuiError
-
-pub fn im_gui_get_io() -> @generated.ImGuiIO raise ImGuiError
-
-pub fn im_gui_get_item_flags() -> Int raise ImGuiError
-
-pub fn im_gui_get_item_id() -> UInt raise ImGuiError
-
-pub fn im_gui_get_item_rect_max() -> @generated.ImVec2 raise ImGuiError
-
-pub fn im_gui_get_item_rect_min() -> @generated.ImVec2 raise ImGuiError
-
-pub fn im_gui_get_item_rect_size() -> @generated.ImVec2 raise ImGuiError
-
-pub fn im_gui_get_key_name(Int) -> String raise ImGuiError
-
-pub fn im_gui_get_key_pressed_amount(Int, Float, Float) -> Int raise ImGuiError
-
-pub fn im_gui_get_main_viewport() -> @generated.ImGuiViewport raise ImGuiError
-
-pub fn im_gui_get_mouse_clicked_count(Int) -> Int raise ImGuiError
-
-pub fn im_gui_get_mouse_cursor() -> Int raise ImGuiError
-
-pub fn im_gui_get_mouse_drag_delta(Int, Float) -> @generated.ImVec2 raise ImGuiError
-
-pub fn im_gui_get_mouse_pos() -> @generated.ImVec2 raise ImGuiError
-
-pub fn im_gui_get_mouse_pos_on_opening_current_popup() -> @generated.ImVec2 raise ImGuiError
-
-pub fn im_gui_get_platform_io() -> @generated.ImGuiPlatformIO raise ImGuiError
-
-pub fn im_gui_get_scroll_max_x() -> Float raise ImGuiError
-
-pub fn im_gui_get_scroll_max_y() -> Float raise ImGuiError
-
-pub fn im_gui_get_scroll_x() -> Float raise ImGuiError
-
-pub fn im_gui_get_scroll_y() -> Float raise ImGuiError
-
-pub fn im_gui_get_state_storage() -> @generated.ImGuiStorage raise ImGuiError
-
-pub fn im_gui_get_style() -> @generated.ImGuiStyle raise ImGuiError
-
-pub fn im_gui_get_style_color_name(Int) -> String raise ImGuiError
-
-pub fn im_gui_get_style_color_vec4(Int) -> @generated.ImVec4 raise ImGuiError
-
-pub fn im_gui_get_text_line_height() -> Float raise ImGuiError
-
-pub fn im_gui_get_text_line_height_with_spacing() -> Float raise ImGuiError
-
-pub fn im_gui_get_time() -> Double raise ImGuiError
-
-pub fn im_gui_get_tree_node_to_label_spacing() -> Float raise ImGuiError
-
-pub fn im_gui_get_version() -> String
-
-pub fn im_gui_get_window_content_region_max() -> @generated.ImVec2 raise ImGuiError
-
-pub fn im_gui_get_window_content_region_min() -> @generated.ImVec2 raise ImGuiError
-
-pub fn im_gui_get_window_draw_list() -> @generated.ImDrawList raise ImGuiError
-
-pub fn im_gui_get_window_height() -> Float raise ImGuiError
-
-pub fn im_gui_get_window_pos() -> @generated.ImVec2 raise ImGuiError
-
-pub fn im_gui_get_window_size() -> @generated.ImVec2 raise ImGuiError
-
-pub fn im_gui_get_window_width() -> Float raise ImGuiError
-
-pub fn im_gui_image(@generated.ImTextureRef, @generated.ImVec2) -> Unit raise ImGuiError
-
-pub fn im_gui_image_button(String, @generated.ImTextureRef, @generated.ImVec2) -> Bool raise ImGuiError
-
-pub fn im_gui_image_button_ex(String, @generated.ImTextureRef, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec4, @generated.ImVec4) -> Bool raise ImGuiError
-
-pub fn im_gui_image_ex(@generated.ImTextureRef, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2) -> Unit raise ImGuiError
-
-pub fn im_gui_image_im_vec4_ptr(@generated.ImTextureRef, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec4, @generated.ImVec4) -> Unit raise ImGuiError
-
-pub fn im_gui_image_with_bg(@generated.ImTextureRef, @generated.ImVec2) -> Unit raise ImGuiError
-
-pub fn im_gui_image_with_bg_ex(@generated.ImTextureRef, @generated.ImVec2, @generated.ImVec2, @generated.ImVec2, @generated.ImVec4, @generated.ImVec4) -> Unit raise ImGuiError
-
-pub fn im_gui_indent() -> Unit raise ImGuiError
-
-pub fn im_gui_indent_ex(Float) -> Unit raise ImGuiError
-
-pub fn im_gui_input_double(String, @generated.DoublePtr) -> Bool raise ImGuiError
-
-pub fn im_gui_input_double_ex(String, @generated.DoublePtr, Double, Double, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_input_float(String, @generated.FloatPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_input_float2(String, @generated.FloatPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_input_float2_ex(String, @generated.FloatPtr, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_input_float3(String, @generated.FloatPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_input_float3_ex(String, @generated.FloatPtr, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_input_float4(String, @generated.FloatPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_input_float4_ex(String, @generated.FloatPtr, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_input_float_ex(String, @generated.FloatPtr, Float, Float, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_input_int(String, @generated.IntPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_input_int2(String, @generated.IntPtr, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_input_int3(String, @generated.IntPtr, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_input_int4(String, @generated.IntPtr, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_input_int_ex(String, @generated.IntPtr, Int, Int, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_input_scalar(String, Int, @generated.VoidPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_input_scalar_ex(String, Int, @generated.VoidPtr, @generated.VoidPtr, @generated.VoidPtr, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_input_scalar_n(String, Int, @generated.VoidPtr, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_input_scalar_n_ex(String, Int, @generated.VoidPtr, Int, @generated.VoidPtr, @generated.VoidPtr, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_input_text(String, @generated.CString, UInt64, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_input_text_callback_data_clear_selection(@generated.ImGuiInputTextCallbackData) -> Unit
-
-pub fn im_gui_input_text_callback_data_delete_chars(@generated.ImGuiInputTextCallbackData, Int, Int) -> Unit
-
-pub fn im_gui_input_text_callback_data_has_selection(@generated.ImGuiInputTextCallbackData) -> Bool
-
-pub fn im_gui_input_text_callback_data_insert_chars(@generated.ImGuiInputTextCallbackData, Int, String) -> Unit
-
-pub fn im_gui_input_text_callback_data_select_all(@generated.ImGuiInputTextCallbackData) -> Unit
-
-pub fn im_gui_input_text_callback_data_set_selection(@generated.ImGuiInputTextCallbackData, Int, Int) -> Unit
-
-pub fn im_gui_input_text_multiline(String, @generated.CString, UInt64) -> Bool raise ImGuiError
-
-pub fn im_gui_input_text_with_hint(String, String, @generated.CString, UInt64, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_invisible_button(String, @generated.ImVec2, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_io_add_focus_event(@generated.ImGuiIO, Bool) -> Unit
-
-pub fn im_gui_io_add_input_character(@generated.ImGuiIO, UInt) -> Unit
-
-pub fn im_gui_io_add_input_character_utf16(@generated.ImGuiIO, Int) -> Unit
-
-pub fn im_gui_io_add_input_characters_utf8(@generated.ImGuiIO, String) -> Unit
-
-pub fn im_gui_io_add_key_analog_event(@generated.ImGuiIO, Int, Bool, Float) -> Unit
-
-pub fn im_gui_io_add_key_event(@generated.ImGuiIO, Int, Bool) -> Unit
-
-pub fn im_gui_io_add_mouse_button_event(@generated.ImGuiIO, Int, Bool) -> Unit
-
-pub fn im_gui_io_add_mouse_pos_event(@generated.ImGuiIO, Float, Float) -> Unit
-
-pub fn im_gui_io_add_mouse_source_event(@generated.ImGuiIO, Int) -> Unit
-
-pub fn im_gui_io_add_mouse_wheel_event(@generated.ImGuiIO, Float, Float) -> Unit
-
-pub fn im_gui_io_clear_events_queue(@generated.ImGuiIO) -> Unit
-
-pub fn im_gui_io_clear_input_keys(@generated.ImGuiIO) -> Unit
-
-pub fn im_gui_io_clear_input_mouse(@generated.ImGuiIO) -> Unit
-
-pub fn im_gui_io_set_app_accepting_events(@generated.ImGuiIO, Bool) -> Unit
-
-pub fn im_gui_io_set_key_event_native_data(@generated.ImGuiIO, Int, Int, Int) -> Unit
-
-pub fn im_gui_io_set_key_event_native_data_ex(@generated.ImGuiIO, Int, Int, Int, Int) -> Unit
-
-pub fn im_gui_is_any_item_active() -> Bool raise ImGuiError
-
-pub fn im_gui_is_any_item_focused() -> Bool raise ImGuiError
-
-pub fn im_gui_is_any_item_hovered() -> Bool raise ImGuiError
-
-pub fn im_gui_is_any_mouse_down() -> Bool raise ImGuiError
-
-pub fn im_gui_is_item_activated() -> Bool raise ImGuiError
-
-pub fn im_gui_is_item_active() -> Bool raise ImGuiError
-
-pub fn im_gui_is_item_clicked() -> Bool raise ImGuiError
-
-pub fn im_gui_is_item_clicked_ex(Int) -> Bool raise ImGuiError
-
-pub fn im_gui_is_item_deactivated() -> Bool raise ImGuiError
-
-pub fn im_gui_is_item_deactivated_after_edit() -> Bool raise ImGuiError
-
-pub fn im_gui_is_item_edited() -> Bool raise ImGuiError
-
-pub fn im_gui_is_item_focused() -> Bool raise ImGuiError
-
-pub fn im_gui_is_item_hovered(Int) -> Bool raise ImGuiError
-
-pub fn im_gui_is_item_toggled_open() -> Bool raise ImGuiError
-
-pub fn im_gui_is_item_toggled_selection() -> Bool raise ImGuiError
-
-pub fn im_gui_is_item_visible() -> Bool raise ImGuiError
-
-pub fn im_gui_is_key_chord_pressed(Int) -> Bool raise ImGuiError
-
-pub fn im_gui_is_key_down(Int) -> Bool raise ImGuiError
-
-pub fn im_gui_is_key_pressed(Int) -> Bool raise ImGuiError
-
-pub fn im_gui_is_key_pressed_ex(Int, Bool) -> Bool raise ImGuiError
-
-pub fn im_gui_is_key_released(Int) -> Bool raise ImGuiError
-
-pub fn im_gui_is_mouse_clicked(Int) -> Bool raise ImGuiError
-
-pub fn im_gui_is_mouse_clicked_ex(Int, Bool) -> Bool raise ImGuiError
-
-pub fn im_gui_is_mouse_double_clicked(Int) -> Bool raise ImGuiError
-
-pub fn im_gui_is_mouse_down(Int) -> Bool raise ImGuiError
-
-pub fn im_gui_is_mouse_dragging(Int, Float) -> Bool raise ImGuiError
-
-pub fn im_gui_is_mouse_hovering_rect(@generated.ImVec2, @generated.ImVec2) -> Bool raise ImGuiError
-
-pub fn im_gui_is_mouse_hovering_rect_ex(@generated.ImVec2, @generated.ImVec2, Bool) -> Bool raise ImGuiError
-
-pub fn im_gui_is_mouse_pos_valid(@generated.ImVec2) -> Bool raise ImGuiError
-
-pub fn im_gui_is_mouse_released(Int) -> Bool raise ImGuiError
-
-pub fn im_gui_is_mouse_released_with_delay(Int, Float) -> Bool raise ImGuiError
-
-pub fn im_gui_is_popup_open(String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_is_rect_visible_by_size(@generated.ImVec2) -> Bool raise ImGuiError
-
-pub fn im_gui_is_rect_visible_im_vec2_ptr(@generated.ImVec2, @generated.ImVec2) -> Bool raise ImGuiError
-
-pub fn im_gui_is_window_appearing() -> Bool raise ImGuiError
-
-pub fn im_gui_is_window_collapsed() -> Bool raise ImGuiError
-
-pub fn im_gui_is_window_focused(Int) -> Bool raise ImGuiError
-
-pub fn im_gui_is_window_hovered(Int) -> Bool raise ImGuiError
-
-pub fn im_gui_label_text(String, String) -> Unit raise ImGuiError
-
-pub fn im_gui_label_text_unformatted(String, String) -> Unit raise ImGuiError
-
-pub fn im_gui_list_box(String, @generated.IntPtr, @generated.CStringPtr, Int, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_list_clipper_begin(@generated.ImGuiListClipper, Int, Float) -> Unit
-
-pub fn im_gui_list_clipper_end(@generated.ImGuiListClipper) -> Unit
-
-pub fn im_gui_list_clipper_include_item_by_index(@generated.ImGuiListClipper, Int) -> Unit
-
-pub fn im_gui_list_clipper_include_items_by_index(@generated.ImGuiListClipper, Int, Int) -> Unit
-
-pub fn im_gui_list_clipper_seek_cursor_for_item(@generated.ImGuiListClipper, Int) -> Unit
-
-pub fn im_gui_list_clipper_step(@generated.ImGuiListClipper) -> Bool
-
-pub fn im_gui_load_ini_settings_from_disk(String) -> Unit raise ImGuiError
-
-pub fn im_gui_load_ini_settings_from_memory(String, UInt64) -> Unit raise ImGuiError
-
-pub fn im_gui_log_buttons() -> Unit raise ImGuiError
-
-pub fn im_gui_log_finish() -> Unit raise ImGuiError
-
-pub fn im_gui_log_text(String) -> Unit raise ImGuiError
-
-pub fn im_gui_log_text_unformatted(String) -> Unit raise ImGuiError
-
-pub fn im_gui_log_to_clipboard(Int) -> Unit raise ImGuiError
-
-pub fn im_gui_log_to_file(Int, String) -> Unit raise ImGuiError
-
-pub fn im_gui_log_to_tty(Int) -> Unit raise ImGuiError
-
-pub fn im_gui_menu_item(String) -> Bool raise ImGuiError
-
-pub fn im_gui_menu_item_bool_ptr(String, String, @generated.BoolPtr, Bool) -> Bool raise ImGuiError
-
-pub fn im_gui_menu_item_ex(String, String, Bool, Bool) -> Bool raise ImGuiError
-
-pub fn im_gui_new_frame() -> Unit raise ImGuiError
-
-pub fn im_gui_new_line() -> Unit raise ImGuiError
-
-pub fn im_gui_next_column() -> Unit raise ImGuiError
-
-pub fn im_gui_open_popup(String, Int) -> Unit raise ImGuiError
-
-pub fn im_gui_open_popup_id(UInt, Int) -> Unit raise ImGuiError
-
-pub fn im_gui_open_popup_on_item_click(String, Int) -> Unit raise ImGuiError
-
-pub fn im_gui_payload_clear(@generated.ImGuiPayload) -> Unit
-
-pub fn im_gui_payload_is_data_type(@generated.ImGuiPayload, String) -> Bool
-
-pub fn im_gui_payload_is_delivery(@generated.ImGuiPayload) -> Bool
-
-pub fn im_gui_payload_is_preview(@generated.ImGuiPayload) -> Bool
-
-pub fn im_gui_platform_io_clear_platform_handlers(@generated.ImGuiPlatformIO) -> Unit
-
-pub fn im_gui_platform_io_clear_renderer_handlers(@generated.ImGuiPlatformIO) -> Unit
-
-pub fn im_gui_plot_histogram(String, @generated.FloatPtr, Int) -> Unit raise ImGuiError
-
-pub fn im_gui_plot_histogram_ex(String, @generated.FloatPtr, Int, Int, String, Float, Float, @generated.ImVec2, Int) -> Unit raise ImGuiError
-
-pub fn im_gui_plot_lines(String, @generated.FloatPtr, Int) -> Unit raise ImGuiError
-
-pub fn im_gui_plot_lines_ex(String, @generated.FloatPtr, Int, Int, String, Float, Float, @generated.ImVec2, Int) -> Unit raise ImGuiError
-
-pub fn im_gui_pop_button_repeat() -> Unit raise ImGuiError
-
-pub fn im_gui_pop_clip_rect() -> Unit raise ImGuiError
-
-pub fn im_gui_pop_font() -> Unit raise ImGuiError
-
-pub fn im_gui_pop_id() -> Unit raise ImGuiError
-
-pub fn im_gui_pop_item_flag() -> Unit raise ImGuiError
-
-pub fn im_gui_pop_item_width() -> Unit raise ImGuiError
-
-pub fn im_gui_pop_style_color() -> Unit raise ImGuiError
-
-pub fn im_gui_pop_style_color_ex(Int) -> Unit raise ImGuiError
-
-pub fn im_gui_pop_style_var() -> Unit raise ImGuiError
-
-pub fn im_gui_pop_style_var_ex(Int) -> Unit raise ImGuiError
-
-pub fn im_gui_pop_tab_stop() -> Unit raise ImGuiError
-
-pub fn im_gui_pop_text_wrap_pos() -> Unit raise ImGuiError
-
-pub fn im_gui_progress_bar(Float, @generated.ImVec2, String) -> Unit raise ImGuiError
-
-pub fn im_gui_push_button_repeat(Bool) -> Unit raise ImGuiError
-
-pub fn im_gui_push_clip_rect(@generated.ImVec2, @generated.ImVec2, Bool) -> Unit raise ImGuiError
-
-pub fn im_gui_push_font(@generated.ImFont) -> Unit raise ImGuiError
-
-pub fn im_gui_push_font_float(@generated.ImFont, Float) -> Unit raise ImGuiError
-
-pub fn im_gui_push_id(String) -> Unit raise ImGuiError
-
-pub fn im_gui_push_id_int(Int) -> Unit raise ImGuiError
-
-pub fn im_gui_push_id_ptr(@generated.VoidPtr) -> Unit raise ImGuiError
-
-pub fn im_gui_push_id_str(String) -> Unit raise ImGuiError
-
-pub fn im_gui_push_item_flag(Int, Bool) -> Unit raise ImGuiError
-
-pub fn im_gui_push_item_width(Float) -> Unit raise ImGuiError
-
-pub fn im_gui_push_style_color(Int, UInt) -> Unit raise ImGuiError
-
-pub fn im_gui_push_style_color_im_vec4_ptr(Int, @generated.ImVec4) -> Unit raise ImGuiError
-
-pub fn im_gui_push_style_var(Int, Float) -> Unit raise ImGuiError
-
-pub fn im_gui_push_style_var_im_vec2_ptr(Int, @generated.ImVec2) -> Unit raise ImGuiError
-
-pub fn im_gui_push_style_var_x(Int, Float) -> Unit raise ImGuiError
-
-pub fn im_gui_push_style_var_y(Int, Float) -> Unit raise ImGuiError
-
-pub fn im_gui_push_tab_stop(Bool) -> Unit raise ImGuiError
-
-pub fn im_gui_push_text_wrap_pos(Float) -> Unit raise ImGuiError
-
-pub fn im_gui_radio_button(String, Bool) -> Bool raise ImGuiError
-
-pub fn im_gui_radio_button_int_ptr(String, @generated.IntPtr, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_render() -> Unit raise ImGuiError
-
-pub fn im_gui_reset_mouse_drag_delta() -> Unit raise ImGuiError
-
-pub fn im_gui_reset_mouse_drag_delta_ex(Int) -> Unit raise ImGuiError
-
-pub fn im_gui_same_line() -> Unit raise ImGuiError
-
-pub fn im_gui_same_line_ex(Float, Float) -> Unit raise ImGuiError
-
-pub fn im_gui_save_ini_settings_to_disk(String) -> Unit raise ImGuiError
-
-pub fn im_gui_save_ini_settings_to_memory(@generated.SizeTPtr) -> String raise ImGuiError
-
-pub fn im_gui_selectable(String) -> Bool raise ImGuiError
-
-pub fn im_gui_selectable_bool_ptr(String, @generated.BoolPtr, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_selectable_bool_ptr_ex(String, @generated.BoolPtr, Int, @generated.ImVec2) -> Bool raise ImGuiError
-
-pub fn im_gui_selectable_ex(String, Bool, Int, @generated.ImVec2) -> Bool raise ImGuiError
-
-pub fn im_gui_selection_basic_storage_apply_requests(@generated.ImGuiSelectionBasicStorage, @generated.ImGuiMultiSelectIO) -> Unit
-
-pub fn im_gui_selection_basic_storage_clear(@generated.ImGuiSelectionBasicStorage) -> Unit
-
-pub fn im_gui_selection_basic_storage_contains(@generated.ImGuiSelectionBasicStorage, UInt) -> Bool
-
-pub fn im_gui_selection_basic_storage_get_next_selected_item(@generated.ImGuiSelectionBasicStorage, @generated.VoidPtrPtr, @generated.ImGuiIDPtr) -> Bool
-
-pub fn im_gui_selection_basic_storage_get_storage_id_from_index(@generated.ImGuiSelectionBasicStorage, Int) -> UInt
-
-pub fn im_gui_selection_basic_storage_set_item_selected(@generated.ImGuiSelectionBasicStorage, UInt, Bool) -> Unit
-
-pub fn im_gui_selection_basic_storage_swap(@generated.ImGuiSelectionBasicStorage, @generated.ImGuiSelectionBasicStorage) -> Unit
-
-pub fn im_gui_selection_external_storage_apply_requests(@generated.ImGuiSelectionExternalStorage, @generated.ImGuiMultiSelectIO) -> Unit
-
-pub fn im_gui_separator() -> Unit raise ImGuiError
-
-pub fn im_gui_separator_text(String) -> Unit raise ImGuiError
-
-pub fn im_gui_set_clipboard_text(String) -> Unit raise ImGuiError
-
-pub fn im_gui_set_color_edit_options(Int) -> Unit raise ImGuiError
-
-pub fn im_gui_set_column_offset(Int, Float) -> Unit raise ImGuiError
-
-pub fn im_gui_set_column_width(Int, Float) -> Unit raise ImGuiError
-
-pub fn im_gui_set_current_context(@generated.ImGuiContext) -> Unit
-
-pub fn im_gui_set_cursor_pos(@generated.ImVec2) -> Unit raise ImGuiError
-
-pub fn im_gui_set_cursor_pos_x(Float) -> Unit raise ImGuiError
-
-pub fn im_gui_set_cursor_pos_y(Float) -> Unit raise ImGuiError
-
-pub fn im_gui_set_cursor_screen_pos(@generated.ImVec2) -> Unit raise ImGuiError
-
-pub fn im_gui_set_drag_drop_payload(String, @generated.VoidPtr, UInt64, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_set_item_default_focus() -> Unit raise ImGuiError
-
-pub fn im_gui_set_item_key_owner(Int) -> Bool raise ImGuiError
-
-pub fn im_gui_set_item_tooltip(String) -> Unit raise ImGuiError
-
-pub fn im_gui_set_item_tooltip_unformatted(String) -> Unit raise ImGuiError
-
-pub fn im_gui_set_keyboard_focus_here() -> Unit raise ImGuiError
-
-pub fn im_gui_set_keyboard_focus_here_ex(Int) -> Unit raise ImGuiError
-
-pub fn im_gui_set_mouse_cursor(Int) -> Unit raise ImGuiError
-
-pub fn im_gui_set_nav_cursor_visible(Bool) -> Unit raise ImGuiError
-
-pub fn im_gui_set_next_frame_want_capture_keyboard(Bool) -> Unit raise ImGuiError
-
-pub fn im_gui_set_next_frame_want_capture_mouse(Bool) -> Unit raise ImGuiError
-
-pub fn im_gui_set_next_item_allow_overlap() -> Unit raise ImGuiError
-
-pub fn im_gui_set_next_item_open(Bool, Int) -> Unit raise ImGuiError
-
-pub fn im_gui_set_next_item_selection_user_data(Int64) -> Unit raise ImGuiError
-
-pub fn im_gui_set_next_item_shortcut(Int, Int) -> Unit raise ImGuiError
-
-pub fn im_gui_set_next_item_storage_id(UInt) -> Unit raise ImGuiError
-
-pub fn im_gui_set_next_item_width(Float) -> Unit raise ImGuiError
-
-pub fn im_gui_set_next_window_bg_alpha(Float) -> Unit raise ImGuiError
-
-pub fn im_gui_set_next_window_collapsed(Bool, Int) -> Unit raise ImGuiError
-
-pub fn im_gui_set_next_window_content_size(@generated.ImVec2) -> Unit raise ImGuiError
-
-pub fn im_gui_set_next_window_focus() -> Unit raise ImGuiError
-
-pub fn im_gui_set_next_window_pos(@generated.ImVec2, Int) -> Unit raise ImGuiError
-
-pub fn im_gui_set_next_window_pos_ex(@generated.ImVec2, Int, @generated.ImVec2) -> Unit raise ImGuiError
-
-pub fn im_gui_set_next_window_scroll(@generated.ImVec2) -> Unit raise ImGuiError
-
-pub fn im_gui_set_next_window_size(@generated.ImVec2, Int) -> Unit raise ImGuiError
-
-pub fn im_gui_set_scroll_from_pos_x(Float, Float) -> Unit raise ImGuiError
-
-pub fn im_gui_set_scroll_from_pos_y(Float, Float) -> Unit raise ImGuiError
-
-pub fn im_gui_set_scroll_here_x(Float) -> Unit raise ImGuiError
-
-pub fn im_gui_set_scroll_here_y(Float) -> Unit raise ImGuiError
-
-pub fn im_gui_set_scroll_x(Float) -> Unit raise ImGuiError
-
-pub fn im_gui_set_scroll_y(Float) -> Unit raise ImGuiError
-
-pub fn im_gui_set_state_storage(@generated.ImGuiStorage) -> Unit raise ImGuiError
-
-pub fn im_gui_set_tab_item_closed(String) -> Unit raise ImGuiError
-
-pub fn im_gui_set_tooltip(String) -> Unit raise ImGuiError
-
-pub fn im_gui_set_tooltip_unformatted(String) -> Unit raise ImGuiError
-
-pub fn im_gui_set_window_collapsed(Bool, Int) -> Unit raise ImGuiError
-
-pub fn im_gui_set_window_collapsed_str(String, Bool, Int) -> Unit raise ImGuiError
-
-pub fn im_gui_set_window_focus() -> Unit raise ImGuiError
-
-pub fn im_gui_set_window_focus_str(String) -> Unit raise ImGuiError
-
-pub fn im_gui_set_window_font_scale(Float) -> Unit raise ImGuiError
-
-pub fn im_gui_set_window_pos(@generated.ImVec2, Int) -> Unit raise ImGuiError
-
-pub fn im_gui_set_window_pos_str(String, @generated.ImVec2, Int) -> Unit raise ImGuiError
-
-pub fn im_gui_set_window_size(@generated.ImVec2, Int) -> Unit raise ImGuiError
-
-pub fn im_gui_set_window_size_str(String, @generated.ImVec2, Int) -> Unit raise ImGuiError
-
-pub fn im_gui_shortcut(Int, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_show_about_window(@generated.BoolPtr) -> Unit raise ImGuiError
-
-pub fn im_gui_show_debug_log_window(@generated.BoolPtr) -> Unit raise ImGuiError
-
-pub fn im_gui_show_demo_window(@generated.BoolPtr) -> Unit raise ImGuiError
-
-pub fn im_gui_show_font_selector(String) -> Unit raise ImGuiError
-
-pub fn im_gui_show_id_stack_tool_window() -> Unit raise ImGuiError
-
-pub fn im_gui_show_id_stack_tool_window_ex(@generated.BoolPtr) -> Unit raise ImGuiError
-
-pub fn im_gui_show_metrics_window(@generated.BoolPtr) -> Unit raise ImGuiError
-
-pub fn im_gui_show_style_editor(@generated.ImGuiStyle) -> Unit raise ImGuiError
-
-pub fn im_gui_show_style_selector(String) -> Bool raise ImGuiError
-
-pub fn im_gui_show_user_guide() -> Unit raise ImGuiError
-
-pub fn im_gui_slider_angle(String, @generated.FloatPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_slider_angle_ex(String, @generated.FloatPtr, Float, Float, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_slider_float(String, @generated.FloatPtr, Float, Float) -> Bool raise ImGuiError
-
-pub fn im_gui_slider_float2(String, @generated.FloatPtr, Float, Float) -> Bool raise ImGuiError
-
-pub fn im_gui_slider_float2_ex(String, @generated.FloatPtr, Float, Float, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_slider_float3(String, @generated.FloatPtr, Float, Float) -> Bool raise ImGuiError
-
-pub fn im_gui_slider_float3_ex(String, @generated.FloatPtr, Float, Float, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_slider_float4(String, @generated.FloatPtr, Float, Float) -> Bool raise ImGuiError
-
-pub fn im_gui_slider_float4_ex(String, @generated.FloatPtr, Float, Float, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_slider_float_ex(String, @generated.FloatPtr, Float, Float, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_slider_int(String, @generated.IntPtr, Int, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_slider_int2(String, @generated.IntPtr, Int, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_slider_int2_ex(String, @generated.IntPtr, Int, Int, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_slider_int3(String, @generated.IntPtr, Int, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_slider_int3_ex(String, @generated.IntPtr, Int, Int, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_slider_int4(String, @generated.IntPtr, Int, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_slider_int4_ex(String, @generated.IntPtr, Int, Int, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_slider_int_ex(String, @generated.IntPtr, Int, Int, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_slider_scalar(String, Int, @generated.VoidPtr, @generated.VoidPtr, @generated.VoidPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_slider_scalar_ex(String, Int, @generated.VoidPtr, @generated.VoidPtr, @generated.VoidPtr, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_slider_scalar_n(String, Int, @generated.VoidPtr, Int, @generated.VoidPtr, @generated.VoidPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_slider_scalar_n_ex(String, Int, @generated.VoidPtr, Int, @generated.VoidPtr, @generated.VoidPtr, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_small_button(String) -> Bool raise ImGuiError
-
-pub fn im_gui_spacing() -> Unit raise ImGuiError
-
-pub fn im_gui_storage_build_sort_by_key(@generated.ImGuiStorage) -> Unit
-
-pub fn im_gui_storage_clear(@generated.ImGuiStorage) -> Unit
-
-pub fn im_gui_storage_get_bool(@generated.ImGuiStorage, UInt, Bool) -> Bool
-
-pub fn im_gui_storage_get_bool_ref(@generated.ImGuiStorage, UInt, Bool) -> @generated.BoolPtr
-
-pub fn im_gui_storage_get_float(@generated.ImGuiStorage, UInt, Float) -> Float
-
-pub fn im_gui_storage_get_float_ref(@generated.ImGuiStorage, UInt, Float) -> @generated.FloatPtr
-
-pub fn im_gui_storage_get_int(@generated.ImGuiStorage, UInt, Int) -> Int
-
-pub fn im_gui_storage_get_int_ref(@generated.ImGuiStorage, UInt, Int) -> @generated.IntPtr
-
-pub fn im_gui_storage_get_void_ptr(@generated.ImGuiStorage, UInt) -> @generated.VoidPtr
-
-pub fn im_gui_storage_get_void_ptr_ref(@generated.ImGuiStorage, UInt, @generated.VoidPtr) -> @generated.VoidPtrPtr
-
-pub fn im_gui_storage_set_all_int(@generated.ImGuiStorage, Int) -> Unit
-
-pub fn im_gui_storage_set_bool(@generated.ImGuiStorage, UInt, Bool) -> Unit
-
-pub fn im_gui_storage_set_float(@generated.ImGuiStorage, UInt, Float) -> Unit
-
-pub fn im_gui_storage_set_int(@generated.ImGuiStorage, UInt, Int) -> Unit
-
-pub fn im_gui_storage_set_void_ptr(@generated.ImGuiStorage, UInt, @generated.VoidPtr) -> Unit
-
-pub fn im_gui_style_colors_classic(@generated.ImGuiStyle) -> Unit raise ImGuiError
-
-pub fn im_gui_style_colors_dark(@generated.ImGuiStyle) -> Unit raise ImGuiError
-
-pub fn im_gui_style_colors_light(@generated.ImGuiStyle) -> Unit raise ImGuiError
-
-pub fn im_gui_style_scale_all_sizes(@generated.ImGuiStyle, Float) -> Unit
-
-pub fn im_gui_tab_item_button(String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_table_angled_headers_row() -> Unit raise ImGuiError
-
-pub fn im_gui_table_get_column_count() -> Int raise ImGuiError
-
-pub fn im_gui_table_get_column_flags(Int) -> Int raise ImGuiError
-
-pub fn im_gui_table_get_column_index() -> Int raise ImGuiError
-
-pub fn im_gui_table_get_column_name(Int) -> String raise ImGuiError
-
-pub fn im_gui_table_get_hovered_column() -> Int raise ImGuiError
-
-pub fn im_gui_table_get_row_index() -> Int raise ImGuiError
-
-pub fn im_gui_table_get_sort_specs() -> @generated.ImGuiTableSortSpecs raise ImGuiError
-
-pub fn im_gui_table_header(String) -> Unit raise ImGuiError
-
-pub fn im_gui_table_headers_row() -> Unit raise ImGuiError
-
-pub fn im_gui_table_next_column() -> Bool raise ImGuiError
-
-pub fn im_gui_table_next_row() -> Unit raise ImGuiError
-
-pub fn im_gui_table_next_row_ex(Int, Float) -> Unit raise ImGuiError
-
-pub fn im_gui_table_set_bg_color(Int, UInt, Int) -> Unit raise ImGuiError
-
-pub fn im_gui_table_set_column_enabled(Int, Bool) -> Unit raise ImGuiError
-
-pub fn im_gui_table_set_column_index(Int) -> Bool raise ImGuiError
-
-pub fn im_gui_table_setup_column(String, Int) -> Unit raise ImGuiError
-
-pub fn im_gui_table_setup_column_ex(String, Int, Float, UInt) -> Unit raise ImGuiError
-
-pub fn im_gui_table_setup_scroll_freeze(Int, Int) -> Unit raise ImGuiError
-
-pub fn im_gui_text(String) -> Unit raise ImGuiError
-
-pub fn im_gui_text_buffer_append(@generated.ImGuiTextBuffer, String) -> Unit
-
-pub fn im_gui_text_buffer_appendf(@generated.ImGuiTextBuffer, String) -> Unit
-
-pub fn im_gui_text_buffer_begin(@generated.ImGuiTextBuffer) -> String
-
-pub fn im_gui_text_buffer_c_str(@generated.ImGuiTextBuffer) -> String
-
-pub fn im_gui_text_buffer_clear(@generated.ImGuiTextBuffer) -> Unit
-
-pub fn im_gui_text_buffer_empty(@generated.ImGuiTextBuffer) -> Bool
-
-pub fn im_gui_text_buffer_end(@generated.ImGuiTextBuffer) -> String
-
-pub fn im_gui_text_buffer_reserve(@generated.ImGuiTextBuffer, Int) -> Unit
-
-pub fn im_gui_text_buffer_resize(@generated.ImGuiTextBuffer, Int) -> Unit
-
-pub fn im_gui_text_buffer_size(@generated.ImGuiTextBuffer) -> Int
-
-pub fn im_gui_text_colored(@generated.ImVec4, String) -> Unit raise ImGuiError
-
-pub fn im_gui_text_colored_unformatted(@generated.ImVec4, String) -> Unit raise ImGuiError
-
-pub fn im_gui_text_disabled(String) -> Unit raise ImGuiError
-
-pub fn im_gui_text_disabled_unformatted(String) -> Unit raise ImGuiError
-
-pub fn im_gui_text_filter_build(@generated.ImGuiTextFilter) -> Unit
-
-pub fn im_gui_text_filter_clear(@generated.ImGuiTextFilter) -> Unit
-
-pub fn im_gui_text_filter_draw(@generated.ImGuiTextFilter, String, Float) -> Bool
-
-pub fn im_gui_text_filter_im_gui_text_range_empty(@generated.ImGuiTextFilter_ImGuiTextRange) -> Bool
-
-pub fn im_gui_text_filter_im_gui_text_range_split(@generated.ImGuiTextFilter_ImGuiTextRange, Int, @generated.ImVector_ImGuiTextRange) -> Unit
-
-pub fn im_gui_text_filter_is_active(@generated.ImGuiTextFilter) -> Bool
-
-pub fn im_gui_text_filter_pass_filter(@generated.ImGuiTextFilter, String) -> Bool
-
-pub fn im_gui_text_link(String) -> Bool raise ImGuiError
-
-pub fn im_gui_text_link_open_url(String) -> Bool raise ImGuiError
-
-pub fn im_gui_text_link_open_url_ex(String, String) -> Bool raise ImGuiError
-
-pub fn im_gui_text_unformatted(String) -> Unit raise ImGuiError
-
-pub fn im_gui_text_unformatted_ex(String) -> Unit raise ImGuiError
-
-pub fn im_gui_text_wrapped(String) -> Unit raise ImGuiError
-
-pub fn im_gui_text_wrapped_unformatted(String) -> Unit raise ImGuiError
-
-pub fn im_gui_tree_node(String) -> Bool raise ImGuiError
-
-pub fn im_gui_tree_node_ex(String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_tree_node_ex_ptr(@generated.VoidPtr, Int, String) -> Bool raise ImGuiError
-
-pub fn im_gui_tree_node_ex_ptr_unformatted(@generated.VoidPtr, Int, String) -> Bool raise ImGuiError
-
-pub fn im_gui_tree_node_ex_str(String, Int, String) -> Bool raise ImGuiError
-
-pub fn im_gui_tree_node_ex_str_unformatted(String, Int, String) -> Bool raise ImGuiError
-
-pub fn im_gui_tree_node_get_open(UInt) -> Bool raise ImGuiError
-
-pub fn im_gui_tree_node_ptr(@generated.VoidPtr, String) -> Bool raise ImGuiError
-
-pub fn im_gui_tree_node_ptr_unformatted(@generated.VoidPtr, String) -> Bool raise ImGuiError
-
-pub fn im_gui_tree_node_str(String, String) -> Bool raise ImGuiError
-
-pub fn im_gui_tree_node_str_unformatted(String, String) -> Bool raise ImGuiError
-
-pub fn im_gui_tree_pop() -> Unit raise ImGuiError
-
-pub fn im_gui_tree_push(String) -> Unit raise ImGuiError
-
-pub fn im_gui_tree_push_ptr(@generated.VoidPtr) -> Unit raise ImGuiError
-
-pub fn im_gui_unindent() -> Unit raise ImGuiError
-
-pub fn im_gui_unindent_ex(Float) -> Unit raise ImGuiError
-
-pub fn im_gui_v_slider_float(String, @generated.ImVec2, @generated.FloatPtr, Float, Float) -> Bool raise ImGuiError
-
-pub fn im_gui_v_slider_float_ex(String, @generated.ImVec2, @generated.FloatPtr, Float, Float, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_v_slider_int(String, @generated.ImVec2, @generated.IntPtr, Int, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_v_slider_int_ex(String, @generated.ImVec2, @generated.IntPtr, Int, Int, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_v_slider_scalar(String, @generated.ImVec2, Int, @generated.VoidPtr, @generated.VoidPtr, @generated.VoidPtr) -> Bool raise ImGuiError
-
-pub fn im_gui_v_slider_scalar_ex(String, @generated.ImVec2, Int, @generated.VoidPtr, @generated.VoidPtr, @generated.VoidPtr, String, Int) -> Bool raise ImGuiError
-
-pub fn im_gui_viewport_get_center(@generated.ImGuiViewport) -> @generated.ImVec2
-
-pub fn im_gui_viewport_get_work_center(@generated.ImGuiViewport) -> @generated.ImVec2
-
-pub fn im_texture_data_create(@generated.ImTextureData, @generated.ImTextureFormat, Int, Int) -> Unit
-
-pub fn im_texture_data_destroy_pixels(@generated.ImTextureData) -> Unit
-
-pub fn im_texture_data_get_pitch(@generated.ImTextureData) -> Int
-
-pub fn im_texture_data_get_pixels(@generated.ImTextureData) -> @generated.VoidPtr
-
-pub fn im_texture_data_get_pixels_at(@generated.ImTextureData, Int, Int) -> @generated.VoidPtr
-
-pub fn im_texture_data_get_size_in_bytes(@generated.ImTextureData) -> Int
-
-pub fn im_texture_data_get_tex_id(@generated.ImTextureData) -> UInt64
-
-pub fn im_texture_data_get_tex_ref(@generated.ImTextureData) -> @generated.ImTextureRef
-
-pub fn im_texture_data_set_status(@generated.ImTextureData, @generated.ImTextureStatus) -> Unit
-
-pub fn im_texture_data_set_tex_id(@generated.ImTextureData, UInt64) -> Unit
-
-pub fn im_texture_ref_get_tex_id(@generated.ImTextureRef) -> UInt64
+pub fn input_scalar_n_ex(String, Int, @generated.VoidPtr, Int, @generated.VoidPtr, @generated.VoidPtr, String, Int) -> Bool raise ImGuiError
 
 pub fn input_text(String, String, flags? : @raw.InputTextFlags, capacity? : Int) -> @raw.TextEditResult raise ImGuiError
 
+pub fn input_text_callback_data_clear_selection(@generated.ImGuiInputTextCallbackData) -> Unit
+
+pub fn input_text_callback_data_delete_chars(@generated.ImGuiInputTextCallbackData, Int, Int) -> Unit
+
+pub fn input_text_callback_data_has_selection(@generated.ImGuiInputTextCallbackData) -> Bool
+
+pub fn input_text_callback_data_insert_chars(@generated.ImGuiInputTextCallbackData, Int, String) -> Unit
+
+pub fn input_text_callback_data_select_all(@generated.ImGuiInputTextCallbackData) -> Unit
+
+pub fn input_text_callback_data_set_selection(@generated.ImGuiInputTextCallbackData, Int, Int) -> Unit
+
+pub fn input_text_generated(String, @generated.CString, UInt64, Int) -> Bool raise ImGuiError
+
+pub fn input_text_multiline(String, @generated.CString, UInt64) -> Bool raise ImGuiError
+
+pub fn input_text_with_hint(String, String, @generated.CString, UInt64, Int) -> Bool raise ImGuiError
+
+pub fn invisible_button(String, @generated.ImVec2, Int) -> Bool raise ImGuiError
+
+pub fn io_add_focus_event(@generated.ImGuiIO, Bool) -> Unit
+
+pub fn io_add_input_character(@generated.ImGuiIO, UInt) -> Unit
+
+pub fn io_add_input_character_utf16(@generated.ImGuiIO, Int) -> Unit
+
+pub fn io_add_input_characters_utf8(@generated.ImGuiIO, String) -> Unit
+
+pub fn io_add_key_analog_event(@generated.ImGuiIO, Int, Bool, Float) -> Unit
+
+pub fn io_add_key_event(@generated.ImGuiIO, Int, Bool) -> Unit
+
+pub fn io_add_mouse_button_event(@generated.ImGuiIO, Int, Bool) -> Unit
+
+pub fn io_add_mouse_pos_event(@generated.ImGuiIO, Float, Float) -> Unit
+
+pub fn io_add_mouse_source_event(@generated.ImGuiIO, Int) -> Unit
+
+pub fn io_add_mouse_wheel_event(@generated.ImGuiIO, Float, Float) -> Unit
+
+pub fn io_clear_events_queue(@generated.ImGuiIO) -> Unit
+
+pub fn io_clear_input_keys(@generated.ImGuiIO) -> Unit
+
+pub fn io_clear_input_mouse(@generated.ImGuiIO) -> Unit
+
+pub fn io_set_app_accepting_events(@generated.ImGuiIO, Bool) -> Unit
+
+pub fn io_set_key_event_native_data(@generated.ImGuiIO, Int, Int, Int) -> Unit
+
+pub fn io_set_key_event_native_data_ex(@generated.ImGuiIO, Int, Int, Int, Int) -> Unit
+
+pub fn is_any_item_active() -> Bool raise ImGuiError
+
+pub fn is_any_item_focused() -> Bool raise ImGuiError
+
+pub fn is_any_item_hovered() -> Bool raise ImGuiError
+
+pub fn is_any_mouse_down() -> Bool raise ImGuiError
+
+pub fn is_item_activated() -> Bool raise ImGuiError
+
+pub fn is_item_active() -> Bool raise ImGuiError
+
+pub fn is_item_clicked() -> Bool raise ImGuiError
+
+pub fn is_item_clicked_ex(Int) -> Bool raise ImGuiError
+
+pub fn is_item_deactivated() -> Bool raise ImGuiError
+
+pub fn is_item_deactivated_after_edit() -> Bool raise ImGuiError
+
+pub fn is_item_edited() -> Bool raise ImGuiError
+
+pub fn is_item_focused() -> Bool raise ImGuiError
+
+pub fn is_item_hovered(Int) -> Bool raise ImGuiError
+
+pub fn is_item_toggled_open() -> Bool raise ImGuiError
+
+pub fn is_item_toggled_selection() -> Bool raise ImGuiError
+
+pub fn is_item_visible() -> Bool raise ImGuiError
+
+pub fn is_key_chord_pressed(Int) -> Bool raise ImGuiError
+
+pub fn is_key_down(Int) -> Bool raise ImGuiError
+
+pub fn is_key_pressed(Int) -> Bool raise ImGuiError
+
+pub fn is_key_pressed_ex(Int, Bool) -> Bool raise ImGuiError
+
+pub fn is_key_released(Int) -> Bool raise ImGuiError
+
+pub fn is_mouse_clicked(Int) -> Bool raise ImGuiError
+
+pub fn is_mouse_clicked_ex(Int, Bool) -> Bool raise ImGuiError
+
+pub fn is_mouse_double_clicked(Int) -> Bool raise ImGuiError
+
+pub fn is_mouse_down(Int) -> Bool raise ImGuiError
+
+pub fn is_mouse_dragging(Int, Float) -> Bool raise ImGuiError
+
+pub fn is_mouse_hovering_rect(@generated.ImVec2, @generated.ImVec2) -> Bool raise ImGuiError
+
+pub fn is_mouse_hovering_rect_ex(@generated.ImVec2, @generated.ImVec2, Bool) -> Bool raise ImGuiError
+
+pub fn is_mouse_pos_valid(@generated.ImVec2) -> Bool raise ImGuiError
+
+pub fn is_mouse_released(Int) -> Bool raise ImGuiError
+
+pub fn is_mouse_released_with_delay(Int, Float) -> Bool raise ImGuiError
+
+pub fn is_popup_open(String, Int) -> Bool raise ImGuiError
+
+pub fn is_rect_visible_by_size(@generated.ImVec2) -> Bool raise ImGuiError
+
+pub fn is_rect_visible_im_vec2_ptr(@generated.ImVec2, @generated.ImVec2) -> Bool raise ImGuiError
+
+pub fn is_window_appearing() -> Bool raise ImGuiError
+
+pub fn is_window_collapsed() -> Bool raise ImGuiError
+
+pub fn is_window_focused(Int) -> Bool raise ImGuiError
+
+pub fn is_window_hovered(Int) -> Bool raise ImGuiError
+
+pub fn label_text(String, String) -> Unit raise ImGuiError
+
+pub fn label_text_unformatted(String, String) -> Unit raise ImGuiError
+
+pub fn list_box(String, @generated.IntPtr, @generated.CStringPtr, Int, Int) -> Bool raise ImGuiError
+
+pub fn list_clipper_begin(@generated.ImGuiListClipper, Int, Float) -> Unit
+
+pub fn list_clipper_end(@generated.ImGuiListClipper) -> Unit
+
+pub fn list_clipper_include_item_by_index(@generated.ImGuiListClipper, Int) -> Unit
+
+pub fn list_clipper_include_items_by_index(@generated.ImGuiListClipper, Int, Int) -> Unit
+
+pub fn list_clipper_seek_cursor_for_item(@generated.ImGuiListClipper, Int) -> Unit
+
+pub fn list_clipper_step(@generated.ImGuiListClipper) -> Bool
+
+pub fn load_ini_settings_from_disk(String) -> Unit raise ImGuiError
+
+pub fn load_ini_settings_from_memory(String, UInt64) -> Unit raise ImGuiError
+
+pub fn log_buttons() -> Unit raise ImGuiError
+
+pub fn log_finish() -> Unit raise ImGuiError
+
+pub fn log_text(String) -> Unit raise ImGuiError
+
+pub fn log_text_unformatted(String) -> Unit raise ImGuiError
+
+pub fn log_to_clipboard(Int) -> Unit raise ImGuiError
+
+pub fn log_to_file(Int, String) -> Unit raise ImGuiError
+
+pub fn log_to_tty(Int) -> Unit raise ImGuiError
+
 pub fn menu_item(String, selected? : Bool) -> Bool raise ImGuiError
+
+pub fn menu_item_bool_ptr(String, String, @generated.BoolPtr, Bool) -> Bool raise ImGuiError
+
+pub fn menu_item_ex(String, String, Bool, Bool) -> Bool raise ImGuiError
+
+pub fn menu_item_generated(String) -> Bool raise ImGuiError
 
 pub fn new_frame() -> Unit raise ImGuiError
 
+pub fn new_frame_generated() -> Unit raise ImGuiError
+
+pub fn new_line() -> Unit raise ImGuiError
+
+pub fn next_column() -> Unit raise ImGuiError
+
+pub fn open_popup(String, Int) -> Unit raise ImGuiError
+
+pub fn open_popup_id(UInt, Int) -> Unit raise ImGuiError
+
+pub fn open_popup_on_item_click(String, Int) -> Unit raise ImGuiError
+
+pub fn payload_clear(@generated.ImGuiPayload) -> Unit
+
+pub fn payload_is_data_type(@generated.ImGuiPayload, String) -> Bool
+
+pub fn payload_is_delivery(@generated.ImGuiPayload) -> Bool
+
+pub fn payload_is_preview(@generated.ImGuiPayload) -> Bool
+
+pub fn platform_io_clear_platform_handlers(@generated.ImGuiPlatformIO) -> Unit
+
+pub fn platform_io_clear_renderer_handlers(@generated.ImGuiPlatformIO) -> Unit
+
+pub fn plot_histogram(String, @generated.FloatPtr, Int) -> Unit raise ImGuiError
+
+pub fn plot_histogram_ex(String, @generated.FloatPtr, Int, Int, String, Float, Float, @generated.ImVec2, Int) -> Unit raise ImGuiError
+
+pub fn plot_lines(String, @generated.FloatPtr, Int) -> Unit raise ImGuiError
+
+pub fn plot_lines_ex(String, @generated.FloatPtr, Int, Int, String, Float, Float, @generated.ImVec2, Int) -> Unit raise ImGuiError
+
+pub fn pop_button_repeat() -> Unit raise ImGuiError
+
+pub fn pop_clip_rect() -> Unit raise ImGuiError
+
+pub fn pop_font() -> Unit raise ImGuiError
+
+pub fn pop_id() -> Unit raise ImGuiError
+
+pub fn pop_item_flag() -> Unit raise ImGuiError
+
+pub fn pop_item_width() -> Unit raise ImGuiError
+
+pub fn pop_style_color() -> Unit raise ImGuiError
+
+pub fn pop_style_color_ex(Int) -> Unit raise ImGuiError
+
+pub fn pop_style_var() -> Unit raise ImGuiError
+
+pub fn pop_style_var_ex(Int) -> Unit raise ImGuiError
+
+pub fn pop_tab_stop() -> Unit raise ImGuiError
+
+pub fn pop_text_wrap_pos() -> Unit raise ImGuiError
+
+pub fn progress_bar(Float, @generated.ImVec2, String) -> Unit raise ImGuiError
+
+pub fn push_button_repeat(Bool) -> Unit raise ImGuiError
+
+pub fn push_clip_rect(@generated.ImVec2, @generated.ImVec2, Bool) -> Unit raise ImGuiError
+
+pub fn push_font(@generated.ImFont) -> Unit raise ImGuiError
+
+pub fn push_font_float(@generated.ImFont, Float) -> Unit raise ImGuiError
+
+pub fn push_id(String) -> Unit raise ImGuiError
+
+pub fn push_id_int(Int) -> Unit raise ImGuiError
+
+pub fn push_id_ptr(@generated.VoidPtr) -> Unit raise ImGuiError
+
+pub fn push_id_str(String) -> Unit raise ImGuiError
+
+pub fn push_item_flag(Int, Bool) -> Unit raise ImGuiError
+
+pub fn push_item_width(Float) -> Unit raise ImGuiError
+
+pub fn push_style_color(Int, UInt) -> Unit raise ImGuiError
+
+pub fn push_style_color_im_vec4_ptr(Int, @generated.ImVec4) -> Unit raise ImGuiError
+
+pub fn push_style_var(Int, Float) -> Unit raise ImGuiError
+
+pub fn push_style_var_im_vec2_ptr(Int, @generated.ImVec2) -> Unit raise ImGuiError
+
+pub fn push_style_var_x(Int, Float) -> Unit raise ImGuiError
+
+pub fn push_style_var_y(Int, Float) -> Unit raise ImGuiError
+
+pub fn push_tab_stop(Bool) -> Unit raise ImGuiError
+
+pub fn push_text_wrap_pos(Float) -> Unit raise ImGuiError
+
+pub fn radio_button(String, Bool) -> Bool raise ImGuiError
+
+pub fn radio_button_int_ptr(String, @generated.IntPtr, Int) -> Bool raise ImGuiError
+
 pub fn render() -> @raw.DrawData raise ImGuiError
+
+pub fn render_generated() -> Unit raise ImGuiError
+
+pub fn reset_mouse_drag_delta() -> Unit raise ImGuiError
+
+pub fn reset_mouse_drag_delta_ex(Int) -> Unit raise ImGuiError
 
 pub fn safe_generated_bound_symbols() -> Int
 
@@ -1518,25 +1100,443 @@ pub fn safe_generated_total_symbols() -> Int
 
 pub fn same_line() -> Unit raise ImGuiError
 
+pub fn same_line_ex(Float, Float) -> Unit raise ImGuiError
+
+pub fn same_line_generated() -> Unit raise ImGuiError
+
+pub fn save_ini_settings_to_disk(String) -> Unit raise ImGuiError
+
+pub fn save_ini_settings_to_memory(@generated.SizeTPtr) -> String raise ImGuiError
+
 pub fn selectable(String, selected? : Bool, flags? : @raw.SelectableFlags) -> Bool raise ImGuiError
+
+pub fn selectable_bool_ptr(String, @generated.BoolPtr, Int) -> Bool raise ImGuiError
+
+pub fn selectable_bool_ptr_ex(String, @generated.BoolPtr, Int, @generated.ImVec2) -> Bool raise ImGuiError
+
+pub fn selectable_ex(String, Bool, Int, @generated.ImVec2) -> Bool raise ImGuiError
+
+pub fn selectable_generated(String) -> Bool raise ImGuiError
+
+pub fn selection_basic_storage_apply_requests(@generated.ImGuiSelectionBasicStorage, @generated.ImGuiMultiSelectIO) -> Unit
+
+pub fn selection_basic_storage_clear(@generated.ImGuiSelectionBasicStorage) -> Unit
+
+pub fn selection_basic_storage_contains(@generated.ImGuiSelectionBasicStorage, UInt) -> Bool
+
+pub fn selection_basic_storage_get_next_selected_item(@generated.ImGuiSelectionBasicStorage, @generated.VoidPtrPtr, @generated.ImGuiIDPtr) -> Bool
+
+pub fn selection_basic_storage_get_storage_id_from_index(@generated.ImGuiSelectionBasicStorage, Int) -> UInt
+
+pub fn selection_basic_storage_set_item_selected(@generated.ImGuiSelectionBasicStorage, UInt, Bool) -> Unit
+
+pub fn selection_basic_storage_swap(@generated.ImGuiSelectionBasicStorage, @generated.ImGuiSelectionBasicStorage) -> Unit
+
+pub fn selection_external_storage_apply_requests(@generated.ImGuiSelectionExternalStorage, @generated.ImGuiMultiSelectIO) -> Unit
 
 pub fn separator() -> Unit raise ImGuiError
 
+pub fn separator_generated() -> Unit raise ImGuiError
+
+pub fn separator_text(String) -> Unit raise ImGuiError
+
+pub fn set_clipboard_text(String) -> Unit raise ImGuiError
+
+pub fn set_color_edit_options(Int) -> Unit raise ImGuiError
+
+pub fn set_column_offset(Int, Float) -> Unit raise ImGuiError
+
+pub fn set_column_width(Int, Float) -> Unit raise ImGuiError
+
+pub fn set_current_context(@generated.ImGuiContext) -> Unit
+
+pub fn set_cursor_pos(@generated.ImVec2) -> Unit raise ImGuiError
+
+pub fn set_cursor_pos_x(Float) -> Unit raise ImGuiError
+
+pub fn set_cursor_pos_y(Float) -> Unit raise ImGuiError
+
+pub fn set_cursor_screen_pos(@generated.ImVec2) -> Unit raise ImGuiError
+
+pub fn set_drag_drop_payload(String, @generated.VoidPtr, UInt64, Int) -> Bool raise ImGuiError
+
+pub fn set_item_default_focus() -> Unit raise ImGuiError
+
+pub fn set_item_key_owner(Int) -> Bool raise ImGuiError
+
+pub fn set_item_tooltip(String) -> Unit raise ImGuiError
+
+pub fn set_item_tooltip_unformatted(String) -> Unit raise ImGuiError
+
+pub fn set_keyboard_focus_here() -> Unit raise ImGuiError
+
+pub fn set_keyboard_focus_here_ex(Int) -> Unit raise ImGuiError
+
+pub fn set_mouse_cursor(Int) -> Unit raise ImGuiError
+
+pub fn set_nav_cursor_visible(Bool) -> Unit raise ImGuiError
+
+pub fn set_next_frame_want_capture_keyboard(Bool) -> Unit raise ImGuiError
+
+pub fn set_next_frame_want_capture_mouse(Bool) -> Unit raise ImGuiError
+
+pub fn set_next_item_allow_overlap() -> Unit raise ImGuiError
+
+pub fn set_next_item_open(Bool, Int) -> Unit raise ImGuiError
+
+pub fn set_next_item_selection_user_data(Int64) -> Unit raise ImGuiError
+
+pub fn set_next_item_shortcut(Int, Int) -> Unit raise ImGuiError
+
+pub fn set_next_item_storage_id(UInt) -> Unit raise ImGuiError
+
+pub fn set_next_item_width(Float) -> Unit raise ImGuiError
+
+pub fn set_next_window_bg_alpha(Float) -> Unit raise ImGuiError
+
+pub fn set_next_window_collapsed(Bool, Int) -> Unit raise ImGuiError
+
+pub fn set_next_window_content_size(@generated.ImVec2) -> Unit raise ImGuiError
+
+pub fn set_next_window_focus() -> Unit raise ImGuiError
+
+pub fn set_next_window_pos(@generated.ImVec2, Int) -> Unit raise ImGuiError
+
+pub fn set_next_window_pos_ex(@generated.ImVec2, Int, @generated.ImVec2) -> Unit raise ImGuiError
+
+pub fn set_next_window_scroll(@generated.ImVec2) -> Unit raise ImGuiError
+
 pub fn set_next_window_size(Double, Double, cond? : @raw.Cond) -> Unit raise ImGuiError
+
+pub fn set_next_window_size_generated(@generated.ImVec2, Int) -> Unit raise ImGuiError
+
+pub fn set_scroll_from_pos_x(Float, Float) -> Unit raise ImGuiError
+
+pub fn set_scroll_from_pos_y(Float, Float) -> Unit raise ImGuiError
+
+pub fn set_scroll_here_x(Float) -> Unit raise ImGuiError
+
+pub fn set_scroll_here_y(Float) -> Unit raise ImGuiError
+
+pub fn set_scroll_x(Float) -> Unit raise ImGuiError
+
+pub fn set_scroll_y(Float) -> Unit raise ImGuiError
+
+pub fn set_state_storage(@generated.ImGuiStorage) -> Unit raise ImGuiError
+
+pub fn set_tab_item_closed(String) -> Unit raise ImGuiError
+
+pub fn set_tooltip(String) -> Unit raise ImGuiError
+
+pub fn set_tooltip_unformatted(String) -> Unit raise ImGuiError
+
+pub fn set_window_collapsed(Bool, Int) -> Unit raise ImGuiError
+
+pub fn set_window_collapsed_str(String, Bool, Int) -> Unit raise ImGuiError
+
+pub fn set_window_focus() -> Unit raise ImGuiError
+
+pub fn set_window_focus_str(String) -> Unit raise ImGuiError
+
+pub fn set_window_font_scale(Float) -> Unit raise ImGuiError
+
+pub fn set_window_pos(@generated.ImVec2, Int) -> Unit raise ImGuiError
+
+pub fn set_window_pos_str(String, @generated.ImVec2, Int) -> Unit raise ImGuiError
+
+pub fn set_window_size(@generated.ImVec2, Int) -> Unit raise ImGuiError
+
+pub fn set_window_size_str(String, @generated.ImVec2, Int) -> Unit raise ImGuiError
+
+pub fn shortcut(Int, Int) -> Bool raise ImGuiError
+
+pub fn show_about_window(@generated.BoolPtr) -> Unit raise ImGuiError
+
+pub fn show_debug_log_window(@generated.BoolPtr) -> Unit raise ImGuiError
 
 pub fn show_demo_window(open? : Bool) -> Unit raise ImGuiError
 
+pub fn show_demo_window_generated(@generated.BoolPtr) -> Unit raise ImGuiError
+
+pub fn show_font_selector(String) -> Unit raise ImGuiError
+
+pub fn show_id_stack_tool_window() -> Unit raise ImGuiError
+
+pub fn show_id_stack_tool_window_ex(@generated.BoolPtr) -> Unit raise ImGuiError
+
+pub fn show_metrics_window(@generated.BoolPtr) -> Unit raise ImGuiError
+
+pub fn show_style_editor(@generated.ImGuiStyle) -> Unit raise ImGuiError
+
+pub fn show_style_selector(String) -> Bool raise ImGuiError
+
+pub fn show_user_guide() -> Unit raise ImGuiError
+
+pub fn slider_angle(String, @generated.FloatPtr) -> Bool raise ImGuiError
+
+pub fn slider_angle_ex(String, @generated.FloatPtr, Float, Float, String, Int) -> Bool raise ImGuiError
+
 pub fn slider_float(String, Double, Double, Double) -> @raw.FloatEditResult raise ImGuiError
+
+pub fn slider_float2(String, @generated.FloatPtr, Float, Float) -> Bool raise ImGuiError
+
+pub fn slider_float2_ex(String, @generated.FloatPtr, Float, Float, String, Int) -> Bool raise ImGuiError
+
+pub fn slider_float3(String, @generated.FloatPtr, Float, Float) -> Bool raise ImGuiError
+
+pub fn slider_float3_ex(String, @generated.FloatPtr, Float, Float, String, Int) -> Bool raise ImGuiError
+
+pub fn slider_float4(String, @generated.FloatPtr, Float, Float) -> Bool raise ImGuiError
+
+pub fn slider_float4_ex(String, @generated.FloatPtr, Float, Float, String, Int) -> Bool raise ImGuiError
+
+pub fn slider_float_ex(String, @generated.FloatPtr, Float, Float, String, Int) -> Bool raise ImGuiError
+
+pub fn slider_float_generated(String, @generated.FloatPtr, Float, Float) -> Bool raise ImGuiError
+
+pub fn slider_int(String, @generated.IntPtr, Int, Int) -> Bool raise ImGuiError
+
+pub fn slider_int2(String, @generated.IntPtr, Int, Int) -> Bool raise ImGuiError
+
+pub fn slider_int2_ex(String, @generated.IntPtr, Int, Int, String, Int) -> Bool raise ImGuiError
+
+pub fn slider_int3(String, @generated.IntPtr, Int, Int) -> Bool raise ImGuiError
+
+pub fn slider_int3_ex(String, @generated.IntPtr, Int, Int, String, Int) -> Bool raise ImGuiError
+
+pub fn slider_int4(String, @generated.IntPtr, Int, Int) -> Bool raise ImGuiError
+
+pub fn slider_int4_ex(String, @generated.IntPtr, Int, Int, String, Int) -> Bool raise ImGuiError
+
+pub fn slider_int_ex(String, @generated.IntPtr, Int, Int, String, Int) -> Bool raise ImGuiError
+
+pub fn slider_scalar(String, Int, @generated.VoidPtr, @generated.VoidPtr, @generated.VoidPtr) -> Bool raise ImGuiError
+
+pub fn slider_scalar_ex(String, Int, @generated.VoidPtr, @generated.VoidPtr, @generated.VoidPtr, String, Int) -> Bool raise ImGuiError
+
+pub fn slider_scalar_n(String, Int, @generated.VoidPtr, Int, @generated.VoidPtr, @generated.VoidPtr) -> Bool raise ImGuiError
+
+pub fn slider_scalar_n_ex(String, Int, @generated.VoidPtr, Int, @generated.VoidPtr, @generated.VoidPtr, String, Int) -> Bool raise ImGuiError
+
+pub fn small_button(String) -> Bool raise ImGuiError
+
+pub fn spacing() -> Unit raise ImGuiError
+
+pub fn storage_build_sort_by_key(@generated.ImGuiStorage) -> Unit
+
+pub fn storage_clear(@generated.ImGuiStorage) -> Unit
+
+pub fn storage_get_bool(@generated.ImGuiStorage, UInt, Bool) -> Bool
+
+pub fn storage_get_bool_ref(@generated.ImGuiStorage, UInt, Bool) -> @generated.BoolPtr
+
+pub fn storage_get_float(@generated.ImGuiStorage, UInt, Float) -> Float
+
+pub fn storage_get_float_ref(@generated.ImGuiStorage, UInt, Float) -> @generated.FloatPtr
+
+pub fn storage_get_int(@generated.ImGuiStorage, UInt, Int) -> Int
+
+pub fn storage_get_int_ref(@generated.ImGuiStorage, UInt, Int) -> @generated.IntPtr
+
+pub fn storage_get_void_ptr(@generated.ImGuiStorage, UInt) -> @generated.VoidPtr
+
+pub fn storage_get_void_ptr_ref(@generated.ImGuiStorage, UInt, @generated.VoidPtr) -> @generated.VoidPtrPtr
+
+pub fn storage_set_all_int(@generated.ImGuiStorage, Int) -> Unit
+
+pub fn storage_set_bool(@generated.ImGuiStorage, UInt, Bool) -> Unit
+
+pub fn storage_set_float(@generated.ImGuiStorage, UInt, Float) -> Unit
+
+pub fn storage_set_int(@generated.ImGuiStorage, UInt, Int) -> Unit
+
+pub fn storage_set_void_ptr(@generated.ImGuiStorage, UInt, @generated.VoidPtr) -> Unit
+
+pub fn style_colors_classic(@generated.ImGuiStyle) -> Unit raise ImGuiError
+
+pub fn style_colors_dark(@generated.ImGuiStyle) -> Unit raise ImGuiError
+
+pub fn style_colors_light(@generated.ImGuiStyle) -> Unit raise ImGuiError
+
+pub fn style_scale_all_sizes(@generated.ImGuiStyle, Float) -> Unit
+
+pub fn tab_item_button(String, Int) -> Bool raise ImGuiError
+
+pub fn table_angled_headers_row() -> Unit raise ImGuiError
+
+pub fn table_get_column_count() -> Int raise ImGuiError
+
+pub fn table_get_column_flags(Int) -> Int raise ImGuiError
+
+pub fn table_get_column_index() -> Int raise ImGuiError
+
+pub fn table_get_column_name(Int) -> String raise ImGuiError
+
+pub fn table_get_hovered_column() -> Int raise ImGuiError
+
+pub fn table_get_row_index() -> Int raise ImGuiError
+
+pub fn table_get_sort_specs() -> @generated.ImGuiTableSortSpecs raise ImGuiError
+
+pub fn table_header(String) -> Unit raise ImGuiError
+
+pub fn table_headers_row() -> Unit raise ImGuiError
 
 pub fn table_next_column() -> Bool raise ImGuiError
 
+pub fn table_next_column_generated() -> Bool raise ImGuiError
+
 pub fn table_next_row() -> Unit raise ImGuiError
+
+pub fn table_next_row_ex(Int, Float) -> Unit raise ImGuiError
+
+pub fn table_next_row_generated() -> Unit raise ImGuiError
+
+pub fn table_set_bg_color(Int, UInt, Int) -> Unit raise ImGuiError
+
+pub fn table_set_column_enabled(Int, Bool) -> Unit raise ImGuiError
+
+pub fn table_set_column_index(Int) -> Bool raise ImGuiError
+
+pub fn table_setup_column(String, Int) -> Unit raise ImGuiError
+
+pub fn table_setup_column_ex(String, Int, Float, UInt) -> Unit raise ImGuiError
+
+pub fn table_setup_scroll_freeze(Int, Int) -> Unit raise ImGuiError
 
 pub fn text(String) -> Unit raise ImGuiError
 
+pub fn text_buffer_append(@generated.ImGuiTextBuffer, String) -> Unit
+
+pub fn text_buffer_appendf(@generated.ImGuiTextBuffer, String) -> Unit
+
+pub fn text_buffer_begin(@generated.ImGuiTextBuffer) -> String
+
+pub fn text_buffer_c_str(@generated.ImGuiTextBuffer) -> String
+
+pub fn text_buffer_clear(@generated.ImGuiTextBuffer) -> Unit
+
+pub fn text_buffer_empty(@generated.ImGuiTextBuffer) -> Bool
+
+pub fn text_buffer_end(@generated.ImGuiTextBuffer) -> String
+
+pub fn text_buffer_reserve(@generated.ImGuiTextBuffer, Int) -> Unit
+
+pub fn text_buffer_resize(@generated.ImGuiTextBuffer, Int) -> Unit
+
+pub fn text_buffer_size(@generated.ImGuiTextBuffer) -> Int
+
+pub fn text_colored(@generated.ImVec4, String) -> Unit raise ImGuiError
+
+pub fn text_colored_unformatted(@generated.ImVec4, String) -> Unit raise ImGuiError
+
+pub fn text_disabled(String) -> Unit raise ImGuiError
+
+pub fn text_disabled_unformatted(String) -> Unit raise ImGuiError
+
+pub fn text_filter_build(@generated.ImGuiTextFilter) -> Unit
+
+pub fn text_filter_clear(@generated.ImGuiTextFilter) -> Unit
+
+pub fn text_filter_draw(@generated.ImGuiTextFilter, String, Float) -> Bool
+
+pub fn text_filter_is_active(@generated.ImGuiTextFilter) -> Bool
+
+pub fn text_filter_pass_filter(@generated.ImGuiTextFilter, String) -> Bool
+
+pub fn text_filter_text_range_empty(@generated.ImGuiTextFilter_ImGuiTextRange) -> Bool
+
+pub fn text_filter_text_range_split(@generated.ImGuiTextFilter_ImGuiTextRange, Int, @generated.ImVector_ImGuiTextRange) -> Unit
+
+pub fn text_generated(String) -> Unit raise ImGuiError
+
+pub fn text_link(String) -> Bool raise ImGuiError
+
+pub fn text_link_open_url(String) -> Bool raise ImGuiError
+
+pub fn text_link_open_url_ex(String, String) -> Bool raise ImGuiError
+
+pub fn text_unformatted(String) -> Unit raise ImGuiError
+
+pub fn text_unformatted_ex(String) -> Unit raise ImGuiError
+
+pub fn text_wrapped(String) -> Unit raise ImGuiError
+
+pub fn text_wrapped_unformatted(String) -> Unit raise ImGuiError
+
+pub fn texture_data_create(@generated.ImTextureData, @generated.ImTextureFormat, Int, Int) -> Unit
+
+pub fn texture_data_destroy_pixels(@generated.ImTextureData) -> Unit
+
+pub fn texture_data_get_pitch(@generated.ImTextureData) -> Int
+
+pub fn texture_data_get_pixels(@generated.ImTextureData) -> @generated.VoidPtr
+
+pub fn texture_data_get_pixels_at(@generated.ImTextureData, Int, Int) -> @generated.VoidPtr
+
+pub fn texture_data_get_size_in_bytes(@generated.ImTextureData) -> Int
+
+pub fn texture_data_get_tex_id(@generated.ImTextureData) -> UInt64
+
+pub fn texture_data_get_tex_ref(@generated.ImTextureData) -> @generated.ImTextureRef
+
+pub fn texture_data_set_status(@generated.ImTextureData, @generated.ImTextureStatus) -> Unit
+
+pub fn texture_data_set_tex_id(@generated.ImTextureData, UInt64) -> Unit
+
+pub fn texture_ref_get_tex_id(@generated.ImTextureRef) -> UInt64
+
 pub fn tree_node(String, flags? : @raw.TreeNodeFlags) -> Bool raise ImGuiError
 
+pub fn tree_node_ex(String, Int) -> Bool raise ImGuiError
+
+pub fn tree_node_ex_ptr(@generated.VoidPtr, Int, String) -> Bool raise ImGuiError
+
+pub fn tree_node_ex_ptr_unformatted(@generated.VoidPtr, Int, String) -> Bool raise ImGuiError
+
+pub fn tree_node_ex_str(String, Int, String) -> Bool raise ImGuiError
+
+pub fn tree_node_ex_str_unformatted(String, Int, String) -> Bool raise ImGuiError
+
+pub fn tree_node_generated(String) -> Bool raise ImGuiError
+
+pub fn tree_node_get_open(UInt) -> Bool raise ImGuiError
+
+pub fn tree_node_ptr(@generated.VoidPtr, String) -> Bool raise ImGuiError
+
+pub fn tree_node_ptr_unformatted(@generated.VoidPtr, String) -> Bool raise ImGuiError
+
+pub fn tree_node_str(String, String) -> Bool raise ImGuiError
+
+pub fn tree_node_str_unformatted(String, String) -> Bool raise ImGuiError
+
 pub fn tree_pop() -> Unit raise ImGuiError
+
+pub fn tree_pop_generated() -> Unit raise ImGuiError
+
+pub fn tree_push(String) -> Unit raise ImGuiError
+
+pub fn tree_push_ptr(@generated.VoidPtr) -> Unit raise ImGuiError
+
+pub fn unindent() -> Unit raise ImGuiError
+
+pub fn unindent_ex(Float) -> Unit raise ImGuiError
+
+pub fn v_slider_float(String, @generated.ImVec2, @generated.FloatPtr, Float, Float) -> Bool raise ImGuiError
+
+pub fn v_slider_float_ex(String, @generated.ImVec2, @generated.FloatPtr, Float, Float, String, Int) -> Bool raise ImGuiError
+
+pub fn v_slider_int(String, @generated.ImVec2, @generated.IntPtr, Int, Int) -> Bool raise ImGuiError
+
+pub fn v_slider_int_ex(String, @generated.ImVec2, @generated.IntPtr, Int, Int, String, Int) -> Bool raise ImGuiError
+
+pub fn v_slider_scalar(String, @generated.ImVec2, Int, @generated.VoidPtr, @generated.VoidPtr, @generated.VoidPtr) -> Bool raise ImGuiError
+
+pub fn v_slider_scalar_ex(String, @generated.ImVec2, Int, @generated.VoidPtr, @generated.VoidPtr, @generated.VoidPtr, String, Int) -> Bool raise ImGuiError
+
+pub fn viewport_get_center(@generated.ImGuiViewport) -> @generated.ImVec2
+
+pub fn viewport_get_work_center(@generated.ImGuiViewport) -> @generated.ImVec2
 
 // Errors
 pub(all) suberror ImGuiError {

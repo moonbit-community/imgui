@@ -6,6 +6,7 @@ package "moonbit-community/imgui/examples/translated_demo"
 // Errors
 
 // Types and methods
+type DemoState
 
 // Type aliases
 

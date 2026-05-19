@@ -69,12 +69,95 @@ VARARG_LITERAL_WRAPPERS = {
     ),
 }
 
+PUBLIC_NAME_PREFIXES = [
+    ("ImGuiSelectionBasicStorage_", "selection_basic_storage_"),
+    ("ImGuiSelectionExternalStorage_", "selection_external_storage_"),
+    ("ImGuiInputTextCallbackData_", "input_text_callback_data_"),
+    ("ImGuiTableColumnSortSpecs_", "table_column_sort_specs_"),
+    ("ImGuiFontAtlasRect_", "font_atlas_rect_"),
+    ("ImGuiPlatformImeData_", "platform_ime_data_"),
+    ("ImGuiTextFilter_", "text_filter_"),
+    ("ImGuiTextBuffer_", "text_buffer_"),
+    ("ImGuiListClipper_", "list_clipper_"),
+    ("ImGuiTableSortSpecs_", "table_sort_specs_"),
+    ("ImGuiMultiSelectIO_", "multi_select_io_"),
+    ("ImGuiPlatformIO_", "platform_io_"),
+    ("ImGuiViewport_", "viewport_"),
+    ("ImGuiPayload_", "payload_"),
+    ("ImGuiStorage_", "storage_"),
+    ("ImGuiStyle_", "style_"),
+    ("ImGuiIO_", "io_"),
+    ("ImGui_", ""),
+    ("ImDrawListSplitter_", "draw_list_splitter_"),
+    ("ImDrawList_", "draw_list_"),
+    ("ImDrawData_", "draw_data_"),
+    ("ImDrawCmd_", "draw_cmd_"),
+    ("ImTextureData_", "texture_data_"),
+    ("ImTextureRect_", "texture_rect_"),
+    ("ImTextureRef_", "texture_ref_"),
+    ("ImFontGlyphRangesBuilder_", "font_glyph_ranges_builder_"),
+    ("ImFontAtlasRect_", "font_atlas_rect_"),
+    ("ImFontAtlas_", "font_atlas_"),
+    ("ImFontConfig_", "font_config_"),
+    ("ImFontGlyph_", "font_glyph_"),
+    ("ImFontBaked_", "font_baked_"),
+    ("ImFontLoader_", "font_loader_"),
+    ("ImFont_", "font_"),
+    ("ImColor_", "color_"),
+]
+
+RESERVED_PUBLIC_NAMES = {
+    "begin_menu",
+    "begin_menu_bar",
+    "begin_tab_bar",
+    "begin_tab_item",
+    "begin_table",
+    "button",
+    "checkbox",
+    "collapsing_header",
+    "end_frame",
+    "end_menu",
+    "end_menu_bar",
+    "end_tab_bar",
+    "end_tab_item",
+    "end_table",
+    "input_text",
+    "menu_item",
+    "new_frame",
+    "render",
+    "same_line",
+    "selectable",
+    "separator",
+    "set_next_window_size",
+    "show_demo_window",
+    "slider_float",
+    "table_next_column",
+    "table_next_row",
+    "text",
+    "tree_node",
+    "tree_pop",
+}
+
 UNSAFE_SAFE_LAYER_FUNCTIONS = {
     "ImGui_MemAlloc": "raw allocator ownership is not safe",
     "ImGui_MemFree": "raw allocator ownership is not safe",
     "ImVector_Construct": "raw ImVector construction ownership is not safe",
     "ImVector_Destruct": "raw ImVector destruction ownership is not safe",
 }
+
+
+def public_function_name(c_name: str) -> str:
+    for prefix, replacement in PUBLIC_NAME_PREFIXES:
+        if c_name.startswith(prefix):
+            name = replacement + to_snake(c_name[len(prefix) :])
+            break
+    else:
+        name = to_snake(c_name)
+    name = name.replace("im_draw_flags", "draw_flags")
+    name = name.replace("im_gui_text_range", "text_range")
+    if name in RESERVED_PUBLIC_NAMES:
+        return f"{name}_generated"
+    return name
 
 
 def type_ref(moonbit_type: str) -> str:
@@ -168,7 +251,7 @@ def render_custom_vararg_literal(
     model: BindingModel,
     fn: dict[str, Any],
 ) -> list[str]:
-    name = to_snake(fn["name"])
+    public_name = public_function_name(fn["name"])
     ret = return_type(model, fn)
     guarded = needs_context_guard(fn)
     target, keep_indices, target_args = VARARG_LITERAL_WRAPPERS[fn["name"]]
@@ -193,7 +276,7 @@ def render_custom_vararg_literal(
     lines = [
         "///|",
         f"/// Safe literal-text wrapper for `{fn['name']}`.",
-        f"pub fn {name}({', '.join(params)}) -> {ret}{' raise ImGuiError' if guarded else ''} {{",
+        f"pub fn {public_name}({', '.join(params)}) -> {ret}{' raise ImGuiError' if guarded else ''} {{",
     ]
     if guarded:
         lines.append("  ensure_current_context()")
@@ -210,7 +293,8 @@ def render_custom_vararg_literal(
 def render_function(model: BindingModel, fn: dict[str, Any]) -> list[str]:
     if fn["name"] in VARARG_LITERAL_WRAPPERS:
         return render_custom_vararg_literal(model, fn)
-    name = to_snake(fn["name"])
+    raw_name = to_snake(fn["name"])
+    public_name = public_function_name(fn["name"])
     ret = return_type(model, fn)
     guarded = needs_context_guard(fn)
     params: list[str] = []
@@ -233,14 +317,14 @@ def render_function(model: BindingModel, fn: dict[str, Any]) -> list[str]:
     lines = [
         "///|",
         f"/// Safe generated wrapper for `{fn['name']}`.",
-        f"pub fn {name}({', '.join(params)}) -> {ret}{' raise ImGuiError' if guarded else ''} {{",
+        f"pub fn {public_name}({', '.join(params)}) -> {ret}{' raise ImGuiError' if guarded else ''} {{",
     ]
     if guarded:
         lines.append("  ensure_current_context()")
     for index, local in cstring_args:
         lines.append(f"  let {local} = @raw_generated.OwnedCString::new(_p{index})")
         lines.append(f"  defer {local}.free()")
-    raw_call = f"@raw_generated.{name}({', '.join(call_args)})"
+    raw_call = f"@raw_generated.{raw_name}({', '.join(call_args)})"
     if ret == "Unit":
         lines.append(f"  {raw_call}")
     elif ret == "String":
@@ -301,7 +385,7 @@ def render_safe(metadata: dict[str, Any], model: BindingModel) -> tuple[str, str
         "",
     ]
     for fn in bound:
-        report.append(f"- `{fn['name']}` -> `{to_snake(fn['name'])}`")
+        report.append(f"- `{fn['name']}` -> `{public_function_name(fn['name'])}`")
     report.extend(["", "## Skipped Functions", ""])
     for fn, reason in skipped:
         report.append(f"- `{fn['name']}`: {reason}")

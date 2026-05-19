@@ -16,6 +16,10 @@ generated safe layer exposes 725 of those functions with context checks and
 converts MoonBit UTF-16 `String` values to UTF-8 `const char*` inputs.
 Overloads that take `const char*` begin/end ranges expose a single full MoonBit
 `String` and pass a null end pointer to Dear ImGui.
+The top-level `moonbit-community/imgui` package strips Dear ImGui's C namespace
+prefixes, so application code uses names such as `@imgui.button`,
+`@imgui.begin`, and `@imgui.draw_list_add_line`. Exact C ABI names such as
+`im_gui_button` remain available only in `raw/generated`.
 
 Running `moon run examples/demo --target native` from this repository opens a
 native macOS Cocoa window. `moon run examples/translated_demo --target native`
@@ -116,11 +120,11 @@ defer context.destroy()
 
 try! @imgui.new_frame()
 if try! @imgui.begin_window("Generated safe API") {
-  try! @imgui.im_gui_text_unformatted("String arguments are converted safely")
-  ignore(try! @imgui.im_gui_button("Generated button"))
+  try! @imgui.text_unformatted("String arguments are converted safely")
+  ignore(try! @imgui.button("Generated button"))
 }
 try! @imgui.end_window()
-try! @imgui.im_gui_render()
+ignore(try! @imgui.render())
 ```
 
 Executable packages that depend on a backend must currently repeat the native
