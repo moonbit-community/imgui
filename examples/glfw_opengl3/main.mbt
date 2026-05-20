@@ -192,7 +192,7 @@ fn render_ui(state : DemoState) -> Unit raise @imgui.ImGuiError {
   let style = @imgui.style()
   let font = @imgui.font()
   let ui = @imgui.ui()
-  ui.main_menu_bar(style=[Background(Hex("#20242A"))]) <| bar => {
+  ui.main_menu_bar() <| bar => {
     bar.menu_item("Main counter +1") <| () => {
       state.counter = state.counter + 1
     }
@@ -200,13 +200,8 @@ fn render_ui(state : DemoState) -> Unit raise @imgui.ImGuiError {
       state.counter = state.counter - 1
     }
   }
-  let window_style = demo_window_style()
-  ui.window(
-    "MoonBit - Overview",
-    flags=[MenuBar, AlwaysAutoResize],
-    style=window_style,
-  ) <| ui => {
-    ui.menu_bar(style=[Text(White)]) <| bar => {
+  ui.window("MoonBit - Overview", flags=[MenuBar, AlwaysAutoResize]) <| ui => {
+    ui.menu_bar() <| bar => {
       bar.menu("Actions") <| menu => {
         menu.menu_item("Increment counter") <| () => {
           state.counter = state.counter + 1
@@ -225,39 +220,33 @@ fn render_ui(state : DemoState) -> Unit raise @imgui.ImGuiError {
     render_overview(ui, state)
   }
 
-  ui.window(
-    "MoonBit - Text and Layout",
-    flags=[HorizontalScrollbar],
-    style=window_style,
-  ) <| ui => { render_text_and_layout(ui, state) }
+  ui.window("MoonBit - Text and Layout", flags=[HorizontalScrollbar]) <| ui => {
+    render_text_and_layout(ui, state)
+  }
 
-  ui.window(
-    "MoonBit - Values and Inputs",
-    flags=[HorizontalScrollbar],
-    style=window_style,
-  ) <| ui => { render_controls(ui, state) }
-
-  ui.window(
-    "MoonBit - Scopes and Popups",
-    flags=[HorizontalScrollbar],
-    style=window_style,
-  ) <| ui => {
-    render_scopes(ui, state, style, font)
-    render_popup_scopes(ui, state)
+  ui.window("MoonBit - Values and Inputs", flags=[HorizontalScrollbar]) <| ui => {
+    render_controls(ui, state)
   }
 
   ui.window(
-    "MoonBit - Tabs and Tables",
+    "MoonBit - Styling",
     flags=[HorizontalScrollbar],
-    style=window_style,
-  ) <| ui => { render_tabs(ui, state) }
+    style=demo_window_style(),
+  ) <| ui => { render_styling(ui, state, style, font) }
+
+  ui.window("MoonBit - Scopes and Popups", flags=[HorizontalScrollbar]) <| ui => {
+    render_scopes(ui, state)
+    render_popup_scopes(ui, state)
+  }
+
+  ui.window("MoonBit - Tabs and Tables", flags=[HorizontalScrollbar]) <| ui => {
+    render_tabs(ui, state)
+  }
 
   if state.show_metrics {
-    ui.window(
-      "MoonBit - Metrics",
-      flags=[AlwaysAutoResize, NoSavedSettings],
-      style=window_style,
-    ) <| ui => { render_metrics(ui, font) }
+    ui.window("MoonBit - Metrics", flags=[AlwaysAutoResize, NoSavedSettings]) <| ui => {
+      render_metrics(ui, font)
+    }
   }
 
   if state.show_another {
@@ -588,21 +577,8 @@ fn render_controls(
 fn render_scopes(
   ui : @imgui.WindowUi,
   state : DemoState,
-  style : @imgui.Style,
-  font : @imgui.Font,
 ) -> Unit raise @imgui.ImGuiError {
   ui.separator_text("Scopes")
-  ui.with_id("style-buttons") <| ui => {
-    ui.group() <| ui => {
-      ui.button("Dark") <| () => { style.colors_dark() }
-      ui.same_line()
-      ui.button("Light") <| () => { style.colors_light() }
-      ui.same_line()
-      ui.button("Classic") <| () => { style.colors_classic() }
-      ui.same_line()
-      ui.button("Scale 1.00") <| () => { style.scale_all_sizes(1.0) }
-    }
-  }
   ui.with_id_int(7) <| ui => {
     ui.disabled(disabled=!state.enabled) <| ui => {
       ui.button("Disabled-aware button") <| () => {
@@ -617,23 +593,6 @@ fn render_scopes(
     ui.small_button("Hold repeat +") <| () => {
       state.counter = state.counter + 1
     }
-  }
-  ui.style([
-    Background(Blue),
-    HoveredBg(Cyan),
-    ActiveBg(Green),
-    Text(White),
-    Rounding(5.0),
-  ]) <| ui => {
-    ui.button("Styled button") <| () => { state.counter = state.counter + 1 }
-  }
-  ui.button("Rounded direct style", style=[
-    Background(Hex("#223344")),
-    HoveredBg(Hex("#31506B")),
-    Rounding(8.0),
-  ]) <| () => { state.counter = state.counter + 1 }
-  ui.with_font(font, size=@imgui.font_size()) <| ui => {
-    ui.text("Current font scope")
   }
 
   ui.combo("Combo", combo_label(state.combo_index), flags=[HeightRegular]) <| combo => {
@@ -715,21 +674,59 @@ fn render_scopes(
 }
 
 ///|
+fn render_styling(
+  ui : @imgui.WindowUi,
+  state : DemoState,
+  style : @imgui.Style,
+  font : @imgui.Font,
+) -> Unit raise @imgui.ImGuiError {
+  ui.separator_text("Global style")
+  ui.group() <| ui => {
+    ui.button("Dark") <| () => { style.colors_dark() }
+    ui.same_line()
+    ui.button("Light") <| () => { style.colors_light() }
+    ui.same_line()
+    ui.button("Classic") <| () => { style.colors_classic() }
+    ui.same_line()
+    ui.button("Scale 1.00") <| () => { style.scale_all_sizes(1.0) }
+  }
+  ui.separator_text("Scoped StyleSheet")
+  ui.text("This window uses the full demo_window_style() style sheet.")
+  ui.style([
+    Background(Blue),
+    HoveredBg(Cyan),
+    ActiveBg(Green),
+    Text(White),
+    Rounding(5.0),
+  ]) <| ui => {
+    ui.button("Styled scope button") <| () => {
+      state.counter = state.counter + 1
+    }
+  }
+  ui.button("Direct button style", style=[
+    Background(Hex("#223344")),
+    HoveredBg(Hex("#31506B")),
+    Rounding(8.0),
+  ]) <| () => { state.counter = state.counter + 1 }
+  ui.separator_text("Font scope")
+  ui.with_font(font, size=@imgui.font_size()) <| ui => {
+    ui.text("Current font scope")
+  }
+}
+
+///|
 fn render_popup_scopes(
   ui : @imgui.WindowUi,
   state : DemoState,
 ) -> Unit raise @imgui.ImGuiError {
-  ui.popup("MoonBit popup", style=[Rounding(5.0), Text(Cyan)]) <| popup => {
+  ui.popup("MoonBit popup") <| popup => {
     popup.text("Popup rendered by MoonBit.")
     popup.separator()
     popup.button("Close popup") <| () => { popup.close() }
   }
-  state.show_modal = ui.popup_modal(
-      "MoonBit modal",
-      state.show_modal,
-      flags=[AlwaysAutoResize],
-      style=[Rounding(8.0), Border(Cyan)],
-    ) <| popup => {
+  state.show_modal = ui.popup_modal("MoonBit modal", state.show_modal, flags=[
+      AlwaysAutoResize,
+    ]) <| popup => {
       popup.text("Modal scope is closed automatically.")
       popup.button("Accept") <| () => {
         state.show_modal = false
