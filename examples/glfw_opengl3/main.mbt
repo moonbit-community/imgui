@@ -228,11 +228,9 @@ fn render_ui(state : DemoState) -> Unit raise @imgui.ImGuiError {
     render_controls(ui, state)
   }
 
-  ui.window(
-    "MoonBit - Styling",
-    flags=[HorizontalScrollbar],
-    style=demo_window_style(),
-  ) <| ui => { render_styling(ui, state, style, font) }
+  ui.window("MoonBit - Styling", flags=[HorizontalScrollbar]) <| ui => {
+    render_styling(ui, state, style, font)
+  }
 
   ui.window("MoonBit - Scopes and Popups", flags=[HorizontalScrollbar]) <| ui => {
     render_scopes(ui, state)
@@ -691,7 +689,15 @@ fn render_styling(
     ui.button("Scale 1.00") <| () => { style.scale_all_sizes(1.0) }
   }
   ui.separator_text("Scoped StyleSheet")
-  ui.text("This window uses the full demo_window_style() style sheet.")
+  ui.text(
+    "The style below is scoped, so global theme buttons above stay stable.",
+  )
+  ui.style(demo_window_style()) <| ui => {
+    ui.text("demo_window_style() preview")
+    ui.button("Styled preview +1") <| () => {
+      state.counter = state.counter + 1
+    }
+  }
   ui.style([
     Background(Blue),
     HoveredBg(Cyan),
