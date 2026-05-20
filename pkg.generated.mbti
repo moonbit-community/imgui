@@ -522,7 +522,7 @@ pub fn TableUi::hovered_column(Self) -> Int raise ImGuiError
 pub fn TableUi::next_column(Self) -> Bool raise ImGuiError
 pub fn TableUi::next_row(Self, flags? : Array[TableRowFlag], min_height? : Float) -> Unit raise ImGuiError
 pub fn TableUi::row_index(Self) -> Int raise ImGuiError
-pub fn TableUi::selectable(Self, String, selected? : Bool, flags? : Array[SelectableFlag], style? : Array[StyleSheet]) -> Bool raise ImGuiError
+pub fn TableUi::selectable(Self, String, selected? : Bool, flags? : Array[SelectableFlag], style? : Array[StyleSheet], () -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn TableUi::set_bg_color(Self, TableBgTarget, Color, column? : Int) -> Unit raise ImGuiError
 pub fn TableUi::set_column_enabled(Self, Int, Bool) -> Unit raise ImGuiError
 pub fn TableUi::set_column_index(Self, Int) -> Bool raise ImGuiError
@@ -730,7 +730,7 @@ pub fn WindowUi::text_disabled(Self, String, style? : Array[StyleSheet]) -> Unit
 pub fn WindowUi::text_line_height(Self) -> Float raise ImGuiError
 pub fn WindowUi::text_line_height_with_spacing(Self) -> Float raise ImGuiError
 pub fn WindowUi::text_link(Self, String, style? : Array[StyleSheet], () -> Unit raise ImGuiError) -> Unit raise ImGuiError
-pub fn WindowUi::text_link_open_url(Self, String, style? : Array[StyleSheet]) -> Bool raise ImGuiError
+pub fn WindowUi::text_link_open_url(Self, String, style? : Array[StyleSheet]) -> Unit raise ImGuiError
 pub fn WindowUi::text_wrapped(Self, String, style? : Array[StyleSheet]) -> Unit raise ImGuiError
 pub fn WindowUi::tooltip(Self, style? : Array[StyleSheet], (TooltipUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::tree_node(Self, String, flags? : Array[TreeNodeFlag], style? : Array[StyleSheet], (TreeNodeUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError

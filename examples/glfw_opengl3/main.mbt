@@ -330,7 +330,7 @@ fn render_text_and_layout(
   }
   ui.text_link("Text link") <| () => { state.counter = state.counter + 1 }
   ui.same_line()
-  ignore(ui.text_link_open_url("https://github.com/moonbit-community/imgui"))
+  ui.text_link_open_url("https://github.com/moonbit-community/imgui")
   ui.new_line()
   ui.spacing()
   ui.indent(width=18.0)
@@ -821,11 +821,9 @@ fn render_row(
 ) -> Unit raise @imgui.ImGuiError {
   table.next_row()
   ignore(table.next_column())
-  if table.selectable(label, selected=state.selected_row == index, flags=[
-      SpanAllColumns,
-    ]) {
-    state.selected_row = index
-  }
+  table.selectable(label, selected=state.selected_row == index, flags=[
+    SpanAllColumns,
+  ]) <| () => { state.selected_row = index }
   ignore(table.next_column())
   table.text("row \{index}")
   ignore(table.next_column())

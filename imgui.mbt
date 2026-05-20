@@ -2188,11 +2188,11 @@ pub fn WindowUi::text_link_open_url(
   _self : WindowUi,
   label : String,
   style? : Array[StyleSheet] = [],
-) -> Bool raise ImGuiError {
+) -> Unit raise ImGuiError {
   ensure_current_context()
   let restore = apply_style_sheet(style)
   defer restore.reset()
-  @bindings.im_gui_text_link_open_url(utf8(label))
+  ignore(@bindings.im_gui_text_link_open_url(utf8(label)))
 }
 
 ///|
@@ -4535,23 +4535,26 @@ pub fn TableUi::text(
 }
 
 ///|
-/// Adds a selectable item inside a table.
+/// Runs `body` when a selectable item inside a table is activated.
 pub fn TableUi::selectable(
   _self : TableUi,
   label : String,
   selected? : Bool = false,
   flags? : Array[SelectableFlag] = [],
   style? : Array[StyleSheet] = [],
-) -> Bool raise ImGuiError {
+  body : () -> Unit raise ImGuiError,
+) -> Unit raise ImGuiError {
   ensure_current_context()
   let restore = apply_style_sheet(style)
   defer restore.reset()
   let current = Ref(selected)
-  @bindings.im_gui_selectable_bool_ptr(
-    utf8(label),
-    Some(current),
-    selectable_flag_bits(flags),
-  )
+  if @bindings.im_gui_selectable_bool_ptr(
+      utf8(label),
+      Some(current),
+      selectable_flag_bits(flags),
+    ) {
+    body()
+  }
 }
 
 ///|
