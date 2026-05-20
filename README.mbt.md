@@ -63,8 +63,7 @@ ignore(try! @imgui.render())
 - Composable flags are passed as enum arrays, for example
   `flags=[@imgui.WindowFlag::MenuBar, @imgui.WindowFlag::NoSavedSettings]`.
 - Scoped style sheets are passed as enum arrays, for example
-  `style=[Text(White), Background(Hex("#223344")), SelectedBg(Cyan), SliderGrab(Blue), Rounding(6.0)]`.
-  Use `Slot(StyleColor, Color)` only when a precise color slot is needed.
+  `style=[Text(White), Background(Hex("#223344")), SelectedBg(Cyan), SliderGrab(Blue), TextLink(Green), Rounding(6.0)]`.
 
 ## Packages
 

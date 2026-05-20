@@ -343,29 +343,6 @@ pub fn Style::colors_dark(Self) -> Unit
 pub fn Style::colors_light(Self) -> Unit
 pub fn Style::scale_all_sizes(Self, Float) -> Unit
 
-pub(all) enum StyleColor {
-  BorderShadow
-  Separator
-  SeparatorHovered
-  SeparatorActive
-  CheckMark
-  TabSelectedOverline
-  TabDimmedSelectedOverline
-  PlotLines
-  PlotLinesHovered
-  PlotHistogram
-  PlotHistogramHovered
-  TextLink
-  TreeLines
-  DragDropTarget
-  UnsavedMarker
-  NavCursor
-  NavWindowingHighlight
-  NavWindowingDimBackground
-  ModalWindowDimBackground
-  InputTextCursor
-} derive(Eq, @debug.Debug)
-
 pub(all) enum StyleSheet {
   Text(Color)
   TextDisabled(Color)
@@ -385,8 +362,27 @@ pub(all) enum StyleSheet {
   ResizeGrip(Color)
   ResizeGripHovered(Color)
   ResizeGripActive(Color)
+  BorderShadow(Color)
+  Separator(Color)
+  SeparatorHovered(Color)
+  SeparatorActive(Color)
+  CheckMark(Color)
+  TabSelectedOverline(Color)
+  TabDimmedSelectedOverline(Color)
+  PlotLines(Color)
+  PlotLinesHovered(Color)
+  PlotHistogram(Color)
+  PlotHistogramHovered(Color)
+  TextLink(Color)
+  TreeLines(Color)
+  DragDropTarget(Color)
+  UnsavedMarker(Color)
+  NavCursor(Color)
+  NavWindowingHighlight(Color)
+  NavWindowingDimBackground(Color)
+  ModalWindowDimBackground(Color)
+  InputTextCursor(Color)
   Border(Color)
-  Slot(StyleColor, Color)
   Alpha(Float)
   DisabledAlpha(Float)
   Rounding(Float)

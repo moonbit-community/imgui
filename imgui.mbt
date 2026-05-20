@@ -103,68 +103,127 @@ pub(all) enum Color {
 } derive(Eq, Debug)
 
 ///|
-/// Exact color slots not covered by broader scoped style sheets.
-pub(all) enum StyleColor {
-  BorderShadow
-  Separator
-  SeparatorHovered
-  SeparatorActive
-  CheckMark
-  TabSelectedOverline
-  TabDimmedSelectedOverline
-  PlotLines
-  PlotLinesHovered
-  PlotHistogram
-  PlotHistogramHovered
-  TextLink
-  TreeLines
-  DragDropTarget
-  UnsavedMarker
-  NavCursor
-  NavWindowingHighlight
-  NavWindowingDimBackground
-  ModalWindowDimBackground
-  InputTextCursor
-} derive(Eq, Debug)
-
-///|
 /// Scoped, inheritable style entries applied while a UI callback runs.
 pub(all) enum StyleSheet {
+  /// Affects `ImGuiCol_Text`.
   Text(Color)
+  /// Affects `ImGuiCol_TextDisabled`.
   TextDisabled(Color)
+  /// Affects the normal background slots: `WindowBg`, `ChildBg`, `PopupBg`,
+  /// `FrameBg`, `TitleBg`, `MenuBarBg`, `ScrollbarBg`, `Button`, `Header`,
+  /// `Tab`, `TableHeaderBg`, `TableRowBg`, and `TableRowBgAlt`.
   Background(Color)
+  /// Affects hovered background slots: `FrameBgHovered`, `ButtonHovered`,
+  /// `HeaderHovered`, and `TabHovered`.
   HoveredBg(Color)
+  /// Affects active background slots: `FrameBgActive`, `TitleBgActive`,
+  /// `ButtonActive`, and `HeaderActive`.
   ActiveBg(Color)
+  /// Affects `ImGuiCol_TitleBgCollapsed`.
   CollapsedBg(Color)
+  /// Affects selected background slots: `CheckboxSelectedBg`, `TabSelected`,
+  /// and `TextSelectedBg`.
   SelectedBg(Color)
+  /// Affects `ImGuiCol_TabDimmed`.
   DimmedBg(Color)
+  /// Affects `ImGuiCol_TabDimmedSelected`.
   DimmedSelectedBg(Color)
+  /// Affects `ImGuiCol_DragDropTargetBg`.
   DropTargetBg(Color)
+  /// Affects `ImGuiCol_ScrollbarGrab`.
   ScrollbarGrab(Color)
+  /// Affects `ImGuiCol_ScrollbarGrabHovered`.
   ScrollbarGrabHovered(Color)
+  /// Affects `ImGuiCol_ScrollbarGrabActive`.
   ScrollbarGrabActive(Color)
+  /// Affects `ImGuiCol_SliderGrab`.
   SliderGrab(Color)
+  /// Affects `ImGuiCol_SliderGrabActive`.
   SliderGrabActive(Color)
+  /// Affects `ImGuiCol_ResizeGrip`.
   ResizeGrip(Color)
+  /// Affects `ImGuiCol_ResizeGripHovered`.
   ResizeGripHovered(Color)
+  /// Affects `ImGuiCol_ResizeGripActive`.
   ResizeGripActive(Color)
+  /// Affects `ImGuiCol_BorderShadow`.
+  BorderShadow(Color)
+  /// Affects `ImGuiCol_Separator`.
+  Separator(Color)
+  /// Affects `ImGuiCol_SeparatorHovered`.
+  SeparatorHovered(Color)
+  /// Affects `ImGuiCol_SeparatorActive`.
+  SeparatorActive(Color)
+  /// Affects `ImGuiCol_CheckMark`.
+  CheckMark(Color)
+  /// Affects `ImGuiCol_TabSelectedOverline`.
+  TabSelectedOverline(Color)
+  /// Affects `ImGuiCol_TabDimmedSelectedOverline`.
+  TabDimmedSelectedOverline(Color)
+  /// Affects `ImGuiCol_PlotLines`.
+  PlotLines(Color)
+  /// Affects `ImGuiCol_PlotLinesHovered`.
+  PlotLinesHovered(Color)
+  /// Affects `ImGuiCol_PlotHistogram`.
+  PlotHistogram(Color)
+  /// Affects `ImGuiCol_PlotHistogramHovered`.
+  PlotHistogramHovered(Color)
+  /// Affects `ImGuiCol_TextLink`.
+  TextLink(Color)
+  /// Affects `ImGuiCol_TreeLines`.
+  TreeLines(Color)
+  /// Affects `ImGuiCol_DragDropTarget`.
+  DragDropTarget(Color)
+  /// Affects `ImGuiCol_UnsavedMarker`.
+  UnsavedMarker(Color)
+  /// Affects `ImGuiCol_NavCursor`.
+  NavCursor(Color)
+  /// Affects `ImGuiCol_NavWindowingHighlight`.
+  NavWindowingHighlight(Color)
+  /// Affects `ImGuiCol_NavWindowingDimBg`.
+  NavWindowingDimBackground(Color)
+  /// Affects `ImGuiCol_ModalWindowDimBg`.
+  ModalWindowDimBackground(Color)
+  /// Affects `ImGuiCol_InputTextCursor`.
+  InputTextCursor(Color)
+  /// Affects `ImGuiCol_Border`, `TableBorderLight`, and `TableBorderStrong`.
   Border(Color)
-  Slot(StyleColor, Color)
+  /// Affects `ImGuiStyleVar_Alpha`.
   Alpha(Float)
+  /// Affects `ImGuiStyleVar_DisabledAlpha`.
   DisabledAlpha(Float)
+  /// Affects all rounding style vars: `WindowRounding`, `ChildRounding`,
+  /// `PopupRounding`, `FrameRounding`, `ScrollbarRounding`, `GrabRounding`,
+  /// `ImageRounding`, `TabRounding`, `TreeLinesRounding`, and
+  /// `DragDropTargetRounding`.
   Rounding(Float)
+  /// Affects broad border-size style vars: `WindowBorderSize`,
+  /// `ChildBorderSize`, `PopupBorderSize`, `FrameBorderSize`,
+  /// `ImageBorderSize`, `TabBorderSize`, and `SeparatorTextBorderSize`.
   BorderSize(Float)
+  /// Affects `ImGuiStyleVar_IndentSpacing`.
   IndentSpacing(Float)
+  /// Affects `ImGuiStyleVar_ScrollbarSize`.
   ScrollbarSize(Float)
+  /// Affects `ImGuiStyleVar_ScrollbarPadding`.
   ScrollbarPadding(Float)
+  /// Affects `ImGuiStyleVar_GrabMinSize`.
   GrabMinSize(Float)
+  /// Affects `ImGuiStyleVar_TabMinWidthBase`.
   TabMinWidthBase(Float)
+  /// Affects `ImGuiStyleVar_TabMinWidthShrink`.
   TabMinWidthShrink(Float)
+  /// Affects `ImGuiStyleVar_TabBarBorderSize`.
   TabBarBorderSize(Float)
+  /// Affects `ImGuiStyleVar_TabBarOverlineSize`.
   TabBarOverlineSize(Float)
+  /// Affects `ImGuiStyleVar_TableAngledHeadersAngle`.
   TableAngledHeadersAngle(Float)
+  /// Affects `ImGuiStyleVar_TreeLinesSize`.
   TreeLinesSize(Float)
+  /// Affects `ImGuiStyleVar_SeparatorSize`.
   SeparatorSize(Float)
+  /// Affects `ImGuiStyleVar_SeparatorTextBorderSize`.
   SeparatorTextBorderSize(Float)
 } derive(Eq, Debug)
 
@@ -4698,6 +4757,52 @@ fn apply_style_sheet(
           push_style_color(ColorId::resize_grip_hovered(), color)
       ResizeGripActive(color) =>
         colors = colors + push_style_color(ColorId::resize_grip_active(), color)
+      BorderShadow(color) =>
+        colors = colors + push_style_color(ColorId::border_shadow(), color)
+      Separator(color) =>
+        colors = colors + push_style_color(ColorId::separator(), color)
+      SeparatorHovered(color) =>
+        colors = colors + push_style_color(ColorId::separator_hovered(), color)
+      SeparatorActive(color) =>
+        colors = colors + push_style_color(ColorId::separator_active(), color)
+      CheckMark(color) =>
+        colors = colors + push_style_color(ColorId::check_mark(), color)
+      TabSelectedOverline(color) =>
+        colors = colors +
+          push_style_color(ColorId::tab_selected_overline(), color)
+      TabDimmedSelectedOverline(color) =>
+        colors = colors +
+          push_style_color(ColorId::tab_dimmed_selected_overline(), color)
+      PlotLines(color) =>
+        colors = colors + push_style_color(ColorId::plot_lines(), color)
+      PlotLinesHovered(color) =>
+        colors = colors + push_style_color(ColorId::plot_lines_hovered(), color)
+      PlotHistogram(color) =>
+        colors = colors + push_style_color(ColorId::plot_histogram(), color)
+      PlotHistogramHovered(color) =>
+        colors = colors +
+          push_style_color(ColorId::plot_histogram_hovered(), color)
+      TextLink(color) =>
+        colors = colors + push_style_color(ColorId::text_link(), color)
+      TreeLines(color) =>
+        colors = colors + push_style_color(ColorId::tree_lines(), color)
+      DragDropTarget(color) =>
+        colors = colors + push_style_color(ColorId::drag_drop_target(), color)
+      UnsavedMarker(color) =>
+        colors = colors + push_style_color(ColorId::unsaved_marker(), color)
+      NavCursor(color) =>
+        colors = colors + push_style_color(ColorId::nav_cursor(), color)
+      NavWindowingHighlight(color) =>
+        colors = colors +
+          push_style_color(ColorId::nav_windowing_highlight(), color)
+      NavWindowingDimBackground(color) =>
+        colors = colors +
+          push_style_color(ColorId::nav_windowing_dim_bg(), color)
+      ModalWindowDimBackground(color) =>
+        colors = colors +
+          push_style_color(ColorId::modal_window_dim_bg(), color)
+      InputTextCursor(color) =>
+        colors = colors + push_style_color(ColorId::input_text_cursor(), color)
       Border(color) =>
         colors = colors +
           push_style_colors(color, [
@@ -4705,8 +4810,6 @@ fn apply_style_sheet(
             ColorId::table_border_light(),
             ColorId::table_border_strong(),
           ])
-      Slot(slot, color) =>
-        colors = colors + push_style_color(slot.to_color_id(), color)
       Alpha(value) => vars = vars + push_style_var(StyleVar::alpha(), value)
       DisabledAlpha(value) =>
         vars = vars + push_style_var(StyleVar::disabled_alpha(), value)
@@ -4764,32 +4867,6 @@ fn apply_style_sheet(
     }
   }
   { colors, vars }
-}
-
-///|
-fn StyleColor::to_color_id(self : StyleColor) -> ColorId {
-  match self {
-    BorderShadow => ColorId::border_shadow()
-    Separator => ColorId::separator()
-    SeparatorHovered => ColorId::separator_hovered()
-    SeparatorActive => ColorId::separator_active()
-    CheckMark => ColorId::check_mark()
-    TabSelectedOverline => ColorId::tab_selected_overline()
-    TabDimmedSelectedOverline => ColorId::tab_dimmed_selected_overline()
-    PlotLines => ColorId::plot_lines()
-    PlotLinesHovered => ColorId::plot_lines_hovered()
-    PlotHistogram => ColorId::plot_histogram()
-    PlotHistogramHovered => ColorId::plot_histogram_hovered()
-    TextLink => ColorId::text_link()
-    TreeLines => ColorId::tree_lines()
-    DragDropTarget => ColorId::drag_drop_target()
-    UnsavedMarker => ColorId::unsaved_marker()
-    NavCursor => ColorId::nav_cursor()
-    NavWindowingHighlight => ColorId::nav_windowing_highlight()
-    NavWindowingDimBackground => ColorId::nav_windowing_dim_bg()
-    ModalWindowDimBackground => ColorId::modal_window_dim_bg()
-    InputTextCursor => ColorId::input_text_cursor()
-  }
 }
 
 ///|
