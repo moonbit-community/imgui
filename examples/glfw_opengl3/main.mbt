@@ -200,7 +200,77 @@ fn render_ui(state : DemoState) -> Unit raise @imgui.ImGuiError {
       state.counter = state.counter - 1
     }
   }
-  ui.window("MoonBit ImGui controls", flags=[MenuBar, HorizontalScrollbar], style=[
+  let window_style = demo_window_style()
+  ui.window(
+    "MoonBit - Overview",
+    flags=[MenuBar, AlwaysAutoResize],
+    style=window_style,
+  ) <| ui => {
+    ui.menu_bar(style=[Text(White)]) <| bar => {
+      bar.menu("Actions") <| menu => {
+        menu.menu_item("Increment counter") <| () => {
+          state.counter = state.counter + 1
+        }
+        menu.menu_item("Toggle details", selected=state.show_another) <| () => {
+          state.show_another = !state.show_another
+        }
+        menu.menu_item("Toggle metrics", selected=state.show_metrics) <| () => {
+          state.show_metrics = !state.show_metrics
+        }
+        menu.menu_item("Disabled nested action", enabled=false) <| () => {
+          state.counter = state.counter - 1
+        }
+      }
+    }
+    render_overview(ui, state)
+  }
+
+  ui.window(
+    "MoonBit - Text and Layout",
+    flags=[HorizontalScrollbar],
+    style=window_style,
+  ) <| ui => { render_text_and_layout(ui, state) }
+
+  ui.window(
+    "MoonBit - Values and Inputs",
+    flags=[HorizontalScrollbar],
+    style=window_style,
+  ) <| ui => { render_controls(ui, state) }
+
+  ui.window(
+    "MoonBit - Scopes and Popups",
+    flags=[HorizontalScrollbar],
+    style=window_style,
+  ) <| ui => {
+    render_scopes(ui, state, style, font)
+    render_popup_scopes(ui, state)
+  }
+
+  ui.window(
+    "MoonBit - Tabs and Tables",
+    flags=[HorizontalScrollbar],
+    style=window_style,
+  ) <| ui => { render_tabs(ui, state) }
+
+  if state.show_metrics {
+    ui.window(
+      "MoonBit - Metrics",
+      flags=[AlwaysAutoResize, NoSavedSettings],
+      style=window_style,
+    ) <| ui => { render_metrics(ui, font) }
+  }
+
+  if state.show_another {
+    ui.window("Another MoonBit window", flags=[NoSavedSettings]) <| ui => {
+      ui.text("This window can be toggled from the overview window.")
+      ui.button("Close") <| () => { state.show_another = false }
+    }
+  }
+}
+
+///|
+fn demo_window_style() -> Array[@imgui.StyleSheet] {
+  [
     Rounding(6.0),
     Background(Hex("#171B21")),
     HoveredBg(Hex("#263142")),
@@ -218,63 +288,36 @@ fn render_ui(state : DemoState) -> Unit raise @imgui.ImGuiError {
     ResizeGrip(Gray),
     ResizeGripHovered(Cyan),
     ResizeGripActive(Blue),
-  ]) <| ui => {
-    ui.menu_bar(style=[Text(White)]) <| bar => {
-      bar.menu("Actions") <| menu => {
-        menu.menu_item("Increment counter") <| () => {
-          state.counter = state.counter + 1
-        }
-        menu.menu_item("Toggle details", selected=state.show_another) <| () => {
-          state.show_another = !state.show_another
-        }
-        menu.menu_item("Disabled nested action", enabled=false) <| () => {
-          state.counter = state.counter - 1
-        }
-      }
-      bar.menu_item("Open popup") <| () => { ui.open_popup("MoonBit popup") }
-      bar.menu_item("Open modal", selected=state.show_modal) <| () => {
-        state.show_modal = true
-        ui.open_popup("MoonBit modal")
-      }
-    }
+  ]
+}
 
-    render_text_and_layout(ui, state)
-    render_controls(ui, state)
-    render_scopes(ui, state, style, font)
-    render_tabs(ui, state)
-
-    ui.popup("MoonBit popup", style=[Rounding(5.0), Text(Cyan)]) <| popup => {
-      popup.text("Popup rendered by MoonBit.")
-      popup.separator()
-      popup.button("Close popup") <| () => { popup.close() }
-    }
-    state.show_modal = ui.popup_modal(
-        "MoonBit modal",
-        state.show_modal,
-        flags=[AlwaysAutoResize],
-        style=[Rounding(8.0), Border(Cyan)],
-      ) <| popup => {
-        popup.text("Modal scope is closed automatically.")
-        popup.button("Accept") <| () => {
-          state.show_modal = false
-          popup.close()
-        }
-      }
-
-    if state.show_metrics {
-      ui.separator()
-      ui.text("frame = \{@imgui.frame_count()}")
-      ui.text("font size = \{@imgui.font_size()}")
-      ui.text("current font is null = \{font.is_null()}")
-    }
+///|
+fn render_overview(
+  ui : @imgui.WindowUi,
+  state : DemoState,
+) -> Unit raise @imgui.ImGuiError {
+  ui.text("MoonBit controls are split across separate Dear ImGui windows.")
+  ui.separator()
+  ui.label_text("Counter", "\{state.counter}")
+  ui.label_text("Enabled", "\{state.enabled}")
+  ui.label_text("Slider", "\{state.slider}")
+  ui.checkbox("Show another window", state.show_another) <| value => {
+    state.show_another = value
   }
-
-  if state.show_another {
-    ui.window("Another MoonBit window", flags=[NoSavedSettings]) <| ui => {
-      ui.text("This window can be toggled from the main controls.")
-      ui.button("Close") <| () => { state.show_another = false }
-    }
+  ui.checkbox("Show metrics window", state.show_metrics) <| value => {
+    state.show_metrics = value
   }
+  ui.button("Increment counter") <| () => { state.counter = state.counter + 1 }
+}
+
+///|
+fn render_metrics(
+  ui : @imgui.WindowUi,
+  font : @imgui.Font,
+) -> Unit raise @imgui.ImGuiError {
+  ui.text("frame = \{@imgui.frame_count()}")
+  ui.text("font size = \{@imgui.font_size()}")
+  ui.text("current font is null = \{font.is_null()}")
 }
 
 ///|
@@ -641,7 +684,7 @@ fn render_scopes(
   }
   ui.same_line()
   ui.button("Focus by title") <| () => {
-    ui.set_window_focus_by_name("MoonBit ImGui controls")
+    ui.set_window_focus_by_name("MoonBit - Overview")
   }
   ui.same_line()
   ui.button("Focus current") <| () => { ui.set_window_focus() }
@@ -669,6 +712,30 @@ fn render_scopes(
     let column = cols.column_state()
     cols.text("Column \{column.index + 1}/\{column.count}")
   }
+}
+
+///|
+fn render_popup_scopes(
+  ui : @imgui.WindowUi,
+  state : DemoState,
+) -> Unit raise @imgui.ImGuiError {
+  ui.popup("MoonBit popup", style=[Rounding(5.0), Text(Cyan)]) <| popup => {
+    popup.text("Popup rendered by MoonBit.")
+    popup.separator()
+    popup.button("Close popup") <| () => { popup.close() }
+  }
+  state.show_modal = ui.popup_modal(
+      "MoonBit modal",
+      state.show_modal,
+      flags=[AlwaysAutoResize],
+      style=[Rounding(8.0), Border(Cyan)],
+    ) <| popup => {
+      popup.text("Modal scope is closed automatically.")
+      popup.button("Accept") <| () => {
+        state.show_modal = false
+        popup.close()
+      }
+    }
 }
 
 ///|
