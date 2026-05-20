@@ -106,18 +106,10 @@ pub(all) enum Color {
 /// Exact color slots not covered by broader scoped style sheets.
 pub(all) enum StyleColor {
   BorderShadow
-  ScrollbarGrab
-  ScrollbarGrabHovered
-  ScrollbarGrabActive
   Separator
   SeparatorHovered
   SeparatorActive
-  ResizeGrip
-  ResizeGripHovered
-  ResizeGripActive
   CheckMark
-  SliderGrab
-  SliderGrabActive
   TabSelectedOverline
   TabDimmedSelectedOverline
   PlotLines
@@ -148,6 +140,14 @@ pub(all) enum StyleSheet {
   DimmedBg(Color)
   DimmedSelectedBg(Color)
   DropTargetBg(Color)
+  ScrollbarGrab(Color)
+  ScrollbarGrabHovered(Color)
+  ScrollbarGrabActive(Color)
+  SliderGrab(Color)
+  SliderGrabActive(Color)
+  ResizeGrip(Color)
+  ResizeGripHovered(Color)
+  ResizeGripActive(Color)
   Border(Color)
   Slot(StyleColor, Color)
   Alpha(Float)
@@ -4679,6 +4679,25 @@ fn apply_style_sheet(
       DropTargetBg(color) =>
         colors = colors +
           push_style_color(ColorId::drag_drop_target_bg(), color)
+      ScrollbarGrab(color) =>
+        colors = colors + push_style_color(ColorId::scrollbar_grab(), color)
+      ScrollbarGrabHovered(color) =>
+        colors = colors +
+          push_style_color(ColorId::scrollbar_grab_hovered(), color)
+      ScrollbarGrabActive(color) =>
+        colors = colors +
+          push_style_color(ColorId::scrollbar_grab_active(), color)
+      SliderGrab(color) =>
+        colors = colors + push_style_color(ColorId::slider_grab(), color)
+      SliderGrabActive(color) =>
+        colors = colors + push_style_color(ColorId::slider_grab_active(), color)
+      ResizeGrip(color) =>
+        colors = colors + push_style_color(ColorId::resize_grip(), color)
+      ResizeGripHovered(color) =>
+        colors = colors +
+          push_style_color(ColorId::resize_grip_hovered(), color)
+      ResizeGripActive(color) =>
+        colors = colors + push_style_color(ColorId::resize_grip_active(), color)
       Border(color) =>
         colors = colors +
           push_style_colors(color, [
@@ -4751,18 +4770,10 @@ fn apply_style_sheet(
 fn StyleColor::to_color_id(self : StyleColor) -> ColorId {
   match self {
     BorderShadow => ColorId::border_shadow()
-    ScrollbarGrab => ColorId::scrollbar_grab()
-    ScrollbarGrabHovered => ColorId::scrollbar_grab_hovered()
-    ScrollbarGrabActive => ColorId::scrollbar_grab_active()
     Separator => ColorId::separator()
     SeparatorHovered => ColorId::separator_hovered()
     SeparatorActive => ColorId::separator_active()
-    ResizeGrip => ColorId::resize_grip()
-    ResizeGripHovered => ColorId::resize_grip_hovered()
-    ResizeGripActive => ColorId::resize_grip_active()
     CheckMark => ColorId::check_mark()
-    SliderGrab => ColorId::slider_grab()
-    SliderGrabActive => ColorId::slider_grab_active()
     TabSelectedOverline => ColorId::tab_selected_overline()
     TabDimmedSelectedOverline => ColorId::tab_dimmed_selected_overline()
     PlotLines => ColorId::plot_lines()

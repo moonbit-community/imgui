@@ -345,18 +345,10 @@ pub fn Style::scale_all_sizes(Self, Float) -> Unit
 
 pub(all) enum StyleColor {
   BorderShadow
-  ScrollbarGrab
-  ScrollbarGrabHovered
-  ScrollbarGrabActive
   Separator
   SeparatorHovered
   SeparatorActive
-  ResizeGrip
-  ResizeGripHovered
-  ResizeGripActive
   CheckMark
-  SliderGrab
-  SliderGrabActive
   TabSelectedOverline
   TabDimmedSelectedOverline
   PlotLines
@@ -385,6 +377,14 @@ pub(all) enum StyleSheet {
   DimmedBg(Color)
   DimmedSelectedBg(Color)
   DropTargetBg(Color)
+  ScrollbarGrab(Color)
+  ScrollbarGrabHovered(Color)
+  ScrollbarGrabActive(Color)
+  SliderGrab(Color)
+  SliderGrabActive(Color)
+  ResizeGrip(Color)
+  ResizeGripHovered(Color)
+  ResizeGripActive(Color)
   Border(Color)
   Slot(StyleColor, Color)
   Alpha(Float)
