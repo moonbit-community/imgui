@@ -765,8 +765,7 @@ fn render_tabs(
       ) <| tab => { tab.text("This tab uses the open-state overload.") }
   }
 
-  let table_flags : Array[@imgui.TableFlag] = [Borders, RowBg, Hideable]
-  ui.table("window-table", 3, flags=table_flags) <| table => {
+  ui.table("window-table", 3, flags=[Borders, RowBg, Hideable]) <| table => {
     render_table(table, state)
   }
 }
