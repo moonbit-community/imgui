@@ -4001,19 +4001,19 @@ pub fn WindowUi::popup_context_void(
 
 ///|
 /// Opens and closes a modal popup scope automatically when active.
+/// Updates `open` when Dear ImGui closes the modal through its close button.
 pub fn WindowUi::popup_modal(
   _self : WindowUi,
   name : String,
-  open : Bool,
+  open : Ref[Bool],
   flags? : Array[WindowFlag] = [],
   style? : Array[StyleSheet] = [],
   body : (PopupUi) -> Unit raise ImGuiError,
-) -> Bool raise ImGuiError {
+) -> Unit raise ImGuiError {
   ensure_current_context()
-  let current = Ref(open)
   let active = @bindings.im_gui_begin_popup_modal(
     utf8(name),
-    Some(current),
+    Some(open),
     window_flag_bits(flags),
   )
   if active {
@@ -4022,7 +4022,6 @@ pub fn WindowUi::popup_modal(
     defer restore.reset()
     body(PopupUi(()))
   }
-  current.val
 }
 
 ///|
@@ -4177,27 +4176,26 @@ pub fn WindowUi::collapsing_header(
 }
 
 ///|
-/// Runs `body` when a closeable collapsing header is open and returns open state.
+/// Runs `body` when a closeable collapsing header is open.
+/// Updates `open` when Dear ImGui closes the header through its close button.
 pub fn WindowUi::collapsing_header_open(
   _self : WindowUi,
   label : String,
-  open : Bool,
+  open : Ref[Bool],
   flags? : Array[TreeNodeFlag] = [],
   style? : Array[StyleSheet] = [],
   body : (WindowUi) -> Unit raise ImGuiError,
-) -> Bool raise ImGuiError {
+) -> Unit raise ImGuiError {
   ensure_current_context()
   let restore = apply_style_sheet(style)
   defer restore.reset()
-  let current = Ref(open)
   if @bindings.im_gui_collapsing_header_bool_ptr(
       utf8(label),
-      Some(current),
+      Some(open),
       tree_node_flag_bits(flags),
     ) {
     body(WindowUi(()))
   }
-  current.val
 }
 
 ///|
@@ -4308,20 +4306,20 @@ pub fn TabBarUi::tab_item(
 }
 
 ///|
-/// Opens a closeable tab item and returns the updated open state.
+/// Opens a closeable tab item.
+/// Updates `open` when Dear ImGui closes the tab through its close button.
 pub fn TabBarUi::tab_item_open(
   _self : TabBarUi,
   label : String,
-  open : Bool,
+  open : Ref[Bool],
   flags? : Array[TabItemFlag] = [],
   style? : Array[StyleSheet] = [],
   body : (TabItemUi) -> Unit raise ImGuiError,
-) -> Bool raise ImGuiError {
+) -> Unit raise ImGuiError {
   ensure_current_context()
-  let current = Ref(open)
   let active = @bindings.im_gui_begin_tab_item(
     utf8(label),
-    Some(current),
+    Some(open),
     tab_item_flag_bits(flags),
   )
   if active {
@@ -4330,7 +4328,6 @@ pub fn TabBarUi::tab_item_open(
     defer restore.reset()
     body(TabItemUi(()))
   }
-  current.val
 }
 
 ///|

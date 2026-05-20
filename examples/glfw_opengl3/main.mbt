@@ -1,7 +1,7 @@
 ///|
 struct DemoState {
   mut show_another : Bool
-  mut show_modal : Bool
+  show_modal : Ref[Bool]
   mut enabled : Bool
   mut slider : Float
   mut int_slider : Int
@@ -36,8 +36,8 @@ struct DemoState {
   mut selected_item : Int
   mut combo_index : Int
   mut radio_choice : Int
-  mut optional_tab_open : Bool
-  mut header_open : Bool
+  optional_tab_open : Ref[Bool]
+  header_open : Ref[Bool]
   mut show_metrics : Bool
   mut progress : Float
   mut color : @imgui.Vec4
@@ -54,7 +54,7 @@ struct DemoState {
 fn DemoState::new() -> DemoState {
   {
     show_another: false,
-    show_modal: false,
+    show_modal: Ref(false),
     enabled: true,
     slider: 0.42,
     int_slider: 4,
@@ -89,8 +89,8 @@ fn DemoState::new() -> DemoState {
     selected_item: 0,
     combo_index: 0,
     radio_choice: 0,
-    optional_tab_open: true,
-    header_open: true,
+    optional_tab_open: Ref(true),
+    header_open: Ref(true),
     show_metrics: true,
     progress: 0.35,
     color: @imgui.Vec4::rgba(0.20, 0.55, 0.95, 1.0),
@@ -564,11 +564,9 @@ fn render_controls(
       state.picker = value
     }
   }
-  state.header_open = ui.collapsing_header_open(
-      "Closeable header",
-      state.header_open,
-      flags=[DefaultOpen],
-    ) <| ui => { ui.text("The close button updates MoonBit state.") }
+  ui.collapsing_header_open("Closeable header", state.header_open, flags=[
+    DefaultOpen,
+  ]) <| ui => { ui.text("The close button updates MoonBit state.") }
 }
 
 ///|
@@ -614,7 +612,7 @@ fn render_scopes(
   ui.button("Open popup") <| () => { ui.open_popup("MoonBit popup") }
   ui.same_line()
   ui.button("Open modal") <| () => {
-    state.show_modal = true
+    state.show_modal.val = true
     ui.open_popup("MoonBit modal")
   }
   let popup_open = ui.is_popup_open("MoonBit popup")
@@ -730,15 +728,13 @@ fn render_popup_scopes(
     popup.separator()
     popup.button("Close popup") <| () => { popup.close() }
   }
-  state.show_modal = ui.popup_modal("MoonBit modal", state.show_modal, flags=[
-      AlwaysAutoResize,
-    ]) <| popup => {
-      popup.text("Modal scope is closed automatically.")
-      popup.button("Accept") <| () => {
-        state.show_modal = false
-        popup.close()
-      }
+  ui.popup_modal("MoonBit modal", state.show_modal, flags=[AlwaysAutoResize]) <| popup => {
+    popup.text("Modal scope is closed automatically.")
+    popup.button("Accept") <| () => {
+      state.show_modal.val = false
+      popup.close()
     }
+  }
 }
 
 ///|
@@ -759,10 +755,9 @@ fn render_tabs(
       tab.text("Table rendered from a tab item.")
       render_rows_from_tab(tab, state)
     }
-    state.optional_tab_open = tabs.tab_item_open(
-        "Closeable",
-        state.optional_tab_open,
-      ) <| tab => { tab.text("This tab uses the open-state overload.") }
+    tabs.tab_item_open("Closeable", state.optional_tab_open) <| tab => {
+      tab.text("This tab uses a Ref[Bool] close state.")
+    }
   }
 
   ui.table("window-table", 3, flags=[Borders, RowBg, Hideable]) <| table => {

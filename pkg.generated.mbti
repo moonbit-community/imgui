@@ -4,6 +4,7 @@ package "moonbit-community/imgui"
 import {
   "moonbit-community/imgui/bindings",
   "moonbitlang/core/debug",
+  "moonbitlang/core/ref",
 }
 
 // Values
@@ -417,7 +418,7 @@ pub(all) enum TabBarFlag {
 
 type TabBarUi
 pub fn TabBarUi::tab_item(Self, String, flags? : Array[TabItemFlag], style? : Array[StyleSheet], (TabItemUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
-pub fn TabBarUi::tab_item_open(Self, String, Bool, flags? : Array[TabItemFlag], style? : Array[StyleSheet], (TabItemUi) -> Unit raise ImGuiError) -> Bool raise ImGuiError
+pub fn TabBarUi::tab_item_open(Self, String, @ref.Ref[Bool], flags? : Array[TabItemFlag], style? : Array[StyleSheet], (TabItemUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 
 pub(all) enum TabItemFlag {
   UnsavedDocument
@@ -620,7 +621,7 @@ pub fn WindowUi::button_repeat(Self, Bool, style? : Array[StyleSheet], (Self) ->
 pub fn WindowUi::calc_item_width(Self) -> Float raise ImGuiError
 pub fn WindowUi::checkbox(Self, String, Bool, style? : Array[StyleSheet], (Bool) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::collapsing_header(Self, String, flags? : Array[TreeNodeFlag], style? : Array[StyleSheet], (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
-pub fn WindowUi::collapsing_header_open(Self, String, Bool, flags? : Array[TreeNodeFlag], style? : Array[StyleSheet], (Self) -> Unit raise ImGuiError) -> Bool raise ImGuiError
+pub fn WindowUi::collapsing_header_open(Self, String, @ref.Ref[Bool], flags? : Array[TreeNodeFlag], style? : Array[StyleSheet], (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::color_edit3(Self, String, Vec4, flags? : Array[ColorEditFlag], style? : Array[StyleSheet], (Vec4) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::color_edit4(Self, String, Vec4, flags? : Array[ColorEditFlag], style? : Array[StyleSheet], (Vec4) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::color_picker3(Self, String, Vec4, flags? : Array[ColorEditFlag], style? : Array[StyleSheet], (Vec4) -> Unit raise ImGuiError) -> Unit raise ImGuiError
@@ -678,7 +679,7 @@ pub fn WindowUi::popup(Self, String, flags? : Array[PopupFlag], style? : Array[S
 pub fn WindowUi::popup_context_item(Self, flags? : Array[PopupFlag], style? : Array[StyleSheet], (PopupUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::popup_context_void(Self, flags? : Array[PopupFlag], style? : Array[StyleSheet], (PopupUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::popup_context_window(Self, flags? : Array[PopupFlag], style? : Array[StyleSheet], (PopupUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
-pub fn WindowUi::popup_modal(Self, String, Bool, flags? : Array[WindowFlag], style? : Array[StyleSheet], (PopupUi) -> Unit raise ImGuiError) -> Bool raise ImGuiError
+pub fn WindowUi::popup_modal(Self, String, @ref.Ref[Bool], flags? : Array[WindowFlag], style? : Array[StyleSheet], (PopupUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::radio_button(Self, String, Bool, style? : Array[StyleSheet], () -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::radio_int(Self, String, Int, Int, style? : Array[StyleSheet], (Int) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::same_line(Self) -> Unit raise ImGuiError
