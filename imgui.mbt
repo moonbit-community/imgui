@@ -1159,6 +1159,176 @@ struct MouseButton {
 } derive(Eq, Debug)
 
 ///|
+/// Dear ImGui translated key identifier for backend input events.
+pub(all) enum Key {
+  NoKey
+  Tab
+  LeftArrow
+  RightArrow
+  UpArrow
+  DownArrow
+  PageUp
+  PageDown
+  Home
+  End
+  Insert
+  Delete
+  Backspace
+  Space
+  Enter
+  Escape
+  LeftCtrl
+  LeftShift
+  LeftAlt
+  LeftSuper
+  RightCtrl
+  RightShift
+  RightAlt
+  RightSuper
+  Menu
+  Num0
+  Num1
+  Num2
+  Num3
+  Num4
+  Num5
+  Num6
+  Num7
+  Num8
+  Num9
+  A
+  B
+  C
+  D
+  E
+  F
+  G
+  H
+  I
+  J
+  K
+  L
+  M
+  N
+  O
+  P
+  Q
+  R
+  S
+  T
+  U
+  V
+  W
+  X
+  Y
+  Z
+  F1
+  F2
+  F3
+  F4
+  F5
+  F6
+  F7
+  F8
+  F9
+  F10
+  F11
+  F12
+  F13
+  F14
+  F15
+  F16
+  F17
+  F18
+  F19
+  F20
+  F21
+  F22
+  F23
+  F24
+  Apostrophe
+  Comma
+  Minus
+  Period
+  Slash
+  Semicolon
+  Equal
+  LeftBracket
+  Backslash
+  RightBracket
+  GraveAccent
+  CapsLock
+  ScrollLock
+  NumLock
+  PrintScreen
+  Pause
+  Keypad0
+  Keypad1
+  Keypad2
+  Keypad3
+  Keypad4
+  Keypad5
+  Keypad6
+  Keypad7
+  Keypad8
+  Keypad9
+  KeypadDecimal
+  KeypadDivide
+  KeypadMultiply
+  KeypadSubtract
+  KeypadAdd
+  KeypadEnter
+  KeypadEqual
+  AppBack
+  AppForward
+  Oem102
+  GamepadStart
+  GamepadBack
+  GamepadFaceLeft
+  GamepadFaceRight
+  GamepadFaceUp
+  GamepadFaceDown
+  GamepadDpadLeft
+  GamepadDpadRight
+  GamepadDpadUp
+  GamepadDpadDown
+  GamepadL1
+  GamepadR1
+  GamepadL2
+  GamepadR2
+  GamepadL3
+  GamepadR3
+  GamepadLStickLeft
+  GamepadLStickRight
+  GamepadLStickUp
+  GamepadLStickDown
+  GamepadRStickLeft
+  GamepadRStickRight
+  GamepadRStickUp
+  GamepadRStickDown
+  MouseLeft
+  MouseRight
+  MouseMiddle
+  MouseX1
+  MouseX2
+  MouseWheelX
+  MouseWheelY
+  ModCtrl
+  ModShift
+  ModAlt
+  ModSuper
+  ModShortcut
+} derive(Eq, Debug)
+
+///|
+/// Dear ImGui mouse source identifier for backend input events.
+pub(all) enum MouseSource {
+  Mouse
+  TouchScreen
+  Pen
+} derive(Eq, Debug)
+
+///|
 /// ImGui direction identifier.
 struct Dir {
   value : Int
@@ -1276,6 +1446,178 @@ fn table_row_flag_bits(flags : Array[TableRowFlag]) -> Int {
     bits = bits | flag.to_int()
   }
   bits
+}
+
+///|
+fn Key::to_int(self : Key) -> Int {
+  match self {
+    NoKey => @bindings.im_gui_key_none()
+    Tab => @bindings.im_gui_key_tab()
+    LeftArrow => @bindings.im_gui_key_left_arrow()
+    RightArrow => @bindings.im_gui_key_right_arrow()
+    UpArrow => @bindings.im_gui_key_up_arrow()
+    DownArrow => @bindings.im_gui_key_down_arrow()
+    PageUp => @bindings.im_gui_key_page_up()
+    PageDown => @bindings.im_gui_key_page_down()
+    Home => @bindings.im_gui_key_home()
+    End => @bindings.im_gui_key_end()
+    Insert => @bindings.im_gui_key_insert()
+    Delete => @bindings.im_gui_key_delete()
+    Backspace => @bindings.im_gui_key_backspace()
+    Space => @bindings.im_gui_key_space()
+    Enter => @bindings.im_gui_key_enter()
+    Escape => @bindings.im_gui_key_escape()
+    LeftCtrl => @bindings.im_gui_key_left_ctrl()
+    LeftShift => @bindings.im_gui_key_left_shift()
+    LeftAlt => @bindings.im_gui_key_left_alt()
+    LeftSuper => @bindings.im_gui_key_left_super()
+    RightCtrl => @bindings.im_gui_key_right_ctrl()
+    RightShift => @bindings.im_gui_key_right_shift()
+    RightAlt => @bindings.im_gui_key_right_alt()
+    RightSuper => @bindings.im_gui_key_right_super()
+    Menu => @bindings.im_gui_key_menu()
+    Num0 => @bindings.im_gui_key_0()
+    Num1 => @bindings.im_gui_key_1()
+    Num2 => @bindings.im_gui_key_2()
+    Num3 => @bindings.im_gui_key_3()
+    Num4 => @bindings.im_gui_key_4()
+    Num5 => @bindings.im_gui_key_5()
+    Num6 => @bindings.im_gui_key_6()
+    Num7 => @bindings.im_gui_key_7()
+    Num8 => @bindings.im_gui_key_8()
+    Num9 => @bindings.im_gui_key_9()
+    A => @bindings.im_gui_key_a()
+    B => @bindings.im_gui_key_b()
+    C => @bindings.im_gui_key_c()
+    D => @bindings.im_gui_key_d()
+    E => @bindings.im_gui_key_e()
+    F => @bindings.im_gui_key_f()
+    G => @bindings.im_gui_key_g()
+    H => @bindings.im_gui_key_h()
+    I => @bindings.im_gui_key_i()
+    J => @bindings.im_gui_key_j()
+    K => @bindings.im_gui_key_k()
+    L => @bindings.im_gui_key_l()
+    M => @bindings.im_gui_key_m()
+    N => @bindings.im_gui_key_n()
+    O => @bindings.im_gui_key_o()
+    P => @bindings.im_gui_key_p()
+    Q => @bindings.im_gui_key_q()
+    R => @bindings.im_gui_key_r()
+    S => @bindings.im_gui_key_s()
+    T => @bindings.im_gui_key_t()
+    U => @bindings.im_gui_key_u()
+    V => @bindings.im_gui_key_v()
+    W => @bindings.im_gui_key_w()
+    X => @bindings.im_gui_key_x()
+    Y => @bindings.im_gui_key_y()
+    Z => @bindings.im_gui_key_z()
+    F1 => @bindings.im_gui_key_f1()
+    F2 => @bindings.im_gui_key_f2()
+    F3 => @bindings.im_gui_key_f3()
+    F4 => @bindings.im_gui_key_f4()
+    F5 => @bindings.im_gui_key_f5()
+    F6 => @bindings.im_gui_key_f6()
+    F7 => @bindings.im_gui_key_f7()
+    F8 => @bindings.im_gui_key_f8()
+    F9 => @bindings.im_gui_key_f9()
+    F10 => @bindings.im_gui_key_f10()
+    F11 => @bindings.im_gui_key_f11()
+    F12 => @bindings.im_gui_key_f12()
+    F13 => @bindings.im_gui_key_f13()
+    F14 => @bindings.im_gui_key_f14()
+    F15 => @bindings.im_gui_key_f15()
+    F16 => @bindings.im_gui_key_f16()
+    F17 => @bindings.im_gui_key_f17()
+    F18 => @bindings.im_gui_key_f18()
+    F19 => @bindings.im_gui_key_f19()
+    F20 => @bindings.im_gui_key_f20()
+    F21 => @bindings.im_gui_key_f21()
+    F22 => @bindings.im_gui_key_f22()
+    F23 => @bindings.im_gui_key_f23()
+    F24 => @bindings.im_gui_key_f24()
+    Apostrophe => @bindings.im_gui_key_apostrophe()
+    Comma => @bindings.im_gui_key_comma()
+    Minus => @bindings.im_gui_key_minus()
+    Period => @bindings.im_gui_key_period()
+    Slash => @bindings.im_gui_key_slash()
+    Semicolon => @bindings.im_gui_key_semicolon()
+    Equal => @bindings.im_gui_key_equal()
+    LeftBracket => @bindings.im_gui_key_left_bracket()
+    Backslash => @bindings.im_gui_key_backslash()
+    RightBracket => @bindings.im_gui_key_right_bracket()
+    GraveAccent => @bindings.im_gui_key_grave_accent()
+    CapsLock => @bindings.im_gui_key_caps_lock()
+    ScrollLock => @bindings.im_gui_key_scroll_lock()
+    NumLock => @bindings.im_gui_key_num_lock()
+    PrintScreen => @bindings.im_gui_key_print_screen()
+    Pause => @bindings.im_gui_key_pause()
+    Keypad0 => @bindings.im_gui_key_keypad0()
+    Keypad1 => @bindings.im_gui_key_keypad1()
+    Keypad2 => @bindings.im_gui_key_keypad2()
+    Keypad3 => @bindings.im_gui_key_keypad3()
+    Keypad4 => @bindings.im_gui_key_keypad4()
+    Keypad5 => @bindings.im_gui_key_keypad5()
+    Keypad6 => @bindings.im_gui_key_keypad6()
+    Keypad7 => @bindings.im_gui_key_keypad7()
+    Keypad8 => @bindings.im_gui_key_keypad8()
+    Keypad9 => @bindings.im_gui_key_keypad9()
+    KeypadDecimal => @bindings.im_gui_key_keypad_decimal()
+    KeypadDivide => @bindings.im_gui_key_keypad_divide()
+    KeypadMultiply => @bindings.im_gui_key_keypad_multiply()
+    KeypadSubtract => @bindings.im_gui_key_keypad_subtract()
+    KeypadAdd => @bindings.im_gui_key_keypad_add()
+    KeypadEnter => @bindings.im_gui_key_keypad_enter()
+    KeypadEqual => @bindings.im_gui_key_keypad_equal()
+    AppBack => @bindings.im_gui_key_app_back()
+    AppForward => @bindings.im_gui_key_app_forward()
+    Oem102 => @bindings.im_gui_key_oem102()
+    GamepadStart => @bindings.im_gui_key_gamepad_start()
+    GamepadBack => @bindings.im_gui_key_gamepad_back()
+    GamepadFaceLeft => @bindings.im_gui_key_gamepad_face_left()
+    GamepadFaceRight => @bindings.im_gui_key_gamepad_face_right()
+    GamepadFaceUp => @bindings.im_gui_key_gamepad_face_up()
+    GamepadFaceDown => @bindings.im_gui_key_gamepad_face_down()
+    GamepadDpadLeft => @bindings.im_gui_key_gamepad_dpad_left()
+    GamepadDpadRight => @bindings.im_gui_key_gamepad_dpad_right()
+    GamepadDpadUp => @bindings.im_gui_key_gamepad_dpad_up()
+    GamepadDpadDown => @bindings.im_gui_key_gamepad_dpad_down()
+    GamepadL1 => @bindings.im_gui_key_gamepad_l1()
+    GamepadR1 => @bindings.im_gui_key_gamepad_r1()
+    GamepadL2 => @bindings.im_gui_key_gamepad_l2()
+    GamepadR2 => @bindings.im_gui_key_gamepad_r2()
+    GamepadL3 => @bindings.im_gui_key_gamepad_l3()
+    GamepadR3 => @bindings.im_gui_key_gamepad_r3()
+    GamepadLStickLeft => @bindings.im_gui_key_gamepad_l_stick_left()
+    GamepadLStickRight => @bindings.im_gui_key_gamepad_l_stick_right()
+    GamepadLStickUp => @bindings.im_gui_key_gamepad_l_stick_up()
+    GamepadLStickDown => @bindings.im_gui_key_gamepad_l_stick_down()
+    GamepadRStickLeft => @bindings.im_gui_key_gamepad_r_stick_left()
+    GamepadRStickRight => @bindings.im_gui_key_gamepad_r_stick_right()
+    GamepadRStickUp => @bindings.im_gui_key_gamepad_r_stick_up()
+    GamepadRStickDown => @bindings.im_gui_key_gamepad_r_stick_down()
+    MouseLeft => @bindings.im_gui_key_mouse_left()
+    MouseRight => @bindings.im_gui_key_mouse_right()
+    MouseMiddle => @bindings.im_gui_key_mouse_middle()
+    MouseX1 => @bindings.im_gui_key_mouse_x1()
+    MouseX2 => @bindings.im_gui_key_mouse_x2()
+    MouseWheelX => @bindings.im_gui_key_mouse_wheel_x()
+    MouseWheelY => @bindings.im_gui_key_mouse_wheel_y()
+    ModCtrl => @bindings.im_gui_mod_ctrl()
+    ModShift => @bindings.im_gui_mod_shift()
+    ModAlt => @bindings.im_gui_mod_alt()
+    ModSuper => @bindings.im_gui_mod_super()
+    ModShortcut => @bindings.im_gui_mod_shortcut()
+  }
+}
+
+///|
+fn MouseSource::to_int(self : MouseSource) -> Int {
+  match self {
+    Mouse => @bindings.im_gui_mouse_source_mouse()
+    TouchScreen => @bindings.im_gui_mouse_source_touch_screen()
+    Pen => @bindings.im_gui_mouse_source_pen()
+  }
 }
 
 ///|
@@ -1942,13 +2284,114 @@ pub fn font_size() -> Float raise ImGuiError {
 }
 
 ///|
+/// Enables or disables queuing of backend input events.
 pub fn Io::set_app_accepting_events(self : Io, accepting : Bool) -> Unit {
   @bindings.im_gui_io_set_app_accepting_events(self.raw, accepting)
 }
 
 ///|
+/// Queues an application focus change event.
 pub fn Io::add_focus_event(self : Io, focused : Bool) -> Unit {
   @bindings.im_gui_io_add_focus_event(self.raw, focused)
+}
+
+///|
+/// Queues a translated key press or release event.
+pub fn Io::add_key_event(self : Io, key : Key, down : Bool) -> Unit {
+  @bindings.im_gui_io_add_key_event(self.raw, key.to_int(), down)
+}
+
+///|
+/// Queues a translated analog key event, typically for gamepad controls.
+pub fn Io::add_key_analog_event(
+  self : Io,
+  key : Key,
+  down : Bool,
+  value : Float,
+) -> Unit {
+  @bindings.im_gui_io_add_key_analog_event(self.raw, key.to_int(), down, value)
+}
+
+///|
+/// Associates native backend key data with a translated key event.
+pub fn Io::set_key_event_native_data(
+  self : Io,
+  key : Key,
+  native_keycode : Int,
+  native_scancode : Int,
+  native_legacy_index? : Int = -1,
+) -> Unit {
+  @bindings.im_gui_io_set_key_event_native_data_ex(
+    self.raw,
+    key.to_int(),
+    native_keycode,
+    native_scancode,
+    native_legacy_index,
+  )
+}
+
+///|
+/// Queues a mouse position event in display coordinates.
+pub fn Io::add_mouse_pos_event(self : Io, x : Float, y : Float) -> Unit {
+  @bindings.im_gui_io_add_mouse_pos_event(self.raw, x, y)
+}
+
+///|
+/// Queues a mouse button press or release event.
+pub fn Io::add_mouse_button_event(
+  self : Io,
+  button : MouseButton,
+  down : Bool,
+) -> Unit {
+  @bindings.im_gui_io_add_mouse_button_event(self.raw, button.value(), down)
+}
+
+///|
+/// Queues a mouse wheel event.
+pub fn Io::add_mouse_wheel_event(self : Io, x : Float, y : Float) -> Unit {
+  @bindings.im_gui_io_add_mouse_wheel_event(self.raw, x, y)
+}
+
+///|
+/// Queues a mouse source change event.
+pub fn Io::add_mouse_source_event(self : Io, source : MouseSource) -> Unit {
+  @bindings.im_gui_io_add_mouse_source_event(self.raw, source.to_int())
+}
+
+///|
+/// Queues one Unicode input character by codepoint.
+pub fn Io::add_input_character(self : Io, codepoint : UInt) -> Unit {
+  @bindings.im_gui_io_add_input_character(self.raw, codepoint)
+}
+
+///|
+/// Queues one UTF-16 input code unit, including surrogate pairs.
+pub fn Io::add_input_character_utf16(self : Io, code_unit : UInt) -> Unit {
+  @bindings.im_gui_io_add_input_character_utf16(self.raw, code_unit)
+}
+
+///|
+/// Queues UTF-8 text input converted from a MoonBit string.
+pub fn Io::add_input_text(self : Io, value : String) -> Unit {
+  @bindings.im_gui_io_add_input_characters_utf8(self.raw, utf8(value))
+}
+
+///|
+/// Clears queued backend events.
+pub fn Io::clear_events_queue(self : Io) -> Unit {
+  @bindings.im_gui_io_clear_events_queue(self.raw)
+}
+
+///|
+/// Clears keyboard, gamepad, and current-frame text input state.
+pub fn Io::clear_input_keys(self : Io) -> Unit {
+  @bindings.im_gui_io_clear_input_keys(self.raw)
+}
+
+///|
+/// Clears current mouse input state.
+pub fn Io::clear_input_mouse(self : Io) -> Unit {
+  @bindings.im_gui_io_clear_input_mouse(self.raw)
 }
 
 ///|

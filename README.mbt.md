@@ -75,6 +75,27 @@ The low-level generated binding package is available as
 `moonbit-community/imgui/bindings` for advanced users who need direct access to
 Dear ImGui C API symbols.
 
+## Custom Backends
+
+Applications may provide their own window and renderer backend. A custom
+backend should create a context, queue input through `@imgui.io()`, start a new
+frame, render the MoonBit UI, and consume the returned draw data:
+
+```moonbit nocheck
+let io = try! @imgui.io()
+io.add_focus_event(true)
+io.add_mouse_pos_event(x, y)
+io.add_mouse_button_event(@imgui.MouseButton::left(), down)
+io.add_mouse_wheel_event(wheel_x, wheel_y)
+io.add_key_event(A, down)
+io.add_input_text(text)
+
+try! @imgui.new_frame()
+try! render_ui(state)
+let draw_data = try! @imgui.render()
+renderer.render(draw_data)
+```
+
 ## Run The Window Example
 
 Initialize submodules first:
