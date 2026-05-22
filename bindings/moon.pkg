@@ -3,8 +3,7 @@ supported_targets = "+native"
 options(
   link: {
     "native": {
-      "stub-cc": "c++",
-      "stub-cc-flags": "-fno-exceptions -fno-rtti -fno-threadsafe-statics -Wno-deprecated-declarations -I. -Iupstream/imgui -Iupstream/imgui/backends",
+      "stub-cc-flags": "${build.IMGUI_CORE_STUB_FLAGS}",
     },
   },
   "native-stub": [

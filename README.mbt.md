@@ -10,41 +10,35 @@ callbacks, and matching Dear ImGui scope close calls are handled automatically.
 ## Example
 
 ```moonbit nocheck
-let context = @imgui.Context::create()
-defer context.destroy()
+fn main {
+  let state = State::new()
+  @starter.run_forever(title="MoonBit Dear ImGui") <| ui => {
+    ui.window("MoonBit Dear ImGui", flags=[MenuBar], style=[
+      Rounding(6.0),
+      Text(White),
+    ]) <| ui => {
+      ui.menu_bar() <| ui => {
+        ui.menu_item("Increment counter") <| () => {
+          state.counter = state.counter + 1
+        }
+      }
 
-fn render_ui(state : State) -> Unit raise @imgui.ImGuiError {
-  let ui = @imgui.ui()
-  ui.window(
-    "MoonBit Dear ImGui",
-    flags=[@imgui.WindowFlag::MenuBar],
-    style=[Rounding(6.0), Text(White)],
-  ) <| ui => {
-    ui.menu_bar() <| ui => {
-      ui.menu_item("Increment counter") <| () => {
+      ui.text("Hello from MoonBit")
+      ui.checkbox("Enabled", state.enabled) <| value => { state.enabled = value }
+      ui.slider_float("Value", state.value, 0.0, 1.0) <| value => {
+        state.value = value
+      }
+      ui.button("Run", style=[
+        Background(Blue),
+        HoveredBg(Cyan),
+        ActiveBg(Green),
+        Rounding(4.0),
+      ]) <| () => {
         state.counter = state.counter + 1
       }
     }
-
-    ui.text("Hello from MoonBit")
-    ui.checkbox("Enabled", state.enabled) <| value => {
-      state.enabled = value
-    }
-    ui.slider_float("Value", state.value, 0.0, 1.0) <| value => {
-      state.value = value
-    }
-    ui.button(
-      "Run",
-      style=[Background(Blue), HoveredBg(Cyan), ActiveBg(Green), Rounding(4.0)],
-    ) <| () => {
-      state.counter = state.counter + 1
-    }
   }
 }
-
-try! @imgui.new_frame()
-try! render_ui(state)
-ignore(try! @imgui.render())
 ```
 
 ## Scoped UI
@@ -68,12 +62,14 @@ ignore(try! @imgui.render())
 ## Packages
 
 - `moonbit-community/imgui`: user-facing API.
+- `moonbit-community/imgui/starter`: one-function GLFW/OpenGL3 window starter.
+
+Low-level packages are available for advanced users who need direct backend or
+generated C API access:
+
+- `moonbit-community/imgui/bindings`: generated Dear ImGui C API bindings.
 - `moonbit-community/imgui/bindings/glfw`: GLFW platform backend bindings.
 - `moonbit-community/imgui/bindings/opengl3`: OpenGL3 renderer backend bindings.
-
-The low-level generated binding package is available as
-`moonbit-community/imgui/bindings` for advanced users who need direct access to
-Dear ImGui C API symbols.
 
 ## Custom Backends
 
@@ -104,11 +100,42 @@ Initialize submodules first:
 git submodule update --init --recursive
 ```
 
-Install GLFW. On macOS with Homebrew:
+Install GLFW. The starter API is the same across platforms, but native window
+support depends on the host C/C++ toolchain and system libraries. The current
+starter has been smoke-tested on macOS. Ubuntu, native Windows, and MSYS2 MinGW
+are configured by the module-level `--moonbit-unstable-prebuild` script, but
+should be treated as expected support until they are validated on those hosts.
+
+macOS with Homebrew:
 
 ```bash
 brew install glfw
 ```
+
+Ubuntu:
+
+```bash
+sudo apt install libglfw3-dev libgl1-mesa-dev
+```
+
+Windows with MSYS2 MinGW:
+
+```bash
+pacman -S mingw-w64-x86_64-python mingw-w64-x86_64-glfw
+```
+
+Native Windows with Visual Studio Build Tools:
+
+1. Open a Developer PowerShell or Developer Command Prompt so `cl` is on `PATH`.
+2. Install Python so the prebuild config script can run.
+3. Make GLFW available to the linker. Either set `GLFW_LIB_DIR` to the directory
+   containing `glfw3.lib`, or set `VCPKG_ROOT` after installing GLFW with vcpkg.
+
+The native Windows script branch emits MSVC-style flags and links against
+`glfw3.lib`, `opengl32.lib`, `gdi32.lib`, `user32.lib`, and `shell32.lib`.
+
+The prebuild config script is a Python script, so a Python runtime must be
+available to `moon` when building the starter or the window example.
 
 Then run the GLFW/OpenGL3 example:
 
@@ -120,6 +147,10 @@ The example opens a native window and renders MoonBit-authored interactive UI:
 checkboxes, scalar and multi-component sliders, drag controls, text inputs,
 color editors, popups, a modal, context menus, menus, tabs, tables, columns,
 item/window state queries, and a secondary window.
+
+The module-level `--moonbit-unstable-prebuild` script emits native link
+configuration from the host toolchain. This keeps platform-specific flags out
+of examples and user code.
 
 ## Validate
 

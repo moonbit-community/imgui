@@ -9,4 +9,5 @@ options(
   keywords: [ "imgui", "dear-imgui", "gui", "native", "ffi" ],
   description: "Native MoonBit bindings for Dear ImGui public APIs",
   "preferred-target": "native",
+  "--moonbit-unstable-prebuild": "tools/prebuild_config.py",
 )

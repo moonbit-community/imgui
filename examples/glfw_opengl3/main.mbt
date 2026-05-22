@@ -106,84 +106,21 @@ fn DemoState::new() -> DemoState {
 
 ///|
 fn main {
-  guard @glfw.initialize() else { abort("failed to initialize GLFW") }
-  defer @glfw.terminate()
-
-  @glfw.window_hint(@glfw.context_version_major(), 3)
-  @glfw.window_hint(@glfw.context_version_minor(), 2)
-  @glfw.window_hint(@glfw.opengl_profile(), @glfw.opengl_core_profile())
-  @glfw.window_hint(@glfw.opengl_forward_compat(), @glfw.true_value())
-  @glfw.window_hint(@glfw.visible(), @glfw.true_value())
-  @glfw.window_hint(@glfw.floating(), @glfw.true_value())
-
-  let window = @glfw.create_window(
-    1180,
-    820,
-    utf8("MoonBit Dear ImGui GLFW/OpenGL3"),
-    @glfw.Monitor::null(),
-    @glfw.Window::null(),
-  )
-  guard !window.is_null() else { abort("failed to create GLFW window") }
-  defer @glfw.destroy_window(window)
-
-  @glfw.set_window_pos(window, 80, 60)
-  @glfw.show_window(window)
-  @glfw.focus_window(window)
-  @glfw.make_context_current(window)
-  @glfw.swap_interval(1)
-
-  let context = @imgui.Context::create()
-  defer context.destroy()
-
-  let style = @imgui.style() catch {
-    _ => abort("failed to get Dear ImGui style")
-  }
-  style.colors_dark()
-
-  guard @glfw.imgui_init_for_open_gl(window, true) else {
-    abort("failed to initialize Dear ImGui GLFW backend")
-  }
-  defer @glfw.imgui_shutdown()
-
-  guard @opengl3.init_ex(utf8("#version 150")) else {
-    abort("failed to initialize Dear ImGui OpenGL3 backend")
-  }
-  defer @opengl3.shutdown()
-
   let state = DemoState::new()
-  while !@glfw.window_should_close(window) {
-    @glfw.poll_events()
-    if @glfw.get_window_attrib(window, @glfw.iconified()) != 0 {
-      @glfw.sleep(10)
-      continue
-    }
-
-    @opengl3.new_frame()
-    @glfw.imgui_new_frame()
-    @imgui.new_frame() catch {
-      _ => abort("failed to start Dear ImGui frame")
-    }
-
-    render_ui(state) catch {
-      _ => abort("failed to render Dear ImGui UI")
-    }
-
-    let draw_data = @imgui.render() catch {
-      _ => abort("failed to render Dear ImGui frame")
-    }
-    let framebuffer_width = Ref(0)
-    let framebuffer_height = Ref(0)
-    @glfw.get_framebuffer_size(window, framebuffer_width, framebuffer_height)
-    @opengl3.viewport(0, 0, framebuffer_width.val, framebuffer_height.val)
-    @opengl3.clear_color(0.08, 0.09, 0.10, 1.0)
-    @opengl3.clear(@opengl3.color_buffer_bit())
-    @opengl3.render_draw_data(draw_data)
-    @glfw.swap_buffers(window)
+  try
+    @starter.run_forever(
+      title="MoonBit Dear ImGui GLFW/OpenGL3",
+      width=1180,
+      height=820,
+      floating=true,
+    ) <| ui => { render_ui(ui, state) }
+  catch {
+    _ => abort("failed to run Dear ImGui example")
   }
 }
 
 ///|
-fn render_ui(state : DemoState) -> Unit raise @imgui.ImGuiError {
+fn render_ui(ui : @imgui.Ui, state : DemoState) -> Unit raise @imgui.ImGuiError {
   touch_value_api()
   let io = @imgui.io()
   io.set_app_accepting_events(true)
@@ -191,7 +128,6 @@ fn render_ui(state : DemoState) -> Unit raise @imgui.ImGuiError {
 
   let style = @imgui.style()
   let font = @imgui.font()
-  let ui = @imgui.ui()
   ui.main_menu_bar() <| bar => {
     bar.menu_item("Main counter +1") <| () => {
       state.counter = state.counter + 1
@@ -1256,9 +1192,4 @@ fn touch_value_api() -> Unit {
   ignore(@imgui.Vec4::new(1.0, 1.0, 1.0, 1.0))
   ignore(@imgui.Vec4::white())
   ignore(@imgui.Vec4::transparent())
-}
-
-///|
-fn utf8(value : String) -> Bytes {
-  @encoding/utf8.encode(value)
 }
