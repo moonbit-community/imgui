@@ -1,7 +1,7 @@
 import {
-  "moonbit-community/imgui" @imgui,
-  "moonbit-community/imgui/bindings/glfw" @glfw,
-  "moonbit-community/imgui/bindings/opengl3" @opengl3,
+  "moonbit-community/imgui",
+  "moonbit-community/imgui/bindings/glfw",
+  "moonbit-community/imgui/bindings/opengl3",
   "moonbitlang/core/encoding/utf8" @encoding/utf8,
 }
 

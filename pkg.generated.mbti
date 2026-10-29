@@ -14,7 +14,7 @@ pub fn font() -> Font raise ImGuiError
 
 pub fn font_size() -> Float raise ImGuiError
 
-pub fn frame_count() -> Int
+pub fn frame_count() -> Int32
 
 pub fn has_current_context() -> Bool
 
@@ -28,13 +28,16 @@ pub fn style() -> Style raise ImGuiError
 
 pub fn ui() -> Ui
 
-pub fn version_number() -> Int
+pub fn version_number() -> Int32
 
 // Errors
 pub(all) suberror ImGuiError {
   NoCurrentContext
   InvalidColor(String)
 } derive(Eq, @debug.Debug)
+pub fn ImGuiError::equal(Self, Self) -> Bool
+pub fn ImGuiError::not_equal(Self, Self) -> Bool
+pub fn ImGuiError::to_repr(Self) -> @debug.Repr
 
 // Types and methods
 pub(all) struct AnyItemState {
@@ -42,6 +45,9 @@ pub(all) struct AnyItemState {
   hovered : Bool
   focused : Bool
 } derive(Eq, @debug.Debug)
+pub fn AnyItemState::equal(Self, Self) -> Bool
+pub fn AnyItemState::not_equal(Self, Self) -> Bool
+pub fn AnyItemState::to_repr(Self) -> @debug.Repr
 
 pub(all) enum ButtonFlag {
   MouseButtonLeft
@@ -50,10 +56,13 @@ pub(all) enum ButtonFlag {
   EnableNav
   AllowOverlap
 } derive(Eq, @debug.Debug)
+pub fn ButtonFlag::equal(Self, Self) -> Bool
+pub fn ButtonFlag::not_equal(Self, Self) -> Bool
+pub fn ButtonFlag::to_repr(Self) -> @debug.Repr
 
 pub(all) enum Color {
-  Rgb(Int, Int, Int)
-  Rgba(Int, Int, Int, Float)
+  Rgb(Int32, Int32, Int32)
+  Rgba(Int32, Int32, Int32, Float)
   Hex(String)
   White
   Black
@@ -66,6 +75,9 @@ pub(all) enum Color {
   Magenta
   Gray
 } derive(Eq, @debug.Debug)
+pub fn Color::equal(Self, Self) -> Bool
+pub fn Color::not_equal(Self, Self) -> Bool
+pub fn Color::to_repr(Self) -> @debug.Repr
 
 pub(all) enum ColorEditFlag {
   NoAlpha
@@ -95,13 +107,19 @@ pub(all) enum ColorEditFlag {
   InputHsv
   AlphaPreview
 } derive(Eq, @debug.Debug)
+pub fn ColorEditFlag::equal(Self, Self) -> Bool
+pub fn ColorEditFlag::not_equal(Self, Self) -> Bool
+pub fn ColorEditFlag::to_repr(Self) -> @debug.Repr
 
 pub(all) struct ColumnState {
-  index : Int
-  count : Int
+  index : Int32
+  count : Int32
   width : Float
   offset : Float
 } derive(Eq, @debug.Debug)
+pub fn ColumnState::equal(Self, Self) -> Bool
+pub fn ColumnState::not_equal(Self, Self) -> Bool
+pub fn ColumnState::to_repr(Self) -> @debug.Repr
 
 pub(all) enum ComboFlag {
   PopupAlignLeft
@@ -113,6 +131,9 @@ pub(all) enum ComboFlag {
   NoPreview
   WidthFitPreview
 } derive(Eq, @debug.Debug)
+pub fn ComboFlag::equal(Self, Self) -> Bool
+pub fn ComboFlag::not_equal(Self, Self) -> Bool
+pub fn ComboFlag::to_repr(Self) -> @debug.Repr
 
 type ComboUi
 pub fn ComboUi::selectable(Self, String, selected? : Bool, flags? : Array[SelectableFlag], style? : Array[StyleSheet], () -> Unit raise ImGuiError) -> Unit raise ImGuiError
@@ -120,9 +141,12 @@ pub fn ComboUi::selectable(Self, String, selected? : Bool, flags? : Array[Select
 type Cond derive(Eq, @debug.Debug)
 pub fn Cond::always() -> Self
 pub fn Cond::appearing() -> Self
+pub fn Cond::equal(Self, Self) -> Bool
 pub fn Cond::first_use_ever() -> Self
 pub fn Cond::none() -> Self
+pub fn Cond::not_equal(Self, Self) -> Bool
 pub fn Cond::once() -> Self
+pub fn Cond::to_repr(Self) -> @debug.Repr
 
 type Context
 pub fn Context::create() -> Self
@@ -131,23 +155,32 @@ pub fn Context::make_current(Self) -> Unit
 
 type Dir derive(Eq, @debug.Debug)
 pub fn Dir::down() -> Self
+pub fn Dir::equal(Self, Self) -> Bool
 pub fn Dir::left() -> Self
 pub fn Dir::none() -> Self
+pub fn Dir::not_equal(Self, Self) -> Bool
 pub fn Dir::right() -> Self
+pub fn Dir::to_repr(Self) -> @debug.Repr
 pub fn Dir::up() -> Self
 
 pub(all) struct Float2 {
   x : Float
   y : Float
 } derive(Eq, @debug.Debug)
+pub fn Float2::equal(Self, Self) -> Bool
 pub fn Float2::new(Float, Float) -> Self
+pub fn Float2::not_equal(Self, Self) -> Bool
+pub fn Float2::to_repr(Self) -> @debug.Repr
 
 pub(all) struct Float3 {
   x : Float
   y : Float
   z : Float
 } derive(Eq, @debug.Debug)
+pub fn Float3::equal(Self, Self) -> Bool
 pub fn Float3::new(Float, Float, Float) -> Self
+pub fn Float3::not_equal(Self, Self) -> Bool
+pub fn Float3::to_repr(Self) -> @debug.Repr
 
 pub(all) struct Float4 {
   x : Float
@@ -155,13 +188,19 @@ pub(all) struct Float4 {
   z : Float
   w : Float
 } derive(Eq, @debug.Debug)
+pub fn Float4::equal(Self, Self) -> Bool
 pub fn Float4::new(Float, Float, Float, Float) -> Self
+pub fn Float4::not_equal(Self, Self) -> Bool
+pub fn Float4::to_repr(Self) -> @debug.Repr
 
 pub(all) struct FloatRange {
   min : Float
   max : Float
 } derive(Eq, @debug.Debug)
+pub fn FloatRange::equal(Self, Self) -> Bool
 pub fn FloatRange::new(Float, Float) -> Self
+pub fn FloatRange::not_equal(Self, Self) -> Bool
+pub fn FloatRange::to_repr(Self) -> @debug.Repr
 
 pub(all) enum FocusedFlag {
   ChildWindows
@@ -170,6 +209,9 @@ pub(all) enum FocusedFlag {
   NoPopupHierarchy
   RootAndChildWindows
 } derive(Eq, @debug.Debug)
+pub fn FocusedFlag::equal(Self, Self) -> Bool
+pub fn FocusedFlag::not_equal(Self, Self) -> Bool
+pub fn FocusedFlag::to_repr(Self) -> @debug.Repr
 
 type Font
 pub fn Font::is_null(Self) -> Bool
@@ -195,6 +237,9 @@ pub(all) enum HoveredFlag {
   DelayNormal
   NoSharedDelay
 } derive(Eq, @debug.Debug)
+pub fn HoveredFlag::equal(Self, Self) -> Bool
+pub fn HoveredFlag::not_equal(Self, Self) -> Bool
+pub fn HoveredFlag::to_repr(Self) -> @debug.Repr
 
 pub(all) enum InputTextFlag {
   CharsDecimal
@@ -223,38 +268,53 @@ pub(all) enum InputTextFlag {
   ElideLeft
   WordWrap
 } derive(Eq, @debug.Debug)
+pub fn InputTextFlag::equal(Self, Self) -> Bool
+pub fn InputTextFlag::not_equal(Self, Self) -> Bool
+pub fn InputTextFlag::to_repr(Self) -> @debug.Repr
 
 pub(all) struct Int2 {
-  x : Int
-  y : Int
+  x : Int32
+  y : Int32
 } derive(Eq, @debug.Debug)
-pub fn Int2::new(Int, Int) -> Self
+pub fn Int2::equal(Self, Self) -> Bool
+pub fn Int2::new(Int32, Int32) -> Self
+pub fn Int2::not_equal(Self, Self) -> Bool
+pub fn Int2::to_repr(Self) -> @debug.Repr
 
 pub(all) struct Int3 {
-  x : Int
-  y : Int
-  z : Int
+  x : Int32
+  y : Int32
+  z : Int32
 } derive(Eq, @debug.Debug)
-pub fn Int3::new(Int, Int, Int) -> Self
+pub fn Int3::equal(Self, Self) -> Bool
+pub fn Int3::new(Int32, Int32, Int32) -> Self
+pub fn Int3::not_equal(Self, Self) -> Bool
+pub fn Int3::to_repr(Self) -> @debug.Repr
 
 pub(all) struct Int4 {
-  x : Int
-  y : Int
-  z : Int
-  w : Int
+  x : Int32
+  y : Int32
+  z : Int32
+  w : Int32
 } derive(Eq, @debug.Debug)
-pub fn Int4::new(Int, Int, Int, Int) -> Self
+pub fn Int4::equal(Self, Self) -> Bool
+pub fn Int4::new(Int32, Int32, Int32, Int32) -> Self
+pub fn Int4::not_equal(Self, Self) -> Bool
+pub fn Int4::to_repr(Self) -> @debug.Repr
 
 pub(all) struct IntRange {
-  min : Int
-  max : Int
+  min : Int32
+  max : Int32
 } derive(Eq, @debug.Debug)
-pub fn IntRange::new(Int, Int) -> Self
+pub fn IntRange::equal(Self, Self) -> Bool
+pub fn IntRange::new(Int32, Int32) -> Self
+pub fn IntRange::not_equal(Self, Self) -> Bool
+pub fn IntRange::to_repr(Self) -> @debug.Repr
 
 type Io
 pub fn Io::add_focus_event(Self, Bool) -> Unit
-pub fn Io::add_input_character(Self, UInt) -> Unit
-pub fn Io::add_input_character_utf16(Self, UInt) -> Unit
+pub fn Io::add_input_character(Self, UInt32) -> Unit
+pub fn Io::add_input_character_utf16(Self, UInt32) -> Unit
 pub fn Io::add_input_text(Self, String) -> Unit
 pub fn Io::add_key_analog_event(Self, Key, Bool, Float) -> Unit
 pub fn Io::add_key_event(Self, Key, Bool) -> Unit
@@ -266,7 +326,7 @@ pub fn Io::clear_events_queue(Self) -> Unit
 pub fn Io::clear_input_keys(Self) -> Unit
 pub fn Io::clear_input_mouse(Self) -> Unit
 pub fn Io::set_app_accepting_events(Self, Bool) -> Unit
-pub fn Io::set_key_event_native_data(Self, Key, Int, Int, native_legacy_index? : Int) -> Unit
+pub fn Io::set_key_event_native_data(Self, Key, Int32, Int32, native_legacy_index? : Int32) -> Unit
 
 pub(all) enum ItemFlag {
   NoTabStop
@@ -277,6 +337,9 @@ pub(all) enum ItemFlag {
   AllowDuplicateId
   Disabled
 } derive(Eq, @debug.Debug)
+pub fn ItemFlag::equal(Self, Self) -> Bool
+pub fn ItemFlag::not_equal(Self, Self) -> Bool
+pub fn ItemFlag::to_repr(Self) -> @debug.Repr
 
 pub(all) struct ItemState {
   active : Bool
@@ -290,6 +353,9 @@ pub(all) struct ItemState {
   toggled_open : Bool
   visible : Bool
 } derive(Eq, @debug.Debug)
+pub fn ItemState::equal(Self, Self) -> Bool
+pub fn ItemState::not_equal(Self, Self) -> Bool
+pub fn ItemState::to_repr(Self) -> @debug.Repr
 
 pub(all) enum Key {
   NoKey
@@ -450,6 +516,9 @@ pub(all) enum Key {
   ModSuper
   ModShortcut
 } derive(Eq, @debug.Debug)
+pub fn Key::equal(Self, Self) -> Bool
+pub fn Key::not_equal(Self, Self) -> Bool
+pub fn Key::to_repr(Self) -> @debug.Repr
 
 type MenuBarUi
 pub fn MenuBarUi::menu(Self, String, enabled? : Bool, style? : Array[StyleSheet], (MenuUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
@@ -459,15 +528,21 @@ type MenuUi
 pub fn MenuUi::menu_item(Self, String, selected? : Bool, enabled? : Bool, style? : Array[StyleSheet], () -> Unit raise ImGuiError) -> Unit raise ImGuiError
 
 type MouseButton derive(Eq, @debug.Debug)
+pub fn MouseButton::equal(Self, Self) -> Bool
 pub fn MouseButton::left() -> Self
 pub fn MouseButton::middle() -> Self
+pub fn MouseButton::not_equal(Self, Self) -> Bool
 pub fn MouseButton::right() -> Self
+pub fn MouseButton::to_repr(Self) -> @debug.Repr
 
 pub(all) enum MouseSource {
   Mouse
   TouchScreen
   Pen
 } derive(Eq, @debug.Debug)
+pub fn MouseSource::equal(Self, Self) -> Bool
+pub fn MouseSource::not_equal(Self, Self) -> Bool
+pub fn MouseSource::to_repr(Self) -> @debug.Repr
 
 pub(all) enum PopupFlag {
   MouseButtonLeft
@@ -480,6 +555,9 @@ pub(all) enum PopupFlag {
   AnyPopupLevel
   AnyPopup
 } derive(Eq, @debug.Debug)
+pub fn PopupFlag::equal(Self, Self) -> Bool
+pub fn PopupFlag::not_equal(Self, Self) -> Bool
+pub fn PopupFlag::to_repr(Self) -> @debug.Repr
 
 type PopupUi
 pub fn PopupUi::button(Self, String, style? : Array[StyleSheet], () -> Unit raise ImGuiError) -> Unit raise ImGuiError
@@ -493,6 +571,9 @@ pub(all) struct ScrollState {
   max_x : Float
   max_y : Float
 } derive(Eq, @debug.Debug)
+pub fn ScrollState::equal(Self, Self) -> Bool
+pub fn ScrollState::not_equal(Self, Self) -> Bool
+pub fn ScrollState::to_repr(Self) -> @debug.Repr
 
 pub(all) enum SelectableFlag {
   NoAutoClosePopups
@@ -504,6 +585,9 @@ pub(all) enum SelectableFlag {
   SelectOnNav
   DontClosePopups
 } derive(Eq, @debug.Debug)
+pub fn SelectableFlag::equal(Self, Self) -> Bool
+pub fn SelectableFlag::not_equal(Self, Self) -> Bool
+pub fn SelectableFlag::to_repr(Self) -> @debug.Repr
 
 pub(all) enum SliderFlag {
   Logarithmic
@@ -516,6 +600,9 @@ pub(all) enum SliderFlag {
   ColorMarkers
   AlwaysClamp
 } derive(Eq, @debug.Debug)
+pub fn SliderFlag::equal(Self, Self) -> Bool
+pub fn SliderFlag::not_equal(Self, Self) -> Bool
+pub fn SliderFlag::to_repr(Self) -> @debug.Repr
 
 type Style
 pub fn Style::colors_classic(Self) -> Unit
@@ -580,6 +667,9 @@ pub(all) enum StyleSheet {
   SeparatorSize(Float)
   SeparatorTextBorderSize(Float)
 } derive(Eq, @debug.Debug)
+pub fn StyleSheet::equal(Self, Self) -> Bool
+pub fn StyleSheet::not_equal(Self, Self) -> Bool
+pub fn StyleSheet::to_repr(Self) -> @debug.Repr
 
 pub(all) enum TabBarFlag {
   Reorderable
@@ -594,6 +684,9 @@ pub(all) enum TabBarFlag {
   FittingPolicyScroll
   FittingPolicyResizeDown
 } derive(Eq, @debug.Debug)
+pub fn TabBarFlag::equal(Self, Self) -> Bool
+pub fn TabBarFlag::not_equal(Self, Self) -> Bool
+pub fn TabBarFlag::to_repr(Self) -> @debug.Repr
 
 type TabBarUi
 pub fn TabBarUi::tab_item(Self, String, flags? : Array[TabItemFlag], style? : Array[StyleSheet], (TabItemUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
@@ -610,17 +703,23 @@ pub(all) enum TabItemFlag {
   Trailing
   NoAssumedClosure
 } derive(Eq, @debug.Debug)
+pub fn TabItemFlag::equal(Self, Self) -> Bool
+pub fn TabItemFlag::not_equal(Self, Self) -> Bool
+pub fn TabItemFlag::to_repr(Self) -> @debug.Repr
 
 type TabItemUi
 pub fn TabItemUi::separator(Self, style? : Array[StyleSheet]) -> Unit raise ImGuiError
-pub fn TabItemUi::table(Self, String, Int, flags? : Array[TableFlag], style? : Array[StyleSheet], (TableUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn TabItemUi::table(Self, String, Int32, flags? : Array[TableFlag], style? : Array[StyleSheet], (TableUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn TabItemUi::text(Self, String, style? : Array[StyleSheet]) -> Unit raise ImGuiError
 
 type TableBgTarget derive(Eq, @debug.Debug)
 pub fn TableBgTarget::cell_bg() -> Self
+pub fn TableBgTarget::equal(Self, Self) -> Bool
 pub fn TableBgTarget::none() -> Self
+pub fn TableBgTarget::not_equal(Self, Self) -> Bool
 pub fn TableBgTarget::row_bg0() -> Self
 pub fn TableBgTarget::row_bg1() -> Self
+pub fn TableBgTarget::to_repr(Self) -> @debug.Repr
 
 pub(all) enum TableColumnFlag {
   Disabled
@@ -647,6 +746,9 @@ pub(all) enum TableColumnFlag {
   IsSorted
   IsHovered
 } derive(Eq, @debug.Debug)
+pub fn TableColumnFlag::equal(Self, Self) -> Bool
+pub fn TableColumnFlag::not_equal(Self, Self) -> Bool
+pub fn TableColumnFlag::to_repr(Self) -> @debug.Repr
 
 pub(all) enum TableFlag {
   Resizable
@@ -685,28 +787,34 @@ pub(all) enum TableFlag {
   SortTristate
   HighlightHoveredColumn
 } derive(Eq, @debug.Debug)
+pub fn TableFlag::equal(Self, Self) -> Bool
+pub fn TableFlag::not_equal(Self, Self) -> Bool
+pub fn TableFlag::to_repr(Self) -> @debug.Repr
 
 pub(all) enum TableRowFlag {
   Headers
 } derive(Eq, @debug.Debug)
+pub fn TableRowFlag::equal(Self, Self) -> Bool
+pub fn TableRowFlag::not_equal(Self, Self) -> Bool
+pub fn TableRowFlag::to_repr(Self) -> @debug.Repr
 
 type TableUi
 pub fn TableUi::angled_headers_row(Self) -> Unit raise ImGuiError
-pub fn TableUi::column_count(Self) -> Int raise ImGuiError
-pub fn TableUi::column_has_flag(Self, Int, TableColumnFlag) -> Bool raise ImGuiError
-pub fn TableUi::column_index(Self) -> Int raise ImGuiError
+pub fn TableUi::column_count(Self) -> Int32 raise ImGuiError
+pub fn TableUi::column_has_flag(Self, Int32, TableColumnFlag) -> Bool raise ImGuiError
+pub fn TableUi::column_index(Self) -> Int32 raise ImGuiError
 pub fn TableUi::header(Self, String) -> Unit raise ImGuiError
 pub fn TableUi::headers_row(Self) -> Unit raise ImGuiError
-pub fn TableUi::hovered_column(Self) -> Int raise ImGuiError
+pub fn TableUi::hovered_column(Self) -> Int32 raise ImGuiError
 pub fn TableUi::next_column(Self) -> Bool raise ImGuiError
 pub fn TableUi::next_row(Self, flags? : Array[TableRowFlag], min_height? : Float) -> Unit raise ImGuiError
-pub fn TableUi::row_index(Self) -> Int raise ImGuiError
+pub fn TableUi::row_index(Self) -> Int32 raise ImGuiError
 pub fn TableUi::selectable(Self, String, selected? : Bool, flags? : Array[SelectableFlag], style? : Array[StyleSheet], () -> Unit raise ImGuiError) -> Unit raise ImGuiError
-pub fn TableUi::set_bg_color(Self, TableBgTarget, Color, column? : Int) -> Unit raise ImGuiError
-pub fn TableUi::set_column_enabled(Self, Int, Bool) -> Unit raise ImGuiError
-pub fn TableUi::set_column_index(Self, Int) -> Bool raise ImGuiError
-pub fn TableUi::setup_column(Self, String, flags? : Array[TableColumnFlag], init_width_or_weight? : Float, user_id? : UInt) -> Unit raise ImGuiError
-pub fn TableUi::setup_scroll_freeze(Self, Int, Int) -> Unit raise ImGuiError
+pub fn TableUi::set_bg_color(Self, TableBgTarget, Color, column? : Int32) -> Unit raise ImGuiError
+pub fn TableUi::set_column_enabled(Self, Int32, Bool) -> Unit raise ImGuiError
+pub fn TableUi::set_column_index(Self, Int32) -> Bool raise ImGuiError
+pub fn TableUi::setup_column(Self, String, flags? : Array[TableColumnFlag], init_width_or_weight? : Float, user_id? : UInt32) -> Unit raise ImGuiError
+pub fn TableUi::setup_scroll_freeze(Self, Int32, Int32) -> Unit raise ImGuiError
 pub fn TableUi::text(Self, String, style? : Array[StyleSheet]) -> Unit raise ImGuiError
 
 type TooltipUi
@@ -737,6 +845,9 @@ pub(all) enum TreeNodeFlag {
   NavLeftJumpsBackHere
   SpanTextWidth
 } derive(Eq, @debug.Debug)
+pub fn TreeNodeFlag::equal(Self, Self) -> Bool
+pub fn TreeNodeFlag::not_equal(Self, Self) -> Bool
+pub fn TreeNodeFlag::to_repr(Self) -> @debug.Repr
 
 type TreeNodeUi
 pub fn TreeNodeUi::bullet_text(Self, String, style? : Array[StyleSheet]) -> Unit raise ImGuiError
@@ -752,8 +863,11 @@ pub(all) struct Vec4 {
   z : Float
   w : Float
 } derive(Eq, @debug.Debug)
+pub fn Vec4::equal(Self, Self) -> Bool
 pub fn Vec4::new(Float, Float, Float, Float) -> Self
+pub fn Vec4::not_equal(Self, Self) -> Bool
 pub fn Vec4::rgba(Float, Float, Float, Float) -> Self
+pub fn Vec4::to_repr(Self) -> @debug.Repr
 pub fn Vec4::transparent() -> Self
 pub fn Vec4::white() -> Self
 
@@ -781,6 +895,9 @@ pub(all) enum WindowFlag {
   NoDecoration
   NoInputs
 } derive(Eq, @debug.Debug)
+pub fn WindowFlag::equal(Self, Self) -> Bool
+pub fn WindowFlag::not_equal(Self, Self) -> Bool
+pub fn WindowFlag::to_repr(Self) -> @debug.Repr
 
 pub(all) struct WindowState {
   appearing : Bool
@@ -788,6 +905,9 @@ pub(all) struct WindowState {
   focused : Bool
   hovered : Bool
 } derive(Eq, @debug.Debug)
+pub fn WindowState::equal(Self, Self) -> Bool
+pub fn WindowState::not_equal(Self, Self) -> Bool
+pub fn WindowState::to_repr(Self) -> @debug.Repr
 
 type WindowUi
 pub fn WindowUi::align_text_to_frame_padding(Self) -> Unit raise ImGuiError
@@ -805,8 +925,8 @@ pub fn WindowUi::color_edit3(Self, String, Vec4, flags? : Array[ColorEditFlag], 
 pub fn WindowUi::color_edit4(Self, String, Vec4, flags? : Array[ColorEditFlag], style? : Array[StyleSheet], (Vec4) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::color_picker3(Self, String, Vec4, flags? : Array[ColorEditFlag], style? : Array[StyleSheet], (Vec4) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::color_picker4(Self, String, Vec4, flags? : Array[ColorEditFlag], style? : Array[StyleSheet], (Vec4) -> Unit raise ImGuiError) -> Unit raise ImGuiError
-pub fn WindowUi::column_state(Self, column? : Int) -> ColumnState raise ImGuiError
-pub fn WindowUi::columns(Self, Int, border? : Bool, style? : Array[StyleSheet], (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::column_state(Self, column? : Int32) -> ColumnState raise ImGuiError
+pub fn WindowUi::columns(Self, Int32, border? : Bool, style? : Array[StyleSheet], (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::combo(Self, String, String, flags? : Array[ComboFlag], style? : Array[StyleSheet], (ComboUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::cursor_pos_x(Self) -> Float raise ImGuiError
 pub fn WindowUi::cursor_pos_y(Self) -> Float raise ImGuiError
@@ -816,24 +936,24 @@ pub fn WindowUi::drag_float2(Self, String, Float2, speed? : Float, min? : Float,
 pub fn WindowUi::drag_float3(Self, String, Float3, speed? : Float, min? : Float, max? : Float, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (Float3) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::drag_float4(Self, String, Float4, speed? : Float, min? : Float, max? : Float, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (Float4) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::drag_float_range2(Self, String, FloatRange, speed? : Float, min? : Float, max? : Float, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (FloatRange) -> Unit raise ImGuiError) -> Unit raise ImGuiError
-pub fn WindowUi::drag_int(Self, String, Int, speed? : Float, min? : Int, max? : Int, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (Int) -> Unit raise ImGuiError) -> Unit raise ImGuiError
-pub fn WindowUi::drag_int2(Self, String, Int2, speed? : Float, min? : Int, max? : Int, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (Int2) -> Unit raise ImGuiError) -> Unit raise ImGuiError
-pub fn WindowUi::drag_int3(Self, String, Int3, speed? : Float, min? : Int, max? : Int, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (Int3) -> Unit raise ImGuiError) -> Unit raise ImGuiError
-pub fn WindowUi::drag_int4(Self, String, Int4, speed? : Float, min? : Int, max? : Int, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (Int4) -> Unit raise ImGuiError) -> Unit raise ImGuiError
-pub fn WindowUi::drag_int_range2(Self, String, IntRange, speed? : Float, min? : Int, max? : Int, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (IntRange) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::drag_int(Self, String, Int32, speed? : Float, min? : Int32, max? : Int32, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (Int32) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::drag_int2(Self, String, Int2, speed? : Float, min? : Int32, max? : Int32, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (Int2) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::drag_int3(Self, String, Int3, speed? : Float, min? : Int32, max? : Int32, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (Int3) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::drag_int4(Self, String, Int4, speed? : Float, min? : Int32, max? : Int32, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (Int4) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::drag_int_range2(Self, String, IntRange, speed? : Float, min? : Int32, max? : Int32, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (IntRange) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::frame_height(Self) -> Float raise ImGuiError
 pub fn WindowUi::frame_height_with_spacing(Self) -> Float raise ImGuiError
 pub fn WindowUi::group(Self, style? : Array[StyleSheet], (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::has_item_flag(Self, ItemFlag) -> Bool raise ImGuiError
-pub fn WindowUi::id(Self, String) -> UInt raise ImGuiError
-pub fn WindowUi::id_int(Self, Int) -> UInt raise ImGuiError
+pub fn WindowUi::id(Self, String) -> UInt32 raise ImGuiError
+pub fn WindowUi::id_int(Self, Int32) -> UInt32 raise ImGuiError
 pub fn WindowUi::indent(Self, width? : Float) -> Unit raise ImGuiError
 pub fn WindowUi::input_double(Self, String, Double, step? : Double, step_fast? : Double, format? : String, flags? : Array[InputTextFlag], style? : Array[StyleSheet], (Double) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::input_float(Self, String, Float, step? : Float, step_fast? : Float, format? : String, flags? : Array[InputTextFlag], style? : Array[StyleSheet], (Float) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::input_float2(Self, String, Float2, format? : String, flags? : Array[InputTextFlag], style? : Array[StyleSheet], (Float2) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::input_float3(Self, String, Float3, format? : String, flags? : Array[InputTextFlag], style? : Array[StyleSheet], (Float3) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::input_float4(Self, String, Float4, format? : String, flags? : Array[InputTextFlag], style? : Array[StyleSheet], (Float4) -> Unit raise ImGuiError) -> Unit raise ImGuiError
-pub fn WindowUi::input_int(Self, String, Int, step? : Int, step_fast? : Int, flags? : Array[InputTextFlag], style? : Array[StyleSheet], (Int) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::input_int(Self, String, Int32, step? : Int32, step_fast? : Int32, flags? : Array[InputTextFlag], style? : Array[StyleSheet], (Int32) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::input_int2(Self, String, Int2, flags? : Array[InputTextFlag], style? : Array[StyleSheet], (Int2) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::input_int3(Self, String, Int3, flags? : Array[InputTextFlag], style? : Array[StyleSheet], (Int3) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::input_int4(Self, String, Int4, flags? : Array[InputTextFlag], style? : Array[StyleSheet], (Int4) -> Unit raise ImGuiError) -> Unit raise ImGuiError
@@ -845,7 +965,7 @@ pub fn WindowUi::is_item_hovered(Self, flags? : Array[HoveredFlag]) -> Bool rais
 pub fn WindowUi::is_popup_open(Self, String, flags? : Array[PopupFlag]) -> Bool raise ImGuiError
 pub fn WindowUi::is_window_focused(Self, flags? : Array[FocusedFlag]) -> Bool raise ImGuiError
 pub fn WindowUi::is_window_hovered(Self, flags? : Array[HoveredFlag]) -> Bool raise ImGuiError
-pub fn WindowUi::item_id(Self) -> UInt raise ImGuiError
+pub fn WindowUi::item_id(Self) -> UInt32 raise ImGuiError
 pub fn WindowUi::item_state(Self) -> ItemState raise ImGuiError
 pub fn WindowUi::item_tooltip(Self, style? : Array[StyleSheet], (TooltipUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::label_text(Self, String, String, style? : Array[StyleSheet]) -> Unit raise ImGuiError
@@ -860,7 +980,7 @@ pub fn WindowUi::popup_context_void(Self, flags? : Array[PopupFlag], style? : Ar
 pub fn WindowUi::popup_context_window(Self, flags? : Array[PopupFlag], style? : Array[StyleSheet], (PopupUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::popup_modal(Self, String, @ref.Ref[Bool], flags? : Array[WindowFlag], style? : Array[StyleSheet], (PopupUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::radio_button(Self, String, Bool, style? : Array[StyleSheet], () -> Unit raise ImGuiError) -> Unit raise ImGuiError
-pub fn WindowUi::radio_int(Self, String, Int, Int, style? : Array[StyleSheet], (Int) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::radio_int(Self, String, Int32, Int32, style? : Array[StyleSheet], (Int32) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::same_line(Self) -> Unit raise ImGuiError
 pub fn WindowUi::same_line_ex(Self, Float, Float) -> Unit raise ImGuiError
 pub fn WindowUi::scroll_state(Self) -> ScrollState raise ImGuiError
@@ -868,18 +988,18 @@ pub fn WindowUi::selectable(Self, String, selected? : Bool, flags? : Array[Selec
 pub fn WindowUi::separator(Self, style? : Array[StyleSheet]) -> Unit raise ImGuiError
 pub fn WindowUi::separator_text(Self, String, style? : Array[StyleSheet]) -> Unit raise ImGuiError
 pub fn WindowUi::set_color_edit_options(Self, Array[ColorEditFlag]) -> Unit raise ImGuiError
-pub fn WindowUi::set_column_offset(Self, Int, Float) -> Unit raise ImGuiError
-pub fn WindowUi::set_column_width(Self, Int, Float) -> Unit raise ImGuiError
+pub fn WindowUi::set_column_offset(Self, Int32, Float) -> Unit raise ImGuiError
+pub fn WindowUi::set_column_width(Self, Int32, Float) -> Unit raise ImGuiError
 pub fn WindowUi::set_cursor_pos_x(Self, Float) -> Unit raise ImGuiError
 pub fn WindowUi::set_cursor_pos_y(Self, Float) -> Unit raise ImGuiError
 pub fn WindowUi::set_item_default_focus(Self) -> Unit raise ImGuiError
 pub fn WindowUi::set_item_tooltip(Self, String) -> Unit raise ImGuiError
-pub fn WindowUi::set_keyboard_focus_here(Self, offset? : Int) -> Unit raise ImGuiError
+pub fn WindowUi::set_keyboard_focus_here(Self, offset? : Int32) -> Unit raise ImGuiError
 pub fn WindowUi::set_nav_cursor_visible(Self, Bool) -> Unit raise ImGuiError
 pub fn WindowUi::set_next_item_allow_overlap(Self) -> Unit raise ImGuiError
 pub fn WindowUi::set_next_item_open(Self, Bool, cond? : Cond) -> Unit raise ImGuiError
 pub fn WindowUi::set_next_item_selection_user_data(Self, Int64) -> Unit raise ImGuiError
-pub fn WindowUi::set_next_item_storage_id(Self, UInt) -> Unit raise ImGuiError
+pub fn WindowUi::set_next_item_storage_id(Self, UInt32) -> Unit raise ImGuiError
 pub fn WindowUi::set_next_item_width(Self, Float) -> Unit raise ImGuiError
 pub fn WindowUi::set_scroll_here_x(Self, center_x_ratio? : Float) -> Unit raise ImGuiError
 pub fn WindowUi::set_scroll_here_y(Self, center_y_ratio? : Float) -> Unit raise ImGuiError
@@ -895,15 +1015,15 @@ pub fn WindowUi::slider_float(Self, String, Float, Float, Float, format? : Strin
 pub fn WindowUi::slider_float2(Self, String, Float2, Float, Float, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (Float2) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::slider_float3(Self, String, Float3, Float, Float, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (Float3) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::slider_float4(Self, String, Float4, Float, Float, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (Float4) -> Unit raise ImGuiError) -> Unit raise ImGuiError
-pub fn WindowUi::slider_int(Self, String, Int, Int, Int, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (Int) -> Unit raise ImGuiError) -> Unit raise ImGuiError
-pub fn WindowUi::slider_int2(Self, String, Int2, Int, Int, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (Int2) -> Unit raise ImGuiError) -> Unit raise ImGuiError
-pub fn WindowUi::slider_int3(Self, String, Int3, Int, Int, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (Int3) -> Unit raise ImGuiError) -> Unit raise ImGuiError
-pub fn WindowUi::slider_int4(Self, String, Int4, Int, Int, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (Int4) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::slider_int(Self, String, Int32, Int32, Int32, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (Int32) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::slider_int2(Self, String, Int2, Int32, Int32, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (Int2) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::slider_int3(Self, String, Int3, Int32, Int32, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (Int3) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::slider_int4(Self, String, Int4, Int32, Int32, format? : String, flags? : Array[SliderFlag], style? : Array[StyleSheet], (Int4) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::small_button(Self, String, style? : Array[StyleSheet], () -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::spacing(Self) -> Unit raise ImGuiError
 pub fn WindowUi::style(Self, Array[StyleSheet], (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::tab_bar(Self, String, flags? : Array[TabBarFlag], style? : Array[StyleSheet], (TabBarUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
-pub fn WindowUi::table(Self, String, Int, flags? : Array[TableFlag], style? : Array[StyleSheet], (TableUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::table(Self, String, Int32, flags? : Array[TableFlag], style? : Array[StyleSheet], (TableUi) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::text(Self, String, style? : Array[StyleSheet]) -> Unit raise ImGuiError
 pub fn WindowUi::text_disabled(Self, String, style? : Array[StyleSheet]) -> Unit raise ImGuiError
 pub fn WindowUi::text_line_height(Self) -> Float raise ImGuiError
@@ -919,7 +1039,7 @@ pub fn WindowUi::window_state(Self) -> WindowState raise ImGuiError
 pub fn WindowUi::window_width(Self) -> Float raise ImGuiError
 pub fn WindowUi::with_font(Self, Font, size? : Float, style? : Array[StyleSheet], (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::with_id(Self, String, style? : Array[StyleSheet], (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
-pub fn WindowUi::with_id_int(Self, Int, style? : Array[StyleSheet], (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
+pub fn WindowUi::with_id_int(Self, Int32, style? : Array[StyleSheet], (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::with_item_flag(Self, ItemFlag, Bool, style? : Array[StyleSheet], (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::with_item_width(Self, Float, style? : Array[StyleSheet], (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
 pub fn WindowUi::with_text_wrap_pos(Self, Float, style? : Array[StyleSheet], (Self) -> Unit raise ImGuiError) -> Unit raise ImGuiError
@@ -928,4 +1048,3 @@ pub fn WindowUi::with_text_wrap_pos(Self, Float, style? : Array[StyleSheet], (Se
 pub using @bindings {type ImDrawData as DrawData}
 
 // Traits
-

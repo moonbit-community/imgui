@@ -1071,11 +1071,11 @@ pub extern "C" fn AnonymousType1::is_null(self : AnonymousType1) -> Bool = "moon
 
 ///|
 /// ABI alias for C typedef `ImDrawIdx`.
-pub type ImDrawIdx = UInt
+pub type ImDrawIdx = UInt32
 
 ///|
 /// ABI alias for C typedef `ImGuiID`.
-pub type ImGuiID = UInt
+pub type ImGuiID = UInt32
 
 ///|
 /// ABI alias for C typedef `ImS8`.
@@ -1087,19 +1087,19 @@ pub type ImU8 = Byte
 
 ///|
 /// ABI alias for C typedef `ImS16`.
-pub type ImS16 = Int
+pub type ImS16 = Int32
 
 ///|
 /// ABI alias for C typedef `ImU16`.
-pub type ImU16 = UInt
+pub type ImU16 = UInt32
 
 ///|
 /// ABI alias for C typedef `ImS32`.
-pub type ImS32 = Int
+pub type ImS32 = Int32
 
 ///|
 /// ABI alias for C typedef `ImU32`.
-pub type ImU32 = UInt
+pub type ImU32 = UInt32
 
 ///|
 /// ABI alias for C typedef `ImS64`.
@@ -1111,15 +1111,15 @@ pub type ImU64 = UInt64
 
 ///|
 /// ABI alias for C typedef `ImGuiDir`.
-pub type ImGuiDir = Int
+pub type ImGuiDir = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiKey`.
-pub type ImGuiKey = Int
+pub type ImGuiKey = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiMouseSource`.
-pub type ImGuiMouseSource = Int
+pub type ImGuiMouseSource = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiSortDirection`.
@@ -1127,167 +1127,167 @@ pub type ImGuiSortDirection = Byte
 
 ///|
 /// ABI alias for C typedef `ImGuiCol`.
-pub type ImGuiCol = Int
+pub type ImGuiCol = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiCond`.
-pub type ImGuiCond = Int
+pub type ImGuiCond = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiDataType`.
-pub type ImGuiDataType = Int
+pub type ImGuiDataType = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiMouseButton`.
-pub type ImGuiMouseButton = Int
+pub type ImGuiMouseButton = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiMouseCursor`.
-pub type ImGuiMouseCursor = Int
+pub type ImGuiMouseCursor = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiStyleVar`.
-pub type ImGuiStyleVar = Int
+pub type ImGuiStyleVar = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiTableBgTarget`.
-pub type ImGuiTableBgTarget = Int
+pub type ImGuiTableBgTarget = Int32
 
 ///|
 /// ABI alias for C typedef `ImDrawFlags`.
-pub type ImDrawFlags = Int
+pub type ImDrawFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImDrawListFlags`.
-pub type ImDrawListFlags = Int
+pub type ImDrawListFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImDrawTextFlags`.
-pub type ImDrawTextFlags = Int
+pub type ImDrawTextFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImFontFlags`.
-pub type ImFontFlags = Int
+pub type ImFontFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImFontAtlasFlags`.
-pub type ImFontAtlasFlags = Int
+pub type ImFontAtlasFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiBackendFlags`.
-pub type ImGuiBackendFlags = Int
+pub type ImGuiBackendFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiButtonFlags`.
-pub type ImGuiButtonFlags = Int
+pub type ImGuiButtonFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiChildFlags`.
-pub type ImGuiChildFlags = Int
+pub type ImGuiChildFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiColorEditFlags`.
-pub type ImGuiColorEditFlags = Int
+pub type ImGuiColorEditFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiConfigFlags`.
-pub type ImGuiConfigFlags = Int
+pub type ImGuiConfigFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiComboFlags`.
-pub type ImGuiComboFlags = Int
+pub type ImGuiComboFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiDragDropFlags`.
-pub type ImGuiDragDropFlags = Int
+pub type ImGuiDragDropFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiFocusedFlags`.
-pub type ImGuiFocusedFlags = Int
+pub type ImGuiFocusedFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiHoveredFlags`.
-pub type ImGuiHoveredFlags = Int
+pub type ImGuiHoveredFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiInputFlags`.
-pub type ImGuiInputFlags = Int
+pub type ImGuiInputFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiInputTextFlags`.
-pub type ImGuiInputTextFlags = Int
+pub type ImGuiInputTextFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiItemFlags`.
-pub type ImGuiItemFlags = Int
+pub type ImGuiItemFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiKeyChord`.
-pub type ImGuiKeyChord = Int
+pub type ImGuiKeyChord = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiListClipperFlags`.
-pub type ImGuiListClipperFlags = Int
+pub type ImGuiListClipperFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiPopupFlags`.
-pub type ImGuiPopupFlags = Int
+pub type ImGuiPopupFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiMultiSelectFlags`.
-pub type ImGuiMultiSelectFlags = Int
+pub type ImGuiMultiSelectFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiSelectableFlags`.
-pub type ImGuiSelectableFlags = Int
+pub type ImGuiSelectableFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiSliderFlags`.
-pub type ImGuiSliderFlags = Int
+pub type ImGuiSliderFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiTabBarFlags`.
-pub type ImGuiTabBarFlags = Int
+pub type ImGuiTabBarFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiTabItemFlags`.
-pub type ImGuiTabItemFlags = Int
+pub type ImGuiTabItemFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiTableFlags`.
-pub type ImGuiTableFlags = Int
+pub type ImGuiTableFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiTableColumnFlags`.
-pub type ImGuiTableColumnFlags = Int
+pub type ImGuiTableColumnFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiTableRowFlags`.
-pub type ImGuiTableRowFlags = Int
+pub type ImGuiTableRowFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiTreeNodeFlags`.
-pub type ImGuiTreeNodeFlags = Int
+pub type ImGuiTreeNodeFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiViewportFlags`.
-pub type ImGuiViewportFlags = Int
+pub type ImGuiViewportFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImGuiWindowFlags`.
-pub type ImGuiWindowFlags = Int
+pub type ImGuiWindowFlags = Int32
 
 ///|
 /// ABI alias for C typedef `ImWchar32`.
-pub type ImWchar32 = UInt
+pub type ImWchar32 = UInt32
 
 ///|
 /// ABI alias for C typedef `ImWchar16`.
-pub type ImWchar16 = UInt
+pub type ImWchar16 = UInt32
 
 ///|
 /// ABI alias for C typedef `ImWchar`.
-pub type ImWchar = UInt
+pub type ImWchar = UInt32
 
 ///|
 /// ABI alias for C typedef `ImGuiSelectionUserData`.
@@ -1299,11 +1299,11 @@ pub type ImTextureID = UInt64
 
 ///|
 /// ABI alias for C typedef `ImFontAtlasRectId`.
-pub type ImFontAtlasRectId = Int
+pub type ImFontAtlasRectId = Int32
 
 ///|
 /// ABI alias for C function pointer typedef `ImGuiInputTextCallback`.
-pub type ImGuiInputTextCallback = FuncRef[(ImGuiInputTextCallbackData) -> Int]
+pub type ImGuiInputTextCallback = FuncRef[(ImGuiInputTextCallbackData) -> Int32]
 
 ///|
 /// ABI alias for C function pointer typedef `ImGuiSizeCallback`.
@@ -1311,7 +1311,7 @@ pub type ImGuiSizeCallback = FuncRef[(ImGuiSizeCallbackData) -> Unit]
 
 ///|
 /// ABI alias for C function pointer typedef `ImGuiMemAllocFunc`.
-pub type ImGuiMemAllocFunc = FuncRef[(Int, VoidPtr) -> VoidPtr]
+pub type ImGuiMemAllocFunc = FuncRef[(Int32, VoidPtr) -> VoidPtr]
 
 ///|
 /// ABI alias for C function pointer typedef `ImGuiMemFreeFunc`.
@@ -1329,7 +1329,7 @@ pub fn imgui_version() -> String {
 
 ///|
 /// Generated constant binding for define `IMGUI_VERSION_NUM`.
-pub fn imgui_version_num() -> Int {
+pub fn imgui_version_num() -> Int32 {
   19281
 }
 
@@ -1347,4237 +1347,4237 @@ pub fn imgui_payload_type_color_4_f() -> String {
 
 ///|
 /// Generated constant binding for define `IM_UNICODE_CODEPOINT_INVALID`.
-pub fn im_unicode_codepoint_invalid() -> Int {
+pub fn im_unicode_codepoint_invalid() -> Int32 {
   65533
 }
 
 ///|
 /// Generated constant binding for define `IM_UNICODE_CODEPOINT_MAX`.
-pub fn im_unicode_codepoint_max() -> Int {
+pub fn im_unicode_codepoint_max() -> Int32 {
   1114111
 }
 
 ///|
 /// Generated constant binding for define `IM_COL32_R_SHIFT`.
-pub fn im_col32_r_shift() -> Int {
+pub fn im_col32_r_shift() -> Int32 {
   16
 }
 
 ///|
 /// Generated constant binding for define `IM_COL32_G_SHIFT`.
-pub fn im_col32_g_shift() -> Int {
+pub fn im_col32_g_shift() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for define `IM_COL32_B_SHIFT`.
-pub fn im_col32_b_shift() -> Int {
+pub fn im_col32_b_shift() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for define `IM_COL32_A_SHIFT`.
-pub fn im_col32_a_shift() -> Int {
+pub fn im_col32_a_shift() -> Int32 {
   24
 }
 
 ///|
 /// Generated constant binding for define `IM_COL32_A_MASK`.
-pub fn im_col32_a_mask() -> UInt {
+pub fn im_col32_a_mask() -> UInt32 {
   4278190080U
 }
 
 ///|
 /// Generated constant binding for define `IM_DRAWLIST_TEX_LINES_WIDTH_MAX`.
-pub fn im_drawlist_tex_lines_width_max() -> Int {
+pub fn im_drawlist_tex_lines_width_max() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for define `ImFontAtlasRectId_Invalid`.
-pub fn im_font_atlas_rect_id_invalid() -> Int {
+pub fn im_font_atlas_rect_id_invalid() -> Int32 {
   -1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_None`.
-pub fn im_gui_window_flags_none() -> Int {
+pub fn im_gui_window_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_NoTitleBar`.
-pub fn im_gui_window_flags_no_title_bar() -> Int {
+pub fn im_gui_window_flags_no_title_bar() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_NoResize`.
-pub fn im_gui_window_flags_no_resize() -> Int {
+pub fn im_gui_window_flags_no_resize() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_NoMove`.
-pub fn im_gui_window_flags_no_move() -> Int {
+pub fn im_gui_window_flags_no_move() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_NoScrollbar`.
-pub fn im_gui_window_flags_no_scrollbar() -> Int {
+pub fn im_gui_window_flags_no_scrollbar() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_NoScrollWithMouse`.
-pub fn im_gui_window_flags_no_scroll_with_mouse() -> Int {
+pub fn im_gui_window_flags_no_scroll_with_mouse() -> Int32 {
   16
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_NoCollapse`.
-pub fn im_gui_window_flags_no_collapse() -> Int {
+pub fn im_gui_window_flags_no_collapse() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_AlwaysAutoResize`.
-pub fn im_gui_window_flags_always_auto_resize() -> Int {
+pub fn im_gui_window_flags_always_auto_resize() -> Int32 {
   64
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_NoBackground`.
-pub fn im_gui_window_flags_no_background() -> Int {
+pub fn im_gui_window_flags_no_background() -> Int32 {
   128
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_NoSavedSettings`.
-pub fn im_gui_window_flags_no_saved_settings() -> Int {
+pub fn im_gui_window_flags_no_saved_settings() -> Int32 {
   256
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_NoMouseInputs`.
-pub fn im_gui_window_flags_no_mouse_inputs() -> Int {
+pub fn im_gui_window_flags_no_mouse_inputs() -> Int32 {
   512
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_MenuBar`.
-pub fn im_gui_window_flags_menu_bar() -> Int {
+pub fn im_gui_window_flags_menu_bar() -> Int32 {
   1024
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_HorizontalScrollbar`.
-pub fn im_gui_window_flags_horizontal_scrollbar() -> Int {
+pub fn im_gui_window_flags_horizontal_scrollbar() -> Int32 {
   2048
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_NoFocusOnAppearing`.
-pub fn im_gui_window_flags_no_focus_on_appearing() -> Int {
+pub fn im_gui_window_flags_no_focus_on_appearing() -> Int32 {
   4096
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_NoBringToFrontOnFocus`.
-pub fn im_gui_window_flags_no_bring_to_front_on_focus() -> Int {
+pub fn im_gui_window_flags_no_bring_to_front_on_focus() -> Int32 {
   8192
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_AlwaysVerticalScrollbar`.
-pub fn im_gui_window_flags_always_vertical_scrollbar() -> Int {
+pub fn im_gui_window_flags_always_vertical_scrollbar() -> Int32 {
   16384
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_AlwaysHorizontalScrollbar`.
-pub fn im_gui_window_flags_always_horizontal_scrollbar() -> Int {
+pub fn im_gui_window_flags_always_horizontal_scrollbar() -> Int32 {
   32768
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_NoNavInputs`.
-pub fn im_gui_window_flags_no_nav_inputs() -> Int {
+pub fn im_gui_window_flags_no_nav_inputs() -> Int32 {
   65536
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_NoNavFocus`.
-pub fn im_gui_window_flags_no_nav_focus() -> Int {
+pub fn im_gui_window_flags_no_nav_focus() -> Int32 {
   131072
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_UnsavedDocument`.
-pub fn im_gui_window_flags_unsaved_document() -> Int {
+pub fn im_gui_window_flags_unsaved_document() -> Int32 {
   262144
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_NoNav`.
-pub fn im_gui_window_flags_no_nav() -> Int {
+pub fn im_gui_window_flags_no_nav() -> Int32 {
   196608
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_NoDecoration`.
-pub fn im_gui_window_flags_no_decoration() -> Int {
+pub fn im_gui_window_flags_no_decoration() -> Int32 {
   43
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiWindowFlags_NoInputs`.
-pub fn im_gui_window_flags_no_inputs() -> Int {
+pub fn im_gui_window_flags_no_inputs() -> Int32 {
   197120
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiChildFlags_None`.
-pub fn im_gui_child_flags_none() -> Int {
+pub fn im_gui_child_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiChildFlags_Borders`.
-pub fn im_gui_child_flags_borders() -> Int {
+pub fn im_gui_child_flags_borders() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiChildFlags_AlwaysUseWindowPadding`.
-pub fn im_gui_child_flags_always_use_window_padding() -> Int {
+pub fn im_gui_child_flags_always_use_window_padding() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiChildFlags_ResizeX`.
-pub fn im_gui_child_flags_resize_x() -> Int {
+pub fn im_gui_child_flags_resize_x() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiChildFlags_ResizeY`.
-pub fn im_gui_child_flags_resize_y() -> Int {
+pub fn im_gui_child_flags_resize_y() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiChildFlags_AutoResizeX`.
-pub fn im_gui_child_flags_auto_resize_x() -> Int {
+pub fn im_gui_child_flags_auto_resize_x() -> Int32 {
   16
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiChildFlags_AutoResizeY`.
-pub fn im_gui_child_flags_auto_resize_y() -> Int {
+pub fn im_gui_child_flags_auto_resize_y() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiChildFlags_AlwaysAutoResize`.
-pub fn im_gui_child_flags_always_auto_resize() -> Int {
+pub fn im_gui_child_flags_always_auto_resize() -> Int32 {
   64
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiChildFlags_FrameStyle`.
-pub fn im_gui_child_flags_frame_style() -> Int {
+pub fn im_gui_child_flags_frame_style() -> Int32 {
   128
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiChildFlags_NavFlattened`.
-pub fn im_gui_child_flags_nav_flattened() -> Int {
+pub fn im_gui_child_flags_nav_flattened() -> Int32 {
   256
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiItemFlags_None`.
-pub fn im_gui_item_flags_none() -> Int {
+pub fn im_gui_item_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiItemFlags_NoTabStop`.
-pub fn im_gui_item_flags_no_tab_stop() -> Int {
+pub fn im_gui_item_flags_no_tab_stop() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiItemFlags_NoNav`.
-pub fn im_gui_item_flags_no_nav() -> Int {
+pub fn im_gui_item_flags_no_nav() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiItemFlags_NoNavDefaultFocus`.
-pub fn im_gui_item_flags_no_nav_default_focus() -> Int {
+pub fn im_gui_item_flags_no_nav_default_focus() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiItemFlags_ButtonRepeat`.
-pub fn im_gui_item_flags_button_repeat() -> Int {
+pub fn im_gui_item_flags_button_repeat() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiItemFlags_AutoClosePopups`.
-pub fn im_gui_item_flags_auto_close_popups() -> Int {
+pub fn im_gui_item_flags_auto_close_popups() -> Int32 {
   16
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiItemFlags_AllowDuplicateId`.
-pub fn im_gui_item_flags_allow_duplicate_id() -> Int {
+pub fn im_gui_item_flags_allow_duplicate_id() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiItemFlags_Disabled`.
-pub fn im_gui_item_flags_disabled() -> Int {
+pub fn im_gui_item_flags_disabled() -> Int32 {
   64
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_None`.
-pub fn im_gui_input_text_flags_none() -> Int {
+pub fn im_gui_input_text_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_CharsDecimal`.
-pub fn im_gui_input_text_flags_chars_decimal() -> Int {
+pub fn im_gui_input_text_flags_chars_decimal() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_CharsHexadecimal`.
-pub fn im_gui_input_text_flags_chars_hexadecimal() -> Int {
+pub fn im_gui_input_text_flags_chars_hexadecimal() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_CharsScientific`.
-pub fn im_gui_input_text_flags_chars_scientific() -> Int {
+pub fn im_gui_input_text_flags_chars_scientific() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_CharsUppercase`.
-pub fn im_gui_input_text_flags_chars_uppercase() -> Int {
+pub fn im_gui_input_text_flags_chars_uppercase() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_CharsNoBlank`.
-pub fn im_gui_input_text_flags_chars_no_blank() -> Int {
+pub fn im_gui_input_text_flags_chars_no_blank() -> Int32 {
   16
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_AllowTabInput`.
-pub fn im_gui_input_text_flags_allow_tab_input() -> Int {
+pub fn im_gui_input_text_flags_allow_tab_input() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_EnterReturnsTrue`.
-pub fn im_gui_input_text_flags_enter_returns_true() -> Int {
+pub fn im_gui_input_text_flags_enter_returns_true() -> Int32 {
   64
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_EscapeClearsAll`.
-pub fn im_gui_input_text_flags_escape_clears_all() -> Int {
+pub fn im_gui_input_text_flags_escape_clears_all() -> Int32 {
   128
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_CtrlEnterForNewLine`.
-pub fn im_gui_input_text_flags_ctrl_enter_for_new_line() -> Int {
+pub fn im_gui_input_text_flags_ctrl_enter_for_new_line() -> Int32 {
   256
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_ReadOnly`.
-pub fn im_gui_input_text_flags_read_only() -> Int {
+pub fn im_gui_input_text_flags_read_only() -> Int32 {
   512
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_Password`.
-pub fn im_gui_input_text_flags_password() -> Int {
+pub fn im_gui_input_text_flags_password() -> Int32 {
   1024
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_AlwaysOverwrite`.
-pub fn im_gui_input_text_flags_always_overwrite() -> Int {
+pub fn im_gui_input_text_flags_always_overwrite() -> Int32 {
   2048
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_AutoSelectAll`.
-pub fn im_gui_input_text_flags_auto_select_all() -> Int {
+pub fn im_gui_input_text_flags_auto_select_all() -> Int32 {
   4096
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_ParseEmptyRefVal`.
-pub fn im_gui_input_text_flags_parse_empty_ref_val() -> Int {
+pub fn im_gui_input_text_flags_parse_empty_ref_val() -> Int32 {
   8192
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_DisplayEmptyRefVal`.
-pub fn im_gui_input_text_flags_display_empty_ref_val() -> Int {
+pub fn im_gui_input_text_flags_display_empty_ref_val() -> Int32 {
   16384
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_NoHorizontalScroll`.
-pub fn im_gui_input_text_flags_no_horizontal_scroll() -> Int {
+pub fn im_gui_input_text_flags_no_horizontal_scroll() -> Int32 {
   32768
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_NoUndoRedo`.
-pub fn im_gui_input_text_flags_no_undo_redo() -> Int {
+pub fn im_gui_input_text_flags_no_undo_redo() -> Int32 {
   65536
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_ElideLeft`.
-pub fn im_gui_input_text_flags_elide_left() -> Int {
+pub fn im_gui_input_text_flags_elide_left() -> Int32 {
   131072
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_CallbackCompletion`.
-pub fn im_gui_input_text_flags_callback_completion() -> Int {
+pub fn im_gui_input_text_flags_callback_completion() -> Int32 {
   262144
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_CallbackHistory`.
-pub fn im_gui_input_text_flags_callback_history() -> Int {
+pub fn im_gui_input_text_flags_callback_history() -> Int32 {
   524288
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_CallbackAlways`.
-pub fn im_gui_input_text_flags_callback_always() -> Int {
+pub fn im_gui_input_text_flags_callback_always() -> Int32 {
   1048576
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_CallbackCharFilter`.
-pub fn im_gui_input_text_flags_callback_char_filter() -> Int {
+pub fn im_gui_input_text_flags_callback_char_filter() -> Int32 {
   2097152
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_CallbackResize`.
-pub fn im_gui_input_text_flags_callback_resize() -> Int {
+pub fn im_gui_input_text_flags_callback_resize() -> Int32 {
   4194304
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_CallbackEdit`.
-pub fn im_gui_input_text_flags_callback_edit() -> Int {
+pub fn im_gui_input_text_flags_callback_edit() -> Int32 {
   8388608
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputTextFlags_WordWrap`.
-pub fn im_gui_input_text_flags_word_wrap() -> Int {
+pub fn im_gui_input_text_flags_word_wrap() -> Int32 {
   16777216
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_None`.
-pub fn im_gui_tree_node_flags_none() -> Int {
+pub fn im_gui_tree_node_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_Selected`.
-pub fn im_gui_tree_node_flags_selected() -> Int {
+pub fn im_gui_tree_node_flags_selected() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_Framed`.
-pub fn im_gui_tree_node_flags_framed() -> Int {
+pub fn im_gui_tree_node_flags_framed() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_AllowOverlap`.
-pub fn im_gui_tree_node_flags_allow_overlap() -> Int {
+pub fn im_gui_tree_node_flags_allow_overlap() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_NoTreePushOnOpen`.
-pub fn im_gui_tree_node_flags_no_tree_push_on_open() -> Int {
+pub fn im_gui_tree_node_flags_no_tree_push_on_open() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_NoAutoOpenOnLog`.
-pub fn im_gui_tree_node_flags_no_auto_open_on_log() -> Int {
+pub fn im_gui_tree_node_flags_no_auto_open_on_log() -> Int32 {
   16
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_DefaultOpen`.
-pub fn im_gui_tree_node_flags_default_open() -> Int {
+pub fn im_gui_tree_node_flags_default_open() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_OpenOnDoubleClick`.
-pub fn im_gui_tree_node_flags_open_on_double_click() -> Int {
+pub fn im_gui_tree_node_flags_open_on_double_click() -> Int32 {
   64
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_OpenOnArrow`.
-pub fn im_gui_tree_node_flags_open_on_arrow() -> Int {
+pub fn im_gui_tree_node_flags_open_on_arrow() -> Int32 {
   128
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_Leaf`.
-pub fn im_gui_tree_node_flags_leaf() -> Int {
+pub fn im_gui_tree_node_flags_leaf() -> Int32 {
   256
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_Bullet`.
-pub fn im_gui_tree_node_flags_bullet() -> Int {
+pub fn im_gui_tree_node_flags_bullet() -> Int32 {
   512
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_FramePadding`.
-pub fn im_gui_tree_node_flags_frame_padding() -> Int {
+pub fn im_gui_tree_node_flags_frame_padding() -> Int32 {
   1024
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_SpanAvailWidth`.
-pub fn im_gui_tree_node_flags_span_avail_width() -> Int {
+pub fn im_gui_tree_node_flags_span_avail_width() -> Int32 {
   2048
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_SpanFullWidth`.
-pub fn im_gui_tree_node_flags_span_full_width() -> Int {
+pub fn im_gui_tree_node_flags_span_full_width() -> Int32 {
   4096
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_SpanLabelWidth`.
-pub fn im_gui_tree_node_flags_span_label_width() -> Int {
+pub fn im_gui_tree_node_flags_span_label_width() -> Int32 {
   8192
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_SpanAllColumns`.
-pub fn im_gui_tree_node_flags_span_all_columns() -> Int {
+pub fn im_gui_tree_node_flags_span_all_columns() -> Int32 {
   16384
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_LabelSpanAllColumns`.
-pub fn im_gui_tree_node_flags_label_span_all_columns() -> Int {
+pub fn im_gui_tree_node_flags_label_span_all_columns() -> Int32 {
   32768
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_NavLeftJumpsToParent`.
-pub fn im_gui_tree_node_flags_nav_left_jumps_to_parent() -> Int {
+pub fn im_gui_tree_node_flags_nav_left_jumps_to_parent() -> Int32 {
   131072
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_CollapsingHeader`.
-pub fn im_gui_tree_node_flags_collapsing_header() -> Int {
+pub fn im_gui_tree_node_flags_collapsing_header() -> Int32 {
   26
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_DrawLinesNone`.
-pub fn im_gui_tree_node_flags_draw_lines_none() -> Int {
+pub fn im_gui_tree_node_flags_draw_lines_none() -> Int32 {
   262144
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_DrawLinesFull`.
-pub fn im_gui_tree_node_flags_draw_lines_full() -> Int {
+pub fn im_gui_tree_node_flags_draw_lines_full() -> Int32 {
   524288
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_DrawLinesToNodes`.
-pub fn im_gui_tree_node_flags_draw_lines_to_nodes() -> Int {
+pub fn im_gui_tree_node_flags_draw_lines_to_nodes() -> Int32 {
   1048576
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_NavLeftJumpsBackHere`.
-pub fn im_gui_tree_node_flags_nav_left_jumps_back_here() -> Int {
+pub fn im_gui_tree_node_flags_nav_left_jumps_back_here() -> Int32 {
   131072
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTreeNodeFlags_SpanTextWidth`.
-pub fn im_gui_tree_node_flags_span_text_width() -> Int {
+pub fn im_gui_tree_node_flags_span_text_width() -> Int32 {
   8192
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiPopupFlags_None`.
-pub fn im_gui_popup_flags_none() -> Int {
+pub fn im_gui_popup_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiPopupFlags_MouseButtonLeft`.
-pub fn im_gui_popup_flags_mouse_button_left() -> Int {
+pub fn im_gui_popup_flags_mouse_button_left() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiPopupFlags_MouseButtonRight`.
-pub fn im_gui_popup_flags_mouse_button_right() -> Int {
+pub fn im_gui_popup_flags_mouse_button_right() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiPopupFlags_MouseButtonMiddle`.
-pub fn im_gui_popup_flags_mouse_button_middle() -> Int {
+pub fn im_gui_popup_flags_mouse_button_middle() -> Int32 {
   12
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiPopupFlags_NoReopen`.
-pub fn im_gui_popup_flags_no_reopen() -> Int {
+pub fn im_gui_popup_flags_no_reopen() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiPopupFlags_NoOpenOverExistingPopup`.
-pub fn im_gui_popup_flags_no_open_over_existing_popup() -> Int {
+pub fn im_gui_popup_flags_no_open_over_existing_popup() -> Int32 {
   128
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiPopupFlags_NoOpenOverItems`.
-pub fn im_gui_popup_flags_no_open_over_items() -> Int {
+pub fn im_gui_popup_flags_no_open_over_items() -> Int32 {
   256
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiPopupFlags_AnyPopupId`.
-pub fn im_gui_popup_flags_any_popup_id() -> Int {
+pub fn im_gui_popup_flags_any_popup_id() -> Int32 {
   1024
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiPopupFlags_AnyPopupLevel`.
-pub fn im_gui_popup_flags_any_popup_level() -> Int {
+pub fn im_gui_popup_flags_any_popup_level() -> Int32 {
   2048
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiPopupFlags_AnyPopup`.
-pub fn im_gui_popup_flags_any_popup() -> Int {
+pub fn im_gui_popup_flags_any_popup() -> Int32 {
   3072
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSelectableFlags_None`.
-pub fn im_gui_selectable_flags_none() -> Int {
+pub fn im_gui_selectable_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSelectableFlags_NoAutoClosePopups`.
-pub fn im_gui_selectable_flags_no_auto_close_popups() -> Int {
+pub fn im_gui_selectable_flags_no_auto_close_popups() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSelectableFlags_SpanAllColumns`.
-pub fn im_gui_selectable_flags_span_all_columns() -> Int {
+pub fn im_gui_selectable_flags_span_all_columns() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSelectableFlags_AllowDoubleClick`.
-pub fn im_gui_selectable_flags_allow_double_click() -> Int {
+pub fn im_gui_selectable_flags_allow_double_click() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSelectableFlags_Disabled`.
-pub fn im_gui_selectable_flags_disabled() -> Int {
+pub fn im_gui_selectable_flags_disabled() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSelectableFlags_AllowOverlap`.
-pub fn im_gui_selectable_flags_allow_overlap() -> Int {
+pub fn im_gui_selectable_flags_allow_overlap() -> Int32 {
   16
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSelectableFlags_Highlight`.
-pub fn im_gui_selectable_flags_highlight() -> Int {
+pub fn im_gui_selectable_flags_highlight() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSelectableFlags_SelectOnNav`.
-pub fn im_gui_selectable_flags_select_on_nav() -> Int {
+pub fn im_gui_selectable_flags_select_on_nav() -> Int32 {
   64
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSelectableFlags_DontClosePopups`.
-pub fn im_gui_selectable_flags_dont_close_popups() -> Int {
+pub fn im_gui_selectable_flags_dont_close_popups() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiComboFlags_None`.
-pub fn im_gui_combo_flags_none() -> Int {
+pub fn im_gui_combo_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiComboFlags_PopupAlignLeft`.
-pub fn im_gui_combo_flags_popup_align_left() -> Int {
+pub fn im_gui_combo_flags_popup_align_left() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiComboFlags_HeightSmall`.
-pub fn im_gui_combo_flags_height_small() -> Int {
+pub fn im_gui_combo_flags_height_small() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiComboFlags_HeightRegular`.
-pub fn im_gui_combo_flags_height_regular() -> Int {
+pub fn im_gui_combo_flags_height_regular() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiComboFlags_HeightLarge`.
-pub fn im_gui_combo_flags_height_large() -> Int {
+pub fn im_gui_combo_flags_height_large() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiComboFlags_HeightLargest`.
-pub fn im_gui_combo_flags_height_largest() -> Int {
+pub fn im_gui_combo_flags_height_largest() -> Int32 {
   16
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiComboFlags_NoArrowButton`.
-pub fn im_gui_combo_flags_no_arrow_button() -> Int {
+pub fn im_gui_combo_flags_no_arrow_button() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiComboFlags_NoPreview`.
-pub fn im_gui_combo_flags_no_preview() -> Int {
+pub fn im_gui_combo_flags_no_preview() -> Int32 {
   64
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiComboFlags_WidthFitPreview`.
-pub fn im_gui_combo_flags_width_fit_preview() -> Int {
+pub fn im_gui_combo_flags_width_fit_preview() -> Int32 {
   128
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTabBarFlags_None`.
-pub fn im_gui_tab_bar_flags_none() -> Int {
+pub fn im_gui_tab_bar_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTabBarFlags_Reorderable`.
-pub fn im_gui_tab_bar_flags_reorderable() -> Int {
+pub fn im_gui_tab_bar_flags_reorderable() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTabBarFlags_AutoSelectNewTabs`.
-pub fn im_gui_tab_bar_flags_auto_select_new_tabs() -> Int {
+pub fn im_gui_tab_bar_flags_auto_select_new_tabs() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTabBarFlags_TabListPopupButton`.
-pub fn im_gui_tab_bar_flags_tab_list_popup_button() -> Int {
+pub fn im_gui_tab_bar_flags_tab_list_popup_button() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTabBarFlags_NoCloseWithMiddleMouseButton`.
-pub fn im_gui_tab_bar_flags_no_close_with_middle_mouse_button() -> Int {
+pub fn im_gui_tab_bar_flags_no_close_with_middle_mouse_button() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTabBarFlags_NoTabListScrollingButtons`.
-pub fn im_gui_tab_bar_flags_no_tab_list_scrolling_buttons() -> Int {
+pub fn im_gui_tab_bar_flags_no_tab_list_scrolling_buttons() -> Int32 {
   16
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTabBarFlags_NoTooltip`.
-pub fn im_gui_tab_bar_flags_no_tooltip() -> Int {
+pub fn im_gui_tab_bar_flags_no_tooltip() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTabBarFlags_DrawSelectedOverline`.
-pub fn im_gui_tab_bar_flags_draw_selected_overline() -> Int {
+pub fn im_gui_tab_bar_flags_draw_selected_overline() -> Int32 {
   64
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTabBarFlags_FittingPolicyMixed`.
-pub fn im_gui_tab_bar_flags_fitting_policy_mixed() -> Int {
+pub fn im_gui_tab_bar_flags_fitting_policy_mixed() -> Int32 {
   128
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTabBarFlags_FittingPolicyShrink`.
-pub fn im_gui_tab_bar_flags_fitting_policy_shrink() -> Int {
+pub fn im_gui_tab_bar_flags_fitting_policy_shrink() -> Int32 {
   256
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTabBarFlags_FittingPolicyScroll`.
-pub fn im_gui_tab_bar_flags_fitting_policy_scroll() -> Int {
+pub fn im_gui_tab_bar_flags_fitting_policy_scroll() -> Int32 {
   512
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTabBarFlags_FittingPolicyResizeDown`.
-pub fn im_gui_tab_bar_flags_fitting_policy_resize_down() -> Int {
+pub fn im_gui_tab_bar_flags_fitting_policy_resize_down() -> Int32 {
   256
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTabItemFlags_None`.
-pub fn im_gui_tab_item_flags_none() -> Int {
+pub fn im_gui_tab_item_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTabItemFlags_UnsavedDocument`.
-pub fn im_gui_tab_item_flags_unsaved_document() -> Int {
+pub fn im_gui_tab_item_flags_unsaved_document() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTabItemFlags_SetSelected`.
-pub fn im_gui_tab_item_flags_set_selected() -> Int {
+pub fn im_gui_tab_item_flags_set_selected() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTabItemFlags_NoCloseWithMiddleMouseButton`.
-pub fn im_gui_tab_item_flags_no_close_with_middle_mouse_button() -> Int {
+pub fn im_gui_tab_item_flags_no_close_with_middle_mouse_button() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTabItemFlags_NoPushId`.
-pub fn im_gui_tab_item_flags_no_push_id() -> Int {
+pub fn im_gui_tab_item_flags_no_push_id() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTabItemFlags_NoTooltip`.
-pub fn im_gui_tab_item_flags_no_tooltip() -> Int {
+pub fn im_gui_tab_item_flags_no_tooltip() -> Int32 {
   16
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTabItemFlags_NoReorder`.
-pub fn im_gui_tab_item_flags_no_reorder() -> Int {
+pub fn im_gui_tab_item_flags_no_reorder() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTabItemFlags_Leading`.
-pub fn im_gui_tab_item_flags_leading() -> Int {
+pub fn im_gui_tab_item_flags_leading() -> Int32 {
   64
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTabItemFlags_Trailing`.
-pub fn im_gui_tab_item_flags_trailing() -> Int {
+pub fn im_gui_tab_item_flags_trailing() -> Int32 {
   128
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTabItemFlags_NoAssumedClosure`.
-pub fn im_gui_tab_item_flags_no_assumed_closure() -> Int {
+pub fn im_gui_tab_item_flags_no_assumed_closure() -> Int32 {
   256
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiFocusedFlags_None`.
-pub fn im_gui_focused_flags_none() -> Int {
+pub fn im_gui_focused_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiFocusedFlags_ChildWindows`.
-pub fn im_gui_focused_flags_child_windows() -> Int {
+pub fn im_gui_focused_flags_child_windows() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiFocusedFlags_RootWindow`.
-pub fn im_gui_focused_flags_root_window() -> Int {
+pub fn im_gui_focused_flags_root_window() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiFocusedFlags_AnyWindow`.
-pub fn im_gui_focused_flags_any_window() -> Int {
+pub fn im_gui_focused_flags_any_window() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiFocusedFlags_NoPopupHierarchy`.
-pub fn im_gui_focused_flags_no_popup_hierarchy() -> Int {
+pub fn im_gui_focused_flags_no_popup_hierarchy() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiFocusedFlags_RootAndChildWindows`.
-pub fn im_gui_focused_flags_root_and_child_windows() -> Int {
+pub fn im_gui_focused_flags_root_and_child_windows() -> Int32 {
   3
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiHoveredFlags_None`.
-pub fn im_gui_hovered_flags_none() -> Int {
+pub fn im_gui_hovered_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiHoveredFlags_ChildWindows`.
-pub fn im_gui_hovered_flags_child_windows() -> Int {
+pub fn im_gui_hovered_flags_child_windows() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiHoveredFlags_RootWindow`.
-pub fn im_gui_hovered_flags_root_window() -> Int {
+pub fn im_gui_hovered_flags_root_window() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiHoveredFlags_AnyWindow`.
-pub fn im_gui_hovered_flags_any_window() -> Int {
+pub fn im_gui_hovered_flags_any_window() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiHoveredFlags_NoPopupHierarchy`.
-pub fn im_gui_hovered_flags_no_popup_hierarchy() -> Int {
+pub fn im_gui_hovered_flags_no_popup_hierarchy() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiHoveredFlags_AllowWhenBlockedByPopup`.
-pub fn im_gui_hovered_flags_allow_when_blocked_by_popup() -> Int {
+pub fn im_gui_hovered_flags_allow_when_blocked_by_popup() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiHoveredFlags_AllowWhenBlockedByActiveItem`.
-pub fn im_gui_hovered_flags_allow_when_blocked_by_active_item() -> Int {
+pub fn im_gui_hovered_flags_allow_when_blocked_by_active_item() -> Int32 {
   128
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiHoveredFlags_AllowWhenOverlappedByItem`.
-pub fn im_gui_hovered_flags_allow_when_overlapped_by_item() -> Int {
+pub fn im_gui_hovered_flags_allow_when_overlapped_by_item() -> Int32 {
   256
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiHoveredFlags_AllowWhenOverlappedByWindow`.
-pub fn im_gui_hovered_flags_allow_when_overlapped_by_window() -> Int {
+pub fn im_gui_hovered_flags_allow_when_overlapped_by_window() -> Int32 {
   512
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiHoveredFlags_AllowWhenDisabled`.
-pub fn im_gui_hovered_flags_allow_when_disabled() -> Int {
+pub fn im_gui_hovered_flags_allow_when_disabled() -> Int32 {
   1024
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiHoveredFlags_NoNavOverride`.
-pub fn im_gui_hovered_flags_no_nav_override() -> Int {
+pub fn im_gui_hovered_flags_no_nav_override() -> Int32 {
   2048
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiHoveredFlags_AllowWhenOverlapped`.
-pub fn im_gui_hovered_flags_allow_when_overlapped() -> Int {
+pub fn im_gui_hovered_flags_allow_when_overlapped() -> Int32 {
   768
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiHoveredFlags_RectOnly`.
-pub fn im_gui_hovered_flags_rect_only() -> Int {
+pub fn im_gui_hovered_flags_rect_only() -> Int32 {
   928
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiHoveredFlags_RootAndChildWindows`.
-pub fn im_gui_hovered_flags_root_and_child_windows() -> Int {
+pub fn im_gui_hovered_flags_root_and_child_windows() -> Int32 {
   3
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiHoveredFlags_ForTooltip`.
-pub fn im_gui_hovered_flags_for_tooltip() -> Int {
+pub fn im_gui_hovered_flags_for_tooltip() -> Int32 {
   4096
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiHoveredFlags_Stationary`.
-pub fn im_gui_hovered_flags_stationary() -> Int {
+pub fn im_gui_hovered_flags_stationary() -> Int32 {
   8192
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiHoveredFlags_DelayNone`.
-pub fn im_gui_hovered_flags_delay_none() -> Int {
+pub fn im_gui_hovered_flags_delay_none() -> Int32 {
   16384
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiHoveredFlags_DelayShort`.
-pub fn im_gui_hovered_flags_delay_short() -> Int {
+pub fn im_gui_hovered_flags_delay_short() -> Int32 {
   32768
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiHoveredFlags_DelayNormal`.
-pub fn im_gui_hovered_flags_delay_normal() -> Int {
+pub fn im_gui_hovered_flags_delay_normal() -> Int32 {
   65536
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiHoveredFlags_NoSharedDelay`.
-pub fn im_gui_hovered_flags_no_shared_delay() -> Int {
+pub fn im_gui_hovered_flags_no_shared_delay() -> Int32 {
   131072
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDragDropFlags_None`.
-pub fn im_gui_drag_drop_flags_none() -> Int {
+pub fn im_gui_drag_drop_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDragDropFlags_SourceNoPreviewTooltip`.
-pub fn im_gui_drag_drop_flags_source_no_preview_tooltip() -> Int {
+pub fn im_gui_drag_drop_flags_source_no_preview_tooltip() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDragDropFlags_SourceNoDisableHover`.
-pub fn im_gui_drag_drop_flags_source_no_disable_hover() -> Int {
+pub fn im_gui_drag_drop_flags_source_no_disable_hover() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDragDropFlags_SourceNoHoldToOpenOthers`.
-pub fn im_gui_drag_drop_flags_source_no_hold_to_open_others() -> Int {
+pub fn im_gui_drag_drop_flags_source_no_hold_to_open_others() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDragDropFlags_SourceAllowNullID`.
-pub fn im_gui_drag_drop_flags_source_allow_null_id() -> Int {
+pub fn im_gui_drag_drop_flags_source_allow_null_id() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDragDropFlags_SourceExtern`.
-pub fn im_gui_drag_drop_flags_source_extern() -> Int {
+pub fn im_gui_drag_drop_flags_source_extern() -> Int32 {
   16
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDragDropFlags_PayloadAutoExpire`.
-pub fn im_gui_drag_drop_flags_payload_auto_expire() -> Int {
+pub fn im_gui_drag_drop_flags_payload_auto_expire() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDragDropFlags_PayloadNoCrossContext`.
-pub fn im_gui_drag_drop_flags_payload_no_cross_context() -> Int {
+pub fn im_gui_drag_drop_flags_payload_no_cross_context() -> Int32 {
   64
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDragDropFlags_PayloadNoCrossProcess`.
-pub fn im_gui_drag_drop_flags_payload_no_cross_process() -> Int {
+pub fn im_gui_drag_drop_flags_payload_no_cross_process() -> Int32 {
   128
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDragDropFlags_AcceptBeforeDelivery`.
-pub fn im_gui_drag_drop_flags_accept_before_delivery() -> Int {
+pub fn im_gui_drag_drop_flags_accept_before_delivery() -> Int32 {
   1024
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDragDropFlags_AcceptNoDrawDefaultRect`.
-pub fn im_gui_drag_drop_flags_accept_no_draw_default_rect() -> Int {
+pub fn im_gui_drag_drop_flags_accept_no_draw_default_rect() -> Int32 {
   2048
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDragDropFlags_AcceptNoPreviewTooltip`.
-pub fn im_gui_drag_drop_flags_accept_no_preview_tooltip() -> Int {
+pub fn im_gui_drag_drop_flags_accept_no_preview_tooltip() -> Int32 {
   4096
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDragDropFlags_AcceptDrawAsHovered`.
-pub fn im_gui_drag_drop_flags_accept_draw_as_hovered() -> Int {
+pub fn im_gui_drag_drop_flags_accept_draw_as_hovered() -> Int32 {
   8192
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDragDropFlags_AcceptPeekOnly`.
-pub fn im_gui_drag_drop_flags_accept_peek_only() -> Int {
+pub fn im_gui_drag_drop_flags_accept_peek_only() -> Int32 {
   3072
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDragDropFlags_SourceAutoExpirePayload`.
-pub fn im_gui_drag_drop_flags_source_auto_expire_payload() -> Int {
+pub fn im_gui_drag_drop_flags_source_auto_expire_payload() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDataType_S8`.
-pub fn im_gui_data_type_s8() -> Int {
+pub fn im_gui_data_type_s8() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDataType_U8`.
-pub fn im_gui_data_type_u8() -> Int {
+pub fn im_gui_data_type_u8() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDataType_S16`.
-pub fn im_gui_data_type_s16() -> Int {
+pub fn im_gui_data_type_s16() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDataType_U16`.
-pub fn im_gui_data_type_u16() -> Int {
+pub fn im_gui_data_type_u16() -> Int32 {
   3
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDataType_S32`.
-pub fn im_gui_data_type_s32() -> Int {
+pub fn im_gui_data_type_s32() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDataType_U32`.
-pub fn im_gui_data_type_u32() -> Int {
+pub fn im_gui_data_type_u32() -> Int32 {
   5
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDataType_S64`.
-pub fn im_gui_data_type_s64() -> Int {
+pub fn im_gui_data_type_s64() -> Int32 {
   6
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDataType_U64`.
-pub fn im_gui_data_type_u64() -> Int {
+pub fn im_gui_data_type_u64() -> Int32 {
   7
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDataType_Float`.
-pub fn im_gui_data_type_float() -> Int {
+pub fn im_gui_data_type_float() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDataType_Double`.
-pub fn im_gui_data_type_double() -> Int {
+pub fn im_gui_data_type_double() -> Int32 {
   9
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDataType_Bool`.
-pub fn im_gui_data_type_bool() -> Int {
+pub fn im_gui_data_type_bool() -> Int32 {
   10
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDataType_String`.
-pub fn im_gui_data_type_string() -> Int {
+pub fn im_gui_data_type_string() -> Int32 {
   11
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDataType_COUNT`.
-pub fn im_gui_data_type_count() -> Int {
+pub fn im_gui_data_type_count() -> Int32 {
   12
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDir_None`.
-pub fn im_gui_dir_none() -> Int {
+pub fn im_gui_dir_none() -> Int32 {
   -1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDir_Left`.
-pub fn im_gui_dir_left() -> Int {
+pub fn im_gui_dir_left() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDir_Right`.
-pub fn im_gui_dir_right() -> Int {
+pub fn im_gui_dir_right() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDir_Up`.
-pub fn im_gui_dir_up() -> Int {
+pub fn im_gui_dir_up() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDir_Down`.
-pub fn im_gui_dir_down() -> Int {
+pub fn im_gui_dir_down() -> Int32 {
   3
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiDir_COUNT`.
-pub fn im_gui_dir_count() -> Int {
+pub fn im_gui_dir_count() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSortDirection_None`.
-pub fn im_gui_sort_direction_none() -> Int {
+pub fn im_gui_sort_direction_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSortDirection_Ascending`.
-pub fn im_gui_sort_direction_ascending() -> Int {
+pub fn im_gui_sort_direction_ascending() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSortDirection_Descending`.
-pub fn im_gui_sort_direction_descending() -> Int {
+pub fn im_gui_sort_direction_descending() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_None`.
-pub fn im_gui_key_none() -> Int {
+pub fn im_gui_key_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_NamedKey_BEGIN`.
-pub fn im_gui_key_named_key_begin() -> Int {
+pub fn im_gui_key_named_key_begin() -> Int32 {
   512
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Tab`.
-pub fn im_gui_key_tab() -> Int {
+pub fn im_gui_key_tab() -> Int32 {
   512
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_LeftArrow`.
-pub fn im_gui_key_left_arrow() -> Int {
+pub fn im_gui_key_left_arrow() -> Int32 {
   513
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_RightArrow`.
-pub fn im_gui_key_right_arrow() -> Int {
+pub fn im_gui_key_right_arrow() -> Int32 {
   514
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_UpArrow`.
-pub fn im_gui_key_up_arrow() -> Int {
+pub fn im_gui_key_up_arrow() -> Int32 {
   515
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_DownArrow`.
-pub fn im_gui_key_down_arrow() -> Int {
+pub fn im_gui_key_down_arrow() -> Int32 {
   516
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_PageUp`.
-pub fn im_gui_key_page_up() -> Int {
+pub fn im_gui_key_page_up() -> Int32 {
   517
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_PageDown`.
-pub fn im_gui_key_page_down() -> Int {
+pub fn im_gui_key_page_down() -> Int32 {
   518
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Home`.
-pub fn im_gui_key_home() -> Int {
+pub fn im_gui_key_home() -> Int32 {
   519
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_End`.
-pub fn im_gui_key_end() -> Int {
+pub fn im_gui_key_end() -> Int32 {
   520
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Insert`.
-pub fn im_gui_key_insert() -> Int {
+pub fn im_gui_key_insert() -> Int32 {
   521
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Delete`.
-pub fn im_gui_key_delete() -> Int {
+pub fn im_gui_key_delete() -> Int32 {
   522
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Backspace`.
-pub fn im_gui_key_backspace() -> Int {
+pub fn im_gui_key_backspace() -> Int32 {
   523
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Space`.
-pub fn im_gui_key_space() -> Int {
+pub fn im_gui_key_space() -> Int32 {
   524
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Enter`.
-pub fn im_gui_key_enter() -> Int {
+pub fn im_gui_key_enter() -> Int32 {
   525
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Escape`.
-pub fn im_gui_key_escape() -> Int {
+pub fn im_gui_key_escape() -> Int32 {
   526
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_LeftCtrl`.
-pub fn im_gui_key_left_ctrl() -> Int {
+pub fn im_gui_key_left_ctrl() -> Int32 {
   527
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_LeftShift`.
-pub fn im_gui_key_left_shift() -> Int {
+pub fn im_gui_key_left_shift() -> Int32 {
   528
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_LeftAlt`.
-pub fn im_gui_key_left_alt() -> Int {
+pub fn im_gui_key_left_alt() -> Int32 {
   529
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_LeftSuper`.
-pub fn im_gui_key_left_super() -> Int {
+pub fn im_gui_key_left_super() -> Int32 {
   530
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_RightCtrl`.
-pub fn im_gui_key_right_ctrl() -> Int {
+pub fn im_gui_key_right_ctrl() -> Int32 {
   531
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_RightShift`.
-pub fn im_gui_key_right_shift() -> Int {
+pub fn im_gui_key_right_shift() -> Int32 {
   532
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_RightAlt`.
-pub fn im_gui_key_right_alt() -> Int {
+pub fn im_gui_key_right_alt() -> Int32 {
   533
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_RightSuper`.
-pub fn im_gui_key_right_super() -> Int {
+pub fn im_gui_key_right_super() -> Int32 {
   534
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Menu`.
-pub fn im_gui_key_menu() -> Int {
+pub fn im_gui_key_menu() -> Int32 {
   535
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_0`.
-pub fn im_gui_key_0() -> Int {
+pub fn im_gui_key_0() -> Int32 {
   536
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_1`.
-pub fn im_gui_key_1() -> Int {
+pub fn im_gui_key_1() -> Int32 {
   537
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_2`.
-pub fn im_gui_key_2() -> Int {
+pub fn im_gui_key_2() -> Int32 {
   538
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_3`.
-pub fn im_gui_key_3() -> Int {
+pub fn im_gui_key_3() -> Int32 {
   539
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_4`.
-pub fn im_gui_key_4() -> Int {
+pub fn im_gui_key_4() -> Int32 {
   540
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_5`.
-pub fn im_gui_key_5() -> Int {
+pub fn im_gui_key_5() -> Int32 {
   541
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_6`.
-pub fn im_gui_key_6() -> Int {
+pub fn im_gui_key_6() -> Int32 {
   542
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_7`.
-pub fn im_gui_key_7() -> Int {
+pub fn im_gui_key_7() -> Int32 {
   543
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_8`.
-pub fn im_gui_key_8() -> Int {
+pub fn im_gui_key_8() -> Int32 {
   544
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_9`.
-pub fn im_gui_key_9() -> Int {
+pub fn im_gui_key_9() -> Int32 {
   545
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_A`.
-pub fn im_gui_key_a() -> Int {
+pub fn im_gui_key_a() -> Int32 {
   546
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_B`.
-pub fn im_gui_key_b() -> Int {
+pub fn im_gui_key_b() -> Int32 {
   547
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_C`.
-pub fn im_gui_key_c() -> Int {
+pub fn im_gui_key_c() -> Int32 {
   548
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_D`.
-pub fn im_gui_key_d() -> Int {
+pub fn im_gui_key_d() -> Int32 {
   549
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_E`.
-pub fn im_gui_key_e() -> Int {
+pub fn im_gui_key_e() -> Int32 {
   550
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F`.
-pub fn im_gui_key_f() -> Int {
+pub fn im_gui_key_f() -> Int32 {
   551
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_G`.
-pub fn im_gui_key_g() -> Int {
+pub fn im_gui_key_g() -> Int32 {
   552
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_H`.
-pub fn im_gui_key_h() -> Int {
+pub fn im_gui_key_h() -> Int32 {
   553
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_I`.
-pub fn im_gui_key_i() -> Int {
+pub fn im_gui_key_i() -> Int32 {
   554
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_J`.
-pub fn im_gui_key_j() -> Int {
+pub fn im_gui_key_j() -> Int32 {
   555
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_K`.
-pub fn im_gui_key_k() -> Int {
+pub fn im_gui_key_k() -> Int32 {
   556
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_L`.
-pub fn im_gui_key_l() -> Int {
+pub fn im_gui_key_l() -> Int32 {
   557
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_M`.
-pub fn im_gui_key_m() -> Int {
+pub fn im_gui_key_m() -> Int32 {
   558
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_N`.
-pub fn im_gui_key_n() -> Int {
+pub fn im_gui_key_n() -> Int32 {
   559
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_O`.
-pub fn im_gui_key_o() -> Int {
+pub fn im_gui_key_o() -> Int32 {
   560
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_P`.
-pub fn im_gui_key_p() -> Int {
+pub fn im_gui_key_p() -> Int32 {
   561
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Q`.
-pub fn im_gui_key_q() -> Int {
+pub fn im_gui_key_q() -> Int32 {
   562
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_R`.
-pub fn im_gui_key_r() -> Int {
+pub fn im_gui_key_r() -> Int32 {
   563
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_S`.
-pub fn im_gui_key_s() -> Int {
+pub fn im_gui_key_s() -> Int32 {
   564
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_T`.
-pub fn im_gui_key_t() -> Int {
+pub fn im_gui_key_t() -> Int32 {
   565
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_U`.
-pub fn im_gui_key_u() -> Int {
+pub fn im_gui_key_u() -> Int32 {
   566
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_V`.
-pub fn im_gui_key_v() -> Int {
+pub fn im_gui_key_v() -> Int32 {
   567
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_W`.
-pub fn im_gui_key_w() -> Int {
+pub fn im_gui_key_w() -> Int32 {
   568
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_X`.
-pub fn im_gui_key_x() -> Int {
+pub fn im_gui_key_x() -> Int32 {
   569
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Y`.
-pub fn im_gui_key_y() -> Int {
+pub fn im_gui_key_y() -> Int32 {
   570
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Z`.
-pub fn im_gui_key_z() -> Int {
+pub fn im_gui_key_z() -> Int32 {
   571
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F1`.
-pub fn im_gui_key_f1() -> Int {
+pub fn im_gui_key_f1() -> Int32 {
   572
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F2`.
-pub fn im_gui_key_f2() -> Int {
+pub fn im_gui_key_f2() -> Int32 {
   573
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F3`.
-pub fn im_gui_key_f3() -> Int {
+pub fn im_gui_key_f3() -> Int32 {
   574
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F4`.
-pub fn im_gui_key_f4() -> Int {
+pub fn im_gui_key_f4() -> Int32 {
   575
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F5`.
-pub fn im_gui_key_f5() -> Int {
+pub fn im_gui_key_f5() -> Int32 {
   576
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F6`.
-pub fn im_gui_key_f6() -> Int {
+pub fn im_gui_key_f6() -> Int32 {
   577
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F7`.
-pub fn im_gui_key_f7() -> Int {
+pub fn im_gui_key_f7() -> Int32 {
   578
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F8`.
-pub fn im_gui_key_f8() -> Int {
+pub fn im_gui_key_f8() -> Int32 {
   579
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F9`.
-pub fn im_gui_key_f9() -> Int {
+pub fn im_gui_key_f9() -> Int32 {
   580
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F10`.
-pub fn im_gui_key_f10() -> Int {
+pub fn im_gui_key_f10() -> Int32 {
   581
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F11`.
-pub fn im_gui_key_f11() -> Int {
+pub fn im_gui_key_f11() -> Int32 {
   582
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F12`.
-pub fn im_gui_key_f12() -> Int {
+pub fn im_gui_key_f12() -> Int32 {
   583
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F13`.
-pub fn im_gui_key_f13() -> Int {
+pub fn im_gui_key_f13() -> Int32 {
   584
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F14`.
-pub fn im_gui_key_f14() -> Int {
+pub fn im_gui_key_f14() -> Int32 {
   585
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F15`.
-pub fn im_gui_key_f15() -> Int {
+pub fn im_gui_key_f15() -> Int32 {
   586
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F16`.
-pub fn im_gui_key_f16() -> Int {
+pub fn im_gui_key_f16() -> Int32 {
   587
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F17`.
-pub fn im_gui_key_f17() -> Int {
+pub fn im_gui_key_f17() -> Int32 {
   588
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F18`.
-pub fn im_gui_key_f18() -> Int {
+pub fn im_gui_key_f18() -> Int32 {
   589
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F19`.
-pub fn im_gui_key_f19() -> Int {
+pub fn im_gui_key_f19() -> Int32 {
   590
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F20`.
-pub fn im_gui_key_f20() -> Int {
+pub fn im_gui_key_f20() -> Int32 {
   591
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F21`.
-pub fn im_gui_key_f21() -> Int {
+pub fn im_gui_key_f21() -> Int32 {
   592
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F22`.
-pub fn im_gui_key_f22() -> Int {
+pub fn im_gui_key_f22() -> Int32 {
   593
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F23`.
-pub fn im_gui_key_f23() -> Int {
+pub fn im_gui_key_f23() -> Int32 {
   594
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_F24`.
-pub fn im_gui_key_f24() -> Int {
+pub fn im_gui_key_f24() -> Int32 {
   595
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Apostrophe`.
-pub fn im_gui_key_apostrophe() -> Int {
+pub fn im_gui_key_apostrophe() -> Int32 {
   596
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Comma`.
-pub fn im_gui_key_comma() -> Int {
+pub fn im_gui_key_comma() -> Int32 {
   597
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Minus`.
-pub fn im_gui_key_minus() -> Int {
+pub fn im_gui_key_minus() -> Int32 {
   598
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Period`.
-pub fn im_gui_key_period() -> Int {
+pub fn im_gui_key_period() -> Int32 {
   599
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Slash`.
-pub fn im_gui_key_slash() -> Int {
+pub fn im_gui_key_slash() -> Int32 {
   600
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Semicolon`.
-pub fn im_gui_key_semicolon() -> Int {
+pub fn im_gui_key_semicolon() -> Int32 {
   601
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Equal`.
-pub fn im_gui_key_equal() -> Int {
+pub fn im_gui_key_equal() -> Int32 {
   602
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_LeftBracket`.
-pub fn im_gui_key_left_bracket() -> Int {
+pub fn im_gui_key_left_bracket() -> Int32 {
   603
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Backslash`.
-pub fn im_gui_key_backslash() -> Int {
+pub fn im_gui_key_backslash() -> Int32 {
   604
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_RightBracket`.
-pub fn im_gui_key_right_bracket() -> Int {
+pub fn im_gui_key_right_bracket() -> Int32 {
   605
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GraveAccent`.
-pub fn im_gui_key_grave_accent() -> Int {
+pub fn im_gui_key_grave_accent() -> Int32 {
   606
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_CapsLock`.
-pub fn im_gui_key_caps_lock() -> Int {
+pub fn im_gui_key_caps_lock() -> Int32 {
   607
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_ScrollLock`.
-pub fn im_gui_key_scroll_lock() -> Int {
+pub fn im_gui_key_scroll_lock() -> Int32 {
   608
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_NumLock`.
-pub fn im_gui_key_num_lock() -> Int {
+pub fn im_gui_key_num_lock() -> Int32 {
   609
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_PrintScreen`.
-pub fn im_gui_key_print_screen() -> Int {
+pub fn im_gui_key_print_screen() -> Int32 {
   610
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Pause`.
-pub fn im_gui_key_pause() -> Int {
+pub fn im_gui_key_pause() -> Int32 {
   611
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Keypad0`.
-pub fn im_gui_key_keypad0() -> Int {
+pub fn im_gui_key_keypad0() -> Int32 {
   612
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Keypad1`.
-pub fn im_gui_key_keypad1() -> Int {
+pub fn im_gui_key_keypad1() -> Int32 {
   613
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Keypad2`.
-pub fn im_gui_key_keypad2() -> Int {
+pub fn im_gui_key_keypad2() -> Int32 {
   614
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Keypad3`.
-pub fn im_gui_key_keypad3() -> Int {
+pub fn im_gui_key_keypad3() -> Int32 {
   615
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Keypad4`.
-pub fn im_gui_key_keypad4() -> Int {
+pub fn im_gui_key_keypad4() -> Int32 {
   616
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Keypad5`.
-pub fn im_gui_key_keypad5() -> Int {
+pub fn im_gui_key_keypad5() -> Int32 {
   617
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Keypad6`.
-pub fn im_gui_key_keypad6() -> Int {
+pub fn im_gui_key_keypad6() -> Int32 {
   618
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Keypad7`.
-pub fn im_gui_key_keypad7() -> Int {
+pub fn im_gui_key_keypad7() -> Int32 {
   619
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Keypad8`.
-pub fn im_gui_key_keypad8() -> Int {
+pub fn im_gui_key_keypad8() -> Int32 {
   620
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Keypad9`.
-pub fn im_gui_key_keypad9() -> Int {
+pub fn im_gui_key_keypad9() -> Int32 {
   621
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_KeypadDecimal`.
-pub fn im_gui_key_keypad_decimal() -> Int {
+pub fn im_gui_key_keypad_decimal() -> Int32 {
   622
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_KeypadDivide`.
-pub fn im_gui_key_keypad_divide() -> Int {
+pub fn im_gui_key_keypad_divide() -> Int32 {
   623
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_KeypadMultiply`.
-pub fn im_gui_key_keypad_multiply() -> Int {
+pub fn im_gui_key_keypad_multiply() -> Int32 {
   624
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_KeypadSubtract`.
-pub fn im_gui_key_keypad_subtract() -> Int {
+pub fn im_gui_key_keypad_subtract() -> Int32 {
   625
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_KeypadAdd`.
-pub fn im_gui_key_keypad_add() -> Int {
+pub fn im_gui_key_keypad_add() -> Int32 {
   626
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_KeypadEnter`.
-pub fn im_gui_key_keypad_enter() -> Int {
+pub fn im_gui_key_keypad_enter() -> Int32 {
   627
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_KeypadEqual`.
-pub fn im_gui_key_keypad_equal() -> Int {
+pub fn im_gui_key_keypad_equal() -> Int32 {
   628
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_AppBack`.
-pub fn im_gui_key_app_back() -> Int {
+pub fn im_gui_key_app_back() -> Int32 {
   629
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_AppForward`.
-pub fn im_gui_key_app_forward() -> Int {
+pub fn im_gui_key_app_forward() -> Int32 {
   630
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_Oem102`.
-pub fn im_gui_key_oem102() -> Int {
+pub fn im_gui_key_oem102() -> Int32 {
   631
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadStart`.
-pub fn im_gui_key_gamepad_start() -> Int {
+pub fn im_gui_key_gamepad_start() -> Int32 {
   632
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadBack`.
-pub fn im_gui_key_gamepad_back() -> Int {
+pub fn im_gui_key_gamepad_back() -> Int32 {
   633
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadFaceLeft`.
-pub fn im_gui_key_gamepad_face_left() -> Int {
+pub fn im_gui_key_gamepad_face_left() -> Int32 {
   634
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadFaceRight`.
-pub fn im_gui_key_gamepad_face_right() -> Int {
+pub fn im_gui_key_gamepad_face_right() -> Int32 {
   635
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadFaceUp`.
-pub fn im_gui_key_gamepad_face_up() -> Int {
+pub fn im_gui_key_gamepad_face_up() -> Int32 {
   636
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadFaceDown`.
-pub fn im_gui_key_gamepad_face_down() -> Int {
+pub fn im_gui_key_gamepad_face_down() -> Int32 {
   637
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadDpadLeft`.
-pub fn im_gui_key_gamepad_dpad_left() -> Int {
+pub fn im_gui_key_gamepad_dpad_left() -> Int32 {
   638
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadDpadRight`.
-pub fn im_gui_key_gamepad_dpad_right() -> Int {
+pub fn im_gui_key_gamepad_dpad_right() -> Int32 {
   639
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadDpadUp`.
-pub fn im_gui_key_gamepad_dpad_up() -> Int {
+pub fn im_gui_key_gamepad_dpad_up() -> Int32 {
   640
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadDpadDown`.
-pub fn im_gui_key_gamepad_dpad_down() -> Int {
+pub fn im_gui_key_gamepad_dpad_down() -> Int32 {
   641
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadL1`.
-pub fn im_gui_key_gamepad_l1() -> Int {
+pub fn im_gui_key_gamepad_l1() -> Int32 {
   642
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadR1`.
-pub fn im_gui_key_gamepad_r1() -> Int {
+pub fn im_gui_key_gamepad_r1() -> Int32 {
   643
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadL2`.
-pub fn im_gui_key_gamepad_l2() -> Int {
+pub fn im_gui_key_gamepad_l2() -> Int32 {
   644
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadR2`.
-pub fn im_gui_key_gamepad_r2() -> Int {
+pub fn im_gui_key_gamepad_r2() -> Int32 {
   645
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadL3`.
-pub fn im_gui_key_gamepad_l3() -> Int {
+pub fn im_gui_key_gamepad_l3() -> Int32 {
   646
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadR3`.
-pub fn im_gui_key_gamepad_r3() -> Int {
+pub fn im_gui_key_gamepad_r3() -> Int32 {
   647
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadLStickLeft`.
-pub fn im_gui_key_gamepad_l_stick_left() -> Int {
+pub fn im_gui_key_gamepad_l_stick_left() -> Int32 {
   648
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadLStickRight`.
-pub fn im_gui_key_gamepad_l_stick_right() -> Int {
+pub fn im_gui_key_gamepad_l_stick_right() -> Int32 {
   649
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadLStickUp`.
-pub fn im_gui_key_gamepad_l_stick_up() -> Int {
+pub fn im_gui_key_gamepad_l_stick_up() -> Int32 {
   650
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadLStickDown`.
-pub fn im_gui_key_gamepad_l_stick_down() -> Int {
+pub fn im_gui_key_gamepad_l_stick_down() -> Int32 {
   651
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadRStickLeft`.
-pub fn im_gui_key_gamepad_r_stick_left() -> Int {
+pub fn im_gui_key_gamepad_r_stick_left() -> Int32 {
   652
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadRStickRight`.
-pub fn im_gui_key_gamepad_r_stick_right() -> Int {
+pub fn im_gui_key_gamepad_r_stick_right() -> Int32 {
   653
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadRStickUp`.
-pub fn im_gui_key_gamepad_r_stick_up() -> Int {
+pub fn im_gui_key_gamepad_r_stick_up() -> Int32 {
   654
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_GamepadRStickDown`.
-pub fn im_gui_key_gamepad_r_stick_down() -> Int {
+pub fn im_gui_key_gamepad_r_stick_down() -> Int32 {
   655
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_MouseLeft`.
-pub fn im_gui_key_mouse_left() -> Int {
+pub fn im_gui_key_mouse_left() -> Int32 {
   656
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_MouseRight`.
-pub fn im_gui_key_mouse_right() -> Int {
+pub fn im_gui_key_mouse_right() -> Int32 {
   657
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_MouseMiddle`.
-pub fn im_gui_key_mouse_middle() -> Int {
+pub fn im_gui_key_mouse_middle() -> Int32 {
   658
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_MouseX1`.
-pub fn im_gui_key_mouse_x1() -> Int {
+pub fn im_gui_key_mouse_x1() -> Int32 {
   659
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_MouseX2`.
-pub fn im_gui_key_mouse_x2() -> Int {
+pub fn im_gui_key_mouse_x2() -> Int32 {
   660
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_MouseWheelX`.
-pub fn im_gui_key_mouse_wheel_x() -> Int {
+pub fn im_gui_key_mouse_wheel_x() -> Int32 {
   661
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_MouseWheelY`.
-pub fn im_gui_key_mouse_wheel_y() -> Int {
+pub fn im_gui_key_mouse_wheel_y() -> Int32 {
   662
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMod_None`.
-pub fn im_gui_mod_none() -> Int {
+pub fn im_gui_mod_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMod_Ctrl`.
-pub fn im_gui_mod_ctrl() -> Int {
+pub fn im_gui_mod_ctrl() -> Int32 {
   4096
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMod_Shift`.
-pub fn im_gui_mod_shift() -> Int {
+pub fn im_gui_mod_shift() -> Int32 {
   8192
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMod_Alt`.
-pub fn im_gui_mod_alt() -> Int {
+pub fn im_gui_mod_alt() -> Int32 {
   16384
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMod_Super`.
-pub fn im_gui_mod_super() -> Int {
+pub fn im_gui_mod_super() -> Int32 {
   32768
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiKey_COUNT`.
-pub fn im_gui_key_count() -> Int {
+pub fn im_gui_key_count() -> Int32 {
   667
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMod_Shortcut`.
-pub fn im_gui_mod_shortcut() -> Int {
+pub fn im_gui_mod_shortcut() -> Int32 {
   4096
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputFlags_None`.
-pub fn im_gui_input_flags_none() -> Int {
+pub fn im_gui_input_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputFlags_Repeat`.
-pub fn im_gui_input_flags_repeat() -> Int {
+pub fn im_gui_input_flags_repeat() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputFlags_RouteActive`.
-pub fn im_gui_input_flags_route_active() -> Int {
+pub fn im_gui_input_flags_route_active() -> Int32 {
   1024
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputFlags_RouteFocused`.
-pub fn im_gui_input_flags_route_focused() -> Int {
+pub fn im_gui_input_flags_route_focused() -> Int32 {
   2048
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputFlags_RouteGlobal`.
-pub fn im_gui_input_flags_route_global() -> Int {
+pub fn im_gui_input_flags_route_global() -> Int32 {
   4096
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputFlags_RouteAlways`.
-pub fn im_gui_input_flags_route_always() -> Int {
+pub fn im_gui_input_flags_route_always() -> Int32 {
   8192
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputFlags_RouteOverFocused`.
-pub fn im_gui_input_flags_route_over_focused() -> Int {
+pub fn im_gui_input_flags_route_over_focused() -> Int32 {
   16384
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputFlags_RouteOverActive`.
-pub fn im_gui_input_flags_route_over_active() -> Int {
+pub fn im_gui_input_flags_route_over_active() -> Int32 {
   32768
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputFlags_RouteUnlessBgFocused`.
-pub fn im_gui_input_flags_route_unless_bg_focused() -> Int {
+pub fn im_gui_input_flags_route_unless_bg_focused() -> Int32 {
   65536
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputFlags_RouteFromRootWindow`.
-pub fn im_gui_input_flags_route_from_root_window() -> Int {
+pub fn im_gui_input_flags_route_from_root_window() -> Int32 {
   131072
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiInputFlags_Tooltip`.
-pub fn im_gui_input_flags_tooltip() -> Int {
+pub fn im_gui_input_flags_tooltip() -> Int32 {
   262144
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiConfigFlags_None`.
-pub fn im_gui_config_flags_none() -> Int {
+pub fn im_gui_config_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiConfigFlags_NavEnableKeyboard`.
-pub fn im_gui_config_flags_nav_enable_keyboard() -> Int {
+pub fn im_gui_config_flags_nav_enable_keyboard() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiConfigFlags_NavEnableGamepad`.
-pub fn im_gui_config_flags_nav_enable_gamepad() -> Int {
+pub fn im_gui_config_flags_nav_enable_gamepad() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiConfigFlags_NoMouse`.
-pub fn im_gui_config_flags_no_mouse() -> Int {
+pub fn im_gui_config_flags_no_mouse() -> Int32 {
   16
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiConfigFlags_NoMouseCursorChange`.
-pub fn im_gui_config_flags_no_mouse_cursor_change() -> Int {
+pub fn im_gui_config_flags_no_mouse_cursor_change() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiConfigFlags_NoKeyboard`.
-pub fn im_gui_config_flags_no_keyboard() -> Int {
+pub fn im_gui_config_flags_no_keyboard() -> Int32 {
   64
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiConfigFlags_IsSRGB`.
-pub fn im_gui_config_flags_is_srgb() -> Int {
+pub fn im_gui_config_flags_is_srgb() -> Int32 {
   1048576
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiConfigFlags_IsTouchScreen`.
-pub fn im_gui_config_flags_is_touch_screen() -> Int {
+pub fn im_gui_config_flags_is_touch_screen() -> Int32 {
   2097152
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiConfigFlags_NavEnableSetMousePos`.
-pub fn im_gui_config_flags_nav_enable_set_mouse_pos() -> Int {
+pub fn im_gui_config_flags_nav_enable_set_mouse_pos() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiConfigFlags_NavNoCaptureKeyboard`.
-pub fn im_gui_config_flags_nav_no_capture_keyboard() -> Int {
+pub fn im_gui_config_flags_nav_no_capture_keyboard() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiBackendFlags_None`.
-pub fn im_gui_backend_flags_none() -> Int {
+pub fn im_gui_backend_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiBackendFlags_HasGamepad`.
-pub fn im_gui_backend_flags_has_gamepad() -> Int {
+pub fn im_gui_backend_flags_has_gamepad() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiBackendFlags_HasMouseCursors`.
-pub fn im_gui_backend_flags_has_mouse_cursors() -> Int {
+pub fn im_gui_backend_flags_has_mouse_cursors() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiBackendFlags_HasSetMousePos`.
-pub fn im_gui_backend_flags_has_set_mouse_pos() -> Int {
+pub fn im_gui_backend_flags_has_set_mouse_pos() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiBackendFlags_RendererHasVtxOffset`.
-pub fn im_gui_backend_flags_renderer_has_vtx_offset() -> Int {
+pub fn im_gui_backend_flags_renderer_has_vtx_offset() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiBackendFlags_RendererHasTextures`.
-pub fn im_gui_backend_flags_renderer_has_textures() -> Int {
+pub fn im_gui_backend_flags_renderer_has_textures() -> Int32 {
   16
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_Text`.
-pub fn im_gui_col_text() -> Int {
+pub fn im_gui_col_text() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_TextDisabled`.
-pub fn im_gui_col_text_disabled() -> Int {
+pub fn im_gui_col_text_disabled() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_WindowBg`.
-pub fn im_gui_col_window_bg() -> Int {
+pub fn im_gui_col_window_bg() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_ChildBg`.
-pub fn im_gui_col_child_bg() -> Int {
+pub fn im_gui_col_child_bg() -> Int32 {
   3
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_PopupBg`.
-pub fn im_gui_col_popup_bg() -> Int {
+pub fn im_gui_col_popup_bg() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_Border`.
-pub fn im_gui_col_border() -> Int {
+pub fn im_gui_col_border() -> Int32 {
   5
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_BorderShadow`.
-pub fn im_gui_col_border_shadow() -> Int {
+pub fn im_gui_col_border_shadow() -> Int32 {
   6
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_FrameBg`.
-pub fn im_gui_col_frame_bg() -> Int {
+pub fn im_gui_col_frame_bg() -> Int32 {
   7
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_FrameBgHovered`.
-pub fn im_gui_col_frame_bg_hovered() -> Int {
+pub fn im_gui_col_frame_bg_hovered() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_FrameBgActive`.
-pub fn im_gui_col_frame_bg_active() -> Int {
+pub fn im_gui_col_frame_bg_active() -> Int32 {
   9
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_TitleBg`.
-pub fn im_gui_col_title_bg() -> Int {
+pub fn im_gui_col_title_bg() -> Int32 {
   10
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_TitleBgActive`.
-pub fn im_gui_col_title_bg_active() -> Int {
+pub fn im_gui_col_title_bg_active() -> Int32 {
   11
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_TitleBgCollapsed`.
-pub fn im_gui_col_title_bg_collapsed() -> Int {
+pub fn im_gui_col_title_bg_collapsed() -> Int32 {
   12
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_MenuBarBg`.
-pub fn im_gui_col_menu_bar_bg() -> Int {
+pub fn im_gui_col_menu_bar_bg() -> Int32 {
   13
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_ScrollbarBg`.
-pub fn im_gui_col_scrollbar_bg() -> Int {
+pub fn im_gui_col_scrollbar_bg() -> Int32 {
   14
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_ScrollbarGrab`.
-pub fn im_gui_col_scrollbar_grab() -> Int {
+pub fn im_gui_col_scrollbar_grab() -> Int32 {
   15
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_ScrollbarGrabHovered`.
-pub fn im_gui_col_scrollbar_grab_hovered() -> Int {
+pub fn im_gui_col_scrollbar_grab_hovered() -> Int32 {
   16
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_ScrollbarGrabActive`.
-pub fn im_gui_col_scrollbar_grab_active() -> Int {
+pub fn im_gui_col_scrollbar_grab_active() -> Int32 {
   17
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_CheckMark`.
-pub fn im_gui_col_check_mark() -> Int {
+pub fn im_gui_col_check_mark() -> Int32 {
   18
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_CheckboxSelectedBg`.
-pub fn im_gui_col_checkbox_selected_bg() -> Int {
+pub fn im_gui_col_checkbox_selected_bg() -> Int32 {
   19
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_SliderGrab`.
-pub fn im_gui_col_slider_grab() -> Int {
+pub fn im_gui_col_slider_grab() -> Int32 {
   20
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_SliderGrabActive`.
-pub fn im_gui_col_slider_grab_active() -> Int {
+pub fn im_gui_col_slider_grab_active() -> Int32 {
   21
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_Button`.
-pub fn im_gui_col_button() -> Int {
+pub fn im_gui_col_button() -> Int32 {
   22
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_ButtonHovered`.
-pub fn im_gui_col_button_hovered() -> Int {
+pub fn im_gui_col_button_hovered() -> Int32 {
   23
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_ButtonActive`.
-pub fn im_gui_col_button_active() -> Int {
+pub fn im_gui_col_button_active() -> Int32 {
   24
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_Header`.
-pub fn im_gui_col_header() -> Int {
+pub fn im_gui_col_header() -> Int32 {
   25
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_HeaderHovered`.
-pub fn im_gui_col_header_hovered() -> Int {
+pub fn im_gui_col_header_hovered() -> Int32 {
   26
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_HeaderActive`.
-pub fn im_gui_col_header_active() -> Int {
+pub fn im_gui_col_header_active() -> Int32 {
   27
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_Separator`.
-pub fn im_gui_col_separator() -> Int {
+pub fn im_gui_col_separator() -> Int32 {
   28
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_SeparatorHovered`.
-pub fn im_gui_col_separator_hovered() -> Int {
+pub fn im_gui_col_separator_hovered() -> Int32 {
   29
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_SeparatorActive`.
-pub fn im_gui_col_separator_active() -> Int {
+pub fn im_gui_col_separator_active() -> Int32 {
   30
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_ResizeGrip`.
-pub fn im_gui_col_resize_grip() -> Int {
+pub fn im_gui_col_resize_grip() -> Int32 {
   31
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_ResizeGripHovered`.
-pub fn im_gui_col_resize_grip_hovered() -> Int {
+pub fn im_gui_col_resize_grip_hovered() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_ResizeGripActive`.
-pub fn im_gui_col_resize_grip_active() -> Int {
+pub fn im_gui_col_resize_grip_active() -> Int32 {
   33
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_InputTextCursor`.
-pub fn im_gui_col_input_text_cursor() -> Int {
+pub fn im_gui_col_input_text_cursor() -> Int32 {
   34
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_TabHovered`.
-pub fn im_gui_col_tab_hovered() -> Int {
+pub fn im_gui_col_tab_hovered() -> Int32 {
   35
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_Tab`.
-pub fn im_gui_col_tab() -> Int {
+pub fn im_gui_col_tab() -> Int32 {
   36
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_TabSelected`.
-pub fn im_gui_col_tab_selected() -> Int {
+pub fn im_gui_col_tab_selected() -> Int32 {
   37
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_TabSelectedOverline`.
-pub fn im_gui_col_tab_selected_overline() -> Int {
+pub fn im_gui_col_tab_selected_overline() -> Int32 {
   38
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_TabDimmed`.
-pub fn im_gui_col_tab_dimmed() -> Int {
+pub fn im_gui_col_tab_dimmed() -> Int32 {
   39
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_TabDimmedSelected`.
-pub fn im_gui_col_tab_dimmed_selected() -> Int {
+pub fn im_gui_col_tab_dimmed_selected() -> Int32 {
   40
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_TabDimmedSelectedOverline`.
-pub fn im_gui_col_tab_dimmed_selected_overline() -> Int {
+pub fn im_gui_col_tab_dimmed_selected_overline() -> Int32 {
   41
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_PlotLines`.
-pub fn im_gui_col_plot_lines() -> Int {
+pub fn im_gui_col_plot_lines() -> Int32 {
   42
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_PlotLinesHovered`.
-pub fn im_gui_col_plot_lines_hovered() -> Int {
+pub fn im_gui_col_plot_lines_hovered() -> Int32 {
   43
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_PlotHistogram`.
-pub fn im_gui_col_plot_histogram() -> Int {
+pub fn im_gui_col_plot_histogram() -> Int32 {
   44
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_PlotHistogramHovered`.
-pub fn im_gui_col_plot_histogram_hovered() -> Int {
+pub fn im_gui_col_plot_histogram_hovered() -> Int32 {
   45
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_TableHeaderBg`.
-pub fn im_gui_col_table_header_bg() -> Int {
+pub fn im_gui_col_table_header_bg() -> Int32 {
   46
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_TableBorderStrong`.
-pub fn im_gui_col_table_border_strong() -> Int {
+pub fn im_gui_col_table_border_strong() -> Int32 {
   47
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_TableBorderLight`.
-pub fn im_gui_col_table_border_light() -> Int {
+pub fn im_gui_col_table_border_light() -> Int32 {
   48
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_TableRowBg`.
-pub fn im_gui_col_table_row_bg() -> Int {
+pub fn im_gui_col_table_row_bg() -> Int32 {
   49
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_TableRowBgAlt`.
-pub fn im_gui_col_table_row_bg_alt() -> Int {
+pub fn im_gui_col_table_row_bg_alt() -> Int32 {
   50
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_TextLink`.
-pub fn im_gui_col_text_link() -> Int {
+pub fn im_gui_col_text_link() -> Int32 {
   51
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_TextSelectedBg`.
-pub fn im_gui_col_text_selected_bg() -> Int {
+pub fn im_gui_col_text_selected_bg() -> Int32 {
   52
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_TreeLines`.
-pub fn im_gui_col_tree_lines() -> Int {
+pub fn im_gui_col_tree_lines() -> Int32 {
   53
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_DragDropTarget`.
-pub fn im_gui_col_drag_drop_target() -> Int {
+pub fn im_gui_col_drag_drop_target() -> Int32 {
   54
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_DragDropTargetBg`.
-pub fn im_gui_col_drag_drop_target_bg() -> Int {
+pub fn im_gui_col_drag_drop_target_bg() -> Int32 {
   55
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_UnsavedMarker`.
-pub fn im_gui_col_unsaved_marker() -> Int {
+pub fn im_gui_col_unsaved_marker() -> Int32 {
   56
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_NavCursor`.
-pub fn im_gui_col_nav_cursor() -> Int {
+pub fn im_gui_col_nav_cursor() -> Int32 {
   57
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_NavWindowingHighlight`.
-pub fn im_gui_col_nav_windowing_highlight() -> Int {
+pub fn im_gui_col_nav_windowing_highlight() -> Int32 {
   58
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_NavWindowingDimBg`.
-pub fn im_gui_col_nav_windowing_dim_bg() -> Int {
+pub fn im_gui_col_nav_windowing_dim_bg() -> Int32 {
   59
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_ModalWindowDimBg`.
-pub fn im_gui_col_modal_window_dim_bg() -> Int {
+pub fn im_gui_col_modal_window_dim_bg() -> Int32 {
   60
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_COUNT`.
-pub fn im_gui_col_count() -> Int {
+pub fn im_gui_col_count() -> Int32 {
   61
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_TabActive`.
-pub fn im_gui_col_tab_active() -> Int {
+pub fn im_gui_col_tab_active() -> Int32 {
   37
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_TabUnfocused`.
-pub fn im_gui_col_tab_unfocused() -> Int {
+pub fn im_gui_col_tab_unfocused() -> Int32 {
   39
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_TabUnfocusedActive`.
-pub fn im_gui_col_tab_unfocused_active() -> Int {
+pub fn im_gui_col_tab_unfocused_active() -> Int32 {
   40
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCol_NavHighlight`.
-pub fn im_gui_col_nav_highlight() -> Int {
+pub fn im_gui_col_nav_highlight() -> Int32 {
   57
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_Alpha`.
-pub fn im_gui_style_var_alpha() -> Int {
+pub fn im_gui_style_var_alpha() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_DisabledAlpha`.
-pub fn im_gui_style_var_disabled_alpha() -> Int {
+pub fn im_gui_style_var_disabled_alpha() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_WindowPadding`.
-pub fn im_gui_style_var_window_padding() -> Int {
+pub fn im_gui_style_var_window_padding() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_WindowRounding`.
-pub fn im_gui_style_var_window_rounding() -> Int {
+pub fn im_gui_style_var_window_rounding() -> Int32 {
   3
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_WindowBorderSize`.
-pub fn im_gui_style_var_window_border_size() -> Int {
+pub fn im_gui_style_var_window_border_size() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_WindowMinSize`.
-pub fn im_gui_style_var_window_min_size() -> Int {
+pub fn im_gui_style_var_window_min_size() -> Int32 {
   5
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_WindowTitleAlign`.
-pub fn im_gui_style_var_window_title_align() -> Int {
+pub fn im_gui_style_var_window_title_align() -> Int32 {
   6
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_ChildRounding`.
-pub fn im_gui_style_var_child_rounding() -> Int {
+pub fn im_gui_style_var_child_rounding() -> Int32 {
   7
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_ChildBorderSize`.
-pub fn im_gui_style_var_child_border_size() -> Int {
+pub fn im_gui_style_var_child_border_size() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_PopupRounding`.
-pub fn im_gui_style_var_popup_rounding() -> Int {
+pub fn im_gui_style_var_popup_rounding() -> Int32 {
   9
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_PopupBorderSize`.
-pub fn im_gui_style_var_popup_border_size() -> Int {
+pub fn im_gui_style_var_popup_border_size() -> Int32 {
   10
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_FramePadding`.
-pub fn im_gui_style_var_frame_padding() -> Int {
+pub fn im_gui_style_var_frame_padding() -> Int32 {
   11
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_FrameRounding`.
-pub fn im_gui_style_var_frame_rounding() -> Int {
+pub fn im_gui_style_var_frame_rounding() -> Int32 {
   12
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_FrameBorderSize`.
-pub fn im_gui_style_var_frame_border_size() -> Int {
+pub fn im_gui_style_var_frame_border_size() -> Int32 {
   13
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_ItemSpacing`.
-pub fn im_gui_style_var_item_spacing() -> Int {
+pub fn im_gui_style_var_item_spacing() -> Int32 {
   14
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_ItemInnerSpacing`.
-pub fn im_gui_style_var_item_inner_spacing() -> Int {
+pub fn im_gui_style_var_item_inner_spacing() -> Int32 {
   15
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_IndentSpacing`.
-pub fn im_gui_style_var_indent_spacing() -> Int {
+pub fn im_gui_style_var_indent_spacing() -> Int32 {
   16
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_CellPadding`.
-pub fn im_gui_style_var_cell_padding() -> Int {
+pub fn im_gui_style_var_cell_padding() -> Int32 {
   17
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_ScrollbarSize`.
-pub fn im_gui_style_var_scrollbar_size() -> Int {
+pub fn im_gui_style_var_scrollbar_size() -> Int32 {
   18
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_ScrollbarRounding`.
-pub fn im_gui_style_var_scrollbar_rounding() -> Int {
+pub fn im_gui_style_var_scrollbar_rounding() -> Int32 {
   19
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_ScrollbarPadding`.
-pub fn im_gui_style_var_scrollbar_padding() -> Int {
+pub fn im_gui_style_var_scrollbar_padding() -> Int32 {
   20
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_GrabMinSize`.
-pub fn im_gui_style_var_grab_min_size() -> Int {
+pub fn im_gui_style_var_grab_min_size() -> Int32 {
   21
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_GrabRounding`.
-pub fn im_gui_style_var_grab_rounding() -> Int {
+pub fn im_gui_style_var_grab_rounding() -> Int32 {
   22
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_ImageRounding`.
-pub fn im_gui_style_var_image_rounding() -> Int {
+pub fn im_gui_style_var_image_rounding() -> Int32 {
   23
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_ImageBorderSize`.
-pub fn im_gui_style_var_image_border_size() -> Int {
+pub fn im_gui_style_var_image_border_size() -> Int32 {
   24
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_TabRounding`.
-pub fn im_gui_style_var_tab_rounding() -> Int {
+pub fn im_gui_style_var_tab_rounding() -> Int32 {
   25
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_TabBorderSize`.
-pub fn im_gui_style_var_tab_border_size() -> Int {
+pub fn im_gui_style_var_tab_border_size() -> Int32 {
   26
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_TabMinWidthBase`.
-pub fn im_gui_style_var_tab_min_width_base() -> Int {
+pub fn im_gui_style_var_tab_min_width_base() -> Int32 {
   27
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_TabMinWidthShrink`.
-pub fn im_gui_style_var_tab_min_width_shrink() -> Int {
+pub fn im_gui_style_var_tab_min_width_shrink() -> Int32 {
   28
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_TabBarBorderSize`.
-pub fn im_gui_style_var_tab_bar_border_size() -> Int {
+pub fn im_gui_style_var_tab_bar_border_size() -> Int32 {
   29
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_TabBarOverlineSize`.
-pub fn im_gui_style_var_tab_bar_overline_size() -> Int {
+pub fn im_gui_style_var_tab_bar_overline_size() -> Int32 {
   30
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_TableAngledHeadersAngle`.
-pub fn im_gui_style_var_table_angled_headers_angle() -> Int {
+pub fn im_gui_style_var_table_angled_headers_angle() -> Int32 {
   31
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_TableAngledHeadersTextAlign`.
-pub fn im_gui_style_var_table_angled_headers_text_align() -> Int {
+pub fn im_gui_style_var_table_angled_headers_text_align() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_TreeLinesSize`.
-pub fn im_gui_style_var_tree_lines_size() -> Int {
+pub fn im_gui_style_var_tree_lines_size() -> Int32 {
   33
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_TreeLinesRounding`.
-pub fn im_gui_style_var_tree_lines_rounding() -> Int {
+pub fn im_gui_style_var_tree_lines_rounding() -> Int32 {
   34
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_DragDropTargetRounding`.
-pub fn im_gui_style_var_drag_drop_target_rounding() -> Int {
+pub fn im_gui_style_var_drag_drop_target_rounding() -> Int32 {
   35
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_ButtonTextAlign`.
-pub fn im_gui_style_var_button_text_align() -> Int {
+pub fn im_gui_style_var_button_text_align() -> Int32 {
   36
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_SelectableTextAlign`.
-pub fn im_gui_style_var_selectable_text_align() -> Int {
+pub fn im_gui_style_var_selectable_text_align() -> Int32 {
   37
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_SeparatorSize`.
-pub fn im_gui_style_var_separator_size() -> Int {
+pub fn im_gui_style_var_separator_size() -> Int32 {
   38
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_SeparatorTextBorderSize`.
-pub fn im_gui_style_var_separator_text_border_size() -> Int {
+pub fn im_gui_style_var_separator_text_border_size() -> Int32 {
   39
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_SeparatorTextAlign`.
-pub fn im_gui_style_var_separator_text_align() -> Int {
+pub fn im_gui_style_var_separator_text_align() -> Int32 {
   40
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_SeparatorTextPadding`.
-pub fn im_gui_style_var_separator_text_padding() -> Int {
+pub fn im_gui_style_var_separator_text_padding() -> Int32 {
   41
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiStyleVar_COUNT`.
-pub fn im_gui_style_var_count() -> Int {
+pub fn im_gui_style_var_count() -> Int32 {
   42
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiButtonFlags_None`.
-pub fn im_gui_button_flags_none() -> Int {
+pub fn im_gui_button_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiButtonFlags_MouseButtonLeft`.
-pub fn im_gui_button_flags_mouse_button_left() -> Int {
+pub fn im_gui_button_flags_mouse_button_left() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiButtonFlags_MouseButtonRight`.
-pub fn im_gui_button_flags_mouse_button_right() -> Int {
+pub fn im_gui_button_flags_mouse_button_right() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiButtonFlags_MouseButtonMiddle`.
-pub fn im_gui_button_flags_mouse_button_middle() -> Int {
+pub fn im_gui_button_flags_mouse_button_middle() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiButtonFlags_EnableNav`.
-pub fn im_gui_button_flags_enable_nav() -> Int {
+pub fn im_gui_button_flags_enable_nav() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiButtonFlags_AllowOverlap`.
-pub fn im_gui_button_flags_allow_overlap() -> Int {
+pub fn im_gui_button_flags_allow_overlap() -> Int32 {
   4096
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_None`.
-pub fn im_gui_color_edit_flags_none() -> Int {
+pub fn im_gui_color_edit_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_NoAlpha`.
-pub fn im_gui_color_edit_flags_no_alpha() -> Int {
+pub fn im_gui_color_edit_flags_no_alpha() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_NoPicker`.
-pub fn im_gui_color_edit_flags_no_picker() -> Int {
+pub fn im_gui_color_edit_flags_no_picker() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_NoOptions`.
-pub fn im_gui_color_edit_flags_no_options() -> Int {
+pub fn im_gui_color_edit_flags_no_options() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_NoSmallPreview`.
-pub fn im_gui_color_edit_flags_no_small_preview() -> Int {
+pub fn im_gui_color_edit_flags_no_small_preview() -> Int32 {
   16
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_NoInputs`.
-pub fn im_gui_color_edit_flags_no_inputs() -> Int {
+pub fn im_gui_color_edit_flags_no_inputs() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_NoTooltip`.
-pub fn im_gui_color_edit_flags_no_tooltip() -> Int {
+pub fn im_gui_color_edit_flags_no_tooltip() -> Int32 {
   64
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_NoLabel`.
-pub fn im_gui_color_edit_flags_no_label() -> Int {
+pub fn im_gui_color_edit_flags_no_label() -> Int32 {
   128
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_NoSidePreview`.
-pub fn im_gui_color_edit_flags_no_side_preview() -> Int {
+pub fn im_gui_color_edit_flags_no_side_preview() -> Int32 {
   256
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_NoDragDrop`.
-pub fn im_gui_color_edit_flags_no_drag_drop() -> Int {
+pub fn im_gui_color_edit_flags_no_drag_drop() -> Int32 {
   512
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_NoBorder`.
-pub fn im_gui_color_edit_flags_no_border() -> Int {
+pub fn im_gui_color_edit_flags_no_border() -> Int32 {
   1024
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_NoColorMarkers`.
-pub fn im_gui_color_edit_flags_no_color_markers() -> Int {
+pub fn im_gui_color_edit_flags_no_color_markers() -> Int32 {
   2048
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_AlphaOpaque`.
-pub fn im_gui_color_edit_flags_alpha_opaque() -> Int {
+pub fn im_gui_color_edit_flags_alpha_opaque() -> Int32 {
   4096
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_AlphaNoBg`.
-pub fn im_gui_color_edit_flags_alpha_no_bg() -> Int {
+pub fn im_gui_color_edit_flags_alpha_no_bg() -> Int32 {
   8192
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_AlphaPreviewHalf`.
-pub fn im_gui_color_edit_flags_alpha_preview_half() -> Int {
+pub fn im_gui_color_edit_flags_alpha_preview_half() -> Int32 {
   16384
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_AlphaBar`.
-pub fn im_gui_color_edit_flags_alpha_bar() -> Int {
+pub fn im_gui_color_edit_flags_alpha_bar() -> Int32 {
   262144
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_HDR`.
-pub fn im_gui_color_edit_flags_hdr() -> Int {
+pub fn im_gui_color_edit_flags_hdr() -> Int32 {
   524288
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_DisplayRGB`.
-pub fn im_gui_color_edit_flags_display_rgb() -> Int {
+pub fn im_gui_color_edit_flags_display_rgb() -> Int32 {
   1048576
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_DisplayHSV`.
-pub fn im_gui_color_edit_flags_display_hsv() -> Int {
+pub fn im_gui_color_edit_flags_display_hsv() -> Int32 {
   2097152
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_DisplayHex`.
-pub fn im_gui_color_edit_flags_display_hex() -> Int {
+pub fn im_gui_color_edit_flags_display_hex() -> Int32 {
   4194304
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_Uint8`.
-pub fn im_gui_color_edit_flags_uint8() -> Int {
+pub fn im_gui_color_edit_flags_uint8() -> Int32 {
   8388608
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_Float`.
-pub fn im_gui_color_edit_flags_float() -> Int {
+pub fn im_gui_color_edit_flags_float() -> Int32 {
   16777216
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_PickerHueBar`.
-pub fn im_gui_color_edit_flags_picker_hue_bar() -> Int {
+pub fn im_gui_color_edit_flags_picker_hue_bar() -> Int32 {
   33554432
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_PickerHueWheel`.
-pub fn im_gui_color_edit_flags_picker_hue_wheel() -> Int {
+pub fn im_gui_color_edit_flags_picker_hue_wheel() -> Int32 {
   67108864
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_InputRGB`.
-pub fn im_gui_color_edit_flags_input_rgb() -> Int {
+pub fn im_gui_color_edit_flags_input_rgb() -> Int32 {
   134217728
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_InputHSV`.
-pub fn im_gui_color_edit_flags_input_hsv() -> Int {
+pub fn im_gui_color_edit_flags_input_hsv() -> Int32 {
   268435456
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiColorEditFlags_AlphaPreview`.
-pub fn im_gui_color_edit_flags_alpha_preview() -> Int {
+pub fn im_gui_color_edit_flags_alpha_preview() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSliderFlags_None`.
-pub fn im_gui_slider_flags_none() -> Int {
+pub fn im_gui_slider_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSliderFlags_Logarithmic`.
-pub fn im_gui_slider_flags_logarithmic() -> Int {
+pub fn im_gui_slider_flags_logarithmic() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSliderFlags_NoRoundToFormat`.
-pub fn im_gui_slider_flags_no_round_to_format() -> Int {
+pub fn im_gui_slider_flags_no_round_to_format() -> Int32 {
   64
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSliderFlags_NoInput`.
-pub fn im_gui_slider_flags_no_input() -> Int {
+pub fn im_gui_slider_flags_no_input() -> Int32 {
   128
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSliderFlags_WrapAround`.
-pub fn im_gui_slider_flags_wrap_around() -> Int {
+pub fn im_gui_slider_flags_wrap_around() -> Int32 {
   256
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSliderFlags_ClampOnInput`.
-pub fn im_gui_slider_flags_clamp_on_input() -> Int {
+pub fn im_gui_slider_flags_clamp_on_input() -> Int32 {
   512
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSliderFlags_ClampZeroRange`.
-pub fn im_gui_slider_flags_clamp_zero_range() -> Int {
+pub fn im_gui_slider_flags_clamp_zero_range() -> Int32 {
   1024
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSliderFlags_NoSpeedTweaks`.
-pub fn im_gui_slider_flags_no_speed_tweaks() -> Int {
+pub fn im_gui_slider_flags_no_speed_tweaks() -> Int32 {
   2048
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSliderFlags_ColorMarkers`.
-pub fn im_gui_slider_flags_color_markers() -> Int {
+pub fn im_gui_slider_flags_color_markers() -> Int32 {
   4096
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSliderFlags_AlwaysClamp`.
-pub fn im_gui_slider_flags_always_clamp() -> Int {
+pub fn im_gui_slider_flags_always_clamp() -> Int32 {
   1536
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMouseButton_Left`.
-pub fn im_gui_mouse_button_left() -> Int {
+pub fn im_gui_mouse_button_left() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMouseButton_Right`.
-pub fn im_gui_mouse_button_right() -> Int {
+pub fn im_gui_mouse_button_right() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMouseButton_Middle`.
-pub fn im_gui_mouse_button_middle() -> Int {
+pub fn im_gui_mouse_button_middle() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMouseButton_COUNT`.
-pub fn im_gui_mouse_button_count() -> Int {
+pub fn im_gui_mouse_button_count() -> Int32 {
   5
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMouseCursor_None`.
-pub fn im_gui_mouse_cursor_none() -> Int {
+pub fn im_gui_mouse_cursor_none() -> Int32 {
   -1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMouseCursor_Arrow`.
-pub fn im_gui_mouse_cursor_arrow() -> Int {
+pub fn im_gui_mouse_cursor_arrow() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMouseCursor_TextInput`.
-pub fn im_gui_mouse_cursor_text_input() -> Int {
+pub fn im_gui_mouse_cursor_text_input() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMouseCursor_ResizeAll`.
-pub fn im_gui_mouse_cursor_resize_all() -> Int {
+pub fn im_gui_mouse_cursor_resize_all() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMouseCursor_ResizeNS`.
-pub fn im_gui_mouse_cursor_resize_ns() -> Int {
+pub fn im_gui_mouse_cursor_resize_ns() -> Int32 {
   3
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMouseCursor_ResizeEW`.
-pub fn im_gui_mouse_cursor_resize_ew() -> Int {
+pub fn im_gui_mouse_cursor_resize_ew() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMouseCursor_ResizeNESW`.
-pub fn im_gui_mouse_cursor_resize_nesw() -> Int {
+pub fn im_gui_mouse_cursor_resize_nesw() -> Int32 {
   5
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMouseCursor_ResizeNWSE`.
-pub fn im_gui_mouse_cursor_resize_nwse() -> Int {
+pub fn im_gui_mouse_cursor_resize_nwse() -> Int32 {
   6
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMouseCursor_Hand`.
-pub fn im_gui_mouse_cursor_hand() -> Int {
+pub fn im_gui_mouse_cursor_hand() -> Int32 {
   7
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMouseCursor_Wait`.
-pub fn im_gui_mouse_cursor_wait() -> Int {
+pub fn im_gui_mouse_cursor_wait() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMouseCursor_Progress`.
-pub fn im_gui_mouse_cursor_progress() -> Int {
+pub fn im_gui_mouse_cursor_progress() -> Int32 {
   9
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMouseCursor_NotAllowed`.
-pub fn im_gui_mouse_cursor_not_allowed() -> Int {
+pub fn im_gui_mouse_cursor_not_allowed() -> Int32 {
   10
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMouseCursor_COUNT`.
-pub fn im_gui_mouse_cursor_count() -> Int {
+pub fn im_gui_mouse_cursor_count() -> Int32 {
   11
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMouseSource_Mouse`.
-pub fn im_gui_mouse_source_mouse() -> Int {
+pub fn im_gui_mouse_source_mouse() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMouseSource_TouchScreen`.
-pub fn im_gui_mouse_source_touch_screen() -> Int {
+pub fn im_gui_mouse_source_touch_screen() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMouseSource_Pen`.
-pub fn im_gui_mouse_source_pen() -> Int {
+pub fn im_gui_mouse_source_pen() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMouseSource_COUNT`.
-pub fn im_gui_mouse_source_count() -> Int {
+pub fn im_gui_mouse_source_count() -> Int32 {
   3
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCond_None`.
-pub fn im_gui_cond_none() -> Int {
+pub fn im_gui_cond_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCond_Always`.
-pub fn im_gui_cond_always() -> Int {
+pub fn im_gui_cond_always() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCond_Once`.
-pub fn im_gui_cond_once() -> Int {
+pub fn im_gui_cond_once() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCond_FirstUseEver`.
-pub fn im_gui_cond_first_use_ever() -> Int {
+pub fn im_gui_cond_first_use_ever() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiCond_Appearing`.
-pub fn im_gui_cond_appearing() -> Int {
+pub fn im_gui_cond_appearing() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_None`.
-pub fn im_gui_table_flags_none() -> Int {
+pub fn im_gui_table_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_Resizable`.
-pub fn im_gui_table_flags_resizable() -> Int {
+pub fn im_gui_table_flags_resizable() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_Reorderable`.
-pub fn im_gui_table_flags_reorderable() -> Int {
+pub fn im_gui_table_flags_reorderable() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_Hideable`.
-pub fn im_gui_table_flags_hideable() -> Int {
+pub fn im_gui_table_flags_hideable() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_Sortable`.
-pub fn im_gui_table_flags_sortable() -> Int {
+pub fn im_gui_table_flags_sortable() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_NoSavedSettings`.
-pub fn im_gui_table_flags_no_saved_settings() -> Int {
+pub fn im_gui_table_flags_no_saved_settings() -> Int32 {
   16
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_ContextMenuInBody`.
-pub fn im_gui_table_flags_context_menu_in_body() -> Int {
+pub fn im_gui_table_flags_context_menu_in_body() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_RowBg`.
-pub fn im_gui_table_flags_row_bg() -> Int {
+pub fn im_gui_table_flags_row_bg() -> Int32 {
   64
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_BordersInnerH`.
-pub fn im_gui_table_flags_borders_inner_h() -> Int {
+pub fn im_gui_table_flags_borders_inner_h() -> Int32 {
   128
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_BordersOuterH`.
-pub fn im_gui_table_flags_borders_outer_h() -> Int {
+pub fn im_gui_table_flags_borders_outer_h() -> Int32 {
   256
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_BordersInnerV`.
-pub fn im_gui_table_flags_borders_inner_v() -> Int {
+pub fn im_gui_table_flags_borders_inner_v() -> Int32 {
   512
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_BordersOuterV`.
-pub fn im_gui_table_flags_borders_outer_v() -> Int {
+pub fn im_gui_table_flags_borders_outer_v() -> Int32 {
   1024
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_BordersH`.
-pub fn im_gui_table_flags_borders_h() -> Int {
+pub fn im_gui_table_flags_borders_h() -> Int32 {
   384
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_BordersV`.
-pub fn im_gui_table_flags_borders_v() -> Int {
+pub fn im_gui_table_flags_borders_v() -> Int32 {
   1536
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_BordersInner`.
-pub fn im_gui_table_flags_borders_inner() -> Int {
+pub fn im_gui_table_flags_borders_inner() -> Int32 {
   640
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_BordersOuter`.
-pub fn im_gui_table_flags_borders_outer() -> Int {
+pub fn im_gui_table_flags_borders_outer() -> Int32 {
   1280
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_Borders`.
-pub fn im_gui_table_flags_borders() -> Int {
+pub fn im_gui_table_flags_borders() -> Int32 {
   1920
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_NoBordersInBody`.
-pub fn im_gui_table_flags_no_borders_in_body() -> Int {
+pub fn im_gui_table_flags_no_borders_in_body() -> Int32 {
   2048
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_NoBordersInBodyUntilResize`.
-pub fn im_gui_table_flags_no_borders_in_body_until_resize() -> Int {
+pub fn im_gui_table_flags_no_borders_in_body_until_resize() -> Int32 {
   4096
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_SizingFixedFit`.
-pub fn im_gui_table_flags_sizing_fixed_fit() -> Int {
+pub fn im_gui_table_flags_sizing_fixed_fit() -> Int32 {
   8192
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_SizingFixedSame`.
-pub fn im_gui_table_flags_sizing_fixed_same() -> Int {
+pub fn im_gui_table_flags_sizing_fixed_same() -> Int32 {
   16384
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_SizingStretchProp`.
-pub fn im_gui_table_flags_sizing_stretch_prop() -> Int {
+pub fn im_gui_table_flags_sizing_stretch_prop() -> Int32 {
   24576
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_SizingStretchSame`.
-pub fn im_gui_table_flags_sizing_stretch_same() -> Int {
+pub fn im_gui_table_flags_sizing_stretch_same() -> Int32 {
   32768
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_NoHostExtendX`.
-pub fn im_gui_table_flags_no_host_extend_x() -> Int {
+pub fn im_gui_table_flags_no_host_extend_x() -> Int32 {
   65536
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_NoHostExtendY`.
-pub fn im_gui_table_flags_no_host_extend_y() -> Int {
+pub fn im_gui_table_flags_no_host_extend_y() -> Int32 {
   131072
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_NoKeepColumnsVisible`.
-pub fn im_gui_table_flags_no_keep_columns_visible() -> Int {
+pub fn im_gui_table_flags_no_keep_columns_visible() -> Int32 {
   262144
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_PreciseWidths`.
-pub fn im_gui_table_flags_precise_widths() -> Int {
+pub fn im_gui_table_flags_precise_widths() -> Int32 {
   524288
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_NoClip`.
-pub fn im_gui_table_flags_no_clip() -> Int {
+pub fn im_gui_table_flags_no_clip() -> Int32 {
   1048576
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_PadOuterX`.
-pub fn im_gui_table_flags_pad_outer_x() -> Int {
+pub fn im_gui_table_flags_pad_outer_x() -> Int32 {
   2097152
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_NoPadOuterX`.
-pub fn im_gui_table_flags_no_pad_outer_x() -> Int {
+pub fn im_gui_table_flags_no_pad_outer_x() -> Int32 {
   4194304
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_NoPadInnerX`.
-pub fn im_gui_table_flags_no_pad_inner_x() -> Int {
+pub fn im_gui_table_flags_no_pad_inner_x() -> Int32 {
   8388608
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_ScrollX`.
-pub fn im_gui_table_flags_scroll_x() -> Int {
+pub fn im_gui_table_flags_scroll_x() -> Int32 {
   16777216
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_ScrollY`.
-pub fn im_gui_table_flags_scroll_y() -> Int {
+pub fn im_gui_table_flags_scroll_y() -> Int32 {
   33554432
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_SortMulti`.
-pub fn im_gui_table_flags_sort_multi() -> Int {
+pub fn im_gui_table_flags_sort_multi() -> Int32 {
   67108864
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_SortTristate`.
-pub fn im_gui_table_flags_sort_tristate() -> Int {
+pub fn im_gui_table_flags_sort_tristate() -> Int32 {
   134217728
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableFlags_HighlightHoveredColumn`.
-pub fn im_gui_table_flags_highlight_hovered_column() -> Int {
+pub fn im_gui_table_flags_highlight_hovered_column() -> Int32 {
   268435456
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_None`.
-pub fn im_gui_table_column_flags_none() -> Int {
+pub fn im_gui_table_column_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_Disabled`.
-pub fn im_gui_table_column_flags_disabled() -> Int {
+pub fn im_gui_table_column_flags_disabled() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_DefaultHide`.
-pub fn im_gui_table_column_flags_default_hide() -> Int {
+pub fn im_gui_table_column_flags_default_hide() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_DefaultSort`.
-pub fn im_gui_table_column_flags_default_sort() -> Int {
+pub fn im_gui_table_column_flags_default_sort() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_WidthStretch`.
-pub fn im_gui_table_column_flags_width_stretch() -> Int {
+pub fn im_gui_table_column_flags_width_stretch() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_WidthFixed`.
-pub fn im_gui_table_column_flags_width_fixed() -> Int {
+pub fn im_gui_table_column_flags_width_fixed() -> Int32 {
   16
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_NoResize`.
-pub fn im_gui_table_column_flags_no_resize() -> Int {
+pub fn im_gui_table_column_flags_no_resize() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_NoReorder`.
-pub fn im_gui_table_column_flags_no_reorder() -> Int {
+pub fn im_gui_table_column_flags_no_reorder() -> Int32 {
   64
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_NoHide`.
-pub fn im_gui_table_column_flags_no_hide() -> Int {
+pub fn im_gui_table_column_flags_no_hide() -> Int32 {
   128
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_NoClip`.
-pub fn im_gui_table_column_flags_no_clip() -> Int {
+pub fn im_gui_table_column_flags_no_clip() -> Int32 {
   256
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_NoSort`.
-pub fn im_gui_table_column_flags_no_sort() -> Int {
+pub fn im_gui_table_column_flags_no_sort() -> Int32 {
   512
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_NoSortAscending`.
-pub fn im_gui_table_column_flags_no_sort_ascending() -> Int {
+pub fn im_gui_table_column_flags_no_sort_ascending() -> Int32 {
   1024
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_NoSortDescending`.
-pub fn im_gui_table_column_flags_no_sort_descending() -> Int {
+pub fn im_gui_table_column_flags_no_sort_descending() -> Int32 {
   2048
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_NoHeaderLabel`.
-pub fn im_gui_table_column_flags_no_header_label() -> Int {
+pub fn im_gui_table_column_flags_no_header_label() -> Int32 {
   4096
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_NoHeaderWidth`.
-pub fn im_gui_table_column_flags_no_header_width() -> Int {
+pub fn im_gui_table_column_flags_no_header_width() -> Int32 {
   8192
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_PreferSortAscending`.
-pub fn im_gui_table_column_flags_prefer_sort_ascending() -> Int {
+pub fn im_gui_table_column_flags_prefer_sort_ascending() -> Int32 {
   16384
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_PreferSortDescending`.
-pub fn im_gui_table_column_flags_prefer_sort_descending() -> Int {
+pub fn im_gui_table_column_flags_prefer_sort_descending() -> Int32 {
   32768
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_IndentEnable`.
-pub fn im_gui_table_column_flags_indent_enable() -> Int {
+pub fn im_gui_table_column_flags_indent_enable() -> Int32 {
   65536
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_IndentDisable`.
-pub fn im_gui_table_column_flags_indent_disable() -> Int {
+pub fn im_gui_table_column_flags_indent_disable() -> Int32 {
   131072
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_AngledHeader`.
-pub fn im_gui_table_column_flags_angled_header() -> Int {
+pub fn im_gui_table_column_flags_angled_header() -> Int32 {
   262144
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_IsEnabled`.
-pub fn im_gui_table_column_flags_is_enabled() -> Int {
+pub fn im_gui_table_column_flags_is_enabled() -> Int32 {
   16777216
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_IsVisible`.
-pub fn im_gui_table_column_flags_is_visible() -> Int {
+pub fn im_gui_table_column_flags_is_visible() -> Int32 {
   33554432
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_IsSorted`.
-pub fn im_gui_table_column_flags_is_sorted() -> Int {
+pub fn im_gui_table_column_flags_is_sorted() -> Int32 {
   67108864
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableColumnFlags_IsHovered`.
-pub fn im_gui_table_column_flags_is_hovered() -> Int {
+pub fn im_gui_table_column_flags_is_hovered() -> Int32 {
   134217728
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableRowFlags_None`.
-pub fn im_gui_table_row_flags_none() -> Int {
+pub fn im_gui_table_row_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableRowFlags_Headers`.
-pub fn im_gui_table_row_flags_headers() -> Int {
+pub fn im_gui_table_row_flags_headers() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableBgTarget_None`.
-pub fn im_gui_table_bg_target_none() -> Int {
+pub fn im_gui_table_bg_target_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableBgTarget_RowBg0`.
-pub fn im_gui_table_bg_target_row_bg0() -> Int {
+pub fn im_gui_table_bg_target_row_bg0() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableBgTarget_RowBg1`.
-pub fn im_gui_table_bg_target_row_bg1() -> Int {
+pub fn im_gui_table_bg_target_row_bg1() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiTableBgTarget_CellBg`.
-pub fn im_gui_table_bg_target_cell_bg() -> Int {
+pub fn im_gui_table_bg_target_cell_bg() -> Int32 {
   3
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiListClipperFlags_None`.
-pub fn im_gui_list_clipper_flags_none() -> Int {
+pub fn im_gui_list_clipper_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiListClipperFlags_NoSetTableRowCounters`.
-pub fn im_gui_list_clipper_flags_no_set_table_row_counters() -> Int {
+pub fn im_gui_list_clipper_flags_no_set_table_row_counters() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMultiSelectFlags_None`.
-pub fn im_gui_multi_select_flags_none() -> Int {
+pub fn im_gui_multi_select_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMultiSelectFlags_SingleSelect`.
-pub fn im_gui_multi_select_flags_single_select() -> Int {
+pub fn im_gui_multi_select_flags_single_select() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMultiSelectFlags_NoSelectAll`.
-pub fn im_gui_multi_select_flags_no_select_all() -> Int {
+pub fn im_gui_multi_select_flags_no_select_all() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMultiSelectFlags_NoRangeSelect`.
-pub fn im_gui_multi_select_flags_no_range_select() -> Int {
+pub fn im_gui_multi_select_flags_no_range_select() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMultiSelectFlags_NoAutoSelect`.
-pub fn im_gui_multi_select_flags_no_auto_select() -> Int {
+pub fn im_gui_multi_select_flags_no_auto_select() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMultiSelectFlags_NoAutoClear`.
-pub fn im_gui_multi_select_flags_no_auto_clear() -> Int {
+pub fn im_gui_multi_select_flags_no_auto_clear() -> Int32 {
   16
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMultiSelectFlags_NoAutoClearOnReselect`.
-pub fn im_gui_multi_select_flags_no_auto_clear_on_reselect() -> Int {
+pub fn im_gui_multi_select_flags_no_auto_clear_on_reselect() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMultiSelectFlags_BoxSelect1d`.
-pub fn im_gui_multi_select_flags_box_select1d() -> Int {
+pub fn im_gui_multi_select_flags_box_select1d() -> Int32 {
   64
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMultiSelectFlags_BoxSelect2d`.
-pub fn im_gui_multi_select_flags_box_select2d() -> Int {
+pub fn im_gui_multi_select_flags_box_select2d() -> Int32 {
   128
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMultiSelectFlags_BoxSelectNoScroll`.
-pub fn im_gui_multi_select_flags_box_select_no_scroll() -> Int {
+pub fn im_gui_multi_select_flags_box_select_no_scroll() -> Int32 {
   256
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMultiSelectFlags_ClearOnEscape`.
-pub fn im_gui_multi_select_flags_clear_on_escape() -> Int {
+pub fn im_gui_multi_select_flags_clear_on_escape() -> Int32 {
   512
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMultiSelectFlags_ClearOnClickVoid`.
-pub fn im_gui_multi_select_flags_clear_on_click_void() -> Int {
+pub fn im_gui_multi_select_flags_clear_on_click_void() -> Int32 {
   1024
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMultiSelectFlags_ScopeWindow`.
-pub fn im_gui_multi_select_flags_scope_window() -> Int {
+pub fn im_gui_multi_select_flags_scope_window() -> Int32 {
   2048
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMultiSelectFlags_ScopeRect`.
-pub fn im_gui_multi_select_flags_scope_rect() -> Int {
+pub fn im_gui_multi_select_flags_scope_rect() -> Int32 {
   4096
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMultiSelectFlags_SelectOnAuto`.
-pub fn im_gui_multi_select_flags_select_on_auto() -> Int {
+pub fn im_gui_multi_select_flags_select_on_auto() -> Int32 {
   8192
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMultiSelectFlags_SelectOnClickAlways`.
-pub fn im_gui_multi_select_flags_select_on_click_always() -> Int {
+pub fn im_gui_multi_select_flags_select_on_click_always() -> Int32 {
   16384
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMultiSelectFlags_SelectOnClickRelease`.
-pub fn im_gui_multi_select_flags_select_on_click_release() -> Int {
+pub fn im_gui_multi_select_flags_select_on_click_release() -> Int32 {
   32768
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMultiSelectFlags_NavWrapX`.
-pub fn im_gui_multi_select_flags_nav_wrap_x() -> Int {
+pub fn im_gui_multi_select_flags_nav_wrap_x() -> Int32 {
   65536
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMultiSelectFlags_NoSelectOnRightClick`.
-pub fn im_gui_multi_select_flags_no_select_on_right_click() -> Int {
+pub fn im_gui_multi_select_flags_no_select_on_right_click() -> Int32 {
   131072
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiMultiSelectFlags_SelectOnClick`.
-pub fn im_gui_multi_select_flags_select_on_click() -> Int {
+pub fn im_gui_multi_select_flags_select_on_click() -> Int32 {
   8192
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSelectionRequestType_None`.
-pub fn im_gui_selection_request_type_none() -> Int {
+pub fn im_gui_selection_request_type_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSelectionRequestType_SetAll`.
-pub fn im_gui_selection_request_type_set_all() -> Int {
+pub fn im_gui_selection_request_type_set_all() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiSelectionRequestType_SetRange`.
-pub fn im_gui_selection_request_type_set_range() -> Int {
+pub fn im_gui_selection_request_type_set_range() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImDrawFlags_None`.
-pub fn im_draw_flags_none() -> Int {
+pub fn im_draw_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImDrawFlags_RoundCornersTopLeft`.
-pub fn im_draw_flags_round_corners_top_left() -> Int {
+pub fn im_draw_flags_round_corners_top_left() -> Int32 {
   16
 }
 
 ///|
 /// Generated constant binding for enum value `ImDrawFlags_RoundCornersTopRight`.
-pub fn im_draw_flags_round_corners_top_right() -> Int {
+pub fn im_draw_flags_round_corners_top_right() -> Int32 {
   32
 }
 
 ///|
 /// Generated constant binding for enum value `ImDrawFlags_RoundCornersBottomLeft`.
-pub fn im_draw_flags_round_corners_bottom_left() -> Int {
+pub fn im_draw_flags_round_corners_bottom_left() -> Int32 {
   64
 }
 
 ///|
 /// Generated constant binding for enum value `ImDrawFlags_RoundCornersBottomRight`.
-pub fn im_draw_flags_round_corners_bottom_right() -> Int {
+pub fn im_draw_flags_round_corners_bottom_right() -> Int32 {
   128
 }
 
 ///|
 /// Generated constant binding for enum value `ImDrawFlags_RoundCornersNone`.
-pub fn im_draw_flags_round_corners_none() -> Int {
+pub fn im_draw_flags_round_corners_none() -> Int32 {
   256
 }
 
 ///|
 /// Generated constant binding for enum value `ImDrawFlags_RoundCornersAll`.
-pub fn im_draw_flags_round_corners_all() -> Int {
+pub fn im_draw_flags_round_corners_all() -> Int32 {
   240
 }
 
 ///|
 /// Generated constant binding for enum value `ImDrawFlags_RoundCornersTop`.
-pub fn im_draw_flags_round_corners_top() -> Int {
+pub fn im_draw_flags_round_corners_top() -> Int32 {
   48
 }
 
 ///|
 /// Generated constant binding for enum value `ImDrawFlags_RoundCornersBottom`.
-pub fn im_draw_flags_round_corners_bottom() -> Int {
+pub fn im_draw_flags_round_corners_bottom() -> Int32 {
   192
 }
 
 ///|
 /// Generated constant binding for enum value `ImDrawFlags_RoundCornersLeft`.
-pub fn im_draw_flags_round_corners_left() -> Int {
+pub fn im_draw_flags_round_corners_left() -> Int32 {
   80
 }
 
 ///|
 /// Generated constant binding for enum value `ImDrawFlags_RoundCornersRight`.
-pub fn im_draw_flags_round_corners_right() -> Int {
+pub fn im_draw_flags_round_corners_right() -> Int32 {
   160
 }
 
 ///|
 /// Generated constant binding for enum value `ImDrawFlags_Closed`.
-pub fn im_draw_flags_closed() -> Int {
+pub fn im_draw_flags_closed() -> Int32 {
   512
 }
 
 ///|
 /// Generated constant binding for enum value `ImDrawListFlags_None`.
-pub fn im_draw_list_flags_none() -> Int {
+pub fn im_draw_list_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImDrawListFlags_AntiAliasedLines`.
-pub fn im_draw_list_flags_anti_aliased_lines() -> Int {
+pub fn im_draw_list_flags_anti_aliased_lines() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImDrawListFlags_AntiAliasedLinesUseTex`.
-pub fn im_draw_list_flags_anti_aliased_lines_use_tex() -> Int {
+pub fn im_draw_list_flags_anti_aliased_lines_use_tex() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImDrawListFlags_AntiAliasedFill`.
-pub fn im_draw_list_flags_anti_aliased_fill() -> Int {
+pub fn im_draw_list_flags_anti_aliased_fill() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImDrawListFlags_AllowVtxOffset`.
-pub fn im_draw_list_flags_allow_vtx_offset() -> Int {
+pub fn im_draw_list_flags_allow_vtx_offset() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImTextureFormat_RGBA32`.
-pub fn im_texture_format_rgba32() -> Int {
+pub fn im_texture_format_rgba32() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImTextureFormat_Alpha8`.
-pub fn im_texture_format_alpha8() -> Int {
+pub fn im_texture_format_alpha8() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImTextureStatus_OK`.
-pub fn im_texture_status_ok() -> Int {
+pub fn im_texture_status_ok() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImTextureStatus_Destroyed`.
-pub fn im_texture_status_destroyed() -> Int {
+pub fn im_texture_status_destroyed() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImTextureStatus_WantCreate`.
-pub fn im_texture_status_want_create() -> Int {
+pub fn im_texture_status_want_create() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImTextureStatus_WantUpdates`.
-pub fn im_texture_status_want_updates() -> Int {
+pub fn im_texture_status_want_updates() -> Int32 {
   3
 }
 
 ///|
 /// Generated constant binding for enum value `ImTextureStatus_WantDestroy`.
-pub fn im_texture_status_want_destroy() -> Int {
+pub fn im_texture_status_want_destroy() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImFontAtlasFlags_None`.
-pub fn im_font_atlas_flags_none() -> Int {
+pub fn im_font_atlas_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImFontAtlasFlags_NoPowerOfTwoHeight`.
-pub fn im_font_atlas_flags_no_power_of_two_height() -> Int {
+pub fn im_font_atlas_flags_no_power_of_two_height() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImFontAtlasFlags_NoMouseCursors`.
-pub fn im_font_atlas_flags_no_mouse_cursors() -> Int {
+pub fn im_font_atlas_flags_no_mouse_cursors() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImFontAtlasFlags_NoBakedLines`.
-pub fn im_font_atlas_flags_no_baked_lines() -> Int {
+pub fn im_font_atlas_flags_no_baked_lines() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImFontFlags_None`.
-pub fn im_font_flags_none() -> Int {
+pub fn im_font_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImFontFlags_NoLoadError`.
-pub fn im_font_flags_no_load_error() -> Int {
+pub fn im_font_flags_no_load_error() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImFontFlags_NoLoadGlyphs`.
-pub fn im_font_flags_no_load_glyphs() -> Int {
+pub fn im_font_flags_no_load_glyphs() -> Int32 {
   4
 }
 
 ///|
 /// Generated constant binding for enum value `ImFontFlags_LockBakedSizes`.
-pub fn im_font_flags_lock_baked_sizes() -> Int {
+pub fn im_font_flags_lock_baked_sizes() -> Int32 {
   8
 }
 
 ///|
 /// Generated constant binding for enum value `ImFontFlags_ImplicitRefSize`.
-pub fn im_font_flags_implicit_ref_size() -> Int {
+pub fn im_font_flags_implicit_ref_size() -> Int32 {
   16
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiViewportFlags_None`.
-pub fn im_gui_viewport_flags_none() -> Int {
+pub fn im_gui_viewport_flags_none() -> Int32 {
   0
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiViewportFlags_IsPlatformWindow`.
-pub fn im_gui_viewport_flags_is_platform_window() -> Int {
+pub fn im_gui_viewport_flags_is_platform_window() -> Int32 {
   1
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiViewportFlags_IsPlatformMonitor`.
-pub fn im_gui_viewport_flags_is_platform_monitor() -> Int {
+pub fn im_gui_viewport_flags_is_platform_monitor() -> Int32 {
   2
 }
 
 ///|
 /// Generated constant binding for enum value `ImGuiViewportFlags_OwnedByApp`.
-pub fn im_gui_viewport_flags_owned_by_app() -> Int {
+pub fn im_gui_viewport_flags_owned_by_app() -> Int32 {
   4
 }
 
@@ -5706,7 +5706,7 @@ pub extern "C" fn im_gui_style_colors_classic(_p0 : ImGuiStyle) -> Unit = "ImGui
 pub extern "C" fn im_gui_begin(
   _p0 : Bytes,
   _p1 : Ref[Bool]?,
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Bool = "ImGui_Begin"
 
 ///|
@@ -5719,18 +5719,18 @@ pub extern "C" fn im_gui_end() -> Unit = "ImGui_End"
 pub extern "C" fn im_gui_begin_child(
   _p0 : Bytes,
   _p1 : ImVec2,
-  _p2 : Int,
-  _p3 : Int,
+  _p2 : Int32,
+  _p3 : Int32,
 ) -> Bool = "ImGui_BeginChild"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_BeginChildID`.
 #borrow(_p1)
 pub extern "C" fn im_gui_begin_child_id(
-  _p0 : UInt,
+  _p0 : UInt32,
   _p1 : ImVec2,
-  _p2 : Int,
-  _p3 : Int,
+  _p2 : Int32,
+  _p3 : Int32,
 ) -> Bool = "ImGui_BeginChildID"
 
 ///|
@@ -5747,11 +5747,11 @@ pub extern "C" fn im_gui_is_window_collapsed() -> Bool = "ImGui_IsWindowCollapse
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_IsWindowFocused`.
-pub extern "C" fn im_gui_is_window_focused(_p0 : Int) -> Bool = "ImGui_IsWindowFocused"
+pub extern "C" fn im_gui_is_window_focused(_p0 : Int32) -> Bool = "ImGui_IsWindowFocused"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_IsWindowHovered`.
-pub extern "C" fn im_gui_is_window_hovered(_p0 : Int) -> Bool = "ImGui_IsWindowHovered"
+pub extern "C" fn im_gui_is_window_hovered(_p0 : Int32) -> Bool = "ImGui_IsWindowHovered"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetWindowDrawList`.
@@ -5768,21 +5768,24 @@ pub extern "C" fn im_gui_get_window_height() -> Float = "ImGui_GetWindowHeight"
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetNextWindowPos`.
 #borrow(_p0)
-pub extern "C" fn im_gui_set_next_window_pos(_p0 : ImVec2, _p1 : Int) -> Unit = "ImGui_SetNextWindowPos"
+pub extern "C" fn im_gui_set_next_window_pos(_p0 : ImVec2, _p1 : Int32) -> Unit = "ImGui_SetNextWindowPos"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetNextWindowPosEx`.
 #borrow(_p0, _p2)
 pub extern "C" fn im_gui_set_next_window_pos_ex(
   _p0 : ImVec2,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : ImVec2,
 ) -> Unit = "ImGui_SetNextWindowPosEx"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetNextWindowSize`.
 #borrow(_p0)
-pub extern "C" fn im_gui_set_next_window_size(_p0 : ImVec2, _p1 : Int) -> Unit = "ImGui_SetNextWindowSize"
+pub extern "C" fn im_gui_set_next_window_size(
+  _p0 : ImVec2,
+  _p1 : Int32,
+) -> Unit = "ImGui_SetNextWindowSize"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetNextWindowSizeConstraints`.
@@ -5803,7 +5806,7 @@ pub extern "C" fn im_gui_set_next_window_content_size(_p0 : ImVec2) -> Unit = "I
 /// Direct dear_bindings C ABI binding for `ImGui_SetNextWindowCollapsed`.
 pub extern "C" fn im_gui_set_next_window_collapsed(
   _p0 : Bool,
-  _p1 : Int,
+  _p1 : Int32,
 ) -> Unit = "ImGui_SetNextWindowCollapsed"
 
 ///|
@@ -5822,16 +5825,16 @@ pub extern "C" fn im_gui_set_next_window_bg_alpha(_p0 : Float) -> Unit = "ImGui_
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetWindowPos`.
 #borrow(_p0)
-pub extern "C" fn im_gui_set_window_pos(_p0 : ImVec2, _p1 : Int) -> Unit = "ImGui_SetWindowPos"
+pub extern "C" fn im_gui_set_window_pos(_p0 : ImVec2, _p1 : Int32) -> Unit = "ImGui_SetWindowPos"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetWindowSize`.
 #borrow(_p0)
-pub extern "C" fn im_gui_set_window_size(_p0 : ImVec2, _p1 : Int) -> Unit = "ImGui_SetWindowSize"
+pub extern "C" fn im_gui_set_window_size(_p0 : ImVec2, _p1 : Int32) -> Unit = "ImGui_SetWindowSize"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetWindowCollapsed`.
-pub extern "C" fn im_gui_set_window_collapsed(_p0 : Bool, _p1 : Int) -> Unit = "ImGui_SetWindowCollapsed"
+pub extern "C" fn im_gui_set_window_collapsed(_p0 : Bool, _p1 : Int32) -> Unit = "ImGui_SetWindowCollapsed"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetWindowFocus`.
@@ -5843,7 +5846,7 @@ pub extern "C" fn im_gui_set_window_focus() -> Unit = "ImGui_SetWindowFocus"
 pub extern "C" fn im_gui_set_window_pos_str(
   _p0 : Bytes,
   _p1 : ImVec2,
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Unit = "ImGui_SetWindowPosStr"
 
 ///|
@@ -5852,7 +5855,7 @@ pub extern "C" fn im_gui_set_window_pos_str(
 pub extern "C" fn im_gui_set_window_size_str(
   _p0 : Bytes,
   _p1 : ImVec2,
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Unit = "ImGui_SetWindowSizeStr"
 
 ///|
@@ -5861,7 +5864,7 @@ pub extern "C" fn im_gui_set_window_size_str(
 pub extern "C" fn im_gui_set_window_collapsed_str(
   _p0 : Bytes,
   _p1 : Bool,
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Unit = "ImGui_SetWindowCollapsedStr"
 
 ///|
@@ -5938,13 +5941,13 @@ pub extern "C" fn im_gui_get_font_baked() -> ImFontBaked = "ImGui_GetFontBaked"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_PushStyleColor`.
-pub extern "C" fn im_gui_push_style_color(_p0 : Int, _p1 : UInt) -> Unit = "ImGui_PushStyleColor"
+pub extern "C" fn im_gui_push_style_color(_p0 : Int32, _p1 : UInt32) -> Unit = "ImGui_PushStyleColor"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_PushStyleColorImVec4Ptr`.
 #borrow(_p1)
 pub extern "C" fn im_gui_push_style_color_im_vec4_ptr(
-  _p0 : Int,
+  _p0 : Int32,
   _p1 : ImVec4,
 ) -> Unit = "ImGui_PushStyleColorImVec4Ptr"
 
@@ -5954,27 +5957,27 @@ pub extern "C" fn im_gui_pop_style_color() -> Unit = "ImGui_PopStyleColor"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_PopStyleColorEx`.
-pub extern "C" fn im_gui_pop_style_color_ex(_p0 : Int) -> Unit = "ImGui_PopStyleColorEx"
+pub extern "C" fn im_gui_pop_style_color_ex(_p0 : Int32) -> Unit = "ImGui_PopStyleColorEx"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_PushStyleVar`.
-pub extern "C" fn im_gui_push_style_var(_p0 : Int, _p1 : Float) -> Unit = "ImGui_PushStyleVar"
+pub extern "C" fn im_gui_push_style_var(_p0 : Int32, _p1 : Float) -> Unit = "ImGui_PushStyleVar"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_PushStyleVarImVec2Ptr`.
 #borrow(_p1)
 pub extern "C" fn im_gui_push_style_var_im_vec2_ptr(
-  _p0 : Int,
+  _p0 : Int32,
   _p1 : ImVec2,
 ) -> Unit = "ImGui_PushStyleVarImVec2Ptr"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_PushStyleVarX`.
-pub extern "C" fn im_gui_push_style_var_x(_p0 : Int, _p1 : Float) -> Unit = "ImGui_PushStyleVarX"
+pub extern "C" fn im_gui_push_style_var_x(_p0 : Int32, _p1 : Float) -> Unit = "ImGui_PushStyleVarX"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_PushStyleVarY`.
-pub extern "C" fn im_gui_push_style_var_y(_p0 : Int, _p1 : Float) -> Unit = "ImGui_PushStyleVarY"
+pub extern "C" fn im_gui_push_style_var_y(_p0 : Int32, _p1 : Float) -> Unit = "ImGui_PushStyleVarY"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_PopStyleVar`.
@@ -5982,11 +5985,11 @@ pub extern "C" fn im_gui_pop_style_var() -> Unit = "ImGui_PopStyleVar"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_PopStyleVarEx`.
-pub extern "C" fn im_gui_pop_style_var_ex(_p0 : Int) -> Unit = "ImGui_PopStyleVarEx"
+pub extern "C" fn im_gui_pop_style_var_ex(_p0 : Int32) -> Unit = "ImGui_PopStyleVarEx"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_PushItemFlag`.
-pub extern "C" fn im_gui_push_item_flag(_p0 : Int, _p1 : Bool) -> Unit = "ImGui_PushItemFlag"
+pub extern "C" fn im_gui_push_item_flag(_p0 : Int32, _p1 : Bool) -> Unit = "ImGui_PushItemFlag"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_PopItemFlag`.
@@ -6018,31 +6021,31 @@ pub extern "C" fn im_gui_pop_text_wrap_pos() -> Unit = "ImGui_PopTextWrapPos"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetColorU32`.
-pub extern "C" fn im_gui_get_color_u32(_p0 : Int) -> UInt = "ImGui_GetColorU32"
+pub extern "C" fn im_gui_get_color_u32(_p0 : Int32) -> UInt32 = "ImGui_GetColorU32"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetColorU32Ex`.
-pub extern "C" fn im_gui_get_color_u32_ex(_p0 : Int, _p1 : Float) -> UInt = "ImGui_GetColorU32Ex"
+pub extern "C" fn im_gui_get_color_u32_ex(_p0 : Int32, _p1 : Float) -> UInt32 = "ImGui_GetColorU32Ex"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetColorU32ImVec4`.
 #borrow(_p0)
-pub extern "C" fn im_gui_get_color_u32_im_vec4(_p0 : ImVec4) -> UInt = "ImGui_GetColorU32ImVec4"
+pub extern "C" fn im_gui_get_color_u32_im_vec4(_p0 : ImVec4) -> UInt32 = "ImGui_GetColorU32ImVec4"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetColorU32ImU32`.
-pub extern "C" fn im_gui_get_color_u32_im_u32(_p0 : UInt) -> UInt = "ImGui_GetColorU32ImU32"
+pub extern "C" fn im_gui_get_color_u32_im_u32(_p0 : UInt32) -> UInt32 = "ImGui_GetColorU32ImU32"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetColorU32ImU32Ex`.
 pub extern "C" fn im_gui_get_color_u32_im_u32_ex(
-  _p0 : UInt,
+  _p0 : UInt32,
   _p1 : Float,
-) -> UInt = "ImGui_GetColorU32ImU32Ex"
+) -> UInt32 = "ImGui_GetColorU32ImU32Ex"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetStyleColorVec4`.
-pub extern "C" fn im_gui_get_style_color_vec4(_p0 : Int) -> ImVec4 = "ImGui_GetStyleColorVec4"
+pub extern "C" fn im_gui_get_style_color_vec4(_p0 : Int32) -> ImVec4 = "ImGui_GetStyleColorVec4"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetCursorScreenPos`.
@@ -6156,7 +6159,7 @@ pub extern "C" fn im_gui_push_id_ptr(_p0 : VoidPtr) -> Unit = "ImGui_PushIDPtr"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_PushIDInt`.
-pub extern "C" fn im_gui_push_id_int(_p0 : Int) -> Unit = "ImGui_PushIDInt"
+pub extern "C" fn im_gui_push_id_int(_p0 : Int32) -> Unit = "ImGui_PushIDInt"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_PopID`.
@@ -6165,21 +6168,21 @@ pub extern "C" fn im_gui_pop_id() -> Unit = "ImGui_PopID"
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetID`.
 #borrow(_p0)
-pub extern "C" fn im_gui_get_id(_p0 : Bytes) -> UInt = "ImGui_GetID"
+pub extern "C" fn im_gui_get_id(_p0 : Bytes) -> UInt32 = "ImGui_GetID"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetIDStr`.
 #borrow(_p0, _p1)
-pub extern "C" fn im_gui_get_id_str(_p0 : Bytes, _p1 : Bytes) -> UInt = "ImGui_GetIDStr"
+pub extern "C" fn im_gui_get_id_str(_p0 : Bytes, _p1 : Bytes) -> UInt32 = "ImGui_GetIDStr"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetIDPtr`.
 #borrow(_p0)
-pub extern "C" fn im_gui_get_id_ptr(_p0 : VoidPtr) -> UInt = "ImGui_GetIDPtr"
+pub extern "C" fn im_gui_get_id_ptr(_p0 : VoidPtr) -> UInt32 = "ImGui_GetIDPtr"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetIDInt`.
-pub extern "C" fn im_gui_get_id_int(_p0 : Int) -> UInt = "ImGui_GetIDInt"
+pub extern "C" fn im_gui_get_id_int(_p0 : Int32) -> UInt32 = "ImGui_GetIDInt"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TextUnformatted`.
@@ -6197,7 +6200,7 @@ pub extern "C" fn im_gui_text_unformatted_ex(
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TextV`.
 #borrow(_p0)
-pub extern "C" fn im_gui_text_v(_p0 : Bytes, _p1 : Int) -> Unit = "ImGui_TextV"
+pub extern "C" fn im_gui_text_v(_p0 : Bytes, _p1 : Int32) -> Unit = "ImGui_TextV"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TextColoredUnformatted`.
@@ -6213,7 +6216,7 @@ pub extern "C" fn im_gui_text_colored_unformatted(
 pub extern "C" fn im_gui_text_colored_v(
   _p0 : ImVec4,
   _p1 : Bytes,
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Unit = "ImGui_TextColoredV"
 
 ///|
@@ -6224,7 +6227,7 @@ pub extern "C" fn im_gui_text_disabled_unformatted(_p0 : Bytes) -> Unit = "ImGui
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TextDisabledV`.
 #borrow(_p0)
-pub extern "C" fn im_gui_text_disabled_v(_p0 : Bytes, _p1 : Int) -> Unit = "ImGui_TextDisabledV"
+pub extern "C" fn im_gui_text_disabled_v(_p0 : Bytes, _p1 : Int32) -> Unit = "ImGui_TextDisabledV"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TextWrappedUnformatted`.
@@ -6234,7 +6237,7 @@ pub extern "C" fn im_gui_text_wrapped_unformatted(_p0 : Bytes) -> Unit = "ImGui_
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TextWrappedV`.
 #borrow(_p0)
-pub extern "C" fn im_gui_text_wrapped_v(_p0 : Bytes, _p1 : Int) -> Unit = "ImGui_TextWrappedV"
+pub extern "C" fn im_gui_text_wrapped_v(_p0 : Bytes, _p1 : Int32) -> Unit = "ImGui_TextWrappedV"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_LabelTextUnformatted`.
@@ -6250,7 +6253,7 @@ pub extern "C" fn im_gui_label_text_unformatted(
 pub extern "C" fn im_gui_label_text_v(
   _p0 : Bytes,
   _p1 : Bytes,
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Unit = "ImGui_LabelTextV"
 
 ///|
@@ -6261,7 +6264,7 @@ pub extern "C" fn im_gui_bullet_text_unformatted(_p0 : Bytes) -> Unit = "ImGui_B
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_BulletTextV`.
 #borrow(_p0)
-pub extern "C" fn im_gui_bullet_text_v(_p0 : Bytes, _p1 : Int) -> Unit = "ImGui_BulletTextV"
+pub extern "C" fn im_gui_bullet_text_v(_p0 : Bytes, _p1 : Int32) -> Unit = "ImGui_BulletTextV"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SeparatorText`.
@@ -6289,13 +6292,13 @@ pub extern "C" fn im_gui_small_button(_p0 : Bytes) -> Bool = "ImGui_SmallButton"
 pub extern "C" fn im_gui_invisible_button(
   _p0 : Bytes,
   _p1 : ImVec2,
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Bool = "ImGui_InvisibleButton"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_ArrowButton`.
 #borrow(_p0)
-pub extern "C" fn im_gui_arrow_button(_p0 : Bytes, _p1 : Int) -> Bool = "ImGui_ArrowButton"
+pub extern "C" fn im_gui_arrow_button(_p0 : Bytes, _p1 : Int32) -> Bool = "ImGui_ArrowButton"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_Checkbox`.
@@ -6307,8 +6310,8 @@ pub extern "C" fn im_gui_checkbox(_p0 : Bytes, _p1 : Ref[Bool]?) -> Bool = "ImGu
 #borrow(_p0, _p1)
 pub extern "C" fn im_gui_checkbox_flags_int_ptr(
   _p0 : Bytes,
-  _p1 : Ref[Int]?,
-  _p2 : Int,
+  _p1 : Ref[Int32]?,
+  _p2 : Int32,
 ) -> Bool = "ImGui_CheckboxFlagsIntPtr"
 
 ///|
@@ -6316,8 +6319,8 @@ pub extern "C" fn im_gui_checkbox_flags_int_ptr(
 #borrow(_p0, _p1)
 pub extern "C" fn im_gui_checkbox_flags_uint_ptr(
   _p0 : Bytes,
-  _p1 : Ref[UInt]?,
-  _p2 : UInt,
+  _p1 : Ref[UInt32]?,
+  _p2 : UInt32,
 ) -> Bool = "ImGui_CheckboxFlagsUintPtr"
 
 ///|
@@ -6330,8 +6333,8 @@ pub extern "C" fn im_gui_radio_button(_p0 : Bytes, _p1 : Bool) -> Bool = "ImGui_
 #borrow(_p0, _p1)
 pub extern "C" fn im_gui_radio_button_int_ptr(
   _p0 : Bytes,
-  _p1 : Ref[Int]?,
-  _p2 : Int,
+  _p1 : Ref[Int32]?,
+  _p2 : Int32,
 ) -> Bool = "ImGui_RadioButtonIntPtr"
 
 ///|
@@ -6428,7 +6431,7 @@ pub extern "C" fn im_gui_image_button_ex(
 pub extern "C" fn im_gui_begin_combo(
   _p0 : Bytes,
   _p1 : Bytes,
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Bool = "ImGui_BeginCombo"
 
 ///|
@@ -6440,9 +6443,9 @@ pub extern "C" fn im_gui_end_combo() -> Unit = "ImGui_EndCombo"
 #borrow(_p0, _p1, _p2)
 pub extern "C" fn im_gui_combo_char(
   _p0 : Bytes,
-  _p1 : Ref[Int]?,
+  _p1 : Ref[Int32]?,
   _p2 : FixedArray[Bytes],
-  _p3 : Int,
+  _p3 : Int32,
 ) -> Bool = "ImGui_ComboChar"
 
 ///|
@@ -6450,10 +6453,10 @@ pub extern "C" fn im_gui_combo_char(
 #borrow(_p0, _p1, _p2)
 pub extern "C" fn im_gui_combo_char_ex(
   _p0 : Bytes,
-  _p1 : Ref[Int]?,
+  _p1 : Ref[Int32]?,
   _p2 : FixedArray[Bytes],
-  _p3 : Int,
-  _p4 : Int,
+  _p3 : Int32,
+  _p4 : Int32,
 ) -> Bool = "ImGui_ComboCharEx"
 
 ///|
@@ -6461,7 +6464,7 @@ pub extern "C" fn im_gui_combo_char_ex(
 #borrow(_p0, _p2, _p1)
 pub extern "C" fn im_gui_combo(
   _p0 : Bytes,
-  _p1 : Ref[Int]?,
+  _p1 : Ref[Int32]?,
   _p2 : Bytes,
 ) -> Bool = "ImGui_Combo"
 
@@ -6470,9 +6473,9 @@ pub extern "C" fn im_gui_combo(
 #borrow(_p0, _p2, _p1)
 pub extern "C" fn im_gui_combo_ex(
   _p0 : Bytes,
-  _p1 : Ref[Int]?,
+  _p1 : Ref[Int32]?,
   _p2 : Bytes,
-  _p3 : Int,
+  _p3 : Int32,
 ) -> Bool = "ImGui_ComboEx"
 
 ///|
@@ -6490,7 +6493,7 @@ pub extern "C" fn im_gui_drag_float_ex(
   _p3 : Float,
   _p4 : Float,
   _p5 : Bytes,
-  _p6 : Int,
+  _p6 : Int32,
 ) -> Bool = "ImGui_DragFloatEx"
 
 ///|
@@ -6511,7 +6514,7 @@ pub extern "C" fn im_gui_drag_float2_ex(
   _p3 : Float,
   _p4 : Float,
   _p5 : Bytes,
-  _p6 : Int,
+  _p6 : Int32,
 ) -> Bool = "ImGui_DragFloat2Ex"
 
 ///|
@@ -6532,7 +6535,7 @@ pub extern "C" fn im_gui_drag_float3_ex(
   _p3 : Float,
   _p4 : Float,
   _p5 : Bytes,
-  _p6 : Int,
+  _p6 : Int32,
 ) -> Bool = "ImGui_DragFloat3Ex"
 
 ///|
@@ -6553,7 +6556,7 @@ pub extern "C" fn im_gui_drag_float4_ex(
   _p3 : Float,
   _p4 : Float,
   _p5 : Bytes,
-  _p6 : Int,
+  _p6 : Int32,
 ) -> Bool = "ImGui_DragFloat4Ex"
 
 ///|
@@ -6577,79 +6580,88 @@ pub extern "C" fn im_gui_drag_float_range2_ex(
   _p5 : Float,
   _p6 : Bytes,
   _p7 : Ref[Byte]?,
-  _p8 : Int,
+  _p8 : Int32,
 ) -> Bool = "ImGui_DragFloatRange2Ex"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_DragInt`.
 #borrow(_p0, _p1)
-pub extern "C" fn im_gui_drag_int(_p0 : Bytes, _p1 : Ref[Int]?) -> Bool = "ImGui_DragInt"
+pub extern "C" fn im_gui_drag_int(_p0 : Bytes, _p1 : Ref[Int32]?) -> Bool = "ImGui_DragInt"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_DragIntEx`.
 #borrow(_p0, _p5, _p1)
 pub extern "C" fn im_gui_drag_int_ex(
   _p0 : Bytes,
-  _p1 : Ref[Int]?,
+  _p1 : Ref[Int32]?,
   _p2 : Float,
-  _p3 : Int,
-  _p4 : Int,
+  _p3 : Int32,
+  _p4 : Int32,
   _p5 : Bytes,
-  _p6 : Int,
+  _p6 : Int32,
 ) -> Bool = "ImGui_DragIntEx"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_DragInt2`.
 #borrow(_p0, _p1)
-pub extern "C" fn im_gui_drag_int2(_p0 : Bytes, _p1 : FixedArray[Int]) -> Bool = "ImGui_DragInt2"
+pub extern "C" fn im_gui_drag_int2(
+  _p0 : Bytes,
+  _p1 : FixedArray[Int32],
+) -> Bool = "ImGui_DragInt2"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_DragInt2Ex`.
 #borrow(_p0, _p5, _p1)
 pub extern "C" fn im_gui_drag_int2_ex(
   _p0 : Bytes,
-  _p1 : FixedArray[Int],
+  _p1 : FixedArray[Int32],
   _p2 : Float,
-  _p3 : Int,
-  _p4 : Int,
+  _p3 : Int32,
+  _p4 : Int32,
   _p5 : Bytes,
-  _p6 : Int,
+  _p6 : Int32,
 ) -> Bool = "ImGui_DragInt2Ex"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_DragInt3`.
 #borrow(_p0, _p1)
-pub extern "C" fn im_gui_drag_int3(_p0 : Bytes, _p1 : FixedArray[Int]) -> Bool = "ImGui_DragInt3"
+pub extern "C" fn im_gui_drag_int3(
+  _p0 : Bytes,
+  _p1 : FixedArray[Int32],
+) -> Bool = "ImGui_DragInt3"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_DragInt3Ex`.
 #borrow(_p0, _p5, _p1)
 pub extern "C" fn im_gui_drag_int3_ex(
   _p0 : Bytes,
-  _p1 : FixedArray[Int],
+  _p1 : FixedArray[Int32],
   _p2 : Float,
-  _p3 : Int,
-  _p4 : Int,
+  _p3 : Int32,
+  _p4 : Int32,
   _p5 : Bytes,
-  _p6 : Int,
+  _p6 : Int32,
 ) -> Bool = "ImGui_DragInt3Ex"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_DragInt4`.
 #borrow(_p0, _p1)
-pub extern "C" fn im_gui_drag_int4(_p0 : Bytes, _p1 : FixedArray[Int]) -> Bool = "ImGui_DragInt4"
+pub extern "C" fn im_gui_drag_int4(
+  _p0 : Bytes,
+  _p1 : FixedArray[Int32],
+) -> Bool = "ImGui_DragInt4"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_DragInt4Ex`.
 #borrow(_p0, _p5, _p1)
 pub extern "C" fn im_gui_drag_int4_ex(
   _p0 : Bytes,
-  _p1 : FixedArray[Int],
+  _p1 : FixedArray[Int32],
   _p2 : Float,
-  _p3 : Int,
-  _p4 : Int,
+  _p3 : Int32,
+  _p4 : Int32,
   _p5 : Bytes,
-  _p6 : Int,
+  _p6 : Int32,
 ) -> Bool = "ImGui_DragInt4Ex"
 
 ///|
@@ -6657,8 +6669,8 @@ pub extern "C" fn im_gui_drag_int4_ex(
 #borrow(_p0, _p1, _p2)
 pub extern "C" fn im_gui_drag_int_range2(
   _p0 : Bytes,
-  _p1 : Ref[Int]?,
-  _p2 : Ref[Int]?,
+  _p1 : Ref[Int32]?,
+  _p2 : Ref[Int32]?,
 ) -> Bool = "ImGui_DragIntRange2"
 
 ///|
@@ -6666,14 +6678,14 @@ pub extern "C" fn im_gui_drag_int_range2(
 #borrow(_p0, _p6, _p1, _p2, _p7)
 pub extern "C" fn im_gui_drag_int_range2_ex(
   _p0 : Bytes,
-  _p1 : Ref[Int]?,
-  _p2 : Ref[Int]?,
+  _p1 : Ref[Int32]?,
+  _p2 : Ref[Int32]?,
   _p3 : Float,
-  _p4 : Int,
-  _p5 : Int,
+  _p4 : Int32,
+  _p5 : Int32,
   _p6 : Bytes,
   _p7 : Ref[Byte]?,
-  _p8 : Int,
+  _p8 : Int32,
 ) -> Bool = "ImGui_DragIntRange2Ex"
 
 ///|
@@ -6681,7 +6693,7 @@ pub extern "C" fn im_gui_drag_int_range2_ex(
 #borrow(_p0, _p2)
 pub extern "C" fn im_gui_drag_scalar(
   _p0 : Bytes,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : VoidPtr,
 ) -> Bool = "ImGui_DragScalar"
 
@@ -6690,13 +6702,13 @@ pub extern "C" fn im_gui_drag_scalar(
 #borrow(_p0, _p2, _p4, _p5, _p6)
 pub extern "C" fn im_gui_drag_scalar_ex(
   _p0 : Bytes,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : VoidPtr,
   _p3 : Float,
   _p4 : VoidPtr,
   _p5 : VoidPtr,
   _p6 : Ref[Byte]?,
-  _p7 : Int,
+  _p7 : Int32,
 ) -> Bool = "ImGui_DragScalarEx"
 
 ///|
@@ -6704,9 +6716,9 @@ pub extern "C" fn im_gui_drag_scalar_ex(
 #borrow(_p0, _p2)
 pub extern "C" fn im_gui_drag_scalar_n(
   _p0 : Bytes,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : VoidPtr,
-  _p3 : Int,
+  _p3 : Int32,
 ) -> Bool = "ImGui_DragScalarN"
 
 ///|
@@ -6714,14 +6726,14 @@ pub extern "C" fn im_gui_drag_scalar_n(
 #borrow(_p0, _p2, _p5, _p6, _p7)
 pub extern "C" fn im_gui_drag_scalar_n_ex(
   _p0 : Bytes,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : VoidPtr,
-  _p3 : Int,
+  _p3 : Int32,
   _p4 : Float,
   _p5 : VoidPtr,
   _p6 : VoidPtr,
   _p7 : Ref[Byte]?,
-  _p8 : Int,
+  _p8 : Int32,
 ) -> Bool = "ImGui_DragScalarNEx"
 
 ///|
@@ -6743,7 +6755,7 @@ pub extern "C" fn im_gui_slider_float_ex(
   _p2 : Float,
   _p3 : Float,
   _p4 : Bytes,
-  _p5 : Int,
+  _p5 : Int32,
 ) -> Bool = "ImGui_SliderFloatEx"
 
 ///|
@@ -6765,7 +6777,7 @@ pub extern "C" fn im_gui_slider_float2_ex(
   _p2 : Float,
   _p3 : Float,
   _p4 : Bytes,
-  _p5 : Int,
+  _p5 : Int32,
 ) -> Bool = "ImGui_SliderFloat2Ex"
 
 ///|
@@ -6787,7 +6799,7 @@ pub extern "C" fn im_gui_slider_float3_ex(
   _p2 : Float,
   _p3 : Float,
   _p4 : Bytes,
-  _p5 : Int,
+  _p5 : Int32,
 ) -> Bool = "ImGui_SliderFloat3Ex"
 
 ///|
@@ -6809,7 +6821,7 @@ pub extern "C" fn im_gui_slider_float4_ex(
   _p2 : Float,
   _p3 : Float,
   _p4 : Bytes,
-  _p5 : Int,
+  _p5 : Int32,
 ) -> Bool = "ImGui_SliderFloat4Ex"
 
 ///|
@@ -6826,7 +6838,7 @@ pub extern "C" fn im_gui_slider_angle_ex(
   _p2 : Float,
   _p3 : Float,
   _p4 : Bytes,
-  _p5 : Int,
+  _p5 : Int32,
 ) -> Bool = "ImGui_SliderAngleEx"
 
 ///|
@@ -6834,9 +6846,9 @@ pub extern "C" fn im_gui_slider_angle_ex(
 #borrow(_p0, _p1)
 pub extern "C" fn im_gui_slider_int(
   _p0 : Bytes,
-  _p1 : Ref[Int]?,
-  _p2 : Int,
-  _p3 : Int,
+  _p1 : Ref[Int32]?,
+  _p2 : Int32,
+  _p3 : Int32,
 ) -> Bool = "ImGui_SliderInt"
 
 ///|
@@ -6844,11 +6856,11 @@ pub extern "C" fn im_gui_slider_int(
 #borrow(_p0, _p4, _p1)
 pub extern "C" fn im_gui_slider_int_ex(
   _p0 : Bytes,
-  _p1 : Ref[Int]?,
-  _p2 : Int,
-  _p3 : Int,
+  _p1 : Ref[Int32]?,
+  _p2 : Int32,
+  _p3 : Int32,
   _p4 : Bytes,
-  _p5 : Int,
+  _p5 : Int32,
 ) -> Bool = "ImGui_SliderIntEx"
 
 ///|
@@ -6856,9 +6868,9 @@ pub extern "C" fn im_gui_slider_int_ex(
 #borrow(_p0, _p1)
 pub extern "C" fn im_gui_slider_int2(
   _p0 : Bytes,
-  _p1 : FixedArray[Int],
-  _p2 : Int,
-  _p3 : Int,
+  _p1 : FixedArray[Int32],
+  _p2 : Int32,
+  _p3 : Int32,
 ) -> Bool = "ImGui_SliderInt2"
 
 ///|
@@ -6866,11 +6878,11 @@ pub extern "C" fn im_gui_slider_int2(
 #borrow(_p0, _p4, _p1)
 pub extern "C" fn im_gui_slider_int2_ex(
   _p0 : Bytes,
-  _p1 : FixedArray[Int],
-  _p2 : Int,
-  _p3 : Int,
+  _p1 : FixedArray[Int32],
+  _p2 : Int32,
+  _p3 : Int32,
   _p4 : Bytes,
-  _p5 : Int,
+  _p5 : Int32,
 ) -> Bool = "ImGui_SliderInt2Ex"
 
 ///|
@@ -6878,9 +6890,9 @@ pub extern "C" fn im_gui_slider_int2_ex(
 #borrow(_p0, _p1)
 pub extern "C" fn im_gui_slider_int3(
   _p0 : Bytes,
-  _p1 : FixedArray[Int],
-  _p2 : Int,
-  _p3 : Int,
+  _p1 : FixedArray[Int32],
+  _p2 : Int32,
+  _p3 : Int32,
 ) -> Bool = "ImGui_SliderInt3"
 
 ///|
@@ -6888,11 +6900,11 @@ pub extern "C" fn im_gui_slider_int3(
 #borrow(_p0, _p4, _p1)
 pub extern "C" fn im_gui_slider_int3_ex(
   _p0 : Bytes,
-  _p1 : FixedArray[Int],
-  _p2 : Int,
-  _p3 : Int,
+  _p1 : FixedArray[Int32],
+  _p2 : Int32,
+  _p3 : Int32,
   _p4 : Bytes,
-  _p5 : Int,
+  _p5 : Int32,
 ) -> Bool = "ImGui_SliderInt3Ex"
 
 ///|
@@ -6900,9 +6912,9 @@ pub extern "C" fn im_gui_slider_int3_ex(
 #borrow(_p0, _p1)
 pub extern "C" fn im_gui_slider_int4(
   _p0 : Bytes,
-  _p1 : FixedArray[Int],
-  _p2 : Int,
-  _p3 : Int,
+  _p1 : FixedArray[Int32],
+  _p2 : Int32,
+  _p3 : Int32,
 ) -> Bool = "ImGui_SliderInt4"
 
 ///|
@@ -6910,11 +6922,11 @@ pub extern "C" fn im_gui_slider_int4(
 #borrow(_p0, _p4, _p1)
 pub extern "C" fn im_gui_slider_int4_ex(
   _p0 : Bytes,
-  _p1 : FixedArray[Int],
-  _p2 : Int,
-  _p3 : Int,
+  _p1 : FixedArray[Int32],
+  _p2 : Int32,
+  _p3 : Int32,
   _p4 : Bytes,
-  _p5 : Int,
+  _p5 : Int32,
 ) -> Bool = "ImGui_SliderInt4Ex"
 
 ///|
@@ -6922,7 +6934,7 @@ pub extern "C" fn im_gui_slider_int4_ex(
 #borrow(_p0, _p2, _p3, _p4)
 pub extern "C" fn im_gui_slider_scalar(
   _p0 : Bytes,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : VoidPtr,
   _p3 : VoidPtr,
   _p4 : VoidPtr,
@@ -6933,12 +6945,12 @@ pub extern "C" fn im_gui_slider_scalar(
 #borrow(_p0, _p2, _p3, _p4, _p5)
 pub extern "C" fn im_gui_slider_scalar_ex(
   _p0 : Bytes,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : VoidPtr,
   _p3 : VoidPtr,
   _p4 : VoidPtr,
   _p5 : Ref[Byte]?,
-  _p6 : Int,
+  _p6 : Int32,
 ) -> Bool = "ImGui_SliderScalarEx"
 
 ///|
@@ -6946,9 +6958,9 @@ pub extern "C" fn im_gui_slider_scalar_ex(
 #borrow(_p0, _p2, _p4, _p5)
 pub extern "C" fn im_gui_slider_scalar_n(
   _p0 : Bytes,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : VoidPtr,
-  _p3 : Int,
+  _p3 : Int32,
   _p4 : VoidPtr,
   _p5 : VoidPtr,
 ) -> Bool = "ImGui_SliderScalarN"
@@ -6958,13 +6970,13 @@ pub extern "C" fn im_gui_slider_scalar_n(
 #borrow(_p0, _p2, _p4, _p5, _p6)
 pub extern "C" fn im_gui_slider_scalar_n_ex(
   _p0 : Bytes,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : VoidPtr,
-  _p3 : Int,
+  _p3 : Int32,
   _p4 : VoidPtr,
   _p5 : VoidPtr,
   _p6 : Ref[Byte]?,
-  _p7 : Int,
+  _p7 : Int32,
 ) -> Bool = "ImGui_SliderScalarNEx"
 
 ///|
@@ -6988,7 +7000,7 @@ pub extern "C" fn im_gui_v_slider_float_ex(
   _p3 : Float,
   _p4 : Float,
   _p5 : Bytes,
-  _p6 : Int,
+  _p6 : Int32,
 ) -> Bool = "ImGui_VSliderFloatEx"
 
 ///|
@@ -6997,9 +7009,9 @@ pub extern "C" fn im_gui_v_slider_float_ex(
 pub extern "C" fn im_gui_v_slider_int(
   _p0 : Bytes,
   _p1 : ImVec2,
-  _p2 : Ref[Int]?,
-  _p3 : Int,
-  _p4 : Int,
+  _p2 : Ref[Int32]?,
+  _p3 : Int32,
+  _p4 : Int32,
 ) -> Bool = "ImGui_VSliderInt"
 
 ///|
@@ -7008,11 +7020,11 @@ pub extern "C" fn im_gui_v_slider_int(
 pub extern "C" fn im_gui_v_slider_int_ex(
   _p0 : Bytes,
   _p1 : ImVec2,
-  _p2 : Ref[Int]?,
-  _p3 : Int,
-  _p4 : Int,
+  _p2 : Ref[Int32]?,
+  _p3 : Int32,
+  _p4 : Int32,
   _p5 : Bytes,
-  _p6 : Int,
+  _p6 : Int32,
 ) -> Bool = "ImGui_VSliderIntEx"
 
 ///|
@@ -7021,7 +7033,7 @@ pub extern "C" fn im_gui_v_slider_int_ex(
 pub extern "C" fn im_gui_v_slider_scalar(
   _p0 : Bytes,
   _p1 : ImVec2,
-  _p2 : Int,
+  _p2 : Int32,
   _p3 : VoidPtr,
   _p4 : VoidPtr,
   _p5 : VoidPtr,
@@ -7033,12 +7045,12 @@ pub extern "C" fn im_gui_v_slider_scalar(
 pub extern "C" fn im_gui_v_slider_scalar_ex(
   _p0 : Bytes,
   _p1 : ImVec2,
-  _p2 : Int,
+  _p2 : Int32,
   _p3 : VoidPtr,
   _p4 : VoidPtr,
   _p5 : VoidPtr,
   _p6 : Ref[Byte]?,
-  _p7 : Int,
+  _p7 : Int32,
 ) -> Bool = "ImGui_VSliderScalarEx"
 
 ///|
@@ -7047,8 +7059,8 @@ pub extern "C" fn im_gui_v_slider_scalar_ex(
 pub extern "C" fn im_gui_input_text(
   _p0 : Bytes,
   _p1 : Bytes,
-  _p2 : Int,
-  _p3 : Int,
+  _p2 : Int32,
+  _p3 : Int32,
 ) -> Bool = "ImGui_InputText"
 
 ///|
@@ -7057,9 +7069,9 @@ pub extern "C" fn im_gui_input_text(
 pub extern "C" fn im_gui_input_text_ex(
   _p0 : Bytes,
   _p1 : Bytes,
-  _p2 : Int,
-  _p3 : Int,
-  _p4 : FuncRef[(ImGuiInputTextCallbackData) -> Int],
+  _p2 : Int32,
+  _p3 : Int32,
+  _p4 : FuncRef[(ImGuiInputTextCallbackData) -> Int32],
   _p5 : VoidPtr,
 ) -> Bool = "ImGui_InputTextEx"
 
@@ -7069,7 +7081,7 @@ pub extern "C" fn im_gui_input_text_ex(
 pub extern "C" fn im_gui_input_text_multiline(
   _p0 : Bytes,
   _p1 : Bytes,
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Bool = "ImGui_InputTextMultiline"
 
 ///|
@@ -7078,10 +7090,10 @@ pub extern "C" fn im_gui_input_text_multiline(
 pub extern "C" fn im_gui_input_text_multiline_ex(
   _p0 : Bytes,
   _p1 : Bytes,
-  _p2 : Int,
+  _p2 : Int32,
   _p3 : ImVec2,
-  _p4 : Int,
-  _p5 : FuncRef[(ImGuiInputTextCallbackData) -> Int],
+  _p4 : Int32,
+  _p5 : FuncRef[(ImGuiInputTextCallbackData) -> Int32],
   _p6 : VoidPtr,
 ) -> Bool = "ImGui_InputTextMultilineEx"
 
@@ -7092,8 +7104,8 @@ pub extern "C" fn im_gui_input_text_with_hint(
   _p0 : Bytes,
   _p1 : Bytes,
   _p2 : Bytes,
-  _p3 : Int,
-  _p4 : Int,
+  _p3 : Int32,
+  _p4 : Int32,
 ) -> Bool = "ImGui_InputTextWithHint"
 
 ///|
@@ -7103,9 +7115,9 @@ pub extern "C" fn im_gui_input_text_with_hint_ex(
   _p0 : Bytes,
   _p1 : Bytes,
   _p2 : Bytes,
-  _p3 : Int,
-  _p4 : Int,
-  _p5 : FuncRef[(ImGuiInputTextCallbackData) -> Int],
+  _p3 : Int32,
+  _p4 : Int32,
+  _p5 : FuncRef[(ImGuiInputTextCallbackData) -> Int32],
   _p6 : VoidPtr,
 ) -> Bool = "ImGui_InputTextWithHintEx"
 
@@ -7123,7 +7135,7 @@ pub extern "C" fn im_gui_input_float_ex(
   _p2 : Float,
   _p3 : Float,
   _p4 : Bytes,
-  _p5 : Int,
+  _p5 : Int32,
 ) -> Bool = "ImGui_InputFloatEx"
 
 ///|
@@ -7141,7 +7153,7 @@ pub extern "C" fn im_gui_input_float2_ex(
   _p0 : Bytes,
   _p1 : FixedArray[Float],
   _p2 : Bytes,
-  _p3 : Int,
+  _p3 : Int32,
 ) -> Bool = "ImGui_InputFloat2Ex"
 
 ///|
@@ -7159,7 +7171,7 @@ pub extern "C" fn im_gui_input_float3_ex(
   _p0 : Bytes,
   _p1 : FixedArray[Float],
   _p2 : Bytes,
-  _p3 : Int,
+  _p3 : Int32,
 ) -> Bool = "ImGui_InputFloat3Ex"
 
 ///|
@@ -7177,23 +7189,23 @@ pub extern "C" fn im_gui_input_float4_ex(
   _p0 : Bytes,
   _p1 : FixedArray[Float],
   _p2 : Bytes,
-  _p3 : Int,
+  _p3 : Int32,
 ) -> Bool = "ImGui_InputFloat4Ex"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_InputInt`.
 #borrow(_p0, _p1)
-pub extern "C" fn im_gui_input_int(_p0 : Bytes, _p1 : Ref[Int]?) -> Bool = "ImGui_InputInt"
+pub extern "C" fn im_gui_input_int(_p0 : Bytes, _p1 : Ref[Int32]?) -> Bool = "ImGui_InputInt"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_InputIntEx`.
 #borrow(_p0, _p1)
 pub extern "C" fn im_gui_input_int_ex(
   _p0 : Bytes,
-  _p1 : Ref[Int]?,
-  _p2 : Int,
-  _p3 : Int,
-  _p4 : Int,
+  _p1 : Ref[Int32]?,
+  _p2 : Int32,
+  _p3 : Int32,
+  _p4 : Int32,
 ) -> Bool = "ImGui_InputIntEx"
 
 ///|
@@ -7201,8 +7213,8 @@ pub extern "C" fn im_gui_input_int_ex(
 #borrow(_p0, _p1)
 pub extern "C" fn im_gui_input_int2(
   _p0 : Bytes,
-  _p1 : FixedArray[Int],
-  _p2 : Int,
+  _p1 : FixedArray[Int32],
+  _p2 : Int32,
 ) -> Bool = "ImGui_InputInt2"
 
 ///|
@@ -7210,8 +7222,8 @@ pub extern "C" fn im_gui_input_int2(
 #borrow(_p0, _p1)
 pub extern "C" fn im_gui_input_int3(
   _p0 : Bytes,
-  _p1 : FixedArray[Int],
-  _p2 : Int,
+  _p1 : FixedArray[Int32],
+  _p2 : Int32,
 ) -> Bool = "ImGui_InputInt3"
 
 ///|
@@ -7219,8 +7231,8 @@ pub extern "C" fn im_gui_input_int3(
 #borrow(_p0, _p1)
 pub extern "C" fn im_gui_input_int4(
   _p0 : Bytes,
-  _p1 : FixedArray[Int],
-  _p2 : Int,
+  _p1 : FixedArray[Int32],
+  _p2 : Int32,
 ) -> Bool = "ImGui_InputInt4"
 
 ///|
@@ -7237,7 +7249,7 @@ pub extern "C" fn im_gui_input_double_ex(
   _p2 : Double,
   _p3 : Double,
   _p4 : Bytes,
-  _p5 : Int,
+  _p5 : Int32,
 ) -> Bool = "ImGui_InputDoubleEx"
 
 ///|
@@ -7245,7 +7257,7 @@ pub extern "C" fn im_gui_input_double_ex(
 #borrow(_p0, _p2)
 pub extern "C" fn im_gui_input_scalar(
   _p0 : Bytes,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : VoidPtr,
 ) -> Bool = "ImGui_InputScalar"
 
@@ -7254,12 +7266,12 @@ pub extern "C" fn im_gui_input_scalar(
 #borrow(_p0, _p2, _p3, _p4, _p5)
 pub extern "C" fn im_gui_input_scalar_ex(
   _p0 : Bytes,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : VoidPtr,
   _p3 : VoidPtr,
   _p4 : VoidPtr,
   _p5 : Ref[Byte]?,
-  _p6 : Int,
+  _p6 : Int32,
 ) -> Bool = "ImGui_InputScalarEx"
 
 ///|
@@ -7267,9 +7279,9 @@ pub extern "C" fn im_gui_input_scalar_ex(
 #borrow(_p0, _p2)
 pub extern "C" fn im_gui_input_scalar_n(
   _p0 : Bytes,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : VoidPtr,
-  _p3 : Int,
+  _p3 : Int32,
 ) -> Bool = "ImGui_InputScalarN"
 
 ///|
@@ -7277,13 +7289,13 @@ pub extern "C" fn im_gui_input_scalar_n(
 #borrow(_p0, _p2, _p4, _p5, _p6)
 pub extern "C" fn im_gui_input_scalar_n_ex(
   _p0 : Bytes,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : VoidPtr,
-  _p3 : Int,
+  _p3 : Int32,
   _p4 : VoidPtr,
   _p5 : VoidPtr,
   _p6 : Ref[Byte]?,
-  _p7 : Int,
+  _p7 : Int32,
 ) -> Bool = "ImGui_InputScalarNEx"
 
 ///|
@@ -7292,7 +7304,7 @@ pub extern "C" fn im_gui_input_scalar_n_ex(
 pub extern "C" fn im_gui_color_edit3(
   _p0 : Bytes,
   _p1 : FixedArray[Float],
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Bool = "ImGui_ColorEdit3"
 
 ///|
@@ -7301,7 +7313,7 @@ pub extern "C" fn im_gui_color_edit3(
 pub extern "C" fn im_gui_color_edit4(
   _p0 : Bytes,
   _p1 : FixedArray[Float],
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Bool = "ImGui_ColorEdit4"
 
 ///|
@@ -7310,7 +7322,7 @@ pub extern "C" fn im_gui_color_edit4(
 pub extern "C" fn im_gui_color_picker3(
   _p0 : Bytes,
   _p1 : FixedArray[Float],
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Bool = "ImGui_ColorPicker3"
 
 ///|
@@ -7319,7 +7331,7 @@ pub extern "C" fn im_gui_color_picker3(
 pub extern "C" fn im_gui_color_picker4(
   _p0 : Bytes,
   _p1 : FixedArray[Float],
-  _p2 : Int,
+  _p2 : Int32,
   _p3 : Ref[Float]?,
 ) -> Bool = "ImGui_ColorPicker4"
 
@@ -7329,7 +7341,7 @@ pub extern "C" fn im_gui_color_picker4(
 pub extern "C" fn im_gui_color_button(
   _p0 : Bytes,
   _p1 : ImVec4,
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Bool = "ImGui_ColorButton"
 
 ///|
@@ -7338,13 +7350,13 @@ pub extern "C" fn im_gui_color_button(
 pub extern "C" fn im_gui_color_button_ex(
   _p0 : Bytes,
   _p1 : ImVec4,
-  _p2 : Int,
+  _p2 : Int32,
   _p3 : ImVec2,
 ) -> Bool = "ImGui_ColorButtonEx"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetColorEditOptions`.
-pub extern "C" fn im_gui_set_color_edit_options(_p0 : Int) -> Unit = "ImGui_SetColorEditOptions"
+pub extern "C" fn im_gui_set_color_edit_options(_p0 : Int32) -> Unit = "ImGui_SetColorEditOptions"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TreeNode`.
@@ -7373,7 +7385,7 @@ pub extern "C" fn im_gui_tree_node_ptr_unformatted(
 pub extern "C" fn im_gui_tree_node_v(
   _p0 : Bytes,
   _p1 : Bytes,
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Bool = "ImGui_TreeNodeV"
 
 ///|
@@ -7382,20 +7394,20 @@ pub extern "C" fn im_gui_tree_node_v(
 pub extern "C" fn im_gui_tree_node_v_ptr(
   _p0 : VoidPtr,
   _p1 : Bytes,
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Bool = "ImGui_TreeNodeVPtr"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TreeNodeEx`.
 #borrow(_p0)
-pub extern "C" fn im_gui_tree_node_ex(_p0 : Bytes, _p1 : Int) -> Bool = "ImGui_TreeNodeEx"
+pub extern "C" fn im_gui_tree_node_ex(_p0 : Bytes, _p1 : Int32) -> Bool = "ImGui_TreeNodeEx"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TreeNodeExStrUnformatted`.
 #borrow(_p0, _p2)
 pub extern "C" fn im_gui_tree_node_ex_str_unformatted(
   _p0 : Bytes,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : Bytes,
 ) -> Bool = "ImGui_TreeNodeExStrUnformatted"
 
@@ -7404,7 +7416,7 @@ pub extern "C" fn im_gui_tree_node_ex_str_unformatted(
 #borrow(_p2, _p0)
 pub extern "C" fn im_gui_tree_node_ex_ptr_unformatted(
   _p0 : VoidPtr,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : Bytes,
 ) -> Bool = "ImGui_TreeNodeExPtrUnformatted"
 
@@ -7413,9 +7425,9 @@ pub extern "C" fn im_gui_tree_node_ex_ptr_unformatted(
 #borrow(_p0, _p2)
 pub extern "C" fn im_gui_tree_node_ex_v(
   _p0 : Bytes,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : Bytes,
-  _p3 : Int,
+  _p3 : Int32,
 ) -> Bool = "ImGui_TreeNodeExV"
 
 ///|
@@ -7423,9 +7435,9 @@ pub extern "C" fn im_gui_tree_node_ex_v(
 #borrow(_p2, _p0)
 pub extern "C" fn im_gui_tree_node_ex_v_ptr(
   _p0 : VoidPtr,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : Bytes,
-  _p3 : Int,
+  _p3 : Int32,
 ) -> Bool = "ImGui_TreeNodeExVPtr"
 
 ///|
@@ -7449,7 +7461,7 @@ pub extern "C" fn im_gui_get_tree_node_to_label_spacing() -> Float = "ImGui_GetT
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_CollapsingHeader`.
 #borrow(_p0)
-pub extern "C" fn im_gui_collapsing_header(_p0 : Bytes, _p1 : Int) -> Bool = "ImGui_CollapsingHeader"
+pub extern "C" fn im_gui_collapsing_header(_p0 : Bytes, _p1 : Int32) -> Bool = "ImGui_CollapsingHeader"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_CollapsingHeaderBoolPtr`.
@@ -7457,20 +7469,20 @@ pub extern "C" fn im_gui_collapsing_header(_p0 : Bytes, _p1 : Int) -> Bool = "Im
 pub extern "C" fn im_gui_collapsing_header_bool_ptr(
   _p0 : Bytes,
   _p1 : Ref[Bool]?,
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Bool = "ImGui_CollapsingHeaderBoolPtr"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetNextItemOpen`.
-pub extern "C" fn im_gui_set_next_item_open(_p0 : Bool, _p1 : Int) -> Unit = "ImGui_SetNextItemOpen"
+pub extern "C" fn im_gui_set_next_item_open(_p0 : Bool, _p1 : Int32) -> Unit = "ImGui_SetNextItemOpen"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetNextItemStorageID`.
-pub extern "C" fn im_gui_set_next_item_storage_id(_p0 : UInt) -> Unit = "ImGui_SetNextItemStorageID"
+pub extern "C" fn im_gui_set_next_item_storage_id(_p0 : UInt32) -> Unit = "ImGui_SetNextItemStorageID"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TreeNodeGetOpen`.
-pub extern "C" fn im_gui_tree_node_get_open(_p0 : UInt) -> Bool = "ImGui_TreeNodeGetOpen"
+pub extern "C" fn im_gui_tree_node_get_open(_p0 : UInt32) -> Bool = "ImGui_TreeNodeGetOpen"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_Selectable`.
@@ -7483,7 +7495,7 @@ pub extern "C" fn im_gui_selectable(_p0 : Bytes) -> Bool = "ImGui_Selectable"
 pub extern "C" fn im_gui_selectable_ex(
   _p0 : Bytes,
   _p1 : Bool,
-  _p2 : Int,
+  _p2 : Int32,
   _p3 : ImVec2,
 ) -> Bool = "ImGui_SelectableEx"
 
@@ -7493,7 +7505,7 @@ pub extern "C" fn im_gui_selectable_ex(
 pub extern "C" fn im_gui_selectable_bool_ptr(
   _p0 : Bytes,
   _p1 : Ref[Bool]?,
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Bool = "ImGui_SelectableBoolPtr"
 
 ///|
@@ -7502,20 +7514,20 @@ pub extern "C" fn im_gui_selectable_bool_ptr(
 pub extern "C" fn im_gui_selectable_bool_ptr_ex(
   _p0 : Bytes,
   _p1 : Ref[Bool]?,
-  _p2 : Int,
+  _p2 : Int32,
   _p3 : ImVec2,
 ) -> Bool = "ImGui_SelectableBoolPtrEx"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_BeginMultiSelect`.
-pub extern "C" fn im_gui_begin_multi_select(_p0 : Int) -> ImGuiMultiSelectIO = "ImGui_BeginMultiSelect"
+pub extern "C" fn im_gui_begin_multi_select(_p0 : Int32) -> ImGuiMultiSelectIO = "ImGui_BeginMultiSelect"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_BeginMultiSelectEx`.
 pub extern "C" fn im_gui_begin_multi_select_ex(
-  _p0 : Int,
-  _p1 : Int,
-  _p2 : Int,
+  _p0 : Int32,
+  _p1 : Int32,
+  _p2 : Int32,
 ) -> ImGuiMultiSelectIO = "ImGui_BeginMultiSelectEx"
 
 ///|
@@ -7544,10 +7556,10 @@ pub extern "C" fn im_gui_end_list_box() -> Unit = "ImGui_EndListBox"
 #borrow(_p0, _p1, _p2)
 pub extern "C" fn im_gui_list_box(
   _p0 : Bytes,
-  _p1 : Ref[Int]?,
+  _p1 : Ref[Int32]?,
   _p2 : FixedArray[Bytes],
-  _p3 : Int,
-  _p4 : Int,
+  _p3 : Int32,
+  _p4 : Int32,
 ) -> Bool = "ImGui_ListBox"
 
 ///|
@@ -7556,7 +7568,7 @@ pub extern "C" fn im_gui_list_box(
 pub extern "C" fn im_gui_plot_lines(
   _p0 : Bytes,
   _p1 : Ref[Float]?,
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Unit = "ImGui_PlotLines"
 
 ///|
@@ -7565,13 +7577,13 @@ pub extern "C" fn im_gui_plot_lines(
 pub extern "C" fn im_gui_plot_lines_ex(
   _p0 : Bytes,
   _p1 : Ref[Float]?,
-  _p2 : Int,
-  _p3 : Int,
+  _p2 : Int32,
+  _p3 : Int32,
   _p4 : Ref[Byte]?,
   _p5 : Float,
   _p6 : Float,
   _p7 : ImVec2,
-  _p8 : Int,
+  _p8 : Int32,
 ) -> Unit = "ImGui_PlotLinesEx"
 
 ///|
@@ -7580,7 +7592,7 @@ pub extern "C" fn im_gui_plot_lines_ex(
 pub extern "C" fn im_gui_plot_histogram(
   _p0 : Bytes,
   _p1 : Ref[Float]?,
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Unit = "ImGui_PlotHistogram"
 
 ///|
@@ -7589,13 +7601,13 @@ pub extern "C" fn im_gui_plot_histogram(
 pub extern "C" fn im_gui_plot_histogram_ex(
   _p0 : Bytes,
   _p1 : Ref[Float]?,
-  _p2 : Int,
-  _p3 : Int,
+  _p2 : Int32,
+  _p3 : Int32,
   _p4 : Ref[Byte]?,
   _p5 : Float,
   _p6 : Float,
   _p7 : ImVec2,
-  _p8 : Int,
+  _p8 : Int32,
 ) -> Unit = "ImGui_PlotHistogramEx"
 
 ///|
@@ -7669,7 +7681,7 @@ pub extern "C" fn im_gui_set_tooltip_unformatted(_p0 : Bytes) -> Unit = "ImGui_S
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetTooltipV`.
 #borrow(_p0)
-pub extern "C" fn im_gui_set_tooltip_v(_p0 : Bytes, _p1 : Int) -> Unit = "ImGui_SetTooltipV"
+pub extern "C" fn im_gui_set_tooltip_v(_p0 : Bytes, _p1 : Int32) -> Unit = "ImGui_SetTooltipV"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_BeginItemTooltip`.
@@ -7683,12 +7695,12 @@ pub extern "C" fn im_gui_set_item_tooltip_unformatted(_p0 : Bytes) -> Unit = "Im
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetItemTooltipV`.
 #borrow(_p0)
-pub extern "C" fn im_gui_set_item_tooltip_v(_p0 : Bytes, _p1 : Int) -> Unit = "ImGui_SetItemTooltipV"
+pub extern "C" fn im_gui_set_item_tooltip_v(_p0 : Bytes, _p1 : Int32) -> Unit = "ImGui_SetItemTooltipV"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_BeginPopup`.
 #borrow(_p0)
-pub extern "C" fn im_gui_begin_popup(_p0 : Bytes, _p1 : Int) -> Bool = "ImGui_BeginPopup"
+pub extern "C" fn im_gui_begin_popup(_p0 : Bytes, _p1 : Int32) -> Bool = "ImGui_BeginPopup"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_BeginPopupModal`.
@@ -7696,7 +7708,7 @@ pub extern "C" fn im_gui_begin_popup(_p0 : Bytes, _p1 : Int) -> Bool = "ImGui_Be
 pub extern "C" fn im_gui_begin_popup_modal(
   _p0 : Bytes,
   _p1 : Ref[Bool]?,
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Bool = "ImGui_BeginPopupModal"
 
 ///|
@@ -7706,18 +7718,18 @@ pub extern "C" fn im_gui_end_popup() -> Unit = "ImGui_EndPopup"
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_OpenPopup`.
 #borrow(_p0)
-pub extern "C" fn im_gui_open_popup(_p0 : Bytes, _p1 : Int) -> Unit = "ImGui_OpenPopup"
+pub extern "C" fn im_gui_open_popup(_p0 : Bytes, _p1 : Int32) -> Unit = "ImGui_OpenPopup"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_OpenPopupID`.
-pub extern "C" fn im_gui_open_popup_id(_p0 : UInt, _p1 : Int) -> Unit = "ImGui_OpenPopupID"
+pub extern "C" fn im_gui_open_popup_id(_p0 : UInt32, _p1 : Int32) -> Unit = "ImGui_OpenPopupID"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_OpenPopupOnItemClick`.
 #borrow(_p0)
 pub extern "C" fn im_gui_open_popup_on_item_click(
   _p0 : Ref[Byte]?,
-  _p1 : Int,
+  _p1 : Int32,
 ) -> Unit = "ImGui_OpenPopupOnItemClick"
 
 ///|
@@ -7733,7 +7745,7 @@ pub extern "C" fn im_gui_begin_popup_context_item() -> Bool = "ImGui_BeginPopupC
 #borrow(_p0)
 pub extern "C" fn im_gui_begin_popup_context_item_ex(
   _p0 : Ref[Byte]?,
-  _p1 : Int,
+  _p1 : Int32,
 ) -> Bool = "ImGui_BeginPopupContextItemEx"
 
 ///|
@@ -7745,7 +7757,7 @@ pub extern "C" fn im_gui_begin_popup_context_window() -> Bool = "ImGui_BeginPopu
 #borrow(_p0)
 pub extern "C" fn im_gui_begin_popup_context_window_ex(
   _p0 : Ref[Byte]?,
-  _p1 : Int,
+  _p1 : Int32,
 ) -> Bool = "ImGui_BeginPopupContextWindowEx"
 
 ///|
@@ -7757,26 +7769,30 @@ pub extern "C" fn im_gui_begin_popup_context_void() -> Bool = "ImGui_BeginPopupC
 #borrow(_p0)
 pub extern "C" fn im_gui_begin_popup_context_void_ex(
   _p0 : Ref[Byte]?,
-  _p1 : Int,
+  _p1 : Int32,
 ) -> Bool = "ImGui_BeginPopupContextVoidEx"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_IsPopupOpen`.
 #borrow(_p0)
-pub extern "C" fn im_gui_is_popup_open(_p0 : Bytes, _p1 : Int) -> Bool = "ImGui_IsPopupOpen"
+pub extern "C" fn im_gui_is_popup_open(_p0 : Bytes, _p1 : Int32) -> Bool = "ImGui_IsPopupOpen"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_BeginTable`.
 #borrow(_p0)
-pub extern "C" fn im_gui_begin_table(_p0 : Bytes, _p1 : Int, _p2 : Int) -> Bool = "ImGui_BeginTable"
+pub extern "C" fn im_gui_begin_table(
+  _p0 : Bytes,
+  _p1 : Int32,
+  _p2 : Int32,
+) -> Bool = "ImGui_BeginTable"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_BeginTableEx`.
 #borrow(_p0, _p3)
 pub extern "C" fn im_gui_begin_table_ex(
   _p0 : Bytes,
-  _p1 : Int,
-  _p2 : Int,
+  _p1 : Int32,
+  _p2 : Int32,
   _p3 : ImVec2,
   _p4 : Float,
 ) -> Bool = "ImGui_BeginTableEx"
@@ -7791,7 +7807,7 @@ pub extern "C" fn im_gui_table_next_row() -> Unit = "ImGui_TableNextRow"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TableNextRowEx`.
-pub extern "C" fn im_gui_table_next_row_ex(_p0 : Int, _p1 : Float) -> Unit = "ImGui_TableNextRowEx"
+pub extern "C" fn im_gui_table_next_row_ex(_p0 : Int32, _p1 : Float) -> Unit = "ImGui_TableNextRowEx"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TableNextColumn`.
@@ -7799,28 +7815,28 @@ pub extern "C" fn im_gui_table_next_column() -> Bool = "ImGui_TableNextColumn"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TableSetColumnIndex`.
-pub extern "C" fn im_gui_table_set_column_index(_p0 : Int) -> Bool = "ImGui_TableSetColumnIndex"
+pub extern "C" fn im_gui_table_set_column_index(_p0 : Int32) -> Bool = "ImGui_TableSetColumnIndex"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TableSetupColumn`.
 #borrow(_p0)
-pub extern "C" fn im_gui_table_setup_column(_p0 : Bytes, _p1 : Int) -> Unit = "ImGui_TableSetupColumn"
+pub extern "C" fn im_gui_table_setup_column(_p0 : Bytes, _p1 : Int32) -> Unit = "ImGui_TableSetupColumn"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TableSetupColumnEx`.
 #borrow(_p0)
 pub extern "C" fn im_gui_table_setup_column_ex(
   _p0 : Bytes,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : Float,
-  _p3 : UInt,
+  _p3 : UInt32,
 ) -> Unit = "ImGui_TableSetupColumnEx"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TableSetupScrollFreeze`.
 pub extern "C" fn im_gui_table_setup_scroll_freeze(
-  _p0 : Int,
-  _p1 : Int,
+  _p0 : Int32,
+  _p1 : Int32,
 ) -> Unit = "ImGui_TableSetupScrollFreeze"
 
 ///|
@@ -7842,41 +7858,41 @@ pub extern "C" fn im_gui_table_get_sort_specs() -> ImGuiTableSortSpecs = "ImGui_
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TableGetColumnCount`.
-pub extern "C" fn im_gui_table_get_column_count() -> Int = "ImGui_TableGetColumnCount"
+pub extern "C" fn im_gui_table_get_column_count() -> Int32 = "ImGui_TableGetColumnCount"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TableGetColumnIndex`.
-pub extern "C" fn im_gui_table_get_column_index() -> Int = "ImGui_TableGetColumnIndex"
+pub extern "C" fn im_gui_table_get_column_index() -> Int32 = "ImGui_TableGetColumnIndex"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TableGetRowIndex`.
-pub extern "C" fn im_gui_table_get_row_index() -> Int = "ImGui_TableGetRowIndex"
+pub extern "C" fn im_gui_table_get_row_index() -> Int32 = "ImGui_TableGetRowIndex"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TableGetColumnName`.
-pub extern "C" fn im_gui_table_get_column_name(_p0 : Int) -> Ref[Byte]? = "ImGui_TableGetColumnName"
+pub extern "C" fn im_gui_table_get_column_name(_p0 : Int32) -> Ref[Byte]? = "ImGui_TableGetColumnName"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TableGetColumnFlags`.
-pub extern "C" fn im_gui_table_get_column_flags(_p0 : Int) -> Int = "ImGui_TableGetColumnFlags"
+pub extern "C" fn im_gui_table_get_column_flags(_p0 : Int32) -> Int32 = "ImGui_TableGetColumnFlags"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TableSetColumnEnabled`.
 pub extern "C" fn im_gui_table_set_column_enabled(
-  _p0 : Int,
+  _p0 : Int32,
   _p1 : Bool,
 ) -> Unit = "ImGui_TableSetColumnEnabled"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TableGetHoveredColumn`.
-pub extern "C" fn im_gui_table_get_hovered_column() -> Int = "ImGui_TableGetHoveredColumn"
+pub extern "C" fn im_gui_table_get_hovered_column() -> Int32 = "ImGui_TableGetHoveredColumn"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TableSetBgColor`.
 pub extern "C" fn im_gui_table_set_bg_color(
-  _p0 : Int,
-  _p1 : UInt,
-  _p2 : Int,
+  _p0 : Int32,
+  _p1 : UInt32,
+  _p2 : Int32,
 ) -> Unit = "ImGui_TableSetBgColor"
 
 ///|
@@ -7887,7 +7903,7 @@ pub extern "C" fn im_gui_columns() -> Unit = "ImGui_Columns"
 /// Direct dear_bindings C ABI binding for `ImGui_ColumnsEx`.
 #borrow(_p1)
 pub extern "C" fn im_gui_columns_ex(
-  _p0 : Int,
+  _p0 : Int32,
   _p1 : Ref[Byte]?,
   _p2 : Bool,
 ) -> Unit = "ImGui_ColumnsEx"
@@ -7898,32 +7914,32 @@ pub extern "C" fn im_gui_next_column() -> Unit = "ImGui_NextColumn"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetColumnIndex`.
-pub extern "C" fn im_gui_get_column_index() -> Int = "ImGui_GetColumnIndex"
+pub extern "C" fn im_gui_get_column_index() -> Int32 = "ImGui_GetColumnIndex"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetColumnWidth`.
-pub extern "C" fn im_gui_get_column_width(_p0 : Int) -> Float = "ImGui_GetColumnWidth"
+pub extern "C" fn im_gui_get_column_width(_p0 : Int32) -> Float = "ImGui_GetColumnWidth"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetColumnWidth`.
-pub extern "C" fn im_gui_set_column_width(_p0 : Int, _p1 : Float) -> Unit = "ImGui_SetColumnWidth"
+pub extern "C" fn im_gui_set_column_width(_p0 : Int32, _p1 : Float) -> Unit = "ImGui_SetColumnWidth"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetColumnOffset`.
-pub extern "C" fn im_gui_get_column_offset(_p0 : Int) -> Float = "ImGui_GetColumnOffset"
+pub extern "C" fn im_gui_get_column_offset(_p0 : Int32) -> Float = "ImGui_GetColumnOffset"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetColumnOffset`.
-pub extern "C" fn im_gui_set_column_offset(_p0 : Int, _p1 : Float) -> Unit = "ImGui_SetColumnOffset"
+pub extern "C" fn im_gui_set_column_offset(_p0 : Int32, _p1 : Float) -> Unit = "ImGui_SetColumnOffset"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetColumnsCount`.
-pub extern "C" fn im_gui_get_columns_count() -> Int = "ImGui_GetColumnsCount"
+pub extern "C" fn im_gui_get_columns_count() -> Int32 = "ImGui_GetColumnsCount"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_BeginTabBar`.
 #borrow(_p0)
-pub extern "C" fn im_gui_begin_tab_bar(_p0 : Bytes, _p1 : Int) -> Bool = "ImGui_BeginTabBar"
+pub extern "C" fn im_gui_begin_tab_bar(_p0 : Bytes, _p1 : Int32) -> Bool = "ImGui_BeginTabBar"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_EndTabBar`.
@@ -7935,7 +7951,7 @@ pub extern "C" fn im_gui_end_tab_bar() -> Unit = "ImGui_EndTabBar"
 pub extern "C" fn im_gui_begin_tab_item(
   _p0 : Bytes,
   _p1 : Ref[Bool]?,
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Bool = "ImGui_BeginTabItem"
 
 ///|
@@ -7945,7 +7961,7 @@ pub extern "C" fn im_gui_end_tab_item() -> Unit = "ImGui_EndTabItem"
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_TabItemButton`.
 #borrow(_p0)
-pub extern "C" fn im_gui_tab_item_button(_p0 : Bytes, _p1 : Int) -> Bool = "ImGui_TabItemButton"
+pub extern "C" fn im_gui_tab_item_button(_p0 : Bytes, _p1 : Int32) -> Bool = "ImGui_TabItemButton"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetTabItemClosed`.
@@ -7954,16 +7970,16 @@ pub extern "C" fn im_gui_set_tab_item_closed(_p0 : Bytes) -> Unit = "ImGui_SetTa
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_LogToTTY`.
-pub extern "C" fn im_gui_log_to_tty(_p0 : Int) -> Unit = "ImGui_LogToTTY"
+pub extern "C" fn im_gui_log_to_tty(_p0 : Int32) -> Unit = "ImGui_LogToTTY"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_LogToFile`.
 #borrow(_p1)
-pub extern "C" fn im_gui_log_to_file(_p0 : Int, _p1 : Ref[Byte]?) -> Unit = "ImGui_LogToFile"
+pub extern "C" fn im_gui_log_to_file(_p0 : Int32, _p1 : Ref[Byte]?) -> Unit = "ImGui_LogToFile"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_LogToClipboard`.
-pub extern "C" fn im_gui_log_to_clipboard(_p0 : Int) -> Unit = "ImGui_LogToClipboard"
+pub extern "C" fn im_gui_log_to_clipboard(_p0 : Int32) -> Unit = "ImGui_LogToClipboard"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_LogFinish`.
@@ -7981,11 +7997,11 @@ pub extern "C" fn im_gui_log_text_unformatted(_p0 : Bytes) -> Unit = "ImGui_LogT
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_LogTextV`.
 #borrow(_p0)
-pub extern "C" fn im_gui_log_text_v(_p0 : Bytes, _p1 : Int) -> Unit = "ImGui_LogTextV"
+pub extern "C" fn im_gui_log_text_v(_p0 : Bytes, _p1 : Int32) -> Unit = "ImGui_LogTextV"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_BeginDragDropSource`.
-pub extern "C" fn im_gui_begin_drag_drop_source(_p0 : Int) -> Bool = "ImGui_BeginDragDropSource"
+pub extern "C" fn im_gui_begin_drag_drop_source(_p0 : Int32) -> Bool = "ImGui_BeginDragDropSource"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetDragDropPayload`.
@@ -7993,8 +8009,8 @@ pub extern "C" fn im_gui_begin_drag_drop_source(_p0 : Int) -> Bool = "ImGui_Begi
 pub extern "C" fn im_gui_set_drag_drop_payload(
   _p0 : Bytes,
   _p1 : VoidPtr,
-  _p2 : Int,
-  _p3 : Int,
+  _p2 : Int32,
+  _p3 : Int32,
 ) -> Bool = "ImGui_SetDragDropPayload"
 
 ///|
@@ -8010,7 +8026,7 @@ pub extern "C" fn im_gui_begin_drag_drop_target() -> Bool = "ImGui_BeginDragDrop
 #borrow(_p0)
 pub extern "C" fn im_gui_accept_drag_drop_payload(
   _p0 : Bytes,
-  _p1 : Int,
+  _p1 : Int32,
 ) -> ImGuiPayload = "ImGui_AcceptDragDropPayload"
 
 ///|
@@ -8052,7 +8068,7 @@ pub extern "C" fn im_gui_set_keyboard_focus_here() -> Unit = "ImGui_SetKeyboardF
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetKeyboardFocusHereEx`.
-pub extern "C" fn im_gui_set_keyboard_focus_here_ex(_p0 : Int) -> Unit = "ImGui_SetKeyboardFocusHereEx"
+pub extern "C" fn im_gui_set_keyboard_focus_here_ex(_p0 : Int32) -> Unit = "ImGui_SetKeyboardFocusHereEx"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetNavCursorVisible`.
@@ -8064,7 +8080,7 @@ pub extern "C" fn im_gui_set_next_item_allow_overlap() -> Unit = "ImGui_SetNextI
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_IsItemHovered`.
-pub extern "C" fn im_gui_is_item_hovered(_p0 : Int) -> Bool = "ImGui_IsItemHovered"
+pub extern "C" fn im_gui_is_item_hovered(_p0 : Int32) -> Bool = "ImGui_IsItemHovered"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_IsItemActive`.
@@ -8080,7 +8096,7 @@ pub extern "C" fn im_gui_is_item_clicked() -> Bool = "ImGui_IsItemClicked"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_IsItemClickedEx`.
-pub extern "C" fn im_gui_is_item_clicked_ex(_p0 : Int) -> Bool = "ImGui_IsItemClickedEx"
+pub extern "C" fn im_gui_is_item_clicked_ex(_p0 : Int32) -> Bool = "ImGui_IsItemClickedEx"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_IsItemVisible`.
@@ -8120,11 +8136,11 @@ pub extern "C" fn im_gui_is_any_item_focused() -> Bool = "ImGui_IsAnyItemFocused
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetItemID`.
-pub extern "C" fn im_gui_get_item_id() -> UInt = "ImGui_GetItemID"
+pub extern "C" fn im_gui_get_item_id() -> UInt32 = "ImGui_GetItemID"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetItemFlags`.
-pub extern "C" fn im_gui_get_item_flags() -> Int = "ImGui_GetItemFlags"
+pub extern "C" fn im_gui_get_item_flags() -> Int32 = "ImGui_GetItemFlags"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetMainViewport`.
@@ -8157,7 +8173,7 @@ pub extern "C" fn im_gui_get_time() -> Double = "ImGui_GetTime"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetFrameCount`.
-pub extern "C" fn im_gui_get_frame_count() -> Int = "ImGui_GetFrameCount"
+pub extern "C" fn im_gui_get_frame_count() -> Int32 = "ImGui_GetFrameCount"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetDrawListSharedData`.
@@ -8165,7 +8181,7 @@ pub extern "C" fn im_gui_get_draw_list_shared_data() -> ImDrawListSharedData = "
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetStyleColorName`.
-pub extern "C" fn im_gui_get_style_color_name(_p0 : Int) -> Ref[Byte]? = "ImGui_GetStyleColorName"
+pub extern "C" fn im_gui_get_style_color_name(_p0 : Int32) -> Ref[Byte]? = "ImGui_GetStyleColorName"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetStateStorage`.
@@ -8179,7 +8195,7 @@ pub extern "C" fn im_gui_get_state_storage() -> ImGuiStorage = "ImGui_GetStateSt
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_ColorConvertFloat4ToU32`.
 #borrow(_p0)
-pub extern "C" fn im_gui_color_convert_float4_to_u32(_p0 : ImVec4) -> UInt = "ImGui_ColorConvertFloat4ToU32"
+pub extern "C" fn im_gui_color_convert_float4_to_u32(_p0 : ImVec4) -> UInt32 = "ImGui_ColorConvertFloat4ToU32"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_ColorConvertRGBtoHSV`.
@@ -8207,35 +8223,35 @@ pub extern "C" fn im_gui_color_convert_hs_vto_rgb(
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_IsKeyDown`.
-pub extern "C" fn im_gui_is_key_down(_p0 : Int) -> Bool = "ImGui_IsKeyDown"
+pub extern "C" fn im_gui_is_key_down(_p0 : Int32) -> Bool = "ImGui_IsKeyDown"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_IsKeyPressed`.
-pub extern "C" fn im_gui_is_key_pressed(_p0 : Int) -> Bool = "ImGui_IsKeyPressed"
+pub extern "C" fn im_gui_is_key_pressed(_p0 : Int32) -> Bool = "ImGui_IsKeyPressed"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_IsKeyPressedEx`.
-pub extern "C" fn im_gui_is_key_pressed_ex(_p0 : Int, _p1 : Bool) -> Bool = "ImGui_IsKeyPressedEx"
+pub extern "C" fn im_gui_is_key_pressed_ex(_p0 : Int32, _p1 : Bool) -> Bool = "ImGui_IsKeyPressedEx"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_IsKeyReleased`.
-pub extern "C" fn im_gui_is_key_released(_p0 : Int) -> Bool = "ImGui_IsKeyReleased"
+pub extern "C" fn im_gui_is_key_released(_p0 : Int32) -> Bool = "ImGui_IsKeyReleased"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_IsKeyChordPressed`.
-pub extern "C" fn im_gui_is_key_chord_pressed(_p0 : Int) -> Bool = "ImGui_IsKeyChordPressed"
+pub extern "C" fn im_gui_is_key_chord_pressed(_p0 : Int32) -> Bool = "ImGui_IsKeyChordPressed"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetKeyPressedAmount`.
 pub extern "C" fn im_gui_get_key_pressed_amount(
-  _p0 : Int,
+  _p0 : Int32,
   _p1 : Float,
   _p2 : Float,
-) -> Int = "ImGui_GetKeyPressedAmount"
+) -> Int32 = "ImGui_GetKeyPressedAmount"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetKeyName`.
-pub extern "C" fn im_gui_get_key_name(_p0 : Int) -> Ref[Byte]? = "ImGui_GetKeyName"
+pub extern "C" fn im_gui_get_key_name(_p0 : Int32) -> Ref[Byte]? = "ImGui_GetKeyName"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetNextFrameWantCaptureKeyboard`.
@@ -8245,46 +8261,49 @@ pub extern "C" fn im_gui_set_next_frame_want_capture_keyboard(
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_Shortcut`.
-pub extern "C" fn im_gui_shortcut(_p0 : Int, _p1 : Int) -> Bool = "ImGui_Shortcut"
+pub extern "C" fn im_gui_shortcut(_p0 : Int32, _p1 : Int32) -> Bool = "ImGui_Shortcut"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetNextItemShortcut`.
-pub extern "C" fn im_gui_set_next_item_shortcut(_p0 : Int, _p1 : Int) -> Unit = "ImGui_SetNextItemShortcut"
+pub extern "C" fn im_gui_set_next_item_shortcut(
+  _p0 : Int32,
+  _p1 : Int32,
+) -> Unit = "ImGui_SetNextItemShortcut"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetItemKeyOwner`.
-pub extern "C" fn im_gui_set_item_key_owner(_p0 : Int) -> Bool = "ImGui_SetItemKeyOwner"
+pub extern "C" fn im_gui_set_item_key_owner(_p0 : Int32) -> Bool = "ImGui_SetItemKeyOwner"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_IsMouseDown`.
-pub extern "C" fn im_gui_is_mouse_down(_p0 : Int) -> Bool = "ImGui_IsMouseDown"
+pub extern "C" fn im_gui_is_mouse_down(_p0 : Int32) -> Bool = "ImGui_IsMouseDown"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_IsMouseClicked`.
-pub extern "C" fn im_gui_is_mouse_clicked(_p0 : Int) -> Bool = "ImGui_IsMouseClicked"
+pub extern "C" fn im_gui_is_mouse_clicked(_p0 : Int32) -> Bool = "ImGui_IsMouseClicked"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_IsMouseClickedEx`.
-pub extern "C" fn im_gui_is_mouse_clicked_ex(_p0 : Int, _p1 : Bool) -> Bool = "ImGui_IsMouseClickedEx"
+pub extern "C" fn im_gui_is_mouse_clicked_ex(_p0 : Int32, _p1 : Bool) -> Bool = "ImGui_IsMouseClickedEx"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_IsMouseReleased`.
-pub extern "C" fn im_gui_is_mouse_released(_p0 : Int) -> Bool = "ImGui_IsMouseReleased"
+pub extern "C" fn im_gui_is_mouse_released(_p0 : Int32) -> Bool = "ImGui_IsMouseReleased"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_IsMouseDoubleClicked`.
-pub extern "C" fn im_gui_is_mouse_double_clicked(_p0 : Int) -> Bool = "ImGui_IsMouseDoubleClicked"
+pub extern "C" fn im_gui_is_mouse_double_clicked(_p0 : Int32) -> Bool = "ImGui_IsMouseDoubleClicked"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_IsMouseReleasedWithDelay`.
 pub extern "C" fn im_gui_is_mouse_released_with_delay(
-  _p0 : Int,
+  _p0 : Int32,
   _p1 : Float,
 ) -> Bool = "ImGui_IsMouseReleasedWithDelay"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetMouseClickedCount`.
-pub extern "C" fn im_gui_get_mouse_clicked_count(_p0 : Int) -> Int = "ImGui_GetMouseClickedCount"
+pub extern "C" fn im_gui_get_mouse_clicked_count(_p0 : Int32) -> Int32 = "ImGui_GetMouseClickedCount"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_IsMouseHoveringRect`.
@@ -8314,7 +8333,7 @@ pub extern "C" fn im_gui_is_any_mouse_down() -> Bool = "ImGui_IsAnyMouseDown"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_IsMouseDragging`.
-pub extern "C" fn im_gui_is_mouse_dragging(_p0 : Int, _p1 : Float) -> Bool = "ImGui_IsMouseDragging"
+pub extern "C" fn im_gui_is_mouse_dragging(_p0 : Int32, _p1 : Float) -> Bool = "ImGui_IsMouseDragging"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_ResetMouseDragDelta`.
@@ -8322,15 +8341,15 @@ pub extern "C" fn im_gui_reset_mouse_drag_delta() -> Unit = "ImGui_ResetMouseDra
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_ResetMouseDragDeltaEx`.
-pub extern "C" fn im_gui_reset_mouse_drag_delta_ex(_p0 : Int) -> Unit = "ImGui_ResetMouseDragDeltaEx"
+pub extern "C" fn im_gui_reset_mouse_drag_delta_ex(_p0 : Int32) -> Unit = "ImGui_ResetMouseDragDeltaEx"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_GetMouseCursor`.
-pub extern "C" fn im_gui_get_mouse_cursor() -> Int = "ImGui_GetMouseCursor"
+pub extern "C" fn im_gui_get_mouse_cursor() -> Int32 = "ImGui_GetMouseCursor"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetMouseCursor`.
-pub extern "C" fn im_gui_set_mouse_cursor(_p0 : Int) -> Unit = "ImGui_SetMouseCursor"
+pub extern "C" fn im_gui_set_mouse_cursor(_p0 : Int32) -> Unit = "ImGui_SetMouseCursor"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetNextFrameWantCaptureMouse`.
@@ -8355,7 +8374,7 @@ pub extern "C" fn im_gui_load_ini_settings_from_disk(_p0 : Bytes) -> Unit = "ImG
 #borrow(_p0)
 pub extern "C" fn im_gui_load_ini_settings_from_memory(
   _p0 : Bytes,
-  _p1 : Int,
+  _p1 : Int32,
 ) -> Unit = "ImGui_LoadIniSettingsFromMemory"
 
 ///|
@@ -8367,7 +8386,7 @@ pub extern "C" fn im_gui_save_ini_settings_to_disk(_p0 : Bytes) -> Unit = "ImGui
 /// Direct dear_bindings C ABI binding for `ImGui_SaveIniSettingsToMemory`.
 #borrow(_p0)
 pub extern "C" fn im_gui_save_ini_settings_to_memory(
-  _p0 : Ref[Int]?,
+  _p0 : Ref[Int32]?,
 ) -> Ref[Byte]? = "ImGui_SaveIniSettingsToMemory"
 
 ///|
@@ -8377,7 +8396,7 @@ pub extern "C" fn im_gui_debug_text_encoding(_p0 : Bytes) -> Unit = "ImGui_Debug
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_DebugFlashStyleColor`.
-pub extern "C" fn im_gui_debug_flash_style_color(_p0 : Int) -> Unit = "ImGui_DebugFlashStyleColor"
+pub extern "C" fn im_gui_debug_flash_style_color(_p0 : Int32) -> Unit = "ImGui_DebugFlashStyleColor"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_DebugStartItemPicker`.
@@ -8388,12 +8407,12 @@ pub extern "C" fn im_gui_debug_start_item_picker() -> Unit = "ImGui_DebugStartIt
 #borrow(_p0)
 pub extern "C" fn im_gui_debug_check_version_and_data_layout(
   _p0 : Bytes,
-  _p1 : Int,
-  _p2 : Int,
-  _p3 : Int,
-  _p4 : Int,
-  _p5 : Int,
-  _p6 : Int,
+  _p1 : Int32,
+  _p2 : Int32,
+  _p3 : Int32,
+  _p4 : Int32,
+  _p5 : Int32,
+  _p6 : Int32,
 ) -> Bool = "ImGui_DebugCheckVersionAndDataLayout"
 
 ///|
@@ -8404,20 +8423,20 @@ pub extern "C" fn im_gui_debug_log_unformatted(_p0 : Bytes) -> Unit = "ImGui_Deb
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_DebugLogV`.
 #borrow(_p0)
-pub extern "C" fn im_gui_debug_log_v(_p0 : Bytes, _p1 : Int) -> Unit = "ImGui_DebugLogV"
+pub extern "C" fn im_gui_debug_log_v(_p0 : Bytes, _p1 : Int32) -> Unit = "ImGui_DebugLogV"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_SetAllocatorFunctions`.
 #borrow(_p0, _p1, _p2)
 pub extern "C" fn im_gui_set_allocator_functions(
-  _p0 : FuncRef[(Int, VoidPtr) -> VoidPtr],
+  _p0 : FuncRef[(Int32, VoidPtr) -> VoidPtr],
   _p1 : FuncRef[(VoidPtr, VoidPtr) -> Unit],
   _p2 : VoidPtr,
 ) -> Unit = "ImGui_SetAllocatorFunctions"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_MemAlloc`.
-pub extern "C" fn im_gui_mem_alloc(_p0 : Int) -> VoidPtr = "ImGui_MemAlloc"
+pub extern "C" fn im_gui_mem_alloc(_p0 : Int32) -> VoidPtr = "ImGui_MemAlloc"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGui_MemFree`.
@@ -8437,7 +8456,7 @@ pub extern "C" fn im_vector_destruct(_p0 : VoidPtr) -> Unit = "ImVector_Destruct
 ///|
 /// Direct dear_bindings C ABI binding for `ImStr_FromCharStr`.
 #borrow(_p0)
-pub extern "C" fn im_str_from_char_str(_p0 : Bytes) -> Int = "ImStr_FromCharStr"
+pub extern "C" fn im_str_from_char_str(_p0 : Bytes) -> Int32 = "ImStr_FromCharStr"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGuiStyle_ScaleAllSizes`.
@@ -8452,7 +8471,7 @@ pub extern "C" fn im_gui_style_scale_all_sizes(
 #borrow(_p0)
 pub extern "C" fn im_gui_io_add_key_event(
   _p0 : ImGuiIO,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : Bool,
 ) -> Unit = "ImGuiIO_AddKeyEvent"
 
@@ -8461,7 +8480,7 @@ pub extern "C" fn im_gui_io_add_key_event(
 #borrow(_p0)
 pub extern "C" fn im_gui_io_add_key_analog_event(
   _p0 : ImGuiIO,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : Bool,
   _p3 : Float,
 ) -> Unit = "ImGuiIO_AddKeyAnalogEvent"
@@ -8480,7 +8499,7 @@ pub extern "C" fn im_gui_io_add_mouse_pos_event(
 #borrow(_p0)
 pub extern "C" fn im_gui_io_add_mouse_button_event(
   _p0 : ImGuiIO,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : Bool,
 ) -> Unit = "ImGuiIO_AddMouseButtonEvent"
 
@@ -8498,7 +8517,7 @@ pub extern "C" fn im_gui_io_add_mouse_wheel_event(
 #borrow(_p0)
 pub extern "C" fn im_gui_io_add_mouse_source_event(
   _p0 : ImGuiIO,
-  _p1 : Int,
+  _p1 : Int32,
 ) -> Unit = "ImGuiIO_AddMouseSourceEvent"
 
 ///|
@@ -8511,7 +8530,7 @@ pub extern "C" fn im_gui_io_add_focus_event(_p0 : ImGuiIO, _p1 : Bool) -> Unit =
 #borrow(_p0)
 pub extern "C" fn im_gui_io_add_input_character(
   _p0 : ImGuiIO,
-  _p1 : UInt,
+  _p1 : UInt32,
 ) -> Unit = "ImGuiIO_AddInputCharacter"
 
 ///|
@@ -8519,7 +8538,7 @@ pub extern "C" fn im_gui_io_add_input_character(
 #borrow(_p0)
 pub extern "C" fn im_gui_io_add_input_character_utf16(
   _p0 : ImGuiIO,
-  _p1 : UInt,
+  _p1 : UInt32,
 ) -> Unit = "ImGuiIO_AddInputCharacterUTF16"
 
 ///|
@@ -8535,9 +8554,9 @@ pub extern "C" fn im_gui_io_add_input_characters_utf8(
 #borrow(_p0)
 pub extern "C" fn im_gui_io_set_key_event_native_data(
   _p0 : ImGuiIO,
-  _p1 : Int,
-  _p2 : Int,
-  _p3 : Int,
+  _p1 : Int32,
+  _p2 : Int32,
+  _p3 : Int32,
 ) -> Unit = "ImGuiIO_SetKeyEventNativeData"
 
 ///|
@@ -8545,10 +8564,10 @@ pub extern "C" fn im_gui_io_set_key_event_native_data(
 #borrow(_p0)
 pub extern "C" fn im_gui_io_set_key_event_native_data_ex(
   _p0 : ImGuiIO,
-  _p1 : Int,
-  _p2 : Int,
-  _p3 : Int,
-  _p4 : Int,
+  _p1 : Int32,
+  _p2 : Int32,
+  _p3 : Int32,
+  _p4 : Int32,
 ) -> Unit = "ImGuiIO_SetKeyEventNativeDataEx"
 
 ///|
@@ -8579,8 +8598,8 @@ pub extern "C" fn im_gui_io_clear_input_mouse(_p0 : ImGuiIO) -> Unit = "ImGuiIO_
 #borrow(_p0)
 pub extern "C" fn im_gui_input_text_callback_data_delete_chars(
   _p0 : ImGuiInputTextCallbackData,
-  _p1 : Int,
-  _p2 : Int,
+  _p1 : Int32,
+  _p2 : Int32,
 ) -> Unit = "ImGuiInputTextCallbackData_DeleteChars"
 
 ///|
@@ -8588,7 +8607,7 @@ pub extern "C" fn im_gui_input_text_callback_data_delete_chars(
 #borrow(_p2, _p0, _p3)
 pub extern "C" fn im_gui_input_text_callback_data_insert_chars(
   _p0 : ImGuiInputTextCallbackData,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : Bytes,
   _p3 : Ref[Byte]?,
 ) -> Unit = "ImGuiInputTextCallbackData_InsertChars"
@@ -8605,8 +8624,8 @@ pub extern "C" fn im_gui_input_text_callback_data_select_all(
 #borrow(_p0)
 pub extern "C" fn im_gui_input_text_callback_data_set_selection(
   _p0 : ImGuiInputTextCallbackData,
-  _p1 : Int,
-  _p2 : Int,
+  _p1 : Int32,
+  _p2 : Int32,
 ) -> Unit = "ImGuiInputTextCallbackData_SetSelection"
 
 ///|
@@ -8708,7 +8727,7 @@ pub extern "C" fn im_gui_text_buffer_end(_p0 : ImGuiTextBuffer) -> Ref[Byte]? = 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGuiTextBuffer_size`.
 #borrow(_p0)
-pub extern "C" fn im_gui_text_buffer_size(_p0 : ImGuiTextBuffer) -> Int = "ImGuiTextBuffer_size"
+pub extern "C" fn im_gui_text_buffer_size(_p0 : ImGuiTextBuffer) -> Int32 = "ImGuiTextBuffer_size"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGuiTextBuffer_empty`.
@@ -8725,7 +8744,7 @@ pub extern "C" fn im_gui_text_buffer_clear(_p0 : ImGuiTextBuffer) -> Unit = "ImG
 #borrow(_p0)
 pub extern "C" fn im_gui_text_buffer_resize(
   _p0 : ImGuiTextBuffer,
-  _p1 : Int,
+  _p1 : Int32,
 ) -> Unit = "ImGuiTextBuffer_resize"
 
 ///|
@@ -8733,7 +8752,7 @@ pub extern "C" fn im_gui_text_buffer_resize(
 #borrow(_p0)
 pub extern "C" fn im_gui_text_buffer_reserve(
   _p0 : ImGuiTextBuffer,
-  _p1 : Int,
+  _p1 : Int32,
 ) -> Unit = "ImGuiTextBuffer_reserve"
 
 ///|
@@ -8756,7 +8775,7 @@ pub extern "C" fn im_gui_text_buffer_append(
 pub extern "C" fn im_gui_text_buffer_appendfv(
   _p0 : ImGuiTextBuffer,
   _p1 : Bytes,
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Unit = "ImGuiTextBuffer_appendfv"
 
 ///|
@@ -8769,17 +8788,17 @@ pub extern "C" fn im_gui_storage_clear(_p0 : ImGuiStorage) -> Unit = "ImGuiStora
 #borrow(_p0)
 pub extern "C" fn im_gui_storage_get_int(
   _p0 : ImGuiStorage,
-  _p1 : UInt,
-  _p2 : Int,
-) -> Int = "ImGuiStorage_GetInt"
+  _p1 : UInt32,
+  _p2 : Int32,
+) -> Int32 = "ImGuiStorage_GetInt"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGuiStorage_SetInt`.
 #borrow(_p0)
 pub extern "C" fn im_gui_storage_set_int(
   _p0 : ImGuiStorage,
-  _p1 : UInt,
-  _p2 : Int,
+  _p1 : UInt32,
+  _p2 : Int32,
 ) -> Unit = "ImGuiStorage_SetInt"
 
 ///|
@@ -8787,7 +8806,7 @@ pub extern "C" fn im_gui_storage_set_int(
 #borrow(_p0)
 pub extern "C" fn im_gui_storage_get_bool(
   _p0 : ImGuiStorage,
-  _p1 : UInt,
+  _p1 : UInt32,
   _p2 : Bool,
 ) -> Bool = "ImGuiStorage_GetBool"
 
@@ -8796,7 +8815,7 @@ pub extern "C" fn im_gui_storage_get_bool(
 #borrow(_p0)
 pub extern "C" fn im_gui_storage_set_bool(
   _p0 : ImGuiStorage,
-  _p1 : UInt,
+  _p1 : UInt32,
   _p2 : Bool,
 ) -> Unit = "ImGuiStorage_SetBool"
 
@@ -8805,7 +8824,7 @@ pub extern "C" fn im_gui_storage_set_bool(
 #borrow(_p0)
 pub extern "C" fn im_gui_storage_get_float(
   _p0 : ImGuiStorage,
-  _p1 : UInt,
+  _p1 : UInt32,
   _p2 : Float,
 ) -> Float = "ImGuiStorage_GetFloat"
 
@@ -8814,7 +8833,7 @@ pub extern "C" fn im_gui_storage_get_float(
 #borrow(_p0)
 pub extern "C" fn im_gui_storage_set_float(
   _p0 : ImGuiStorage,
-  _p1 : UInt,
+  _p1 : UInt32,
   _p2 : Float,
 ) -> Unit = "ImGuiStorage_SetFloat"
 
@@ -8823,7 +8842,7 @@ pub extern "C" fn im_gui_storage_set_float(
 #borrow(_p0)
 pub extern "C" fn im_gui_storage_get_void_ptr(
   _p0 : ImGuiStorage,
-  _p1 : UInt,
+  _p1 : UInt32,
 ) -> VoidPtr = "ImGuiStorage_GetVoidPtr"
 
 ///|
@@ -8831,7 +8850,7 @@ pub extern "C" fn im_gui_storage_get_void_ptr(
 #borrow(_p0, _p2)
 pub extern "C" fn im_gui_storage_set_void_ptr(
   _p0 : ImGuiStorage,
-  _p1 : UInt,
+  _p1 : UInt32,
   _p2 : VoidPtr,
 ) -> Unit = "ImGuiStorage_SetVoidPtr"
 
@@ -8840,16 +8859,16 @@ pub extern "C" fn im_gui_storage_set_void_ptr(
 #borrow(_p0)
 pub extern "C" fn im_gui_storage_get_int_ref(
   _p0 : ImGuiStorage,
-  _p1 : UInt,
-  _p2 : Int,
-) -> Ref[Int]? = "ImGuiStorage_GetIntRef"
+  _p1 : UInt32,
+  _p2 : Int32,
+) -> Ref[Int32]? = "ImGuiStorage_GetIntRef"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGuiStorage_GetBoolRef`.
 #borrow(_p0)
 pub extern "C" fn im_gui_storage_get_bool_ref(
   _p0 : ImGuiStorage,
-  _p1 : UInt,
+  _p1 : UInt32,
   _p2 : Bool,
 ) -> Ref[Bool]? = "ImGuiStorage_GetBoolRef"
 
@@ -8858,7 +8877,7 @@ pub extern "C" fn im_gui_storage_get_bool_ref(
 #borrow(_p0)
 pub extern "C" fn im_gui_storage_get_float_ref(
   _p0 : ImGuiStorage,
-  _p1 : UInt,
+  _p1 : UInt32,
   _p2 : Float,
 ) -> Ref[Float]? = "ImGuiStorage_GetFloatRef"
 
@@ -8867,7 +8886,7 @@ pub extern "C" fn im_gui_storage_get_float_ref(
 #borrow(_p0, _p2)
 pub extern "C" fn im_gui_storage_get_void_ptr_ref(
   _p0 : ImGuiStorage,
-  _p1 : UInt,
+  _p1 : UInt32,
   _p2 : VoidPtr,
 ) -> Ref[VoidPtr]? = "ImGuiStorage_GetVoidPtrRef"
 
@@ -8881,7 +8900,7 @@ pub extern "C" fn im_gui_storage_build_sort_by_key(_p0 : ImGuiStorage) -> Unit =
 #borrow(_p0)
 pub extern "C" fn im_gui_storage_set_all_int(
   _p0 : ImGuiStorage,
-  _p1 : Int,
+  _p1 : Int32,
 ) -> Unit = "ImGuiStorage_SetAllInt"
 
 ///|
@@ -8889,7 +8908,7 @@ pub extern "C" fn im_gui_storage_set_all_int(
 #borrow(_p0)
 pub extern "C" fn im_gui_list_clipper_begin(
   _p0 : ImGuiListClipper,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : Float,
 ) -> Unit = "ImGuiListClipper_Begin"
 
@@ -8908,7 +8927,7 @@ pub extern "C" fn im_gui_list_clipper_step(_p0 : ImGuiListClipper) -> Bool = "Im
 #borrow(_p0)
 pub extern "C" fn im_gui_list_clipper_include_item_by_index(
   _p0 : ImGuiListClipper,
-  _p1 : Int,
+  _p1 : Int32,
 ) -> Unit = "ImGuiListClipper_IncludeItemByIndex"
 
 ///|
@@ -8916,8 +8935,8 @@ pub extern "C" fn im_gui_list_clipper_include_item_by_index(
 #borrow(_p0)
 pub extern "C" fn im_gui_list_clipper_include_items_by_index(
   _p0 : ImGuiListClipper,
-  _p1 : Int,
-  _p2 : Int,
+  _p1 : Int32,
+  _p2 : Int32,
 ) -> Unit = "ImGuiListClipper_IncludeItemsByIndex"
 
 ///|
@@ -8925,7 +8944,7 @@ pub extern "C" fn im_gui_list_clipper_include_items_by_index(
 #borrow(_p0)
 pub extern "C" fn im_gui_list_clipper_seek_cursor_for_item(
   _p0 : ImGuiListClipper,
-  _p1 : Int,
+  _p1 : Int32,
 ) -> Unit = "ImGuiListClipper_SeekCursorForItem"
 
 ///|
@@ -8952,7 +8971,7 @@ pub extern "C" fn im_gui_selection_basic_storage_apply_requests(
 #borrow(_p0)
 pub extern "C" fn im_gui_selection_basic_storage_contains(
   _p0 : ImGuiSelectionBasicStorage,
-  _p1 : UInt,
+  _p1 : UInt32,
 ) -> Bool = "ImGuiSelectionBasicStorage_Contains"
 
 ///|
@@ -8975,7 +8994,7 @@ pub extern "C" fn im_gui_selection_basic_storage_swap(
 #borrow(_p0)
 pub extern "C" fn im_gui_selection_basic_storage_set_item_selected(
   _p0 : ImGuiSelectionBasicStorage,
-  _p1 : UInt,
+  _p1 : UInt32,
   _p2 : Bool,
 ) -> Unit = "ImGuiSelectionBasicStorage_SetItemSelected"
 
@@ -8985,7 +9004,7 @@ pub extern "C" fn im_gui_selection_basic_storage_set_item_selected(
 pub extern "C" fn im_gui_selection_basic_storage_get_next_selected_item(
   _p0 : ImGuiSelectionBasicStorage,
   _p1 : Ref[VoidPtr]?,
-  _p2 : Ref[UInt]?,
+  _p2 : Ref[UInt32]?,
 ) -> Bool = "ImGuiSelectionBasicStorage_GetNextSelectedItem"
 
 ///|
@@ -8993,8 +9012,8 @@ pub extern "C" fn im_gui_selection_basic_storage_get_next_selected_item(
 #borrow(_p0)
 pub extern "C" fn im_gui_selection_basic_storage_get_storage_id_from_index(
   _p0 : ImGuiSelectionBasicStorage,
-  _p1 : Int,
-) -> UInt = "ImGuiSelectionBasicStorage_GetStorageIdFromIndex"
+  _p1 : Int32,
+) -> UInt32 = "ImGuiSelectionBasicStorage_GetStorageIdFromIndex"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImGuiSelectionExternalStorage_ApplyRequests`.
@@ -9027,7 +9046,7 @@ pub extern "C" fn im_draw_list_splitter_clear_free_memory(
 pub extern "C" fn im_draw_list_splitter_split(
   _p0 : ImDrawListSplitter,
   _p1 : ImDrawList,
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Unit = "ImDrawListSplitter_Split"
 
 ///|
@@ -9044,7 +9063,7 @@ pub extern "C" fn im_draw_list_splitter_merge(
 pub extern "C" fn im_draw_list_splitter_set_current_channel(
   _p0 : ImDrawListSplitter,
   _p1 : ImDrawList,
-  _p2 : Int,
+  _p2 : Int32,
 ) -> Unit = "ImDrawListSplitter_SetCurrentChannel"
 
 ///|
@@ -9089,7 +9108,7 @@ pub extern "C" fn im_draw_list_add_line(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : ImVec2,
-  _p3 : UInt,
+  _p3 : UInt32,
 ) -> Unit = "ImDrawList_AddLine"
 
 ///|
@@ -9099,7 +9118,7 @@ pub extern "C" fn im_draw_list_add_line_ex(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : ImVec2,
-  _p3 : UInt,
+  _p3 : UInt32,
   _p4 : Float,
 ) -> Unit = "ImDrawList_AddLineEx"
 
@@ -9111,7 +9130,7 @@ pub extern "C" fn im_draw_list_add_line_h(
   _p1 : Float,
   _p2 : Float,
   _p3 : Float,
-  _p4 : UInt,
+  _p4 : UInt32,
 ) -> Unit = "ImDrawList_AddLineH"
 
 ///|
@@ -9122,7 +9141,7 @@ pub extern "C" fn im_draw_list_add_line_h_ex(
   _p1 : Float,
   _p2 : Float,
   _p3 : Float,
-  _p4 : UInt,
+  _p4 : UInt32,
   _p5 : Float,
 ) -> Unit = "ImDrawList_AddLineHEx"
 
@@ -9134,7 +9153,7 @@ pub extern "C" fn im_draw_list_add_line_v(
   _p1 : Float,
   _p2 : Float,
   _p3 : Float,
-  _p4 : UInt,
+  _p4 : UInt32,
 ) -> Unit = "ImDrawList_AddLineV"
 
 ///|
@@ -9145,7 +9164,7 @@ pub extern "C" fn im_draw_list_add_line_v_ex(
   _p1 : Float,
   _p2 : Float,
   _p3 : Float,
-  _p4 : UInt,
+  _p4 : UInt32,
   _p5 : Float,
 ) -> Unit = "ImDrawList_AddLineVEx"
 
@@ -9156,7 +9175,7 @@ pub extern "C" fn im_draw_list_add_rect(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : ImVec2,
-  _p3 : UInt,
+  _p3 : UInt32,
 ) -> Unit = "ImDrawList_AddRect"
 
 ///|
@@ -9166,10 +9185,10 @@ pub extern "C" fn im_draw_list_add_rect_ex(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : ImVec2,
-  _p3 : UInt,
+  _p3 : UInt32,
   _p4 : Float,
   _p5 : Float,
-  _p6 : Int,
+  _p6 : Int32,
 ) -> Unit = "ImDrawList_AddRectEx"
 
 ///|
@@ -9179,7 +9198,7 @@ pub extern "C" fn im_draw_list_add_rect_filled(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : ImVec2,
-  _p3 : UInt,
+  _p3 : UInt32,
 ) -> Unit = "ImDrawList_AddRectFilled"
 
 ///|
@@ -9189,9 +9208,9 @@ pub extern "C" fn im_draw_list_add_rect_filled_ex(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : ImVec2,
-  _p3 : UInt,
+  _p3 : UInt32,
   _p4 : Float,
-  _p5 : Int,
+  _p5 : Int32,
 ) -> Unit = "ImDrawList_AddRectFilledEx"
 
 ///|
@@ -9201,10 +9220,10 @@ pub extern "C" fn im_draw_list_add_rect_filled_multi_color(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : ImVec2,
-  _p3 : UInt,
-  _p4 : UInt,
-  _p5 : UInt,
-  _p6 : UInt,
+  _p3 : UInt32,
+  _p4 : UInt32,
+  _p5 : UInt32,
+  _p6 : UInt32,
 ) -> Unit = "ImDrawList_AddRectFilledMultiColor"
 
 ///|
@@ -9216,7 +9235,7 @@ pub extern "C" fn im_draw_list_add_quad(
   _p2 : ImVec2,
   _p3 : ImVec2,
   _p4 : ImVec2,
-  _p5 : UInt,
+  _p5 : UInt32,
 ) -> Unit = "ImDrawList_AddQuad"
 
 ///|
@@ -9228,7 +9247,7 @@ pub extern "C" fn im_draw_list_add_quad_ex(
   _p2 : ImVec2,
   _p3 : ImVec2,
   _p4 : ImVec2,
-  _p5 : UInt,
+  _p5 : UInt32,
   _p6 : Float,
 ) -> Unit = "ImDrawList_AddQuadEx"
 
@@ -9241,7 +9260,7 @@ pub extern "C" fn im_draw_list_add_quad_filled(
   _p2 : ImVec2,
   _p3 : ImVec2,
   _p4 : ImVec2,
-  _p5 : UInt,
+  _p5 : UInt32,
 ) -> Unit = "ImDrawList_AddQuadFilled"
 
 ///|
@@ -9252,7 +9271,7 @@ pub extern "C" fn im_draw_list_add_triangle(
   _p1 : ImVec2,
   _p2 : ImVec2,
   _p3 : ImVec2,
-  _p4 : UInt,
+  _p4 : UInt32,
 ) -> Unit = "ImDrawList_AddTriangle"
 
 ///|
@@ -9263,7 +9282,7 @@ pub extern "C" fn im_draw_list_add_triangle_ex(
   _p1 : ImVec2,
   _p2 : ImVec2,
   _p3 : ImVec2,
-  _p4 : UInt,
+  _p4 : UInt32,
   _p5 : Float,
 ) -> Unit = "ImDrawList_AddTriangleEx"
 
@@ -9275,7 +9294,7 @@ pub extern "C" fn im_draw_list_add_triangle_filled(
   _p1 : ImVec2,
   _p2 : ImVec2,
   _p3 : ImVec2,
-  _p4 : UInt,
+  _p4 : UInt32,
 ) -> Unit = "ImDrawList_AddTriangleFilled"
 
 ///|
@@ -9285,7 +9304,7 @@ pub extern "C" fn im_draw_list_add_circle(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : Float,
-  _p3 : UInt,
+  _p3 : UInt32,
 ) -> Unit = "ImDrawList_AddCircle"
 
 ///|
@@ -9295,8 +9314,8 @@ pub extern "C" fn im_draw_list_add_circle_ex(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : Float,
-  _p3 : UInt,
-  _p4 : Int,
+  _p3 : UInt32,
+  _p4 : Int32,
   _p5 : Float,
 ) -> Unit = "ImDrawList_AddCircleEx"
 
@@ -9307,8 +9326,8 @@ pub extern "C" fn im_draw_list_add_circle_filled(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : Float,
-  _p3 : UInt,
-  _p4 : Int,
+  _p3 : UInt32,
+  _p4 : Int32,
 ) -> Unit = "ImDrawList_AddCircleFilled"
 
 ///|
@@ -9318,8 +9337,8 @@ pub extern "C" fn im_draw_list_add_ngon(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : Float,
-  _p3 : UInt,
-  _p4 : Int,
+  _p3 : UInt32,
+  _p4 : Int32,
 ) -> Unit = "ImDrawList_AddNgon"
 
 ///|
@@ -9329,8 +9348,8 @@ pub extern "C" fn im_draw_list_add_ngon_ex(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : Float,
-  _p3 : UInt,
-  _p4 : Int,
+  _p3 : UInt32,
+  _p4 : Int32,
   _p5 : Float,
 ) -> Unit = "ImDrawList_AddNgonEx"
 
@@ -9341,8 +9360,8 @@ pub extern "C" fn im_draw_list_add_ngon_filled(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : Float,
-  _p3 : UInt,
-  _p4 : Int,
+  _p3 : UInt32,
+  _p4 : Int32,
 ) -> Unit = "ImDrawList_AddNgonFilled"
 
 ///|
@@ -9352,7 +9371,7 @@ pub extern "C" fn im_draw_list_add_ellipse(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : ImVec2,
-  _p3 : UInt,
+  _p3 : UInt32,
 ) -> Unit = "ImDrawList_AddEllipse"
 
 ///|
@@ -9362,9 +9381,9 @@ pub extern "C" fn im_draw_list_add_ellipse_ex(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : ImVec2,
-  _p3 : UInt,
+  _p3 : UInt32,
   _p4 : Float,
-  _p5 : Int,
+  _p5 : Int32,
   _p6 : Float,
 ) -> Unit = "ImDrawList_AddEllipseEx"
 
@@ -9375,7 +9394,7 @@ pub extern "C" fn im_draw_list_add_ellipse_filled(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : ImVec2,
-  _p3 : UInt,
+  _p3 : UInt32,
 ) -> Unit = "ImDrawList_AddEllipseFilled"
 
 ///|
@@ -9385,9 +9404,9 @@ pub extern "C" fn im_draw_list_add_ellipse_filled_ex(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : ImVec2,
-  _p3 : UInt,
+  _p3 : UInt32,
   _p4 : Float,
-  _p5 : Int,
+  _p5 : Int32,
 ) -> Unit = "ImDrawList_AddEllipseFilledEx"
 
 ///|
@@ -9396,7 +9415,7 @@ pub extern "C" fn im_draw_list_add_ellipse_filled_ex(
 pub extern "C" fn im_draw_list_add_text(
   _p0 : ImDrawList,
   _p1 : ImVec2,
-  _p2 : UInt,
+  _p2 : UInt32,
   _p3 : Bytes,
 ) -> Unit = "ImDrawList_AddText"
 
@@ -9406,7 +9425,7 @@ pub extern "C" fn im_draw_list_add_text(
 pub extern "C" fn im_draw_list_add_text_ex(
   _p0 : ImDrawList,
   _p1 : ImVec2,
-  _p2 : UInt,
+  _p2 : UInt32,
   _p3 : Bytes,
   _p4 : Ref[Byte]?,
 ) -> Unit = "ImDrawList_AddTextEx"
@@ -9419,7 +9438,7 @@ pub extern "C" fn im_draw_list_add_text_im_font_ptr(
   _p1 : ImFont,
   _p2 : Float,
   _p3 : ImVec2,
-  _p4 : UInt,
+  _p4 : UInt32,
   _p5 : Bytes,
 ) -> Unit = "ImDrawList_AddTextImFontPtr"
 
@@ -9431,7 +9450,7 @@ pub extern "C" fn im_draw_list_add_text_im_font_ptr_ex(
   _p1 : ImFont,
   _p2 : Float,
   _p3 : ImVec2,
-  _p4 : UInt,
+  _p4 : UInt32,
   _p5 : Bytes,
   _p6 : Ref[Byte]?,
   _p7 : Float,
@@ -9447,9 +9466,9 @@ pub extern "C" fn im_draw_list_add_bezier_cubic(
   _p2 : ImVec2,
   _p3 : ImVec2,
   _p4 : ImVec2,
-  _p5 : UInt,
+  _p5 : UInt32,
   _p6 : Float,
-  _p7 : Int,
+  _p7 : Int32,
 ) -> Unit = "ImDrawList_AddBezierCubic"
 
 ///|
@@ -9460,9 +9479,9 @@ pub extern "C" fn im_draw_list_add_bezier_quadratic(
   _p1 : ImVec2,
   _p2 : ImVec2,
   _p3 : ImVec2,
-  _p4 : UInt,
+  _p4 : UInt32,
   _p5 : Float,
-  _p6 : Int,
+  _p6 : Int32,
 ) -> Unit = "ImDrawList_AddBezierQuadratic"
 
 ///|
@@ -9471,10 +9490,10 @@ pub extern "C" fn im_draw_list_add_bezier_quadratic(
 pub extern "C" fn im_draw_list_add_polyline(
   _p0 : ImDrawList,
   _p1 : ImVec2,
-  _p2 : Int,
-  _p3 : UInt,
+  _p2 : Int32,
+  _p3 : UInt32,
   _p4 : Float,
-  _p5 : Int,
+  _p5 : Int32,
 ) -> Unit = "ImDrawList_AddPolyline"
 
 ///|
@@ -9483,8 +9502,8 @@ pub extern "C" fn im_draw_list_add_polyline(
 pub extern "C" fn im_draw_list_add_convex_poly_filled(
   _p0 : ImDrawList,
   _p1 : ImVec2,
-  _p2 : Int,
-  _p3 : UInt,
+  _p2 : Int32,
+  _p3 : UInt32,
 ) -> Unit = "ImDrawList_AddConvexPolyFilled"
 
 ///|
@@ -9493,8 +9512,8 @@ pub extern "C" fn im_draw_list_add_convex_poly_filled(
 pub extern "C" fn im_draw_list_add_concave_poly_filled(
   _p0 : ImDrawList,
   _p1 : ImVec2,
-  _p2 : Int,
-  _p3 : UInt,
+  _p2 : Int32,
+  _p3 : UInt32,
 ) -> Unit = "ImDrawList_AddConcavePolyFilled"
 
 ///|
@@ -9517,7 +9536,7 @@ pub extern "C" fn im_draw_list_add_image_ex(
   _p3 : ImVec2,
   _p4 : ImVec2,
   _p5 : ImVec2,
-  _p6 : UInt,
+  _p6 : UInt32,
 ) -> Unit = "ImDrawList_AddImageEx"
 
 ///|
@@ -9546,7 +9565,7 @@ pub extern "C" fn im_draw_list_add_image_quad_ex(
   _p7 : ImVec2,
   _p8 : ImVec2,
   _p9 : ImVec2,
-  _p10 : UInt,
+  _p10 : UInt32,
 ) -> Unit = "ImDrawList_AddImageQuadEx"
 
 ///|
@@ -9559,9 +9578,9 @@ pub extern "C" fn im_draw_list_add_image_rounded(
   _p3 : ImVec2,
   _p4 : ImVec2,
   _p5 : ImVec2,
-  _p6 : UInt,
+  _p6 : UInt32,
   _p7 : Float,
-  _p8 : Int,
+  _p8 : Int32,
 ) -> Unit = "ImDrawList_AddImageRounded"
 
 ///|
@@ -9590,7 +9609,7 @@ pub extern "C" fn im_draw_list_path_line_to_merge_duplicate(
 #borrow(_p0)
 pub extern "C" fn im_draw_list_path_fill_convex(
   _p0 : ImDrawList,
-  _p1 : UInt,
+  _p1 : UInt32,
 ) -> Unit = "ImDrawList_PathFillConvex"
 
 ///|
@@ -9598,7 +9617,7 @@ pub extern "C" fn im_draw_list_path_fill_convex(
 #borrow(_p0)
 pub extern "C" fn im_draw_list_path_fill_concave(
   _p0 : ImDrawList,
-  _p1 : UInt,
+  _p1 : UInt32,
 ) -> Unit = "ImDrawList_PathFillConcave"
 
 ///|
@@ -9606,9 +9625,9 @@ pub extern "C" fn im_draw_list_path_fill_concave(
 #borrow(_p0)
 pub extern "C" fn im_draw_list_path_stroke(
   _p0 : ImDrawList,
-  _p1 : UInt,
+  _p1 : UInt32,
   _p2 : Float,
-  _p3 : Int,
+  _p3 : Int32,
 ) -> Unit = "ImDrawList_PathStroke"
 
 ///|
@@ -9620,7 +9639,7 @@ pub extern "C" fn im_draw_list_path_arc_to(
   _p2 : Float,
   _p3 : Float,
   _p4 : Float,
-  _p5 : Int,
+  _p5 : Int32,
 ) -> Unit = "ImDrawList_PathArcTo"
 
 ///|
@@ -9630,8 +9649,8 @@ pub extern "C" fn im_draw_list_path_arc_to_fast(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : Float,
-  _p3 : Int,
-  _p4 : Int,
+  _p3 : Int32,
+  _p4 : Int32,
 ) -> Unit = "ImDrawList_PathArcToFast"
 
 ///|
@@ -9656,7 +9675,7 @@ pub extern "C" fn im_draw_list_path_elliptical_arc_to_ex(
   _p3 : Float,
   _p4 : Float,
   _p5 : Float,
-  _p6 : Int,
+  _p6 : Int32,
 ) -> Unit = "ImDrawList_PathEllipticalArcToEx"
 
 ///|
@@ -9667,7 +9686,7 @@ pub extern "C" fn im_draw_list_path_bezier_cubic_curve_to(
   _p1 : ImVec2,
   _p2 : ImVec2,
   _p3 : ImVec2,
-  _p4 : Int,
+  _p4 : Int32,
 ) -> Unit = "ImDrawList_PathBezierCubicCurveTo"
 
 ///|
@@ -9677,7 +9696,7 @@ pub extern "C" fn im_draw_list_path_bezier_quadratic_curve_to(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : ImVec2,
-  _p3 : Int,
+  _p3 : Int32,
 ) -> Unit = "ImDrawList_PathBezierQuadraticCurveTo"
 
 ///|
@@ -9688,7 +9707,7 @@ pub extern "C" fn im_draw_list_path_rect(
   _p1 : ImVec2,
   _p2 : ImVec2,
   _p3 : Float,
-  _p4 : Int,
+  _p4 : Int32,
 ) -> Unit = "ImDrawList_PathRect"
 
 ///|
@@ -9706,7 +9725,7 @@ pub extern "C" fn im_draw_list_add_callback_ex(
   _p0 : ImDrawList,
   _p1 : FuncRef[(ImDrawList, ImDrawCmd) -> Unit],
   _p2 : VoidPtr,
-  _p3 : Int,
+  _p3 : Int32,
 ) -> Unit = "ImDrawList_AddCallbackEx"
 
 ///|
@@ -9724,7 +9743,7 @@ pub extern "C" fn im_draw_list_clone_output(_p0 : ImDrawList) -> ImDrawList = "I
 #borrow(_p0)
 pub extern "C" fn im_draw_list_channels_split(
   _p0 : ImDrawList,
-  _p1 : Int,
+  _p1 : Int32,
 ) -> Unit = "ImDrawList_ChannelsSplit"
 
 ///|
@@ -9737,7 +9756,7 @@ pub extern "C" fn im_draw_list_channels_merge(_p0 : ImDrawList) -> Unit = "ImDra
 #borrow(_p0)
 pub extern "C" fn im_draw_list_channels_set_current(
   _p0 : ImDrawList,
-  _p1 : Int,
+  _p1 : Int32,
 ) -> Unit = "ImDrawList_ChannelsSetCurrent"
 
 ///|
@@ -9745,8 +9764,8 @@ pub extern "C" fn im_draw_list_channels_set_current(
 #borrow(_p0)
 pub extern "C" fn im_draw_list_prim_reserve(
   _p0 : ImDrawList,
-  _p1 : Int,
-  _p2 : Int,
+  _p1 : Int32,
+  _p2 : Int32,
 ) -> Unit = "ImDrawList_PrimReserve"
 
 ///|
@@ -9754,8 +9773,8 @@ pub extern "C" fn im_draw_list_prim_reserve(
 #borrow(_p0)
 pub extern "C" fn im_draw_list_prim_unreserve(
   _p0 : ImDrawList,
-  _p1 : Int,
-  _p2 : Int,
+  _p1 : Int32,
+  _p2 : Int32,
 ) -> Unit = "ImDrawList_PrimUnreserve"
 
 ///|
@@ -9765,7 +9784,7 @@ pub extern "C" fn im_draw_list_prim_rect(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : ImVec2,
-  _p3 : UInt,
+  _p3 : UInt32,
 ) -> Unit = "ImDrawList_PrimRect"
 
 ///|
@@ -9777,7 +9796,7 @@ pub extern "C" fn im_draw_list_prim_rect_uv(
   _p2 : ImVec2,
   _p3 : ImVec2,
   _p4 : ImVec2,
-  _p5 : UInt,
+  _p5 : UInt32,
 ) -> Unit = "ImDrawList_PrimRectUV"
 
 ///|
@@ -9793,7 +9812,7 @@ pub extern "C" fn im_draw_list_prim_quad_uv(
   _p6 : ImVec2,
   _p7 : ImVec2,
   _p8 : ImVec2,
-  _p9 : UInt,
+  _p9 : UInt32,
 ) -> Unit = "ImDrawList_PrimQuadUV"
 
 ///|
@@ -9803,7 +9822,7 @@ pub extern "C" fn im_draw_list_prim_write_vtx(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : ImVec2,
-  _p3 : UInt,
+  _p3 : UInt32,
 ) -> Unit = "ImDrawList_PrimWriteVtx"
 
 ///|
@@ -9811,7 +9830,7 @@ pub extern "C" fn im_draw_list_prim_write_vtx(
 #borrow(_p0)
 pub extern "C" fn im_draw_list_prim_write_idx(
   _p0 : ImDrawList,
-  _p1 : UInt,
+  _p1 : UInt32,
 ) -> Unit = "ImDrawList_PrimWriteIdx"
 
 ///|
@@ -9821,7 +9840,7 @@ pub extern "C" fn im_draw_list_prim_vtx(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : ImVec2,
-  _p3 : UInt,
+  _p3 : UInt32,
 ) -> Unit = "ImDrawList_PrimVtx"
 
 ///|
@@ -9831,9 +9850,9 @@ pub extern "C" fn im_draw_list_add_rect_im_draw_flags(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : ImVec2,
-  _p3 : UInt,
+  _p3 : UInt32,
   _p4 : Float,
-  _p5 : Int,
+  _p5 : Int32,
   _p6 : Float,
 ) -> Unit = "ImDrawList_AddRectImDrawFlags"
 
@@ -9843,9 +9862,9 @@ pub extern "C" fn im_draw_list_add_rect_im_draw_flags(
 pub extern "C" fn im_draw_list_add_polyline_im_draw_flags(
   _p0 : ImDrawList,
   _p1 : ImVec2,
-  _p2 : Int,
-  _p3 : UInt,
-  _p4 : Int,
+  _p2 : Int32,
+  _p3 : UInt32,
+  _p4 : Int32,
   _p5 : Float,
 ) -> Unit = "ImDrawList_AddPolylineImDrawFlags"
 
@@ -9854,8 +9873,8 @@ pub extern "C" fn im_draw_list_add_polyline_im_draw_flags(
 #borrow(_p0)
 pub extern "C" fn im_draw_list_path_stroke_im_draw_flags(
   _p0 : ImDrawList,
-  _p1 : UInt,
-  _p2 : Int,
+  _p1 : UInt32,
+  _p2 : Int32,
   _p3 : Float,
 ) -> Unit = "ImDrawList_PathStrokeImDrawFlags"
 
@@ -9929,7 +9948,7 @@ pub extern "C" fn im_draw_list_set_texture(
 pub extern "C" fn im_draw_list_calc_circle_auto_segment_count(
   _p0 : ImDrawList,
   _p1 : Float,
-) -> Int = "ImDrawList__CalcCircleAutoSegmentCount"
+) -> Int32 = "ImDrawList__CalcCircleAutoSegmentCount"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImDrawList__PathArcToFastEx`.
@@ -9938,9 +9957,9 @@ pub extern "C" fn im_draw_list_path_arc_to_fast_ex(
   _p0 : ImDrawList,
   _p1 : ImVec2,
   _p2 : Float,
-  _p3 : Int,
-  _p4 : Int,
-  _p5 : Int,
+  _p3 : Int32,
+  _p4 : Int32,
+  _p5 : Int32,
 ) -> Unit = "ImDrawList__PathArcToFastEx"
 
 ///|
@@ -9952,7 +9971,7 @@ pub extern "C" fn im_draw_list_path_arc_to_n(
   _p2 : Float,
   _p3 : Float,
   _p4 : Float,
-  _p5 : Int,
+  _p5 : Int32,
 ) -> Unit = "ImDrawList__PathArcToN"
 
 ///|
@@ -9986,9 +10005,9 @@ pub extern "C" fn im_draw_data_scale_clip_rects(
 #borrow(_p0)
 pub extern "C" fn im_texture_data_create(
   _p0 : ImTextureData,
-  _p1 : Int,
-  _p2 : Int,
-  _p3 : Int,
+  _p1 : Int32,
+  _p2 : Int32,
+  _p3 : Int32,
 ) -> Unit = "ImTextureData_Create"
 
 ///|
@@ -10006,19 +10025,21 @@ pub extern "C" fn im_texture_data_get_pixels(_p0 : ImTextureData) -> VoidPtr = "
 #borrow(_p0)
 pub extern "C" fn im_texture_data_get_pixels_at(
   _p0 : ImTextureData,
-  _p1 : Int,
-  _p2 : Int,
+  _p1 : Int32,
+  _p2 : Int32,
 ) -> VoidPtr = "ImTextureData_GetPixelsAt"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImTextureData_GetSizeInBytes`.
 #borrow(_p0)
-pub extern "C" fn im_texture_data_get_size_in_bytes(_p0 : ImTextureData) -> Int = "ImTextureData_GetSizeInBytes"
+pub extern "C" fn im_texture_data_get_size_in_bytes(
+  _p0 : ImTextureData,
+) -> Int32 = "ImTextureData_GetSizeInBytes"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImTextureData_GetPitch`.
 #borrow(_p0)
-pub extern "C" fn im_texture_data_get_pitch(_p0 : ImTextureData) -> Int = "ImTextureData_GetPitch"
+pub extern "C" fn im_texture_data_get_pitch(_p0 : ImTextureData) -> Int32 = "ImTextureData_GetPitch"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImTextureData_GetTexID`.
@@ -10038,7 +10059,7 @@ pub extern "C" fn im_texture_data_set_tex_id(
 #borrow(_p0)
 pub extern "C" fn im_texture_data_set_status(
   _p0 : ImTextureData,
-  _p1 : Int,
+  _p1 : Int32,
 ) -> Unit = "ImTextureData_SetStatus"
 
 ///|
@@ -10053,7 +10074,7 @@ pub extern "C" fn im_font_glyph_ranges_builder_clear(
 #borrow(_p0)
 pub extern "C" fn im_font_glyph_ranges_builder_get_bit(
   _p0 : ImFontGlyphRangesBuilder,
-  _p1 : Int,
+  _p1 : Int32,
 ) -> Bool = "ImFontGlyphRangesBuilder_GetBit"
 
 ///|
@@ -10061,7 +10082,7 @@ pub extern "C" fn im_font_glyph_ranges_builder_get_bit(
 #borrow(_p0)
 pub extern "C" fn im_font_glyph_ranges_builder_set_bit(
   _p0 : ImFontGlyphRangesBuilder,
-  _p1 : Int,
+  _p1 : Int32,
 ) -> Unit = "ImFontGlyphRangesBuilder_SetBit"
 
 ///|
@@ -10069,7 +10090,7 @@ pub extern "C" fn im_font_glyph_ranges_builder_set_bit(
 #borrow(_p0)
 pub extern "C" fn im_font_glyph_ranges_builder_add_char(
   _p0 : ImFontGlyphRangesBuilder,
-  _p1 : UInt,
+  _p1 : UInt32,
 ) -> Unit = "ImFontGlyphRangesBuilder_AddChar"
 
 ///|
@@ -10086,7 +10107,7 @@ pub extern "C" fn im_font_glyph_ranges_builder_add_text(
 #borrow(_p0, _p1)
 pub extern "C" fn im_font_glyph_ranges_builder_add_ranges(
   _p0 : ImFontGlyphRangesBuilder,
-  _p1 : Ref[UInt]?,
+  _p1 : Ref[UInt32]?,
 ) -> Unit = "ImFontGlyphRangesBuilder_AddRanges"
 
 ///|
@@ -10137,7 +10158,7 @@ pub extern "C" fn im_font_atlas_add_font_from_file_ttf(
   _p1 : Bytes,
   _p2 : Float,
   _p3 : ImFontConfig,
-  _p4 : Ref[UInt]?,
+  _p4 : Ref[UInt32]?,
 ) -> ImFont = "ImFontAtlas_AddFontFromFileTTF"
 
 ///|
@@ -10146,10 +10167,10 @@ pub extern "C" fn im_font_atlas_add_font_from_file_ttf(
 pub extern "C" fn im_font_atlas_add_font_from_memory_ttf(
   _p0 : ImFontAtlas,
   _p1 : VoidPtr,
-  _p2 : Int,
+  _p2 : Int32,
   _p3 : Float,
   _p4 : ImFontConfig,
-  _p5 : Ref[UInt]?,
+  _p5 : Ref[UInt32]?,
 ) -> ImFont = "ImFontAtlas_AddFontFromMemoryTTF"
 
 ///|
@@ -10158,10 +10179,10 @@ pub extern "C" fn im_font_atlas_add_font_from_memory_ttf(
 pub extern "C" fn im_font_atlas_add_font_from_memory_compressed_ttf(
   _p0 : ImFontAtlas,
   _p1 : VoidPtr,
-  _p2 : Int,
+  _p2 : Int32,
   _p3 : Float,
   _p4 : ImFontConfig,
-  _p5 : Ref[UInt]?,
+  _p5 : Ref[UInt32]?,
 ) -> ImFont = "ImFontAtlas_AddFontFromMemoryCompressedTTF"
 
 ///|
@@ -10172,7 +10193,7 @@ pub extern "C" fn im_font_atlas_add_font_from_memory_compressed_base85_ttf(
   _p1 : Bytes,
   _p2 : Float,
   _p3 : ImFontConfig,
-  _p4 : Ref[UInt]?,
+  _p4 : Ref[UInt32]?,
 ) -> ImFont = "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF"
 
 ///|
@@ -10227,9 +10248,9 @@ pub extern "C" fn im_font_atlas_build(_p0 : ImFontAtlas) -> Bool = "ImFontAtlas_
 pub extern "C" fn im_font_atlas_get_tex_data_as_alpha8(
   _p0 : ImFontAtlas,
   _p1 : Ref[Ref[Byte]]?,
-  _p2 : Ref[Int]?,
-  _p3 : Ref[Int]?,
-  _p4 : Ref[Int]?,
+  _p2 : Ref[Int32]?,
+  _p3 : Ref[Int32]?,
+  _p4 : Ref[Int32]?,
 ) -> Unit = "ImFontAtlas_GetTexDataAsAlpha8"
 
 ///|
@@ -10238,9 +10259,9 @@ pub extern "C" fn im_font_atlas_get_tex_data_as_alpha8(
 pub extern "C" fn im_font_atlas_get_tex_data_as_rgba32(
   _p0 : ImFontAtlas,
   _p1 : Ref[Ref[Byte]]?,
-  _p2 : Ref[Int]?,
-  _p3 : Ref[Int]?,
-  _p4 : Ref[Int]?,
+  _p2 : Ref[Int32]?,
+  _p3 : Ref[Int32]?,
+  _p4 : Ref[Int32]?,
 ) -> Unit = "ImFontAtlas_GetTexDataAsRGBA32"
 
 ///|
@@ -10269,80 +10290,80 @@ pub extern "C" fn im_font_atlas_is_built(_p0 : ImFontAtlas) -> Bool = "ImFontAtl
 #borrow(_p0)
 pub extern "C" fn im_font_atlas_get_glyph_ranges_default(
   _p0 : ImFontAtlas,
-) -> Ref[UInt]? = "ImFontAtlas_GetGlyphRangesDefault"
+) -> Ref[UInt32]? = "ImFontAtlas_GetGlyphRangesDefault"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImFontAtlas_GetGlyphRangesGreek`.
 #borrow(_p0)
 pub extern "C" fn im_font_atlas_get_glyph_ranges_greek(
   _p0 : ImFontAtlas,
-) -> Ref[UInt]? = "ImFontAtlas_GetGlyphRangesGreek"
+) -> Ref[UInt32]? = "ImFontAtlas_GetGlyphRangesGreek"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImFontAtlas_GetGlyphRangesKorean`.
 #borrow(_p0)
 pub extern "C" fn im_font_atlas_get_glyph_ranges_korean(
   _p0 : ImFontAtlas,
-) -> Ref[UInt]? = "ImFontAtlas_GetGlyphRangesKorean"
+) -> Ref[UInt32]? = "ImFontAtlas_GetGlyphRangesKorean"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImFontAtlas_GetGlyphRangesJapanese`.
 #borrow(_p0)
 pub extern "C" fn im_font_atlas_get_glyph_ranges_japanese(
   _p0 : ImFontAtlas,
-) -> Ref[UInt]? = "ImFontAtlas_GetGlyphRangesJapanese"
+) -> Ref[UInt32]? = "ImFontAtlas_GetGlyphRangesJapanese"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImFontAtlas_GetGlyphRangesChineseFull`.
 #borrow(_p0)
 pub extern "C" fn im_font_atlas_get_glyph_ranges_chinese_full(
   _p0 : ImFontAtlas,
-) -> Ref[UInt]? = "ImFontAtlas_GetGlyphRangesChineseFull"
+) -> Ref[UInt32]? = "ImFontAtlas_GetGlyphRangesChineseFull"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImFontAtlas_GetGlyphRangesChineseSimplifiedCommon`.
 #borrow(_p0)
 pub extern "C" fn im_font_atlas_get_glyph_ranges_chinese_simplified_common(
   _p0 : ImFontAtlas,
-) -> Ref[UInt]? = "ImFontAtlas_GetGlyphRangesChineseSimplifiedCommon"
+) -> Ref[UInt32]? = "ImFontAtlas_GetGlyphRangesChineseSimplifiedCommon"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImFontAtlas_GetGlyphRangesCyrillic`.
 #borrow(_p0)
 pub extern "C" fn im_font_atlas_get_glyph_ranges_cyrillic(
   _p0 : ImFontAtlas,
-) -> Ref[UInt]? = "ImFontAtlas_GetGlyphRangesCyrillic"
+) -> Ref[UInt32]? = "ImFontAtlas_GetGlyphRangesCyrillic"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImFontAtlas_GetGlyphRangesThai`.
 #borrow(_p0)
 pub extern "C" fn im_font_atlas_get_glyph_ranges_thai(
   _p0 : ImFontAtlas,
-) -> Ref[UInt]? = "ImFontAtlas_GetGlyphRangesThai"
+) -> Ref[UInt32]? = "ImFontAtlas_GetGlyphRangesThai"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImFontAtlas_GetGlyphRangesVietnamese`.
 #borrow(_p0)
 pub extern "C" fn im_font_atlas_get_glyph_ranges_vietnamese(
   _p0 : ImFontAtlas,
-) -> Ref[UInt]? = "ImFontAtlas_GetGlyphRangesVietnamese"
+) -> Ref[UInt32]? = "ImFontAtlas_GetGlyphRangesVietnamese"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImFontAtlas_AddCustomRect`.
 #borrow(_p0, _p3)
 pub extern "C" fn im_font_atlas_add_custom_rect(
   _p0 : ImFontAtlas,
-  _p1 : Int,
-  _p2 : Int,
+  _p1 : Int32,
+  _p2 : Int32,
   _p3 : ImFontAtlasRect,
-) -> Int = "ImFontAtlas_AddCustomRect"
+) -> Int32 = "ImFontAtlas_AddCustomRect"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImFontAtlas_RemoveCustomRect`.
 #borrow(_p0)
 pub extern "C" fn im_font_atlas_remove_custom_rect(
   _p0 : ImFontAtlas,
-  _p1 : Int,
+  _p1 : Int32,
 ) -> Unit = "ImFontAtlas_RemoveCustomRect"
 
 ///|
@@ -10350,7 +10371,7 @@ pub extern "C" fn im_font_atlas_remove_custom_rect(
 #borrow(_p0, _p2)
 pub extern "C" fn im_font_atlas_get_custom_rect(
   _p0 : ImFontAtlas,
-  _p1 : Int,
+  _p1 : Int32,
   _p2 : ImFontAtlasRect,
 ) -> Bool = "ImFontAtlas_GetCustomRect"
 
@@ -10359,16 +10380,16 @@ pub extern "C" fn im_font_atlas_get_custom_rect(
 #borrow(_p0)
 pub extern "C" fn im_font_atlas_add_custom_rect_regular(
   _p0 : ImFontAtlas,
-  _p1 : Int,
-  _p2 : Int,
-) -> Int = "ImFontAtlas_AddCustomRectRegular"
+  _p1 : Int32,
+  _p2 : Int32,
+) -> Int32 = "ImFontAtlas_AddCustomRectRegular"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImFontAtlas_GetCustomRectByIndex`.
 #borrow(_p0)
 pub extern "C" fn im_font_atlas_get_custom_rect_by_index(
   _p0 : ImFontAtlas,
-  _p1 : Int,
+  _p1 : Int32,
 ) -> ImFontAtlasRect = "ImFontAtlas_GetCustomRectByIndex"
 
 ///|
@@ -10387,12 +10408,12 @@ pub extern "C" fn im_font_atlas_calc_custom_rect_uv(
 pub extern "C" fn im_font_atlas_add_custom_rect_font_glyph(
   _p0 : ImFontAtlas,
   _p1 : ImFont,
-  _p2 : UInt,
-  _p3 : Int,
-  _p4 : Int,
+  _p2 : UInt32,
+  _p3 : Int32,
+  _p4 : Int32,
   _p5 : Float,
   _p6 : ImVec2,
-) -> Int = "ImFontAtlas_AddCustomRectFontGlyph"
+) -> Int32 = "ImFontAtlas_AddCustomRectFontGlyph"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImFontAtlas_AddCustomRectFontGlyphForSize`.
@@ -10401,12 +10422,12 @@ pub extern "C" fn im_font_atlas_add_custom_rect_font_glyph_for_size(
   _p0 : ImFontAtlas,
   _p1 : ImFont,
   _p2 : Float,
-  _p3 : UInt,
-  _p4 : Int,
-  _p5 : Int,
+  _p3 : UInt32,
+  _p4 : Int32,
+  _p5 : Int32,
   _p6 : Float,
   _p7 : ImVec2,
-) -> Int = "ImFontAtlas_AddCustomRectFontGlyphForSize"
+) -> Int32 = "ImFontAtlas_AddCustomRectFontGlyphForSize"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImFontBaked_ClearOutputData`.
@@ -10418,7 +10439,7 @@ pub extern "C" fn im_font_baked_clear_output_data(_p0 : ImFontBaked) -> Unit = "
 #borrow(_p0)
 pub extern "C" fn im_font_baked_find_glyph(
   _p0 : ImFontBaked,
-  _p1 : UInt,
+  _p1 : UInt32,
 ) -> ImFontGlyph = "ImFontBaked_FindGlyph"
 
 ///|
@@ -10426,7 +10447,7 @@ pub extern "C" fn im_font_baked_find_glyph(
 #borrow(_p0)
 pub extern "C" fn im_font_baked_find_glyph_no_fallback(
   _p0 : ImFontBaked,
-  _p1 : UInt,
+  _p1 : UInt32,
 ) -> ImFontGlyph = "ImFontBaked_FindGlyphNoFallback"
 
 ///|
@@ -10434,7 +10455,7 @@ pub extern "C" fn im_font_baked_find_glyph_no_fallback(
 #borrow(_p0)
 pub extern "C" fn im_font_baked_get_char_advance(
   _p0 : ImFontBaked,
-  _p1 : UInt,
+  _p1 : UInt32,
 ) -> Float = "ImFontBaked_GetCharAdvance"
 
 ///|
@@ -10442,13 +10463,13 @@ pub extern "C" fn im_font_baked_get_char_advance(
 #borrow(_p0)
 pub extern "C" fn im_font_baked_is_glyph_loaded(
   _p0 : ImFontBaked,
-  _p1 : UInt,
+  _p1 : UInt32,
 ) -> Bool = "ImFontBaked_IsGlyphLoaded"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImFont_IsGlyphInFont`.
 #borrow(_p0)
-pub extern "C" fn im_font_is_glyph_in_font(_p0 : ImFont, _p1 : UInt) -> Bool = "ImFont_IsGlyphInFont"
+pub extern "C" fn im_font_is_glyph_in_font(_p0 : ImFont, _p1 : UInt32) -> Bool = "ImFont_IsGlyphInFont"
 
 ///|
 /// Direct dear_bindings C ABI binding for `ImFont_IsLoaded`.
@@ -10496,8 +10517,8 @@ pub extern "C" fn im_font_render_char(
   _p1 : ImDrawList,
   _p2 : Float,
   _p3 : ImVec2,
-  _p4 : UInt,
-  _p5 : UInt,
+  _p4 : UInt32,
+  _p5 : UInt32,
 ) -> Unit = "ImFont_RenderChar"
 
 ///|
@@ -10508,8 +10529,8 @@ pub extern "C" fn im_font_render_char_ex(
   _p1 : ImDrawList,
   _p2 : Float,
   _p3 : ImVec2,
-  _p4 : UInt,
-  _p5 : UInt,
+  _p4 : UInt32,
+  _p5 : UInt32,
   _p6 : ImVec4,
 ) -> Unit = "ImFont_RenderCharEx"
 
@@ -10521,12 +10542,12 @@ pub extern "C" fn im_font_render_text(
   _p1 : ImDrawList,
   _p2 : Float,
   _p3 : ImVec2,
-  _p4 : UInt,
+  _p4 : UInt32,
   _p5 : ImVec4,
   _p6 : Bytes,
   _p7 : Bytes,
   _p8 : Float,
-  _p9 : Int,
+  _p9 : Int32,
 ) -> Unit = "ImFont_RenderText"
 
 ///|
@@ -10550,8 +10571,8 @@ pub extern "C" fn im_font_clear_output_data(_p0 : ImFont) -> Unit = "ImFont_Clea
 #borrow(_p0)
 pub extern "C" fn im_font_add_remap_char(
   _p0 : ImFont,
-  _p1 : UInt,
-  _p2 : UInt,
+  _p1 : UInt32,
+  _p2 : UInt32,
 ) -> Unit = "ImFont_AddRemapChar"
 
 ///|
@@ -10559,8 +10580,8 @@ pub extern "C" fn im_font_add_remap_char(
 #borrow(_p0)
 pub extern "C" fn im_font_is_glyph_range_unused(
   _p0 : ImFont,
-  _p1 : UInt,
-  _p2 : UInt,
+  _p1 : UInt32,
+  _p2 : UInt32,
 ) -> Bool = "ImFont_IsGlyphRangeUnused"
 
 ///|

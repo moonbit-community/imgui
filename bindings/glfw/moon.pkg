@@ -1,11 +1,7 @@
 supported_targets = "+native"
 
 options(
-  link: {
-    "native": {
-      "stub-cc-flags": "${build.IMGUI_GLFW_STUB_FLAGS}",
-    },
-  },
+  link: { "native": { "stub-cc-flags": "${build.IMGUI_GLFW_STUB_FLAGS}" } },
   "native-stub": [
     "imgui_impl_glfw.cpp",
     "dcimgui_impl_glfw.cpp",

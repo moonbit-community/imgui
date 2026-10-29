@@ -1,14 +1,10 @@
 import {
-  "moonbit-community/imgui/bindings" @bindings,
+  "moonbit-community/imgui/bindings",
 }
 
 supported_targets = "+native"
 
 options(
-  link: {
-    "native": {
-      "stub-cc-flags": "${build.IMGUI_OPENGL3_STUB_FLAGS}",
-    },
-  },
+  link: { "native": { "stub-cc-flags": "${build.IMGUI_OPENGL3_STUB_FLAGS}" } },
   "native-stub": [ "imgui_impl_opengl3.cpp", "dcimgui_impl_opengl3.cpp" ],
 )

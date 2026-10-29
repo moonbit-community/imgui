@@ -4,11 +4,11 @@ struct DemoState {
   show_modal : Ref[Bool]
   mut enabled : Bool
   mut slider : Float
-  mut int_slider : Int
+  mut int_slider : Int32
   mut drag_float_value : Float
-  mut drag_int_value : Int
+  mut drag_int_value : Int32
   mut input_float_value : Float
-  mut input_int_value : Int
+  mut input_int_value : Int32
   mut input_double_value : Double
   mut angle : Float
   mut float2 : @imgui.Float2
@@ -31,11 +31,11 @@ struct DemoState {
   mut input_int2 : @imgui.Int2
   mut input_int3 : @imgui.Int3
   mut input_int4 : @imgui.Int4
-  mut counter : Int
-  mut selected_row : Int
-  mut selected_item : Int
-  mut combo_index : Int
-  mut radio_choice : Int
+  mut counter : Int32
+  mut selected_row : Int32
+  mut selected_item : Int32
+  mut combo_index : Int32
+  mut radio_choice : Int32
   optional_tab_open : Ref[Bool]
   header_open : Ref[Bool]
   mut show_metrics : Bool
@@ -787,7 +787,7 @@ fn render_table(
 fn render_row(
   table : @imgui.TableUi,
   state : DemoState,
-  index : Int,
+  index : Int32,
   label : String,
 ) -> Unit raise @imgui.ImGuiError {
   table.next_row()
@@ -802,7 +802,7 @@ fn render_row(
 }
 
 ///|
-fn combo_label(index : Int) -> String {
+fn combo_label(index : Int32) -> String {
   if index == 1 {
     "Second"
   } else if index == 2 {

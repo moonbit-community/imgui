@@ -5,14 +5,14 @@
 /// same API is intended for macOS, Ubuntu, and Windows when GLFW and an
 /// OpenGL 3 capable driver are available to the native toolchain.
 pub fn run_forever(
-  title? : String = "MoonBit Dear ImGui",
-  width? : Int = 1280,
-  height? : Int = 720,
-  x? : Int = 80,
-  y? : Int = 60,
-  floating? : Bool = false,
-  vsync? : Bool = true,
-  clear_color? : @imgui.Vec4 = @imgui.Vec4::rgba(0.08, 0.09, 0.10, 1.0),
+  title~ : String = "MoonBit Dear ImGui",
+  width~ : Int32 = 1280,
+  height~ : Int32 = 720,
+  x~ : Int32 = 80,
+  y~ : Int32 = 60,
+  floating~ : Bool = false,
+  vsync~ : Bool = true,
+  clear_color~ : @imgui.Vec4 = @imgui.Vec4::rgba(0.08, 0.09, 0.10, 1.0),
   body : (@imgui.Ui) -> Unit raise @imgui.ImGuiError,
 ) -> Unit raise @imgui.ImGuiError {
   guard @glfw.initialize() else { abort("failed to initialize GLFW") }

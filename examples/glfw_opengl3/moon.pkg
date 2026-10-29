@@ -1,10 +1,8 @@
 import {
-  "moonbit-community/imgui" @imgui,
-  "moonbit-community/imgui/starter" @starter,
+  "moonbit-community/imgui",
+  "moonbit-community/imgui/starter",
 }
 
 supported_targets = "+native"
 
-options(
-  "is-main": true,
-)
+pkgtype(kind: "executable")
