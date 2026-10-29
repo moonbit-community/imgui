@@ -6,11 +6,11 @@ import {
 }
 
 // Values
-pub fn clear(UInt) -> Unit
+pub fn clear(UInt32) -> Unit
 
 pub fn clear_color(Float, Float, Float, Float) -> Unit
 
-pub fn color_buffer_bit() -> UInt
+pub fn color_buffer_bit() -> UInt32
 
 pub fn create_device_objects() -> Bool
 
@@ -28,7 +28,7 @@ pub fn shutdown() -> Unit
 
 pub fn update_texture(@bindings.ImTextureData) -> Unit
 
-pub fn viewport(Int, Int, Int, Int) -> Unit
+pub fn viewport(Int32, Int32, Int32, Int32) -> Unit
 
 // Errors
 
@@ -37,4 +37,3 @@ pub fn viewport(Int, Int, Int, Int) -> Unit
 // Type aliases
 
 // Traits
-

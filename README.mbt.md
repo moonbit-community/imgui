@@ -10,6 +10,7 @@ callbacks, and matching Dear ImGui scope close calls are handled automatically.
 ## Example
 
 ```moonbit nocheck
+///|
 fn main {
   let state = State::new()
   @starter.run_forever(title="MoonBit Dear ImGui") <| ui => {
@@ -24,7 +25,9 @@ fn main {
       }
 
       ui.text("Hello from MoonBit")
-      ui.checkbox("Enabled", state.enabled) <| value => { state.enabled = value }
+      ui.checkbox("Enabled", state.enabled) <| value => {
+        state.enabled = value
+      }
       ui.slider_float("Value", state.value, 0.0, 1.0) <| value => {
         state.value = value
       }
@@ -33,9 +36,7 @@ fn main {
         HoveredBg(Cyan),
         ActiveBg(Green),
         Rounding(4.0),
-      ]) <| () => {
-        state.counter = state.counter + 1
-      }
+      ]) <| () => { state.counter = state.counter + 1 }
     }
   }
 }

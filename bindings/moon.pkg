@@ -1,11 +1,7 @@
 supported_targets = "+native"
 
 options(
-  link: {
-    "native": {
-      "stub-cc-flags": "${build.IMGUI_CORE_STUB_FLAGS}",
-    },
-  },
+  link: { "native": { "stub-cc-flags": "${build.IMGUI_CORE_STUB_FLAGS}" } },
   "native-stub": [
     "upstream/imgui/imgui.cpp",
     "upstream/imgui/imgui_demo.cpp",

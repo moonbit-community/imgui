@@ -18,12 +18,17 @@ pub extern "C" fn shutdown() -> Unit = "cImGui_ImplOpenGL3_Shutdown"
 pub extern "C" fn new_frame() -> Unit = "cImGui_ImplOpenGL3_NewFrame"
 
 ///|
-pub fn color_buffer_bit() -> UInt {
+pub fn color_buffer_bit() -> UInt32 {
   0x00004000U
 }
 
 ///|
-pub extern "C" fn viewport(x : Int, y : Int, width : Int, height : Int) -> Unit = "glViewport"
+pub extern "C" fn viewport(
+  x : Int32,
+  y : Int32,
+  width : Int32,
+  height : Int32,
+) -> Unit = "glViewport"
 
 ///|
 pub extern "C" fn clear_color(
@@ -34,7 +39,7 @@ pub extern "C" fn clear_color(
 ) -> Unit = "glClearColor"
 
 ///|
-pub extern "C" fn clear(mask : UInt) -> Unit = "glClear"
+pub extern "C" fn clear(mask : UInt32) -> Unit = "glClear"
 
 ///|
 /// Renders Dear ImGui draw data with the OpenGL3 renderer backend.

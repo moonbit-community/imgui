@@ -6,7 +6,7 @@ import {
 }
 
 // Values
-pub fn run_forever(title? : String, width? : Int, height? : Int, x? : Int, y? : Int, floating? : Bool, vsync? : Bool, clear_color? : @imgui.Vec4, (@imgui.Ui) -> Unit raise @imgui.ImGuiError) -> Unit raise @imgui.ImGuiError
+pub fn run_forever(title? : String, width? : Int32, height? : Int32, x? : Int32, y? : Int32, floating? : Bool, vsync? : Bool, clear_color? : @imgui.Vec4, (@imgui.Ui) -> Unit raise @imgui.ImGuiError) -> Unit raise @imgui.ImGuiError
 
 // Errors
 
